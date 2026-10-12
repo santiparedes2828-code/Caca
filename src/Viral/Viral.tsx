@@ -40,7 +40,7 @@ const ink = (w: World) => (w === "dark" ? B.bg : B.ink);
 const Header: React.FC<{ world: World }> = ({ world }) => (
   <div style={{ position: "absolute", top: 160, left: 80, right: 80, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
     <Wordmark size={36} color={ink(world)} />
-    <span style={{ fontFamily: MONO, fontSize: 22, letterSpacing: "0.08em", color: world === "dark" ? "#9A9A94" : B.grey }}>
+    <span style={{ fontFamily: MONO, fontWeight: 700, fontSize: 22, letterSpacing: "0.08em", color: world === "dark" ? "#9A9A94" : B.grey }}>
       <span style={{ color: B.green }}>(02)</span> EDICIÓN AUTOMÁTICA
     </span>
   </div>
@@ -142,7 +142,7 @@ export const Viral: React.FC = () => {
             items={[
               { at: w(74), text: "Sin marca de agua" },
               { at: w(77), text: "Productos con foto real" },
-              { at: w(79), text: "Inter + Garamond" },
+              { at: w(79), text: "Inter Bold" },
               { at: w(82), text: "Verde #12A150" },
             ]}
           />

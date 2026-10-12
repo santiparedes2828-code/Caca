@@ -1,5 +1,7 @@
 # estilo-hookhouse.md — Estilo principal de la marca **Hook House**
 
+> **Regla de la casa (12-10-2026, pedida por el usuario):** todo el texto va en **Inter** (preferiblemente Inter Bold) y los emojis, cuando hagan falta, en estilo iOS con el set con licencia más parecido (ver `CLAUDE.md`). Las demás tipografías que cita esta guía quedan sustituidas por Inter.
+
 > **Estilo por defecto de la marca.** Todo vídeo nuevo de Hook House usa esta guía salvo que se pida otra.
 
 Fuente del estilo: `analisis3/referencia.mp4` (37,19 s · 576x1024 · 30 fps · AAC estéreo; de 33,2 s en adelante es la cortinilla de TikTok y no cuenta).
@@ -16,10 +18,10 @@ Medidas convertidas a **1080x1920** (×1,875 respecto al original). Lo no medibl
 | Verde oscuro | **#0B5E30** | Bloques secundarios (subtítulos en la línea de tiempo) |
 | Gris | **#8A8A84** (texto secundario) · **#DCDCD5** (pestaña completada, relleno) | |
 | Titular | **Inter ExtraBold (800)**, tracking **−0,055em**, interlineado **0,95** | |
-| Palabra destacada | **Garamond Bold Italic** → *EB Garamond 700 italic* (Apple Garamond es propietaria) en **verde** | 1 palabra o grupo por titular |
-| Etiquetas | Monoespaciada **JetBrains Mono 500** [SUPOSICIÓN: equivalente], MAYÚSCULAS, tracking +0,08em | |
+| Palabra destacada | **Inter ExtraBold** en **verde** (antes Garamond Bold Italic; regla de la casa: solo Inter) | 1 palabra o grupo por titular |
+| Etiquetas | **Inter Bold**, MAYÚSCULAS, tracking +0,08em (antes JetBrains Mono) | |
 | **Voz de marca** | **ElevenLabs · Rodrigo Zabú** (`1p905cdbJ1e1JQxhFTGJ`), español latino, modelo `eleven_v4` | **La misma en todos los vídeos** |
-| Logotipo | ~~`h.`~~ → logotipo de texto **hook** (Inter 800) + ***house*** (Garamond Bold Italic verde) + punto verde | Cabecera y cierre [provisional hasta tener el logo real] |
+| Logotipo | ~~`h.`~~ → logotipo de texto **hook** (Inter 800) + **house** (Inter 800 verde) + punto verde | Cabecera y cierre [provisional hasta tener el logo real] |
 
 ## 1. Estructura y ritmo
 - 9 secciones en 31 s → **una sección cada ~3,4 s**; dentro de cada sección **algo cambia cada 0,5–1,0 s** (palabra, fila, contador, pestaña).

@@ -36,7 +36,7 @@ test("idea → tema según el contenido con iconos con licencia, sin voz (el son
   assert.equal(props.scenes[0].icon, "pizza");
   const report = await fs.readFile(path.join(dir, "output", "informe.md"), "utf8");
   assert.match(report, /tema Comida/);
-  assert.match(report, /Fluent Emoji \(Microsoft\) · MIT/);
+  assert.match(report, /Fluent Emoji en color \(Microsoft\) · MIT/);
 });
 
 test("anuncio de la propia marca → identidad de Hook House con narración real y sus tiempos", async () => {

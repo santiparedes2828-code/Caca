@@ -11,7 +11,7 @@ export const useEnter = (start: number) => {
   return { opacity: s, scale: `${0.92 + 0.08 * s}` };
 };
 
-// Logotipo de texto provisional: "hook" (Inter ExtraBold) + "house" (Garamond Bold Italic verde) + punto verde.
+// Logotipo de texto provisional: "hook" (Inter ExtraBold) + "house" (Inter ExtraBold verde) + punto verde.
 // Sustituir por el logo real de Hook House cuando esté disponible.
 export const Wordmark: React.FC<{ size: number; color?: string; houseOpacity?: number; dot?: number }> = ({
   size,
@@ -21,7 +21,7 @@ export const Wordmark: React.FC<{ size: number; color?: string; houseOpacity?: n
 }) => (
   <span style={{ display: "inline-flex", alignItems: "baseline", whiteSpace: "nowrap", lineHeight: 1 }}>
     <span style={{ fontFamily: SANS, fontWeight: 800, fontSize: size, letterSpacing: "-0.05em", color }}>hook</span>
-    <span style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 700, fontSize: size * 1.08, color: B.green, marginLeft: size * 0.08, opacity: houseOpacity }}>
+    <span style={{ fontFamily: SERIF, fontWeight: 800, fontSize: size, color: B.green, marginLeft: size * 0.02, opacity: houseOpacity }}>
       house
     </span>
     <span
@@ -71,7 +71,7 @@ export const Tabs: React.FC<{ start: number; changes: readonly number[]; labels:
               alignItems: "center",
               justifyContent: "center",
               fontFamily: MONO,
-              fontWeight: 500,
+              fontWeight: 700,
               fontSize: 26,
               letterSpacing: "0.06em",
               textTransform: "uppercase",
@@ -222,7 +222,7 @@ export const PhoneToFolder: React.FC<{ start: number; send: number; done: number
         <rect x={6} y={6} width={248} height={488} rx={44} fill={B.bg} stroke={B.ink} strokeWidth={STROKE} />
         <rect x={95} y={26} width={70} height={16} rx={8} fill={B.ink} />
         <circle cx={44} cy={78} r={8} fill={B.green} opacity={Math.floor(frame / 10) % 2 ? 1 : 0.25} />
-        <text x={60} y={86} fontFamily={MONO} fontWeight={500} fontSize={22} fill={B.ink}>
+        <text x={60} y={86} fontFamily={MONO} fontWeight={700} fontSize={22} fill={B.ink}>
           REC
         </text>
         <rect x={50} y={120} width={160} height={250} rx={14} fill="none" stroke={B.fill} strokeWidth={4} />

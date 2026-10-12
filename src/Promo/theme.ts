@@ -1,14 +1,11 @@
-import { loadFont } from "@remotion/fonts";
-import { staticFile } from "remotion";
+import { INTER, loadInter } from "../design/inter";
 
-// estilo.md §2 — sans geométrica gruesa + script caligráfica.
-// Fuentes locales (OFL, de @fontsource) en public/fonts: no dependen de la red al renderizar.
-export const bold = "Poppins";
-export const script = "Great Vibes";
+// Regla de la casa: todo en Inter. El contraste que antes daba la script caligráfica ahora es de peso:
+// "script" = Inter Medium, "bold" = Inter ExtraBold.
+export const bold = INTER;
+export const script = INTER;
 
-loadFont({ family: bold, url: staticFile("fonts/poppins-latin-600-normal.woff2"), weight: "600" });
-loadFont({ family: bold, url: staticFile("fonts/poppins-latin-800-normal.woff2"), weight: "800" });
-loadFont({ family: script, url: staticFile("fonts/great-vibes-latin-400-normal.woff2"), weight: "400" });
+loadInter();
 
 // estilo.md §7 — únicos colores
 export const C = {

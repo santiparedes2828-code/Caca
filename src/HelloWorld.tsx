@@ -8,6 +8,10 @@ import {
 } from "remotion";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
+import { INTER, loadInter } from "./design/inter";
+
+// Regla de la casa: todo el texto en Inter
+loadInter();
 
 export type HelloWorldProps = {
   readonly titleText: string;
@@ -62,7 +66,7 @@ export const HelloWorld: React.FC<HelloWorldProps> = ({
           from={75}
           premountFor={fps}
           style={{
-            fontFamily: "SF Pro Text, Helvetica, Arial, sans-serif",
+            fontFamily: INTER,
             fontSize: 40,
             textAlign: "center",
             position: "absolute",

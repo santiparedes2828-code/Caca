@@ -88,10 +88,11 @@ test("7. recurso faltante: fuente de cliente inexistente se detecta al cargar el
   const clientsDir = path.join(tmp, "clients2");
   const hh = JSON.parse(await fs.readFile(path.join(ROOT, "clients/hookhouse/profile.json"), "utf8"));
   hh.id = "con-fuente";
-  hh.brand.fonts.push({ role: "sans", family: "Marca", weight: "400", style: "normal", src: "client:fonts/no-existe.woff2" });
+  // Regla de la casa: solo Inter; aquí el cliente aporta su propio archivo de Inter, que no existe
+  hh.brand.fonts.push({ role: "sans", family: "Inter", weight: "400", style: "normal", src: "client:fonts/no-existe.woff2" });
   await fs.mkdir(path.join(clientsDir, "con-fuente"), { recursive: true });
   await fs.writeFile(path.join(clientsDir, "con-fuente", "profile.json"), JSON.stringify(hh));
-  await assert.rejects(loadProfile(clientsDir, "con-fuente"), /Falta la fuente Marca/);
+  await assert.rejects(loadProfile(clientsDir, "con-fuente"), /Falta la fuente Inter/);
 });
 
 test("servidor de recursos: solo con token, sin salir de la carpeta montada, con Range", async () => {

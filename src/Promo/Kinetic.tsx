@@ -77,16 +77,16 @@ export const Words: React.FC<{
       ? { color: C.red, textShadow: "0 0 18px rgba(227,18,27,0.8)" }
       : hl?.kind === "green"
         ? { color: C.green }
-        : { color: C.ink, fontStyle: "italic", position: "relative", padding: "0 0.12em" };
+        : { color: C.ink, position: "relative", padding: "0 0.12em" };
 
   return (
     <div
       style={{
         fontFamily: font === "script" ? script : bold,
-        fontWeight: font === "script" ? 400 : 800,
+        fontWeight: font === "script" ? 500 : 800,
         fontSize: size,
-        lineHeight: font === "script" ? 1.25 : 1.08,
-        letterSpacing: font === "script" ? 0 : "-0.02em",
+        lineHeight: font === "script" ? 1.15 : 1.08,
+        letterSpacing: "-0.02em",
         color,
         textAlign: "center",
         // Golpe de zoom al aparecer la palabra destacada (estilo.md §6)

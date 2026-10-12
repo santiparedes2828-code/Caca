@@ -7,7 +7,7 @@
   "private": true,
   "dependencies": {
     "@anthropic-ai/sdk": "0.133.0",
-    "@iconify-json/fluent-emoji-flat": "1.2.6",
+    "@iconify-json/fluent-emoji": "1.2.7",
     "@remotion/bundler": "4.0.534",
     "@remotion/captions": "4.0.534",
     "@remotion/cli": "4.0.534",

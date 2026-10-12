@@ -35,7 +35,7 @@ const Word: React.FC<{ i: number; accent: boolean; last: boolean; color: string 
         filter: `blur(${(1 - p) * 8}px)`,
         color: accent ? B.green : p < 1 ? B.grey : color,
         translate: accent ? `0px ${(1 - p) * 10}px` : undefined,
-        ...(accent ? { fontFamily: SERIF, fontStyle: "italic", fontWeight: 700, letterSpacing: "-0.01em" } : {}),
+        ...(accent ? { fontFamily: SERIF, fontWeight: 800 } : {}),
       }}
     >
       {clean(caps[i].text)}
@@ -109,7 +109,7 @@ export const Mono: React.FC<{ children: React.ReactNode; size?: number; color?: 
   color = B.grey,
   style,
 }) => (
-  <span style={{ fontFamily: MONO, fontWeight: 500, fontSize: size, letterSpacing: "0.08em", textTransform: "uppercase", color, ...style }}>
+  <span style={{ fontFamily: MONO, fontWeight: 700, fontSize: size, letterSpacing: "0.08em", textTransform: "uppercase", color, ...style }}>
     {children}
   </span>
 );
@@ -144,7 +144,7 @@ export const Typed: React.FC<{ text: string; accentFrom?: number; start: number;
       }}
     >
       {plain}
-      <span style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 700, letterSpacing: "-0.01em", color: B.green }}>{acc}</span>
+      <span style={{ fontFamily: SERIF, fontWeight: 800, color: B.green }}>{acc}</span>
       <span style={{ opacity: cursor ? 1 : 0, fontWeight: 500, color: B.ink }}>|</span>
     </div>
   );

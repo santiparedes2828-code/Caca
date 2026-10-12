@@ -5,20 +5,15 @@ import { createPropsSchema, sceneSchema } from "./props";
 // La identidad de un cliente (p. ej. Hook House) se usa con AutopilotCreate; este tema se elige según el
 // contenido. Todo son datos validados: la IA o el planificador eligen entre opciones cerradas.
 
-// Fuentes con licencia OFL en public/fonts (licencias en public/fonts/licencias/)
+// Regla de la casa: todo el texto en Inter, preferiblemente Inter Bold (ver src/design/inter.ts).
+// La personalidad de cada tema sale de la paleta, el movimiento, el fondo y cómo se destacan las palabras.
 export const THEME_FONTS = {
-  archivo: { family: "Archivo Black", weight: 400, file: "archivo-black-latin-400-normal.woff2", upper: false, scale: 0.92 },
-  bebas: { family: "Bebas Neue", weight: 400, file: "bebas-neue-latin-400-normal.woff2", upper: true, scale: 1.3 },
-  dmserif: { family: "DM Serif Display", weight: 400, file: "dm-serif-display-latin-400-normal.woff2", upper: false, scale: 1.08 },
-  fredoka: { family: "Fredoka", weight: 700, file: "fredoka-latin-700-normal.woff2", upper: false, scale: 1.05 },
-  grotesk: { family: "Space Grotesk", weight: 700, file: "space-grotesk-latin-700-normal.woff2", upper: false, scale: 1 },
-  inter: { family: "Inter", weight: 800, file: "inter-latin-800-normal.woff2", upper: false, scale: 1 },
-  poppins: { family: "Poppins", weight: 800, file: "poppins-latin-800-normal.woff2", upper: false, scale: 0.95 },
+  inter: { family: "Inter", weight: 700, file: "inter-latin-700-normal.woff2", upper: false, scale: 1 },
 } as const;
 export type ThemeFont = keyof typeof THEME_FONTS;
 export const FONT_KEYS = Object.keys(THEME_FONTS) as [ThemeFont, ...ThemeFont[]];
-// Fuente de apoyo para etiquetas pequeñas
-export const LABEL_FONT = { family: "Inter", weight: 800, file: "inter-latin-800-normal.woff2" } as const;
+// Etiquetas pequeñas (cabecera, cifras)
+export const LABEL_FONT = { family: "Inter", weight: 700, file: "inter-latin-700-normal.woff2" } as const;
 
 const hex = z.string().regex(/^#[0-9a-fA-F]{6}$/, "color #rrggbb");
 export const iconName = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);

@@ -26,6 +26,7 @@ const TYPES: Record<string, string> = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".css": "text/css; charset=utf-8",
+  ".woff2": "font/woff2",
   ".mp4": "video/mp4",
   ".srt": "text/plain; charset=utf-8",
   ".md": "text/markdown; charset=utf-8",
@@ -189,6 +190,9 @@ export const createWebServer = (cfg: Config, opts: { worker?: boolean } = {}) =>
 
     // Archivos estáticos de la interfaz
     if (method === "GET" && !p.startsWith("/api/")) {
+      // La tipografía de la casa (Inter, OFL) se sirve desde public/fonts
+      const font = p.match(/^\/fonts\/(inter-latin-[0-9]{3}-normal\.woff2)$/);
+      if (font) return sendFile(req, res, resolveInside(path.join(ROOT, "public", "fonts"), font[1]), false);
       const rel = p === "/" ? "index.html" : p.slice(1);
       if (!/^[a-z0-9-]+\.(html|js|css)$/.test(rel)) throw new HttpError(404, "No existe");
       return sendFile(req, res, resolveInside(WEB, rel), false);

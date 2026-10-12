@@ -154,7 +154,7 @@ export const FlipStyle: React.FC<{ start: number; flip: number; colors: number; 
               VIRAL
             </div>
             <Silhouette tone="#B9A08A" />
-            <div style={{ position: "absolute", bottom: 30, right: 30, display: "flex", alignItems: "center", gap: 10, fontFamily: MONO, fontSize: 26, color: "#C2342B" }}>
+            <div style={{ position: "absolute", bottom: 30, right: 30, display: "flex", alignItems: "center", gap: 10, fontFamily: MONO, fontWeight: 700, fontSize: 26, color: "#C2342B" }}>
               <svg width={30} height={28} viewBox="0 0 30 28">
                 <path d="M15 27 L3 15 A7 7 0 0 1 15 5 A7 7 0 0 1 27 15 Z" fill="#C2342B" />
               </svg>
@@ -165,7 +165,7 @@ export const FlipStyle: React.FC<{ start: number; flip: number; colors: number; 
             <div style={{ position: "absolute", top: 60, left: 36, right: 36, fontFamily: SANS, fontWeight: 800, fontSize: 60, lineHeight: 1, color: B.ink, letterSpacing: "-0.05em" }}>
               Tu video,
               <br />
-              <span style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 700, color: B.green, letterSpacing: "-0.01em" }}>tu estilo.</span>
+              <span style={{ fontFamily: SERIF, fontWeight: 800, color: B.green }}>tu estilo.</span>
             </div>
             <Silhouette tone="#1F1F1F" />
             <div style={{ position: "absolute", bottom: 30, left: 30, padding: "6px 16px", borderRadius: 30, background: B.green }}>
@@ -184,7 +184,7 @@ export const FlipStyle: React.FC<{ start: number; flip: number; colors: number; 
         <Mono size={24} style={{ marginTop: 40 }}>tipografía</Mono>
         <div style={{ display: "flex", alignItems: "baseline", gap: 24, scale: `${ty}`, transformOrigin: "left center" }}>
           <span style={{ fontFamily: SANS, fontWeight: 800, fontSize: 130, letterSpacing: "-0.06em", color: B.ink }}>Aa</span>
-          <span style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 700, fontSize: 130, color: B.green }}>Aa</span>
+          <span style={{ fontFamily: SERIF, fontWeight: 800, fontSize: 130, color: B.green }}>Aa</span>
         </div>
       </div>
     </div>

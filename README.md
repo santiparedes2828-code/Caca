@@ -3,7 +3,8 @@
 Producción automatizada de vídeos de Hook House para TikTok, Reels y Shorts (Remotion + FFmpeg + ElevenLabs).
 
 **Estado:** las 7 etapas funcionan en versión básica (ver [PENDIENTE.md](PENDIENTE.md) para lo que falta pulir).
-Arquitectura en [docs/arquitectura.md](docs/arquitectura.md); estado para retomar en otra sesión en
+Reglas permanentes (solo Inter, emojis estilo iOS…) en [CLAUDE.md](CLAUDE.md). Arquitectura en
+[docs/arquitectura.md](docs/arquitectura.md); estado para retomar en otra sesión en
 [docs/TRASPASO.md](docs/TRASPASO.md).
 
 | Etapa | Qué hace |
@@ -89,8 +90,8 @@ destaca. Las escenas largas se dividen solas.
 
 - **Según el tema** (lo normal para ideas): el sistema lee la idea y elige un tema (cítrico, comida, salud,
   deporte, tecnología, finanzas, belleza, viajes, naturaleza, mascotas, entretenimiento, curiosidades o general).
-  Cada tema trae su paleta, su tipografía, su forma de destacar palabras en los subtítulos, su movimiento y su
-  fondo animado. Cada escena lleva un icono animado relacionado con lo que se dice («limón» → 🍋, «ADN» → 🧬),
+  Cada tema trae su paleta, su forma de destacar palabras en los subtítulos, su movimiento y su fondo animado
+  (el texto siempre en Inter). Cada escena lleva un icono animado relacionado con lo que se dice («limón» → 🍋, «ADN» → 🧬),
   las listas salen en tarjetas y la llamada a la acción en un botón que siempre cabe.
 - **Identidad de la marca**: la del cliente (Hook House: verde y serif, logo al final). Para anuncios de la
   propia marca. Se elige con `--estilo marca` o en la web; en automático solo se usa si el contenido nombra la marca.
@@ -134,5 +135,6 @@ integraciones reales verificadas están anotadas en PENDIENTE.md.
 ## Licencias
 
 Remotion exige licencia de empresa a partir de cierto tamaño ([condiciones](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md));
-clave en `REMOTION_LICENSE_KEY`. Fuentes OFL en `public/fonts/`; modelo de caras YuNet (MIT) en `models/`.
+clave en `REMOTION_LICENSE_KEY`. Única fuente: Inter (OFL) en `public/fonts/`; emojis Fluent Emoji en color (MIT);
+modelo de caras YuNet (MIT) en `models/`.
 B-roll y música solo desde `library/` y `clients/<id>/library/` con licencia declarada (ver `library/README.md`).

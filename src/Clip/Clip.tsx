@@ -1,5 +1,4 @@
 import type { Caption } from "@remotion/captions";
-import { loadFont } from "@remotion/fonts";
 import { Audio, Video } from "@remotion/media";
 import React from "react";
 import {
@@ -15,13 +14,14 @@ import {
   useVideoConfig,
 } from "remotion";
 import captionsJson from "../data/captions-clip.json";
+import { INTER, loadInter } from "../design/inter";
 
 // estilo-entrevista.md — estilo de la referencia 2 (entrevista con palabras clave en serif)
 
-const SANS = "Inter";
-const SERIF = "EB Garamond";
-loadFont({ family: SANS, url: staticFile("fonts/inter-latin-700-normal.woff2"), weight: "700" });
-loadFont({ family: SERIF, url: staticFile("fonts/eb-garamond-latin-500-italic.woff2"), weight: "500", style: "italic" });
+// Regla de la casa: todo en Inter (las palabras clave, antes en serif, van en Inter ExtraBold)
+const SANS = INTER;
+const SERIF = INTER;
+loadInter();
 
 const GOLD = "#B67928";
 const GREEN = "#0E3C32";
@@ -72,7 +72,7 @@ const Word: React.FC<{ i: number; kw?: Kw; last: boolean }> = ({ i, kw, last }) 
         translate: `0px ${interpolate(local, [0, 5], [14, 0], opt)}px`,
         filter: `blur(${interpolate(local, [0, 5], [6, 0], opt)}px)`,
         ...(isKw
-          ? { fontFamily: SERIF, fontStyle: "italic", fontWeight: 500, fontSize: kw.kind === "big" ? 200 : 112, letterSpacing: 0 }
+          ? { fontFamily: SERIF, fontWeight: 800, fontSize: kw.kind === "big" ? 200 : 112, letterSpacing: "-0.03em" }
           : {}),
       }}
     >
@@ -177,7 +177,7 @@ const Can: React.FC<{ side: "left" | "right"; label: string }> = ({ side, label 
           gap: 14,
           flexDirection: side === "right" ? "row" : "row-reverse",
           fontFamily: SERIF,
-          fontStyle: "italic",
+          fontWeight: 700,
           fontSize: 54,
           color: "#FFFFFF",
           whiteSpace: "nowrap",

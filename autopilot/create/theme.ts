@@ -23,7 +23,7 @@ export const THEME_PRESETS: Preset[] = [
     id: "citrico",
     name: "Cítrico",
     palette: { bg: "#FFF3E2", bg2: "#FFD6A0", ink: "#2A1606", accent: "#E96400", onAccent: "#FFFFFF", accent2: "#3B9B3A", card: "#FFFFFF" },
-    font: "fredoka",
+    font: "inter",
     captionStyle: "caja",
     motion: "rebote",
     background: "burbujas",
@@ -32,7 +32,7 @@ export const THEME_PRESETS: Preset[] = [
     id: "comida",
     name: "Comida",
     palette: { bg: "#FFF6EC", bg2: "#FFDDBF", ink: "#2B1408", accent: "#D93A2B", onAccent: "#FFFFFF", accent2: "#F2A900", card: "#FFFFFF" },
-    font: "fredoka",
+    font: "inter",
     captionStyle: "caja",
     motion: "rebote",
     background: "burbujas",
@@ -41,7 +41,7 @@ export const THEME_PRESETS: Preset[] = [
     id: "salud",
     name: "Salud",
     palette: { bg: "#F1FBF8", bg2: "#CDEEE4", ink: "#0E2A25", accent: "#0B7A6B", onAccent: "#FFFFFF", accent2: "#6FCDB7", card: "#FFFFFF" },
-    font: "poppins",
+    font: "inter",
     captionStyle: "subrayado",
     motion: "suave",
     background: "degradado",
@@ -50,7 +50,7 @@ export const THEME_PRESETS: Preset[] = [
     id: "deporte",
     name: "Deporte",
     palette: { bg: "#0E0E10", bg2: "#1D1D24", ink: "#F5F5F0", accent: "#C6FF3D", onAccent: "#0E0E10", accent2: "#FF4D2E", card: "#25252E" },
-    font: "bebas",
+    font: "inter",
     captionStyle: "caja",
     motion: "energico",
     background: "patron",
@@ -59,7 +59,7 @@ export const THEME_PRESETS: Preset[] = [
     id: "tecnologia",
     name: "Tecnología",
     palette: { bg: "#0B1020", bg2: "#18214A", ink: "#EEF2FF", accent: "#6B95FF", onAccent: "#0B1020", accent2: "#B072FF", card: "#1B2550" },
-    font: "grotesk",
+    font: "inter",
     captionStyle: "color",
     motion: "energico",
     background: "patron",
@@ -68,7 +68,7 @@ export const THEME_PRESETS: Preset[] = [
     id: "finanzas",
     name: "Finanzas",
     palette: { bg: "#F6F4EE", bg2: "#E6DEC8", ink: "#10223D", accent: "#10223D", onAccent: "#F6D27A", accent2: "#C8961E", card: "#FFFFFF" },
-    font: "dmserif",
+    font: "inter",
     captionStyle: "subrayado",
     motion: "suave",
     background: "degradado",
@@ -77,7 +77,7 @@ export const THEME_PRESETS: Preset[] = [
     id: "belleza",
     name: "Belleza",
     palette: { bg: "#FFF1F3", bg2: "#F9D0DA", ink: "#3A1028", accent: "#B8155A", onAccent: "#FFFFFF", accent2: "#F48FB1", card: "#FFFFFF" },
-    font: "dmserif",
+    font: "inter",
     captionStyle: "color",
     motion: "suave",
     background: "burbujas",
@@ -86,7 +86,7 @@ export const THEME_PRESETS: Preset[] = [
     id: "viajes",
     name: "Viajes",
     palette: { bg: "#EAF6FF", bg2: "#BCE0FF", ink: "#0B2540", accent: "#0069B8", onAccent: "#FFFFFF", accent2: "#FFC24B", card: "#FFFFFF" },
-    font: "poppins",
+    font: "inter",
     captionStyle: "caja",
     motion: "rebote",
     background: "burbujas",
@@ -95,7 +95,7 @@ export const THEME_PRESETS: Preset[] = [
     id: "naturaleza",
     name: "Naturaleza",
     palette: { bg: "#F2F8EC", bg2: "#D3E8BE", ink: "#1D2B12", accent: "#3A7420", onAccent: "#FFFFFF", accent2: "#A3C85A", card: "#FFFFFF" },
-    font: "fredoka",
+    font: "inter",
     captionStyle: "subrayado",
     motion: "suave",
     background: "patron",
@@ -104,7 +104,7 @@ export const THEME_PRESETS: Preset[] = [
     id: "mascotas",
     name: "Mascotas",
     palette: { bg: "#FFF8E8", bg2: "#FFE2A0", ink: "#2E2110", accent: "#8A4B14", onAccent: "#FFFFFF", accent2: "#FFB703", card: "#FFFFFF" },
-    font: "fredoka",
+    font: "inter",
     captionStyle: "caja",
     motion: "rebote",
     background: "burbujas",
@@ -113,7 +113,7 @@ export const THEME_PRESETS: Preset[] = [
     id: "entretenimiento",
     name: "Entretenimiento",
     palette: { bg: "#12061F", bg2: "#2C0D4A", ink: "#FCEFFF", accent: "#FF3DAE", onAccent: "#12061F", accent2: "#3DDCFF", card: "#2E1450" },
-    font: "bebas",
+    font: "inter",
     captionStyle: "color",
     motion: "energico",
     background: "burbujas",
@@ -122,7 +122,7 @@ export const THEME_PRESETS: Preset[] = [
     id: "curiosidades",
     name: "Curiosidades",
     palette: { bg: "#F4F0FF", bg2: "#D9CEFF", ink: "#1C1240", accent: "#5F33E6", onAccent: "#FFFFFF", accent2: "#FFC83D", card: "#FFFFFF" },
-    font: "archivo",
+    font: "inter",
     captionStyle: "caja",
     motion: "energico",
     background: "patron",
@@ -133,7 +133,7 @@ export const GENERAL_PRESET: Preset = preset([], ["sparkles", "light-bulb", "fir
   id: "general",
   name: "General",
   palette: { bg: "#FAFAF7", bg2: "#E9E7DF", ink: "#121212", accent: "#E8492A", onAccent: "#FFFFFF", accent2: "#3D5AFE", card: "#FFFFFF" },
-  font: "archivo",
+  font: "inter",
   captionStyle: "caja",
   motion: "energico",
   background: "burbujas",
@@ -194,7 +194,11 @@ export const resolveStyle = (style: Style, text: string, brandName: string): "te
   return b && ` ${norm(text)} `.includes(` ${b} `) ? "marca" : "tema";
 };
 
-// ——— Iconos (Fluent Emoji Flat, MIT) ———
+// ——— Iconos ———
+// Regla de la casa: emojis estilo iOS. Los de Apple son propiedad de Apple y solo tienen licencia para usarse
+// en sus dispositivos, así que se usa el set con licencia más parecido: Fluent Emoji en color (Microsoft, MIT),
+// con brillo y degradados. Para cambiarlo: EMOJI_SET y regenerar el índice (scripts/motivos.ts).
+export const EMOJI_SET = "fluent-emoji";
 
 type Motif = { icon: string; label: string; tags: string[]; group: number };
 const index = (motivos as { entradas: Motif[] }).entradas.map((m) => ({
@@ -231,7 +235,7 @@ export const findIcons = (text: string, opts: { preferGroups?: number[]; max?: n
 
 let iconSet: { icons: Record<string, { body: string; width?: number; height?: number }>; width?: number; height?: number } | null = null;
 const loadIconSet = () =>
-  (iconSet ??= JSON.parse(readFileSync(path.join(ROOT, "node_modules/@iconify-json/fluent-emoji-flat/icons.json"), "utf8")));
+  (iconSet ??= JSON.parse(readFileSync(path.join(ROOT, `node_modules/@iconify-json/${EMOJI_SET}/icons.json`), "utf8")));
 
 export const hasIcon = (name: string) => !!loadIconSet().icons[name];
 

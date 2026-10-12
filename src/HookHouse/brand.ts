@@ -6,7 +6,7 @@ import { fontFamily, HOOKHOUSE } from "../design/tokens";
 // Los valores viven en clients/hookhouse/profile.json (src/design/tokens.ts); aquí solo se exponen
 // con los nombres que ya usan HookHouse y Viral.
 export const SANS = fontFamily(HOOKHOUSE, "sans");
-export const SERIF = fontFamily(HOOKHOUSE, "serif"); // sustituto libre de Apple Garamond Bold Italic
+export const SERIF = fontFamily(HOOKHOUSE, "serif"); // palabras destacadas: Inter (regla de la casa: todo en Inter)
 export const MONO = fontFamily(HOOKHOUSE, "mono");
 
 for (const f of HOOKHOUSE.fonts) {

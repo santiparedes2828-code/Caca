@@ -1,5 +1,9 @@
 import type React from "react";
 import { Easing, Interactive, interpolate, useCurrentFrame, useVideoConfig, type InteractivitySchema } from "remotion";
+import { INTER, loadInter } from "../design/inter";
+
+// Regla de la casa: todo el texto en Inter
+loadInter();
 
 type TitleProps = {
   readonly titleText: string;
@@ -14,7 +18,7 @@ const TitleInner: React.FC<TitleProps> = ({ titleText, titleColor, style }) => {
   return (
     <Interactive.H1
       style={{
-        fontFamily: "SF Pro Text, Helvetica, Arial, sans-serif",
+        fontFamily: INTER,
         fontWeight: "bold",
         fontSize: 100,
         textAlign: "center",

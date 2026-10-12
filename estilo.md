@@ -1,5 +1,7 @@
 # estilo.md — Guía de estilo de edición
 
+> **Regla de la casa (12-10-2026, pedida por el usuario):** todo el texto va en **Inter** (preferiblemente Inter Bold) y los emojis, cuando hagan falta, en estilo iOS con el set con licencia más parecido (ver `CLAUDE.md`). Las demás tipografías que cita esta guía quedan sustituidas por Inter.
+
 Fuente: `analisis/referencia.mp4` (27,97 s · 720x1280 · 30 fps · AAC 44,1 kHz estéreo).
 Análisis: 56 fotogramas a 2 fps + detección de cambios de plano (`scene > 0.25`) + envolvente de audio cada 0,25 s.
 Las medidas en px están convertidas a nuestro lienzo **1080x1920** (×1,5 respecto al original).

@@ -1,6 +1,7 @@
 # Traspaso entre sesiones — Hook House Autopilot
 
-> Si abres una sesión nueva: lee este archivo, luego `PENDIENTE.md` y `docs/arquitectura.md`.
+> Si abres una sesión nueva: lee `CLAUDE.md` (reglas permanentes del usuario), este archivo, `PENDIENTE.md` y
+> `docs/arquitectura.md`.
 > Rama de trabajo: `claude/hook-house-autopilot-s2jogh`. Comprueba siempre `npm run lint && npm test && npm run test:e2e`.
 
 ## Encargo del usuario
@@ -52,6 +53,10 @@ Artefacto anclado en la barra lateral del usuario: https://claude.ai/artifact/Q3
   `/root/.claude/uploads/c892ae03-04bd-5098-be1f-897ddb43dfb6/c041153d-v09044g40000cnh24lfog65pm4j8q750.mp4`.
 
 ## Registro (lo último arriba)
+
+- 2026-10-12: reglas permanentes del usuario (guardadas en `CLAUDE.md`): todo el texto en Inter (preferiblemente
+  Bold) y emojis estilo iOS con el set con licencia más parecido (Fluent Emoji en color, MIT). Quitadas las demás
+  fuentes; `tests/unit/reglas.test.ts` lo vigila.
 
 - 2026-10-12: vídeos creados con tema según el contenido (motion graphics: `AutopilotTheme`, 13 temas, iconos
   Fluent Emoji por escena, subtítulos a juego); la identidad Hook House queda para contenido de la marca

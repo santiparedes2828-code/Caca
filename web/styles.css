@@ -1,19 +1,23 @@
-/* Identidad Hook House (estilo-hookhouse.md): blanco roto, tinta, verde de acento; sin sombras ni degradados */
+/* Identidad Hook House (estilo-hookhouse.md): blanco roto, tinta, verde de acento; sin sombras ni degradados.
+   Regla de la casa: todo el texto en Inter (preferiblemente Bold), servida por el propio servidor. */
+@font-face { font-family: "Inter"; font-weight: 500; font-display: swap; src: url("/fonts/inter-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 700; font-display: swap; src: url("/fonts/inter-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 800; font-display: swap; src: url("/fonts/inter-latin-800-normal.woff2") format("woff2"); }
 :root { --bg: #f7f7f2; --ink: #0b0b0b; --green: #12a150; --muted: #8a8a84; --fill: #dcdcd5; --danger: #b3261e; }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 500 15px/1.45 "Inter", sans-serif; }
 .top { display: flex; justify-content: space-between; align-items: center; padding: 20px 32px; border-bottom: 2px solid var(--ink); }
 .brand { font-weight: 800; font-size: 24px; letter-spacing: -0.05em; }
-.brand em { font-family: "EB Garamond", Georgia, serif; font-style: italic; color: var(--green); font-weight: 700; margin-left: 2px; }
+.brand em { font-style: normal; color: var(--green); font-weight: 800; }
 .brand i { color: var(--green); font-style: normal; }
-.mono { font-family: "JetBrains Mono", ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; }
+.mono { font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; }
 .muted { color: var(--muted); }
 main { max-width: 1180px; margin: 24px auto; padding: 0 16px; display: grid; gap: 20px; }
 .card { background: #fff; border: 2px solid var(--ink); border-radius: 20px; padding: 24px; }
 .narrow { max-width: 420px; }
 h1, h2 { letter-spacing: -0.04em; margin: 0 0 16px; }
-label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px; }
-input, select, textarea { font: inherit; padding: 9px 11px; border: 2px solid var(--ink); border-radius: 10px; background: var(--bg); font-weight: 400; }
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 13px; }
+input, select, textarea { font: inherit; padding: 9px 11px; border: 2px solid var(--ink); border-radius: 10px; background: var(--bg); font-weight: 500; }
 fieldset { border: 0; padding: 0; margin: 0; }
 .checks { display: flex; flex-wrap: wrap; gap: 8px 18px; }
 .checks label { flex-direction: row; align-items: center; font-weight: 500; }
@@ -29,7 +33,7 @@ button:disabled { opacity: 0.5; cursor: wait; }
 #queue { margin-left: auto; }
 table { width: 100%; border-collapse: collapse; }
 th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--fill); font-size: 14px; }
-th { font-family: "JetBrains Mono", monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+th { font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
 tbody tr { cursor: pointer; }
 tbody tr:hover { background: var(--bg); }
 .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; border: 2px solid var(--ink); font-size: 12px; font-weight: 700; }
@@ -42,9 +46,9 @@ tbody tr:hover { background: var(--bg); }
 .actions { display: flex; gap: 8px; }
 .outputs { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-bottom: 16px; }
 .outputs video { width: 100%; border-radius: 14px; background: var(--ink); }
-.outputs a { color: var(--ink); font-weight: 600; }
-pre { white-space: pre-wrap; background: var(--bg); padding: 14px; border-radius: 12px; font-size: 13px; max-height: 480px; overflow: auto; }
-.error { color: var(--danger); font-weight: 600; min-height: 1em; margin: 0; }
+.outputs a { color: var(--ink); font-weight: 700; }
+pre { white-space: pre-wrap; background: var(--bg); padding: 14px; border-radius: 12px; font-family: inherit; font-size: 13px; max-height: 480px; overflow: auto; }
+.error { color: var(--danger); font-weight: 700; min-height: 1em; margin: 0; }
 .issue { padding: 8px 12px; border-left: 4px solid var(--muted); background: var(--bg); margin: 6px 0; font-size: 14px; }
 .issue.bad { border-color: var(--danger); }
 [hidden] { display: none !important; }

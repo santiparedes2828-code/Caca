@@ -8,9 +8,10 @@ const hex = z.string().regex(/^#[0-9A-Fa-f]{6}$/, "color hexadecimal #RRGGBB");
 // "static:<ruta en public/>" o "url:<http(s)://…>" (el backend traduce "client:<ruta>" a "url:")
 export const fontSrcSchema = z.string().regex(/^(static|url|client):\S+$/);
 
+// Regla de la casa: todo el texto en Inter (ver src/design/inter.ts). Ningún perfil puede usar otra.
 export const fontSchema = z.object({
   role: z.enum(["sans", "serif", "mono"]),
-  family: z.string().min(1),
+  family: z.string().refine((f) => f === "Inter", "Regla de la casa: todo el texto va en Inter"),
   weight: z.string().regex(/^[1-9]00$/),
   style: z.enum(["normal", "italic"]),
   src: fontSrcSchema,

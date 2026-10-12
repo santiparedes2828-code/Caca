@@ -14,7 +14,7 @@ import type { CaptionPage, CaptionToken } from "./props";
 //   palabra-activa  la página entera visible; la palabra que suena se resalta
 //   grupos          las palabras aparecen al sonar (entrada de marca: opacidad + desenfoque + subida)
 //   frases          la página entera aparece de una vez (único modo válido con tiempos por segmento)
-//   dinamico        grupos + resaltado activo + énfasis en serif itálica + pop según intensidad
+//   dinamico        grupos + resaltado activo + énfasis (Inter, color de acento) + pop según intensidad
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 

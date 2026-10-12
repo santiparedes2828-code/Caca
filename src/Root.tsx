@@ -132,7 +132,7 @@ export const RemotionRoot: React.FC = () => {
               id: "citrico",
               name: "Cítrico",
               palette: { bg: "#FFF3E2", bg2: "#FFD6A0", ink: "#2A1606", accent: "#E96400", onAccent: "#FFFFFF", accent2: "#3B9B3A", card: "#FFFFFF" },
-              font: "fredoka" as const,
+              font: "inter" as const,
               captionStyle: "caja" as const,
               motion: "rebote" as const,
               background: "burbujas" as const,

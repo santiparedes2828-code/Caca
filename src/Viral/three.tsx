@@ -22,7 +22,7 @@ const useFontsReady = () => {
   const [ready, setReady] = useState(false);
   const [handle] = useState(() => delayRender("Fuentes para texturas 3D"));
   useEffect(() => {
-    Promise.all([document.fonts.load('800 60px "Inter"'), document.fonts.load('500 30px "JetBrains Mono"')]).then(() => {
+    Promise.all([document.fonts.load('800 60px "Inter"'), document.fonts.load('700 30px "Inter"')]).then(() => {
       setReady(true);
       continueRender(handle);
     });
@@ -59,7 +59,7 @@ const silhouette = (c: CanvasRenderingContext2D, cx: number, base: number, s: nu
 };
 
 const mono = (c: CanvasRenderingContext2D, text: string, x: number, y: number, size: number, color: string) => {
-  c.font = `500 ${size}px "JetBrains Mono"`;
+  c.font = `700 ${size}px "Inter"`;
   c.fillStyle = color;
   c.fillText(text.toUpperCase(), x, y);
 };

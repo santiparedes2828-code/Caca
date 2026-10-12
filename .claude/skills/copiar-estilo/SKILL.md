@@ -7,7 +7,7 @@ description: Editor de vídeo con Remotion que copia el estilo de un vídeo de r
 
 Actúa como editor de vídeo. **Trabaja paso a paso y no avances sin terminar el anterior.**
 
-> **Marca del usuario: Hook House.** Su estilo principal es `estilo-hookhouse.md` (verde #12A150, negro, blanco roto; Inter ExtraBold + Garamond Bold Italic; motion graphic editorial). Úsalo por defecto en cualquier vídeo de la marca aunque no haya referencia; si llega una referencia nueva, analízala en su propio `estilo-<nombre>.md` y aplica encima los colores y tipografías de Hook House salvo que el usuario diga lo contrario. Implementación de referencia: `src/HookHouse/`. **Voz de marca fija: ElevenLabs · Rodrigo Zabú (`1p905cdbJ1e1JQxhFTGJ`), modelo `eleven_v4`, en todos los vídeos.**
+> **Marca del usuario: Hook House.** Su estilo principal es `estilo-hookhouse.md` (verde #12A150, negro, blanco roto; solo Inter: ExtraBold en titulares, Bold en el resto, destacados en verde; motion graphic editorial). Úsalo por defecto en cualquier vídeo de la marca aunque no haya referencia; si llega una referencia nueva, analízala en su propio `estilo-<nombre>.md` y aplica encima los colores y tipografías de Hook House salvo que el usuario diga lo contrario. Implementación de referencia: `src/HookHouse/`. **Voz de marca fija: ElevenLabs · Rodrigo Zabú (`1p905cdbJ1e1JQxhFTGJ`), modelo `eleven_v4`, en todos los vídeos.** **Regla de la casa: todo el texto en Inter (preferiblemente Bold) y emojis estilo iOS con el set con licencia más parecido; ver `CLAUDE.md`.**
 Proyecto vertical **1080x1920 a 30 fps**. Las rutas de scripts son relativas a la raíz del repo.
 
 ## Paso 1 · Preparar

@@ -1,5 +1,7 @@
 # estilo-entrevista.md — Guía de estilo de edición (entrevista / talking head)
 
+> **Regla de la casa (12-10-2026, pedida por el usuario):** todo el texto va en **Inter** (preferiblemente Inter Bold) y los emojis, cuando hagan falta, en estilo iOS con el set con licencia más parecido (ver `CLAUDE.md`). Las demás tipografías que cita esta guía quedan sustituidas por Inter.
+
 Fuente: `analisis2/referencia.mp4` (29,12 s · 1024x576 · 30 fps · AAC 44,1 kHz estéreo).
 Es un **portafolio**: 3 vídeos verticales de entrevista en paralelo (paneles de ~290x515 px con esquinas redondeadas) y la cortinilla de TikTok de 25,0 s a 29,1 s, que no forma parte del estilo.
 Análisis: 58 fotogramas a 2 fps + cortes de plano + audio. Medidas convertidas a **1080x1920** (×3,72 respecto a un panel).
