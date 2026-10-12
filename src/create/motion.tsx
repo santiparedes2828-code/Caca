@@ -277,7 +277,7 @@ export const ThemedHeadline: React.FC<{ theme: Theme; caps: Cap[]; from: number;
         const isAccent = !!accent && i >= accent[0] && i <= accent[1];
         const active = frame >= at && frame < end;
         const box = theme.captionStyle === "caja" && isAccent;
-        const grow = spring({ frame: frame - at - 2, fps, config: { damping: 200 } });
+        const grow = spring({ frame: frame - at - 1, fps, config: { damping: 26, stiffness: 260 } });
         return (
           <span
             key={i}
@@ -288,7 +288,7 @@ export const ThemedHeadline: React.FC<{ theme: Theme; caps: Cap[]; from: number;
               opacity: shown,
               transform: `translateY(${(1 - s) * size * 0.35}px) scale(${(0.75 + 0.25 * s) * (active ? 1.05 : 1)})`,
               // En la caja el texto pasa a su color cuando la caja ya lo cubre (antes se perdería sobre el fondo)
-              color: box ? (grow > 0.55 ? p.onAccent : p.ink) : isAccent && theme.captionStyle === "color" ? p.accent : p.ink,
+              color: box ? (grow > 0.92 ? p.onAccent : p.ink) : isAccent && theme.captionStyle === "color" ? p.accent : p.ink,
               padding: box ? "0 0.16em" : undefined,
               zIndex: box ? 1 : undefined,
             }}
