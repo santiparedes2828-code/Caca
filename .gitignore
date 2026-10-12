@@ -38,3 +38,7 @@ models/asr/
 # Pruebas con material de clientes (vídeos, fotogramas, informes): solo local; a Git solo va pruebas/README.md
 pruebas/*
 !pruebas/README.md
+
+# Imágenes generadas del personaje (se guardan en el flow de ElevenLabs; aquí solo en local)
+personaje/*.png
+personaje/*.jpg
