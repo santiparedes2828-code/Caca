@@ -1,0 +1,744 @@
+[
+ {
+  "text": "Este",
+  "startMs": 250,
+  "endMs": 524,
+  "timestampMs": 387,
+  "confidence": null
+ },
+ {
+  "text": "video",
+  "startMs": 554,
+  "endMs": 864,
+  "timestampMs": 709,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 894,
+  "endMs": 1096,
+  "timestampMs": 995,
+  "confidence": null
+ },
+ {
+  "text": "lo",
+  "startMs": 1126,
+  "endMs": 1328,
+  "timestampMs": 1227,
+  "confidence": null
+ },
+ {
+  "text": "editó",
+  "startMs": 1358,
+  "endMs": 1668,
+  "timestampMs": 1513,
+  "confidence": null
+ },
+ {
+  "text": "nadie",
+  "startMs": 1698,
+  "endMs": 2008,
+  "timestampMs": 1853,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 2038,
+  "endMs": 2204,
+  "timestampMs": 2121,
+  "confidence": null
+ },
+ {
+  "text": "mano.",
+  "startMs": 2234,
+  "endMs": 2508,
+  "timestampMs": 2371,
+  "confidence": null
+ },
+ {
+  "text": "Ni",
+  "startMs": 2898,
+  "endMs": 3100,
+  "timestampMs": 2999,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 3130,
+  "endMs": 3332,
+  "timestampMs": 3231,
+  "confidence": null
+ },
+ {
+  "text": "solo",
+  "startMs": 3362,
+  "endMs": 3636,
+  "timestampMs": 3499,
+  "confidence": null
+ },
+ {
+  "text": "corte.",
+  "startMs": 3666,
+  "endMs": 3976,
+  "timestampMs": 3821,
+  "confidence": null
+ },
+ {
+  "text": "Tú",
+  "startMs": 4366,
+  "endMs": 4568,
+  "timestampMs": 4467,
+  "confidence": null
+ },
+ {
+  "text": "me",
+  "startMs": 4598,
+  "endMs": 4800,
+  "timestampMs": 4699,
+  "confidence": null
+ },
+ {
+  "text": "pasas",
+  "startMs": 4830,
+  "endMs": 5140,
+  "timestampMs": 4985,
+  "confidence": null
+ },
+ {
+  "text": "tu",
+  "startMs": 5170,
+  "endMs": 5372,
+  "timestampMs": 5271,
+  "confidence": null
+ },
+ {
+  "text": "grabación,",
+  "startMs": 5402,
+  "endMs": 5856,
+  "timestampMs": 5629,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 6026,
+  "endMs": 6192,
+  "timestampMs": 6109,
+  "confidence": null
+ },
+ {
+  "text": "mi",
+  "startMs": 6222,
+  "endMs": 6424,
+  "timestampMs": 6323,
+  "confidence": null
+ },
+ {
+  "text": "sistema",
+  "startMs": 6454,
+  "endMs": 6836,
+  "timestampMs": 6645,
+  "confidence": null
+ },
+ {
+  "text": "corta",
+  "startMs": 6866,
+  "endMs": 7176,
+  "timestampMs": 7021,
+  "confidence": null
+ },
+ {
+  "text": "los",
+  "startMs": 7206,
+  "endMs": 7444,
+  "timestampMs": 7325,
+  "confidence": null
+ },
+ {
+  "text": "silencios,",
+  "startMs": 7474,
+  "endMs": 7928,
+  "timestampMs": 7701,
+  "confidence": null
+ },
+ {
+  "text": "pone",
+  "startMs": 8098,
+  "endMs": 8372,
+  "timestampMs": 8235,
+  "confidence": null
+ },
+ {
+  "text": "subtítulos",
+  "startMs": 8402,
+  "endMs": 8892,
+  "timestampMs": 8647,
+  "confidence": null
+ },
+ {
+  "text": "palabra",
+  "startMs": 8922,
+  "endMs": 9304,
+  "timestampMs": 9113,
+  "confidence": null
+ },
+ {
+  "text": "por",
+  "startMs": 9334,
+  "endMs": 9572,
+  "timestampMs": 9453,
+  "confidence": null
+ },
+ {
+  "text": "palabra,",
+  "startMs": 9602,
+  "endMs": 9984,
+  "timestampMs": 9793,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 10154,
+  "endMs": 10320,
+  "timestampMs": 10237,
+  "confidence": null
+ },
+ {
+  "text": "mete",
+  "startMs": 10350,
+  "endMs": 10624,
+  "timestampMs": 10487,
+  "confidence": null
+ },
+ {
+  "text": "zooms",
+  "startMs": 10654,
+  "endMs": 10964,
+  "timestampMs": 10809,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 10994,
+  "endMs": 11160,
+  "timestampMs": 11077,
+  "confidence": null
+ },
+ {
+  "text": "efectos",
+  "startMs": 11190,
+  "endMs": 11572,
+  "timestampMs": 11381,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 11602,
+  "endMs": 11804,
+  "timestampMs": 11703,
+  "confidence": null
+ },
+ {
+  "text": "sonido.",
+  "startMs": 11834,
+  "endMs": 12180,
+  "timestampMs": 12007,
+  "confidence": null
+ },
+ {
+  "text": "¿Necesitas",
+  "startMs": 12570,
+  "endMs": 13024,
+  "timestampMs": 12797,
+  "confidence": null
+ },
+ {
+  "text": "imágenes?",
+  "startMs": 13054,
+  "endMs": 13472,
+  "timestampMs": 13263,
+  "confidence": null
+ },
+ {
+  "text": "Las",
+  "startMs": 13862,
+  "endMs": 14100,
+  "timestampMs": 13981,
+  "confidence": null
+ },
+ {
+  "text": "crea",
+  "startMs": 14130,
+  "endMs": 14404,
+  "timestampMs": 14267,
+  "confidence": null
+ },
+ {
+  "text": "realistas.",
+  "startMs": 14434,
+  "endMs": 14888,
+  "timestampMs": 14661,
+  "confidence": null
+ },
+ {
+  "text": "¿Animaciones?",
+  "startMs": 15278,
+  "endMs": 15804,
+  "timestampMs": 15541,
+  "confidence": null
+ },
+ {
+  "text": "En",
+  "startMs": 16194,
+  "endMs": 16396,
+  "timestampMs": 16295,
+  "confidence": null
+ },
+ {
+  "text": "3D.",
+  "startMs": 16426,
+  "endMs": 16628,
+  "timestampMs": 16527,
+  "confidence": null
+ },
+ {
+  "text": "¿No",
+  "startMs": 17018,
+  "endMs": 17220,
+  "timestampMs": 17119,
+  "confidence": null
+ },
+ {
+  "text": "quieres",
+  "startMs": 17250,
+  "endMs": 17632,
+  "timestampMs": 17441,
+  "confidence": null
+ },
+ {
+  "text": "grabar?",
+  "startMs": 17662,
+  "endMs": 18008,
+  "timestampMs": 17835,
+  "confidence": null
+ },
+ {
+  "text": "Le",
+  "startMs": 18398,
+  "endMs": 18600,
+  "timestampMs": 18499,
+  "confidence": null
+ },
+ {
+  "text": "pone",
+  "startMs": 18630,
+  "endMs": 18904,
+  "timestampMs": 18767,
+  "confidence": null
+ },
+ {
+  "text": "una",
+  "startMs": 18934,
+  "endMs": 19172,
+  "timestampMs": 19053,
+  "confidence": null
+ },
+ {
+  "text": "voz",
+  "startMs": 19202,
+  "endMs": 19440,
+  "timestampMs": 19321,
+  "confidence": null
+ },
+ {
+  "text": "con",
+  "startMs": 19470,
+  "endMs": 19708,
+  "timestampMs": 19589,
+  "confidence": null
+ },
+ {
+  "text": "inteligencia",
+  "startMs": 19738,
+  "endMs": 20300,
+  "timestampMs": 20019,
+  "confidence": null
+ },
+ {
+  "text": "artificial.",
+  "startMs": 20330,
+  "endMs": 20820,
+  "timestampMs": 20575,
+  "confidence": null
+ },
+ {
+  "text": "¿Viste",
+  "startMs": 21210,
+  "endMs": 21520,
+  "timestampMs": 21365,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 21550,
+  "endMs": 21752,
+  "timestampMs": 21651,
+  "confidence": null
+ },
+ {
+  "text": "video",
+  "startMs": 21782,
+  "endMs": 22092,
+  "timestampMs": 21937,
+  "confidence": null
+ },
+ {
+  "text": "viral",
+  "startMs": 22122,
+  "endMs": 22432,
+  "timestampMs": 22277,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 22462,
+  "endMs": 22700,
+  "timestampMs": 22581,
+  "confidence": null
+ },
+ {
+  "text": "te",
+  "startMs": 22730,
+  "endMs": 22932,
+  "timestampMs": 22831,
+  "confidence": null
+ },
+ {
+  "text": "encantó?",
+  "startMs": 22962,
+  "endMs": 23344,
+  "timestampMs": 23153,
+  "confidence": null
+ },
+ {
+  "text": "Copia",
+  "startMs": 23734,
+  "endMs": 24044,
+  "timestampMs": 23889,
+  "confidence": null
+ },
+ {
+  "text": "su",
+  "startMs": 24074,
+  "endMs": 24276,
+  "timestampMs": 24175,
+  "confidence": null
+ },
+ {
+  "text": "estilo,",
+  "startMs": 24306,
+  "endMs": 24652,
+  "timestampMs": 24479,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 24822,
+  "endMs": 24988,
+  "timestampMs": 24905,
+  "confidence": null
+ },
+ {
+  "text": "lo",
+  "startMs": 25018,
+  "endMs": 25220,
+  "timestampMs": 25119,
+  "confidence": null
+ },
+ {
+  "text": "adapta",
+  "startMs": 25250,
+  "endMs": 25596,
+  "timestampMs": 25423,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 25626,
+  "endMs": 25792,
+  "timestampMs": 25709,
+  "confidence": null
+ },
+ {
+  "text": "tus",
+  "startMs": 25822,
+  "endMs": 26060,
+  "timestampMs": 25941,
+  "confidence": null
+ },
+ {
+  "text": "colores",
+  "startMs": 26090,
+  "endMs": 26472,
+  "timestampMs": 26281,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 26502,
+  "endMs": 26668,
+  "timestampMs": 26585,
+  "confidence": null
+ },
+ {
+  "text": "tu",
+  "startMs": 26698,
+  "endMs": 26900,
+  "timestampMs": 26799,
+  "confidence": null
+ },
+ {
+  "text": "tipografía.",
+  "startMs": 26930,
+  "endMs": 27420,
+  "timestampMs": 27175,
+  "confidence": null
+ },
+ {
+  "text": "Y",
+  "startMs": 27810,
+  "endMs": 27976,
+  "timestampMs": 27893,
+  "confidence": null
+ },
+ {
+  "text": "cada",
+  "startMs": 28006,
+  "endMs": 28280,
+  "timestampMs": 28143,
+  "confidence": null
+ },
+ {
+  "text": "corrección",
+  "startMs": 28310,
+  "endMs": 28800,
+  "timestampMs": 28555,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 28830,
+  "endMs": 29068,
+  "timestampMs": 28949,
+  "confidence": null
+ },
+ {
+  "text": "le",
+  "startMs": 29098,
+  "endMs": 29300,
+  "timestampMs": 29199,
+  "confidence": null
+ },
+ {
+  "text": "hagas,",
+  "startMs": 29330,
+  "endMs": 29640,
+  "timestampMs": 29485,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 29810,
+  "endMs": 30012,
+  "timestampMs": 29911,
+  "confidence": null
+ },
+ {
+  "text": "guarda",
+  "startMs": 30042,
+  "endMs": 30388,
+  "timestampMs": 30215,
+  "confidence": null
+ },
+ {
+  "text": "para",
+  "startMs": 30418,
+  "endMs": 30692,
+  "timestampMs": 30555,
+  "confidence": null
+ },
+ {
+  "text": "tus",
+  "startMs": 30722,
+  "endMs": 30960,
+  "timestampMs": 30841,
+  "confidence": null
+ },
+ {
+  "text": "próximos",
+  "startMs": 30990,
+  "endMs": 31408,
+  "timestampMs": 31199,
+  "confidence": null
+ },
+ {
+  "text": "videos.",
+  "startMs": 31438,
+  "endMs": 31784,
+  "timestampMs": 31611,
+  "confidence": null
+ },
+ {
+  "text": "Para",
+  "startMs": 32174,
+  "endMs": 32448,
+  "timestampMs": 32311,
+  "confidence": null
+ },
+ {
+  "text": "agencias,",
+  "startMs": 32478,
+  "endMs": 32896,
+  "timestampMs": 32687,
+  "confidence": null
+ },
+ {
+  "text": "coaches",
+  "startMs": 33066,
+  "endMs": 33448,
+  "timestampMs": 33257,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 33478,
+  "endMs": 33644,
+  "timestampMs": 33561,
+  "confidence": null
+ },
+ {
+  "text": "creadores",
+  "startMs": 33674,
+  "endMs": 34128,
+  "timestampMs": 33901,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 34158,
+  "endMs": 34396,
+  "timestampMs": 34277,
+  "confidence": null
+ },
+ {
+  "text": "quieren",
+  "startMs": 34426,
+  "endMs": 34808,
+  "timestampMs": 34617,
+  "confidence": null
+ },
+ {
+  "text": "publicar",
+  "startMs": 34838,
+  "endMs": 35256,
+  "timestampMs": 35047,
+  "confidence": null
+ },
+ {
+  "text": "todos",
+  "startMs": 35286,
+  "endMs": 35596,
+  "timestampMs": 35441,
+  "confidence": null
+ },
+ {
+  "text": "los",
+  "startMs": 35626,
+  "endMs": 35864,
+  "timestampMs": 35745,
+  "confidence": null
+ },
+ {
+  "text": "días.",
+  "startMs": 35894,
+  "endMs": 36168,
+  "timestampMs": 36031,
+  "confidence": null
+ },
+ {
+  "text": "Escríbeme",
+  "startMs": 36558,
+  "endMs": 37012,
+  "timestampMs": 36785,
+  "confidence": null
+ },
+ {
+  "text": "HOOK",
+  "startMs": 37042,
+  "endMs": 37316,
+  "timestampMs": 37179,
+  "confidence": null
+ },
+ {
+  "text": "por",
+  "startMs": 37346,
+  "endMs": 37584,
+  "timestampMs": 37465,
+  "confidence": null
+ },
+ {
+  "text": "DM,",
+  "startMs": 37614,
+  "endMs": 37816,
+  "timestampMs": 37715,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 37986,
+  "endMs": 38152,
+  "timestampMs": 38069,
+  "confidence": null
+ },
+ {
+  "text": "te",
+  "startMs": 38182,
+  "endMs": 38384,
+  "timestampMs": 38283,
+  "confidence": null
+ },
+ {
+  "text": "muestro",
+  "startMs": 38414,
+  "endMs": 38796,
+  "timestampMs": 38605,
+  "confidence": null
+ },
+ {
+  "text": "cómo",
+  "startMs": 38826,
+  "endMs": 39100,
+  "timestampMs": 38963,
+  "confidence": null
+ },
+ {
+  "text": "quedaría",
+  "startMs": 39130,
+  "endMs": 39548,
+  "timestampMs": 39339,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 39578,
+  "endMs": 39780,
+  "timestampMs": 39679,
+  "confidence": null
+ },
+ {
+  "text": "tuyo.",
+  "startMs": 39810,
+  "endMs": 40084,
+  "timestampMs": 39947,
+  "confidence": null
+ }
+]

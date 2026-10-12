@@ -1,5 +1,5 @@
 import type { Caption } from "@remotion/captions";
-import React from "react";
+import React, { createContext, useContext } from "react";
 import { Easing, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import captionsJson from "../data/captions.json";
 import { B, MONO, SANS, SERIF } from "./brand";
@@ -9,9 +9,12 @@ export const opt = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as co
 
 // Frame absoluto en el que suena la palabra i
 export const wf = (i: number, fps: number) => Math.round((captions[i].startMs / 1000) * fps);
+// Otros vídeos con la misma marca pasan su propia línea de tiempo con <CaptionsCtx.Provider>
+export const CaptionsCtx = createContext<Caption[]>(captions);
 export const useWf = () => {
   const { fps } = useVideoConfig();
-  return (i: number) => wf(i, fps);
+  const caps = useContext(CaptionsCtx);
+  return (i: number) => Math.round((caps[i].startMs / 1000) * fps);
 };
 
 const clean = (t: string) => t.replace(/[…:,]/g, "");
@@ -20,6 +23,7 @@ const clean = (t: string) => t.replace(/[…:,]/g, "");
 const Word: React.FC<{ i: number; accent: boolean; last: boolean; color: string }> = ({ i, accent, last, color }) => {
   const frame = useCurrentFrame();
   const w = useWf();
+  const caps = useContext(CaptionsCtx);
   const local = frame - w(i);
   const p = interpolate(local, [0, 5], [0, 1], opt);
   return (
@@ -34,7 +38,7 @@ const Word: React.FC<{ i: number; accent: boolean; last: boolean; color: string 
         ...(accent ? { fontFamily: SERIF, fontStyle: "italic", fontWeight: 700, letterSpacing: "-0.01em" } : {}),
       }}
     >
-      {clean(captions[i].text)}
+      {clean(caps[i].text)}
       {last ? "" : " "}
     </span>
   );

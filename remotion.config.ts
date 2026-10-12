@@ -9,6 +9,8 @@ import { existsSync } from "node:fs";
 Config.setRspack(true);
 Config.setVideoImageFormat("jpeg");
 Config.setOverwriteOutput(true);
+// WebGL por software para las escenas 3D (@remotion/three) sin GPU
+Config.setChromiumOpenGlRenderer("angle");
 
 // En el entorno cloud de Claude Code no se puede descargar Chrome Headless Shell:
 // se usa el Chromium preinstalado si existe. En local no hace nada.
