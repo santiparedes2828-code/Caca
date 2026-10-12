@@ -3,7 +3,7 @@ import path from "node:path";
 import type { EditProps } from "../src/autopilot/props";
 import { FORMATS } from "../src/design/schema";
 import { buildCaptions, type BuiltCaptions } from "./captions/build";
-import { loadCaptionsFile } from "./captions/load";
+import { loadCaptionsFile, normalize, type LoadedCaptions } from "./captions/load";
 import { loadProfile, type ClientProfile } from "./clients/profile";
 import { ROOT, type Config } from "./config";
 import { IngestError, storeOriginal, validateFile } from "./ingest/ingest";
@@ -16,9 +16,11 @@ import { reportMarkdown } from "./qc/report";
 import { startAssetServer } from "./render/assetServer";
 import { getBundle } from "./render/bundle";
 import { renderEdit } from "./render/render";
+import { ProviderError } from "./transcription/elevenlabs";
+import { extractSpeechAudio, lowConfidence, transcribeWithElevenLabs, transcriptSchema, type Transcript } from "./transcription/transcribe";
 import { runOk } from "./util/exec";
 import { exists, readJson, resolveInside, sha256, writeJsonAtomic, writeTextAtomic } from "./util/fs";
-import { createLogger, type Logger } from "./util/log";
+import { createLogger, redact, type Logger } from "./util/log";
 
 // Orquestación de UN trabajo de edición (Etapa 1). Cada paso deja sus resultados en work/ y se marca
 // como hecho en job.json; si el proceso se corta o falla, `retry` continúa desde el primer paso
@@ -79,7 +81,84 @@ type Analysis = {
   silences: { count: number; totalSec: number; longestSec: number };
 };
 type Prepared = PrepareResult & { probe: ProbeResult; startSec: number; durationSec: number };
-type CaptionsArtifact = { none: true } | ({ none: false } & BuiltCaptions);
+type CaptionsTranscription = {
+  provider: string;
+  model: string;
+  source: "api" | "cache";
+  words: number;
+  withConfidence: number;
+  lowConfidence: { text: string; startMs: number }[];
+};
+type CaptionsArtifact = { none: true } | ({ none: false; transcription?: CaptionsTranscription | null } & BuiltCaptions);
+
+// Transcripción del tramo editado. Orden: work/transcript.json existente (quizá corregido a mano, sin
+// coste) → proveedor del cliente (ElevenLabs) → nada (se avisa y el vídeo sale sin subtítulos).
+const getTranscript = async (ctx: Ctx, prep: Prepared): Promise<Transcript | null> => {
+  const file = W(ctx, "transcript.json");
+  if (exists(file)) {
+    const parsed = transcriptSchema.safeParse(await readJson(file));
+    if (!parsed.success) {
+      throw new StepError("transcripcion_editada", `work/transcript.json no es válido tras editarlo: ${parsed.error.issues[0]?.path.join(".")} ${parsed.error.issues[0]?.message}`);
+    }
+    ctx.log.info("Usando la transcripción ya guardada en work/transcript.json (sin nueva llamada a la API)");
+    return parsed.data;
+  }
+  const t = ctx.profile.defaults.transcription;
+  if (!ctx.job.config.transcribe || t.provider === "ninguno") {
+    warn(ctx, "captions", "sin_subtitulos", "No se ha recibido SRT/VTT/JSON y la transcripción automática está desactivada para este trabajo");
+    return null;
+  }
+  if (!prep.probe.audio) {
+    warn(ctx, "captions", "sin_subtitulos", "Sin pista de audio: no hay nada que transcribir");
+    return null;
+  }
+  if (!ctx.cfg.ELEVENLABS_API_KEY) {
+    warn(
+      ctx,
+      "captions",
+      "sin_subtitulos",
+      "Sin subtítulos: no se ha recibido SRT/VTT/JSON y ELEVENLABS_API_KEY no está configurada (ver .env.example). Añade un SRT o configura la clave y usa `reintentar`/`rehacer-subtitulos`",
+    );
+    return null;
+  }
+  const audio = await extractSpeechAudio(W(ctx, "source.mp4"), W(ctx, "stt-audio.m4a"));
+  let r;
+  try {
+    r = await transcribeWithElevenLabs({
+      cfg: ctx.cfg,
+      clientId: ctx.job.clientId,
+      jobId: ctx.job.id,
+      audio,
+      model: t.model,
+      language: ctx.job.config.language,
+      diarize: t.diarize,
+      tagAudioEvents: t.tagAudioEvents,
+      log: (m) => ctx.log.info(m),
+    });
+  } catch (e) {
+    if (e instanceof ProviderError) throw new StepError(e.code, e.message);
+    throw e;
+  }
+  for (const n of r.notes) ctx.log.info(n);
+  if (r.billedSeconds > 0) {
+    ctx.job.costs.real.push({
+      provider: "elevenlabs",
+      amount: Number(r.billedSeconds.toFixed(2)),
+      unit: "s de audio transcrito (audio_duration_secs de la respuesta)",
+      note: `speech-to-text ${t.model}`,
+    });
+    if (ctx.cfg.HH_ELEVENLABS_STT_USD_PER_HOUR) {
+      ctx.job.costs.estimated.push({
+        provider: "elevenlabs",
+        amount: Number(((r.billedSeconds / 3600) * ctx.cfg.HH_ELEVENLABS_STT_USD_PER_HOUR).toFixed(4)),
+        unit: "USD",
+        note: "estimación con HH_ELEVENLABS_STT_USD_PER_HOUR (precio de tu plan; no verificado con la factura)",
+      });
+    }
+  }
+  await writeJsonAtomic(file, r.transcript);
+  return r.transcript;
+};
 
 const STEP_IMPL: Record<Exclude<StepName, "ingest">, (ctx: Ctx) => Promise<void>> = {
   // Análisis técnico del original (sin modificarlo)
@@ -137,26 +216,60 @@ const STEP_IMPL: Record<Exclude<StepName, "ingest">, (ctx: Ctx) => Promise<void>
   captions: async (ctx) => {
     const prep = await readJson<Prepared>(W(ctx, "prepare.json"));
     const input = ctx.job.inputs.find((i) => i.role === "captions");
-    if (!input) {
-      const msg = "No se ha recibido SRT/VTT/JSON de subtítulos y la transcripción automática aún no está disponible (Etapa 2)";
-      if (ctx.job.config.captionsRequired) throw new StepError("sin_subtitulos", msg);
-      warn(ctx, "captions", "sin_subtitulos", msg);
+    let loaded: LoadedCaptions | null = null;
+    let trimStartMs = prep.startSec * 1000;
+    let transcription: CaptionsTranscription | null = null;
+    if (input) {
+      loaded = await loadCaptionsFile(path.join(ctx.dir, input.path), (prep.startSec + prep.durationSec) * 1000);
+    } else {
+      const transcript = await getTranscript(ctx, prep);
+      if (transcript) {
+        // La transcripción se hace sobre la copia de trabajo: sus tiempos ya están en el eje del vídeo final
+        trimStartMs = 0;
+        const warnings: string[] = [];
+        const items = normalize(transcript.words, prep.durationSec * 1000, warnings);
+        const t = ctx.profile.defaults.transcription;
+        const low = lowConfidence(transcript, t.lowConfidenceLogprob);
+        transcription = {
+          provider: transcript.provider,
+          model: transcript.model,
+          source: transcript.source,
+          words: transcript.words.length,
+          withConfidence: transcript.words.filter((w) => w.logprob !== null).length,
+          lowConfidence: low.map((w) => ({ text: w.text, startMs: w.startMs })),
+        };
+        if (low.length) {
+          warn(
+            ctx,
+            "captions",
+            "baja_confianza",
+            `${low.length} palabras con baja confianza en la transcripción (revisa y, si hace falta, corrige work/transcript.json): ${low
+              .slice(0, 12)
+              .map((w) => `"${w.text}" ${(w.startMs / 1000).toFixed(1)} s`)
+              .join(", ")}${low.length > 12 ? "…" : ""}`,
+          );
+        }
+        if (items.length) loaded = { precision: "word", items, warnings, source: transcript.provider };
+        else warn(ctx, "captions", "sin_voz", "La transcripción no contiene palabras (¿vídeo sin voz?)");
+      }
+    }
+    if (!loaded) {
+      if (ctx.job.config.captionsRequired) throw new StepError("sin_subtitulos", "El vídeo no tiene subtítulos y son obligatorios para este cliente");
       await writeJsonAtomic(W(ctx, "captions.json"), { none: true });
       return;
     }
-    const loaded = await loadCaptionsFile(path.join(ctx.dir, input.path), (prep.startSec + prep.durationSec) * 1000);
     const built = buildCaptions({
       loaded,
       mode: ctx.job.config.captionMode,
       intensity: ctx.job.config.intensity,
       brand: ctx.profile.brand,
       allowEstimatedWordTiming: ctx.job.config.allowEstimatedWordTiming,
-      trimStartMs: prep.startSec * 1000,
+      trimStartMs,
       durationMs: prep.durationSec * 1000,
     });
     if (built.pages.length === 0) throw new StepError("subtitulos_vacios", "Ningún subtítulo cae dentro del tramo del vídeo");
     for (const w of built.warnings) warn(ctx, "captions", "subtitulos", w);
-    const art: CaptionsArtifact = { none: false, ...built };
+    const art: CaptionsArtifact = { none: false, ...built, transcription };
     await writeJsonAtomic(W(ctx, "captions.json"), art);
   },
 
@@ -261,7 +374,9 @@ const STEP_IMPL: Record<Exclude<StepName, "ingest">, (ctx: Ctx) => Promise<void>
       qcDir,
       expected: { width: props.width, height: props.height, fps: props.fps, durationSec: props.durationInFrames / props.fps, hasAudio: props.video.hasAudio },
       audioTarget: { lufs: ctx.job.config.audio.targetLufs, truePeakDb: ctx.job.config.audio.truePeakDb, normalized: prep.normalized },
-      captions: caps.none ? null : { pages: caps.pages, srt: caps.srt, maxCharsPerLine: ctx.profile.brand.captions.maxCharsPerLine, mode: caps.mode },
+      captions: caps.none
+        ? null
+        : { pages: caps.pages, srt: caps.srt, maxCharsPerLine: ctx.profile.brand.captions.maxCharsPerLine, mode: caps.mode, transcription: caps.transcription ?? null },
       captionsRequired: ctx.job.config.captionsRequired,
       frames: ctx.cfg.HH_QC_FRAMES,
     });
@@ -299,7 +414,12 @@ const STEP_IMPL: Record<Exclude<StepName, "ingest">, (ctx: Ctx) => Promise<void>
       audio: o.audio ? `${o.audio.codec} · ${o.audio.channels} canales · ${o.audio.sampleRate} Hz` : "sin audio",
       sonoridad: analysis.loudness ? `${analysis.loudness.integratedLufs.toFixed(1)} LUFS · pico ${analysis.loudness.truePeakDb.toFixed(1)} dBTP` : "—",
       silencios: `${analysis.silences.count} (≥ 0,5 s) · ${analysis.silences.totalSec} s en total`,
-      subtítulos: caps.none ? "ninguno" : `${caps.precision === "word" ? "por palabra" : caps.precision === "segment" ? "por bloque" : "por palabra ESTIMADOS"} · modo ${caps.mode}${caps.mode !== caps.requestedMode ? ` (pedido ${caps.requestedMode})` : ""}`,
+      subtítulos: caps.none
+        ? "ninguno"
+        : `${caps.precision === "word" ? "por palabra" : caps.precision === "segment" ? "por bloque" : "por palabra ESTIMADOS"} · modo ${caps.mode}${caps.mode !== caps.requestedMode ? ` (pedido ${caps.requestedMode})` : ""}`,
+      transcripción: caps.none || !caps.transcription
+        ? "no (subtítulos aportados por el cliente o sin subtítulos)"
+        : `${caps.transcription.provider} ${caps.transcription.model} · ${caps.transcription.source === "cache" ? "reutilizada de caché, sin coste" : "llamada a la API"} · ${caps.transcription.words} palabras`,
     };
     await writeJsonAtomic(O(ctx, "informe.json"), { job: ctx.job, analysis: summary, qc });
     await writeTextAtomic(O(ctx, "informe.md"), reportMarkdown(ctx.job, qc, { analysis: summary }));
@@ -350,7 +470,7 @@ export const runJob = async (cfg: Config, clientId: string, jobId: string): Prom
       } catch (e) {
         const cancelled = cancelRequested(cfg, job);
         const code = e instanceof StepError || e instanceof IngestError ? e.code : cancelled ? "cancelado" : `error_${step}`;
-        const message = (e as Error).message;
+        const message = redact((e as Error).message, [ROOT, cfg.HH_DATA_DIR]);
         job.steps[step] = { ...job.steps[step], status: "fallido", finishedAt: new Date().toISOString(), error: message };
         job.status = cancelled ? "cancelado" : "fallido";
         job.errors.push({ step, code, message });
@@ -384,6 +504,18 @@ export const retryJob = async (cfg: Config, clientId: string, jobId: string): Pr
     for (const s of ["captions", "compose", "render", "qc", "deliver"] as const) job.steps[s] = { status: "pendiente" };
     await fs.rm(path.join(dir, "work", "render.mp4"), { force: true });
   }
+  job.status = "recibido";
+  await saveJob(cfg, job);
+  return runJob(cfg, clientId, jobId);
+};
+
+// Rehace subtítulos → entrega reutilizando work/transcript.json (p. ej. tras corregir el texto a mano)
+export const redoCaptions = async (cfg: Config, clientId: string, jobId: string): Promise<Job> => {
+  const job = await loadJob(cfg, clientId, jobId);
+  if (job.steps.prepare.status !== "hecho") throw new Error("El trabajo no ha llegado a los subtítulos: usa reintentar");
+  if (job.attempts >= cfg.HH_MAX_ATTEMPTS + 5) throw new Error("Demasiados intentos en este trabajo");
+  for (const s of ["captions", "compose", "render", "qc", "deliver"] as const) job.steps[s] = { status: "pendiente" };
+  job.renderKey = null;
   job.status = "recibido";
   await saveJob(cfg, job);
   return runJob(cfg, clientId, jobId);

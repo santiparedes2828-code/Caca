@@ -28,7 +28,10 @@ export type Highlight = {
 };
 
 // estilo.md §2: cada palabra entra con desenfoque 12→0, opacidad 0→1, escala 1,08→1 en 6 frames
-const Word: React.FC<{ i: number; children: React.ReactNode }> = ({ i, children }) => {
+const Word: React.FC<{ i: number; children: React.ReactNode }> = ({
+  i,
+  children,
+}) => {
   const frame = useCurrentFrame();
   const local = frame - useWordFrame(i);
   const opt = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -77,7 +80,12 @@ export const Words: React.FC<{
       ? { color: C.red, textShadow: "0 0 18px rgba(227,18,27,0.8)" }
       : hl?.kind === "green"
         ? { color: C.green }
-        : { color: C.ink, fontStyle: "italic", position: "relative", padding: "0 0.12em" };
+        : {
+            color: C.ink,
+            fontStyle: "italic",
+            position: "relative",
+            padding: "0 0.12em",
+          };
 
   return (
     <div
@@ -90,7 +98,9 @@ export const Words: React.FC<{
         color,
         textAlign: "center",
         // Golpe de zoom al aparecer la palabra destacada (estilo.md §6)
-        scale: hl ? interpolate(frame - hlFrame, [0, 3, 9], [1, 1.04, 1], opt) : 1,
+        scale: hl
+          ? interpolate(frame - hlFrame, [0, 3, 9], [1, 1.04, 1], opt)
+          : 1,
         ...style,
       }}
     >

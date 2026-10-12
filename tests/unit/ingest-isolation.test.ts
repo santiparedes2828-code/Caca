@@ -148,3 +148,16 @@ test("reencuadre cover con foco y zoom por tramos", () => {
   );
   assert.deepEqual(segs.map((s) => s.startMs), [0, 3000, 6000]);
 });
+
+test("trabajos creados antes de la Etapa 2 (sin campos de transcripción) siguen cargando", async () => {
+  const profile = await loadProfile(cfg.HH_CLIENTS_DIR, "hookhouse");
+  const job = await createJob(cfg, profile);
+  const file = path.join(jobDir(cfg, "hookhouse", job.id), "job.json");
+  const raw = JSON.parse(await fs.readFile(file, "utf8"));
+  delete raw.config.transcribe;
+  delete raw.config.language;
+  await fs.writeFile(file, JSON.stringify(raw));
+  const loaded = (await listJobs(cfg, "hookhouse")).find((j) => j.id === job.id)!;
+  assert.equal(loaded.config.transcribe, false);
+  assert.equal(loaded.config.language, null);
+});

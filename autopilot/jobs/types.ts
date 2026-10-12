@@ -45,6 +45,13 @@ export const jobConfigSchema = z.object({
   reframe: reframeSchema,
   captionsRequired: z.boolean(),
   allowEstimatedWordTiming: z.boolean(),
+  // Campos añadidos en la Etapa 2: con valor por defecto para que los trabajos anteriores sigan cargando
+  transcribe: z.boolean().default(false), // transcribir con el proveedor del cliente si no llega SRT/JSON
+  language: z
+    .string()
+    .regex(/^[a-z]{2,3}$/)
+    .nullable()
+    .default(null),
   trim: z.object({ startSec: z.number().min(0), endSec: z.number().positive().nullable() }),
   audio: z.object({ normalize: z.boolean(), targetLufs: z.number(), truePeakDb: z.number() }),
 });

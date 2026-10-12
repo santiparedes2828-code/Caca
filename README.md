@@ -2,7 +2,7 @@
 
 Producción automatizada de vídeos de Hook House para TikTok, Reels y Shorts, con Remotion + FFmpeg.
 
-**Estado: Etapa 1 (base) operativa.** Pon un vídeo (y opcionalmente su SRT) en una carpeta, ejecuta un comando y
+**Estado: Etapa 1 (base) operativa + transcripción automática con ElevenLabs (Etapa 2, parte 1).** Pon un vídeo (y opcionalmente su SRT) en una carpeta, ejecuta un comando y
 obtienes un MP4 vertical 1080x1920 con subtítulos de marca, el SRT del vídeo final, un informe de calidad y el
 original intacto. Lo que aún no existe está en [PENDIENTE.md](PENDIENTE.md); la arquitectura, en
 [docs/arquitectura.md](docs/arquitectura.md).
@@ -34,6 +34,25 @@ El resultado queda en `data/clients/hookhouse/jobs/<id>/output/`:
 
 El original y los subtítulos recibidos se copian a `input/original/` en solo lectura y se mueven de la bandeja a
 `inbox/hookhouse/_procesados/<id>/`. Para vigilar la carpeta de forma continua: `npm run autopilot -- bandeja --vigilar`.
+
+### Subtítulos automáticos con ElevenLabs
+
+Si el vídeo llega **sin** SRT/VTT/JSON, se transcribe con ElevenLabs Scribe (`scribe_v2`, tiempos por palabra):
+
+1. Copia `.env.example` a `.env` y pon tu `ELEVENLABS_API_KEY` (nunca la pegues en un chat ni la subas a Git).
+2. Comprueba la clave y tu plan: `npm run autopilot -- elevenlabs`
+3. Procesa como siempre: `npm run autopilot -- bandeja`
+
+- Solo se envía el **audio** del tramo editado (mono, 16 kHz, sin metadatos).
+- **Caché por cliente**: el mismo audio no se paga dos veces. **Límites** por trabajo y diarios (`HH_STT_MAX_SECONDS_*`),
+  comprobados antes de llamar. Reintentos solo ante 429/5xx/red; un timeout no se reintenta (podría cobrarse dos veces).
+- El informe registra los segundos procesados según ElevenLabs (coste **real**) y, si defines
+  `HH_ELEVENLABS_STT_USD_PER_HOUR`, una estimación en USD marcada como **estimada**. Uso diario en `data/usage/`.
+- Palabras con baja confianza → aviso y `requiere_revision`. Para corregirlas, edita el texto en
+  `data/clients/<cliente>/jobs/<id>/work/transcript.json` y ejecuta `npm run autopilot -- rehacer-subtitulos <id>`
+  (no vuelve a llamar a ElevenLabs).
+- Sin clave, el vídeo sale sin subtítulos y el informe lo explica. `--sin-transcripcion` lo desactiva por vídeo;
+  `--idioma en` cambia el idioma (por defecto `es`, en `clients/hookhouse/profile.json`).
 
 ### Ajustes por vídeo
 
@@ -82,8 +101,8 @@ válido. **La revisión humana sigue siendo necesaria** (caras cortadas por el r
 
 ```console
 npm run lint         # eslint + tsc
-npm test             # 22 pruebas unitarias (segundos)
-npm run test:e2e     # 8 pruebas de extremo a extremo con render real (~75 s)
+npm test             # 31 pruebas unitarias (segundos)
+npm run test:e2e     # 13 pruebas de extremo a extremo con render real (~3 min)
 ```
 
 ## Remotion Studio
@@ -97,3 +116,4 @@ locución real de marca).
 Remotion exige una licencia de empresa a partir de cierto tamaño de organización
 ([condiciones](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md)); la clave se pasa con
 `REMOTION_LICENSE_KEY`. Las fuentes de `public/fonts/` son OFL. El sistema no añade música ni recursos de terceros.
+El uso de ElevenLabs se rige por los términos y el plan de tu cuenta.

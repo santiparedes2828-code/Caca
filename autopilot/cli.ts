@@ -5,7 +5,9 @@ import { loadConfig, type Config } from "./config";
 import { processInbox } from "./inbox";
 import { findJob, listJobs, requestCancel } from "./jobs/store";
 import { jobOverridesSchema, type Job, type JobOverrides } from "./jobs/types";
-import { retryJob, runJob, submitJob } from "./pipeline";
+import { redoCaptions, retryJob, runJob, submitJob } from "./pipeline";
+import { createElevenLabsClient } from "./transcription/elevenlabs";
+import { usedSecondsToday } from "./transcription/transcribe";
 
 const HELP = `Hook House Autopilot — edición automática (Etapa 1)
 
@@ -18,6 +20,9 @@ Uso: npm run autopilot -- <comando> [opciones]
         y opcionalmente <nombre>.job.json con ajustes). Los procesados pasan a inbox/<cliente>/_procesados/.
   estado [<id>] [--cliente hookhouse]     Lista trabajos o muestra uno.
   reintentar <id>                          Continúa un trabajo fallido desde el paso que falló.
+  rehacer-subtitulos <id>                  Rehace subtítulos, render y control desde work/transcript.json
+                                           (por ejemplo, tras corregir a mano una palabra). No vuelve a pagar.
+  elevenlabs                               Comprueba la clave y muestra el plan y el uso reales de ElevenLabs.
   cancelar <id>                            Pide cancelar un trabajo en curso.
 
 Opciones de procesado:
@@ -28,6 +33,10 @@ Opciones de procesado:
   --desde <s> --hasta <s>                  Recorte del original (no destructivo)
   --estimar-palabras                       Permite tiempos por palabra estimados a partir de un SRT
   --sin-normalizar                         No normaliza la sonoridad
+  --sin-transcripcion                      No transcribe aunque no haya SRT (el vídeo sale sin subtítulos)
+  --idioma es|en|…                         Idioma de la transcripción (por defecto el del perfil)
+
+Transcripción: si no hay SRT/VTT/JSON, se transcribe con ElevenLabs Scribe (ELEVENLABS_API_KEY en .env).
 `;
 
 const fmtJob = (j: Job) =>
@@ -47,6 +56,8 @@ const overridesFrom = (v: Record<string, string | boolean | undefined>): JobOver
   if (v.desde || v.hasta) o.trim = { startSec: v.desde ? Number(v.desde) : undefined, endSec: v.hasta ? Number(v.hasta) : undefined };
   if (v["estimar-palabras"]) o.allowEstimatedWordTiming = true;
   if (v["sin-normalizar"]) o.audio = { normalize: false };
+  if (v["sin-transcripcion"]) o.transcribe = false;
+  if (v.idioma) o.language = v.idioma;
   return jobOverridesSchema.parse(o);
 };
 
@@ -81,6 +92,8 @@ const main = async () => {
       hasta: { type: "string" },
       "estimar-palabras": { type: "boolean" },
       "sin-normalizar": { type: "boolean" },
+      "sin-transcripcion": { type: "boolean" },
+      idioma: { type: "string" },
       vigilar: { type: "boolean" },
       intervalo: { type: "string", default: "10" },
     },
@@ -121,6 +134,23 @@ const main = async () => {
       const job = await retryJob(cfg, j.clientId, j.id);
       printResult(cfg, job);
       process.exitCode = job.status === "fallido" ? 1 : 0;
+      return;
+    }
+    case "rehacer-subtitulos": {
+      const j = await findJob(cfg, positionals[0] ?? "");
+      const job = await redoCaptions(cfg, j.clientId, j.id);
+      printResult(cfg, job);
+      process.exitCode = job.status === "fallido" ? 1 : 0;
+      return;
+    }
+    case "elevenlabs": {
+      if (!cfg.ELEVENLABS_API_KEY) throw new Error("ELEVENLABS_API_KEY no está configurada: añádela a .env (ver .env.example). Nunca la pegues en un chat.");
+      const el = createElevenLabsClient({ apiKey: cfg.ELEVENLABS_API_KEY, baseUrl: cfg.ELEVENLABS_BASE_URL, retries: 1, timeoutMs: 30_000 });
+      const sub = await el.subscription();
+      console.log(`Clave válida. Plan: ${sub.tier} (${sub.status})`);
+      console.log(`Créditos usados en el periodo: ${sub.character_count} de ${sub.character_limit}`);
+      if (sub.next_character_count_reset_unix) console.log(`Próximo reinicio: ${new Date(sub.next_character_count_reset_unix * 1000).toISOString()}`);
+      console.log(`Transcrito hoy por Autopilot: ${Math.round(await usedSecondsToday(cfg))} s de ${cfg.HH_STT_MAX_SECONDS_PER_DAY} s permitidos`);
       return;
     }
     case "continuar": {

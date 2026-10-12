@@ -58,3 +58,17 @@ export const makeFixtures = async (dir: string, seconds = 6) => {
 if (require.main === module) {
   makeFixtures(process.argv[2] ?? path.join(ROOT, ".cache", "fixtures")).then((r) => console.log(r));
 }
+
+// Vídeo 16:9 con la locución public/audio/voz_a.mp3 (transcrita de verdad por ElevenLabs en
+// tests/data/elevenlabs-scribe-voz_a.words.json), sin subtítulos: el caso "necesita transcripción"
+export const makeSpeechVideo = async (dir: string, seconds: number) => {
+  await fs.mkdir(dir, { recursive: true });
+  const out = path.join(dir, `voz_a_${seconds}s.mp4`);
+  await runOk("ffmpeg", [
+    "-v", "error", "-y",
+    "-f", "lavfi", "-i", `testsrc2=size=1280x720:rate=30:duration=${seconds}`,
+    "-i", path.join(ROOT, "public", "audio", "voz_a.mp3"), "-t", String(seconds),
+    "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset", "ultrafast", "-pix_fmt", "yuv420p", "-c:a", "aac", "-shortest", out,
+  ]);
+  return out;
+};

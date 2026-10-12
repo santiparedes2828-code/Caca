@@ -43,6 +43,8 @@ export const resolveConfig = (profile: ClientProfile, o: JobOverrides = {}): Job
     reframe: { ...profile.defaults.reframe, ...o.reframe },
     captionsRequired: o.captionsRequired ?? profile.defaults.captionsRequired,
     allowEstimatedWordTiming: o.allowEstimatedWordTiming ?? false,
+    transcribe: o.transcribe ?? profile.defaults.transcription.provider !== "ninguno",
+    language: o.language === undefined ? profile.defaults.transcription.language : o.language,
     trim: { startSec: o.trim?.startSec ?? 0, endSec: o.trim?.endSec ?? null },
     audio: { ...profile.defaults.audio, ...(o.audio?.normalize === undefined ? {} : { normalize: o.audio.normalize }) },
   });

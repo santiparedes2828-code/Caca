@@ -11,7 +11,12 @@ export const MONO = fontFamily(HOOKHOUSE, "mono");
 
 for (const f of HOOKHOUSE.fonts) {
   if (f.src.startsWith("static:")) {
-    loadFont({ family: f.family, url: staticFile(f.src.slice("static:".length)), weight: f.weight, style: f.style });
+    loadFont({
+      family: f.family,
+      url: staticFile(f.src.slice("static:".length)),
+      weight: f.weight,
+      style: f.style,
+    });
   }
 }
 

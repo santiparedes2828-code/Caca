@@ -51,7 +51,9 @@ const useTimeline = () => {
       from,
       duration: end - from,
       enter: s.enter,
-      exit: (i + 1 < SCENES.length ? SCENES[i + 1].enter : "cut") as "whip" | "cut",
+      exit: (i + 1 < SCENES.length ? SCENES[i + 1].enter : "cut") as
+        | "whip"
+        | "cut",
     };
   });
 };
@@ -67,7 +69,14 @@ export const Promo: React.FC = () => {
         <SmallPrint />
         <TextZone>
           <Words from={0} to={6} font="script" size={84} color={C.ink} />
-          <Words from={7} to={10} font="bold" size={110} color={C.ink} hl={{ from: 7, to: 8, kind: "box" }} />
+          <Words
+            from={7}
+            to={10}
+            font="bold"
+            size={110}
+            color={C.ink}
+            hl={{ from: 7, to: 8, kind: "box" }}
+          />
         </TextZone>
         <GraphicZone>
           <ChartGraphic />
@@ -77,7 +86,14 @@ export const Promo: React.FC = () => {
       <Scene name="2 · Dolor" {...t[1]} bg="dark">
         <TextZone>
           <Words from={11} to={14} font="script" size={92} color={C.paper} />
-          <Words from={15} to={20} font="bold" size={96} color={C.paper} hl={{ from: 17, to: 19, kind: "glow" }} />
+          <Words
+            from={15}
+            to={20}
+            font="bold"
+            size={96}
+            color={C.paper}
+            hl={{ from: 17, to: 19, kind: "glow" }}
+          />
         </TextZone>
         <GraphicZone>
           <ClockGraphic />
@@ -96,14 +112,28 @@ export const Promo: React.FC = () => {
       <Scene name="4 · Reencuadre" {...t[3]} bg="black">
         <TextZone bottom={1080}>
           <Words from={25} to={29} font="script" size={100} color={C.paper} />
-          <Words from={30} to={33} font="bold" size={112} color={C.paper} hl={{ from: 30, to: 33, kind: "glow" }} />
+          <Words
+            from={30}
+            to={33}
+            font="bold"
+            size={112}
+            color={C.paper}
+            hl={{ from: 30, to: 33, kind: "glow" }}
+          />
         </TextZone>
       </Scene>
 
       <Scene name="5 · Solución" {...t[4]} bg="light">
         <TextZone>
           <Words from={34} to={35} font="script" size={96} color={C.ink} />
-          <Words from={36} to={37} font="bold" size={140} color={C.ink} hl={{ from: 37, to: 37, kind: "box" }} />
+          <Words
+            from={36}
+            to={37}
+            font="bold"
+            size={140}
+            color={C.ink}
+            hl={{ from: 37, to: 37, kind: "box" }}
+          />
         </TextZone>
         <GraphicZone>
           <GearsGraphic />
@@ -113,7 +143,14 @@ export const Promo: React.FC = () => {
       <Scene name="6 · Proceso" {...t[5]} bg="dark">
         <TextZone>
           <Words from={38} to={42} font="script" size={90} color={C.paper} />
-          <Words from={43} to={49} font="bold" size={92} color={C.paper} hl={{ from: 47, to: 49, kind: "glow" }} />
+          <Words
+            from={43}
+            to={49}
+            font="bold"
+            size={92}
+            color={C.paper}
+            hl={{ from: 47, to: 49, kind: "glow" }}
+          />
         </TextZone>
         <GraphicZone>
           <UploadGraphic />
@@ -124,7 +161,14 @@ export const Promo: React.FC = () => {
         <Petals flip />
         <TextZone>
           <Words from={50} to={54} font="script" size={90} color={C.ink} />
-          <Words from={55} to={59} font="bold" size={104} color={C.ink} hl={{ from: 58, to: 59, kind: "box" }} />
+          <Words
+            from={55}
+            to={59}
+            font="bold"
+            size={104}
+            color={C.ink}
+            hl={{ from: 58, to: 59, kind: "box" }}
+          />
         </TextZone>
         <GraphicZone>
           <EyeFollowGraphic />
@@ -145,7 +189,14 @@ export const Promo: React.FC = () => {
         <SmallPrint dark />
         <TextZone>
           <Words from={65} to={68} font="script" size={96} color={C.paper} />
-          <Words from={69} to={71} font="bold" size={120} color={C.paper} hl={{ from: 70, to: 71, kind: "glow" }} />
+          <Words
+            from={69}
+            to={71}
+            font="bold"
+            size={120}
+            color={C.paper}
+            hl={{ from: 70, to: 71, kind: "glow" }}
+          />
         </TextZone>
         <GraphicZone>
           <BoardGraphic />
@@ -156,8 +207,22 @@ export const Promo: React.FC = () => {
         <ChatBubble x={640} y={130} start={WHIP} />
         <ChatBubble x={20} y={1330} flip start={WHIP + 6} />
         <TextZone bottom={1060}>
-          <Words from={72} to={73} font="bold" size={124} color={C.ink} hl={{ from: 73, to: 73, kind: "box" }} />
-          <Words from={74} to={78} font="bold" size={78} color={C.ink} hl={{ from: 74, to: 78, kind: "green" }} />
+          <Words
+            from={72}
+            to={73}
+            font="bold"
+            size={124}
+            color={C.ink}
+            hl={{ from: 73, to: 73, kind: "box" }}
+          />
+          <Words
+            from={74}
+            to={78}
+            font="bold"
+            size={78}
+            color={C.ink}
+            hl={{ from: 74, to: 78, kind: "green" }}
+          />
         </TextZone>
       </Scene>
 
@@ -165,12 +230,24 @@ export const Promo: React.FC = () => {
       {t
         .filter((s) => s.enter === "whip")
         .map((s) => (
-          <Sequence key={`w${s.from}`} name="Whoosh" from={s.from} durationInFrames={Math.round(0.5 * fps)} premountFor={fps}>
+          <Sequence
+            key={`w${s.from}`}
+            name="Whoosh"
+            from={s.from}
+            durationInFrames={Math.round(0.5 * fps)}
+            premountFor={fps}
+          >
             <Audio src={staticFile("sfx/whoosh.wav")} volume={0.55} />
           </Sequence>
         ))}
       {HITS.map((i) => (
-        <Sequence key={`h${i}`} name="Golpe" from={wordFrame(i, fps)} durationInFrames={Math.round(0.6 * fps)} premountFor={fps}>
+        <Sequence
+          key={`h${i}`}
+          name="Golpe"
+          from={wordFrame(i, fps)}
+          durationInFrames={Math.round(0.6 * fps)}
+          premountFor={fps}
+        >
           <Audio src={staticFile("sfx/hit.wav")} volume={0.3} />
         </Sequence>
       ))}

@@ -17,7 +17,13 @@ export type QcInput = {
   qcDir: string;
   expected: { width: number; height: number; fps: number; durationSec: number; hasAudio: boolean };
   audioTarget: { lufs: number; truePeakDb: number; normalized: boolean };
-  captions: null | { pages: CaptionPage[]; srt: string; maxCharsPerLine: number; mode: string };
+  captions: null | {
+    pages: CaptionPage[];
+    srt: string;
+    maxCharsPerLine: number;
+    mode: string;
+    transcription?: null | { provider: string; words: number; withConfidence: number; lowConfidence: { text: string; startMs: number }[] };
+  };
   captionsRequired: boolean;
   frames: number;
 };
@@ -160,6 +166,18 @@ export const runQc = async (q: QcInput): Promise<QcResult> => {
       longLines ? `${longLines} líneas superan ${c.maxCharsPerLine} caracteres` : longWords ? `${longWords} palabras más largas que una línea (se reduce el cuerpo)` : `todas ≤ ${c.maxCharsPerLine} caracteres; el render reduce el cuerpo si una línea no cabe`,
     );
     add("subtitulos_lectura", "Tiempo de lectura", short ? "advertencia" : "ok", short ? `${short} páginas duran menos de 0,25 s` : "todas las páginas ≥ 0,25 s");
+    const tr = c.transcription;
+    if (tr) {
+      const ratio = tr.withConfidence ? tr.lowConfidence.length / tr.withConfidence : 0;
+      add(
+        "transcripcion",
+        "Confianza de la transcripción",
+        ratio > 0.05 ? "advertencia" : "ok",
+        tr.withConfidence === 0
+          ? `${tr.provider}: ${tr.words} palabras (el proveedor no devolvió confianza por palabra)`
+          : `${tr.provider}: ${tr.words} palabras, ${tr.lowConfidence.length} con baja confianza (${(ratio * 100).toFixed(1)} %)`,
+      );
+    }
     add("srt", "SRT exportado válido", srtCount > 0 ? "ok" : "fallo", srtCount > 0 ? `${srtCount} bloques` : "el SRT no se puede volver a leer");
   }
 

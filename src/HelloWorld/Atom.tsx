@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { Easing, interpolate, random, useCurrentFrame, useVideoConfig } from "remotion";
+import {
+  Easing,
+  interpolate,
+  random,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
 
 export const Atom: React.FC<{
   color1: string;
@@ -32,12 +38,7 @@ export const Atom: React.FC<{
           <stop offset="100%" stopColor={color2} />
         </linearGradient>
       </defs>
-      <circle
-        r={70}
-        cx={315}
-        cy={315}
-        fill={`url(#${gradientId})`}
-      />
+      <circle r={70} cx={315} cy={315} fill={`url(#${gradientId})`} />
     </svg>
   );
 };

@@ -24,6 +24,16 @@ export const profileSchema = z.object({
       targetLufs: z.number().min(-30).max(-8),
       truePeakDb: z.number().min(-6).max(0),
     }),
+    transcription: z
+      .object({
+        provider: z.enum(["elevenlabs", "ninguno"]),
+        model: z.string().min(1),
+        language: z.string().regex(/^[a-z]{2,3}$/).nullable(), // ISO-639-1/3; null = detección automática
+        diarize: z.boolean(),
+        tagAudioEvents: z.boolean(),
+        lowConfidenceLogprob: z.number().max(0), // palabras por debajo se marcan para revisar
+      })
+      .default({ provider: "ninguno", model: "scribe_v2", language: null, diarize: false, tagAudioEvents: false, lowConfidenceLogprob: -1 }),
     voice: z
       .object({
         provider: z.literal("elevenlabs"),

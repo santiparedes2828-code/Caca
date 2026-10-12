@@ -12,6 +12,7 @@
 | Análisis | `autopilot/media/probe.ts` | Duración, resolución con rotación, fps/VFR, códecs, sonoridad EBU R128, silencios, volumen, negros |
 | Preparación | `autopilot/media/prepare.ts` | Copia de trabajo CFR H.264 y normalización de sonoridad en dos pasadas (no restauración) |
 | Subtítulos | `autopilot/captions/` | SRT/VTT/JSON → formato interno con precisión real; normalización; páginas; SRT final |
+| Transcripción | `autopilot/transcription/` | Cliente REST de ElevenLabs (STT + suscripción), caché por cliente, presupuesto, registro de uso, transcripción editable |
 | Render | `autopilot/render/` | Bundle con caché por hash, servidor local de recursos, `renderMedia` con cancelación |
 | Calidad | `autopilot/qc/` | Controles automáticos, fotogramas de control, informe Markdown/JSON |
 | Orquestación | `autopilot/pipeline.ts`, `autopilot/inbox.ts`, `autopilot/cli.ts` | Pasos reanudables, reintentos, bandeja de entrada, CLI |
@@ -23,7 +24,8 @@ bandeja / procesar
   └─ ingest     validando     valida y copia a input/original/ (solo lectura)
   └─ analyze    analizando    work/analysis.json
   └─ prepare    analizando    work/source.mp4 (CFR, rotación, recorte, −14 LUFS) + prepare.json
-  └─ captions   transcribiendo work/captions.json (páginas + SRT)  [sin SRT: aviso; transcripción = Etapa 2]
+  └─ captions   transcribiendo SRT/VTT/JSON del cliente, o work/transcript.json, o ElevenLabs (audio mono 16 kHz)
+                              → work/captions.json (páginas + SRT)
   └─ compose    componiendo   work/props.json (valida recursos de marca)
   └─ render     renderizando  work/render.mp4 (+faststart). Clave = hash(props + bundle): no se repite
   └─ qc         verificando   work/qc.json + output/qc/*.jpg
@@ -61,7 +63,10 @@ Máximo `HH_MAX_ATTEMPTS` intentos.
 - Aislamiento: `data/clients/<cliente>/jobs/<id>/`; ids validados por expresión regular y rutas resueltas con
   `resolveInside`. `findJob` busca en todos los clientes y es solo para la CLI local: una interfaz web debe usar
   `loadJob` con el cliente autenticado (Etapa 7).
-- Proveedores externos: la Etapa 1 no envía datos a terceros.
+- Proveedores externos: solo ElevenLabs, y solo si hay `ELEVENLABS_API_KEY` y el vídeo no trae subtítulos. Recibe
+  la pista de audio del tramo editado (mono, 16 kHz, sin metadatos). La respuesta se guarda en la caché del cliente
+  (`data/clients/<cliente>/cache/stt/`) y el uso en `data/usage/elevenlabs-stt.jsonl`. ElevenLabs conserva los datos
+  según su política y tu plan (el modo de retención cero es solo para empresas, según su SDK).
 - Retención: los trabajos se guardan hasta que se borren. Para eliminar un trabajo, borra su carpeta
   `data/clients/<cliente>/jobs/<id>/`; `work/` se puede borrar en cualquier momento para liberar espacio (se
   regenera al reintentar, salvo que el trabajo ya esté entregado).

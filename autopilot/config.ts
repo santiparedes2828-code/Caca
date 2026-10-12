@@ -21,6 +21,18 @@ const schema = z.object({
   HH_RENDER_TIMEOUT_MS: num(120_000),
   HH_MAX_ATTEMPTS: z.coerce.number().int().min(1).max(10).default(3),
   HH_QC_FRAMES: z.coerce.number().int().min(1).max(30).default(6),
+  // ElevenLabs (transcripción). Sin clave, el pipeline sigue sin transcribir y lo avisa.
+  ELEVENLABS_API_KEY: z
+    .string()
+    .optional()
+    .transform((v) => v?.trim() || undefined),
+  ELEVENLABS_BASE_URL: z.string().url().default("https://api.elevenlabs.io"),
+  HH_STT_MAX_SECONDS_PER_JOB: num(3600),
+  HH_STT_MAX_SECONDS_PER_DAY: num(4 * 3600),
+  HH_STT_RETRIES: z.coerce.number().int().min(0).max(5).default(2),
+  HH_STT_TIMEOUT_MS: num(15 * 60_000),
+  // Precio por hora de audio de TU plan, solo para estimar (no se inventa: si no se define, no hay estimación)
+  HH_ELEVENLABS_STT_USD_PER_HOUR: z.coerce.number().positive().optional(),
   REMOTION_BROWSER_EXECUTABLE: z.string().optional(),
   REMOTION_LICENSE_KEY: z.string().optional(),
 });

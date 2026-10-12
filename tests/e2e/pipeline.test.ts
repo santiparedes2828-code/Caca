@@ -14,7 +14,8 @@ import { makeFixtures } from "../fixtures";
 
 // Pruebas de extremo a extremo: ffmpeg + Remotion reales, sin mocks. Tardan ~3-4 min en total.
 const tmp = path.join(ROOT, ".cache", "test-e2e", String(process.pid));
-const cfg = loadConfig({ ...process.env, HH_DATA_DIR: path.join(tmp, "data"), HH_INBOX_DIR: path.join(tmp, "inbox") });
+// Sin clave de ElevenLabs: estas pruebas nunca deben llamar a la API real
+const cfg = loadConfig({ ...process.env, ELEVENLABS_API_KEY: "", HH_DATA_DIR: path.join(tmp, "data"), HH_INBOX_DIR: path.join(tmp, "inbox") });
 let fx: Awaited<ReturnType<typeof makeFixtures>>;
 
 before(async () => {

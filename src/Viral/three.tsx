@@ -1,6 +1,14 @@
 import { ThreeCanvas } from "@remotion/three";
 import React, { useEffect, useMemo, useState } from "react";
-import { continueRender, delayRender, Easing, interpolate, random, useCurrentFrame, useVideoConfig } from "remotion";
+import {
+  continueRender,
+  delayRender,
+  Easing,
+  interpolate,
+  random,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
 import * as THREE from "three";
 import { B } from "../HookHouse/brand";
 
@@ -8,10 +16,19 @@ import { B } from "../HookHouse/brand";
 // Todas las animaciones salen de useCurrentFrame(); las texturas se dibujan en canvas.
 const opt = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
-const Canvas: React.FC<{ children: React.ReactNode; z?: number; fov?: number }> = ({ children, z = 12, fov = 36 }) => {
+const Canvas: React.FC<{
+  children: React.ReactNode;
+  z?: number;
+  fov?: number;
+}> = ({ children, z = 12, fov = 36 }) => {
   const { width, height } = useVideoConfig();
   return (
-    <ThreeCanvas width={width} height={height} camera={{ position: [0, 0, z], fov }} style={{ position: "absolute", inset: 0 }}>
+    <ThreeCanvas
+      width={width}
+      height={height}
+      camera={{ position: [0, 0, z], fov }}
+      style={{ position: "absolute", inset: 0 }}
+    >
       {children}
     </ThreeCanvas>
   );
@@ -22,7 +39,10 @@ const useFontsReady = () => {
   const [ready, setReady] = useState(false);
   const [handle] = useState(() => delayRender("Fuentes para texturas 3D"));
   useEffect(() => {
-    Promise.all([document.fonts.load('800 60px "Inter"'), document.fonts.load('500 30px "JetBrains Mono"')]).then(() => {
+    Promise.all([
+      document.fonts.load('800 60px "Inter"'),
+      document.fonts.load('500 30px "JetBrains Mono"'),
+    ]).then(() => {
       setReady(true);
       continueRender(handle);
     });
@@ -30,7 +50,11 @@ const useFontsReady = () => {
   return ready;
 };
 
-const makeTexture = (w: number, h: number, draw: (c: CanvasRenderingContext2D) => void) => {
+const makeTexture = (
+  w: number,
+  h: number,
+  draw: (c: CanvasRenderingContext2D) => void,
+) => {
   const canvas = document.createElement("canvas");
   canvas.width = w;
   canvas.height = h;
@@ -41,12 +65,25 @@ const makeTexture = (w: number, h: number, draw: (c: CanvasRenderingContext2D) =
   return tex;
 };
 
-const roundRect = (c: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) => {
+const roundRect = (
+  c: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  r: number,
+) => {
   c.beginPath();
   c.roundRect(x, y, w, h, r);
 };
 
-const silhouette = (c: CanvasRenderingContext2D, cx: number, base: number, s: number, color: string) => {
+const silhouette = (
+  c: CanvasRenderingContext2D,
+  cx: number,
+  base: number,
+  s: number,
+  color: string,
+) => {
   c.fillStyle = color;
   c.beginPath();
   c.arc(cx, base - s * 1.55, s * 0.42, 0, Math.PI * 2);
@@ -58,7 +95,14 @@ const silhouette = (c: CanvasRenderingContext2D, cx: number, base: number, s: nu
   c.fill();
 };
 
-const mono = (c: CanvasRenderingContext2D, text: string, x: number, y: number, size: number, color: string) => {
+const mono = (
+  c: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) => {
   c.font = `500 ${size}px "JetBrains Mono"`;
   c.fillStyle = color;
   c.fillText(text.toUpperCase(), x, y);
@@ -67,7 +111,10 @@ const mono = (c: CanvasRenderingContext2D, text: string, x: number, y: number, s
 // ─────────────────────────────────────────────────────────────────────────────
 // 1 · Línea de tiempo de clips en 3D: un láser verde la recorre, se abren los cortes
 //     y los clips "muertos" (silencios, tomas falsas) caen fuera ("Ni un solo corte" a mano)
-export const FilmCut3D: React.FC<{ start: number; cut: number }> = ({ start, cut }) => {
+export const FilmCut3D: React.FC<{ start: number; cut: number }> = ({
+  start,
+  cut,
+}) => {
   const frame = useCurrentFrame();
   const fonts = useFontsReady();
   const t = frame - start;
@@ -88,32 +135,57 @@ export const FilmCut3D: React.FC<{ start: number; cut: number }> = ({ start, cut
               }
               c.fillStyle = g;
               c.fillRect(0, 0, 400, 240);
-              if (!dead(k)) silhouette(c, 200 + (random(`sx${k}`) - 0.5) * 90, 228, 70, "#5A5A5A");
+              if (!dead(k))
+                silhouette(
+                  c,
+                  200 + (random(`sx${k}`) - 0.5) * 90,
+                  228,
+                  70,
+                  "#5A5A5A",
+                );
               c.fillStyle = "#F7F7F2";
               for (let i = 0; i < 12; i++) {
                 c.fillRect(10 + i * 33, 6, 14, 10);
                 c.fillRect(10 + i * 33, 224, 14, 10);
               }
               if (dead(k)) mono(c, "silencio", 128, 128, 30, B.green);
-              mono(c, `clip ${String(k + 1).padStart(2, "0")}`, 16, 48, 22, "rgba(247,247,242,0.75)");
+              mono(
+                c,
+                `clip ${String(k + 1).padStart(2, "0")}`,
+                16,
+                48,
+                22,
+                "rgba(247,247,242,0.75)",
+              );
             }),
           )
         : [],
     [fonts],
   );
-  const laser = interpolate(frame, [cut, cut + 14], [-1, 1], { ...opt, easing: Easing.inOut(Easing.quad) });
-  const open = interpolate(frame, [cut + 6, cut + 18], [0, 1], { ...opt, easing: Easing.out(Easing.cubic) });
+  const laser = interpolate(frame, [cut, cut + 14], [-1, 1], {
+    ...opt,
+    easing: Easing.inOut(Easing.quad),
+  });
+  const open = interpolate(frame, [cut + 6, cut + 18], [0, 1], {
+    ...opt,
+    easing: Easing.out(Easing.cubic),
+  });
   const W = 1.6;
   const gap = 0.06 + open * 0.34;
   const scroll = interpolate(t, [0, 150], [0.8, -0.8], opt);
-  const liveIndex = (k: number) => Array.from({ length: k }, (_, j) => j).filter((j) => !dead(j)).length;
+  const liveIndex = (k: number) =>
+    Array.from({ length: k }, (_, j) => j).filter((j) => !dead(j)).length;
   const totalW = N * W + (N - 1) * 0.06;
 
   return (
     <Canvas z={13}>
       <ambientLight intensity={0.7} />
       <directionalLight position={[3, 6, 8]} intensity={2.2} />
-      <pointLight position={[0, 2, 3]} intensity={25 * (laser > -1 && laser < 1 ? 1 : 0.2)} color={B.green} />
+      <pointLight
+        position={[0, 2, 3]}
+        intensity={25 * (laser > -1 && laser < 1 ? 1 : 0.2)}
+        color={B.green}
+      />
       <group position={[0.3 + scroll, -1.9, 0]} rotation={[-0.45, 0.42, 0.04]}>
         {textures.map((tex, k) => {
           // Antes del corte: tira continua. Después: los muertos caen y los vivos se juntan con huecos de corte
@@ -122,23 +194,41 @@ export const FilmCut3D: React.FC<{ start: number; cut: number }> = ({ start, cut
           const fall = dead(k) ? open : 0;
           const x = dead(k) ? x0 : interpolate(open, [0, 1], [x0, x1]);
           return (
-            <group key={k} position={[x, -fall * 2.6, fall * 1.2]} rotation={[fall * 0.9, 0, fall * (k % 2 ? 0.4 : -0.4)]}>
+            <group
+              key={k}
+              position={[x, -fall * 2.6, fall * 1.2]}
+              rotation={[fall * 0.9, 0, fall * (k % 2 ? 0.4 : -0.4)]}
+            >
               <mesh>
                 <boxGeometry args={[W, 0.96, 0.08]} />
-                <meshStandardMaterial color={dead(k) ? "#202020" : "#0E0E0E"} roughness={0.5} />
+                <meshStandardMaterial
+                  color={dead(k) ? "#202020" : "#0E0E0E"}
+                  roughness={0.5}
+                />
               </mesh>
               <mesh position={[0, 0, 0.045]}>
                 <planeGeometry args={[W - 0.04, 0.92]} />
-                <meshStandardMaterial map={tex} roughness={0.6} transparent opacity={1 - fall * 0.7} />
+                <meshStandardMaterial
+                  map={tex}
+                  roughness={0.6}
+                  transparent
+                  opacity={1 - fall * 0.7}
+                />
               </mesh>
             </group>
           );
         })}
-        <mesh position={[laser * (totalW / 2 + 0.5), 0, 0.2]} visible={frame >= cut && frame <= cut + 14}>
+        <mesh
+          position={[laser * (totalW / 2 + 0.5), 0, 0.2]}
+          visible={frame >= cut && frame <= cut + 14}
+        >
           <boxGeometry args={[0.04, 2.2, 0.04]} />
           <meshBasicMaterial color={B.green} />
         </mesh>
-        <mesh position={[laser * (totalW / 2 + 0.5), 0, 0.2]} visible={frame >= cut && frame <= cut + 14}>
+        <mesh
+          position={[laser * (totalW / 2 + 0.5), 0, 0.2]}
+          visible={frame >= cut && frame <= cut + 14}
+        >
           <boxGeometry args={[0.16, 2.3, 0.02]} />
           <meshBasicMaterial color={B.green} transparent opacity={0.3} />
         </mesh>
@@ -149,16 +239,27 @@ export const FilmCut3D: React.FC<{ start: number; cut: number }> = ({ start, cut
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 2 · Onda de audio en 3D: una cuchilla verde baja sobre cada silencio, que desaparece y la onda se cierra
-export const Waveform3D: React.FC<{ start: number; cut: number }> = ({ start, cut }) => {
+export const Waveform3D: React.FC<{ start: number; cut: number }> = ({
+  start,
+  cut,
+}) => {
   const frame = useCurrentFrame();
   const t = frame - start;
-  const p = interpolate(frame, [cut + 8, cut + 24], [0, 1], { ...opt, easing: Easing.inOut(Easing.cubic) });
-  const blade = interpolate(frame, [cut - 4, cut + 6], [3.5, 0.4], { ...opt, easing: Easing.in(Easing.cubic) });
+  const p = interpolate(frame, [cut + 8, cut + 24], [0, 1], {
+    ...opt,
+    easing: Easing.inOut(Easing.cubic),
+  });
+  const blade = interpolate(frame, [cut - 4, cut + 6], [3.5, 0.4], {
+    ...opt,
+    easing: Easing.in(Easing.cubic),
+  });
   const bladeOut = interpolate(frame, [cut + 8, cut + 14], [0, 3.5], opt);
   const N = 34;
   const silent = (k: number) => (k >= 9 && k <= 13) || (k >= 22 && k <= 25);
   const bars = Array.from({ length: N }, (_, k) => ({
-    h: silent(k) ? 0.12 : 0.5 + Math.abs(Math.sin(k * 1.7)) * 2.2 + random(`h${k}`) * 0.6,
+    h: silent(k)
+      ? 0.12
+      : 0.5 + Math.abs(Math.sin(k * 1.7)) * 2.2 + random(`h${k}`) * 0.6,
     s: silent(k),
   }));
   const gap = 0.32;
@@ -182,18 +283,37 @@ export const Waveform3D: React.FC<{ start: number; cut: number }> = ({ start, cu
         {pos.map((b, k) => {
           const pulse = b.s ? 1 : 1 + Math.sin((t + k * 6) / 5) * 0.12;
           return (
-            <mesh key={k} position={[b.x - total / 2, (b.h * pulse) / 2, 0]} scale={[Math.max(0.001, b.w / gap), 1, 1]}>
+            <mesh
+              key={k}
+              position={[b.x - total / 2, (b.h * pulse) / 2, 0]}
+              scale={[Math.max(0.001, b.w / gap), 1, 1]}
+            >
               <boxGeometry args={[0.22, b.h * pulse, 0.5]} />
-              <meshStandardMaterial color={b.s ? B.green : B.ink} roughness={0.4} />
+              <meshStandardMaterial
+                color={b.s ? B.green : B.ink}
+                roughness={0.4}
+              />
             </mesh>
           );
         })}
         {groups.map(([a, b2]) => {
           const cx = (pos[a].x + pos[b2].x) / 2 - total / 2;
           return (
-            <mesh key={a} position={[cx, blade + bladeOut, 0]} visible={frame >= cut - 4 && frame <= cut + 14}>
-              <boxGeometry args={[(b2 - a + 1) * gap * (1 - p) + 0.1, 0.08, 1.2]} />
-              <meshStandardMaterial color={B.green} emissive={B.green} emissiveIntensity={0.6} metalness={0.6} roughness={0.2} />
+            <mesh
+              key={a}
+              position={[cx, blade + bladeOut, 0]}
+              visible={frame >= cut - 4 && frame <= cut + 14}
+            >
+              <boxGeometry
+                args={[(b2 - a + 1) * gap * (1 - p) + 0.1, 0.08, 1.2]}
+              />
+              <meshStandardMaterial
+                color={B.green}
+                emissive={B.green}
+                emissiveIntensity={0.6}
+                metalness={0.6}
+                roughness={0.2}
+              />
             </mesh>
           );
         })}
@@ -282,7 +402,15 @@ export const Photos3D: React.FC<{ start: number }> = ({ start }) => {
       c.fillStyle = "#12A150";
       for (let i = 0; i < 9; i++) {
         c.beginPath();
-        c.ellipse(220 + Math.cos(i) * 70, 290 + Math.sin(i * 1.3) * 60, 34, 18, i, 0, Math.PI * 2);
+        c.ellipse(
+          220 + Math.cos(i) * 70,
+          290 + Math.sin(i * 1.3) * 60,
+          34,
+          18,
+          i,
+          0,
+          Math.PI * 2,
+        );
         c.fill();
       }
       c.fillStyle = "#E3B341";
@@ -302,7 +430,14 @@ export const Photos3D: React.FC<{ start: number }> = ({ start }) => {
         c.fillStyle = "#0B0B0B";
         c.fillRect(i * 56, 560 - h, 50, h);
         c.fillStyle = "#E9F5EE";
-        for (let j = 0; j < 8; j++) if (random(`w${i}${j}`) > 0.55) c.fillRect(i * 56 + 10 + (j % 2) * 18, 560 - h + 20 + Math.floor(j / 2) * 40, 10, 16);
+        for (let j = 0; j < 8; j++)
+          if (random(`w${i}${j}`) > 0.55)
+            c.fillRect(
+              i * 56 + 10 + (j % 2) * 18,
+              560 - h + 20 + Math.floor(j / 2) * 40,
+              10,
+              16,
+            );
       }
     },
   ];
@@ -327,13 +462,22 @@ export const Photos3D: React.FC<{ start: number }> = ({ start }) => {
     <Canvas z={16}>
       <ambientLight intensity={0.85} />
       <directionalLight position={[2, 5, 8]} intensity={1.8} />
-      <group position={[0, -4.7, 0]} rotation={[-0.15, Math.sin(t / 40) * 0.25, 0]}>
+      <group
+        position={[0, -4.7, 0]}
+        rotation={[-0.15, Math.sin(t / 40) * 0.25, 0]}
+      >
         {textures.map((tex, k) => {
-          const p = interpolate(t, [k * 5, k * 5 + 14], [0, 1], { ...opt, easing: Easing.out(Easing.back(1.3)) });
+          const p = interpolate(t, [k * 5, k * 5 + 14], [0, 1], {
+            ...opt,
+            easing: Easing.out(Easing.back(1.3)),
+          });
           const a = (angles[k] * Math.PI) / 180;
           return (
             <group key={k} rotation={[0, 0, -a * p]}>
-              <group position={[0, 3.2, k * 0.06 + (k === 2 ? 0.2 : 0)]} scale={0.6 + 0.4 * p}>
+              <group
+                position={[0, 3.2, k * 0.06 + (k === 2 ? 0.2 : 0)]}
+                scale={0.6 + 0.4 * p}
+              >
                 <mesh>
                   <boxGeometry args={[2.36, 2.96, 0.04]} />
                   <meshStandardMaterial color="#FFFFFF" roughness={0.4} />
@@ -359,7 +503,11 @@ export const Layers3D: React.FC<{ start: number }> = ({ start }) => {
   const t = frame - start;
   const PW = 640;
   const PH = 1120;
-  const layers: { label: string; draw: (c: CanvasRenderingContext2D) => void; solid?: boolean }[] = [
+  const layers: {
+    label: string;
+    draw: (c: CanvasRenderingContext2D) => void;
+    solid?: boolean;
+  }[] = [
     {
       label: "01 video",
       solid: true,
@@ -467,8 +615,14 @@ export const Layers3D: React.FC<{ start: number }> = ({ start }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [fonts],
   );
-  const explode = interpolate(t, [12, 32], [0, 1], { ...opt, easing: Easing.inOut(Easing.cubic) });
-  const enter = interpolate(t, [0, 12], [0, 1], { ...opt, easing: Easing.out(Easing.cubic) });
+  const explode = interpolate(t, [12, 32], [0, 1], {
+    ...opt,
+    easing: Easing.inOut(Easing.cubic),
+  });
+  const enter = interpolate(t, [0, 12], [0, 1], {
+    ...opt,
+    easing: Easing.out(Easing.cubic),
+  });
   return (
     <Canvas z={16}>
       <ambientLight intensity={1} />
@@ -476,17 +630,32 @@ export const Layers3D: React.FC<{ start: number }> = ({ start }) => {
       <group
         position={[0.4, -2.3, 0]}
         scale={0.82 * (0.7 + 0.3 * enter)}
-        rotation={[interpolate(explode, [0, 1], [0, -0.32]), interpolate(explode, [0, 1], [0, 0.85]) + Math.sin(t / 30) * 0.06, 0]}
+        rotation={[
+          interpolate(explode, [0, 1], [0, -0.32]),
+          interpolate(explode, [0, 1], [0, 0.85]) + Math.sin(t / 30) * 0.06,
+          0,
+        ]}
       >
         {textures.map((tex, k) => (
           <group key={k} position={[0, 0, (k - 2) * (0.03 + explode * 1.15)]}>
             <mesh>
               <planeGeometry args={[3.2, 5.6]} />
-              <meshStandardMaterial map={tex} transparent side={THREE.DoubleSide} roughness={0.6} opacity={enter} />
+              <meshStandardMaterial
+                map={tex}
+                transparent
+                side={THREE.DoubleSide}
+                roughness={0.6}
+                opacity={enter}
+              />
             </mesh>
             <mesh position={[-1.25, 3.05, 0]} visible={explode > 0.6}>
               <planeGeometry args={[1.5, 0.29]} />
-              <meshBasicMaterial map={labels[k]} transparent opacity={interpolate(explode, [0.6, 1], [0, 1], opt)} side={THREE.DoubleSide} />
+              <meshBasicMaterial
+                map={labels[k]}
+                transparent
+                opacity={interpolate(explode, [0.6, 1], [0, 1], opt)}
+                side={THREE.DoubleSide}
+              />
             </mesh>
           </group>
         ))}

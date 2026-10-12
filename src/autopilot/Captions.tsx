@@ -206,6 +206,12 @@ export const Captions: React.FC<{
     mode === "frases" || mode === "palabra-activa"
       ? interpolate(frame - pageFrame, [0, 3], [0, 1], clamp)
       : 1;
+  // El bloque se coloca con la altura de la página completa (posición estable); en los modos que
+  // revelan palabras, cada línea aparece cuando empieza su primera palabra y la tarjeta crece hacia abajo.
+  const reveal = mode === "grupos" || mode === "dinamico";
+  const visibleLines = reveal
+    ? lines.filter((l, i) => i === 0 || l[0].startMs <= t)
+    : lines;
   const blockH = lines.length * fontSize * cap.lineHeight + padY * 2;
   const centerY = cap.positionY * height;
   const top = Math.min(
@@ -251,7 +257,7 @@ export const Captions: React.FC<{
           isolation: "isolate",
         }}
       >
-        {lines.map((line, li) => (
+        {visibleLines.map((line, li) => (
           <div key={li} style={{ whiteSpace: "nowrap" }}>
             {line.map((tk, k) => (
               <Token

@@ -54,6 +54,11 @@ export const reportMarkdown = (job: Job, qc: QcResult | null, extra: { analysis?
       ? [...job.costs.real.map((c) => `- REAL ${c.provider}: ${c.amount} ${c.unit} (${c.note})`), ...job.costs.estimated.map((c) => `- ESTIMADO ${c.provider}: ${c.amount} ${c.unit} (${c.note})`)].join("\n")
       : "- Ninguno: este trabajo no ha usado proveedores externos de pago (todo local).",
   );
+  if (job.costs.real.some((c) => c.provider === "elevenlabs")) {
+    L.push("");
+    L.push("## Datos enviados a proveedores externos");
+    L.push("- ElevenLabs (speech-to-text): solo la pista de audio del tramo editado (mono, 16 kHz, sin metadatos). Ni vídeo ni nombres de archivo del cliente.");
+  }
   L.push("");
   L.push("## Salidas");
   for (const o of job.outputs) L.push(`- ${o.kind}: \`${o.path}\``);

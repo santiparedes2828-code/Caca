@@ -74,7 +74,8 @@ export const HelloWorld: React.FC<HelloWorldProps> = ({
             }),
           }}
         >
-          Edit <code style={{ color: "#86A8E7" }}>src/Root.tsx</code> and save to reload.
+          Edit <code style={{ color: "#86A8E7" }}>src/Root.tsx</code> and save
+          to reload.
         </Interactive.Div>
       </Interactive.Div>
     </AbsoluteFill>

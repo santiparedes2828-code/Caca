@@ -6,8 +6,15 @@ import { Promo, promoDuration } from "./Promo/Promo";
 import { Clip, clipDuration } from "./Clip/Clip";
 import { HookHouse, hookHouseDuration } from "./HookHouse/HookHouse";
 import { Viral, viralDuration } from "./Viral/Viral";
-import { AutopilotEdit, calculateEditMetadata } from "./autopilot/AutopilotEdit";
-import { CaptionModesDemo, captionDemoDuration, captionDemoSchema } from "./autopilot/CaptionModesDemo";
+import {
+  AutopilotEdit,
+  calculateEditMetadata,
+} from "./autopilot/AutopilotEdit";
+import {
+  CaptionModesDemo,
+  captionDemoDuration,
+  captionDemoSchema,
+} from "./autopilot/CaptionModesDemo";
 import { editPropsSchema } from "./autopilot/props";
 import { HOOKHOUSE } from "./design/tokens";
 
@@ -58,13 +65,35 @@ export const RemotionRoot: React.FC = () => {
             width: 1080,
             height: 1920,
             durationInFrames: 90,
-            video: { src: "", width: 1920, height: 1080, hasAudio: false, trimStartFrames: 0, volume: 1 },
+            video: {
+              src: "",
+              width: 1920,
+              height: 1080,
+              hasAudio: false,
+              trimStartFrames: 0,
+              volume: 1,
+            },
             reframe: { mode: "cover" as const, focusX: 0.5, focusY: 0.4 },
             intensity: "sutil" as const,
             brand: HOOKHOUSE,
             captions: {
               mode: "frases" as const,
-              pages: [{ startMs: 200, endMs: 2800, lines: [[{ text: "Vista previa", startMs: 200, endMs: 2800, emphasis: false }]] }],
+              pages: [
+                {
+                  startMs: 200,
+                  endMs: 2800,
+                  lines: [
+                    [
+                      {
+                        text: "Vista previa",
+                        startMs: 200,
+                        endMs: 2800,
+                        emphasis: false,
+                      },
+                    ],
+                  ],
+                },
+              ],
             },
           }}
         />
@@ -76,7 +105,11 @@ export const RemotionRoot: React.FC = () => {
           fps={30}
           width={1080}
           height={1920}
-          defaultProps={{ mode: "palabra-activa" as const, intensity: "sutil" as const, variant: "card" as const }}
+          defaultProps={{
+            mode: "palabra-activa" as const,
+            intensity: "sutil" as const,
+            variant: "card" as const,
+          }}
         />
       </Folder>
       <Composition
@@ -127,7 +160,6 @@ export const RemotionRoot: React.FC = () => {
           titleColor: "#000000",
         }}
       />
-
     </>
   );
 };

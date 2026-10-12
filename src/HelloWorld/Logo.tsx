@@ -43,29 +43,25 @@ const LogoInner: React.FC<LogoProps> = ({ logoColor1, logoColor2, style }) => {
         ...style,
       }}
     >
-      <Arc
-        rotation={30}
-        color1={logoColor1}
-        color2={logoColor2}
-      />
-      <Arc
-        rotation={90}
-        color1={logoColor1}
-        color2={logoColor2}
-      />
-      <Arc
-        rotation={-30}
-        color1={logoColor1}
-        color2={logoColor2}
-      />
+      <Arc rotation={30} color1={logoColor1} color2={logoColor2} />
+      <Arc rotation={90} color1={logoColor1} color2={logoColor2} />
+      <Arc rotation={-30} color1={logoColor1} color2={logoColor2} />
       <Atom color1={logoColor1} color2={logoColor2} />
     </Interactive.Div>
   );
 };
 
 const logoSchema = {
-  logoColor1: { type: "color", default: "#91EAE4", description: "First logo color" },
-  logoColor2: { type: "color", default: "#86A8E7", description: "Second logo color" },
+  logoColor1: {
+    type: "color",
+    default: "#91EAE4",
+    description: "First logo color",
+  },
+  logoColor2: {
+    type: "color",
+    default: "#86A8E7",
+    description: "Second logo color",
+  },
 } as const satisfies InteractivitySchema;
 
 export const Logo = Interactive.withSchema({
