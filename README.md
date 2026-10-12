@@ -104,8 +104,8 @@ hasta provocar una acción.
 ### Estilo visual de los vídeos creados
 
 - **Según el tema** (lo normal para ideas): el sistema lee la idea y elige un tema (cítrico, comida, salud,
-  deporte, tecnología, finanzas, belleza, viajes, naturaleza, mascotas, entretenimiento, ciencia, curiosidades,
-  editorial o general).
+  deporte, tecnología, finanzas, belleza, viajes, naturaleza, mascotas, entretenimiento, ciencia, curiosidades o
+  general).
   Cada tema trae su paleta, su forma de destacar palabras en los subtítulos, su movimiento y su fondo animado
   (el texto siempre en Inter). Cada escena lleva un icono animado relacionado con lo que se dice («limón» → 🍋, «ADN» → 🧬),
   las listas salen en tarjetas y la llamada a la acción en un botón que siempre cabe.
@@ -125,16 +125,11 @@ clave y `--claves-garamond` las pone en EB Garamond Bold Italic (solo si el pedi
 (`[modelo: formula | E=mc²]`). El tema «ciencia» trae cielo de estrellas, palabras que brillan, zoom y destellos.
 Recursos y licencias en [docs/licencias.md](docs/licencias.md).
 
-**Animaciones** ([estilo-animaciones.md](estilo-animaciones.md)): cada icono, tarjeta, cifra o bloque entra en la
-palabra en que la voz lo nombra. Además, según el tema o con `--animaciones mascara,camara,transforma,odometro`
-(o `todas` / `ninguna`): el texto sube desde detrás de una regla (máscara), la cámara sigue lo que pasa, el icono de
-cada escena crece hasta ser la pantalla y se recoge en el de la siguiente (transformación) y las cifras ruedan como un
-odómetro. El tema «editorial» (papel crema y naranja) las trae todas.
-
-```console
-npm run autopilot -- crear --guion guion.txt --tema editorial --efectos
-npm run autopilot -- crear --guion guion.txt --animaciones todas            # sobre el tema que toque
-```
+**Animaciones para dar dinamismo** ([estilo-animaciones.md](estilo-animaciones.md)): cada icono, tarjeta, cifra o
+bloque entra en la palabra en que la voz lo nombra, y las cifras ruedan como un odómetro. Las animaciones especiales
+(texto que sube desde detrás de una regla, cámara que sigue lo que pasa, el icono que se transforma en la escena
+siguiente, cortes secos) son recursos para dar ritmo, no un paquete: el sistema las reparte solo, como mucho una por
+escena, alternándolas y nunca la misma dos veces seguidas. El informe dice dónde puso cada una.
 
 ## Calidad y revisión
 

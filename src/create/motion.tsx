@@ -96,7 +96,7 @@ export const Background: React.FC<{ theme: Theme; icons: Record<string, string>;
   const { fps, width, height } = useVideoConfig();
   const t = frame / fps;
   const p = theme.palette;
-  // Liso: papel con viñeta suave, sin manchas ni iconos (estilo editorial)
+  // Liso: papel con viñeta suave, sin manchas ni iconos
   if (theme.background === "liso") return <AbsoluteFill style={{ background: `radial-gradient(ellipse 85% 70% at 50% 42%, ${p.bg} 0%, ${p.bg} 50%, ${p.bg2} 100%)` }} />;
   return (
     <AbsoluteFill style={{ background: `linear-gradient(180deg, ${p.bg} 0%, ${p.bg2} 100%)`, overflow: "hidden" }}>
@@ -376,6 +376,7 @@ export const headlineLayout = (
   size: number,
   ready: boolean,
   accent?: { isAccent: (k: number) => boolean; font: AccentFontKey; scale: number },
+  mask = theme.reveal === "mascara", // la escena puede pedir la máscara aunque el tema no la use
 ): HeadlineLayout | null => {
   if (!ready || !words.length) return null;
   const f = displayFont(theme);
@@ -412,7 +413,6 @@ export const headlineLayout = (
   });
   lines.push(cur);
   lineW.push(w);
-  const mask = theme.reveal === "mascara";
   return { lines, widths, lineW, gapX, gapY: size * (mask ? 0.16 : 0.1), lineH: size * (1.08 + (mask ? MASK.bottom : 0)), mask };
 };
 

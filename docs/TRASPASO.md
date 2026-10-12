@@ -54,11 +54,17 @@ Artefacto anclado en la barra lateral del usuario: https://claude.ai/artifact/Q3
 
 ## Registro (lo último arriba)
 
+- 2026-10-12: corrección del usuario tras la demo: las animaciones eran para aprenderlas, no para usarlas todas
+  juntas, sino para dar dinamismo. Ahora `planDynamics` las reparte por escena (`fx` de cada escena: máscara,
+  cámara que sigue, transformación o corte seco; como mucho una especial por escena, alternadas). Quitados el tema
+  «editorial» y `--animaciones`; los temas vuelven a no traerlas de serie. Anotado en `estilo-animaciones.md` →
+  Correcciones aprendidas.
+
 - 2026-10-12: el usuario pidió llevar a la base las animaciones de un TikTok de referencia (@samunoz.ia, «5
   instrucciones»; solo estudio local en `analisis4/`, ignorado por Git). Análisis en `estilo-animaciones.md`. Hecho:
   máscara de texto (`reveal`), cámara que sigue (`camera`), objeto que se transforma (`sceneTransition:
   "transforma"`), odómetro (`counter`), sincronía con la voz (`cues` por escena, siempre), escenas `[paso]`,
-  `[prompt]` y `[cadena]`, tema «editorial» y `--animaciones`. Código: `src/create/animaciones.tsx`,
+  `[prompt]` y `[cadena]`, tema «editorial» y `--animaciones` (ambos quitados después). Código: `src/create/animaciones.tsx`,
   `src/create/timeline.ts` (tiempos compartidos con los efectos de sonido). Demo sin voz revisada fotograma a
   fotograma. Pendiente: aro/visor que sigue la cara en la edición (motor A) si el usuario lo quiere.
 

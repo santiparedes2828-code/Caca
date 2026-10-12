@@ -19,10 +19,11 @@ Las 7 etapas funcionan en versión básica (2026-10-12). El usuario pidió prior
 
 ## Por pulir
 
-- Creación con tema: la elección es por palabras clave (15 temas). Con Claude configurado podría elegir mejor
+- Creación con tema: la elección es por palabras clave (14 temas). Con Claude configurado podría elegir mejor
   (tema, iconos) entre las mismas opciones validadas. Faltan ilustraciones y B-roll temático además de iconos,
   más tipos de escena (gráficos de barras, comparativas, antes/después) y que los clientes guarden su tema propio.
-- Animaciones de `estilo-animaciones.md`: ya en la base para los vídeos creados. Faltan, de la referencia, la onda
+- Animaciones de `estilo-animaciones.md`: en la base como recursos de dinamismo (las reparte `planDynamics`, una
+  especial por escena como mucho). El reparto es por reglas fijas; afinarlo con lo que el usuario apruebe. Faltan, de la referencia, la onda
   de la voz con cabezal (sincronía visible), las anotaciones con flecha dibujada y el cierre «Guarda» con chips de
   repaso; y en la edición (motor A), el aro y el visor «REC» que siguen la cara (el encuadre ya la sigue).
   La cámara que sigue usa un cálculo aproximado de la posición de cada bloque: con escenas muy cargadas puede

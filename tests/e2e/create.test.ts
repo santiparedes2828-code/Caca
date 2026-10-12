@@ -77,25 +77,32 @@ test("ciencia con modelos animados, palabras que brillan, efectos de sonido y cl
   assert.match(await fs.readFile(path.join(dir, "output", "informe.md"), "utf8"), /EB Garamond Bold Italic/);
 });
 
-test("animaciones de estilo-animaciones.md: paso, tarjeta que escribe, cadena y odómetro, sincronizados con el texto", async () => {
-  const cfg = cfgFor("animaciones");
-  const script = path.join(tmp, "animaciones.txt");
+test("dinamismo: animaciones repartidas por escenas (nunca todas juntas), sincronizadas con el texto", async () => {
+  const cfg = cfgFor("dinamismo");
+  const script = path.join(tmp, "dinamismo.txt");
   await fs.writeFile(
     script,
-    "[paso: Una idea por escena]\nPrimero, una sola idea por escena.\n\n[prompt: Revela el texto desde una *máscara*. | Claude]\nPídeselo así.\n\n" +
-      "[cadena: Guion | Voz | Vídeo]\nEl guion empuja a la voz y la voz al vídeo.\n\n[cifra: vistas | 1.000]\nComo estas mil vistas.\n",
+    "Hoy vamos a hacer *pizza* en casa.\n\nPrimero preparamos una masa sencilla.\n\n[cadena: Masa | Horno | Pizza]\nLa masa va al horno y sale la pizza.\n\n" +
+      "[cifra: minutos | 10]\nUnos diez minutos de horno.\n\nY queda lista para servir.\n\n[cta: PIZZA]\nComenta pizza si la quieres.\n",
   );
-  const job = await submitCreation(cfg, { clientId: "hookhouse", script, preset: "editorial", silent: true, sfx: true });
+  const job = await submitCreation(cfg, { clientId: "hookhouse", script, brief: "Receta de pizza casera", silent: true, sfx: true });
   assert.ok(["completado", "requiere_revision"].includes(job.status), JSON.stringify(job.errors));
   const dir = jobDir(cfg, "hookhouse", job.id);
   const props = JSON.parse(await fs.readFile(path.join(dir, "work", "create-props.json"), "utf8"));
-  assert.equal(props.theme.id, "editorial");
-  assert.deepEqual(props.scenes.map((s: { component: string }) => s.component), ["paso", "prompt", "cadena", "cifra"]);
+  type Fx = { reveal: string | null; camera: string | null; sceneTransition: string | null };
+  const fx: Fx[] = props.scenes.map((s: { fx: Fx }) => s.fx);
+  // El tema no trae las animaciones de serie; cada escena lleva como mucho una especial
+  assert.deepEqual([props.theme.reveal, props.theme.camera], ["salto", "empuje"]);
+  assert.ok(fx.every((f) => [f.reveal === "mascara", f.camera === "sigue", f.sceneTransition === "transforma"].filter(Boolean).length <= 1), JSON.stringify(fx));
+  assert.equal(fx[0].reveal, "mascara");
+  assert.ok(fx.some((f) => f.camera === "sigue") && fx.some((f) => f.sceneTransition === "transforma"));
   // Sincronía con la voz: los bloques y la cifra apuntan a las palabras que los nombran
-  assert.deepEqual(props.scenes[2].cues.items.map((i: number) => props.captions[i].text.replace(/[^\p{L}]/gu, "")), ["guion", "voz", "vídeo"]);
-  assert.equal(props.captions[props.scenes[3].cues.value].text, "mil");
+  const cadena = props.scenes.find((s: { component: string }) => s.component === "cadena");
+  assert.deepEqual(cadena.cues.items.map((i: number) => props.captions[i].text.replace(/[^\p{L}]/gu, "").toLowerCase()), ["masa", "horno", "pizza"]);
+  const cifra = props.scenes.find((s: { component: string }) => s.component === "cifra");
+  assert.equal(props.captions[cifra.cues.value].text, "diez");
   assert.ok(props.sfx.filter((e: { name: string }) => e.name === "hit").length >= 3, "golpes de la cadena y de la cifra");
   const pr = await probe(path.join(dir, job.outputs.find((o) => o.kind === "video")!.path));
   assert.ok(pr.audio, "los efectos de sonido van en la pista de audio");
-  assert.match(await fs.readFile(path.join(dir, "output", "informe.md"), "utf8"), /animaciones: máscara, cámara que sigue, transformación, odómetro/);
+  assert.match(await fs.readFile(path.join(dir, "output", "informe.md"), "utf8"), /animaciones: máscara en la escena 1/);
 });

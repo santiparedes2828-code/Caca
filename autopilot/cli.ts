@@ -4,7 +4,6 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 import { listClients, loadProfile } from "./clients/profile";
 import { submitCreation } from "./create/run";
-import { parseAnimaciones } from "./create/theme";
 import { EXT } from "./ingest/ingest";
 import { costSummary, enqueue, pauseQueue, queueStatus, resumeQueue, work } from "./queue/queue";
 import { createUser, loadUsers } from "./web/auth";
@@ -33,11 +32,10 @@ Uso: npm run autopilot -- <comando> [opciones]
         --sin-voz: el texto aparece a ritmo de lectura y el sonido se añade en TikTok o Reels.
         --estilo auto|tema|marca: tema = colores, tipografía, iconos animados y subtítulos según el
         contenido; marca = identidad del cliente (Hook House: verde y serif). auto = marca solo si el
-        contenido nombra a la marca. --tema citrico|comida|salud|deporte|editorial|tecnologia|finanzas|
-        belleza|viajes|naturaleza|mascotas|entretenimiento|ciencia|curiosidades|general fuerza un tema.
-        --animaciones mascara,camara,transforma,odometro | todas | ninguna: texto que sube desde detrás
-        de una regla, cámara que sigue lo importante, el icono que se transforma en la escena siguiente
-        y cifras que ruedan (ver estilo-animaciones.md). Sin la opción, las que traiga el tema.
+        contenido nombra a la marca. --tema citrico|comida|salud|deporte|tecnologia|finanzas|belleza|
+        viajes|naturaleza|mascotas|entretenimiento|ciencia|curiosidades|general fuerza un tema.
+        Las animaciones (máscara, cámara que sigue, transformación, cortes) se reparten solas por escenas
+        para dar ritmo, sin juntarlas (ver estilo-animaciones.md).
         Con --guion y --brief a la vez, el guion se usa tal cual y el brief (la idea) elige el tema.
         --efectos: efectos de sonido propios (whoosh, pop, brillo…) en los vídeos con tema.
         --claves-grandes: palabras clave un 25 % más grandes. --claves-garamond: excepción a la regla de
@@ -213,7 +211,6 @@ const main = async () => {
       efectos: { type: "boolean" },
       "claves-garamond": { type: "boolean" },
       "claves-grandes": { type: "boolean" },
-      animaciones: { type: "string" },
     },
   });
   const cfg = loadConfig();
@@ -375,7 +372,6 @@ const main = async () => {
         sfx: !!values.efectos,
         accentFont: values["claves-garamond"] ? "garamond" : "inter",
         accentScale: values["claves-grandes"] ? 1.25 : 1,
-        animations: values.animaciones ? parseAnimaciones(values.animaciones) : null,
       }, { run: !values.encolar });
       if (values.encolar) await enqueue(cfg, job);
       printResult(cfg, job);

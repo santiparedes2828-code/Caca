@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import type { z } from "zod";
-import { THEME_FONTS, themeSchema, type Cues, type SFX_NAMES, type Theme } from "../../src/create/theme";
+import { type Cues, type SceneFx, type SFX_NAMES, THEME_FONTS, themeSchema, type Theme } from "../../src/create/theme";
 import { chainTimeline, cueFrame, iconFrame, itemFrames, odometerDuration, sceneStartFrame, STEP, typingSchedule, valueFrame } from "../../src/create/timeline";
 import { ROOT } from "../config";
 import motivos from "./data/motivos-es.json";
@@ -47,8 +47,6 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "subrayado",
     motion: "suave",
     background: "degradado",
-    reveal: "mascara",
-    sceneTransition: "transforma",
   }),
   preset(["gimnasio", "gym", "entrenamiento", "entrenar", "musculo", "deporte", "futbol", "correr", "running", "fitness", "pesas", "rutina", "cardio"], ["flexed-biceps", "fire", "person-running"], {
     id: "deporte",
@@ -58,7 +56,6 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "caja",
     motion: "energico",
     background: "patron",
-    camera: "sigue",
   }),
   preset(["tecnologia", "inteligencia artificial", "ia", "app", "aplicacion", "software", "programacion", "codigo", "celular", "movil", "internet", "computadora", "ordenador", "robot", "chatgpt"], ["robot", "laptop", "high-voltage"], {
     id: "tecnologia",
@@ -68,8 +65,6 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "color",
     motion: "energico",
     background: "patron",
-    reveal: "mascara",
-    camera: "sigue",
   }),
   preset(["dinero", "ahorro", "ahorrar", "inversion", "invertir", "finanzas", "negocio", "ventas", "vender", "emprender", "emprendimiento", "empresa", "marketing", "cliente", "precio", "sueldo"], ["money-bag", "chart-increasing", "coin"], {
     id: "finanzas",
@@ -79,8 +74,6 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "subrayado",
     motion: "suave",
     background: "degradado",
-    reveal: "mascara",
-    sceneTransition: "transforma",
   }),
   preset(["belleza", "maquillaje", "piel", "skincare", "moda", "ropa", "cabello", "pelo", "unas", "perfume", "outfit"], ["lipstick", "sparkles", "dress"], {
     id: "belleza",
@@ -90,8 +83,6 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "color",
     motion: "suave",
     background: "burbujas",
-    reveal: "mascara",
-    sceneTransition: "transforma",
   }),
   preset(["viaje", "viajar", "playa", "vacaciones", "hotel", "avion", "vuelo", "montana", "turismo", "destino", "ciudad", "pais"], ["airplane", "beach-with-umbrella", "world-map"], {
     id: "viajes",
@@ -101,7 +92,6 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "caja",
     motion: "rebote",
     background: "burbujas",
-    camera: "sigue",
   }),
   preset(["planta", "plantas", "jardin", "bosque", "arbol", "naturaleza", "reciclaje", "reciclar", "ecologia", "clima", "medio ambiente", "flor", "semilla"], ["seedling", "deciduous-tree", "herb"], {
     id: "naturaleza",
@@ -111,8 +101,6 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "subrayado",
     motion: "suave",
     background: "patron",
-    reveal: "mascara",
-    sceneTransition: "transforma",
   }),
   preset(["perro", "gato", "mascota", "cachorro", "gatito", "veterinario", "animal", "animales"], ["dog-face", "cat-face", "paw-prints"], {
     id: "mascotas",
@@ -131,7 +119,6 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "color",
     motion: "energico",
     background: "burbujas",
-    camera: "sigue",
   }),
   preset(
     ["einstein", "newton", "tesla", "curie", "darwin", "hawking", "fisica", "quimica", "relatividad", "cientifico", "atomo", "universo", "espacio", "galaxia", "planeta", "estrella", "gravedad", "cuantica", "nasa", "astronauta", "nobel", "luz", "energia"],
@@ -155,29 +142,7 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "caja",
     motion: "energico",
     background: "patron",
-    reveal: "mascara",
-    camera: "sigue",
   }),
-  // Editorial (estilo-animaciones.md): tutoriales de edición, animación y diseño. Va el último: en un empate gana
-  // el tema del contenido
-  preset(
-    ["animacion", "animaciones", "edicion", "editar", "editor", "diseno", "disenador", "tutorial", "consejo", "truco", "instruccion", "prompt", "claude", "creador"],
-    ["artist-palette", "clapper-board", "sparkles"],
-    {
-      id: "editorial",
-      name: "Editorial",
-      // Papel crema, tinta casi negra, naranja y verde salvia (estilo-animaciones.md)
-      palette: { bg: "#EFE8DC", bg2: "#E2D8C7", ink: "#1A1712", accent: "#E58A3A", onAccent: "#1A1712", accent2: "#7F9B7A", card: "#F9F5EC" },
-      font: "inter",
-      captionStyle: "caja",
-      motion: "suave",
-      background: "liso",
-      sceneTransition: "transforma",
-      reveal: "mascara",
-      camera: "sigue",
-      counter: "odometro",
-    },
-  ),
 ];
 
 export const GENERAL_PRESET: Preset = preset([], ["sparkles", "light-bulb", "fire"], {
@@ -188,9 +153,6 @@ export const GENERAL_PRESET: Preset = preset([], ["sparkles", "light-bulb", "fir
   captionStyle: "caja",
   motion: "energico",
   background: "burbujas",
-  reveal: "mascara",
-  camera: "sigue",
-  sceneTransition: "transforma",
 });
 
 export const presetById = (id: string) => [...THEME_PRESETS, GENERAL_PRESET].find((p) => p.theme.id === id) ?? null;
@@ -428,35 +390,74 @@ export const planTheme = (opts: { topic: string; scenes: SceneIn[]; presetId?: s
   return { theme: preset.theme, bgIcons, scenes, pointerIcon, icons, credits: [`Iconos: ${ICON_CREDIT}`, `Fuente: ${font} · SIL Open Font License 1.1 (public/fonts/licencias)`] };
 };
 
-// ——— Animaciones (estilo-animaciones.md) ———
-// Se pueden pedir para cualquier tema: --animaciones mascara,camara,transforma,odometro | todas | ninguna
-export const ANIMACIONES = ["mascara", "camara", "transforma", "odometro"] as const;
-export type Animacion = (typeof ANIMACIONES)[number];
+// ——— Dinamismo ———
+// Las animaciones de estilo-animaciones.md son recursos para dar ritmo, no un paquete: el 12-10-2026 el usuario pidió
+// no usarlas todas juntas, sino para dar dinamismo. Reparto:
+// - En las escenas de solo texto (las que más se parecen a una diapositiva), una de cada dos lleva una animación
+//   especial, alternando la máscara y la cámara que sigue; nunca dos en la misma escena ni la misma seguida.
+//   La primera escena (el gancho) abre con la máscara.
+// - Las escenas con gráfico propio (lista, cifra, modelo, cadena, paso, tarjeta, llamada a la acción) ya se mueven:
+//   no llevan más.
+// - Entre escenas, la transición del tema salvo una transformación (dos en vídeos largos) donde la escena que sale
+//   tiene icono: hacia la llamada a la acción o cerca de la mitad. La escena que llega así no lleva otra especial.
+// - En los temas enérgicos, algún corte seco entre dos escenas cortas, nunca dos seguidos.
 
-export const parseAnimaciones = (value: string): Animacion[] | "ninguna" => {
-  const list = value
-    .split(",")
-    .map((x) => norm(x))
-    .filter(Boolean);
-  if (list.includes("ninguna")) return "ninguna";
-  if (list.includes("todas")) return [...ANIMACIONES];
-  const bad = list.filter((x) => !(ANIMACIONES as readonly string[]).includes(x));
-  if (bad.length) throw new Error(`Animación desconocida: ${bad.join(", ")} (válidas: ${ANIMACIONES.join(", ")}, todas, ninguna)`);
-  return list as Animacion[];
+const OWN_MOTION = new Set(["lista", "cifra", "modelo", "cadena", "paso", "prompt", "cta"]);
+const WITH_ICON = new Set(["titular", "lista", "cifra", "cta"]);
+type DynScene = { component: string; from: number; to: number; icon: string | null };
+
+export const planDynamics = (scenes: DynScene[], caps: { startMs: number; endMs: number }[], theme: Theme): SceneFx[] => {
+  const n = scenes.length;
+  const fx: SceneFx[] = scenes.map(() => ({ reveal: null, camera: null, sceneTransition: null }));
+  // 1) Transformaciones
+  const morphs: number[] = [];
+  const want = n >= 8 ? 2 : n >= 3 ? 1 : 0;
+  const cands = Array.from({ length: Math.max(0, n - 1) }, (_, i) => i + 1).filter((k) => WITH_ICON.has(scenes[k - 1].component) && !!scenes[k - 1].icon);
+  const score = (k: number) => (scenes[k].component === "cta" ? 100 : 0) - Math.abs(k - n / 2);
+  for (const k of [...cands].sort((x, y) => score(y) - score(x) || x - y)) {
+    if (morphs.length < want && morphs.every((m) => Math.abs(m - k) > 1)) morphs.push(k);
+  }
+  for (const k of morphs) fx[k].sceneTransition = "transforma";
+  // 2) Texto y cámara en las escenas de solo texto, una de cada dos y alternando
+  let plain = 0;
+  let next: "mascara" | "sigue" = "mascara";
+  scenes.forEach((s, k) => {
+    if (OWN_MOTION.has(s.component)) return;
+    const turn = plain++ % 2 === 0;
+    if (!turn || fx[k].sceneTransition === "transforma") return;
+    // La cámara que sigue luce con texto que recorrer (5 palabras o más); si no, máscara
+    const pick = next === "sigue" && s.to - s.from + 1 < 5 ? "mascara" : next;
+    if (pick === "mascara" && theme.reveal !== "mascara") fx[k].reveal = "mascara";
+    if (pick === "sigue" && theme.camera !== "sigue") fx[k].camera = "sigue";
+    next = pick === "mascara" ? "sigue" : "mascara";
+  });
+  // 3) Cortes secos entre escenas cortas (< 2 s) en los temas enérgicos
+  if (theme.motion === "energico") {
+    const dur = (s: DynScene) => (caps[s.to].endMs - caps[s.from].startMs) / 1000;
+    let prev = false;
+    for (let k = 1; k < n; k++) {
+      const cut: boolean = !prev && !fx[k].sceneTransition && dur(scenes[k - 1]) < 2 && dur(scenes[k]) < 2;
+      if (cut) fx[k].sceneTransition = "corte";
+      prev = cut;
+    }
+  }
+  return fx;
 };
 
-export const applyAnimations = (theme: Theme, a: Animacion[] | "ninguna" | null | undefined): Theme => {
-  if (!a) return theme;
-  if (a === "ninguna") {
-    return { ...theme, reveal: "salto", camera: "empuje", counter: "cuenta", sceneTransition: theme.sceneTransition === "transforma" ? "barrido" : theme.sceneTransition };
-  }
-  return themeSchema.parse({
-    ...theme,
-    ...(a.includes("mascara") ? { reveal: "mascara" } : {}),
-    ...(a.includes("camara") ? { camera: "sigue" } : {}),
-    ...(a.includes("transforma") ? { sceneTransition: "transforma" } : {}),
-    ...(a.includes("odometro") ? { counter: "odometro" } : {}),
-  });
+// Resumen para el informe: dónde va cada animación especial (escenas numeradas desde 1)
+export const describeDynamics = (fx: SceneFx[]) => {
+  const at = (pred: (f: SceneFx) => boolean) =>
+    fx
+      .map((f, i) => (pred(f) ? i + 1 : 0))
+      .filter(Boolean)
+      .join(", ");
+  const parts = [
+    [at((f) => f.reveal === "mascara"), "máscara en la escena"],
+    [at((f) => f.camera === "sigue"), "cámara que sigue en la escena"],
+    [at((f) => f.sceneTransition === "transforma"), "transformación al llegar a la escena"],
+    [at((f) => f.sceneTransition === "corte"), "corte seco al llegar a la escena"],
+  ].filter(([where]) => where);
+  return parts.map(([where, what]) => `${what} ${where}`).join(" · ");
 };
 
 // ——— Sincronía con la voz ———
@@ -519,17 +520,30 @@ export const planCues = (caps: { text: string }[], scenes: CueScene[], icons: (s
 // ——— Efectos de sonido ———
 // Propios del proyecto (public/sfx, sintetizados con ffmpeg). Suaves: acompañan sin tapar la voz. Usan los mismos
 // tiempos que la composición (src/create/timeline.ts): cada golpe suena cuando se ve.
-type SceneTiming = { from: number; to: number; accent: [number, number] | null; component: string; items: string[]; value: string; body: string; icon: string | null; cues: Cues };
+type SceneTiming = {
+  from: number;
+  to: number;
+  accent: [number, number] | null;
+  component: string;
+  items: string[];
+  value: string;
+  body: string;
+  icon: string | null;
+  cues: Cues;
+  fx?: SceneFx;
+};
 export const planSfx = (scenes: SceneTiming[], caps: { startMs: number }[], fps: number, theme: Theme, endFrame: number) => {
   const ev: { name: (typeof SFX_NAMES)[number]; frame: number; volume: number }[] = [];
   const add = (name: (typeof SFX_NAMES)[number], frame: number, volume: number) => ev.push({ name, frame: Math.max(0, Math.round(frame)), volume });
   const starts = scenes.map((s) => sceneStartFrame(caps[s.from].startMs, fps));
-  const morph = theme.sceneTransition === "transforma";
   scenes.forEach((s, k) => {
     const start = starts[k];
     const end = k + 1 < scenes.length ? starts[k + 1] : endFrame;
     const cue = (i: number | null | undefined) => cueFrame(caps, i, fps);
-    if (k > 0 && (morph || theme.motion !== "suave")) add("whoosh", start - (morph ? 9 : 6), 0.3);
+    // Transición con la que llega la escena: whoosh salvo en el corte seco (y en el barrido de los temas suaves,
+    // que no lo dibujan)
+    const t = s.fx?.sceneTransition ?? theme.sceneTransition;
+    if (k > 0 && (t === "transforma" || t === "destello" || (t === "barrido" && theme.motion !== "suave"))) add("whoosh", start - (t === "transforma" ? 9 : 6), 0.3);
     const itemCues = s.items.map((_, i) => cue(s.cues.items[i]));
     if (s.component === "cifra") {
       const at = valueFrame(start, cue(s.cues.value));

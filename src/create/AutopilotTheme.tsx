@@ -44,26 +44,32 @@ const GAP = 46;
 // La escena tiene icono grande (el objeto que se transforma entre escenas)
 export const hasSticker = (s: ThemedScene) => STICKER[s.component] > 0 && !!s.icon;
 
+// Cómo se une una escena con la anterior: transición normal, transformación o corte seco
+type Join = "normal" | "transforma" | "corte";
+
 const SceneView: React.FC<{
   p: ThemedProps;
   s: ThemedScene;
   start: number;
   end: number;
   ready: boolean;
-  morphIn: boolean;
-  morphOut: boolean;
+  joinIn: Join;
+  joinOut: Join;
   step: { n: number; total: number };
-}> = ({ p, s, start, end, ready, morphIn, morphOut, step }) => {
+}> = ({ p, s, start, end, ready, joinIn, joinOut, step }) => {
   const frame = useCurrentFrame();
   const { fps, height } = useVideoConfig();
   const theme = p.theme;
+  const morphIn = joinIn === "transforma";
+  const morphOut = joinOut === "transforma";
   const enter = spring({ frame: frame - start, fps, config: SPRINGS[theme.motion] });
   const exit = interpolate(frame, [end - 6, end], [1, 0], clamp);
   const words = p.captions.slice(s.from, s.to + 1);
   const isAccent = (k: number) => !!s.accent && s.from + k >= s.accent[0] && s.from + k <= s.accent[1];
   const accentOpts = { isAccent, font: p.accentFont, scale: p.accentScale };
   const size = Math.round(headlineSize(theme, words, ready, accentOpts) * HEADLINE_SCALE[s.component]);
-  const layout = headlineLayout(theme, words, size, ready, accentOpts);
+  // Dinamismo: la escena puede variar la entrada del texto y la cámara respecto al tema
+  const layout = headlineLayout(theme, words, size, ready, accentOpts, (s.fx.reveal ?? theme.reveal) === "mascara");
 
   // Sincronía con la voz: cada pieza entra en la palabra que la nombra
   const cue = (i: number | null | undefined) => cueFrame(p.captions, i, fps);
@@ -88,7 +94,7 @@ const SceneView: React.FC<{
   const bottomTop = y0 + (top ? top + GAP : 0) + head + GAP;
 
   // Cámara: acercamiento lento durante la escena; «sigue» además acompaña lo que está pasando
-  const sigue = theme.camera === "sigue";
+  const sigue = (s.fx.camera ?? theme.camera) === "sigue";
   const keys: CameraKey[] = [];
   if (sigue) {
     // Se mueve una parte de la distancia y con tope: lo importante se acerca al centro sin salirse del margen seguro
@@ -111,10 +117,10 @@ const SceneView: React.FC<{
   const shake = sigue && chain ? impactShake(frame, chain.hits.slice(1)) : 0;
   const push = interpolate(frame, [start, end], [1, 1.06], clamp);
   const punch = theme.motion === "energico" ? interpolate(spring({ frame: frame - start, fps, config: { damping: 15, stiffness: 170 } }), [0, 1], [1.18, 1]) : 1;
-  // Con «transforma» la cubierta hace la entrada y la salida: la escena no se desvanece
-  const fadeIn = morphIn ? 1 : Math.min(1, enter * 1.3);
-  const enterY = morphIn ? 0 : (1 - enter) * 70;
-  const exitK = morphOut ? 1 : exit;
+  // Con «transforma» la cubierta hace la entrada y la salida; con «corte» la escena aparece y se va de golpe
+  const fadeIn = joinIn !== "normal" ? 1 : Math.min(1, enter * 1.3);
+  const enterY = joinIn !== "normal" ? 0 : (1 - enter) * 70;
+  const exitK = joinOut !== "normal" ? 1 : exit;
   return (
     <AbsoluteFill
       style={{
@@ -122,7 +128,7 @@ const SceneView: React.FC<{
         padding: `${SAFE.top}px ${SAFE.right}px ${SAFE.bottom}px ${SAFE.left}px`,
         justifyContent: "center",
         gap: GAP,
-        opacity: fadeIn * (theme.motion === "suave" && !morphOut ? exit : 1),
+        opacity: fadeIn * (theme.motion === "suave" && joinOut === "normal" ? exit : 1),
         transform: `translate(${cam.x + shake}px, ${cam.y + enterY}px) scale(${(0.97 + 0.03 * exitK) * push * punch})`,
       }}
     >
@@ -166,8 +172,10 @@ export const AutopilotTheme: React.FC<ThemedProps> = (p) => {
   const { fps } = useVideoConfig();
   const ready = useThemeFonts(p.theme.font, p.accentFont);
   const starts = p.scenes.map((s) => sceneStartFrame(p.captions[s.from].startMs, fps));
-  const morph = p.theme.sceneTransition === "transforma";
   const last = p.scenes.length - 1;
+  // Transición con la que llega cada escena: la suya si el planificador le dio una, si no la del tema
+  const transition = (k: number) => p.scenes[k].fx.sceneTransition ?? p.theme.sceneTransition;
+  const join = (k: number): Join => (k < 1 || k > last ? "normal" : transition(k) === "transforma" ? "transforma" : transition(k) === "corte" ? "corte" : "normal");
   // Pasos numerados solos: «PASO 2 DE 5»
   const totalSteps = p.scenes.filter((s) => s.component === "paso").length;
   return (
@@ -181,20 +189,21 @@ export const AutopilotTheme: React.FC<ThemedProps> = (p) => {
         return (
           <Sequence key={k} name={`Escena ${k + 1} · ${s.component}`} from={from} durationInFrames={Math.max(1, to - from)} premountFor={fps}>
             <Sequence from={-from} layout="none">
-              <SceneView p={p} s={s} start={from} end={to} ready={ready} morphIn={morph && k > 0} morphOut={morph && k < last} step={step} />
+              <SceneView p={p} s={s} start={from} end={to} ready={ready} joinIn={join(k)} joinOut={join(k + 1)} step={step} />
             </Sequence>
           </Sequence>
         );
       })}
-      {starts.slice(1).map((at, k) =>
-        morph ? (
-          <MorphCover key={k} theme={p.theme} at={at} grow={!hasSticker(p.scenes[k])} shrink={!hasSticker(p.scenes[k + 1])} />
-        ) : p.theme.sceneTransition === "destello" ? (
-          <Flash key={k} theme={p.theme} at={at} />
-        ) : (
-          <Wipe key={k} theme={p.theme} at={at} />
-        ),
-      )}
+      {starts.slice(1).map((at, i) => {
+        const t = transition(i + 1);
+        return t === "transforma" ? (
+          <MorphCover key={i} theme={p.theme} at={at} grow={!hasSticker(p.scenes[i])} shrink={!hasSticker(p.scenes[i + 1])} />
+        ) : t === "destello" ? (
+          <Flash key={i} theme={p.theme} at={at} />
+        ) : t === "barrido" ? (
+          <Wipe key={i} theme={p.theme} at={at} />
+        ) : null;
+      })}
       {p.sfx.map((e, i) => (
         <Sequence key={`sfx${i}`} name={`Efecto · ${e.name}`} from={e.frame} durationInFrames={Math.round(fps * 1.5)} layout="none">
           <Audio src={staticFile(`sfx/${e.name}.wav`)} volume={e.volume} />

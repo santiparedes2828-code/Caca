@@ -16,6 +16,9 @@ export const FONT_KEYS = Object.keys(THEME_FONTS) as [ThemeFont, ...ThemeFont[]]
 export const LABEL_FONT = { family: "Inter", weight: 700, file: "inter-latin-700-normal.woff2" } as const;
 
 const hex = z.string().regex(/^#[0-9a-fA-F]{6}$/, "color #rrggbb");
+export const TRANSITIONS = ["barrido", "destello", "transforma", "corte"] as const;
+export const REVEALS = ["salto", "mascara"] as const;
+export const CAMERAS = ["empuje", "sigue"] as const;
 export const iconName = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
 
 export const themeSchema = z.object({
@@ -34,13 +37,14 @@ export const themeSchema = z.object({
   captionStyle: z.enum(["caja", "color", "subrayado", "brillo"]), // cómo se destacan las palabras (brillo = resplandor)
   motion: z.enum(["suave", "rebote", "energico"]),
   background: z.enum(["burbujas", "patron", "degradado", "estrellas", "liso"]),
-  // Entre escenas. barrido/destello no se usan con movimiento suave; transforma: el icono de la escena crece hasta
-  // ser la pantalla y se recoge en el de la siguiente (estilo-animaciones.md)
-  sceneTransition: z.enum(["barrido", "destello", "transforma"]).default("barrido"),
+  // Lo normal en el tema; cada escena puede variarlo (fx) para dar ritmo. Transiciones: barrido/destello (no se
+  // usan con movimiento suave), transforma (el icono crece hasta ser la pantalla y se recoge en el de la siguiente)
+  // o corte (seco)
+  sceneTransition: z.enum(TRANSITIONS).default("barrido"),
   // Cómo entran las palabras del titular: salto (suben con muelle) o mascara (suben desde detrás de una regla)
-  reveal: z.enum(["salto", "mascara"]).default("salto"),
+  reveal: z.enum(REVEALS).default("salto"),
   // Cámara: empuje (acercamiento lento) o sigue (acompaña la palabra que suena, el bloque empujado, la tarjeta nueva)
-  camera: z.enum(["empuje", "sigue"]).default("empuje"),
+  camera: z.enum(CAMERAS).default("empuje"),
   // Cifras: odometro (los dígitos ruedan dentro de una máscara) o cuenta (de 0 al valor)
   counter: z.enum(["cuenta", "odometro"]).default("odometro"),
 });
@@ -55,10 +59,20 @@ export const cuesSchema = z.object({
 });
 export type Cues = z.infer<typeof cuesSchema>;
 
+// Dinamismo: lo que varía esta escena respecto al tema (null = lo del tema). Las animaciones son recursos para dar
+// ritmo, no un paquete: el planificador (planDynamics) pone como mucho una especial por escena y las alterna
+export const sceneFxSchema = z.object({
+  reveal: z.enum(REVEALS).nullable(),
+  camera: z.enum(CAMERAS).nullable(),
+  sceneTransition: z.enum(TRANSITIONS).nullable(), // cómo llega esta escena desde la anterior
+});
+export type SceneFx = z.infer<typeof sceneFxSchema>;
+
 export const themedSceneSchema = sceneSchema.extend({
   icon: iconName.nullable().default(null), // icono grande de la escena
   itemIcons: z.array(iconName).max(4).default([]), // iconos de los elementos de una lista o una cadena
   cues: cuesSchema.default({ icon: null, value: null, items: [] }),
+  fx: sceneFxSchema.default({ reveal: null, camera: null, sceneTransition: null }),
 });
 export type ThemedScene = z.infer<typeof themedSceneSchema>;
 

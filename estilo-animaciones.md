@@ -10,8 +10,9 @@ Fuente: `analisis4/referencia.mp4` (70,2 s · 576x1024 · 30 fps · AAC estéreo
 Análisis: 140 fotogramas a 2 fps, cortes `scene > 0.25`, envolvente de audio y tiras densas a 15–30 fps de cada animación
 (`analisis4/medidas/`). Medidas convertidas a **1080x1920** (×1,875). Lo no medible va marcado con **[SUPOSICIÓN]**.
 
-**Objetivo:** no copiar el vídeo, sino llevar a la base (`AutopilotTheme`) las cinco técnicas que enseña para que los
-motion graphics «no parezcan PowerPoint», más las piezas que las acompañan.
+**Objetivo:** no copiar el vídeo, sino aprender las cinco técnicas que enseña para que los motion graphics «no
+parezcan PowerPoint» y tenerlas en la base (`AutopilotTheme`) como recursos para dar dinamismo, **no todas juntas**
+(ver Correcciones aprendidas).
 
 ## 1. Estructura y ritmo de cortes
 
@@ -102,19 +103,29 @@ motion graphics «no parezcan PowerPoint», más las piezas que las acompañan.
 
 ## 9. En la base (cómo usarlo)
 
-| Técnica | En el código | Cómo se pide |
+| Técnica | En el código | Cuándo se usa |
 |---|---|---|
-| Máscara de texto | `reveal: "mascara"` del tema (`ThemedHeadline`) | `--animaciones mascara` o tema `editorial` |
-| Movimientos encadenados | escena `[cadena: A \| B \| C]` (`ChainRow`) | en el guion |
-| Cámara que sigue | `camera: "sigue"` (la cámara acompaña la palabra que suena, el bloque que empujan o la tarjeta que entra) | `--animaciones camara` |
-| Objeto que se transforma | `sceneTransition: "transforma"` (el icono de la escena crece hasta ser la pantalla y se recoge en el de la siguiente) | `--animaciones transforma` |
+| Máscara de texto | `fx.reveal: "mascara"` de la escena (`ThemedHeadline`) | la reparte `planDynamics`: el gancho y, alternando con la cámara, una de cada dos escenas de solo texto |
+| Movimientos encadenados | escena `[cadena: A \| B \| C]` (`ChainRow`) | si el guion la pide |
+| Cámara que sigue | `fx.camera: "sigue"` (acompaña la palabra que suena, el bloque que empujan o la tarjeta que entra) | la reparte `planDynamics`, alternando con la máscara (escenas de 5 palabras o más) |
+| Objeto que se transforma | `fx.sceneTransition: "transforma"` (el icono crece hasta ser la pantalla y se recoge en el de la siguiente) | una transición por vídeo (dos si es largo): hacia la llamada a la acción o a mitad |
+| Corte seco | `fx.sceneTransition: "corte"` | temas enérgicos, entre dos escenas cortas, nunca dos seguidos |
 | Sincronía con la voz | iconos, tarjetas de lista, cifras, CTA y empujones entran en la palabra en que se nombran (`cues`) | siempre |
-| Odómetro | `counter: "odometro"` (`Odometer`) | `--animaciones odometro` |
-| Número + etiqueta | escena `[paso: Título]` (numeración automática «PASO 1 DE 5») | en el guion |
-| Tarjeta que escribe | escena `[prompt: texto con *clave* \| Nombre]` | en el guion |
+| Odómetro | `counter: "odometro"` (`OdometerNumber`) | las cifras, siempre |
+| Número + etiqueta | escena `[paso: Título]` (numeración automática «PASO 1 DE 5») | si el guion la pide |
+| Tarjeta que escribe | escena `[prompt: texto con *clave* \| Nombre]` | si el guion la pide |
+
+~~Las técnicas se piden para todo el vídeo con `--animaciones mascara,camara,transforma,odometro | todas` o con el tema
+`editorial`, que las trae todas.~~ → Anulado: ver Correcciones aprendidas, 1.
 
 ---
 
 ## Correcciones aprendidas
 
 _(Aquí se añaden las correcciones que el usuario apruebe. Prevalecen sobre todo lo anterior.)_
+
+1. **12-10-2026 · demo de animaciones.** «Era solo para que aprendieras nuevas animaciones, no las uses todas juntas,
+   úsalas para dar dinamismo.» → Las técnicas son vocabulario, no un estilo que copiar: ni el tema crema y naranja de la
+   referencia ni todas a la vez. Como mucho **una animación especial por escena**, alternadas y nunca la misma seguida;
+   las escenas con gráfico propio no llevan más; una transformación por vídeo (dos si es largo). Lo hace
+   `planDynamics` (`autopilot/create/theme.ts`). Se quitaron el tema «editorial» y `--animaciones`.

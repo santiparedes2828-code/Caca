@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { parseScript } from "../../autopilot/create/script";
-import { ANIMACIONES, applyAnimations, firstNumberWord, GENERAL_PRESET, parseAnimaciones, pickPreset, planCues, planSfx, planTheme, presetById } from "../../autopilot/create/theme";
+import { describeDynamics, firstNumberWord, GENERAL_PRESET, pickPreset, planCues, planDynamics, planSfx, planTheme, presetById, THEME_PRESETS } from "../../autopilot/create/theme";
 import { themedPropsSchema } from "../../src/create/theme";
 import { chainOffset, chainTimeline, followCamera, itemFrames, typingSchedule } from "../../src/create/timeline";
 
@@ -89,24 +89,80 @@ test("sincronía con la voz: cada pieza apunta a la palabra que la nombra", () =
   assert.equal(firstNumberWord(2500), "dos");
 });
 
-test("--animaciones: todas, una lista o ninguna, sobre cualquier tema", () => {
-  assert.deepEqual(parseAnimaciones("todas"), [...ANIMACIONES]);
-  assert.deepEqual(parseAnimaciones("Máscara, cámara"), ["mascara", "camara"]);
-  assert.throws(() => parseAnimaciones("explosion"), /Animación desconocida/);
-  const citrico = presetById("citrico")!.theme;
-  const all = applyAnimations(citrico, parseAnimaciones("todas"));
-  assert.deepEqual([all.reveal, all.camera, all.sceneTransition, all.counter], ["mascara", "sigue", "transforma", "odometro"]);
-  assert.equal(all.palette.accent, citrico.palette.accent, "solo cambia el movimiento, no los colores");
-  const none = applyAnimations(GENERAL_PRESET.theme, "ninguna");
-  assert.deepEqual([none.reveal, none.camera, none.sceneTransition, none.counter], ["salto", "empuje", "barrido", "cuenta"]);
-  assert.equal(applyAnimations(citrico, null), citrico);
+// Escenas de prueba: componente y número de palabras (cada palabra dura 300 ms)
+const build = (spec: [string, number, boolean?][]) => {
+  let w = 0;
+  const scenes = spec.map(([component, words, icon = true]) => {
+    const s = { component, from: w, to: w + words - 1, icon: icon ? "sparkles" : null };
+    w += words;
+    return s;
+  });
+  const caps = Array.from({ length: w }, (_, i) => ({ startMs: i * 300, endMs: i * 300 + 280 }));
+  return { scenes, caps };
+};
+
+test("dinamismo: las animaciones se reparten, nunca todas juntas (corrección del usuario, 12-10-2026)", () => {
+  const { scenes, caps } = build([
+    ["titular", 6],
+    ["titular", 8],
+    ["lista", 5],
+    ["titular", 7],
+    ["titular", 6],
+    ["cifra", 4],
+    ["titular", 9],
+    ["titular", 5],
+    ["cta", 6],
+  ]);
+  const fx = planDynamics(scenes, caps, GENERAL_PRESET.theme);
+  const specials = fx.map((f) => [f.reveal === "mascara", f.camera === "sigue", f.sceneTransition === "transforma"].filter(Boolean).length);
+  assert.ok(specials.every((n) => n <= 1), `una especial por escena como mucho: ${JSON.stringify(fx)}`);
+  assert.equal(fx[0].reveal, "mascara", "el gancho abre con la máscara");
+  for (let k = 1; k < fx.length; k++) {
+    assert.ok(!(fx[k].reveal === "mascara" && fx[k - 1].reveal === "mascara"), "máscara seguida");
+    assert.ok(!(fx[k].camera === "sigue" && fx[k - 1].camera === "sigue"), "cámara seguida");
+  }
+  // Las escenas con gráfico propio no llevan más
+  for (const k of [2, 5, 8]) assert.ok(fx[k].reveal === null && fx[k].camera === null, `escena ${k + 1}`);
+  // Una o dos transformaciones, no seguidas, y la llamada a la acción llega transformándose
+  const morphs = fx.flatMap((f, k) => (f.sceneTransition === "transforma" ? [k] : []));
+  assert.ok(morphs.length >= 1 && morphs.length <= 2);
+  assert.equal(fx[8].sceneTransition, "transforma");
+  assert.ok(morphs.every((m, i) => i === 0 || m - morphs[i - 1] > 1));
+  // Hay de todo pero menos de la mitad de las escenas llevan algo especial
+  assert.ok(fx.some((f) => f.reveal === "mascara") && fx.some((f) => f.camera === "sigue"));
+  assert.ok(specials.filter(Boolean).length <= Math.ceil(fx.length / 2));
+  assert.equal(JSON.stringify(planDynamics(scenes, caps, GENERAL_PRESET.theme)), JSON.stringify(fx), "determinista");
+  assert.match(describeDynamics(fx), /máscara en la escena 1/);
 });
 
-test("tema editorial para tutoriales de edición y animación; los temas de contenido ganan los empates", () => {
-  assert.equal(pickPreset("Tutorial: 5 instrucciones para editar animaciones con Claude").theme.id, "editorial");
-  assert.equal(pickPreset("Reel con animaciones sobre recetas de pizza").theme.id, "comida");
-  const ed = presetById("editorial")!.theme;
-  assert.deepEqual([ed.background, ed.reveal, ed.camera, ed.sceneTransition, ed.counter], ["liso", "mascara", "sigue", "transforma", "odometro"]);
+test("dinamismo: vídeos cortos con poco, cortes secos solo en temas enérgicos y entre escenas cortas", () => {
+  const two = build([
+    ["titular", 5],
+    ["cta", 4],
+  ]);
+  const fx2 = planDynamics(two.scenes, two.caps, GENERAL_PRESET.theme);
+  assert.ok(fx2.every((f) => f.sceneTransition !== "transforma"), "con dos escenas no hay transformación");
+  const quick = build([
+    ["titular", 3],
+    ["titular", 3],
+    ["titular", 3],
+    ["titular", 3],
+  ]);
+  const energetic = planDynamics(quick.scenes, quick.caps, GENERAL_PRESET.theme);
+  assert.ok(energetic.some((f) => f.sceneTransition === "corte"));
+  for (let k = 1; k < energetic.length; k++) assert.ok(!(energetic[k].sceneTransition === "corte" && energetic[k - 1].sceneTransition === "corte"), "dos cortes seguidos");
+  const calm = planDynamics(quick.scenes, quick.caps, presetById("salud")!.theme);
+  assert.ok(calm.every((f) => f.sceneTransition !== "corte"), "sin cortes secos en los temas suaves");
+});
+
+test("los temas no traen las animaciones de serie: las reparte el planificador", () => {
+  for (const p of [...THEME_PRESETS, GENERAL_PRESET]) {
+    assert.equal(p.theme.reveal, "salto", p.theme.id);
+    assert.equal(p.theme.camera, "empuje", p.theme.id);
+    assert.notEqual(p.theme.sceneTransition, "transforma", p.theme.id);
+  }
+  assert.equal(presetById("editorial"), null);
+  assert.notEqual(pickPreset("Reel con animaciones sobre recetas de pizza").theme.id, "editorial");
 });
 
 test("props: sincronías dentro de su escena, cadenas de 2 a 4 y pasos con título", () => {
@@ -124,8 +180,8 @@ test("props: sincronías dentro de su escena, cadenas de 2 a 4 y pasos con títu
     pointerIcon: null,
   };
   const scenes = [
-    { from: 0, to: 3, accent: null, component: "paso", items: [], label: "Una idea", value: "", body: "", icon: null, itemIcons: [], cues: { icon: null, value: null, items: [] } },
-    { from: 4, to: 8, accent: null, component: "cadena", items: ["Guion", "Voz"], label: "", value: "", body: "", icon: null, itemIcons: plan.scenes[1].itemIcons, cues: { icon: null, value: null, items: [5, 8] } },
+    { from: 0, to: 3, accent: null, component: "paso", items: [], label: "Una idea", value: "", body: "", icon: null, itemIcons: [], cues: { icon: null, value: null, items: [] }, fx: { reveal: null, camera: null, sceneTransition: null } },
+    { from: 4, to: 8, accent: null, component: "cadena", items: ["Guion", "Voz"], label: "", value: "", body: "", icon: null, itemIcons: plan.scenes[1].itemIcons, cues: { icon: null, value: null, items: [5, 8] }, fx: { reveal: null, camera: null, sceneTransition: "corte" as const } },
   ];
   assert.ok(themedPropsSchema.safeParse({ ...base, scenes }).success);
   assert.ok(!themedPropsSchema.safeParse({ ...base, scenes: [scenes[0], { ...scenes[1], cues: { icon: null, value: null, items: [2, 8] } }] }).success, "sincronía fuera de la escena");
@@ -134,6 +190,8 @@ test("props: sincronías dentro de su escena, cadenas de 2 a 4 y pasos con títu
   // Los efectos caen en los golpes de la cadena
   const ev = planSfx(scenes, caps, 30, plan.theme, 120);
   const hits = ev.filter((e) => e.name === "hit").map((e) => e.frame);
+  // El corte seco no lleva el whoosh de la transición (0,3); solo queda el de la entrada del primer bloque (0,16)
+  assert.ok(ev.filter((e) => e.name === "whoosh").every((e) => e.volume < 0.2), "el corte seco no lleva whoosh");
   const f = (i: number) => Math.round((caps[i].startMs / 1000) * 30);
   const tl = chainTimeline(Math.max(0, f(4) - 4) + 8, [f(5), f(8)], 2);
   assert.deepEqual(hits, [tl.hits[1]]);
