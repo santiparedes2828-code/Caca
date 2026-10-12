@@ -25,9 +25,7 @@ const Grain: React.FC = () => {
   const frame = useCurrentFrame();
   // estilo.md §7 — grano fino (~4 %), cambia cada frame
   return (
-    <AbsoluteFill
-      style={{ opacity: 0.07, mixBlendMode: "overlay", pointerEvents: "none" }}
-    >
+    <AbsoluteFill style={{ opacity: 0.07, mixBlendMode: "overlay", pointerEvents: "none" }}>
       <svg width="100%" height="100%">
         <filter id={`grain-${frame}`}>
           <feTurbulence
@@ -81,20 +79,8 @@ const SceneBody: React.FC<{
 }> = ({ duration, bg, enter, exit, children }) => {
   const frame = useCurrentFrame();
   const opt = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-  const inP =
-    enter === "whip"
-      ? interpolate(frame, [0, WHIP], [1, 0], {
-          ...opt,
-          easing: Easing.out(Easing.cubic),
-        })
-      : 0;
-  const outP =
-    exit === "whip"
-      ? interpolate(frame, [duration - WHIP, duration], [0, 1], {
-          ...opt,
-          easing: Easing.in(Easing.cubic),
-        })
-      : 0;
+  const inP = enter === "whip" ? interpolate(frame, [0, WHIP], [1, 0], { ...opt, easing: Easing.out(Easing.cubic) }) : 0;
+  const outP = exit === "whip" ? interpolate(frame, [duration - WHIP, duration], [0, 1], { ...opt, easing: Easing.in(Easing.cubic) }) : 0;
   const motion = Math.max(inP, outP);
 
   return (
@@ -104,22 +90,14 @@ const SceneBody: React.FC<{
         overflow: "hidden",
         // Whip vertical con desenfoque y aberración (estilo.md §5)
         translate: `0px ${inP * 760 - outP * 760}px`,
-        filter:
-          motion > 0.01
-            ? `blur(${motion * 28}px) ${aberration(2 + motion * 10)}`
-            : undefined,
+        filter: motion > 0.01 ? `blur(${motion * 28}px) ${aberration(2 + motion * 10)}` : undefined,
       }}
     >
       {/* Push-in constante 1,00 → 1,08 + deriva (estilo.md §6) */}
       <AbsoluteFill
         style={{
           scale: interpolate(frame, [0, duration], [1, 1.08], opt),
-          translate: interpolate(
-            frame,
-            [0, duration],
-            ["0px 0px", "-18px -24px"],
-            opt,
-          ),
+          translate: interpolate(frame, [0, duration], ["0px 0px", "-18px -24px"], opt),
         }}
       >
         {children}
@@ -140,12 +118,7 @@ export const Scene: React.FC<{
 }> = ({ name, from, duration, bg, enter, exit, children }) => {
   const { fps } = useVideoConfig();
   return (
-    <Sequence
-      name={name}
-      from={from}
-      durationInFrames={duration}
-      premountFor={fps}
-    >
+    <Sequence name={name} from={from} durationInFrames={duration} premountFor={fps}>
       <SceneFrom.Provider value={from}>
         <SceneBody duration={duration} bg={bg} enter={enter} exit={exit}>
           {children}
@@ -156,10 +129,10 @@ export const Scene: React.FC<{
 };
 
 // Zona de texto: el bloque crece hacia arriba y termina en y = 930 (estilo.md §2: 38–45 % del alto)
-export const TextZone: React.FC<{
-  readonly children: React.ReactNode;
-  readonly bottom?: number;
-}> = ({ children, bottom = 930 }) => (
+export const TextZone: React.FC<{ readonly children: React.ReactNode; readonly bottom?: number }> = ({
+  children,
+  bottom = 930,
+}) => (
   <div
     style={{
       position: "absolute",
@@ -179,10 +152,10 @@ export const TextZone: React.FC<{
 );
 
 // Zona del gráfico: debajo del texto, centrada (estilo.md §4)
-export const GraphicZone: React.FC<{
-  readonly children: React.ReactNode;
-  readonly top?: number;
-}> = ({ children, top = 990 }) => (
+export const GraphicZone: React.FC<{ readonly children: React.ReactNode; readonly top?: number }> = ({
+  children,
+  top = 990,
+}) => (
   <div
     style={{
       position: "absolute",
@@ -200,10 +173,7 @@ export const GraphicZone: React.FC<{
   </div>
 );
 
-export const SmallPrint: React.FC<{
-  readonly dark?: boolean;
-  readonly top?: number;
-}> = ({ dark, top = 250 }) => (
+export const SmallPrint: React.FC<{ readonly dark?: boolean; readonly top?: number }> = ({ dark, top = 250 }) => (
   <div
     style={{
       position: "absolute",
@@ -218,10 +188,9 @@ export const SmallPrint: React.FC<{
       color: dark ? "rgba(255,255,255,0.32)" : "rgba(0,0,0,0.32)",
     }}
   >
-    Proceso: grabación en bruto, detección de silencios, transcripción palabra a
-    palabra, subtítulos animados, zooms de ritmo, b-roll, diseño sonoro y
-    exportación vertical 1080x1920 lista para publicar en TikTok, Reels y
-    Shorts.
+    Proceso: grabación en bruto, detección de silencios, transcripción palabra a palabra,
+    subtítulos animados, zooms de ritmo, b-roll, diseño sonoro y exportación vertical
+    1080x1920 lista para publicar en TikTok, Reels y Shorts.
   </div>
 );
 

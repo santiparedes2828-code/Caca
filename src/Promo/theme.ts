@@ -6,21 +6,9 @@ import { staticFile } from "remotion";
 export const bold = "Poppins";
 export const script = "Great Vibes";
 
-loadFont({
-  family: bold,
-  url: staticFile("fonts/poppins-latin-600-normal.woff2"),
-  weight: "600",
-});
-loadFont({
-  family: bold,
-  url: staticFile("fonts/poppins-latin-800-normal.woff2"),
-  weight: "800",
-});
-loadFont({
-  family: script,
-  url: staticFile("fonts/great-vibes-latin-400-normal.woff2"),
-  weight: "400",
-});
+loadFont({ family: bold, url: staticFile("fonts/poppins-latin-600-normal.woff2"), weight: "600" });
+loadFont({ family: bold, url: staticFile("fonts/poppins-latin-800-normal.woff2"), weight: "800" });
+loadFont({ family: script, url: staticFile("fonts/great-vibes-latin-400-normal.woff2"), weight: "400" });
 
 // estilo.md §7 — únicos colores
 export const C = {
