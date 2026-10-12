@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hook House Autopilot</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">hook<em>house</em><i>.</i> <span class="mono">autopilot</span></div>
+      <div id="who" class="mono"></div>
+    </header>
+
+    <main id="login" class="card narrow" hidden>
+      <h1>Entrar</h1>
+      <form id="login-form">
+        <label>Usuario <input name="username" autocomplete="username" required /></label>
+        <label>Contraseña <input name="password" type="password" autocomplete="current-password" required /></label>
+        <button>Entrar</button>
+        <p id="login-error" class="error"></p>
+      </form>
+    </main>
+
+    <main id="app" hidden>
+      <section class="card">
+        <div class="tabs">
+          <button class="tab active" data-tab="edit">Editar vídeo</button>
+          <button class="tab" data-tab="create">Crear desde guion</button>
+          <span id="queue" class="mono muted"></span>
+        </div>
+
+        <form id="edit-form" class="grid">
+          <label class="wide">Vídeo <input type="file" name="video" accept="video/*" required /></label>
+          <label class="wide">Subtítulos (opcional: .srt, .vtt o .json) <input type="file" name="captions" accept=".srt,.vtt,.json" /></label>
+          <label>Cliente <select name="clientId" class="clients"></select></label>
+          <label>Tipo de vídeo
+            <select name="editMode">
+              <option value="">(del perfil)</option><option value="talking-head">Persona a cámara</option><option value="clips">Clips de un vídeo largo</option>
+              <option value="podcast">Podcast / entrevista</option><option value="anuncio">Anuncio</option><option value="educativo">Educativo</option>
+            </select>
+          </label>
+          <label>Formato <select name="format"><option value="">(del perfil)</option><option value="vertical">Vertical 9:16</option><option value="cuadrado">Cuadrado 1:1</option><option value="horizontal">Horizontal 16:9</option></select></label>
+          <label>Subtítulos
+            <select name="captionMode"><option value="">(del perfil)</option><option value="palabra-activa">Palabra activa</option><option value="dinamico">Dinámico</option><option value="grupos">Grupos</option><option value="frases">Frases</option><option value="palabra">Palabra a palabra</option></select>
+          </label>
+          <label>Intensidad <select name="intensity"><option value="">(del perfil)</option><option value="sutil">Sutil</option><option value="dinamica">Dinámica</option><option value="alto-impacto">Alto impacto</option></select></label>
+          <label>Clips (n.º · mín · máx s) <span class="row"><input name="clipCount" type="number" min="1" max="20" placeholder="3" /><input name="clipMin" type="number" min="5" placeholder="15" /><input name="clipMax" type="number" max="600" placeholder="60" /></span></label>
+          <label>Versiones cortas (s, separadas por comas) <input name="shortVersions" placeholder="30,60" /></label>
+          <fieldset class="wide checks">
+            <label><input type="checkbox" name="cutSilences" checked /> Cortar silencios</label>
+            <label><input type="checkbox" name="followFaces" checked /> Seguir caras</label>
+            <label><input type="checkbox" name="transcribe" checked /> Transcribir (ElevenLabs)</label>
+            <label><input type="checkbox" name="broll" checked /> B-roll de la biblioteca</label>
+            <label><input type="checkbox" name="music" checked /> Música de la biblioteca</label>
+            <label><input type="checkbox" name="approvePlan" /> Revisar el plan antes de renderizar</label>
+          </fieldset>
+          <button class="wide">Enviar a la cola</button>
+          <p class="wide error" id="edit-error"></p>
+        </form>
+
+        <form id="create-form" class="grid" hidden>
+          <label>Cliente <select name="clientId" class="clients"></select></label>
+          <label>Tipo <select name="type"><option value="redes">Redes</option><option value="anuncio">Anuncio</option><option value="educativo">Educativo</option><option value="producto">Producto</option><option value="explicativo">Explicativo</option></select></label>
+          <label class="wide">Guion (formato en el README; deja vacío para generarlo desde el brief con Claude)
+            <textarea name="scriptText" rows="8" placeholder="[cifra: clips | 3]&#10;Te entregamos *tres* clips cada semana.&#10;&#10;[cta: AUTO]&#10;Escríbeme auto."></textarea>
+          </label>
+          <label class="wide">Brief (si no hay guion) <textarea name="brief" rows="3"></textarea></label>
+          <label>Duración aproximada (s) <input name="seconds" type="number" min="5" max="180" value="30" /></label>
+          <label>Etiqueta de cabecera <input name="label" placeholder="(01) edición automática" /></label>
+          <label>Narración propia (opcional) <input type="file" name="audio" accept=".mp3,.wav,.m4a" /></label>
+          <label>Sus tiempos por palabra (JSON) <input type="file" name="tiempos" accept=".json" /></label>
+          <button class="wide">Enviar a la cola</button>
+          <p class="wide error" id="create-error"></p>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Trabajos</h2>
+        <table id="jobs">
+          <thead><tr><th>Trabajo</th><th>Cliente</th><th>Tipo</th><th>Estado</th><th>Progreso</th><th>Calidad</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="detail" class="card" hidden>
+        <div class="detail-head">
+          <h2 id="d-title"></h2>
+          <div class="actions">
+            <button id="d-approve" class="secondary" hidden>Aprobar plan</button>
+            <button id="d-retry" class="secondary" hidden>Reintentar</button>
+            <button id="d-cancel" class="secondary" hidden>Cancelar</button>
+            <button id="d-close" class="secondary">Cerrar</button>
+          </div>
+        </div>
+        <div id="d-status" class="mono"></div>
+        <div class="bar"><span id="d-bar"></span></div>
+        <div id="d-outputs" class="outputs"></div>
+        <div id="d-issues"></div>
+        <details><summary>Plan de edición</summary><pre id="d-plan"></pre></details>
+        <details open><summary>Informe</summary><pre id="d-report"></pre></details>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

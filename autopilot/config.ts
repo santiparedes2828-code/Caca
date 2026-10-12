@@ -57,6 +57,13 @@ const schema = z.object({
   HH_QUEUE_POLL_SEC: z.coerce.number().positive().default(5),
   // Alerta de gasto: aviso cuando el uso diario pasa este porcentaje del límite
   HH_ALERT_PERCENT: z.coerce.number().min(1).max(100).default(80),
+  // Interfaz web: por defecto solo en este equipo. Para exponerla, ponla detrás de un proxy HTTPS
+  HH_WEB_HOST: z.string().default("127.0.0.1"),
+  HH_WEB_PORT: z.coerce.number().int().min(0).max(65535).default(4321),
+  HH_WEB_SECURE_COOKIE: z
+    .string()
+    .optional()
+    .transform((v) => v === "1" || v === "true"),
   REMOTION_BROWSER_EXECUTABLE: z.string().optional(),
   REMOTION_LICENSE_KEY: z.string().optional(),
 });

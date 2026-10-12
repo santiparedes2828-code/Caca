@@ -17,6 +17,11 @@
 | Calidad | `autopilot/qc/` | Controles automáticos, fotogramas de control, informe Markdown/JSON |
 | Visión | `autopilot/vision/`, `autopilot/python/faces.py` | Caras (YuNet vía OpenCV, sin red), trayectoria del encuadre, escenas |
 | Edición | `autopilot/edit/` | Línea de tiempo (cortes no destructivos, remapeo), colocación de subtítulos frente a caras |
+| Editorial | `autopilot/editorial/` | Frases, rasgos, temas, clips candidatos, Claude opcional, biblioteca con licencias |
+| Narración | `autopilot/narration/` | Texto a voz de ElevenLabs con tiempos, caché, límites |
+| Creación | `autopilot/create/`, `src/create/` | Guion (texto o brief con Claude) → narración → escenas → composición AutopilotCreate |
+| Cola | `autopilot/queue/` | Cola en disco, trabajador concurrente, reintentos, recuperación, costes |
+| Web | `autopilot/web/`, `web/` | API con sesiones, CSRF y aislamiento por cliente; interfaz sin dependencias |
 | Orquestación | `autopilot/pipeline/` (`run.ts`, `steps/`), `autopilot/inbox.ts`, `autopilot/cli.ts` | Pasos reanudables, variantes, reintentos, bandeja, CLI |
 
 ## Flujo de un trabajo de edición

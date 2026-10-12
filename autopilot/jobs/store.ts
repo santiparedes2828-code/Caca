@@ -109,7 +109,14 @@ export const listJobs = async (cfg: Config, clientId: string): Promise<Job[]> =>
   const dir = path.join(clientDir(cfg, clientId), "jobs");
   const ids = (await fs.readdir(dir).catch(() => [] as string[])).filter((x) => JOB_ID.test(x)).sort();
   const jobs: Job[] = [];
-  for (const id of ids) jobs.push(await loadJob(cfg, clientId, id));
+  for (const id of ids) {
+    // Un trabajo recién creado puede no tener aún job.json (o estar a medio escribir por otro proceso)
+    try {
+      jobs.push(await loadJob(cfg, clientId, id));
+    } catch {
+      continue;
+    }
+  }
   return jobs;
 };
 

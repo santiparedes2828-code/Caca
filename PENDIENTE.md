@@ -1,51 +1,29 @@
 # Pendiente
 
-## Etapa 1 — Base: HECHA (2026-10-12)
+Las 7 etapas funcionan en versión básica (2026-10-12). El usuario pidió priorizar tenerlas todas antes que pulirlas.
 
-Operativo y probado: ingesta validada, análisis FFprobe/FFmpeg, copia de trabajo normalizada, subtítulos desde
-SRT/VTT/JSON con 5 modos, reencuadre a vertical/cuadrado/horizontal, render Remotion, QC con veredicto, informe,
-reanudación, cancelación, bandeja de entrada y perfiles de cliente. Ver README.md.
+## Verificación real pendiente (no se pudo hacer desde el contenedor cloud)
 
-Limitaciones conocidas de la Etapa 1:
-- El énfasis del modo `dinamico` es una heurística (número o palabra de contenido más larga), no editorial.
-- El color de pantalla vacía y los tramos negros se miden; la legibilidad sobre fondos complicados no.
-- Probado con material compuesto a partir de recursos reales del repo (locución de marca + tiempos de Scribe +
-  foto de B-roll). **Falta probar con una grabación real de cliente (talking head).**
+- **ElevenLabs por API desde el propio código** (transcripción y narración): `api.elevenlabs.io` está bloqueado en el
+  contenedor. Lo verificado de verdad: una transcripción real hecha desde la sesión con el conector de ElevenLabs
+  (`tests/data/elevenlabs-scribe-voz_a.words.json`, 502 créditos ≈ 0,05 USD; la estimación previa decía 40) y su
+  procesado completo. Para verificarlo: `.env` con la clave y `npm run autopilot -- elevenlabs` en tu máquina.
+- **Claude** (planificador y guiones desde brief): sin `ANTHROPIC_API_KEY` en el contenedor; probado con la API
+  simulada. Comprobar con una clave real.
+- **Grabación real de una persona hablando a cámara**: los vídeos de prueba usan imagen sintética. Falta pasar una
+  grabación real de cliente (talking head) por todo el pipeline.
 
-## Etapa 2 — Material del cliente
+## Por pulir
 
-### Hecho: transcripción con ElevenLabs (2026-10-12)
-
-- Proveedor REST `autopilot/transcription/`: `POST /v1/speech-to-text` (`scribe_v2`, tiempos por palabra, diarización,
-  eventos de audio) y `GET /v1/user/subscription`. Contrato verificado con el SDK oficial `@elevenlabs/elevenlabs-js`
-  2.71.0. Caché por cliente, presupuesto por trabajo y diario, reintentos sin riesgo de doble cobro, clave tachada
-  en errores y logs, palabras de baja confianza, corrección manual (`rehacer-subtitulos`), coste real registrado.
-- **Verificación real**: ElevenLabs Scribe transcribió `public/audio/voz_a.mp3` (36 s, 79 palabras, español 94,6 %)
-  desde esta sesión mediante el conector de ElevenLabs (flow "Hook House · Autopilot · prueba de transcripción").
-  Resultado guardado en `tests/data/elevenlabs-scribe-voz_a.words.json`; procesado por el pipeline con subtítulos
-  sincronizados y QC APROBADO. **Coste real: 502 créditos (≈ 0,05 USD); la estimación previa del conector era 40.**
-- **No verificado aún**: la llamada REST del propio pipeline contra la API real. El contenedor cloud bloquea
-  `api.elevenlabs.io`; las pruebas usan una simulación local de la API (`tests/support/fake-elevenlabs.ts`).
-  Para verificarlo: en tu máquina (o con el dominio permitido), `.env` con la clave, `npm run autopilot -- elevenlabs`
-  y un vídeo sin SRT en la bandeja.
-
-### Hecho: resto de la Etapa 2 (2026-10-12)
-
-- Caras: YuNet (OpenCV, modelo MIT en `models/`, sha256 verificado), trayectoria de encuadre con histéresis,
-  filtro de caras pequeñas, subtítulos que se apartan de las caras y control de calidad "Subtítulos sin tapar caras".
-  Probado con un vídeo real de móvil (576x1024, VFR, cara en movimiento, cortinilla de TikTok detectada).
-- Cortes de silencio no destructivos (tramos encadenados en la composición, fundido de 2 fotogramas en cada corte,
-  subtítulos y encuadre remapeados). Probado con la voz real y sus tiempos reales de ElevenLabs.
-- Escenas + fotogramas representativos; cortinilla final; reducción de ruido básica; aviso de baja resolución.
-- Pipeline reestructurado en `autopilot/pipeline/` con paso `plan` y **variantes** (base de los clips de la Etapa 3).
-- Bug corregido: los ajustes por vídeo vacíos desactivaban transcripción/caras/cortes (prueba de regresión añadida).
-
-Pendiente de la Etapa 2: hablantes (la diarización ya se pide a ElevenLabs) se usará en el modo podcast (Etapa 3).
-
-## Etapas 3–7
-
-Planificador editorial y clips candidatos · ElevenLabs (narración) · creación desde guion · cola con concurrencia,
-lotes y costes · interfaz web y entregas por cliente con autenticación.
+- Creación: los componentes vienen de `src/HookHouse` (identidad Hook House fija); hacerlos genéricos por cliente.
+  Más tipos de escena (gráficos de barras, comparativas, B-roll en escenas). E2E automatizado de creación.
+- Edición: título/gancho animado al inicio de los clips; B-roll en formato tarjeta (no solo pantalla completa);
+  hablante activo en podcasts (diarización ya disponible) para elegir a quién encuadrar.
+- Rendimiento: el modo `blur-fill` dobla el coste de render (dos capas de vídeo); un render de 36 s tarda ~1–3 min con 4 núcleos.
+- Web: sesiones en memoria (se pierden al reiniciar), sin gestión de usuarios desde la propia web, sin HTTPS propio
+  (usar un proxy HTTPS si se expone a internet; `HH_WEB_SECURE_COOKIE=1`). Presets guardables por cliente.
+- Biblioteca de B-roll y música vacía: hay que añadir recursos con licencia (`library/README.md`).
+- Legibilidad de subtítulos sobre fondos difíciles (variante `shadow`) no se mide.
 
 ## Hecho antes — voz del reel "Este video no lo editó nadie" (2026-10-12)
 
@@ -53,4 +31,3 @@ lotes y costes · interfaz web y entregas por cliente con autenticación.
   "Hook House · Voz reel viral"; elegida la toma 3 (generation `pHLGFICQNtqesk55Jxoe`, la de menos pausas).
 - `public/audio/voz_viral.mp3` (toma original) → silencios recortados → `public/audio/voz_viral.wav` (39,0 s).
 - Tiempos por palabra de Scribe en `analisis3/words_viral.json`: 106 palabras.
-- Render `out/viral.mp4`: 41,2 s · 1080x1920 · 30 fps · −14,7 LUFS · pico −2,8 dBFS.

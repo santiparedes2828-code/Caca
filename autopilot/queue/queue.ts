@@ -113,13 +113,20 @@ export const work = async (cfg: Config, opts: { once?: boolean; concurrency?: nu
   let processed = 0;
   for (;;) {
     if (opts.stop?.()) break;
-    if (!isPaused(cfg) && running.size < n) {
-      const ready = await nextJobs(cfg, new Set(running.keys()));
-      for (const e of ready.slice(0, n - running.size)) {
-        const p = runOne(cfg, e, log).finally(() => running.delete(e.job.id));
-        running.set(e.job.id, p);
-        processed++;
+    try {
+      if (!isPaused(cfg) && running.size < n) {
+        const ready = await nextJobs(cfg, new Set(running.keys()));
+        for (const e of ready.slice(0, n - running.size)) {
+          const p = runOne(cfg, e, log)
+            .catch((err: Error) => log(`  ✖ ${e.job.id}: ${err.message}`))
+            .finally(() => running.delete(e.job.id));
+          running.set(e.job.id, p);
+          processed++;
+        }
       }
+    } catch (err) {
+      // Un error al leer la cola no debe parar el trabajador: se reintenta en la siguiente vuelta
+      log(`  ! error leyendo la cola: ${(err as Error).message}`);
     }
     if (opts.once && running.size === 0) {
       const pendingRetry = (await allJobs(cfg)).some((j) => j.queuedAt && j.status === "fallido" && j.nextRetryAt);

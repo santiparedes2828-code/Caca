@@ -1,132 +1,114 @@
 # Hook House · Autopilot
 
-Producción automatizada de vídeos de Hook House para TikTok, Reels y Shorts, con Remotion + FFmpeg.
+Producción automatizada de vídeos de Hook House para TikTok, Reels y Shorts (Remotion + FFmpeg + ElevenLabs).
 
-**Estado: Etapas 1 y 2 operativas** (edición de material del cliente: transcripción con ElevenLabs, encuadre que
-sigue a la cara, subtítulos que no tapan caras, cortes de silencio no destructivos, escenas, reducción de ruido básica). Pon un vídeo (y opcionalmente su SRT) en una carpeta, ejecuta un comando y
-obtienes un MP4 vertical 1080x1920 con subtítulos de marca, el SRT del vídeo final, un informe de calidad y el
-original intacto. Lo que aún no existe está en [PENDIENTE.md](PENDIENTE.md); la arquitectura, en
-[docs/arquitectura.md](docs/arquitectura.md).
+**Estado:** las 7 etapas funcionan en versión básica (ver [PENDIENTE.md](PENDIENTE.md) para lo que falta pulir).
+Arquitectura en [docs/arquitectura.md](docs/arquitectura.md); estado para retomar en otra sesión en
+[docs/TRASPASO.md](docs/TRASPASO.md).
 
-## Requisitos
+| Etapa | Qué hace |
+|---|---|
+| 1 Base | Vídeo → vertical 1080x1920 con subtítulos de marca, SRT, informe de calidad; original intacto |
+| 2 Material del cliente | Transcripción (ElevenLabs), encuadre que sigue la cara, subtítulos que no tapan caras, cortes de silencio no destructivos, escenas, ruido |
+| 3 Edición inteligente | Plan editorial, clips de un vídeo largo, versiones cortas, B-roll y música con licencia, Claude opcional, aprobación del plan |
+| 4 Narración | Voz de marca (ElevenLabs, Rodrigo Zabú) con tiempos por palabra |
+| 5 Creación | Guion (o brief con Claude) → narración → escenas con componentes de marca → MP4 |
+| 6 Automatización | Cola en disco, trabajador concurrente, reintentos, recuperación, lotes, costes y alertas |
+| 7 Web y clientes | Interfaz con usuarios por cliente, subida, progreso, vista previa, descargas, informes |
 
-- Node 22 y npm (`npm ci`)
-- FFmpeg y FFprobe en el PATH (probado con 6.1)
-- Remotion descarga Chrome Headless Shell la primera vez; si no puede, define `REMOTION_BROWSER_EXECUTABLE` (ver `.env.example`)
-
-## Generar tu primer vídeo
+## Instalación
 
 ```console
 npm ci
-npm run setup:python   # opcional: detección de caras (crea .venv con OpenCV; sin esto, encuadre fijo)
-mkdir -p inbox/hookhouse
-cp /ruta/mi-video.mp4 inbox/hookhouse/
-cp /ruta/mi-video.srt inbox/hookhouse/        # opcional: mismo nombre que el vídeo (.srt, .vtt o .json)
-npm run autopilot -- bandeja
+npm run setup:python      # opcional: detección de caras (OpenCV en .venv/)
+cp .env.example .env      # y rellena ELEVENLABS_API_KEY (y ANTHROPIC_API_KEY si quieres Claude)
+npm run autopilot -- elevenlabs   # comprueba la clave y muestra tu plan real
 ```
 
-El resultado queda en `data/clients/hookhouse/jobs/<id>/output/`:
+Requisitos: Node 22, FFmpeg/FFprobe, Python 3 (opcional). Las claves van solo en `.env` (ignorado por Git).
 
-| Archivo | Qué es |
-|---|---|
-| `<id>_vertical.mp4` | Vídeo final (H.264 + AAC, yuv420p, 30 fps) |
-| `<id>_vertical.srt` | Subtítulos en el tiempo del vídeo final |
-| `informe.md` / `informe.json` | Análisis, controles de calidad, advertencias, costes y salidas |
-| `qc/hoja_contacto.jpg` | Fotogramas de control para revisar a ojo |
+## Uso rápido
 
-El original y los subtítulos recibidos se copian a `input/original/` en solo lectura y se mueven de la bandeja a
-`inbox/hookhouse/_procesados/<id>/`. Para vigilar la carpeta de forma continua: `npm run autopilot -- bandeja --vigilar`.
-
-### Subtítulos automáticos con ElevenLabs
-
-Si el vídeo llega **sin** SRT/VTT/JSON, se transcribe con ElevenLabs Scribe (`scribe_v2`, tiempos por palabra):
-
-1. Copia `.env.example` a `.env` y pon tu `ELEVENLABS_API_KEY` (nunca la pegues en un chat ni la subas a Git).
-2. Comprueba la clave y tu plan: `npm run autopilot -- elevenlabs`
-3. Procesa como siempre: `npm run autopilot -- bandeja`
-
-- Solo se envía el **audio** del tramo editado (mono, 16 kHz, sin metadatos).
-- **Caché por cliente**: el mismo audio no se paga dos veces. **Límites** por trabajo y diarios (`HH_STT_MAX_SECONDS_*`),
-  comprobados antes de llamar. Reintentos solo ante 429/5xx/red; un timeout no se reintenta (podría cobrarse dos veces).
-- El informe registra los segundos procesados según ElevenLabs (coste **real**) y, si defines
-  `HH_ELEVENLABS_STT_USD_PER_HOUR`, una estimación en USD marcada como **estimada**. Uso diario en `data/usage/`.
-- Palabras con baja confianza → aviso y `requiere_revision`. Para corregirlas, edita el texto en
-  `data/clients/<cliente>/jobs/<id>/work/transcript.json` y ejecuta `npm run autopilot -- rehacer-subtitulos <id>`
-  (no vuelve a llamar a ElevenLabs).
-- Sin clave, el vídeo sale sin subtítulos y el informe lo explica. `--sin-transcripcion` lo desactiva por vídeo;
-  `--idioma en` cambia el idioma (por defecto `es`, en `clients/hookhouse/profile.json`).
-
-### Edición automática del material (Etapa 2)
-
-- **Encuadre que sigue a la cara**: detecta caras con YuNet (modelo local en `models/`) y mueve el recorte solo cuando la
-  cara se desplaza de forma sostenida (sin tirones). Las caras diminutas (avatares, fondo) se ignoran.
-- **Subtítulos que no tapan caras**: cada página se mueve a otra posición segura si coincidiría con una cara.
-- **Cortes de silencio** (activados en el perfil de Hook House): solo donde hay silencio medido **y** ninguna palabra ni
-  sonido transcrito; deja 0,3 s de pausa. No destructivo: el original y la copia de trabajo no se tocan.
-- **Escenas**: cambios de plano y fotogramas representativos en `work/escenas/`.
-- **Cortinilla final** de otra red (p. ej. TikTok): se avisa y se propone `--hasta`; no se corta sola.
-- **Reducción de ruido básica** (`--reducir-ruido`, filtro FFT de ffmpeg). No es una restauración profesional.
-
-### Ajustes por vídeo
-
-Un `mi-video.job.json` junto al vídeo, o las opciones de `procesar`:
+**Interfaz web** (recomendado):
 
 ```console
-npm run autopilot -- procesar video.mp4 --srt video.srt --modo frases --intensidad dinamica --reencuadre blur-fill
+npm run autopilot -- usuario admin --rol admin          # pide la contraseña
+npm run autopilot -- usuario ana --rol cliente --cliente hookhouse
+npm run autopilot -- web                                # http://127.0.0.1:4321 (incluye el trabajador de la cola)
 ```
 
-```json
-{ "captionMode": "dinamico", "intensity": "alto-impacto", "format": "cuadrado", "reframe": { "focusX": 0.4 }, "trim": { "startSec": 2, "endSec": 40 } }
-```
+**Carpeta de entrada**: deja vídeos (y su `.srt`/`.json` con el mismo nombre) en `inbox/hookhouse/` y ejecuta
+`npm run autopilot -- bandeja` (o `--vigilar`).
 
-| Opción | Valores |
-|---|---|
-| Formato | `vertical` (1080x1920, defecto) · `horizontal` (1920x1080) · `cuadrado` (1080x1080) |
-| Subtítulos | `palabra` · `palabra-activa` (defecto) · `grupos` · `frases` · `dinamico` |
-| Intensidad | `sutil` (defecto, cámara fija) · `dinamica` (zoom lento) · `alto-impacto` (punch-in cada ≥ 2,5 s) |
-| Reencuadre | `cover` (recorte con foco x/y) · `blur-fill` (vídeo entero sobre fondo desenfocado) · `contain` |
-
-Los modos por palabra necesitan tiempos por palabra reales (JSON de ElevenLabs Scribe/Whisper o `Caption[]` de
-Remotion). Con un SRT/VTT —que solo tiene tiempos por bloque— el sistema usa `frases` y lo avisa; con
-`--estimar-palabras` reparte las palabras por caracteres y lo marca como **estimado** en el informe.
-
-### Otros comandos
+**Línea de comandos** (todas las opciones: `npm run autopilot`):
 
 ```console
-npm run autopilot -- estado                 # lista de trabajos del cliente
-npm run autopilot -- estado <id>            # detalle (job.json)
-npm run autopilot -- reintentar <id>        # continúa desde el paso que falló
-npm run autopilot -- cancelar <id>
+# Editar un vídeo
+npm run autopilot -- procesar grabacion.mp4
+npm run autopilot -- procesar podcast.mp4 --edicion podcast --clips 3 --clip-min 20 --clip-max 60
+npm run autopilot -- procesar anuncio.mp4 --edicion anuncio --corto 15,30 --aprobar-plan
+npm run autopilot -- aprobar <id>
+
+# Crear un vídeo desde un guion
+npm run autopilot -- crear --guion guion.txt --tipo anuncio
+npm run autopilot -- crear --brief "Servicio de edición automática para agencias" --segundos 30   # requiere Claude
+
+# Cola y lotes
+npm run autopilot -- encolar carpeta-de-videos/
+npm run autopilot -- trabajador --concurrencia 2
+npm run autopilot -- cola | pausar | reanudar | costes
 ```
 
-## Calidad: qué significa cada veredicto
+Salidas en `data/clients/<cliente>/jobs/<id>/output/`: MP4 por variante (principal, clips, cortos), SRT,
+`informe.md`, `plan.md` y fotogramas de control.
 
-- **APROBADO** → estado `completado`: todos los controles automáticos pasan.
-- **ADVERTENCIA** → estado `requiere_revision`: se entrega, con los problemas listados (p. ej. vídeo sin audio o sin subtítulos).
-- **FALLIDO** → estado `fallido`: no se entrega el MP4; el informe dice por qué y se puede `reintentar`.
+### Formato del guion (creación)
 
-Controles: archivo legible, MP4/H.264/yuv420p/AAC, resolución, fps, duración, decodificación completa, pista de
-audio, duración audio = vídeo, sonoridad (−14 LUFS) y picos, tramos negros (comparados con el original),
-pantallas vacías, subtítulos dentro del vídeo y sin solapes, líneas dentro del ancho, tiempo de lectura y SRT
-válido. **La revisión humana sigue siendo necesaria** (caras cortadas por el reencuadre, erratas del texto, sentido).
+```text
+Las agencias que más crecen en *TikTok* no editan sus videos.
+
+[lista: Agencias | Coaches | Creadores]
+Para agencias, coaches y creadores.
+
+[cifra: clips | 3]
+Te entregamos tres clips cada semana.
+
+[cta: AUTO]
+Escríbeme auto y te muestro cómo funciona.
+```
+
+Bloques separados por una línea en blanco; `[titular|lista|cifra|cta: …]` elige el componente; `*palabra*` se
+destaca en serif verde. Las escenas largas se dividen solas.
+
+## Calidad y revisión
+
+Cada vídeo pasa controles automáticos (archivo, códecs, resolución, fps, duración, decodificación, audio, sonoridad
+−14 LUFS, picos, negros, pantallas vacías, subtítulos dentro del vídeo y sin tapar caras, confianza de la
+transcripción, SRT válido). Veredicto: **APROBADO** (completado) · **ADVERTENCIA** (requiere revisión, se entrega)
+· **FALLIDO** (no se entrega; se puede reintentar). Los anuncios con afirmaciones (cifras, superlativos) siempre
+quedan en revisión. **La revisión humana sigue siendo necesaria.**
+
+## Proveedores externos y costes
+
+- **ElevenLabs**: transcripción (solo audio mono del tramo) y narración (solo el texto). Caché por cliente, límites
+  por trabajo y por día, reintentos sin riesgo de doble cobro, uso en `data/usage/`.
+- **Claude** (opcional): elige fragmentos o escribe guiones; recibe solo texto. Su salida se valida y nunca se ejecuta.
+- Costes **reales** (lo que dice el proveedor) y **estimados** (con tarifas configurables) separados en cada informe y
+  en `npm run autopilot -- costes`.
 
 ## Pruebas
 
 ```console
-npm run lint         # eslint + tsc
-npm test             # 41 pruebas unitarias (segundos)
-npm run test:e2e     # 14 pruebas de extremo a extremo con render real (~4 min)
+npm run lint        # eslint + tsc
+npm test            # pruebas unitarias (segundos)
+npm run test:e2e    # extremo a extremo con render real (~15 min)
 ```
 
-## Remotion Studio
-
-`npm run dev` abre las composiciones: las de marca existentes (`HookHouse`, `Viral`, `Clip`, `Promo`) y las del
-pipeline en la carpeta *Autopilot* (`AutopilotEdit` y `CaptionModesDemo`, demo de los 5 modos de subtítulo con la
-locución real de marca).
+Las APIs de ElevenLabs y Anthropic se simulan en `tests/support/` (claramente separadas del código real). Las
+integraciones reales verificadas están anotadas en PENDIENTE.md.
 
 ## Licencias
 
-Remotion exige una licencia de empresa a partir de cierto tamaño de organización
-([condiciones](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md)); la clave se pasa con
-`REMOTION_LICENSE_KEY`. Las fuentes de `public/fonts/` son OFL. El sistema no añade música ni recursos de terceros.
-El uso de ElevenLabs se rige por los términos y el plan de tu cuenta.
+Remotion exige licencia de empresa a partir de cierto tamaño ([condiciones](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md));
+clave en `REMOTION_LICENSE_KEY`. Fuentes OFL en `public/fonts/`; modelo de caras YuNet (MIT) en `models/`.
+B-roll y música solo desde `library/` y `clients/<id>/library/` con licencia declarada (ver `library/README.md`).

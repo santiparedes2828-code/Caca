@@ -20,7 +20,7 @@ los tokens, dejar este archivo para continuar.
 | 4 ElevenLabs narración | ✅ hecha (básica) | `autopilot/narration/tts.ts`; probada con API simulada (la real está bloqueada aquí) |
 | 5 Creación desde cero | ✅ hecha (básica) | `autopilot/create/`, composición `src/create/AutopilotCreate.tsx` (reutiliza componentes de src/HookHouse); probada con voz_a real |
 | 6 Automatización | ✅ hecha (básica) | `autopilot/queue/queue.ts`: cola en disco, trabajador, reintentos, recuperación, pausa, lotes, costes |
-| 7 Interfaz y clientes | ⏳ | |
+| 7 Interfaz y clientes | ✅ hecha (básica) | `autopilot/web/` (servidor, auth scrypt, CSRF, aislamiento) + `web/` (HTML/CSS/JS) |
 
 ## Restricciones del entorno cloud (conocidas)
 
@@ -36,6 +36,9 @@ los tokens, dejar este archivo para continuar.
   `/root/.claude/uploads/c892ae03-04bd-5098-be1f-897ddb43dfb6/c041153d-v09044g40000cnh24lfog65pm4j8q750.mp4`.
 
 ## Registro (lo último arriba)
+
+- 2026-10-12: las 7 etapas en versión básica, subidas. Lo pendiente está en PENDIENTE.md (verificación real de
+  ElevenLabs/Claude desde el código, grabación real de cliente, componentes de creación genéricos, pulido web).
 
 - 2026-10-12: el usuario pidió ir rápido ("no hace falta que sea perfecto"). Etapas 4 y 5 hechas en versión básica.
   Siguiente: Etapa 6 (cola) y 7 (web). Pendiente de pulir después: componentes de creación genéricos multicliente

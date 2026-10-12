@@ -5,6 +5,8 @@ import { listClients, loadProfile } from "./clients/profile";
 import { submitCreation } from "./create/run";
 import { EXT } from "./ingest/ingest";
 import { costSummary, enqueue, pauseQueue, queueStatus, resumeQueue, work } from "./queue/queue";
+import { createUser, loadUsers } from "./web/auth";
+import { createWebServer } from "./web/server";
 import { narrate } from "./narration/tts";
 import { loadConfig, type Config } from "./config";
 import { processInbox } from "./inbox";
@@ -33,6 +35,9 @@ Uso: npm run autopilot -- <comando> [opciones]
   trabajador [--concurrencia N] [--una-vez]  Procesa la cola (reintentos automáticos, recuperación tras cortes).
   cola | pausar | reanudar                 Estado de la cola; pausa o reanuda el trabajador.
   costes [--dias 30]                       Costes reales y estimados por cliente y alertas de uso diario.
+  web                                      Interfaz web en http://127.0.0.1:4321 (con el trabajador de la cola).
+  usuario <nombre> --rol admin|cliente [--cliente id]
+        Crea un usuario de la web. La contraseña se pide por teclado (o HH_NEW_PASSWORD).
   estado [<id>] [--cliente hookhouse]     Lista trabajos o muestra uno.
   reintentar <id>                          Continúa un trabajo fallido desde el paso que falló.
   rehacer-subtitulos <id>                  Rehace subtítulos, render y control desde work/transcript.json
@@ -174,6 +179,7 @@ const main = async () => {
       concurrencia: { type: "string" },
       "una-vez": { type: "boolean" },
       dias: { type: "string" },
+      rol: { type: "string" },
       idioma: { type: "string" },
       vigilar: { type: "boolean" },
       intervalo: { type: "string", default: "10" },
@@ -284,6 +290,35 @@ const main = async () => {
       }
       console.log(`Hoy: ${Math.round(c.today.sttSeconds)} s transcritos · ${c.today.ttsChars} caracteres narrados`);
       for (const a of c.alerts) console.log(`  ⚠ ${a}`);
+      return;
+    }
+    case "web": {
+      const web = createWebServer(cfg);
+      const port = await web.listen(cfg.HH_WEB_PORT, cfg.HH_WEB_HOST);
+      console.log(`Hook House Autopilot en http://${cfg.HH_WEB_HOST}:${port}  (Ctrl+C para salir)`);
+      if (!(await loadUsers(cfg)).length) console.log("No hay usuarios: crea uno con  npm run autopilot -- usuario <nombre> --rol admin");
+      const stop = async () => {
+        await web.close();
+        process.exit(0);
+      };
+      process.on("SIGINT", stop);
+      process.on("SIGTERM", stop);
+      await new Promise(() => undefined);
+      return;
+    }
+    case "usuario": {
+      const name = positionals[0];
+      if (!name) throw new Error("Falta el nombre de usuario");
+      let password = process.env.HH_NEW_PASSWORD ?? "";
+      if (!password) {
+        const rl = (await import("node:readline/promises")).createInterface({ input: process.stdin, output: process.stdout, terminal: true });
+        password = await rl.question("Contraseña (mín. 10 caracteres): ");
+        rl.close();
+      }
+      const role = values.rol === "cliente" ? "cliente" : values.rol === "admin" ? "admin" : null;
+      if (!role) throw new Error("Indica --rol admin o --rol cliente");
+      const u = await createUser(cfg, { username: name, password, role, clientId: role === "cliente" ? values.cliente! : null });
+      console.log(`Usuario creado: ${u.username} (${u.role}${u.clientId ? `, cliente ${u.clientId}` : ""})`);
       return;
     }
     case "crear": {
