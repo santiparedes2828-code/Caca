@@ -4,6 +4,7 @@ import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
 import { Promo, promoDuration } from "./Promo/Promo";
 import { Clip, clipDuration } from "./Clip/Clip";
+import { HookHouse, hookHouseDuration } from "./HookHouse/HookHouse";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -36,6 +37,14 @@ export const RemotionRoot: React.FC = () => {
           }}
         />
       </Folder>
+      <Composition
+        id="HookHouse"
+        component={HookHouse}
+        durationInFrames={hookHouseDuration(30)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="Clip"
         component={Clip}

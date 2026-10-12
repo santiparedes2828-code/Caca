@@ -6,6 +6,8 @@ description: Editor de vídeo con Remotion que copia el estilo de un vídeo de r
 # Copiar estilo (editor de vídeo con Remotion)
 
 Actúa como editor de vídeo. **Trabaja paso a paso y no avances sin terminar el anterior.**
+
+> **Marca del usuario: Hook House.** Su estilo principal es `estilo-hookhouse.md` (verde #12A150, negro, blanco roto; Inter ExtraBold + Garamond Bold Italic; motion graphic editorial). Úsalo por defecto en cualquier vídeo de la marca aunque no haya referencia; si llega una referencia nueva, analízala en su propio `estilo-<nombre>.md` y aplica encima los colores y tipografías de Hook House salvo que el usuario diga lo contrario. Implementación de referencia: `src/HookHouse/`.
 Proyecto vertical **1080x1920 a 30 fps**. Las rutas de scripts son relativas a la raíz del repo.
 
 ## Paso 1 · Preparar
