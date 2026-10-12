@@ -1,4 +1,5 @@
 import { existsSync, promises as fs } from "node:fs";
+import { networkInterfaces } from "node:os";
 import path from "node:path";
 import { parseArgs } from "node:util";
 import { listClients, loadProfile } from "./clients/profile";
@@ -35,7 +36,8 @@ Uso: npm run autopilot -- <comando> [opciones]
   trabajador [--concurrencia N] [--una-vez]  Procesa la cola (reintentos automáticos, recuperación tras cortes).
   cola | pausar | reanudar                 Estado de la cola; pausa o reanuda el trabajador.
   costes [--dias 30]                       Costes reales y estimados por cliente y alertas de uso diario.
-  web                                      Interfaz web en http://127.0.0.1:4321 (con el trabajador de la cola).
+  web [--red]                              Interfaz web en http://127.0.0.1:4321 (con el trabajador de la cola).
+                                           --red: también desde el teléfono u otros equipos de tu red.
   usuario <nombre> --rol admin|cliente [--cliente id]
         Crea un usuario de la web. La contraseña se pide por teclado (o HH_NEW_PASSWORD).
   estado [<id>] [--cliente hookhouse]     Lista trabajos o muestra uno.
@@ -72,6 +74,13 @@ Edición inteligente (Etapa 3):
 
 Transcripción: si no hay SRT/VTT/JSON, se transcribe con ElevenLabs Scribe (ELEVENLABS_API_KEY en .env).
 `;
+
+// Direcciones IPv4 de esta máquina en sus redes (Wi-Fi, cable, Tailscale…)
+const lanAddresses = () =>
+  Object.values(networkInterfaces())
+    .flatMap((list) => list ?? [])
+    .filter((i) => i.family === "IPv4" && !i.internal)
+    .map((i) => i.address);
 
 const fmtJob = (j: Job) =>
   `${j.id}  ${j.clientId.padEnd(10)} ${j.status.padEnd(17)} ${(j.progress * 100).toFixed(0).padStart(3)} %  ${j.verdict ?? ""}`;
@@ -183,6 +192,7 @@ const main = async () => {
       idioma: { type: "string" },
       vigilar: { type: "boolean" },
       intervalo: { type: "string", default: "10" },
+      red: { type: "boolean" },
     },
   });
   const cfg = loadConfig();
@@ -293,9 +303,16 @@ const main = async () => {
       return;
     }
     case "web": {
+      // --red: acepta conexiones de otros equipos de tu red (p. ej. el teléfono en la misma Wi-Fi o por Tailscale)
+      const host = values.red ? "0.0.0.0" : cfg.HH_WEB_HOST;
       const web = createWebServer(cfg);
-      const port = await web.listen(cfg.HH_WEB_PORT, cfg.HH_WEB_HOST);
-      console.log(`Hook House Autopilot en http://${cfg.HH_WEB_HOST}:${port}  (Ctrl+C para salir)`);
+      const port = await web.listen(cfg.HH_WEB_PORT, host);
+      const anyHost = host === "0.0.0.0" || host === "::";
+      console.log(`Hook House Autopilot en http://${anyHost ? "127.0.0.1" : host}:${port}  (Ctrl+C para salir)`);
+      if (anyHost) {
+        for (const ip of lanAddresses()) console.log(`  Desde el teléfono u otro equipo de tu red: http://${ip}:${port}`);
+        if (!cfg.HH_WEB_SECURE_COOKIE) console.log("  Sin HTTPS: úsalo solo en redes de confianza (tu Wi-Fi o Tailscale), no abierto a internet.");
+      }
       if (!(await loadUsers(cfg)).length) console.log("No hay usuarios: crea uno con  npm run autopilot -- usuario <nombre> --rol admin");
       const stop = async () => {
         await web.close();

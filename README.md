@@ -37,6 +37,11 @@ npm run autopilot -- usuario ana --rol cliente --cliente hookhouse
 npm run autopilot -- web                                # http://127.0.0.1:4321 (incluye el trabajador de la cola)
 ```
 
+**Desde el teléfono**: arranca con `npm run autopilot -- web --red` y abre en el teléfono la dirección que muestra
+(«Desde el teléfono…», p. ej. `http://192.168.1.23:4321`). El teléfono debe estar en la misma Wi-Fi que el ordenador,
+o en la misma red de [Tailscale](https://tailscale.com) si estás fuera. El ordenador tiene que estar encendido con la
+web en marcha. Va sin HTTPS: no la abras directamente a internet (para eso, un proxy HTTPS y `HH_WEB_SECURE_COOKIE=1`).
+
 **Carpeta de entrada**: deja vídeos (y su `.srt`/`.json` con el mismo nombre) en `inbox/hookhouse/` y ejecuta
 `npm run autopilot -- bandeja` (o `--vigilar`).
 

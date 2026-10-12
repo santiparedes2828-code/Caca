@@ -47,7 +47,23 @@ pre { white-space: pre-wrap; background: var(--bg); padding: 14px; border-radius
 .error { color: var(--danger); font-weight: 600; min-height: 1em; margin: 0; }
 .issue { padding: 8px 12px; border-left: 4px solid var(--muted); background: var(--bg); margin: 6px 0; font-size: 14px; }
 .issue.bad { border-color: var(--danger); }
-@media (max-width: 640px) { .top { padding: 16px; } .card { padding: 16px; } }
 [hidden] { display: none !important; }
 input, select, textarea { min-width: 0; width: 100%; }
 .checks input { width: auto; }
+
+/* Teléfono: nada más ancho que la pantalla (sin desplazamiento lateral) */
+main { grid-template-columns: minmax(0, 1fr); }
+.top, .tabs, .actions { flex-wrap: wrap; gap: 8px 12px; }
+.table-wrap { overflow-x: auto; }
+pre, #jobs td:first-child { overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+  .top { padding: 14px 16px; }
+  .brand { font-size: 20px; }
+  main { margin: 16px auto; gap: 16px; }
+  .card { padding: 16px; border-radius: 16px; }
+  #queue { margin-left: 0; width: 100%; }
+  /* Con letra de menos de 16 px el iPhone amplía la página al tocar un campo */
+  input, select, textarea { font-size: 16px; }
+  /* En el teléfono la lista muestra trabajo, estado y progreso */
+  #jobs :is(th, td):is(:nth-child(2), :nth-child(3), :nth-child(6)) { display: none; }
+}

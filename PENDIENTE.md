@@ -22,6 +22,8 @@ Las 7 etapas funcionan en versión básica (2026-10-12). El usuario pidió prior
 - Rendimiento: el modo `blur-fill` dobla el coste de render (dos capas de vídeo); un render de 36 s tarda ~1–3 min con 4 núcleos.
 - Web: sesiones en memoria (se pierden al reiniciar), sin gestión de usuarios desde la propia web, sin HTTPS propio
   (usar un proxy HTTPS si se expone a internet; `HH_WEB_SECURE_COOKIE=1`). Presets guardables por cliente.
+  Acceso desde el teléfono: `web --red` en la misma Wi-Fi o Tailscale; falta alojarla en un servidor propio con
+  HTTPS para usarla sin el ordenador encendido.
 - Biblioteca de B-roll y música vacía: hay que añadir recursos con licencia (`library/README.md`).
 - Legibilidad de subtítulos sobre fondos difíciles (variante `shadow`) no se mide.
 
