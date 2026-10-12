@@ -30,6 +30,11 @@ Uso: npm run autopilot -- <comando> [opciones]
         [--voz narracion.mp3 --tiempos tiempos.json | --sin-voz]
         Crea un vídeo desde cero: guion → narración con la voz de marca (ElevenLabs) → escenas → MP4.
         --sin-voz: el texto aparece a ritmo de lectura y el sonido se añade en TikTok o Reels.
+        --estilo auto|tema|marca: tema = colores, tipografía, iconos animados y subtítulos según el
+        contenido; marca = identidad del cliente (Hook House: verde y serif). auto = marca solo si el
+        contenido nombra a la marca. --tema citrico|comida|salud|deporte|tecnologia|finanzas|belleza|
+        viajes|naturaleza|mascotas|entretenimiento|curiosidades|general fuerza un tema.
+        Con --guion y --brief a la vez, el guion se usa tal cual y el brief (la idea) elige el tema.
         Formato del guion: ver autopilot/create/script.ts. --brief necesita ANTHROPIC_API_KEY.
   narrar --texto "…"                        Genera solo la narración (mp3 + tiempos) con la voz de marca.
   encolar <video|carpeta> [opciones]      Añade a la cola uno o varios vídeos (lote) sin procesarlos aún.
@@ -195,6 +200,8 @@ const main = async () => {
       intervalo: { type: "string", default: "10" },
       red: { type: "boolean" },
       "sin-voz": { type: "boolean" },
+      estilo: { type: "string" },
+      tema: { type: "string" },
     },
   });
   const cfg = loadConfig();
@@ -351,6 +358,8 @@ const main = async () => {
         timings: values.tiempos ?? null,
         label: values.etiqueta ?? "",
         silent: !!values["sin-voz"],
+        style: values.estilo === "tema" || values.estilo === "marca" ? values.estilo : "auto",
+        preset: values.tema ?? null,
       }, { run: !values.encolar });
       if (values.encolar) await enqueue(cfg, job);
       printResult(cfg, job);

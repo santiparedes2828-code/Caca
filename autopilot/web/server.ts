@@ -269,7 +269,18 @@ export const createWebServer = (cfg: Config, opts: { worker?: boolean } = {}) =>
         }
         const job = await submitCreation(
           cfg,
-          { clientId, script, brief: up.fields.brief || null, type: up.fields.type || "redes", seconds: num(up.fields.seconds) ?? 30, audio: up.files.audio ?? null, timings: up.files.tiempos ?? null, label: up.fields.label ?? "" },
+          {
+            clientId,
+            script,
+            brief: up.fields.brief || null,
+            type: up.fields.type || "redes",
+            seconds: num(up.fields.seconds) ?? 30,
+            audio: up.files.audio ?? null,
+            timings: up.files.tiempos ?? null,
+            label: up.fields.label ?? "",
+            silent: up.fields.silent === "true",
+            style: up.fields.style === "tema" || up.fields.style === "marca" ? up.fields.style : "auto",
+          },
           { run: false },
         );
         return json(res, job.status === "fallido" ? 422 : 201, publicJob(await enqueue(cfg, job)));

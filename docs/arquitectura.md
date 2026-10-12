@@ -19,7 +19,8 @@
 | Edición | `autopilot/edit/` | Línea de tiempo (cortes no destructivos, remapeo), colocación de subtítulos frente a caras |
 | Editorial | `autopilot/editorial/` | Frases, rasgos, temas, clips candidatos, Claude opcional, biblioteca con licencias |
 | Narración | `autopilot/narration/` | Texto a voz de ElevenLabs con tiempos, caché, límites |
-| Creación | `autopilot/create/`, `src/create/` | Guion (texto o brief con Claude) → narración → escenas → composición AutopilotCreate |
+| Creación | `autopilot/create/`, `src/create/` | Guion (texto o brief con Claude) → narración (o sin voz) → escenas → AutopilotCreate (identidad de marca) o AutopilotTheme (tema según el contenido) |
+| Temas y motion graphics | `autopilot/create/theme.ts`, `src/create/theme.ts`, `src/create/motion.tsx`, `src/create/AutopilotTheme.tsx` | 13 temas (paleta, tipografía OFL, estilo de subtítulos, movimiento, fondo); elección por palabras clave de la idea; icono por escena desde un índice en español (`autopilot/create/data/motivos-es.json`, generado con `scripts/motivos.ts`) de Fluent Emoji (MIT); el backend resuelve los iconos a SVG en data URI y la composición solo recibe datos validados |
 | Cola | `autopilot/queue/` | Cola en disco, trabajador concurrente, reintentos, recuperación, costes |
 | Web | `autopilot/web/`, `web/` | API con sesiones, CSRF y aislamiento por cliente; interfaz sin dependencias |
 | Orquestación | `autopilot/pipeline/` (`run.ts`, `steps/`), `autopilot/inbox.ts`, `autopilot/cli.ts` | Pasos reanudables, variantes, reintentos, bandeja, CLI |

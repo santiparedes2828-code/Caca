@@ -66,10 +66,14 @@
             <textarea name="scriptText" rows="8" placeholder="[cifra: clips | 3]&#10;Te entregamos *tres* clips cada semana.&#10;&#10;[cta: AUTO]&#10;Escríbeme auto."></textarea>
           </label>
           <label class="wide">Brief (si no hay guion) <textarea name="brief" rows="3"></textarea></label>
+          <label>Estilo visual
+            <select name="style"><option value="auto">Automático</option><option value="tema">Según el tema (motion graphics)</option><option value="marca">Identidad de la marca</option></select>
+          </label>
           <label>Duración aproximada (s) <input name="seconds" type="number" min="5" max="180" value="30" /></label>
           <label>Etiqueta de cabecera <input name="label" placeholder="(01) edición automática" /></label>
           <label>Narración propia (opcional) <input type="file" name="audio" accept=".mp3,.wav,.m4a" /></label>
           <label>Sus tiempos por palabra (JSON) <input type="file" name="tiempos" accept=".json" /></label>
+          <fieldset class="wide checks"><label><input type="checkbox" name="silent" /> Sin voz (el sonido se pone en TikTok o Reels)</label></fieldset>
           <button class="wide">Enviar a la cola</button>
           <p class="wide error" id="create-error"></p>
         </form>

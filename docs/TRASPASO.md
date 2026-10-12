@@ -18,7 +18,7 @@ los tokens, dejar este archivo para continuar.
 | 2 Material del cliente | ✅ hecha | Transcripción ElevenLabs, caras, cortes de silencio, escenas, ruido básico |
 | 3 Edición inteligente | ✅ hecha (básica) | Análisis editorial local, clips, versiones cortas, B-roll y música con licencia, Claude opcional, aprobación del plan |
 | 4 ElevenLabs narración | ✅ hecha (básica) | `autopilot/narration/tts.ts`; probada con API simulada (la real está bloqueada aquí) |
-| 5 Creación desde cero | ✅ hecha (básica) | `autopilot/create/`, composición `src/create/AutopilotCreate.tsx` (reutiliza componentes de src/HookHouse); probada con voz_a real |
+| 5 Creación desde cero | ✅ hecha (básica) | `autopilot/create/`; `AutopilotTheme` (tema según el contenido, motion graphics) y `AutopilotCreate` (identidad de marca); e2e en `tests/e2e/create.test.ts` |
 | 6 Automatización | ✅ hecha (básica) | `autopilot/queue/queue.ts`: cola en disco, trabajador, reintentos, recuperación, pausa, lotes, costes |
 | 7 Interfaz y clientes | ✅ hecha (básica) | `autopilot/web/` (servidor, auth scrypt, CSRF, aislamiento) + `web/` (HTML/CSS/JS) |
 
@@ -52,6 +52,10 @@ Artefacto anclado en la barra lateral del usuario: https://claude.ai/artifact/Q3
   `/root/.claude/uploads/c892ae03-04bd-5098-be1f-897ddb43dfb6/c041153d-v09044g40000cnh24lfog65pm4j8q750.mp4`.
 
 ## Registro (lo último arriba)
+
+- 2026-10-12: vídeos creados con tema según el contenido (motion graphics: `AutopilotTheme`, 13 temas, iconos
+  Fluent Emoji por escena, subtítulos a juego); la identidad Hook House queda para contenido de la marca
+  (`--estilo marca`). Modo `--sin-voz`. El usuario pidió esto tras ver el vídeo de mandarinas en verde Hook House.
 
 - 2026-10-12: panel anclado en Claude para el teléfono (sección «Panel en Claude»); `web --red` y diseño
   adaptado al teléfono en la web.

@@ -21,7 +21,9 @@ import { ProviderError } from "../transcription/elevenlabs";
 import { runOk } from "../util/exec";
 import { readJson, writeJsonAtomic, writeTextAtomic } from "../util/fs";
 import { createLogger, redact } from "../util/log";
+import { themedPropsSchema, type ThemedProps } from "../../src/create/theme";
 import { alignScript, parseScript, readingTimings, scriptFromBrief, scriptText } from "./script";
+import { planTheme, presetById, resolveStyle, type Style } from "./theme";
 
 // Creación desde cero (Etapa 5): guion (archivo o brief con Claude) → narración con la voz de marca
 // (ElevenLabs, o un audio propio con sus tiempos) → escenas con componentes validados → render → QC.
@@ -37,6 +39,8 @@ export type CreationRequest = {
   timings?: string | null; // sus tiempos por palabra (JSON de ElevenLabs/Whisper o Caption[])
   label?: string;
   silent?: boolean; // sin voz: el texto aparece a ritmo de lectura y el sonido se pone en la plataforma
+  style?: Style; // auto (por defecto): identidad de marca si el contenido habla de la marca; si no, tema
+  preset?: string | null; // fuerza un tema concreto (citrico, comida, salud…)
 };
 
 const LOGO_SECONDS = 1.5;
@@ -62,7 +66,15 @@ export const submitCreation = async (cfg: Config, req: CreationRequest, opts: { 
       job.inputs.push(await storeOriginal(dir, path.resolve(f), v));
     }
     if (req.brief) await writeTextAtomic(path.join(dir, "input", "original", "brief.txt"), req.brief.slice(0, 4000));
-    await writeJsonAtomic(path.join(dir, "work", "creacion.json"), { type: req.type ?? "redes", seconds: req.seconds ?? 30, label: req.label ?? "", silent: !!req.silent });
+    if (req.preset && !presetById(req.preset)) throw new IngestError("tema", `Tema desconocido: ${req.preset}`);
+    await writeJsonAtomic(path.join(dir, "work", "creacion.json"), {
+      type: req.type ?? "redes",
+      seconds: req.seconds ?? 30,
+      label: req.label ?? "",
+      silent: !!req.silent,
+      style: req.preset ? "tema" : (req.style ?? "auto"),
+      preset: req.preset ?? null,
+    });
     job.steps.ingest = { status: "hecho", finishedAt: new Date().toISOString() };
     job.status = "recibido";
     await saveJob(cfg, job);
@@ -91,7 +103,7 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
   };
   try {
     const profile = await loadProfile(cfg.HH_CLIENTS_DIR, clientId);
-    const meta = await readJson<{ type: string; seconds: number; label: string; silent?: boolean }>(W("creacion.json"));
+    const meta = await readJson<{ type: string; seconds: number; label: string; silent?: boolean; style?: Style; preset?: string | null }>(W("creacion.json"));
     job.attempts++;
     job.costs = { real: [], estimated: [] };
 
@@ -178,18 +190,49 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
       offset += n;
       return { from, to, accent: acc === null ? null : [acc, Math.max(acc, accEnd!)], component: s.component, items: s.items, label: s.label, value: s.value };
     });
+    // Estilo: identidad de la marca del cliente, o tema según el contenido (motion graphics)
+    const brief = await fs.readFile(path.join(dir, "input", "original", "brief.txt"), "utf8").catch(() => "");
+    const style = resolveStyle(meta.style ?? "auto", `${brief} ${scriptText(scenes)}`, profile.name);
     const lastMs = endMs ?? words[words.length - 1].endMs + 600;
-    const durationInFrames = Math.ceil((lastMs / 1000 + LOGO_SECONDS) * fps);
-    const props: CreateProps = createPropsSchema.parse({
-      fps,
-      durationInFrames,
-      audioSrc: audioFile ? `job:${path.basename(audioFile)}` : null,
-      captions: caps,
-      scenes: sceneProps,
-      headerLabel: meta.label || `(01) ${meta.type}`,
-      logoSeconds: LOGO_SECONDS,
-    });
-    await writeJsonAtomic(W("create-props.json"), props);
+    let compositionId: "AutopilotCreate" | "AutopilotTheme";
+    let props: CreateProps | ThemedProps;
+    let durationInFrames: number;
+    const credits: string[] = [];
+    let styleNote: string;
+    if (style === "marca") {
+      compositionId = "AutopilotCreate";
+      durationInFrames = Math.ceil((lastMs / 1000 + LOGO_SECONDS) * fps);
+      props = createPropsSchema.parse({
+        fps,
+        durationInFrames,
+        audioSrc: audioFile ? `job:${path.basename(audioFile)}` : null,
+        captions: caps,
+        scenes: sceneProps,
+        headerLabel: meta.label || `(01) ${meta.type}`,
+        logoSeconds: LOGO_SECONDS,
+      });
+      styleNote = `identidad de ${profile.name}`;
+    } else {
+      compositionId = "AutopilotTheme";
+      const plan = planTheme({ topic: brief || scriptText(scenes), scenes, presetId: meta.preset ?? null });
+      // Sin logo al final: la última escena (normalmente la llamada a la acción) se queda un momento
+      durationInFrames = Math.ceil((lastMs / 1000 + (endMs ? 0.4 : 0.8)) * fps);
+      props = themedPropsSchema.parse({
+        fps,
+        durationInFrames,
+        audioSrc: audioFile ? `job:${path.basename(audioFile)}` : null,
+        captions: caps,
+        scenes: sceneProps.map((s, k) => ({ ...s, icon: plan.scenes[k].icon, itemIcons: plan.scenes[k].itemIcons })),
+        headerLabel: meta.label,
+        theme: plan.theme,
+        icons: plan.icons,
+        bgIcons: plan.bgIcons,
+        pointerIcon: plan.pointerIcon,
+      });
+      credits.push(...plan.credits);
+      styleNote = `tema ${plan.theme.name} · iconos ${[...new Set(plan.scenes.map((s) => s.icon).filter(Boolean))].join(", ")}`;
+    }
+    await writeJsonAtomic(W("create-props.json"), { ...props, ...("icons" in props ? { icons: Object.keys(props.icons) } : {}) });
     const pages: CaptionPage[] = sceneProps.map((s) => ({
       startMs: caps[s.from].startMs,
       endMs: caps[s.to].endMs,
@@ -205,7 +248,7 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
       await renderComposition({
         cfg,
         serveUrl: bundle.serveUrl,
-        id: "AutopilotCreate",
+        id: compositionId,
         props: { ...props, audioSrc: audioFile ? server.url("job", path.basename(audioFile)) : null },
         output: W("render.partial.mp4"),
         shouldCancel: () => cancelRequested(cfg, job),
@@ -253,7 +296,9 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
           tipo: meta.type,
           escenas: scenes.length,
           narración: meta.silent ? "sin voz (texto a ritmo de lectura)" : audioIn ? "audio propio" : `ElevenLabs · ${profile.defaults.voice?.name}`,
+          estilo: styleNote,
         },
+        credits,
       }),
     );
     await saveJob(cfg, job);

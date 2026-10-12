@@ -12,7 +12,7 @@ Arquitectura en [docs/arquitectura.md](docs/arquitectura.md); estado para retoma
 | 2 Material del cliente | Transcripción (ElevenLabs), encuadre que sigue la cara, subtítulos que no tapan caras, cortes de silencio no destructivos, escenas, ruido |
 | 3 Edición inteligente | Plan editorial, clips de un vídeo largo, versiones cortas, B-roll y música con licencia, Claude opcional, aprobación del plan |
 | 4 Narración | Voz de marca (ElevenLabs, Rodrigo Zabú) con tiempos por palabra |
-| 5 Creación | Guion (o brief con Claude) → narración → escenas con componentes de marca → MP4 |
+| 5 Creación | Guion o idea → narración (o sin voz) → escenas con motion graphics según el tema (o la identidad de la marca) → MP4 |
 | 6 Automatización | Cola en disco, trabajador concurrente, reintentos, recuperación, lotes, costes y alertas |
 | 7 Web y clientes | Interfaz con usuarios por cliente, subida, progreso, vista previa, descargas, informes |
 
@@ -83,7 +83,26 @@ Escríbeme auto y te muestro cómo funciona.
 ```
 
 Bloques separados por una línea en blanco; `[titular|lista|cifra|cta: …]` elige el componente; `*palabra*` se
-destaca en serif verde. Las escenas largas se dividen solas.
+destaca. Las escenas largas se dividen solas.
+
+### Estilo visual de los vídeos creados
+
+- **Según el tema** (lo normal para ideas): el sistema lee la idea y elige un tema (cítrico, comida, salud,
+  deporte, tecnología, finanzas, belleza, viajes, naturaleza, mascotas, entretenimiento, curiosidades o general).
+  Cada tema trae su paleta, su tipografía, su forma de destacar palabras en los subtítulos, su movimiento y su
+  fondo animado. Cada escena lleva un icono animado relacionado con lo que se dice («limón» → 🍋, «ADN» → 🧬),
+  las listas salen en tarjetas y la llamada a la acción en un botón que siempre cabe.
+- **Identidad de la marca**: la del cliente (Hook House: verde y serif, logo al final). Para anuncios de la
+  propia marca. Se elige con `--estilo marca` o en la web; en automático solo se usa si el contenido nombra la marca.
+
+```console
+npm run autopilot -- crear --guion guion.txt --brief "Datos curiosos sobre mandarinas"   # tema cítrico
+npm run autopilot -- crear --guion anuncio.txt --estilo marca                           # identidad Hook House
+npm run autopilot -- crear --guion guion.txt --tema deporte --sin-voz                   # tema fijo, sin narración
+```
+
+`--sin-voz` hace el vídeo sin narración: el texto aparece a ritmo de lectura y el sonido se añade en TikTok o
+Reels. Recursos y licencias en [docs/licencias.md](docs/licencias.md).
 
 ## Calidad y revisión
 
@@ -106,7 +125,7 @@ quedan en revisión. **La revisión humana sigue siendo necesaria.**
 ```console
 npm run lint        # eslint + tsc
 npm test            # pruebas unitarias (segundos)
-npm run test:e2e    # extremo a extremo con render real (~15 min)
+npm run test:e2e    # extremo a extremo con render real (~12 min)
 ```
 
 Las APIs de ElevenLabs y Anthropic se simulan en `tests/support/` (claramente separadas del código real). Las

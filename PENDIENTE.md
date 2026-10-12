@@ -13,10 +13,15 @@ Las 7 etapas funcionan en versión básica (2026-10-12). El usuario pidió prior
 - **Grabación real de una persona hablando a cámara**: los vídeos de prueba usan imagen sintética. Falta pasar una
   grabación real de cliente (talking head) por todo el pipeline.
 
+- **Cuenta de ElevenLabs**: el 12-10-2026 ElevenLabs rechazó la narración del vídeo de mandarinas porque
+  desactivó el plan gratuito de la cuenta por «actividad inusual». Mientras siga así, la narración y la
+  transcripción fallan (el sistema lo informa); se arregla en la cuenta (plan de pago o soporte de ElevenLabs).
+
 ## Por pulir
 
-- Creación: los componentes vienen de `src/HookHouse` (identidad Hook House fija); hacerlos genéricos por cliente.
-  Más tipos de escena (gráficos de barras, comparativas, B-roll en escenas). E2E automatizado de creación.
+- Creación con tema: la elección es por palabras clave (13 temas). Con Claude configurado podría elegir mejor
+  (tema, iconos) entre las mismas opciones validadas. Faltan ilustraciones y B-roll temático además de iconos,
+  más tipos de escena (gráficos de barras, comparativas) y que los clientes guarden su tema propio.
 - Edición: título/gancho animado al inicio de los clips; B-roll en formato tarjeta (no solo pantalla completa);
   hablante activo en podcasts (diarización ya disponible) para elegir a quién encuadrar.
 - Rendimiento: el modo `blur-fill` dobla el coste de render (dos capas de vídeo); un render de 36 s tarda ~1–3 min con 4 núcleos.
