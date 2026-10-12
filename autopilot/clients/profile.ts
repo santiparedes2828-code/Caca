@@ -23,7 +23,18 @@ export const profileSchema = z.object({
       normalize: z.boolean(),
       targetLufs: z.number().min(-30).max(-8),
       truePeakDb: z.number().min(-6).max(0),
+      denoise: z.enum(["no", "suave"]).default("no"),
     }),
+    editing: z
+      .object({
+        cutSilences: z.boolean(), // quitar silencios sin voz (nunca palabras ni risas)
+        minSilenceSec: z.number().min(0.3).max(5),
+        keepPauseSec: z.number().min(0).max(1),
+        silenceDb: z.number().min(-70).max(-20),
+        followFaces: z.boolean(), // el encuadre sigue a la cara principal
+        avoidFaces: z.boolean(), // los subtítulos se apartan de las caras
+      })
+      .default({ cutSilences: false, minSilenceSec: 0.8, keepPauseSec: 0.3, silenceDb: -38, followFaces: true, avoidFaces: true }),
     transcription: z
       .object({
         provider: z.enum(["elevenlabs", "ninguno"]),

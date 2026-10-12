@@ -8,7 +8,7 @@ import { processInbox } from "../../autopilot/inbox";
 import { createJob, jobDir, loadJob, requestCancel, saveJob } from "../../autopilot/jobs/store";
 import { loadProfile } from "../../autopilot/clients/profile";
 import { probe } from "../../autopilot/media/probe";
-import { retryJob, runJob, submitJob } from "../../autopilot/pipeline";
+import { retryJob, runJob, submitJob } from "../../autopilot/pipeline/run";
 import { sha256File } from "../../autopilot/util/fs";
 import { makeFixtures } from "../fixtures";
 
@@ -52,10 +52,10 @@ test("1+4+6+14. vídeo 16:9 con audio y SRT → vertical 1080x1920 con subtítul
   assert.equal((await fs.stat(out(job, orig.path))).mode & 0o222, 0);
   // Informe y fotogramas de control
   const md = await fs.readFile(out(job, "output/informe.md"), "utf8");
-  assert.match(md, /Control de calidad: APROBADO/);
+  assert.match(md, /Vídeo principal — APROBADO/);
   assert.match(md, /Reencuadre 1280x720/);
   assert.ok(!md.includes(ROOT), "el informe no debe contener rutas de la máquina");
-  await fs.access(out(job, "output/qc/hoja_contacto.jpg"));
+  await fs.access(out(job, "output/qc/principal/hoja_contacto.jpg"));
   const log = await fs.readFile(out(job, "logs/job.log"), "utf8");
   assert.ok(!log.includes(ROOT), "el log no debe contener rutas de la máquina");
 });
@@ -68,7 +68,7 @@ test("subtítulos por palabra (JSON) en modo dinámico, alto impacto y formato c
     overrides: { captionMode: "dinamico", intensity: "alto-impacto", format: "cuadrado", reframe: { mode: "blur-fill" } },
   });
   assert.equal(job.status, "completado", JSON.stringify(job.errors));
-  const caps = JSON.parse(await fs.readFile(out(job, "work/captions.json"), "utf8"));
+  const caps = JSON.parse(await fs.readFile(out(job, "work/variants/principal/captions.json"), "utf8"));
   assert.equal(caps.precision, "word");
   assert.equal(caps.mode, "dinamico");
   const p = await probe(out(job, job.outputs.find((o) => o.kind === "video")!.path));

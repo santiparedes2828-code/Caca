@@ -15,7 +15,9 @@
 | Transcripción | `autopilot/transcription/` | Cliente REST de ElevenLabs (STT + suscripción), caché por cliente, presupuesto, registro de uso, transcripción editable |
 | Render | `autopilot/render/` | Bundle con caché por hash, servidor local de recursos, `renderMedia` con cancelación |
 | Calidad | `autopilot/qc/` | Controles automáticos, fotogramas de control, informe Markdown/JSON |
-| Orquestación | `autopilot/pipeline.ts`, `autopilot/inbox.ts`, `autopilot/cli.ts` | Pasos reanudables, reintentos, bandeja de entrada, CLI |
+| Visión | `autopilot/vision/`, `autopilot/python/faces.py` | Caras (YuNet vía OpenCV, sin red), trayectoria del encuadre, escenas |
+| Edición | `autopilot/edit/` | Línea de tiempo (cortes no destructivos, remapeo), colocación de subtítulos frente a caras |
+| Orquestación | `autopilot/pipeline/` (`run.ts`, `steps/`), `autopilot/inbox.ts`, `autopilot/cli.ts` | Pasos reanudables, variantes, reintentos, bandeja, CLI |
 
 ## Flujo de un trabajo de edición
 
@@ -26,9 +28,10 @@ bandeja / procesar
   └─ prepare    analizando    work/source.mp4 (CFR, rotación, recorte, −14 LUFS) + prepare.json
   └─ captions   transcribiendo SRT/VTT/JSON del cliente, o work/transcript.json, o ElevenLabs (audio mono 16 kHz)
                               → work/captions.json (páginas + SRT)
-  └─ compose    componiendo   work/props.json (valida recursos de marca)
-  └─ render     renderizando  work/render.mp4 (+faststart). Clave = hash(props + bundle): no se repite
-  └─ qc         verificando   work/qc.json + output/qc/*.jpg
+  └─ plan       planificando  work/plan.json: caras (faces.json), encuadre, escenas, cortes de silencio, variantes
+  └─ compose    componiendo   work/variants/<id>/props.json + captions.json (remapeo, subtítulos lejos de caras)
+  └─ render     renderizando  work/variants/<id>/render.mp4. Clave = hash(props + bundle): no se repite
+  └─ qc         verificando   work/qc.json + output/qc/<id>/*.jpg
   └─ deliver    → completado | requiere_revision | fallido   output/*.mp4, *.srt, informe.*
 ```
 

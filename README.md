@@ -2,7 +2,8 @@
 
 Producción automatizada de vídeos de Hook House para TikTok, Reels y Shorts, con Remotion + FFmpeg.
 
-**Estado: Etapa 1 (base) operativa + transcripción automática con ElevenLabs (Etapa 2, parte 1).** Pon un vídeo (y opcionalmente su SRT) en una carpeta, ejecuta un comando y
+**Estado: Etapas 1 y 2 operativas** (edición de material del cliente: transcripción con ElevenLabs, encuadre que
+sigue a la cara, subtítulos que no tapan caras, cortes de silencio no destructivos, escenas, reducción de ruido básica). Pon un vídeo (y opcionalmente su SRT) en una carpeta, ejecuta un comando y
 obtienes un MP4 vertical 1080x1920 con subtítulos de marca, el SRT del vídeo final, un informe de calidad y el
 original intacto. Lo que aún no existe está en [PENDIENTE.md](PENDIENTE.md); la arquitectura, en
 [docs/arquitectura.md](docs/arquitectura.md).
@@ -17,6 +18,7 @@ original intacto. Lo que aún no existe está en [PENDIENTE.md](PENDIENTE.md); l
 
 ```console
 npm ci
+npm run setup:python   # opcional: detección de caras (crea .venv con OpenCV; sin esto, encuadre fijo)
 mkdir -p inbox/hookhouse
 cp /ruta/mi-video.mp4 inbox/hookhouse/
 cp /ruta/mi-video.srt inbox/hookhouse/        # opcional: mismo nombre que el vídeo (.srt, .vtt o .json)
@@ -53,6 +55,17 @@ Si el vídeo llega **sin** SRT/VTT/JSON, se transcribe con ElevenLabs Scribe (`s
   (no vuelve a llamar a ElevenLabs).
 - Sin clave, el vídeo sale sin subtítulos y el informe lo explica. `--sin-transcripcion` lo desactiva por vídeo;
   `--idioma en` cambia el idioma (por defecto `es`, en `clients/hookhouse/profile.json`).
+
+### Edición automática del material (Etapa 2)
+
+- **Encuadre que sigue a la cara**: detecta caras con YuNet (modelo local en `models/`) y mueve el recorte solo cuando la
+  cara se desplaza de forma sostenida (sin tirones). Las caras diminutas (avatares, fondo) se ignoran.
+- **Subtítulos que no tapan caras**: cada página se mueve a otra posición segura si coincidiría con una cara.
+- **Cortes de silencio** (activados en el perfil de Hook House): solo donde hay silencio medido **y** ninguna palabra ni
+  sonido transcrito; deja 0,3 s de pausa. No destructivo: el original y la copia de trabajo no se tocan.
+- **Escenas**: cambios de plano y fotogramas representativos en `work/escenas/`.
+- **Cortinilla final** de otra red (p. ej. TikTok): se avisa y se propone `--hasta`; no se corta sola.
+- **Reducción de ruido básica** (`--reducir-ruido`, filtro FFT de ffmpeg). No es una restauración profesional.
 
 ### Ajustes por vídeo
 
@@ -101,8 +114,8 @@ válido. **La revisión humana sigue siendo necesaria** (caras cortadas por el r
 
 ```console
 npm run lint         # eslint + tsc
-npm test             # 31 pruebas unitarias (segundos)
-npm run test:e2e     # 13 pruebas de extremo a extremo con render real (~3 min)
+npm test             # 41 pruebas unitarias (segundos)
+npm run test:e2e     # 14 pruebas de extremo a extremo con render real (~4 min)
 ```
 
 ## Remotion Studio

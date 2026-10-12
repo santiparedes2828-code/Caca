@@ -39,6 +39,7 @@
     "lint": "eslint src && tsc",
     "autopilot": "tsx autopilot/cli.ts",
     "test": "node --import tsx --test tests/unit/*.test.ts",
-    "test:e2e": "node --import tsx --test --test-concurrency=1 tests/e2e/*.test.ts"
+    "test:e2e": "node --import tsx --test --test-concurrency=1 tests/e2e/*.test.ts",
+    "setup:python": "python3 -m venv .venv && .venv/bin/pip install -q -r requirements.txt"
   }
 }

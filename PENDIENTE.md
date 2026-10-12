@@ -7,7 +7,6 @@ SRT/VTT/JSON con 5 modos, reencuadre a vertical/cuadrado/horizontal, render Remo
 reanudación, cancelación, bandeja de entrada y perfiles de cliente. Ver README.md.
 
 Limitaciones conocidas de la Etapa 1:
-- **Reencuadre sin detección de rostro**: el foco es fijo (`focusX`/`focusY`); revisar que no se corten caras.
 - El énfasis del modo `dinamico` es una heurística (número o palabra de contenido más larga), no editorial.
 - El color de pantalla vacía y los tramos negros se miden; la legibilidad sobre fondos complicados no.
 - Probado con material compuesto a partir de recursos reales del repo (locución de marca + tiempos de Scribe +
@@ -30,12 +29,18 @@ Limitaciones conocidas de la Etapa 1:
   Para verificarlo: en tu máquina (o con el dominio permitido), `.env` con la clave, `npm run autopilot -- elevenlabs`
   y un vídeo sin SRT en la bandeja.
 
-### Siguiente
+### Hecho: resto de la Etapa 2 (2026-10-12)
 
-1. Detección de rostro para el foco del reencuadre y para mover los subtítulos si tapan la cara.
-2. Recorte de silencios no destructivo (reutilizar la lógica de `cortar_silencios.py`).
-3. Fotogramas representativos y detección de escenas del original.
-4. Hablantes (diarización ya pedida a ElevenLabs) para podcasts y entrevistas.
+- Caras: YuNet (OpenCV, modelo MIT en `models/`, sha256 verificado), trayectoria de encuadre con histéresis,
+  filtro de caras pequeñas, subtítulos que se apartan de las caras y control de calidad "Subtítulos sin tapar caras".
+  Probado con un vídeo real de móvil (576x1024, VFR, cara en movimiento, cortinilla de TikTok detectada).
+- Cortes de silencio no destructivos (tramos encadenados en la composición, fundido de 2 fotogramas en cada corte,
+  subtítulos y encuadre remapeados). Probado con la voz real y sus tiempos reales de ElevenLabs.
+- Escenas + fotogramas representativos; cortinilla final; reducción de ruido básica; aviso de baja resolución.
+- Pipeline reestructurado en `autopilot/pipeline/` con paso `plan` y **variantes** (base de los clips de la Etapa 3).
+- Bug corregido: los ajustes por vídeo vacíos desactivaban transcripción/caras/cortes (prueba de regresión añadida).
+
+Pendiente de la Etapa 2: hablantes (la diarización ya se pide a ElevenLabs) se usará en el modo podcast (Etapa 3).
 
 ## Etapas 3–7
 

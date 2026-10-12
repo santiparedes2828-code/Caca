@@ -1,0 +1,4 @@
+# Dependencias Python opcionales de Hook House Autopilot (detección de caras).
+# Instalar con: npm run setup:python   (crea .venv/ e instala esto)
+opencv-python-headless>=4.8
+numpy>=1.24

@@ -33,6 +33,9 @@ const schema = z.object({
   HH_STT_TIMEOUT_MS: num(15 * 60_000),
   // Precio por hora de audio de TU plan, solo para estimar (no se inventa: si no se define, no hay estimación)
   HH_ELEVENLABS_STT_USD_PER_HOUR: z.coerce.number().positive().optional(),
+  // Python para la detección de caras (npm run setup:python crea .venv). Sin él, el foco es fijo y se avisa.
+  HH_PYTHON: z.string().optional(),
+  HH_FACE_FPS: z.coerce.number().positive().max(10).default(2),
   REMOTION_BROWSER_EXECUTABLE: z.string().optional(),
   REMOTION_LICENSE_KEY: z.string().optional(),
 });
@@ -48,3 +51,6 @@ export const browserExecutable = (cfg: Config) =>
 
 // Nombres de variables cuyo valor nunca debe aparecer en logs ni informes
 export const SECRET_ENV = /KEY|TOKEN|SECRET|PASSWORD/i;
+
+export const pythonExecutable = (cfg: Config) =>
+  cfg.HH_PYTHON ?? (existsSync(path.join(ROOT, ".venv", "bin", "python")) ? path.join(ROOT, ".venv", "bin", "python") : "python3");

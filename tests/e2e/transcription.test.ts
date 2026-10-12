@@ -5,7 +5,7 @@ import path from "node:path";
 import { after, before, test } from "node:test";
 import { loadConfig, ROOT } from "../../autopilot/config";
 import { jobDir } from "../../autopilot/jobs/store";
-import { redoCaptions, retryJob, submitJob } from "../../autopilot/pipeline";
+import { redoCaptions, retryJob, submitJob } from "../../autopilot/pipeline/run";
 import { makeSpeechVideo } from "../fixtures";
 import { startFakeElevenLabs } from "../support/fake-elevenlabs";
 
@@ -39,7 +39,7 @@ test("5. vídeo sin SRT → transcripción ElevenLabs → subtítulos palabra-ac
   const q = srv.requests.at(-1)!;
   assert.equal(q.fields.model_id, "scribe_v2");
   assert.equal(q.fields.language_code, "es");
-  const caps = JSON.parse(await fs.readFile(file(cfg, job, "work/captions.json"), "utf8"));
+  const caps = JSON.parse(await fs.readFile(file(cfg, job, "work/variants/principal/captions.json"), "utf8"));
   assert.equal(caps.precision, "word");
   assert.equal(caps.mode, "palabra-activa");
   assert.equal(caps.pages[0].lines[0][0].text, "Las");
@@ -63,7 +63,7 @@ test("5. vídeo sin SRT → transcripción ElevenLabs → subtítulos palabra-ac
   const redo = await redoCaptions(cfg, job.clientId, job.id);
   assert.equal(redo.status, "completado");
   assert.equal(srv.requests.length, calls, "rehacer subtítulos no vuelve a llamar a ElevenLabs");
-  const caps2 = JSON.parse(await fs.readFile(file(cfg, job, "work/captions.json"), "utf8"));
+  const caps2 = JSON.parse(await fs.readFile(file(cfg, job, "work/variants/principal/captions.json"), "utf8"));
   assert.equal(caps2.pages[0].lines.flat()[1].text, "AGENCIAS");
 });
 

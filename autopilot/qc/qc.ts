@@ -23,6 +23,7 @@ export type QcInput = {
     maxCharsPerLine: number;
     mode: string;
     transcription?: null | { provider: string; words: number; withConfidence: number; lowConfidence: { text: string; startMs: number }[] };
+    overFaces?: number; // páginas que coinciden con una cara (calculado al componer; undefined = sin datos de caras)
   };
   captionsRequired: boolean;
   frames: number;
@@ -166,6 +167,14 @@ export const runQc = async (q: QcInput): Promise<QcResult> => {
       longLines ? `${longLines} líneas superan ${c.maxCharsPerLine} caracteres` : longWords ? `${longWords} palabras más largas que una línea (se reduce el cuerpo)` : `todas ≤ ${c.maxCharsPerLine} caracteres; el render reduce el cuerpo si una línea no cabe`,
     );
     add("subtitulos_lectura", "Tiempo de lectura", short ? "advertencia" : "ok", short ? `${short} páginas duran menos de 0,25 s` : "todas las páginas ≥ 0,25 s");
+    if (c.overFaces !== undefined) {
+      add(
+        "subtitulos_caras",
+        "Subtítulos sin tapar caras",
+        c.overFaces ? "advertencia" : "ok",
+        c.overFaces ? `${c.overFaces} páginas coinciden con una cara detectada` : "ninguna página tapa una cara detectada",
+      );
+    }
     const tr = c.transcription;
     if (tr) {
       const ratio = tr.withConfidence ? tr.lowConfidence.length / tr.withConfidence : 0;

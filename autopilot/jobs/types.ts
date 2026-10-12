@@ -20,7 +20,7 @@ export const JOB_STATUS = [
 export const jobStatusSchema = z.enum(JOB_STATUS);
 export type JobStatus = z.infer<typeof jobStatusSchema>;
 
-export const STEPS = ["ingest", "analyze", "prepare", "captions", "compose", "render", "qc", "deliver"] as const;
+export const STEPS = ["ingest", "analyze", "prepare", "captions", "plan", "compose", "render", "qc", "deliver"] as const;
 export type StepName = (typeof STEPS)[number];
 
 export const STEP_STATUS: Record<StepName, JobStatus> = {
@@ -28,6 +28,7 @@ export const STEP_STATUS: Record<StepName, JobStatus> = {
   analyze: "analizando",
   prepare: "analizando",
   captions: "transcribiendo",
+  plan: "planificando",
   compose: "componiendo",
   render: "renderizando",
   qc: "verificando",
@@ -53,18 +54,36 @@ export const jobConfigSchema = z.object({
     .nullable()
     .default(null),
   trim: z.object({ startSec: z.number().min(0), endSec: z.number().positive().nullable() }),
-  audio: z.object({ normalize: z.boolean(), targetLufs: z.number(), truePeakDb: z.number() }),
+  audio: z.object({
+    normalize: z.boolean(),
+    targetLufs: z.number(),
+    truePeakDb: z.number(),
+    denoise: z.enum(["no", "suave"]).default("no"),
+  }),
+  cutSilences: z.boolean().default(false),
+  followFaces: z.boolean().default(false),
 });
 export type JobConfig = z.infer<typeof jobConfigSchema>;
 
 // Ajustes que se pueden pasar por CLI o por un <video>.job.json en la bandeja de entrada
-export const jobOverridesSchema = jobConfigSchema
-  .omit({ reframe: true, audio: true, trim: true })
-  .partial()
-  .extend({
+// Escrito campo a campo y SIN valores por defecto: un ajuste que no se pasa debe quedar ausente para que
+// se use el del perfil del cliente (con .default() se colaría el valor por defecto del esquema).
+const lang = z.string().regex(/^[a-z]{2,3}$/);
+export const jobOverridesSchema = z
+  .object({
+    format: formatSchema.optional(),
+    fps: z.number().int().min(12).max(60).optional(),
+    captionMode: captionModeSchema.optional(),
+    intensity: intensitySchema.optional(),
     reframe: reframeSchema.partial().optional(),
+    captionsRequired: z.boolean().optional(),
+    allowEstimatedWordTiming: z.boolean().optional(),
+    transcribe: z.boolean().optional(),
+    language: lang.nullable().optional(),
     trim: z.object({ startSec: z.number().min(0).optional(), endSec: z.number().positive().nullable().optional() }).optional(),
-    audio: z.object({ normalize: z.boolean().optional() }).optional(),
+    audio: z.object({ normalize: z.boolean().optional(), denoise: z.enum(["no", "suave"]).optional() }).optional(),
+    cutSilences: z.boolean().optional(),
+    followFaces: z.boolean().optional(),
   })
   .strict();
 export type JobOverrides = z.infer<typeof jobOverridesSchema>;
@@ -105,7 +124,7 @@ export const jobSchema = z.object({
   steps: z.record(z.string(), stepStateSchema),
   warnings: z.array(issueSchema),
   errors: z.array(issueSchema),
-  outputs: z.array(z.object({ kind: z.string(), path: z.string() })),
+  outputs: z.array(z.object({ kind: z.string(), path: z.string(), variant: z.string().optional() })),
   renderKey: z.string().nullable(),
   verdict: verdictSchema.nullable(),
   // Costes: separados en reales (facturados por un proveedor) y estimados. Etapa 1 no usa proveedores de pago.

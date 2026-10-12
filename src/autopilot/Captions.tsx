@@ -3,6 +3,7 @@ import React, { useMemo } from "react";
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { INTENSITY } from "../design/intensity";
 import type { Brand, CaptionMode, Intensity } from "../design/schema";
+import { captionBlock, captionLayout } from "./geometry";
 import type { CaptionPage, CaptionToken } from "./props";
 
 // Subtítulos Hook House. Las páginas (qué palabras van juntas y en qué líneas) las calcula el backend
@@ -38,20 +39,6 @@ const roleFont = (
   const f = exact ?? all[0];
   if (!f) throw new Error(`La marca no define fuente con rol "${role}"`);
   return f;
-};
-
-export const captionLayout = (brand: Brand, width: number, height: number) => {
-  const unit = Math.min(width, height) / 1080;
-  const vertical = height > width;
-  const sz = brand.layout.safeZone;
-  const m = brand.layout.margin * unit;
-  return {
-    unit,
-    left: vertical ? Math.max(m, sz.left * unit) : m,
-    right: vertical ? Math.max(m, sz.right * unit) : m,
-    top: vertical ? sz.top * unit : m,
-    bottom: vertical ? sz.bottom * unit : m,
-  };
 };
 
 const tokenEnd = (page: CaptionPage, flat: CaptionToken[], i: number) =>
@@ -212,11 +199,13 @@ export const Captions: React.FC<{
   const visibleLines = reveal
     ? lines.filter((l, i) => i === 0 || l[0].startMs <= t)
     : lines;
-  const blockH = lines.length * fontSize * cap.lineHeight + padY * 2;
-  const centerY = cap.positionY * height;
-  const top = Math.min(
-    Math.max(centerY - blockH / 2, lay.top),
-    height - lay.bottom - blockH,
+  const { top } = captionBlock(
+    brand,
+    width,
+    height,
+    lines.length,
+    fontSize,
+    page.positionY ?? cap.positionY,
   );
   const style: Style = {
     family: base.family,

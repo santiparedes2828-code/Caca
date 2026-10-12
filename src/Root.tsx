@@ -58,8 +58,9 @@ export const RemotionRoot: React.FC = () => {
             width: 1080,
             height: 1920,
             durationInFrames: 90,
-            video: { src: "", width: 1920, height: 1080, hasAudio: false, trimStartFrames: 0, volume: 1 },
+            video: { src: "", width: 1920, height: 1080, hasAudio: false, volume: 1, segments: [{ srcStartFrame: 0, durationInFrames: 90 }] },
             reframe: { mode: "cover" as const, focusX: 0.5, focusY: 0.4 },
+            focusTrack: [],
             intensity: "sutil" as const,
             brand: HOOKHOUSE,
             captions: {

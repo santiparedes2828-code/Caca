@@ -24,3 +24,5 @@ inbox/
 .cache/
 .env.*
 !.env.example
+.venv/
+__pycache__/

@@ -5,7 +5,7 @@ import { loadConfig, type Config } from "./config";
 import { processInbox } from "./inbox";
 import { findJob, listJobs, requestCancel } from "./jobs/store";
 import { jobOverridesSchema, type Job, type JobOverrides } from "./jobs/types";
-import { redoCaptions, retryJob, runJob, submitJob } from "./pipeline";
+import { redoCaptions, retryJob, runJob, submitJob } from "./pipeline/run";
 import { createElevenLabsClient } from "./transcription/elevenlabs";
 import { usedSecondsToday } from "./transcription/transcribe";
 
@@ -34,6 +34,9 @@ Opciones de procesado:
   --estimar-palabras                       Permite tiempos por palabra estimados a partir de un SRT
   --sin-normalizar                         No normaliza la sonoridad
   --sin-transcripcion                      No transcribe aunque no haya SRT (el vídeo sale sin subtítulos)
+  --cortar-silencios | --sin-cortes        Quita (o no) los silencios sin voz (por defecto: perfil del cliente)
+  --seguir-caras | --foco-fijo             El encuadre sigue a la cara principal, o usa --foco-x/--foco-y fijos
+  --reducir-ruido                          Reducción de ruido básica (afftdn); no es restauración profesional
   --idioma es|en|…                         Idioma de la transcripción (por defecto el del perfil)
 
 Transcripción: si no hay SRT/VTT/JSON, se transcribe con ElevenLabs Scribe (ELEVENLABS_API_KEY en .env).
@@ -57,6 +60,11 @@ const overridesFrom = (v: Record<string, string | boolean | undefined>): JobOver
   if (v["estimar-palabras"]) o.allowEstimatedWordTiming = true;
   if (v["sin-normalizar"]) o.audio = { normalize: false };
   if (v["sin-transcripcion"]) o.transcribe = false;
+  if (v["cortar-silencios"]) o.cutSilences = true;
+  if (v["sin-cortes"]) o.cutSilences = false;
+  if (v["seguir-caras"]) o.followFaces = true;
+  if (v["foco-fijo"]) o.followFaces = false;
+  if (v["reducir-ruido"]) o.audio = { ...(o.audio as object), denoise: "suave" };
   if (v.idioma) o.language = v.idioma;
   return jobOverridesSchema.parse(o);
 };
@@ -93,6 +101,11 @@ const main = async () => {
       "estimar-palabras": { type: "boolean" },
       "sin-normalizar": { type: "boolean" },
       "sin-transcripcion": { type: "boolean" },
+      "cortar-silencios": { type: "boolean" },
+      "sin-cortes": { type: "boolean" },
+      "seguir-caras": { type: "boolean" },
+      "foco-fijo": { type: "boolean" },
+      "reducir-ruido": { type: "boolean" },
       idioma: { type: "string" },
       vigilar: { type: "boolean" },
       intervalo: { type: "string", default: "10" },

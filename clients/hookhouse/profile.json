@@ -62,7 +62,8 @@
     "intensity": "sutil",
     "reframe": { "mode": "cover", "focusX": 0.5, "focusY": 0.4 },
     "captionsRequired": false,
-    "audio": { "normalize": true, "targetLufs": -14, "truePeakDb": -1.5 },
+    "audio": { "normalize": true, "targetLufs": -14, "truePeakDb": -1.5, "denoise": "no" },
+    "editing": { "cutSilences": true, "minSilenceSec": 0.8, "keepPauseSec": 0.3, "silenceDb": -38, "followFaces": true, "avoidFaces": true },
     "transcription": { "provider": "elevenlabs", "model": "scribe_v2", "language": "es", "diarize": true, "tagAudioEvents": true, "lowConfidenceLogprob": -1 },
     "voice": { "provider": "elevenlabs", "voiceId": "1p905cdbJ1e1JQxhFTGJ", "name": "Rodrigo Zabú", "model": "eleven_v4", "language": "es" }
   }

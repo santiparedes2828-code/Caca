@@ -46,7 +46,13 @@ export const resolveConfig = (profile: ClientProfile, o: JobOverrides = {}): Job
     transcribe: o.transcribe ?? profile.defaults.transcription.provider !== "ninguno",
     language: o.language === undefined ? profile.defaults.transcription.language : o.language,
     trim: { startSec: o.trim?.startSec ?? 0, endSec: o.trim?.endSec ?? null },
-    audio: { ...profile.defaults.audio, ...(o.audio?.normalize === undefined ? {} : { normalize: o.audio.normalize }) },
+    audio: {
+      ...profile.defaults.audio,
+      ...(o.audio?.normalize === undefined ? {} : { normalize: o.audio.normalize }),
+      ...(o.audio?.denoise === undefined ? {} : { denoise: o.audio.denoise }),
+    },
+    cutSilences: o.cutSilences ?? profile.defaults.editing.cutSilences,
+    followFaces: o.followFaces ?? profile.defaults.editing.followFaces,
   });
 
 export const createJob = async (cfg: Config, profile: ClientProfile, overrides: JobOverrides = {}): Promise<Job> => {

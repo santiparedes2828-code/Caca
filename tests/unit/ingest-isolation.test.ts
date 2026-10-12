@@ -2,11 +2,12 @@ import assert from "node:assert/strict";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { after, before, test } from "node:test";
-import { fitVideo, zoomSegments } from "../../src/autopilot/AutopilotEdit";
+import { fitVideo, focusAt, zoomSegments } from "../../src/autopilot/geometry";
 import { loadProfile } from "../../autopilot/clients/profile";
 import { loadConfig, ROOT } from "../../autopilot/config";
 import { IngestError, sniff, validateFile } from "../../autopilot/ingest/ingest";
-import { acquireLock, createJob, findJob, jobDir, listJobs } from "../../autopilot/jobs/store";
+import { acquireLock, createJob, findJob, jobDir, listJobs, resolveConfig } from "../../autopilot/jobs/store";
+import { jobOverridesSchema } from "../../autopilot/jobs/types";
 import { startAssetServer } from "../../autopilot/render/assetServer";
 import { redact } from "../../autopilot/util/log";
 import { resolveInside, safeName } from "../../autopilot/util/fs";
@@ -134,12 +135,12 @@ test("los logs no contienen secretos", () => {
 });
 
 test("reencuadre cover con foco y zoom por tramos", () => {
-  const b = fitVideo(1920, 1080, 1080, 1920, { mode: "cover", focusX: 0.5, focusY: 0.5 }, false);
+  const b = fitVideo(1920, 1080, 1080, 1920, { focusX: 0.5, focusY: 0.5 }, false);
   assert.equal(Math.round(b.h), 1920);
   assert.equal(Math.round(b.x), Math.round((1080 - b.w) / 2));
-  const left = fitVideo(1920, 1080, 1080, 1920, { mode: "cover", focusX: 0, focusY: 0.5 }, false);
+  const left = fitVideo(1920, 1080, 1080, 1920, { focusX: 0, focusY: 0.5 }, false);
   assert.equal(left.x, 0);
-  const c = fitVideo(1920, 1080, 1080, 1920, { mode: "contain", focusX: 0.5, focusY: 0.5 }, true);
+  const c = fitVideo(1920, 1080, 1080, 1920, { focusX: 0.5, focusY: 0.5 }, true);
   assert.equal(Math.round(c.w), 1080);
   const segs = zoomSegments(
     [0, 500, 1000, 3000, 3500, 6000].map((s) => ({ startMs: s, endMs: s + 400, lines: [[{ text: "x", startMs: s, endMs: s + 1, emphasis: false }]] })),
@@ -147,6 +148,11 @@ test("reencuadre cover con foco y zoom por tramos", () => {
     8000,
   );
   assert.deepEqual(segs.map((s) => s.startMs), [0, 3000, 6000]);
+  const track = [{ tMs: 0, x: 0.2, y: 0.4 }, { tMs: 1000, x: 0.2, y: 0.4 }, { tMs: 1400, x: 0.6, y: 0.4 }];
+  assert.deepEqual(focusAt(track, 500, { x: 0.5, y: 0.5 }), { x: 0.2, y: 0.4 });
+  assert.equal(focusAt(track, 1200, { x: 0.5, y: 0.5 }).x, 0.4);
+  assert.deepEqual(focusAt(track, 9000, { x: 0.5, y: 0.5 }), { x: 0.6, y: 0.4 });
+  assert.deepEqual(focusAt([], 9000, { x: 0.5, y: 0.5 }), { x: 0.5, y: 0.5 });
 });
 
 test("trabajos creados antes de la Etapa 2 (sin campos de transcripción) siguen cargando", async () => {
@@ -160,4 +166,19 @@ test("trabajos creados antes de la Etapa 2 (sin campos de transcripción) siguen
   const loaded = (await listJobs(cfg, "hookhouse")).find((j) => j.id === job.id)!;
   assert.equal(loaded.config.transcribe, false);
   assert.equal(loaded.config.language, null);
+});
+
+test("los ajustes por vídeo vacíos no pisan los valores del perfil", async () => {
+  const profile = await loadProfile(cfg.HH_CLIENTS_DIR, "hookhouse");
+  assert.deepEqual(jobOverridesSchema.parse({}), {});
+  const c = resolveConfig(profile, jobOverridesSchema.parse({}));
+  assert.equal(c.transcribe, profile.defaults.transcription.provider !== "ninguno");
+  assert.equal(c.followFaces, profile.defaults.editing.followFaces);
+  assert.equal(c.cutSilences, profile.defaults.editing.cutSilences);
+  assert.equal(c.language, profile.defaults.transcription.language);
+  const o = resolveConfig(profile, jobOverridesSchema.parse({ transcribe: false, reframe: { focusX: 0.2 } }));
+  assert.equal(o.transcribe, false);
+  assert.equal(o.reframe.focusX, 0.2);
+  assert.equal(o.reframe.mode, profile.defaults.reframe.mode);
+  assert.throws(() => jobOverridesSchema.parse({ desconocido: 1 }));
 });

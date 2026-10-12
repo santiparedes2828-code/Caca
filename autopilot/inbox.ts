@@ -5,7 +5,7 @@ import type { Config } from "./config";
 import { EXT } from "./ingest/ingest";
 import { listJobs, resolveConfig } from "./jobs/store";
 import { jobOverridesSchema, type Job, type JobOverrides } from "./jobs/types";
-import { submitJob } from "./pipeline";
+import { submitJob } from "./pipeline/run";
 import { ensureDir, sha256File } from "./util/fs";
 
 // Bandeja de entrada: inbox/<cliente>/*.mp4 (+ subtítulos con el mismo nombre)

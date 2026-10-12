@@ -72,3 +72,31 @@ export const makeSpeechVideo = async (dir: string, seconds: number) => {
   ]);
   return out;
 };
+
+// Vídeo con la locución voz_a y 2,5 s de silencio insertados a los 4,4 s (tras "videos."), más sus
+// subtítulos por palabra REALES de ElevenLabs desplazados para ese silencio: caso de prueba de cortes.
+export const makeGapVideo = async (dir: string) => {
+  await fs.mkdir(dir, { recursive: true });
+  const out = path.join(dir, "voz_a_con_pausa.mp4");
+  const voice = path.join(ROOT, "public", "audio", "voz_a.mp3");
+  await runOk("ffmpeg", [
+    "-v", "error", "-y",
+    "-f", "lavfi", "-i", "testsrc2=size=1280x720:rate=30:duration=11.5",
+    "-i", voice,
+    "-filter_complex",
+    "[1:a]atrim=0:4.4,asetpts=PTS-STARTPTS[a1];anullsrc=r=44100:cl=mono,atrim=0:2.5[s];[1:a]atrim=4.4:9,asetpts=PTS-STARTPTS[a2];[a1][s][a2]concat=n=3:v=0:a=1[a]",
+    "-map", "0:v", "-map", "[a]", "-c:v", "libx264", "-preset", "ultrafast", "-pix_fmt", "yuv420p", "-c:a", "aac", "-shortest", out,
+  ]);
+  const real = JSON.parse(await fs.readFile(path.join(ROOT, "tests/data/elevenlabs-scribe-voz_a.words.json"), "utf8")) as {
+    words: { text: string; start: number; end: number }[];
+  };
+  const words = real.words
+    .filter((w) => w.end <= 9)
+    .map((w) => {
+      const shift = w.start >= 4.4 ? 2500 : 0;
+      return { text: w.text, startMs: Math.round(w.start * 1000) + shift, endMs: Math.round(w.end * 1000) + shift };
+    });
+  const json = path.join(dir, "voz_a_con_pausa.json");
+  await fs.writeFile(json, JSON.stringify(words));
+  return { video: out, captions: json, words };
+};
