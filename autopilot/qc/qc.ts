@@ -142,7 +142,7 @@ export const runQc = async (q: QcInput): Promise<QcResult> => {
 
   // 6. Subtítulos
   if (!q.captions) {
-    add("subtitulos", "Subtítulos", q.captionsRequired ? "fallo" : "advertencia", "El vídeo no lleva subtítulos (no se recibió SRT/JSON; la transcripción automática llega en la Etapa 2)");
+    add("subtitulos", "Subtítulos", q.captionsRequired ? "fallo" : "advertencia", "El vídeo no lleva subtítulos (el motivo está en las advertencias del paso de subtítulos)");
   } else {
     const c = q.captions;
     const durMs = pr.durationSec * 1000;

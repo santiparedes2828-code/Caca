@@ -297,6 +297,12 @@ const STEP_IMPL: Record<Exclude<StepName, "ingest">, (ctx: Ctx) => Promise<void>
       brand: ctx.profile.brand,
       captions: caps.none ? { mode: config.captionMode, pages: [] } : { mode: caps.mode, pages: caps.pages },
     };
+    // Ampliar el vídeo más de 1,5× (p. ej. 576 px → 1080 px) se nota borroso en pantalla
+    const fit = config.reframe.mode === "cover" ? Math.max : Math.min;
+    const scale = fit(size.width / v.width, size.height / v.height);
+    if (scale > 1.5) {
+      warn(ctx, "compose", "baja_resolucion", `El original (${v.width}x${v.height}) se amplía ×${scale.toFixed(2)} para ${size.width}x${size.height}: perderá nitidez. Pide al cliente el archivo original en mayor resolución si lo tiene`);
+    }
     const srcRatio = v.width / v.height;
     const outRatio = size.width / size.height;
     if (Math.abs(srcRatio - outRatio) > 0.02 && config.reframe.mode === "cover") {
