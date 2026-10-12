@@ -287,6 +287,8 @@ export const ChainRow: React.FC<{ theme: Theme; items: string[]; icons: (string 
 };
 
 // ——— Número de paso ———
+// En inglés («[paso: Título | Step]») el contador dice «STEP 2 OF 5»
+const EN_STEP = /^(step|tip|fix|rule|part|mistake|lesson)$/i;
 
 // «PASO 2 DE 5» con puntos de progreso, el número grande que sube desde una máscara y su etiqueta en una caja que crece
 export const StepHeader: React.FC<{ theme: Theme; n: number; total: number; title: string; word: string; enter: number; ready: boolean }> = ({ theme, n, total, title, word, enter, ready }) => {
@@ -302,7 +304,7 @@ export const StepHeader: React.FC<{ theme: Theme; n: number; total: number; titl
     <div style={{ width: CONTENT_W, alignSelf: "center", display: "flex", flexDirection: "column", gap: 30, flexShrink: 0 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", opacity: head, transform: `translateY(${(1 - head) * -16}px)` }}>
         <span style={{ fontFamily: INTER, fontWeight: 700, fontSize: 26, letterSpacing: "0.22em", textTransform: "uppercase", color: p.ink, opacity: 0.55 }}>
-          {`${word || "Paso"} ${n} de ${total}`}
+          {`${word || "Paso"} ${n} ${EN_STEP.test(word) ? "of" : "de"} ${total}`}
         </span>
         <span style={{ display: "flex", gap: 9 }}>
           {Array.from({ length: dots }, (_, i) => (

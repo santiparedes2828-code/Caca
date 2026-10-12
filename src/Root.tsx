@@ -8,6 +8,7 @@ import { HookHouse, hookHouseDuration } from "./HookHouse/HookHouse";
 import { AntesDespues, antesDespuesSchema, calculateAntesDespuesMetadata } from "./AntesDespues/AntesDespues";
 import einsteinEnvelope from "./AntesDespues/einstein-envolvente.json";
 import { CapiKuleshov, kuleshovDuration } from "./Capi/CapiKuleshov";
+import { MISMO_CLIP_EN, MISMO_CLIP_ES, MismoClip, mismoClipDuration, mismoClipSchema } from "./Crecimiento/MismoClip";
 import { Viral, viralDuration } from "./Viral/Viral";
 import { AutopilotEdit, calculateEditMetadata } from "./autopilot/AutopilotEdit";
 import { CaptionModesDemo, captionDemoDuration, captionDemoSchema } from "./autopilot/CaptionModesDemo";
@@ -188,6 +189,8 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
       />
       <Composition id="CapiKuleshov" component={CapiKuleshov} durationInFrames={kuleshovDuration} fps={30} width={1080} height={1920} />
+      <Composition id="MismoClipEN" component={MismoClip} schema={mismoClipSchema} defaultProps={MISMO_CLIP_EN} durationInFrames={mismoClipDuration(MISMO_CLIP_EN)} fps={30} width={1080} height={1920} />
+      <Composition id="MismoClipES" component={MismoClip} schema={mismoClipSchema} defaultProps={MISMO_CLIP_ES} durationInFrames={mismoClipDuration(MISMO_CLIP_ES)} fps={30} width={1080} height={1920} />
       <Composition
         id="AntesDespues"
         component={AntesDespues}

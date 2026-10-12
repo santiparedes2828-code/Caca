@@ -1,0 +1,90 @@
+[
+  {
+    "nombre": "Sam Witteveen (Sam Witteveen)",
+    "segmento": "educativo",
+    "nicho": "tech/AI tutorials (LLMs, agents, local AI)",
+    "idioma": "en",
+    "pais": null,
+    "perfiles": {
+      "youtube": "https://www.youtube.com/@samwitteveenai",
+      "instagram": null,
+      "tiktok": null,
+      "web": null,
+      "podcast": null,
+      "linkedin": null
+    },
+    "contacto_publico": null,
+    "contacto_fuente": null,
+    "tamano": "about 125K subscribers (developereducators.com, data from about Jul 2026); about 135K subscribers and 375 videos (youtubesubhub.com and Social Blade search snippets, Sep-Oct 2026)",
+    "frecuencia": "Weekly per developereducators.com's 'weekly' upload label. showmeyourchannel.com lists several long-form uploads in Aug 2026 and one dated 09/06/2026. Not checked on YouTube itself.",
+    "evidencia_necesidad": [
+      "youtubesubhub.com estimates Shorts at about 1 in the latest 25 uploads, so output is almost all long-form (https://youtubesubhub.com/@samwitteveenai)",
+      "showmeyourchannel.com shows only about 4 Shorts from late June to late August 2026, roughly one a month, against weekly long-form (https://www.showmeyourchannel.com/youtuber/samwitteveenai)",
+      "No sign of a TikTok or Instagram presence came up in searches. Not confirmed."
+    ],
+    "contenido_reciente": [
+      {
+        "titulo": "NVIDIA Doubles Down on Local AI With PAIR",
+        "url": null,
+        "fecha": "listed as of 09/06/2026 on showmeyourchannel.com (exact upload date not seen)"
+      }
+    ],
+    "prioridad": "B",
+    "motivo_prioridad": "Clear gap: weekly long-form against about one Short a month, and the channel is at the top of the size range. No public business contact was verified, so it is B and not A.",
+    "fuentes": [
+      "https://youtubesubhub.com/@samwitteveenai",
+      "https://developereducators.com/channel/samwitteveenai/",
+      "https://www.showmeyourchannel.com/youtuber/samwitteveenai",
+      "https://socialblade.com/youtube/handle/samwitteveenai",
+      "https://socialcounts.org/youtube-live-subscriber-count/UC55ODQSvARtgSyc8ThfiepQ",
+      "https://x.com/Sam_Witteveen",
+      "https://sessionize.com/sam-witteveen/"
+    ],
+    "notas": "All data comes from search-result snippets. WebFetch could not open any page in this environment (DNS failure), and YouTube itself was blocked. Subscriber counts differ by source and date. Upload cadence comes from third-party trackers, not from the YouTube uploads tab. No business email was verified: ZoomInfo shows only a masked company email (s***@reddragon.ai), which was NOT used. Check the YouTube About page for a business email. He is also CEO and co-founder of Red Dragon AI (Singapore, per Crunchbase), so this is not a pure solo creator and his country is not stated. Recent Shorts seen in snippets (not exact titles/URLs verified): local real-time TTS, AMD Ryzen AI Halo, Gemini Omni Flash, Ornith 1.0 LLMs. Recent long-form topics were described only loosely (local voice TTS, GLM comparison, Docker sandboxes for agents, Qwen serving tutorial), so the titles are not recorded.",
+    "verificado": "2026-10-12"
+  },
+  {
+    "nombre": "Leaving The Village (Kelvin Oliver)",
+    "segmento": "educativo",
+    "nicho": "K-12 education / behavior management for teachers and parents",
+    "idioma": "en",
+    "pais": null,
+    "perfiles": {
+      "youtube": "https://www.youtube.com/c/LeavingtheVillage",
+      "instagram": null,
+      "tiktok": null,
+      "web": "https://www.leavingthevillage.com/",
+      "podcast": null,
+      "linkedin": "https://www.linkedin.com/in/kelvinoliver/"
+    },
+    "contacto_publico": "https://www.leavingthevillage.com/ (the site offers booking a 30-minute call with Kelvin; this is aimed at schools and districts)",
+    "contacto_fuente": "https://www.leavingthevillage.com/",
+    "tamano": "2.17K subscribers, 135 videos, 323,417 views (YT.Careers business profile, capture date not shown)",
+    "frecuencia": null,
+    "evidencia_necesidad": [
+      "Public job post on YT.Careers: 'YouTube Video Editor for Educational Consulting Channel - Leaving The Village'. It asks for 2-3 long-form videos per week (10-20 min) and 5-7 Shorts per week (30-60 s), paying $75-150 per video and $15-30 per clip, and requires captions, graphics and B-roll (https://yt.careers/youtube-jobs/160). Shown as about 411 days old, so it was posted around Aug-Sep 2025 and may be closed.",
+      "The channel's content comes from seminars, interviews and Q&A sessions (YouTube channel description seen in search snippet). That long-form source material suits clipping."
+    ],
+    "contenido_reciente": [
+      {
+        "titulo": "Restorative Practices: Restorative Practices Isn't About Changing Students' Behavior",
+        "url": "https://www.youtube.com/watch?v=KU1yyVDA3Qc",
+        "fecha": null
+      }
+    ],
+    "prioridad": "C",
+    "motivo_prioridad": "There is a concrete public hiring post for Shorts, but it is more than a year old. Current publishing frequency could not be verified. The only public contact is a consultation booking for schools, not a business inbox. Under the strict A/B/C rule this could be argued as B, but it was downgraded because the need evidence is stale.",
+    "fuentes": [
+      "https://yt.careers/youtube-jobs/160",
+      "https://yt.careers/businesses/293",
+      "https://www.youtube.com/user/leavingthevillage",
+      "https://www.youtube.com/c/LeavingtheVillage",
+      "https://www.youtube.com/watch?v=KU1yyVDA3Qc",
+      "https://www.leavingthevillage.com/",
+      "https://www.leavingthevillage.com/meettheconsultant",
+      "https://www.linkedin.com/in/kelvinoliver/"
+    ],
+    "notas": "All data comes from search-result snippets. No page could be opened (WebFetch DNS failure; YouTube blocked). Upload frequency, the latest upload date and current Shorts output are unverified. The job post is old and may have been filled. The video listed under recent content was seen in search results, but its date is unknown and it may not be recent. ContactOut lists an email, which was NOT used because it is not published by the creator. Country is not stated.",
+    "verificado": "2026-10-12"
+  }
+]

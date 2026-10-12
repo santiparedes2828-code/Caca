@@ -450,7 +450,11 @@ export const planTheme = (opts: { topic: string; scenes: SceneIn[]; presetId?: s
   let preset = byId ?? pickPreset(topic);
   if (!byId && preset.theme.id === "general") preset = pickPreset(all);
   const prefer = FOOD.includes(preset.theme.id) ? [4] : NATURE.includes(preset.theme.id) ? [3] : [];
-  const find = (t: string, max = 5, minScore = 2) => findIcons(t, { preferGroups: prefer, max, minScore });
+  // Iconos en el idioma del guion (el índice en inglés para guiones en inglés)
+  const lang = detectLang(all);
+  // En inglés solo valen nombres exactos («microphone»): las coincidencias parciales daban iconos sin sentido
+  // («first» → luna en cuarto creciente, «one» → reloj de la una)
+  const find = (t: string, max = 5, minScore = 2) => findIcons(t, { preferGroups: prefer, max, minScore: lang === "en" ? Math.max(minScore, 6) : minScore, lang });
   // Iconos del tema: lo que dice la idea primero, luego los del estilo. Para el texto entero solo valen
   // coincidencias claras (el nombre del emoji), no palabras sueltas como «detrás» o «línea»
   const topicIcons = find(topic, 3, 4);
@@ -589,8 +593,9 @@ const wordKeys = (w: string) => {
   return new Set([n, stem(n)]);
 };
 
-export const planCues = (caps: { text: string }[], scenes: CueScene[], icons: (string | null)[]): Cues[] =>
-  scenes.map((s, k) => {
+export const planCues = (caps: { text: string }[], scenes: CueScene[], icons: (string | null)[]): Cues[] => {
+  const lang = detectLang(caps.map((c) => c.text).join(" "));
+  return scenes.map((s, k) => {
     const range = Array.from({ length: s.to - s.from + 1 }, (_, i) => s.from + i);
     const keys = range.map((i) => wordKeys(caps[i].text));
     const findWord = (cands: string[], after = -1) => {
@@ -600,7 +605,7 @@ export const planCues = (caps: { text: string }[], scenes: CueScene[], icons: (s
     };
     // Icono: la palabra que lo trae; si es un icono del tema (no sale de ninguna palabra), entra con la escena
     const icon = icons[k];
-    const iconCue = icon ? (range.find((i) => findIcons(caps[i].text, { max: 8 }).includes(icon)) ?? null) : null;
+    const iconCue = icon ? (range.find((i) => findIcons(caps[i].text, { max: 8, lang }).includes(icon)) ?? null) : null;
     // Elementos, en orden: por su nombre completo o por sus palabras
     const items: (number | null)[] = [];
     let after = -1;
@@ -619,6 +624,7 @@ export const planCues = (caps: { text: string }[], scenes: CueScene[], icons: (s
     if (s.component === "cta" && s.value) value = findWord([s.value]);
     return { icon: iconCue, value, items };
   });
+};
 
 // ——— Efectos de sonido ———
 // Propios del proyecto (public/sfx, sintetizados con ffmpeg). Suaves: acompañan sin tapar la voz. Usan los mismos

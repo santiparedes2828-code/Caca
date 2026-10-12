@@ -1,0 +1,1188 @@
+{
+  "version": 1,
+  "prospectos": [
+    {
+      "id": "the-side-hustle-show",
+      "nombre": "The Side Hustle Show (Nick Loper)",
+      "segmento": "podcaster",
+      "nicho": "side hustles / small business / entrepreneurship",
+      "idioma": "en",
+      "pais": "US (postal address in Sammamish, WA appears on the contact page per search snippet)",
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://www.sidehustlenation.com/",
+        "podcast": "https://podcasts.apple.com/podcast/id655135292",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "nick@sidehustlenation.com",
+      "contacto_fuente": "https://www.sidehustlenation.com/contact/",
+      "tamano": "48,674 YouTube subscribers, 1,269 videos (SocialCounts tracker, data up to 2026-07-13; channel ID UCzOAAJUiSO2uyu1xyxw__2Q). Third-party estimate, not from YouTube directly.",
+      "frecuencia": "About 6 episodes/month per host's 2025 year-end report (ep. 714). Episodes 718-726 ran Jan-Mar 2026; '732: 24 Years of Side Hustle Advice' dated 2026-04-06; Podscan lists latest episode 2026-07-30. Activity in Aug-Oct 2026 NOT verified.",
+      "evidencia_necesidad": [
+        "Web search found no official Side Hustle Nation clips on TikTok, Instagram Reels or YouTube Shorts (search only, not proof they don't exist).",
+        "YouTube is a large part of reach: Libsyn ad profile says 60% of reach comes from the YouTube simulcast (https://advertising.libsyn.com/TheSideHustleShowBusinessIdeasforPartTimeEntrepreneurship), so short-form clips could feed it."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "732: 24 Years of Side Hustle Advice",
+          "url": "https://www.castfox.net/podcast/the-side-hustle-show-745272/episode/732-24-years-of-side-hustle-advice-493879",
+          "fecha": "2026-04-06"
+        },
+        {
+          "titulo": "725: How One Mom's Laundry Side Hustle Turned into an $12M Business",
+          "url": "https://podcastrepublic.net/podcast/655135292",
+          "fecha": "2026-02-26"
+        },
+        {
+          "titulo": "738: How to Build and Train Your 24/7 AI COO",
+          "url": "https://podcasts.apple.com/podcast/id655135292",
+          "fecha": null
+        }
+      ],
+      "prioridad": "B",
+      "motivo_prioridad": "Regular publishing (~6 eps/month) and a public business email on the official contact page. Need not demonstrated: no proof either way about Shorts/Reels. Caveat: a YouTube listing gives a sponsor address at Yapmedia.com, which suggests the show is in the YAP Media network (it may already have clipping support).",
+      "fuentes": [
+        "https://socialcounts.org/youtube-live-subscriber-count/UCzOAAJUiSO2uyu1xyxw__2Q",
+        "https://pod.wave.co/podcast/the-side-hustle-show/714-my-2025-progress-report-what-worked-what-didnt-and-whats-next",
+        "https://advertising.libsyn.com/TheSideHustleShowBusinessIdeasforPartTimeEntrepreneurship",
+        "https://www.sidehustlenation.com/contact/",
+        "https://vling.net/channel/UCzOAAJUiSO2uyu1xyxw__2Q/channel-info",
+        "https://www.castfox.net/podcast/the-side-hustle-show-745272/episode/732-24-years-of-side-hustle-advice-493879",
+        "https://podscan.fm/podcasts/the-side-hustle-show-1",
+        "https://podcasts.apple.com/podcast/id655135292"
+      ],
+      "notas": "All data comes from search-engine snippets; WebFetch could not open any page (DNS failure in this environment). The email comes from the snippet of the official contact page; check it there before using. The YouTube handle/URL, Instagram and TikTok were not verified. A third-party listing shows Shorts metrics for the channel (values not visible), so the channel may already publish Shorts. The YAP Media sponsor address was seen only on a third-party listing.",
+      "verificado": "2026-10-12",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-12",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "Free clip from your latest episode",
+          "texto": "Hi Nick,\n\nI came across the Side Hustle Show. An episode like \"24 Years of Side Hustle Advice\" (ep. 732) is full of 30-second moments that would work on their own as Shorts or Reels.\n\nI run Hook House, a small editing studio that turns podcast episodes into vertical clips: hook first, word-by-word captions, zooms and B-roll, ready for YouTube Shorts, Reels and TikTok.\n\nI couldn't find clips of the show on Reels or TikTok. If someone already handles that for you, feel free to ignore this.\n\nIf not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?\n\n[Your name]\nHook House"
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "the-learning-leader-show",
+      "nombre": "The Learning Leader Show (Ryan Hawk)",
+      "segmento": "podcaster",
+      "nicho": "leadership / self-improvement / career",
+      "idioma": "en",
+      "pais": "US (Dayton, Ohio per Dayton Daily News snippet)",
+      "perfiles": {
+        "youtube": "https://www.youtube.com/@RyanHawk",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://learningleader.com/",
+        "podcast": "https://podcasts.apple.com/co/podcast/the-learning-leader-show-with-ryan-hawk/id985396258",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://learningleader.com/partner/",
+      "contacto_fuente": "https://learningleader.com/partner/",
+      "tamano": "YouTube subscribers not verified. Partnership kit says over 250,000 monthly listeners (podcast audience, self-reported).",
+      "frecuencia": "Weekly (partnership kit: new episodes every Sunday for nine years). Episode 705 dated 2026-09-10 (TuneIn), 707 dated 2026-09-20 and 708 dated 2026-09-27 (Podwise).",
+      "evidencia_necesidad": [
+        "A YouTube-only search surfaced just one Short from @RyanHawk, about 638 days old (https://www.youtube.com/shorts/z3F94qivJHk). This suggests Shorts are rare, but the Shorts tab itself was not checked.",
+        "Long-form full episodes are published on YouTube (e.g. https://www.youtube.com/watch?v=sfeADQyaptY)."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "World-Renowned Performance Expert \"Stop Playing Defense With Your Life\" I The Learning Leader Show",
+          "url": "https://www.youtube.com/watch?v=sfeADQyaptY",
+          "fecha": null
+        }
+      ],
+      "prioridad": "B",
+      "motivo_prioridad": "Very regular weekly publishing (latest seen 2026-09-27) plus weak signs that Shorts are rare. The public contact is a partnership page; no email or form was verified on it. The show may be larger than the ideal range (250k monthly listeners).",
+      "fuentes": [
+        "https://learningleader.com/partner/",
+        "https://podwise.ai/podcasts/4194",
+        "https://tunein.com/podcasts/p1135222/",
+        "https://www.youtube.com/@RyanHawk",
+        "https://www.youtube.com/shorts/z3F94qivJHk",
+        "https://www.youtube.com/watch?v=sfeADQyaptY",
+        "https://podcast.creatorscience.com/ryan-hawk/",
+        "https://www.daytondailynews.com/local/dayton-leadership-podcaster-ryan-hawk-launches-partnership-with-new-company/3XNBWTCFQ5BBLB2A7VE3JL27WA/"
+      ],
+      "notas": "Exact titles of episodes 705-708 were not visible: the guests were Dr. Martin Seligman (705), Andy Stanley & Sam Kaufman (707) and Danny Meyer (708). YouTube subscriber count, Instagram/TikTok handles and the content of the partner page (email or form) were not verified. Shorts frequency was inferred only from search results.",
+      "verificado": "2026-10-12",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-12",
+          "canal": "formulario",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "Free clip from your latest episode",
+          "texto": "Hi Ryan,\n\nYour recent run of guests (Martin Seligman, Andy Stanley, Danny Meyer) has the kind of lines that stop a scroll. Most of them stay inside the full episodes on YouTube, though; I only found a handful of Shorts.\n\nI run Hook House, a small editing studio that turns long conversations into vertical clips: strongest line first, animated captions, zooms and B-roll, for Shorts, Reels and TikTok.\n\nIf clips are already handled, no worries. If not, I'd like to edit one clip from a recent episode for free so you can see the quality. Should I send it to you or someone on your team?\n\n[Your name]\nHook House"
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "the-saas-podcast",
+      "nombre": "The SaaS Podcast (Omer Khan)",
+      "segmento": "podcaster",
+      "nicho": "B2B SaaS founders / startups",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": "https://www.youtube.com/@saasclub",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://saasclub.io/",
+        "podcast": "https://podcastaddict.com/podcast/4032150",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://saasclub.io/sponsor/",
+      "contacto_fuente": "https://saasclub.io/sponsor/",
+      "tamano": "YouTube subscribers not verified. The sponsor page claims 15,000+ B2B SaaS founders/operators reached across audio, YouTube and a 5,000-subscriber newsletter.",
+      "frecuencia": "Weekly founder interviews (show description). Podwise lists an episode on founder-led sales dated 2026-10-01; Podbean lists one dated 2026-07-23.",
+      "evidencia_necesidad": [
+        "No concrete evidence of need found. The channel has a Shorts tab (https://www.youtube.com/channel/UCZbyAKrrtV87PywXc9vydng/shorts), so it already makes some Shorts; their style and frequency were not checked."
+      ],
+      "contenido_reciente": [],
+      "prioridad": "C",
+      "motivo_prioridad": "Active weekly (latest seen 2026-10-01) and has a sponsor/contact page. However, it already publishes Shorts and no need was shown. The public route is a sponsorship page, not a general contact email.",
+      "fuentes": [
+        "https://podwise.ai/podcasts/1273",
+        "https://www.podbean.com/podcast-detail/twcse-371d6/The-SaaS-Podcast---Real-Lessons-on-Growing-Profitable-SaaS",
+        "https://saasclub.io/sponsor/",
+        "https://saasclub.io/?p=6013808",
+        "https://www.youtube.com/@saasclub",
+        "https://www.youtube.com/channel/UCZbyAKrrtV87PywXc9vydng/shorts",
+        "https://podcastaddict.com/podcast/4032150"
+      ],
+      "notas": "Exact recent episode titles were not visible in snippets, so contenido_reciente is empty. The site footer has a 'Contact' link whose URL was not seen; the full email (****@saasclub.io) is masked in a directory and was not used. Subscriber count was not verified.",
+      "verificado": "2026-10-12",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "smart-agency-masterclass",
+      "nombre": "Smart Agency Masterclass (Jason Swenk)",
+      "segmento": "podcaster",
+      "nicho": "digital marketing agency owners",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": "https://www.youtube.com/jasonswenk",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://jasonswenk.com/",
+        "podcast": "https://www.iheart.com/podcast/263-smart-agency-master-28334260/",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": null,
+      "contacto_fuente": null,
+      "tamano": "YouTube subscribers not verified. iHeart listing says 950+ episodes and 10M+ downloads (self-reported).",
+      "frecuencia": "Podwise lists episode #932 dated 2026-09-30, so the show is active; exact cadence not verified.",
+      "evidencia_necesidad": [
+        "No concrete evidence of need found. The full episode playlist is on YouTube Music (https://music.youtube.com/playlist?list=PL-O_-htnPb4bwSYykl_68vpXNhyMApeim); presence of Shorts, TikTok or Reels was not checked."
+      ],
+      "contenido_reciente": [],
+      "prioridad": "C",
+      "motivo_prioridad": "Recently active (2026-09-30), but no public contact and no need were verified.",
+      "fuentes": [
+        "https://podwise.ai/podcasts/11673",
+        "https://www.iheart.com/podcast/263-smart-agency-master-28334260/",
+        "https://jasonswenk.com/?p=5783",
+        "https://music.youtube.com/playlist?list=PL-O_-htnPb4bwSYykl_68vpXNhyMApeim"
+      ],
+      "notas": "The YouTube URL youtube.com/jasonswenk comes from his press kit (jasonswenk.com/?p=5783) as summarized by search; it was not opened. The exact title of episode #932 was not visible. Contact and social handles were not verified.",
+      "verificado": "2026-10-12",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "uncensored-cmo",
+      "nombre": "Uncensored CMO (Jon Evans)",
+      "segmento": "podcaster",
+      "nicho": "brand marketing / CMOs",
+      "idioma": "en",
+      "pais": "UK (Marketing Week coverage; not explicitly stated)",
+      "perfiles": {
+        "youtube": "https://www.youtube.com/@uncensoredcmo",
+        "instagram": null,
+        "tiktok": null,
+        "web": null,
+        "podcast": "https://ucmo.transistor.fm/",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": null,
+      "contacto_fuente": null,
+      "tamano": "YouTube subscribers not verified. Marketing Week: 200+ episodes and over 3M downloads when Evans went full time.",
+      "frecuencia": "1 episode every ~9 days, 273 episodes total (MyPodcastData, rankings dated July 2026). Weekly spin-off 'Uncensored Renegades' launched January 2026. Sept-Oct 2026 episodes NOT verified.",
+      "evidencia_necesidad": [
+        "Host left System1 to run the show full time and is expanding into events and commercial partnerships (https://marketingweek.com/system1s-jon-evans-uncensored-cmo/). This is a growth phase that could justify outside clip production. Inference only, not proof of need.",
+        "Shorts/TikTok/Reels presence was not checked."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Liquid Death founder interview by Jon Evans of Uncensored CMO",
+          "url": "https://www.youtube.com/watch?v=x9807YB1px0",
+          "fecha": null
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Regular cadence (~every 9 days) but no public contact and no concrete need verified.",
+      "fuentes": [
+        "https://www.youtube.com/@uncensoredcmo",
+        "https://www.mypodcastdata.com/podcast/show/uncensored-cmo-jon-evans-lAq7K5AL",
+        "https://marketingweek.com/system1s-jon-evans-uncensored-cmo/",
+        "https://www.elfbeauty.com/articles/meet-the-uncensored-renegades-kory-marchisotto-and-jon-evans-turn-up-the-volume-on-real-talk-in-new-podcast-series",
+        "https://ucmo.transistor.fm/151",
+        "https://www.youtube.com/watch?v=x9807YB1px0"
+      ],
+      "notas": "Sources conflict on whether Evans is still at System1. No website contact page was found. Date of the Liquid Death video is unknown.",
+      "verificado": "2026-10-12",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "the-bootstrapped-founder",
+      "nombre": "The Bootstrapped Founder (Arvid Kahl)",
+      "segmento": "podcaster",
+      "nicho": "bootstrapped SaaS / indie founders",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://thebootstrappedfounder.com/",
+        "podcast": "https://thebootstrappedfounder.com/podcast",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://thebootstrappedfounder.com/sponsor/",
+      "contacto_fuente": "https://thebootstrappedfounder.com/sponsor/",
+      "tamano": "2,500 YouTube subscribers and 12,000+ monthly downloads (self-reported media kit on Notion, date unknown).",
+      "frecuencia": "Media kit says twice-weekly; the official podcast page says weekly. Latest dated episodes seen: 439 (2026-04-03) and 438 (2026-03-20). Activity in the last 30-60 days NOT verified.",
+      "evidencia_necesidad": [
+        "Small YouTube channel (2,500 subscribers per the media kit) next to a 440+ episode back catalogue, which suggests little repurposing. Inference; Shorts/TikTok presence was not checked."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Episode 439: The Increasing Risk of Building in Public",
+          "url": "https://www.mypodcastdata.com/podcast/show/the-bootstrapped-founder-arvid-kahl-1sm2",
+          "fecha": "2026-04-03"
+        },
+        {
+          "titulo": "Episode 438: AI Liability: The Landmines Under Your SaaS",
+          "url": "https://www.mypodcastdata.com/podcast/show/the-bootstrapped-founder-arvid-kahl-1sm2",
+          "fecha": "2026-03-20"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Small YouTube channel fits the size range and there is a public form on the sponsor page. Recent activity was not verified (latest seen April 2026). Many episodes are solo essay readings, which makes for less clip-friendly material.",
+      "fuentes": [
+        "https://rain-existence-ea8.notion.site/The-Bootstrapped-Founder-Media-Kit-e1a5bebffe4d41a98100312d1e266756",
+        "https://thebootstrappedfounder.com/sponsor/",
+        "https://thebootstrappedfounder.com/podcast",
+        "https://www.mypodcastdata.com/podcast/show/the-bootstrapped-founder-arvid-kahl-1sm2",
+        "https://www.podengine.ai/podcasts/the-bootstrapped-founder"
+      ],
+      "notas": "The sponsor page mentions a contact form ('fill out this form'), but its URL was not seen; newsletter sponsorships go through ConvertKit. The YouTube handle was not verified. The media kit date is unknown, so 2,500 subscribers may be outdated.",
+      "verificado": "2026-10-12",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "the-b2b-playbook",
+      "nombre": "The B2B Playbook (Kevin Chen & George Coudounaris)",
+      "segmento": "podcaster",
+      "nicho": "B2B marketing / demand generation",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": "https://www.youtube.com/@theb2bplaybook",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://theb2bplaybook.com/",
+        "podcast": "https://podcasts.apple.com/gb/podcast/the-b2b-playbook/id1579809553",
+        "linkedin": "https://www.linkedin.com/groups/13980317",
+        "x": null
+      },
+      "contacto_publico": null,
+      "contacto_fuente": null,
+      "tamano": "YouTube subscribers not verified. ~250 episodes (Pod Engine).",
+      "frecuencia": "Weekly per the show's site and YouTube playlist description. Latest dated episode seen: #231, 2026-05-24. Recent activity (Aug-Oct 2026) NOT verified.",
+      "evidencia_necesidad": [
+        "No concrete evidence of need found. The show ran a 'YouTube Masterclass for B2B Businesses' episode, which suggests interest in YouTube growth (a possible hook for a pitch, not proof of need)."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "#231: YouTube Masterclass for B2B Businesses (2026)",
+          "url": "https://podcastaddict.com/the-b2b-playbook/episode/224550615",
+          "fecha": "2026-05-24"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Weekly show aimed at small B2B teams, but no public contact, recent activity or need were verified.",
+      "fuentes": [
+        "https://www.youtube.com/@theb2bplaybook",
+        "https://www.youtube.com/playlist?list=PLbXoRkXF8go7ssFXiWx5aEOu8y90r9IH1",
+        "https://theb2bplaybook.com/listen-to-the-b2b-playbook",
+        "https://www.podengine.ai/podcasts/the-b2b-playbook",
+        "https://podcasts.apple.com/gb/podcast/the-b2b-playbook/id1579809553",
+        "https://podcastaddict.com/the-b2b-playbook/episode/224550615",
+        "https://parse.gl/brands/theb2bplaybook-com"
+      ],
+      "notas": "Pod Engine says verified contact details are not on file. The country is unconfirmed (Pod Engine tags it US; not stated elsewhere). Episode counts conflict between sources (200+ vs 288+ vs 250).",
+      "verificado": "2026-10-12",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "breaking-b2b",
+      "nombre": "Breaking B2B (Sam Dunning)",
+      "segmento": "podcaster",
+      "nicho": "B2B SaaS SEO / marketing",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://breakingb2b.com/",
+        "podcast": "https://pocketcasts.com/podcasts/1a78bd80-24ca-0138-9fde-0acc26574db2",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": null,
+      "contacto_fuente": null,
+      "tamano": "YouTube subscribers not verified. 457-490 episodes depending on directory.",
+      "frecuencia": "Listed at two episodes per week (The B2B Playbook listicle). Latest dated episodes seen: #483 (2026-04-29) and #487 (2026-06-08). Recent activity NOT verified.",
+      "evidencia_necesidad": [
+        "No evidence of need found. The host runs a B2B/SaaS SEO agency and talks about YouTube strategy (#487), so he may already handle short-form in-house."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "#487 How to Scale Any SaaS Company With YouTube & SEO",
+          "url": "https://pocketcasts.com/podcasts/1a78bd80-24ca-0138-9fde-0acc26574db2",
+          "fecha": "2026-06-08"
+        },
+        {
+          "titulo": "#483 Give me 9 mins, and I'll show you how to rank your SaaS in AI Search",
+          "url": "https://pocketcasts.com/podcasts/1a78bd80-24ca-0138-9fde-0acc26574db2",
+          "fecha": "2026-04-29"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "High stated frequency, but the show belongs to an agency that probably has in-house resources. No contact or need was verified.",
+      "fuentes": [
+        "https://theb2bplaybook.com/best-b2b-marketing-podcasts",
+        "https://www.podengine.ai/podcasts/breaking-b2b-b2b-marketing-and-demand-generation-podcast",
+        "https://pocketcasts.com/podcasts/1a78bd80-24ca-0138-9fde-0acc26574db2",
+        "https://podcastrex.com/shows/breaking-b2b-saas-marketing-and-b2b-marketing-podcast/471-best-youtube-marketing-strategy-for-saas-in-2026",
+        "https://www.parse.gl/brands/breakingb2b-com"
+      ],
+      "notas": "The site URL breakingb2b.com is inferred from parse.gl's brand listing 'breakingb2b com'; it was not opened. The YouTube channel URL was not verified. Episode URLs point to the directory listing, not the episode page. Lowest-confidence prospect; consider dropping it.",
+      "verificado": "2026-10-12",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "developer-voices",
+      "nombre": "Developer Voices (Kris Jenkins)",
+      "segmento": "podcaster",
+      "nicho": "software engineering / developer tools",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": null,
+        "podcast": "https://pocketcasts.com/podcast/developer-voices/760711e0-d1e4-013b-f46c-0acc26574db2",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": null,
+      "contacto_fuente": null,
+      "tamano": "YouTube subscribers not verified. 105 episodes (Podcast Addict, listing dated 2026-07-08).",
+      "frecuencia": "Fortnightly (Pocket Casts). Recent activity after July 2026 NOT verified.",
+      "evidencia_necesidad": [
+        "Long-form deep-dive interviews are published on YouTube (per https://ponylang.io/blog/2024/11/last-week-in-pony---november-3-2024). No evidence about Shorts was found."
+      ],
+      "contenido_reciente": [],
+      "prioridad": "C",
+      "motivo_prioridad": "Independent, video-based technical show, but no contact, size or need was verified.",
+      "fuentes": [
+        "https://pocketcasts.com/podcast/developer-voices/760711e0-d1e4-013b-f46c-0acc26574db2",
+        "https://podcastaddict.com/podcast/4432850",
+        "https://mypodcastdata.com/podcast/show/developer-voices-kris-jenkins-20ol",
+        "https://ponylang.io/blog/2024/11/last-week-in-pony---november-3-2024"
+      ],
+      "notas": "The YouTube channel URL was not confirmed. The host may be employed elsewhere (a conference profile mentions Confluent), so this is unclear. Fortnightly cadence is right at the minimum threshold.",
+      "verificado": "2026-10-12",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "happen-to-your-career",
+      "nombre": "Happen To Your Career (Scott Anthony Barlow)",
+      "segmento": "podcaster",
+      "nicho": "career change / career design",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": "https://www.youtube.com/c/HappenToYourCareer",
+        "instagram": null,
+        "tiktok": null,
+        "web": null,
+        "podcast": "https://www.podengine.ai/podcasts/happen-to-your-career-meaningful-work-career-change-and-career-design",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": null,
+      "contacto_fuente": null,
+      "tamano": "YouTube subscribers not verified. 839 episodes, 4.8 rating from 239 reviews (Pod Engine).",
+      "frecuencia": "Pod Engine lists episodes dated 2026-06-01 and 2026-06-03. Activity after June 2026 NOT verified.",
+      "evidencia_necesidad": [
+        "No concrete evidence of need found; Shorts/TikTok/Reels presence was not checked."
+      ],
+      "contenido_reciente": [],
+      "prioridad": "C",
+      "motivo_prioridad": "Prolific show with a YouTube channel, but it is run by a coaching company (the host is CEO) that may have staff. No contact, recent activity or need was verified.",
+      "fuentes": [
+        "https://www.podengine.ai/podcasts/happen-to-your-career-meaningful-work-career-change-and-career-design",
+        "https://www.youtube.com/c/HappenToYourCareer?cbrd=1",
+        "https://coachingforleaders.com/podcast/discover-meaningful-work-scott-anothony-barlow/"
+      ],
+      "notas": "Exact episode titles were not visible (June 2026 episodes: an executive career change panel; Gallup's Jim Harter on strengths). The website happentoyourcareer.com and its contact page were not found in search.",
+      "verificado": "2026-10-12",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "career-contessa",
+      "nombre": "Career Contessa (Lauren McGoodwin)",
+      "segmento": "podcaster",
+      "nicho": "career / women in the workplace",
+      "idioma": "en",
+      "pais": "US (listed in Feedspot's California/Los Angeles career podcast lists)",
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://www.careercontessa.com/",
+        "podcast": "https://www.podengine.ai/podcasts/career-contessa",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://careercontessa.com/contact",
+      "contacto_fuente": "https://careercontessa.com/contact",
+      "tamano": "YouTube subscribers not verified. 393 episodes (Pod Engine).",
+      "frecuencia": "Pod Engine lists episodes dated 2026-05-26 and 2026-06-02; TuneIn shows February 2026 episodes. Activity after June 2026 NOT verified.",
+      "evidencia_necesidad": [
+        "No concrete evidence of need found; Feedspot lists a YouTube link among the show's platforms, but Shorts presence was not checked."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Mid-Career and Losing Steam? (partial title as shown in TuneIn snippet)",
+          "url": "https://tunein.com/podcasts/p3823596",
+          "fecha": "2026-02-17"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "There is a contact page on the brand site, but recent activity, YouTube size and need were not verified. The brand has a team (a 'meet the team' page exists).",
+      "fuentes": [
+        "https://www.podengine.ai/podcasts/career-contessa",
+        "https://tunein.com/podcasts/p3823596",
+        "https://careercontessa.com/contact",
+        "https://www.careercontessa.com/meet-the-team/",
+        "https://podcast.feedspot.com/los_angeles_career_podcasts/"
+      ],
+      "notas": "The contact URL appeared as a search result, but its content (form or email) was not seen. The episode title is partial. The YouTube URL is unknown.",
+      "verificado": "2026-10-12",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "sam-witteveen",
+      "nombre": "Sam Witteveen (Sam Witteveen)",
+      "segmento": "educativo",
+      "nicho": "tech/AI tutorials (LLMs, agents, local AI)",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": "https://www.youtube.com/@samwitteveenai",
+        "instagram": null,
+        "tiktok": null,
+        "web": null,
+        "podcast": null,
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": null,
+      "contacto_fuente": null,
+      "tamano": "about 125K subscribers (developereducators.com, data from about Jul 2026); about 135K subscribers and 375 videos (youtubesubhub.com and Social Blade search snippets, Sep-Oct 2026)",
+      "frecuencia": "Weekly per developereducators.com's 'weekly' upload label. showmeyourchannel.com lists several long-form uploads in Aug 2026 and one dated 09/06/2026. Not checked on YouTube itself.",
+      "evidencia_necesidad": [
+        "youtubesubhub.com estimates Shorts at about 1 in the latest 25 uploads, so output is almost all long-form (https://youtubesubhub.com/@samwitteveenai)",
+        "showmeyourchannel.com shows only about 4 Shorts from late June to late August 2026, roughly one a month, against weekly long-form (https://www.showmeyourchannel.com/youtuber/samwitteveenai)",
+        "No sign of a TikTok or Instagram presence came up in searches. Not confirmed."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "NVIDIA Doubles Down on Local AI With PAIR",
+          "url": null,
+          "fecha": "listed as of 09/06/2026 on showmeyourchannel.com (exact upload date not seen)"
+        }
+      ],
+      "prioridad": "B",
+      "motivo_prioridad": "Clear gap: weekly long-form against about one Short a month, and the channel is at the top of the size range. No public business contact was verified, so it is B and not A.",
+      "fuentes": [
+        "https://youtubesubhub.com/@samwitteveenai",
+        "https://developereducators.com/channel/samwitteveenai/",
+        "https://www.showmeyourchannel.com/youtuber/samwitteveenai",
+        "https://socialblade.com/youtube/handle/samwitteveenai",
+        "https://socialcounts.org/youtube-live-subscriber-count/UC55ODQSvARtgSyc8ThfiepQ",
+        "https://x.com/Sam_Witteveen",
+        "https://sessionize.com/sam-witteveen/"
+      ],
+      "notas": "All data comes from search-result snippets. WebFetch could not open any page in this environment (DNS failure), and YouTube itself was blocked. Subscriber counts differ by source and date. Upload cadence comes from third-party trackers, not from the YouTube uploads tab. No business email was verified: ZoomInfo shows only a masked company email (s***@reddragon.ai), which was NOT used. Check the YouTube About page for a business email. He is also CEO and co-founder of Red Dragon AI (Singapore, per Crunchbase), so this is not a pure solo creator and his country is not stated. Recent Shorts seen in snippets (not exact titles/URLs verified): local real-time TTS, AMD Ryzen AI Halo, Gemini Omni Flash, Ornith 1.0 LLMs. Recent long-form topics were described only loosely (local voice TTS, GLM comparison, Docker sandboxes for agents, Qwen serving tutorial), so the titles are not recorded.",
+      "verificado": "2026-10-12",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-12",
+          "canal": "otro",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "Free clip from your latest episode",
+          "texto": "Hi Sam,\n\nYour weekly deep dives on local models and agents are packed with \"wait, it can do that?\" moments. Most of them live only in the long videos; I saw about one Short a month.\n\nI run Hook House, a small editing studio that turns long-form videos into vertical Shorts: the payoff first, captions, zooms and on-screen highlights. They point viewers back to the full tutorial.\n\nIf Shorts aren't a priority, no problem. If they are, I'd like to cut one from a recent video for free so you can judge the quality. Want me to?\n\n[Your name]\nHook House"
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "leaving-the-village",
+      "nombre": "Leaving The Village (Kelvin Oliver)",
+      "segmento": "educativo",
+      "nicho": "K-12 education / behavior management for teachers and parents",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": "https://www.youtube.com/c/LeavingtheVillage",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://www.leavingthevillage.com/",
+        "podcast": null,
+        "linkedin": "https://www.linkedin.com/in/kelvinoliver/",
+        "x": null
+      },
+      "contacto_publico": "https://www.leavingthevillage.com/ (the site offers booking a 30-minute call with Kelvin; this is aimed at schools and districts)",
+      "contacto_fuente": "https://www.leavingthevillage.com/",
+      "tamano": "2.17K subscribers, 135 videos, 323,417 views (YT.Careers business profile, capture date not shown)",
+      "frecuencia": null,
+      "evidencia_necesidad": [
+        "Public job post on YT.Careers: 'YouTube Video Editor for Educational Consulting Channel - Leaving The Village'. It asks for 2-3 long-form videos per week (10-20 min) and 5-7 Shorts per week (30-60 s), paying $75-150 per video and $15-30 per clip, and requires captions, graphics and B-roll (https://yt.careers/youtube-jobs/160). Shown as about 411 days old, so it was posted around Aug-Sep 2025 and may be closed.",
+        "The channel's content comes from seminars, interviews and Q&A sessions (YouTube channel description seen in search snippet). That long-form source material suits clipping."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Restorative Practices: Restorative Practices Isn't About Changing Students' Behavior",
+          "url": "https://www.youtube.com/watch?v=KU1yyVDA3Qc",
+          "fecha": null
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "There is a concrete public hiring post for Shorts, but it is more than a year old. Current publishing frequency could not be verified. The only public contact is a consultation booking for schools, not a business inbox. Under the strict A/B/C rule this could be argued as B, but it was downgraded because the need evidence is stale.",
+      "fuentes": [
+        "https://yt.careers/youtube-jobs/160",
+        "https://yt.careers/businesses/293",
+        "https://www.youtube.com/user/leavingthevillage",
+        "https://www.youtube.com/c/LeavingtheVillage",
+        "https://www.youtube.com/watch?v=KU1yyVDA3Qc",
+        "https://www.leavingthevillage.com/",
+        "https://www.leavingthevillage.com/meettheconsultant",
+        "https://www.linkedin.com/in/kelvinoliver/"
+      ],
+      "notas": "All data comes from search-result snippets. No page could be opened (WebFetch DNS failure; YouTube blocked). Upload frequency, the latest upload date and current Shorts output are unverified. The job post is old and may have been filled. The video listed under recent content was seen in search results, but its date is unknown and it may not be recent. ContactOut lists an email, which was NOT used because it is not published by the creator. Country is not stated.",
+      "verificado": "2026-10-12",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-12",
+          "canal": "formulario",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "Free clip from your latest episode",
+          "texto": "Hi Kelvin,\n\nI saw a while ago that Leaving The Village was looking for an editor for long-form videos and 5–7 Shorts a week. I don't know if you filled the role, so I'll keep this short.\n\nI run Hook House, a small editing studio that turns seminars, interviews and Q&As into vertical clips with captions, zooms and clear on-screen key points. A video like \"Restorative Practices Isn't About Changing Students' Behavior\" has several moments teachers would share.\n\nIf the role is still open or you need extra help, I'll edit one Short for free so you can see the quality first.\n\n[Your name]\nHook House"
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "glen-whitten",
+      "nombre": "Glen Whitten (Talking Realty / Ohio Property Group – OhioMLSFlatFee.com)",
+      "segmento": "profesional",
+      "nicho": "Realtor / designated managing broker, home-seller education video podcast",
+      "idioma": "en",
+      "pais": "United States (Findlay, Ohio)",
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://ohiomlsflatfee.com/talkingrealty/",
+        "podcast": "https://podcasts.apple.com/us/podcast/talking-realty/id1725864716",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "Glen@OhioMLSFlatFee.com",
+      "contacto_fuente": "https://ohiomlsflatfee.com/talkingrealty/ ; https://my.flexmls.com/GlenWhitten (email shown in search snippets of his own brokerage/podcast page and flexmls profile)",
+      "tamano": null,
+      "frecuencia": "Regular, roughly weekly: iHeart lists Episode 106 dated 2026-09-23; Episodes 101–103 shortly before. Amazon Music links YouTube videos for 2026 episodes (e.g. one dated 2026-02-18).",
+      "evidencia_necesidad": [
+        "Apple lists the show as a 'Video Podcast' with full episodes linked on YouTube (https://podcasts.apple.com/us/podcast/talking-realty/id1725864716, https://music.amazon.com/podcasts/34611d9b-2db4-4cf3-b691-4ab3183d1945)",
+        "A search for Glen Whitten on Instagram/TikTok returned no accounts of his (only other agents), so no sign of vertical clips from the podcast – absence NOT confirmed by opening the platforms"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Do You Have to Accept a Full-Price Offer on Your House? | Episode 106",
+          "url": "https://www.iheart.com/podcast/269-talking-realty-143162414/",
+          "fecha": "2026-09-23"
+        },
+        {
+          "titulo": "Why Isn't My Home Selling? | Episode 103",
+          "url": "https://www.iheart.com/podcast/269-talking-realty-143162414/",
+          "fecha": null
+        },
+        {
+          "titulo": "How to Turn a Lowball Offer Into a Deal You Can Actually Accept | Episode 102",
+          "url": "https://www.iheart.com/podcast/269-talking-realty-143162414/",
+          "fecha": null
+        }
+      ],
+      "prioridad": "B",
+      "motivo_prioridad": "Publishes a video podcast regularly (latest seen 2026-09-23) and lists a public business email; need for shorts is plausible but not confirmed.",
+      "fuentes": [
+        "https://www.iheart.com/podcast/269-talking-realty-143162414/",
+        "https://podcasts.apple.com/us/podcast/talking-realty/id1725864716",
+        "https://music.amazon.com/podcasts/34611d9b-2db4-4cf3-b691-4ab3183d1945",
+        "https://ohiomlsflatfee.com/talkingrealty/",
+        "https://my.flexmls.com/GlenWhitten",
+        "https://www.homes.com/real-estate-agents/glen-whitten/x7pztxm/",
+        "https://www.experience.com/reviews/glen-6487516"
+      ],
+      "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. YouTube channel URL, subscriber count and Instagram/TikTok presence not verified. Phone numbers differ between listings (419-790-3106 vs 419-763-6358). Episode counts disagree across directories (Apple 88, Podchaser 79 stale).",
+      "verificado": "2026-10-12",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-12",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "Free clip from your latest episode",
+          "texto": "Hi Glen,\n\nI came across Talking Realty. \"Do You Have to Accept a Full-Price Offer on Your House?\" is exactly the kind of question sellers search for and share.\n\nI run Hook House, a small editing studio that turns video podcasts into short vertical clips: the answer up front, captions word by word, zooms. Made for Reels, TikTok and YouTube Shorts, where local sellers scroll every day.\n\nI couldn't find vertical clips of the show. If you already post them, ignore this.\n\nIf not, I'll edit one clip from episode 106 for free so you can see how it would look. Want me to send it?\n\n[Your name]\nHook House"
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "greg-head",
+      "nombre": "Greg Head (Practical Founders)",
+      "segmento": "profesional",
+      "nicho": "B2B SaaS founder community / CEO peer groups; weekly founder-interview video podcast",
+      "idioma": "en",
+      "pais": "United States (Phoenix/Dallas mentoring per his site)",
+      "perfiles": {
+        "youtube": "https://www.youtube.com/@PracticalFounders",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://practicalfounders.com/",
+        "podcast": "https://practicalfounders.com/podcast/",
+        "linkedin": "https://www.linkedin.com/in/gregheadaz/",
+        "x": null
+      },
+      "contacto_publico": null,
+      "contacto_fuente": "https://practicalfounders.com/articles/mentor-time-with-greg-where-i-mentor-in-phoenix-and-dallas/ (mentions a 'contact me here' link; target URL not visible)",
+      "tamano": null,
+      "frecuencia": "Weekly interviews; #214 (Heath Adams, The Cyber Mentor) aired 2026-09-18 per podcast feed snippets.",
+      "evidencia_necesidad": [
+        "Only one YouTube Short surfaced ('Greg Head, Practical Founders - Three Superpowers', https://www.youtube.com/shorts/rANx_l8KuLg), indexed ~346 days ago, suggesting shorts are sporadic despite a weekly long-form show",
+        "No Instagram or TikTok account surfaced in searches (not verified on the platforms)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "#214 Heath Adams (The Cyber Mentor) [title as summarized in search results; exact title not seen]",
+          "url": "https://podcastaddict.com/podcast/practical-founders-podcast/4120105",
+          "fecha": "2026-09-18"
+        }
+      ],
+      "prioridad": "B",
+      "motivo_prioridad": "Regular weekly video podcast plus visible gap in shorts; no direct public email/form URL confirmed.",
+      "fuentes": [
+        "https://practicalfounders.com/podcast/",
+        "https://podcasts.apple.com/us/podcast/practical-founders-podcast/id1628317831",
+        "https://podcastaddict.com/podcast/practical-founders-podcast/4120105",
+        "https://rss.libsyn.com/shows/416864/destinations/3461528.xml",
+        "https://www.youtube.com/shorts/rANx_l8KuLg",
+        "https://www.linkedin.com/in/gregheadaz/",
+        "https://practicalfounders.com/ceo-peer-groups/",
+        "https://practicalfounders.com/articles/mentor-time-with-greg-where-i-mentor-in-phoenix-and-dallas/"
+      ],
+      "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Exact title of #214 and #213 not seen (only summaries). Subscriber count unknown. Shorts tab not opened, so other recent Shorts may exist. Business sells CEO peer groups at $6,000–$10,000/yr (practicalfounders.com/ceo-peer-groups), so budget is plausible.",
+      "verificado": "2026-10-12",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-12",
+          "canal": "otro",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "Free clip from your latest episode",
+          "texto": "Hi Greg,\n\nPractical Founders puts out a founder interview every week (most recently with Heath Adams). On YouTube I only found an occasional Short.\n\nFounders scroll LinkedIn, Shorts and Reels between meetings, and a 40-second clip of a founder explaining one hard decision travels far.\n\nI run Hook House, a small editing studio that turns interviews into vertical clips with the key line first, captions and zooms. I'd like to edit one clip from a recent episode for free so you can see if it's useful. Interested?\n\n[Your name]\nHook House"
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "sixsides-gavin-tye-mitchell-davis",
+      "nombre": "SixSides – Gavin Tye & Mitchell Davis (Our B2B SaaS Journey)",
+      "segmento": "profesional",
+      "nicho": "Bootstrapped B2B SaaS founders (sports-event software) with build-in-public podcast",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://www.sixsides.co/",
+        "podcast": "https://podcasts.apple.com/gb/podcast/our-b2b-saas-journey/id1799625046",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": null,
+      "contacto_fuente": null,
+      "tamano": null,
+      "frecuencia": "Episode 81 dated 2026-09-14, which announces a short break (honeymoon); Episode 62 dated 2026-05-04 → ~19 episodes in ~4.5 months (≈ weekly).",
+      "evidencia_necesidad": [
+        "Episode notes say an early YouTube live episode 'fell apart' and their first YouTube upload 'flopped' (Apple Podcasts listing, https://podcasts.apple.com/gb/podcast/our-b2b-saas-journey/id1799625046)",
+        "Search results show audio listings (Apple, Podcast Addict, Replaio) but no confirmed 2026 video episodes or shorts"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "81: We built the product. Can we build the business?",
+          "url": "https://www.sixsides.co/episodes/81-we-built-the-product-can-we-build-the-business",
+          "fecha": "2026-09-14"
+        },
+        {
+          "titulo": "How to stay married while bootstrapping a SaaS (Ep. 62, with Mel Tye) [title as summarized]",
+          "url": "https://podcastaddict.com/podcast/our-b2b-saas-journey/5722794",
+          "fecha": "2026-05-04"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Regular publishing and some evidence of struggling with video, but the show is on a break, video format is unconfirmed, and no public contact was found.",
+      "fuentes": [
+        "https://podcasts.apple.com/gb/podcast/our-b2b-saas-journey/id1799625046",
+        "https://podcastaddict.com/podcast/our-b2b-saas-journey/5722794",
+        "https://replaio.com/podcasts/our-b2b-saas-journey-snrpIB",
+        "https://www.sixsides.co/episodes",
+        "https://www.sixsides.co/episodes/81-we-built-the-product-can-we-build-the-business"
+      ],
+      "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Episode notes mention YouTube handles 'sixsidesco' (company) and 'gavintye1' and LinkedIn handles 'gavintye' / 'mitchdav', but the exact URLs were not verified so they are left null. Country not stated in results. Budget may be tight (bootstrapped).",
+      "verificado": "2026-10-12",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "kevin-lao-cfp",
+      "nombre": "Kevin Lao, CFP (Imagine Financial Security – The Planning for Retirement Podcast)",
+      "segmento": "profesional",
+      "nicho": "Flat-fee fiduciary financial planner / retirement planning",
+      "idioma": "en",
+      "pais": "United States (Florida/Tennessee – sources inconsistent)",
+      "perfiles": {
+        "youtube": "https://www.youtube.com/channel/UCUQRZmj9q_5KmkYhQFv8X2A",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://imaginefinancialsecurity.com/",
+        "podcast": "https://podcasts.apple.com/us/podcast/the-planning-for-retirement-podcast/id1551578053",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": null,
+      "contacto_fuente": null,
+      "tamano": null,
+      "frecuencia": "Weekly: Ep. 131 page dated 2026-07-21, Ep. 130 2026-07-14; directory lists Ep. 138 on Sep 8 and bonus Ep. 137 on Sep 1 (year not shown, 2026 inferred from numbering).",
+      "evidencia_necesidad": [
+        "Episodes are published on YouTube (YouTube playlist https://www.youtube.com/playlist?list=PLoItvL8bat1JO5a9AbZI7bV5zWyEVboSd) – long-form source material exists",
+        "No Instagram account or YouTube subscriber data surfaced in searches; repurposing into shorts NOT verified either way"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Ep. 131: Why I'm Telling This 59-Year-Old to Stop Saving for Retirement (Case Study)",
+          "url": "https://imaginefinancialsecurity.com/ep-131-why-im-telling-this-59-year-old-to-stop-saving-for-retirement-case-study/",
+          "fecha": "2026-07-21"
+        },
+        {
+          "titulo": "Ep. 130: The Retirement Playbook Changes When You're Single (Here's What Nobody Talks About)",
+          "url": "https://imaginefinancialsecurity.com/ep-130-the-retirement-playbook-changes-when-youre-single-heres-what-nobody-talks-about/",
+          "fecha": "2026-07-14"
+        },
+        {
+          "titulo": "Ep.135: Retirement Tax Planning Should Start Now! Tax Planning vs. Tax Preparation in 2026",
+          "url": "https://imaginefinancialsecurity.com/ep-135-retirement-tax-planning-should-start-now-tax-planning-vs-tax-preparation-in-2026/",
+          "fecha": null
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Regular weekly video podcast, but neither need nor a self-published contact was confirmed.",
+      "fuentes": [
+        "https://imaginefinancialsecurity.com/",
+        "https://imaginefinancialsecurity.com/planning-for-retirement-podcast/",
+        "https://www.youtube.com/channel/UCUQRZmj9q_5KmkYhQFv8X2A",
+        "https://www.youtube.com/playlist?list=PLoItvL8bat1JO5a9AbZI7bV5zWyEVboSd",
+        "https://podcasts.apple.com/us/podcast/the-planning-for-retirement-podcast/id1551578053",
+        "https://creators.spotify.com/pod/profile/kevin-lao/episodes/132-Unretired-and-Making-the-Most-of-Your-Third-Act-w-Sandy-Vecchi-e3ml5j4",
+        "https://www.napfa.org/firm/46472/33716"
+      ],
+      "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. NAPFA directory lists phone 904-323-2069 (directory, not his own site – not used as contact). An aggregator email was seen but excluded as unverified. Sep 2026 dates are inferred. Channel may already be sizeable; subscriber count unknown.",
+      "verificado": "2026-10-12",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "mike-bascom",
+      "nombre": "Mike Bascom (Bascom Law, P.C. – Legacy Blueprint: Plan It Forward)",
+      "segmento": "profesional",
+      "nicho": "Estate planning & elder law attorney with weekly interview podcast",
+      "idioma": "en",
+      "pais": "United States (Cumming, Georgia)",
+      "perfiles": {
+        "youtube": "https://www.youtube.com/@bascomlawpc",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://bascomlaw.com/",
+        "podcast": "https://podcasts.apple.com/us/podcast/legacy-blueprint-plan-it-forward/id1874947741",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": null,
+      "contacto_fuente": null,
+      "tamano": null,
+      "frecuencia": "Weekly per channel description; Podcast Addict lists episodes on 2026-10-07 and 2026-09-23.",
+      "evidencia_necesidad": [
+        "YouTube channel describes weekly long-form conversations with estate-planning/financial professionals (https://www.youtube.com/@bascomlawpc/videos)",
+        "Searches for Bascom Law on Instagram/TikTok/Shorts returned nothing related; podscan listing links only bascomlaw.com and LinkedIn – absence not confirmed on the platforms"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Retirement, taxes and family wealth with Rebecca Irey of Blue Skye Financial [summary, exact title not seen]",
+          "url": "https://podcastaddict.com/podcast/legacy-blueprint-plan-it-forward/6935997",
+          "fecha": "2026-10-07"
+        },
+        {
+          "titulo": "Beyond Wealth (with Patrick Renn, Renn Wealth Management Group) [partial title]",
+          "url": "https://podcastaddict.com/podcast/legacy-blueprint-plan-it-forward/6935997",
+          "fecha": "2026-09-23"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Active and regular, but no self-published contact confirmed and need is inferred only.",
+      "fuentes": [
+        "https://www.youtube.com/@bascomlawpc/videos",
+        "https://podcastaddict.com/podcast/legacy-blueprint-plan-it-forward/6935997",
+        "https://podcasts.apple.com/us/podcast/legacy-blueprint-plan-it-forward/id1874947741",
+        "https://bascomlaw.com/podcast/",
+        "https://www.podscan.fm/podcasts/legacy-blueprint-plan-it-forward",
+        "https://lawyers.findlaw.com/profile/view/3199044_1"
+      ],
+      "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Firm phone differs across third-party directories (678-679-5277, 770-285-5493, 770-889-3911); none confirmed on bascomlaw.com, so contact left null. Exact episode titles not seen.",
+      "verificado": "2026-10-12",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "mike-jesowshek-cpa",
+      "nombre": "Mike Jesowshek, CPA (Small Business Tax Savings Podcast / Tax Savings TV)",
+      "segmento": "profesional",
+      "nicho": "CPA – small business tax planning",
+      "idioma": "en",
+      "pais": "United States (Greater Milwaukee)",
+      "perfiles": {
+        "youtube": "https://www.youtube.com/@TaxSavings",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://taxsavingspodcast.com/",
+        "podcast": "https://podcasts.apple.com/us/podcast/small-business-tax-savings-podcast/id1377376636",
+        "linkedin": "https://www.linkedin.com/in/mikejesowshek/",
+        "x": null
+      },
+      "contacto_publico": null,
+      "contacto_fuente": null,
+      "tamano": null,
+      "frecuencia": "Weekly: episodes on 2026-09-02, 09-09, 09-16 and 09-23 per directory snippets.",
+      "evidencia_necesidad": [
+        "Weak: channel already has a Shorts tab (https://www.youtube.com/@TaxSavings/shorts); quality/frequency of those Shorts not seen"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Home office deduction episode [summary, exact title not seen]",
+          "url": "https://podcasts.apple.com/us/podcast/small-business-tax-savings-podcast/id1377376636",
+          "fecha": "2026-09-23"
+        },
+        {
+          "titulo": "Business vehicle deductions: standard mileage vs actual expenses [summary]",
+          "url": "https://podcasts.apple.com/us/podcast/small-business-tax-savings-podcast/id1377376636",
+          "fecha": "2026-09-16"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Very regular, but already posts Shorts and no direct contact found; need unproven.",
+      "fuentes": [
+        "https://taxsavingspodcast.com/",
+        "https://podcasts.apple.com/us/podcast/small-business-tax-savings-podcast/id1377376636",
+        "https://www.buzzsprout.com/1837660/episodes",
+        "https://www.youtube.com/@TaxSavings",
+        "https://www.youtube.com/@TaxSavings/shorts",
+        "https://www.linkedin.com/in/mikejesowshek/"
+      ],
+      "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Episode dates vary between directories. Whether each episode is published as full video not confirmed. No email/form found.",
+      "verificado": "2026-10-12",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "ify-ononogbu",
+      "nombre": "Ify Ononogbu (Law Office of Ify – 'Immigration Attorney Ify')",
+      "segmento": "profesional",
+      "nicho": "Immigration & family attorney with educational YouTube channel and live Q&As",
+      "idioma": "en",
+      "pais": "United States (Dallas, Texas)",
+      "perfiles": {
+        "youtube": "https://www.youtube.com/@Immigrationattorneyify",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://attorneyify.com/",
+        "podcast": null,
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "info@attorneyify.com",
+      "contacto_fuente": "https://attorneyify.com/ (contact info section, as shown in search snippets; admin@attorneyify.com also listed)",
+      "tamano": null,
+      "frecuencia": "Channel description promises weekly tips and live Q&As; no dated 2026 upload was seen, so actual recent activity is unverified.",
+      "evidencia_necesidad": [
+        "Channel relies on long live streams ('Immigration Attorney Ify is live!', https://www.youtube.com/watch?v=-r4M2QYxJ9k) – raw long-form material suited to clipping; whether she already cuts shorts was not verified"
+      ],
+      "contenido_reciente": [],
+      "prioridad": "C",
+      "motivo_prioridad": "Has a public business email and long-form live content, but recency and need are unverified.",
+      "fuentes": [
+        "https://www.youtube.com/@Immigrationattorneyify",
+        "https://www.youtube.com/watch?v=-r4M2QYxJ9k",
+        "https://attorneyify.com/",
+        "https://attorneyify.com/about/",
+        "https://www.facebook.com/attorneyify/"
+      ],
+      "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Do NOT confuse with Ify Immigration Law Firm (Charlotte, NC, theifylawfirm.com) – sources mix their phone numbers (the live video lists 919-925-2295). Recent upload dates unknown.",
+      "verificado": "2026-10-12",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "debbie-shadid",
+      "nombre": "Debbie Shadid (Life Coach Business Building School)",
+      "segmento": "profesional",
+      "nicho": "Business coach for life coaches (women 50+)",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": "https://www.youtube.com/@debbieshadid",
+        "instagram": "https://www.instagram.com/debbieshadid/",
+        "tiktok": null,
+        "web": "https://debbieshadid.com/",
+        "podcast": "https://podcasts.apple.com/us/podcast/life-coach-business-building-school-with-debbie-shadid/id1502118085",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://debbieshadid.com/schedule",
+      "contacto_fuente": "https://debbieshadid.com/podcast",
+      "tamano": "Instagram: 4,095 followers, 3,332 posts (search snippet of instagram.com/debbieshadid, seen 2026-10-12)",
+      "frecuencia": "Weekly or more: EP 386 dated 2026-09-23, EP 379 dated 2026-09-04 (EP numbers advance ~7 in under 3 weeks); show notes point to YouTube for weekly episodes.",
+      "evidencia_necesidad": [
+        "Show notes direct listeners to youtube.com/@debbieshadid for weekly episodes, i.e. long-form video exists (https://debbieshadid.com/podcast)",
+        "Searches for her YouTube Shorts or TikTok returned nothing of hers – no TikTok account surfaced (not confirmed by opening the platforms)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "EP 386 - Why Your Coaching Offer Isn't Selling (It's Not Your Niche!)",
+          "url": "https://debbieshadid.com/podcast",
+          "fecha": "2026-09-23"
+        },
+        {
+          "titulo": "EP 376 - Want to Redesign Your Live? Meet the Coaches of the Design, Live, Thrive Summit September 2026",
+          "url": "https://debbieshadid.com/podcast/376-want-to-redesign-your-live-meet-the-coaches-of-the-design-live-thrive-summit-september-2026",
+          "fecha": null
+        },
+        {
+          "titulo": "EP 373 - How To Use Google Voice In Your Coaching Business",
+          "url": "https://debbieshadid.com/podcast/373-how-to-use-google-voice-in-your-coaching-business-free-phone-number-for-coaches-2026",
+          "fecha": null
+        }
+      ],
+      "prioridad": "B",
+      "motivo_prioridad": "Very regular publishing with YouTube video and a public booking page; need is plausible (no TikTok found) but not confirmed by viewing her Shorts/Reels.",
+      "fuentes": [
+        "https://debbieshadid.com/podcast",
+        "https://podcasts.apple.com/us/podcast/life-coach-business-building-school-with-debbie-shadid/id1502118085",
+        "https://music.amazon.com/podcasts/742a3b08-4bf1-4ab8-90f7-1d3d382e659f",
+        "https://www.youtube.com/@debbieshadid",
+        "https://www.instagram.com/debbieshadid/",
+        "https://www.facebook.com/debbieshadid/"
+      ],
+      "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Country not stated in results. Whether each episode is posted as video on YouTube, YouTube subscriber count, and whether her Instagram Reels are edited/captioned were not verified. No email found. | Fuente del contacto: Podcast show notes ('Book a call with me here: https://debbieshadid.com/schedule') as shown in search snippets of https://debbieshadid.com/podcast / Apple Podcasts",
+      "verificado": "2026-10-12",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-12",
+          "canal": "formulario",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "Free clip from your latest episode",
+          "texto": "Hi Debbie,\n\nI came across \"Why Your Coaching Offer Isn't Selling (It's Not Your Niche!)\". That title alone is a hook, and there are several 30-second answers inside the episode that could each be a Reel.\n\nI run Hook House, a small editing studio that turns weekly video episodes into short vertical clips: strongest line first, word-by-word captions, zooms, for Reels, TikTok and YouTube Shorts.\n\nIf you already have someone clipping your episodes, please ignore this. If not, I'd like to edit one clip from that episode for free so you can judge the quality. Shall I send it?\n\n[Your name]\nHook House"
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    },
+    {
+      "id": "christian-morrison",
+      "nombre": "Christian Morrison (Life In Rapid City – Keller Williams Realty Black Hills)",
+      "segmento": "profesional",
+      "nicho": "Realtor / broker associate, relocation YouTube channel",
+      "idioma": "en",
+      "pais": "United States (Rapid City, South Dakota)",
+      "perfiles": {
+        "youtube": "https://www.youtube.com/@LifeInRapidCity",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://christianmorrison.kw.com/",
+        "podcast": null,
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "Christian@Christian-Morrison.com",
+      "contacto_fuente": "https://www.youtube.com/channel/UCwITWJ4Mx8FY1TTojBSaTyw",
+      "tamano": null,
+      "frecuencia": "Unverified: no dated 2026 upload seen; channel is listed in a 2026 Feedspot directory of South Dakota real-estate YouTubers.",
+      "evidencia_necesidad": [
+        "Long-form relocation videos (e.g. 'Get To Know Rapid City, South Dakota With Christian Morrison', https://www.youtube.com/watch?v=A_G3UotMpto) – repurposing status not verified"
+      ],
+      "contenido_reciente": [],
+      "prioridad": "C",
+      "motivo_prioridad": "Public business email and booking link, but current publishing frequency and need are unverified.",
+      "fuentes": [
+        "https://www.youtube.com/channel/UCwITWJ4Mx8FY1TTojBSaTyw",
+        "https://www.youtube.com/@LifeInRapidCity/videos",
+        "https://www.youtube.com/watch?v=A_G3UotMpto",
+        "https://christianmorrison.kw.com/",
+        "https://videos.feedspot.com/south_dakota_real_estate_youtube_channels/",
+        "https://www.linkedin.com/pulse/6-things-you-must-know-before-moving-rapid-city-south-morrison"
+      ],
+      "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Most recent dated item seen was a Feb 2023 market-news video; must check the Videos tab before outreach – may be inactive. | Fuente del contacto: YouTube channel description https://www.youtube.com/channel/UCwITWJ4Mx8FY1TTojBSaTyw (as shown in search snippet; also lists calendly.com/christianmorrison/15min)",
+      "verificado": "2026-10-12",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "creado": "2026-10-12",
+      "actualizado": "2026-10-12"
+    }
+  ]
+}
