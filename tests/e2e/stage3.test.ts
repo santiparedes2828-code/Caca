@@ -60,14 +60,14 @@ test("clips con plan aprobado a mano: pausa tras el plan, sin render hasta aprob
   assert.match(report, /acorde · generado-en-pruebas/);
 });
 
-test("vídeo hablado para redes: subtítulos impacto, zoom alterno, apoyos y gráficos (calendario/lista)", async () => {
+test("vídeo hablado para redes: subtítulos impacto, zoom alterno, apoyos, gráficos (calendario/lista) y efectos de sonido", async () => {
   const cfg = cfgFor("d-redes");
   // Sin B-roll: en este guion la biblioteca de prueba ocupa justo las enumeraciones (el B-roll real tiene prioridad)
   const job = await submitJob(cfg, {
     clientId: "hookhouse",
     video,
     captions: words,
-    overrides: { captionMode: "impacto", intensity: "redes", broll: false, graficos: true, music: false, cutSilences: false },
+    overrides: { captionMode: "impacto", intensity: "redes", broll: false, graficos: true, efectos: true, music: false, cutSilences: false },
   });
   assert.equal(job.status, "completado", JSON.stringify([job.errors, job.warnings]));
   assert.equal(job.verdict, "APROBADO");
@@ -91,11 +91,18 @@ test("vídeo hablado para redes: subtítulos impacto, zoom alterno, apoyos y gr�
       for (const t of p.lines.flat()) if (t.icon) assert.ok(t.startMs < g.startMs - 300 || t.startMs >= g.endMs + 300);
     }
   }
+  // Efectos de sonido en los gráficos (whoosh de entrada y salida, tic en cada check) sin saturar la voz
+  const sfx: { name: string; frame: number }[] = props.sfx;
+  for (const g of graphics) assert.ok(sfx.some((e) => e.name === "whoosh" && Math.abs(e.frame - (g.startMs / 1000) * 30) <= 6));
+  assert.equal(sfx.filter((e) => e.name === "click").length, 7, "un tic por elemento de las dos listas (4 + 3)");
+  assert.ok(job.outputs.some((o) => o.kind === "video"));
   const plan = await fs.readFile(path.join(dir, "output/plan.md"), "utf8");
   assert.match(plan, /## Apoyos gráficos/);
   const report = await fs.readFile(path.join(dir, "output/informe.md"), "utf8");
   assert.match(report, /modo impacto/);
   assert.match(report, /Gráfico/);
+  assert.match(report, /Efectos de sonido: propios/);
+  assert.match(report, /✅ \| Picos \/ saturación/);
 });
 
 test("B-roll y gráficos a la vez: el B-roll con licencia tiene prioridad y nunca se solapan", async () => {

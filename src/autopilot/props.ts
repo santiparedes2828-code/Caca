@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { sfxEventSchema } from "../create/theme";
 import {
   brandSchema,
   captionModeSchema,
@@ -110,6 +111,8 @@ export const editPropsSchema = z.object({
   // Emojis con licencia (Fluent Emoji en color) como SVG en data URI; los resuelve el backend
   icons: z.record(z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/), z.string().regex(/^data:image\/svg\+xml;base64,[A-Za-z0-9+/]+=*$/).max(200_000)).default({}),
   graphics: z.array(graphicSchema).default([]),
+  // Efectos de sonido propios (public/sfx/) en los momentos con apoyo visual; los planifica el backend
+  sfx: z.array(sfxEventSchema).max(120).default([]),
   captions: z.object({
     mode: captionModeSchema,
     pages: z.array(captionPageSchema),

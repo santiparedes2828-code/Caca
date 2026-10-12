@@ -7,6 +7,7 @@ import { ROOT } from "../../config";
 import { ICON_CREDIT } from "../../create/theme";
 import { planApoyos } from "../../edit/apoyos";
 import { graphicIntervals } from "../../edit/graficos";
+import { planEditSfx } from "../../edit/sonido";
 import { pagesOverFaces, placeCaptions } from "../../edit/placement";
 import { remapItems, remapTime, remapTrack, toFrameSegments } from "../../edit/timeline";
 import { cancelRequested, saveJob } from "../../jobs/store";
@@ -163,6 +164,14 @@ export const compose = async (ctx: Ctx) => {
       // Nunca en los 2,5 primeros segundos: el gancho se dice mirando a cámara
       return a === null || e === null || e - a < 800 || a < 2500 ? [] : [{ startMs: a, endMs: e, src: b.src, kind: b.kind, presentation: b.presentation ?? "pantalla" }];
     });
+    // Efectos de sonido propios en los apoyos visuales (opción `efectos`)
+    const efectos = config.efectos
+      ? planEditSfx({ pages: caps.none ? [] : caps.pages, graphics, overlays, fps: config.fps, durationInFrames })
+      : { sfx: [], note: null };
+    if (efectos.note) {
+      ctx.log.info(efectos.note);
+      if (!caps.none) caps.apoyos = [...(caps.apoyos ?? []), efectos.note];
+    }
     const speech = src.none ? [] : remapItems(variant.segments, [...src.items, ...src.events.map((e) => ({ text: "·", ...e }))]).map((w) => ({ startMs: w.startMs, endMs: w.endMs }));
     const mus = ctx.profile.defaults.editorial.music;
     const db = (d: number) => Number((10 ** (d / 20)).toFixed(4));
@@ -183,6 +192,7 @@ export const compose = async (ctx: Ctx) => {
       brand: ctx.profile.brand,
       icons,
       graphics,
+      sfx: efectos.sfx,
       captions: caps.none ? { mode: config.captionMode, pages: [] } : { mode: caps.mode, pages: caps.pages },
     };
     await writeJsonAtomic(path.join(dir, "captions.json"), caps);
@@ -371,7 +381,8 @@ export const deliver = async (ctx: Ctx) => {
   };
   const variants = sections.map((s) => ({ id: s.variant.id, title: s.variant.title, durationMs: s.variant.durationMs, reason: s.variant.reason, qc: s.qc }));
   const withIcons = sections.some((s) => !s.captions.none && s.captions.pages.some((p) => p.lines.flat().some((t) => t.icon)));
-  const credits = [...new Set([...(plan.broll ?? []).map((b) => b.credit), ...(plan.music ? [plan.music.credit] : []), ...(withIcons ? [`Emojis: ${ICON_CREDIT}`] : [])])];
+  const sfxCredit = ctx.job.config.efectos ? ["Efectos de sonido: propios (public/sfx/, sintetizados con ffmpeg para el proyecto)"] : [];
+  const credits = [...new Set([...(plan.broll ?? []).map((b) => b.credit), ...(plan.music ? [plan.music.credit] : []), ...(withIcons ? [`Emojis: ${ICON_CREDIT}`] : []), ...sfxCredit])];
   await writeJsonAtomic(O(ctx, "informe.json"), {
     job: ctx.job,
     analysis: summary,

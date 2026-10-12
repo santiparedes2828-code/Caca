@@ -75,7 +75,7 @@ Estilo analizado en [estilo-hablado.md](estilo-hablado.md). Se activa con el per
 (`clients/cliente-1/profile.json` es el ejemplo) o por trabajo:
 
 ```console
-npm run autopilot -- procesar grabacion.mp4 --modo impacto --intensidad redes --graficos --cortar-silencios
+npm run autopilot -- procesar grabacion.mp4 --modo impacto --intensidad redes --graficos --efectos --cortar-silencios
 npm run autopilot -- procesar visita-piso.mp4 --cliente <cliente> --modo impacto --broll --aprobar-plan
 npm run autopilot -- rehacer-video <id>     # tras editar los gráficos de work/plan.json
 ```
@@ -88,6 +88,8 @@ npm run autopilot -- rehacer-video <id>     # tras editar los gráficos de work/
   licencia junto a la clave cuando hay uno claro (en español o inglés) y **gráficos a pantalla completa** hechos con
   código: calendario al decir una fecha con mes y año, lista con checks al enumerar (`--graficos`). El vídeo se
   desenfoca detrás y los subtítulos siguen encima. El plan los enseña y se pueden quitar o añadir antes de aprobarlo.
+- **Efectos de sonido** (`--efectos`): los propios del proyecto (`public/sfx/`), suaves y solo donde pasa algo: whoosh
+  al entrar y salir un gráfico o un B-roll, golpe en las páginas destacadas, pop en los emojis, tic en cada check.
 - **Intensidad `redes`**: zoom alterno 1 ↔ 1,08 en cada corte (o en cada frase si no hay cortes), deriva lenta y un
   golpe suave en las claves como mucho cada 2,5 s.
 - **B-roll** de la biblioteca con licencia a pantalla completa o **en tarjeta** (capturas); en inmobiliaria, las fotos

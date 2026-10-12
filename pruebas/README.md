@@ -13,6 +13,7 @@ plano general breve). Estilo de `estilo-hablado.md`; perfil `clients/cliente-1/p
 |---|---|
 | `cliente-1_subtitulos-impacto_9x16.mp4` | Versión 1: subtítulos `impacto`, zoom `redes`, páginas destacadas y emoji |
 | `cliente-1_con-apoyos-graficos_9x16.mp4` | Versión 2 (tras «añade lo demás»): + calendario y lista a pantalla completa |
+| `cliente-1_final_con-sonido_9x16.mp4` | **Versión final** (tras «ponle el sonido»): + efectos de sonido propios en los apoyos (pico −1,1 dBTP) |
 | `telefono_1.jpg`, `telefono_2.jpg` | Hoja de contacto a 5 fps y tamaño de teléfono (180x320) de la versión 2 |
 | `qc_hoja_contacto.jpg`, `informe-del-trabajo.md`, `plan-del-trabajo.md`, `subtitulos.srt` | Control de calidad, informe, plan y SRT del trabajo |
 

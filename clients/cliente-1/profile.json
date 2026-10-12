@@ -71,6 +71,7 @@
       "keepPrincipal": true,
       "broll": true,
       "graficos": true,
+      "efectos": true,
       "music": { "enabled": false, "mood": null, "id": null, "volumeDb": -24, "duckDb": -10 },
       "planner": "local",
       "claude": { "model": "claude-opus-5-5", "effort": "medium" },

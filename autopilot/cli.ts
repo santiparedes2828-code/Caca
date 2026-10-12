@@ -82,6 +82,7 @@ Edición inteligente (Etapa 3):
   --con-principal | --sin-principal        Entregar también el vídeo completo en modos de clips
   --broll | --sin-broll                    B-roll de la biblioteca autorizada (library/, clients/<id>/library/)
   --graficos | --sin-graficos              Apoyos gráficos hechos con código: calendario al decir una fecha, lista al enumerar
+  --efectos | --sin-efectos                Efectos de sonido propios (whoosh, golpe, pop, tic) en los apoyos visuales
   --musica [--musica-id ID] | --sin-musica Música autorizada de la biblioteca, con atenuación bajo la voz
   --planificador local|claude              Claude solo elige fragmentos; requiere ANTHROPIC_API_KEY
   --aprobar-plan                           Para tras el plan hasta ejecutar "aprobar <id>"
@@ -134,6 +135,8 @@ const overridesFrom = (v: Record<string, string | boolean | undefined>): JobOver
   if (v["sin-broll"]) o.broll = false;
   if (v.graficos) o.graficos = true;
   if (v["sin-graficos"]) o.graficos = false;
+  if (v.efectos) o.efectos = true;
+  if (v["sin-efectos"]) o.efectos = false;
   if (v.musica || v["musica-id"]) o.music = true;
   if (typeof v["musica-id"] === "string") o.musicId = v["musica-id"];
   if (v["sin-musica"]) o.music = false;
@@ -191,6 +194,7 @@ const main = async () => {
       "sin-broll": { type: "boolean" },
       graficos: { type: "boolean" },
       "sin-graficos": { type: "boolean" },
+      "sin-efectos": { type: "boolean" },
       musica: { type: "boolean" },
       "musica-id": { type: "string" },
       "sin-musica": { type: "boolean" },

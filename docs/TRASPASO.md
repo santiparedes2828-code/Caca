@@ -60,6 +60,10 @@ Artefacto anclado en la barra lateral del usuario: https://claude.ai/artifact/Q3
 
 ## Registro (lo último arriba)
 
+- 2026-10-12: «ponle el sonido»: efectos de sonido propios en el motor de edición (`--efectos`, `editorial.efectos` en
+  el perfil; activado en `cliente-1`). Vídeo final del cliente: `pruebas/subtitulos-cliente-1/cliente-1_final_con-sonido_9x16.mp4`
+  (APROBADO, −14 LUFS, pico −1,1 dBTP). Comando nuevo `rehacer-video <id>`.
+
 - 2026-10-12: vídeos hablados para redes (pedido del usuario con 2 referencias; análisis en `estilo-hablado.md`).
   Hecho en el motor de edición: subtítulos `impacto` (1–3 palabras con pop, clave por frase más grande y en color,
   fraseo sin «de/in» al final de página, cifras con su unidad), intensidad `redes` (zoom alterno en cortes o frases,

@@ -7,6 +7,7 @@ import {
   Sequence,
   interpolate,
   spring,
+  staticFile,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
@@ -110,6 +111,20 @@ export const Broll: React.FC<{
           </Sequence>
         );
       })}
+    </>
+  );
+};
+
+// Efectos de sonido propios (public/sfx/, sintetizados para el proyecto) en el fotograma que planifica el backend
+export const SoundEffects: React.FC<{ sfx: EditProps["sfx"] }> = ({ sfx }) => {
+  const { fps } = useVideoConfig();
+  return (
+    <>
+      {sfx.map((e, i) => (
+        <Sequence key={`sfx${i}`} name={`Efecto · ${e.name}`} from={e.frame} durationInFrames={Math.round(fps * 1.5)} layout="none">
+          <Audio src={staticFile(`sfx/${e.name}.wav`)} volume={e.volume} />
+        </Sequence>
+      ))}
     </>
   );
 };

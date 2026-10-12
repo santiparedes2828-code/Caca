@@ -3,6 +3,7 @@ import { test } from "node:test";
 import { detectLang, findIcons } from "../../autopilot/create/theme";
 import { planApoyos } from "../../autopilot/edit/apoyos";
 import { planGraficos } from "../../autopilot/edit/graficos";
+import { planEditSfx } from "../../autopilot/edit/sonido";
 import { matchBroll, type LibraryItem } from "../../autopilot/editorial/library";
 import type { Sentence } from "../../autopilot/editorial/analyze";
 import { tokensToWords } from "../../autopilot/transcription/local";
@@ -172,6 +173,26 @@ test("gráficos: calendario con el mes y el año dichos y lista al enumerar, nun
   assert.equal(planGraficos(hook, { durationMs: 10000 }).graphics.length, 0);
   assert.equal(planGraficos(w, { durationMs: 20000, busy: [{ startMs: 3000, endMs: 5000 }] }).graphics.length, 1);
   assert.equal(planGraficos(w, { durationMs: 4000 }).graphics.length, 0);
+});
+
+test("efectos de sonido: solo donde pasa algo (gráfico, B-roll, página destacada, emoji, check), suaves y sin pisarse", () => {
+  const tok = (text: string, startMs: number, emphasis = false, icon?: string) => ({ text, startMs, endMs: startMs + 250, emphasis, ...(icon ? { icon } : {}) });
+  const pages: CaptionPage[] = [
+    { startMs: 700, endMs: 1300, feature: true, lines: [[tok("in", 700)], [tok("business.", 900, true)]] },
+    { startMs: 2000, endMs: 2600, lines: [[tok("dos", 2000), tok("palabras", 2300)]] }, // sin nada especial: sin efecto
+    { startMs: 9000, endMs: 10000, lines: [[tok("creators,", 9100, true, "movie-camera")]] },
+  ];
+  const graphics = [
+    { kind: "calendario" as const, startMs: 3000, endMs: 5400, month: 2, year: 2023, label: "February", lang: "en" as const },
+    { kind: "lista" as const, startMs: 6000, endMs: 8400, items: [{ text: "A", startMs: 6000 }, { text: "B", startMs: 6500 }, { text: "C", startMs: 7000 }] },
+  ];
+  const { sfx, note } = planEditSfx({ pages, graphics, overlays: [{ startMs: 12000, endMs: 14000 }], fps: 30, durationInFrames: 30 * 16 });
+  const names = sfx.map((e) => `${e.name}@${e.frame}`);
+  assert.deepEqual(names, ["hit@26", "whoosh@85", "pop@95", "whoosh@155", "whoosh@175", "click@184", "click@199", "click@214", "whoosh@245", "pop@274", "whoosh@355"]);
+  assert.ok(sfx.every((e) => e.volume > 0 && e.volume <= 0.3), "volúmenes bajos bajo la voz");
+  assert.match(note ?? "", /5 whoosh, 1 hit, 2 pop, 3 click/);
+  // Sin apoyos no hay efectos
+  assert.deepEqual(planEditSfx({ pages: [pages[1]], graphics: [], overlays: [], fps: 30, durationInFrames: 300 }), { sfx: [], note: null });
 });
 
 test("emojis en español e inglés según el idioma del vídeo", () => {

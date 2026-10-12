@@ -76,6 +76,7 @@ export const RemotionRoot: React.FC = () => {
             brand: HOOKHOUSE,
             icons: {},
             graphics: [],
+            sfx: [],
             captions: {
               mode: "frases" as const,
               pages: [{ startMs: 200, endMs: 2800, lines: [[{ text: "Vista previa", startMs: 200, endMs: 2800, emphasis: false }]] }],

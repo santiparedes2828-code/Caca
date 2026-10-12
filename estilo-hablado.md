@@ -86,6 +86,7 @@ Medidas convertidas a **1080x1920**. Lo no medible va marcado con **[SUPOSICIÓN
 | Página destacada (gancho y cifras; la cifra rueda) · emoji en línea tras la palabra clave | apoyos del plan (`autopilot/edit/apoyos.ts`) |
 | Apoyos a pantalla completa de la ref. 1 (calendario al decir una fecha, lista con checks al enumerar) | `--graficos`: `autopilot/edit/graficos.ts` + `src/autopilot/Graphics.tsx`; editables en el plan |
 | Zoom alterno en cortes/frases + golpe en la clave | intensidad `redes` (`src/design/intensity.ts`, `src/autopilot/AutopilotEdit.tsx`) |
+| Efectos de sonido en los apoyos (whoosh, golpe, pop, tic), 10–20 dB bajo la voz | `--efectos`: `autopilot/edit/sonido.ts` |
 | Cortes de silencio agresivos | perfil del cliente (`editing.minSilenceSec`) |
 | B-roll en tarjeta o a pantalla completa; fotos de la propiedad | biblioteca del cliente con licencia; sinónimos inmobiliarios en `autopilot/editorial/library.ts` |
 | Transcripción por palabra sin enviar el audio fuera | proveedor `local` (sherpa-onnx + Parakeet TDT 0.6B v3) |

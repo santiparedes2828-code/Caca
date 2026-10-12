@@ -44,6 +44,8 @@ export const profileSchema = z.object({
         broll: z.boolean(),
         // Apoyos gráficos hechos con código en vídeos hablados: calendario al decir una fecha, lista al enumerar
         graficos: z.boolean().default(false),
+        // Efectos de sonido propios (whoosh, golpe, pop, tic) en los apoyos visuales de los vídeos hablados
+        efectos: z.boolean().default(false),
         music: z.object({ enabled: z.boolean(), mood: z.string().nullable(), id: z.string().nullable(), volumeDb: z.number().min(-40).max(0), duckDb: z.number().min(-40).max(0) }),
         planner: z.enum(["local", "claude"]),
         claude: z.object({ model: z.string(), effort: z.enum(["low", "medium", "high"]) }),
@@ -56,6 +58,7 @@ export const profileSchema = z.object({
         keepPrincipal: true,
         broll: false,
         graficos: false,
+        efectos: false,
         music: { enabled: false, mood: null, id: null, volumeDb: -22, duckDb: -10 },
         planner: "local",
         claude: { model: "claude-opus-5-5", effort: "medium" },

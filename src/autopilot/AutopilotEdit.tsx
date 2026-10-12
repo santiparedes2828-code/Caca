@@ -14,7 +14,7 @@ import { INTENSITY } from "../design/intensity";
 import { Captions } from "./Captions";
 import { Graphics } from "./Graphics";
 import { cutZoomKeys, emphasisPunch, fitVideo, focusAt, zoomSegments } from "./geometry";
-import { Broll, Music } from "./Overlays";
+import { Broll, Music, SoundEffects } from "./Overlays";
 import type { EditProps } from "./props";
 
 // Edición automática de material del cliente: tramos del vídeo encadenados (cortes no destructivos),
@@ -206,6 +206,7 @@ export const AutopilotEdit: React.FC<EditProps> = (props) => {
       <Broll overlays={props.overlays} brand={brand} />
       <Graphics graphics={props.graphics} brand={brand} fontsReady={fontsReady} />
       {props.music ? <Music music={props.music} /> : null}
+      {props.sfx.length ? <SoundEffects sfx={props.sfx} /> : null}
       <Captions
         pages={props.captions.pages}
         mode={props.captions.mode}
