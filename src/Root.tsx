@@ -136,10 +136,14 @@ export const RemotionRoot: React.FC = () => {
               captionStyle: "caja" as const,
               motion: "rebote" as const,
               background: "burbujas" as const,
+              sceneTransition: "barrido" as const,
             },
             icons: { muestra: `data:image/svg+xml;base64,${SAMPLE_ICON}` },
             bgIcons: ["muestra"],
             pointerIcon: null,
+            accentFont: "inter" as const,
+            accentScale: 1,
+            sfx: [],
           }}
         />
         <Composition

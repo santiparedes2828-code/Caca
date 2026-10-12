@@ -54,6 +54,11 @@ Artefacto anclado en la barra lateral del usuario: https://claude.ai/artifact/Q3
 
 ## Registro (lo último arriba)
 
+- 2026-10-12: reel de Einstein desde el panel (25 s, APROBADO): base ampliada con modelos animados
+  (`[modelo: …]`), tema «ciencia» (estrellas, brillo, destellos, zoom), efectos de sonido (`--efectos`) y
+  excepción de fuente por pedido (`--claves-garamond`; el usuario eligió «Garamond solo aquí»). Sin música, por
+  elección del usuario. Voz: 4 tomas, 1.312 créditos.
+
 - 2026-10-12: reglas permanentes del usuario (guardadas en `CLAUDE.md`): todo el texto en Inter (preferiblemente
   Bold) y emojis estilo iOS con el set con licencia más parecido (Fluent Emoji en color, MIT). Quitadas las demás
   fuentes; `tests/unit/reglas.test.ts` lo vigila.

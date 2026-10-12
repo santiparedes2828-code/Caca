@@ -23,7 +23,7 @@ import { readJson, writeJsonAtomic, writeTextAtomic } from "../util/fs";
 import { createLogger, redact } from "../util/log";
 import { themedPropsSchema, type ThemedProps } from "../../src/create/theme";
 import { alignScript, parseScript, readingTimings, scriptFromBrief, scriptText } from "./script";
-import { planTheme, presetById, resolveStyle, type Style } from "./theme";
+import { planSfx, planTheme, presetById, resolveStyle, type Style } from "./theme";
 
 // Creación desde cero (Etapa 5): guion (archivo o brief con Claude) → narración con la voz de marca
 // (ElevenLabs, o un audio propio con sus tiempos) → escenas con componentes validados → render → QC.
@@ -41,6 +41,9 @@ export type CreationRequest = {
   silent?: boolean; // sin voz: el texto aparece a ritmo de lectura y el sonido se pone en la plataforma
   style?: Style; // auto (por defecto): identidad de marca si el contenido habla de la marca; si no, tema
   preset?: string | null; // fuerza un tema concreto (citrico, comida, salud…)
+  sfx?: boolean; // efectos de sonido propios (whoosh, pop, brillo…) en los vídeos con tema
+  accentFont?: "inter" | "garamond"; // palabras clave: Inter salvo excepción pedida (src/design/excepciones.ts)
+  accentScale?: number; // tamaño de las palabras clave respecto al resto (1 = igual)
 };
 
 const LOGO_SECONDS = 1.5;
@@ -74,6 +77,9 @@ export const submitCreation = async (cfg: Config, req: CreationRequest, opts: { 
       silent: !!req.silent,
       style: req.preset ? "tema" : (req.style ?? "auto"),
       preset: req.preset ?? null,
+      sfx: !!req.sfx,
+      accentFont: req.accentFont ?? "inter",
+      accentScale: req.accentScale ?? 1,
     });
     job.steps.ingest = { status: "hecho", finishedAt: new Date().toISOString() };
     job.status = "recibido";
@@ -103,7 +109,17 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
   };
   try {
     const profile = await loadProfile(cfg.HH_CLIENTS_DIR, clientId);
-    const meta = await readJson<{ type: string; seconds: number; label: string; silent?: boolean; style?: Style; preset?: string | null }>(W("creacion.json"));
+    const meta = await readJson<{
+      type: string;
+      seconds: number;
+      label: string;
+      silent?: boolean;
+      style?: Style;
+      preset?: string | null;
+      sfx?: boolean;
+      accentFont?: "inter" | "garamond";
+      accentScale?: number;
+    }>(W("creacion.json"));
     job.attempts++;
     job.costs = { real: [], estimated: [] };
 
@@ -228,8 +244,13 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
         icons: plan.icons,
         bgIcons: plan.bgIcons,
         pointerIcon: plan.pointerIcon,
+        accentFont: meta.accentFont ?? "inter",
+        accentScale: meta.accentScale ?? 1,
+        sfx: meta.sfx ? planSfx(sceneProps, caps, fps, plan.theme) : [],
       });
       credits.push(...plan.credits);
+      if (meta.sfx) credits.push("Efectos de sonido: propios del proyecto (public/sfx, sintetizados con ffmpeg)");
+      if (meta.accentFont === "garamond") credits.push("Palabras clave: EB Garamond Bold Italic · SIL Open Font License 1.1 (excepción pedida; public/fonts/excepciones)");
       styleNote = `tema ${plan.theme.name} · iconos ${[...new Set(plan.scenes.map((s) => s.icon).filter(Boolean))].join(", ")}`;
     }
     await writeJsonAtomic(W("create-props.json"), { ...props, ...("icons" in props ? { icons: Object.keys(props.icons) } : {}) });

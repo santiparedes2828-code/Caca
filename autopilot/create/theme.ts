@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { THEME_FONTS, themeSchema, type Theme } from "../../src/create/theme";
+import type { z } from "zod";
+import { THEME_FONTS, themeSchema, type SFX_NAMES, type Theme } from "../../src/create/theme";
 import { ROOT } from "../config";
 import motivos from "./data/motivos-es.json";
 
@@ -11,7 +12,7 @@ import motivos from "./data/motivos-es.json";
 export type Style = "auto" | "tema" | "marca";
 
 type Preset = { keywords: string[]; icons: string[]; theme: Theme };
-const preset = (keywords: string[], icons: string[], theme: Omit<Theme, "id"> & { id: string }): Preset => ({
+const preset = (keywords: string[], icons: string[], theme: z.input<typeof themeSchema>): Preset => ({
   keywords,
   icons,
   theme: themeSchema.parse(theme),
@@ -73,7 +74,7 @@ export const THEME_PRESETS: Preset[] = [
     motion: "suave",
     background: "degradado",
   }),
-  preset(["belleza", "maquillaje", "piel", "skincare", "moda", "ropa", "cabello", "pelo", "unas", "perfume", "estilo", "outfit"], ["lipstick", "sparkles", "dress"], {
+  preset(["belleza", "maquillaje", "piel", "skincare", "moda", "ropa", "cabello", "pelo", "unas", "perfume", "outfit"], ["lipstick", "sparkles", "dress"], {
     id: "belleza",
     name: "Belleza",
     palette: { bg: "#FFF1F3", bg2: "#F9D0DA", ink: "#3A1028", accent: "#B8155A", onAccent: "#FFFFFF", accent2: "#F48FB1", card: "#FFFFFF" },
@@ -118,6 +119,20 @@ export const THEME_PRESETS: Preset[] = [
     motion: "energico",
     background: "burbujas",
   }),
+  preset(
+    ["einstein", "newton", "tesla", "curie", "darwin", "hawking", "fisica", "quimica", "relatividad", "cientifico", "atomo", "universo", "espacio", "galaxia", "planeta", "estrella", "gravedad", "cuantica", "nasa", "astronauta", "nobel", "luz", "energia"],
+    ["atom-symbol", "glowing-star", "milky-way"],
+    {
+      id: "ciencia",
+      name: "Ciencia",
+      palette: { bg: "#070B1A", bg2: "#161C44", ink: "#F4F6FF", accent: "#FFD24A", onAccent: "#0B0F24", accent2: "#6CE1FF", card: "#1B2352" },
+      font: "inter",
+      captionStyle: "brillo",
+      motion: "energico",
+      background: "estrellas",
+      sceneTransition: "destello",
+    },
+  ),
   preset(["dato", "curiosidad", "curioso", "ciencia", "historia", "aprender", "sabias", "sabia", "explicacion", "estudio", "escuela", "universidad", "examen"], ["light-bulb", "brain", "books"], {
     id: "curiosidades",
     name: "Curiosidades",
@@ -152,8 +167,16 @@ export const norm = (s: string) =>
     .replace(/\s+/g, " ")
     .trim();
 
-// Plural → singular, lo justo para emparejar "mandarinas" con "mandarina" o "limones" con "limon"
-const stem = (w: string) => (w.length > 4 && /[^aeiou]es$/.test(w) ? w.slice(0, -2) : w.length > 3 && w.endsWith("s") ? w.slice(0, -1) : w);
+// Plural → singular, lo justo para emparejar "mandarinas" con "mandarina", "limones" con "limon", "luces" con "luz"
+// y "patentes" con "patente" (el "-es" solo se quita tras las consonantes que lo piden en español)
+const stem = (w: string) =>
+  w.length > 4 && /[lnrdjy]es$/.test(w)
+    ? w.slice(0, -2)
+    : w.length > 4 && w.endsWith("ces")
+      ? `${w.slice(0, -3)}z`
+      : w.length > 3 && w.endsWith("s")
+        ? w.slice(0, -1)
+        : w;
 
 const STOP = new Set(
   "que los las una uno unos unas del por para con sin sobre como pero mas muy esto esta este eso esa ese estos estas esos esas aqui alli ahi asi todo toda todos todas cada otro otra otros otras sus mis tus nos les ser son era eran fue han hay tiene tienen tener hace hacer puede pueden debe deben vez veces solo tambien aunque porque cuando donde quien cual cuales algo nada nadie mismo misma entre hasta desde hacia segun video videos tiktok viral reel reels shorts sobre"
@@ -168,7 +191,13 @@ const tokens = (text: string) =>
 
 // ——— Tema ———
 
+// Las instrucciones de producción («con música baja», «efectos de sonido», «subtítulos…», «duración…») no
+// cuentan para elegir el tema: describen el vídeo, no de qué trata
+export const stripProduction = (text: string) =>
+  text.replace(/(con |y )?(m[uú]sica|efectos? de sonido|subt[ií]tulos?|tipograf[ií]as?|duraci[oó]n)[^,.;\n]*/gi, " ");
+
 export const pickPreset = (text: string): Preset => {
+  text = stripProduction(text);
   const t = ` ${norm(text)} `;
   const toks = new Set(tokens(text));
   let best: Preset | null = null;
@@ -201,7 +230,34 @@ export const resolveStyle = (style: Style, text: string, brandName: string): "te
 export const EMOJI_SET = "fluent-emoji";
 
 type Motif = { icon: string; label: string; tags: string[]; group: number };
-const index = (motivos as { entradas: Motif[] }).entradas.map((m) => ({
+// Palabras frecuentes en guiones que no son el nombre de ningún emoji: se emparejan a mano con el icono más claro
+const SINONIMOS: Record<string, string> = {
+  nobel: "trophy",
+  premio: "trophy",
+  fisica: "atom-symbol",
+  atomo: "atom-symbol",
+  cientifico: "scientist",
+  ciencia: "microscope",
+  einstein: "scientist",
+  ecuacion: "abacus",
+  formula: "abacus",
+  patente: "page-facing-up",
+  articulo: "newspaper",
+  universo: "milky-way",
+  galaxia: "milky-way",
+  espacio: "milky-way",
+  tiempo: "hourglass-not-done",
+  relatividad: "ringed-planet",
+  gravedad: "ringed-planet",
+  genio: "brain",
+  luz: "light-bulb",
+  energia: "high-voltage",
+  estrella: "glowing-star",
+};
+const index = [
+  ...(motivos as { entradas: Motif[] }).entradas,
+  ...Object.entries(SINONIMOS).map(([word, icon]) => ({ icon, label: word, tags: [], group: 7 })),
+].map((m) => ({
   ...m,
   labelTokens: tokens(m.label),
   tagTokens: new Set(m.tags.flatMap(tokens)),
@@ -262,16 +318,17 @@ const CHECK = "check-mark-button";
 type SceneIn = { text: string; accentWords: number[]; component: string; items: string[] };
 
 export const planTheme = (opts: { topic: string; scenes: SceneIn[]; presetId?: string | null }) => {
-  const all = `${opts.topic} ${opts.scenes.map((s) => s.text).join(" ")}`;
+  const topic = stripProduction(opts.topic);
+  const all = `${topic} ${opts.scenes.map((s) => s.text).join(" ")}`;
   const byId = opts.presetId ? presetById(opts.presetId) : null;
   if (opts.presetId && !byId) throw new Error(`Tema desconocido: ${opts.presetId} (válidos: ${[...THEME_PRESETS, GENERAL_PRESET].map((p) => p.theme.id).join(", ")})`);
   // La idea manda; si no dice nada reconocible, se mira también el guion
-  let preset = byId ?? pickPreset(opts.topic);
+  let preset = byId ?? pickPreset(topic);
   if (!byId && preset.theme.id === "general") preset = pickPreset(all);
   const prefer = FOOD.includes(preset.theme.id) ? [4] : NATURE.includes(preset.theme.id) ? [3] : [];
   const find = (t: string, max = 5) => findIcons(t, { preferGroups: prefer, max });
   // Iconos del tema: lo que dice la idea primero, luego los del estilo
-  const topicIcons = find(opts.topic, 3);
+  const topicIcons = find(topic, 3);
   const bgIcons = [...new Set([...topicIcons, ...preset.icons])].slice(0, 3);
   const fallback = [...new Set([...topicIcons, ...find(all, 3), ...preset.icons])];
   // 1) Escenas con coincidencias: manda la palabra destacada, luego el resto del texto, sin repetir seguido
@@ -300,4 +357,22 @@ export const planTheme = (opts: { topic: string; scenes: SceneIn[]; presetId?: s
   const icons = Object.fromEntries(names.map((n) => [n, iconDataUri(n)]));
   const font = THEME_FONTS[preset.theme.font].family;
   return { theme: preset.theme, bgIcons, scenes, pointerIcon, icons, credits: [`Iconos: ${ICON_CREDIT}`, `Fuente: ${font} · SIL Open Font License 1.1 (public/fonts/licencias)`] };
+};
+
+// ——— Efectos de sonido ———
+// Propios del proyecto (public/sfx, sintetizados con ffmpeg). Suaves: acompañan sin tapar la voz.
+type SceneTiming = { from: number; to: number; accent: [number, number] | null; component: string; items: string[] };
+export const planSfx = (scenes: SceneTiming[], caps: { startMs: number }[], fps: number, theme: Theme) => {
+  const f = (ms: number) => Math.max(0, Math.round((ms / 1000) * fps));
+  const ev: { name: (typeof SFX_NAMES)[number]; frame: number; volume: number }[] = [];
+  scenes.forEach((s, k) => {
+    const start = Math.max(0, f(caps[s.from].startMs) - 4);
+    if (k > 0 && theme.motion !== "suave") ev.push({ name: "whoosh", frame: Math.max(0, start - 6), volume: 0.3 });
+    if (s.component === "modelo" || s.component === "cifra") ev.push({ name: "hit", frame: start + 6, volume: 0.26 });
+    else ev.push({ name: "pop", frame: start + 2, volume: 0.2 });
+    if (s.accent) ev.push({ name: theme.captionStyle === "brillo" ? "brillo" : "click", frame: f(caps[s.accent[0]].startMs), volume: 0.28 });
+    if (s.component === "lista") s.items.forEach((_, i) => ev.push({ name: "click", frame: start + 10 + i * 7, volume: 0.24 }));
+    if (s.component === "cta") ev.push({ name: "pop", frame: start + 10, volume: 0.28 });
+  });
+  return ev.sort((a, b) => a.frame - b.frame);
 };

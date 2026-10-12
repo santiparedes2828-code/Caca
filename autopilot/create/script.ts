@@ -2,7 +2,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { betaZodOutputFormat } from "@anthropic-ai/sdk/helpers/beta/zod";
 import { z } from "zod";
 import type { TimedWord } from "../../src/autopilot/paginate";
-import { SCENE_COMPONENTS } from "../../src/create/props";
+import { MODELS, SCENE_COMPONENTS } from "../../src/create/props";
 
 // Guion de un vídeo creado desde cero. Formato de texto (editable a mano):
 //
@@ -15,8 +15,12 @@ import { SCENE_COMPONENTS } from "../../src/create/props";
 //   [cta: AUTO]
 //   Escríbeme auto y te muestro cómo funciona.
 //
+//   [modelo: formula | E=mc²]
+//   La ecuación más famosa de la historia.
+//
 // Bloques separados por una línea en blanco. La primera línea entre corchetes (opcional) elige el
-// componente; *palabras entre asteriscos* van destacadas en serif verde. Sin corchetes: titular.
+// componente; *palabras entre asteriscos* van destacadas. Sin corchetes: titular. [modelo: atomo|luz|formula|espaciotiempo]
+// pone un modelo animado en vez del icono (formula admite el texto: [modelo: formula | E=mc²]).
 
 export type ScriptScene = {
   text: string; // texto que se narra (sin asteriscos)
@@ -52,6 +56,10 @@ export const parseScript = (src: string): ScriptScene[] => {
       if (component === "lista") items = args.slice(0, 4);
       if (component === "cifra") [label = "", value = ""] = args;
       if (component === "cta") value = args[0] ?? "";
+      if (component === "modelo") {
+        [label = "", value = ""] = args;
+        if (!(MODELS as readonly string[]).includes(label)) throw new Error(`Modelo desconocido en el guion: [modelo: ${label}] (válidos: ${MODELS.join(", ")})`);
+      }
     }
     const raw = lines.join(" ").replace(/\s+/g, " ").trim();
     if (!raw) throw new Error("Hay un bloque del guion sin texto que narrar");
@@ -174,7 +182,8 @@ export const scriptFromBrief = async (opts: {
       "Eres guionista de vídeos cortos verticales de Hook House (TikTok, Reels, Shorts), en español. Estilo: frases cortas, " +
       "directas, una idea por escena, gancho en la primera escena y llamada a la acción al final. No inventes datos, cifras " +
       "ni testimonios que no estén en el brief: si hace falta una cifra que no tienes, no la pongas. " +
-      `Componentes por escena: titular (solo texto), lista (2-3 items de 1-2 palabras en items), cifra (label + value cortos), cta (value = una palabra). ` +
+      `Componentes por escena: titular (solo texto), lista (2-3 items de 1-2 palabras en items), cifra (label + value cortos), cta (value = una palabra), ` +
+      `modelo (label = ${MODELS.join("|")}; value = la fórmula si label es formula). ` +
       "accent es una palabra de text que irá destacada.",
     messages: [
       { role: "user", content: `Tipo: ${opts.type}. Duración aproximada: ${opts.seconds} s (unas ${Math.round(opts.seconds * 2.4)} palabras).\nBrief:\n${opts.brief}` },
@@ -187,7 +196,15 @@ export const scriptFromBrief = async (opts: {
   const text = p.scenes
     .map((s) => {
       const head =
-        s.component === "lista" && s.items.length ? `[lista: ${s.items.slice(0, 4).join(" | ")}]\n` : s.component === "cifra" ? `[cifra: ${s.label} | ${s.value}]\n` : s.component === "cta" && s.value ? `[cta: ${s.value}]\n` : "";
+        s.component === "lista" && s.items.length
+          ? `[lista: ${s.items.slice(0, 4).join(" | ")}]\n`
+          : s.component === "cifra"
+            ? `[cifra: ${s.label} | ${s.value}]\n`
+            : s.component === "cta" && s.value
+              ? `[cta: ${s.value}]\n`
+              : s.component === "modelo" && (MODELS as readonly string[]).includes(s.label)
+                ? `[modelo: ${s.label}${s.value ? ` | ${s.value}` : ""}]\n`
+                : "";
       const body = s.accent ? s.text.replace(new RegExp(`\\b(${s.accent.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})\\b`), "*$1*") : s.text;
       return head + body;
     })

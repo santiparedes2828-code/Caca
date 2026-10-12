@@ -3,7 +3,9 @@ import { z } from "zod";
 // Contrato de la composición de creación (vídeo hecho desde un guion con narración).
 // El backend valida estas props; la IA nunca genera código, solo datos de este esquema.
 
-export const SCENE_COMPONENTS = ["titular", "lista", "cifra", "cta"] as const;
+export const SCENE_COMPONENTS = ["titular", "lista", "cifra", "cta", "modelo"] as const;
+// Modelos animados (motion graphics hechos con código) para la escena [modelo: …]
+export const MODELS = ["atomo", "luz", "formula", "espaciotiempo"] as const;
 
 export const sceneSchema = z.object({
   from: z.number().int().min(0), // índice de la primera palabra de la escena en `captions`
@@ -11,8 +13,8 @@ export const sceneSchema = z.object({
   accent: z.tuple([z.number().int(), z.number().int()]).nullable(), // palabras en serif verde
   component: z.enum(SCENE_COMPONENTS),
   items: z.array(z.string().min(1).max(24)).max(4).default([]), // lista A/B/C
-  label: z.string().max(40).default(""), // cifra: etiqueta
-  value: z.string().max(12).default(""), // cifra: valor | cta: palabra
+  label: z.string().max(40).default(""), // cifra: etiqueta | modelo: cuál (MODELS)
+  value: z.string().max(12).default(""), // cifra: valor | cta: palabra | modelo formula: la fórmula
 });
 export type Scene = z.infer<typeof sceneSchema>;
 

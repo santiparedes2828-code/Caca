@@ -35,6 +35,9 @@ Uso: npm run autopilot -- <comando> [opciones]
         contenido nombra a la marca. --tema citrico|comida|salud|deporte|tecnologia|finanzas|belleza|
         viajes|naturaleza|mascotas|entretenimiento|curiosidades|general fuerza un tema.
         Con --guion y --brief a la vez, el guion se usa tal cual y el brief (la idea) elige el tema.
+        --efectos: efectos de sonido propios (whoosh, pop, brillo…) en los vídeos con tema.
+        --claves-grandes: palabras clave un 25 % más grandes. --claves-garamond: excepción a la regla de
+        Inter, solo si el pedido lo pide: palabras clave en EB Garamond Bold Italic.
         Formato del guion: ver autopilot/create/script.ts. --brief necesita ANTHROPIC_API_KEY.
   narrar --texto "…"                        Genera solo la narración (mp3 + tiempos) con la voz de marca.
   encolar <video|carpeta> [opciones]      Añade a la cola uno o varios vídeos (lote) sin procesarlos aún.
@@ -202,6 +205,9 @@ const main = async () => {
       "sin-voz": { type: "boolean" },
       estilo: { type: "string" },
       tema: { type: "string" },
+      efectos: { type: "boolean" },
+      "claves-garamond": { type: "boolean" },
+      "claves-grandes": { type: "boolean" },
     },
   });
   const cfg = loadConfig();
@@ -360,6 +366,9 @@ const main = async () => {
         silent: !!values["sin-voz"],
         style: values.estilo === "tema" || values.estilo === "marca" ? values.estilo : "auto",
         preset: values.tema ?? null,
+        sfx: !!values.efectos,
+        accentFont: values["claves-garamond"] ? "garamond" : "inter",
+        accentScale: values["claves-grandes"] ? 1.25 : 1,
       }, { run: !values.encolar });
       if (values.encolar) await enqueue(cfg, job);
       printResult(cfg, job);

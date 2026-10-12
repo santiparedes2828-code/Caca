@@ -13,6 +13,10 @@ No las cambies salvo que el usuario lo pida expresamente.
    ExtraBold (800) y Medium (500). Ninguna otra fuente. En el código: `src/design/inter.ts`;
    `public/fonts/` solo contiene Inter, y el esquema de marca rechaza otras familias. La prueba
    `tests/unit/reglas.test.ts` lo vigila.
+   **Excepción solo si un pedido la pide expresamente** (el 12-10-2026 el usuario eligió «Garamond solo aquí»
+   para el reel de Einstein): palabras clave en EB Garamond Bold Italic, el equivalente libre de Apple
+   Garamond, que es de Apple. Se activa por trabajo con `--claves-garamond`. Las fuentes de excepción viven en
+   `public/fonts/excepciones/` y `src/design/excepciones.ts`. Si un pedido choca con esta regla, pregunta.
 2. **Emojis: estilo iOS cuando hagan falta.** Los emojis de Apple son propiedad de Apple y solo tienen licencia
    para mostrarse en sus dispositivos, así que no se incrustan en los vídeos. Se usa el set con licencia más
    parecido: **Fluent Emoji en color** (Microsoft, MIT), definido en `EMOJI_SET` de

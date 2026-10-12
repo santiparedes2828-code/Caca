@@ -83,7 +83,7 @@ Te entregamos tres clips cada semana.
 Escríbeme auto y te muestro cómo funciona.
 ```
 
-Bloques separados por una línea en blanco; `[titular|lista|cifra|cta: …]` elige el componente; `*palabra*` se
+Bloques separados por una línea en blanco; `[titular|lista|cifra|cta|modelo: …]` elige el componente; `*palabra*` se
 destaca. Las escenas largas se dividen solas.
 
 ### Estilo visual de los vídeos creados
@@ -103,7 +103,11 @@ npm run autopilot -- crear --guion guion.txt --tema deporte --sin-voz           
 ```
 
 `--sin-voz` hace el vídeo sin narración: el texto aparece a ritmo de lectura y el sonido se añade en TikTok o
-Reels. Recursos y licencias en [docs/licencias.md](docs/licencias.md).
+Reels. `--efectos` añade efectos de sonido propios (whoosh, pop, brillo…), `--claves-grandes` agranda las palabras
+clave y `--claves-garamond` las pone en EB Garamond Bold Italic (solo si el pedido lo pide; la regla es Inter).
+`[modelo: atomo|luz|formula|espaciotiempo]` en el guion pone un modelo animado en la escena
+(`[modelo: formula | E=mc²]`). El tema «ciencia» trae cielo de estrellas, palabras que brillan, zoom y destellos.
+Recursos y licencias en [docs/licencias.md](docs/licencias.md).
 
 ## Calidad y revisión
 

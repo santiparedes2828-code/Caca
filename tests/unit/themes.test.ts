@@ -4,7 +4,7 @@ import path from "node:path";
 import { test } from "node:test";
 import { ROOT } from "../../autopilot/config";
 import { parseScript } from "../../autopilot/create/script";
-import { findIcons, GENERAL_PRESET, hasIcon, pickPreset, planTheme, resolveStyle, THEME_PRESETS } from "../../autopilot/create/theme";
+import { findIcons, GENERAL_PRESET, hasIcon, pickPreset, planSfx, planTheme, resolveStyle, THEME_PRESETS } from "../../autopilot/create/theme";
 import { THEME_FONTS, themedPropsSchema, themeSchema } from "../../src/create/theme";
 
 test("temas: paletas válidas, iconos que existen y fuentes con su archivo", () => {
@@ -76,4 +76,32 @@ test("estilo: la identidad de la marca solo si el contenido la nombra (o si se p
   assert.equal(resolveStyle("auto", "En Hook House editamos tus vídeos", "Hook House"), "marca");
   assert.equal(resolveStyle("marca", "mandarinas", "Hook House"), "marca");
   assert.equal(resolveStyle("tema", "Hook House", "Hook House"), "tema");
+});
+
+test("modelos animados en el guion: válidos, con texto de fórmula, y desconocidos rechazados", () => {
+  const s = parseScript("[modelo: formula | E=mc²]\nLa ecuación más famosa.\n\n[modelo: atomo]\nUn átomo.");
+  assert.deepEqual([s[0].component, s[0].label, s[0].value], ["modelo", "formula", "E=mc²"]);
+  assert.deepEqual([s[1].component, s[1].label], ["modelo", "atomo"]);
+  assert.throws(() => parseScript("[modelo: dragon]\nHola"), /Modelo desconocido/);
+});
+
+test("tema de ciencia para Einstein aunque el pedido hable de música, efectos y subtítulos", () => {
+  const pedido = "Un reel estilo motion graphic sobre albert einstein, duracion aprox de 20 segundos, con efectos de sonido, musica algo baja y subtitulos con las palabras clave resaltadas";
+  assert.equal(pickPreset(pedido).theme.id, "ciencia");
+  assert.equal(findIcons("Einstein ganó el Nobel")[0], "trophy");
+  assert.equal(findIcons("una oficina de patentes")[0], "page-facing-up");
+});
+
+test("efectos de sonido: transición, entrada, brillo en la palabra clave y nada antes del inicio", () => {
+  const plan = planTheme({ topic: "Albert Einstein", scenes: parseScript("Ganó el *Nobel*.\n\n[modelo: atomo]\nPublicó cuatro artículos.") });
+  const caps = [0, 400, 900, 1400, 1900, 2400].map((ms) => ({ startMs: ms }));
+  const scenes = [
+    { from: 0, to: 2, accent: [2, 2] as [number, number], component: "titular", items: [] },
+    { from: 3, to: 5, accent: null, component: "modelo", items: [] },
+  ];
+  const ev = planSfx(scenes, caps, 30, plan.theme);
+  const names = ev.map((e) => e.name);
+  for (const n of ["pop", "brillo", "whoosh", "hit"]) assert.ok(names.includes(n as never), n);
+  assert.ok(ev.every((e) => e.frame >= 0 && e.volume > 0 && e.volume <= 0.4));
+  assert.deepEqual([...ev].sort((a, b) => a.frame - b.frame), ev);
 });

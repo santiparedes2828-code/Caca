@@ -2,6 +2,7 @@ import { loadFont } from "@remotion/fonts";
 import { fitText, measureText } from "@remotion/layout-utils";
 import React, { useEffect, useState } from "react";
 import { AbsoluteFill, Img, interpolate, random, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { ACCENT_FONTS, type AccentFontKey } from "../design/excepciones";
 import { LABEL_FONT, THEME_FONTS, type Theme, type ThemeFont, type ThemedScene } from "./theme";
 
 // Motion graphics reutilizables para los vídeos con tema. Cada pieza recibe solo datos validados
@@ -28,30 +29,41 @@ const rgba = (hex: string, a: number) => {
 // ——— Fuentes ———
 
 const fontCache = new Map<string, Promise<void>>();
-const load = (family: string, file: string, weight: number) => {
-  const key = `${family}|${weight}`;
+const load = (family: string, file: string, weight: number, style = "normal") => {
+  const key = `${family}|${weight}|${style}`;
   let p = fontCache.get(key);
   if (!p) {
     // loadFont bloquea el render hasta que la fuente está cargada y lo cancela si el archivo falta
-    p = loadFont({ family, url: staticFile(`fonts/${file}`), weight: String(weight) });
+    p = loadFont({ family, url: staticFile(`fonts/${file}`), weight: String(weight), style });
     fontCache.set(key, p);
   }
   return p;
 };
 
-export const useThemeFonts = (font: ThemeFont) => {
+export const useThemeFonts = (font: ThemeFont, accentFont: AccentFontKey = "inter") => {
   const [ready, setReady] = useState(false);
   useEffect(() => {
     let alive = true;
     const f = THEME_FONTS[font];
-    Promise.all([load(f.family, f.file, f.weight), load(LABEL_FONT.family, LABEL_FONT.file, LABEL_FONT.weight)]).then(() => {
+    const extra = accentFont === "inter" ? [] : [ACCENT_FONTS[accentFont]].map((a) => load(a.family, a.file, a.weight, a.style));
+    Promise.all([load(f.family, f.file, f.weight), load(LABEL_FONT.family, LABEL_FONT.file, LABEL_FONT.weight), ...extra]).then(() => {
       if (alive) setReady(true);
     });
     return () => {
       alive = false;
     };
-  }, [font]);
+  }, [font, accentFont]);
   return ready;
+};
+
+// Fuente de las palabras clave: la del tema (Inter) salvo excepción pedida (src/design/excepciones.ts)
+export const accentFontStyle = (theme: Theme, accentFont: AccentFontKey) => {
+  if (accentFont === "inter") {
+    const f = displayFont(theme);
+    return { fontFamily: f.fontFamily, fontWeight: 800, fontStyle: "normal" as const };
+  }
+  const a = ACCENT_FONTS[accentFont];
+  return { fontFamily: `"${a.family}"`, fontWeight: a.weight, fontStyle: a.style };
 };
 
 export const displayFont = (theme: Theme) => {
@@ -93,8 +105,46 @@ export const Background: React.FC<{ theme: Theme; icons: Record<string, string>;
           />
         );
       })}
-      {theme.background === "patron" ? <Pattern icons={icons} names={bgIcons} /> : <Floaters icons={icons} names={bgIcons} soft={theme.background === "degradado"} />}
+      {theme.background === "estrellas" ? (
+        <Stars theme={theme} />
+      ) : theme.background === "patron" ? (
+        <Pattern icons={icons} names={bgIcons} />
+      ) : (
+        <Floaters icons={icons} names={bgIcons} soft={theme.background === "degradado"} />
+      )}
     </AbsoluteFill>
+  );
+};
+
+// Cielo de estrellas que titilan y suben despacio, con una estrella fugaz de vez en cuando
+const Stars: React.FC<{ theme: Theme }> = ({ theme }) => {
+  const frame = useCurrentFrame();
+  const { fps, width, height } = useVideoConfig();
+  const t = frame / fps;
+  const shoot = (t % 4.6) / 0.7;
+  const sx = 120 + (Math.floor(t / 4.6) % 3) * 260;
+  return (
+    <svg viewBox={`0 0 ${width} ${height}`} style={{ position: "absolute", inset: 0, width, height }}>
+      {Array.from({ length: 150 }, (_, i) => {
+        const r = 1.2 + random(`sr${i}`) * 2.8;
+        const x = random(`sx${i}`) * width;
+        const y = (((random(`sy${i}`) * height - t * (3 + r * 5)) % height) + height) % height;
+        const tw = 0.35 + 0.65 * Math.abs(Math.sin(t * (0.5 + random(`st${i}`) * 1.6) + i));
+        return <circle key={i} cx={x} cy={y} r={r} fill={i % 7 ? "#FFFFFF" : theme.palette.accent2} opacity={tw} />;
+      })}
+      {shoot < 1 ? (
+        <line
+          x1={sx + shoot * 520}
+          y1={260 + shoot * 260}
+          x2={sx + shoot * 520 - 160}
+          y2={260 + shoot * 260 - 80}
+          stroke="#FFFFFF"
+          strokeWidth="4"
+          strokeLinecap="round"
+          opacity={Math.sin(shoot * Math.PI)}
+        />
+      ) : null}
+    </svg>
   );
 };
 
@@ -225,27 +275,46 @@ export const Sticker: React.FC<{ theme: Theme; src: string; size: number; enter:
 
 const clean = (t: string) => t.replace(/[…:,;]+$/g, "");
 
-export const headlineSize = (theme: Theme, words: Cap[], ready: boolean) => {
+export const headlineSize = (
+  theme: Theme,
+  words: Cap[],
+  ready: boolean,
+  accent?: { isAccent: (k: number) => boolean; font: AccentFontKey; scale: number },
+) => {
   const n = words.length;
   const f = displayFont(theme);
   let size = (n <= 3 ? 150 : n <= 5 ? 128 : n <= 8 ? 110 : n <= 11 ? 96 : 86) * f.scale;
   if (ready) {
-    // La palabra más larga tiene que caber en el ancho útil
-    const longest = words.map((w) => clean(w.text)).sort((a, b) => b.length - a.length)[0] ?? "";
-    const w = measureText({ text: longest, fontFamily: f.fontFamily, fontWeight: f.fontWeight, fontSize: size, textTransform: f.textTransform }).width;
-    if (w > CONTENT_W * 0.94) size *= (CONTENT_W * 0.94) / w;
+    // Cada palabra (las clave con su fuente y su tamaño) tiene que caber en el ancho útil
+    const widest = Math.max(
+      ...words.map((w, k) => {
+        const big = accent?.isAccent(k);
+        const af = big ? accentFontStyle(theme, accent!.font) : null;
+        return measureText({
+          text: clean(w.text),
+          fontFamily: af?.fontFamily ?? f.fontFamily,
+          fontWeight: af?.fontWeight ?? f.fontWeight,
+          fontSize: size * (big ? accent!.scale : 1),
+          textTransform: f.textTransform,
+          additionalStyles: af?.fontStyle === "italic" ? { fontStyle: "italic" } : undefined,
+        }).width;
+      }),
+    );
+    if (widest > CONTENT_W * 0.94) size *= (CONTENT_W * 0.94) / widest;
   }
   return Math.round(size);
 };
 
-export const ThemedHeadline: React.FC<{ theme: Theme; caps: Cap[]; from: number; to: number; accent: [number, number] | null; size: number }> = ({
-  theme,
-  caps,
-  from,
-  to,
-  accent,
-  size,
-}) => {
+export const ThemedHeadline: React.FC<{
+  theme: Theme;
+  caps: Cap[];
+  from: number;
+  to: number;
+  accent: [number, number] | null;
+  size: number;
+  accentFont?: AccentFontKey;
+  accentScale?: number;
+}> = ({ theme, caps, from, to, accent, size, accentFont = "inter", accentScale = 1 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const f = displayFont(theme);
@@ -257,7 +326,7 @@ export const ThemedHeadline: React.FC<{ theme: Theme; caps: Cap[]; from: number;
         flexWrap: "wrap",
         justifyContent: "center",
         alignItems: "baseline",
-        gap: `${size * 0.1}px ${size * 0.24}px`,
+        gap: `${size * 0.1}px ${size * 0.27}px`,
         fontFamily: f.fontFamily,
         fontWeight: f.fontWeight,
         textTransform: f.textTransform,
@@ -277,7 +346,12 @@ export const ThemedHeadline: React.FC<{ theme: Theme; caps: Cap[]; from: number;
         const isAccent = !!accent && i >= accent[0] && i <= accent[1];
         const active = frame >= at && frame < end;
         const box = theme.captionStyle === "caja" && isAccent;
+        const glow = theme.captionStyle === "brillo" && isAccent;
         const grow = spring({ frame: frame - at - 1, fps, config: { damping: 26, stiffness: 260 } });
+        const af = isAccent ? accentFontStyle(theme, accentFont) : null;
+        // Resplandor que late y un brillo que cruza la palabra cada 2,4 s
+        const pulse = 0.75 + 0.25 * Math.sin(((frame - at) / fps) * Math.PI * 2 * 0.8);
+        const shine = interpolate(((frame - at) / fps) % 2.4, [0, 0.9], [120, -20], clamp);
         return (
           <span
             key={i}
@@ -286,9 +360,22 @@ export const ThemedHeadline: React.FC<{ theme: Theme; caps: Cap[]; from: number;
               display: "inline-block",
               whiteSpace: "pre",
               opacity: shown,
-              transform: `translateY(${(1 - s) * size * 0.35}px) scale(${(0.75 + 0.25 * s) * (active ? 1.05 : 1)})`,
+              // La palabra que suena sube un poco (sin crecer a lo ancho, para no pegarse a sus vecinas)
+              transform: `translateY(${(1 - s) * size * 0.35 - (active ? size * 0.04 : 0)}px) scale(${Math.min(1, 0.75 + 0.25 * s)})`,
               // En la caja el texto pasa a su color cuando la caja ya lo cubre (antes se perdería sobre el fondo)
-              color: box ? (grow > 0.92 ? p.onAccent : p.ink) : isAccent && theme.captionStyle === "color" ? p.accent : p.ink,
+              color: glow ? "transparent" : box ? (grow > 0.92 ? p.onAccent : p.ink) : isAccent && theme.captionStyle === "color" ? p.accent : p.ink,
+              ...(af ? { fontFamily: af.fontFamily, fontWeight: af.fontWeight, fontStyle: af.fontStyle, fontSize: size * accentScale, letterSpacing: "-0.01em" } : {}),
+              ...(glow
+                ? {
+                    backgroundImage: `linear-gradient(100deg, ${p.accent} 30%, #FFFFFF 50%, ${p.accent} 70%)`,
+                    backgroundSize: "300% 100%",
+                    backgroundPosition: `${shine}% 0`,
+                    WebkitBackgroundClip: "text",
+                    backgroundClip: "text",
+                    filter: `drop-shadow(0 0 ${size * 0.12 * pulse}px ${rgba(p.accent, 0.95)}) drop-shadow(0 0 ${size * 0.32 * pulse}px ${rgba(p.accent, 0.5)})`,
+                    padding: "0 0.06em",
+                  }
+                : {}),
               padding: box ? "0 0.16em" : undefined,
               zIndex: box ? 1 : undefined,
             }}
@@ -435,6 +522,22 @@ export const Wipe: React.FC<{ theme: Theme; at: number }> = ({ theme, at }) => {
       <div style={{ position: "absolute", top: -200, bottom: -200, left: x, width: width * 1.1, background: theme.palette.accent2, transform: "skewX(-14deg)" }} />
       <div style={{ position: "absolute", top: -200, bottom: -200, left: x - 90, width: 60, background: theme.palette.accent, transform: "skewX(-14deg)" }} />
     </AbsoluteFill>
+  );
+};
+
+// Destello entre escenas: un fogonazo de luz del color del tema
+export const Flash: React.FC<{ theme: Theme; at: number }> = ({ theme, at }) => {
+  const frame = useCurrentFrame();
+  if (theme.motion === "suave") return null;
+  const p = interpolate(frame, [at - 3, at, at + 7], [0, 1, 0], clamp);
+  if (p <= 0) return null;
+  return (
+    <AbsoluteFill
+      style={{
+        pointerEvents: "none",
+        background: `radial-gradient(circle at 50% 42%, ${rgba("#FFFFFF", 0.7 * p)} 0%, ${rgba(theme.palette.accent, 0.35 * p)} 30%, ${rgba(theme.palette.bg, 0)} 65%)`,
+      }}
+    />
   );
 };
 

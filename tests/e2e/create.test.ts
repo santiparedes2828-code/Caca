@@ -60,3 +60,19 @@ test("anuncio de la propia marca → identidad de Hook House con narración real
   assert.equal(props.theme, undefined);
   assert.match(await fs.readFile(path.join(dir, "output", "informe.md"), "utf8"), /identidad de Hook House/);
 });
+
+test("ciencia con modelos animados, palabras que brillan, efectos de sonido y claves en Garamond (excepción)", async () => {
+  const cfg = cfgFor("modelos");
+  const script = path.join(tmp, "ciencia.txt");
+  await fs.writeFile(script, "Ganó el *Nobel* de física.\n\n[modelo: atomo]\nPublicó cuatro artículos.\n\n[modelo: formula | E=mc²]\nLa *ecuación* más famosa.\n");
+  const job = await submitCreation(cfg, { clientId: "hookhouse", script, brief: "Reel sobre Albert Einstein", silent: true, sfx: true, accentFont: "garamond", accentScale: 1.25 });
+  assert.ok(["completado", "requiere_revision"].includes(job.status), JSON.stringify(job.errors));
+  const dir = jobDir(cfg, "hookhouse", job.id);
+  const props = JSON.parse(await fs.readFile(path.join(dir, "work", "create-props.json"), "utf8"));
+  assert.equal(props.theme.id, "ciencia");
+  assert.deepEqual(props.scenes.map((s: { component: string; label: string }) => `${s.component}:${s.label}`), ["titular:", "modelo:atomo", "modelo:formula"]);
+  assert.ok(props.sfx.some((e: { name: string }) => e.name === "brillo") && props.sfx.some((e: { name: string }) => e.name === "whoosh"));
+  const pr = await probe(path.join(dir, job.outputs.find((o) => o.kind === "video")!.path));
+  assert.ok(pr.audio, "los efectos de sonido van en la pista de audio");
+  assert.match(await fs.readFile(path.join(dir, "output", "informe.md"), "utf8"), /EB Garamond Bold Italic/);
+});

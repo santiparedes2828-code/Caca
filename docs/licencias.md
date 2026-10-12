@@ -9,6 +9,8 @@ con el set con licencia más parecido.
 | Recurso | Dónde | Licencia | Notas |
 |---|---|---|---|
 | Fuente Inter (500, 700, 800) | `public/fonts/` (de Fontsource) | SIL Open Font License 1.1 | Única tipografía del proyecto: vídeos, subtítulos, web y panel. Licencia en `public/fonts/licencias/inter-OFL.txt` |
+| Fuente EB Garamond Bold Italic | `public/fonts/excepciones/` (de Fontsource) | SIL Open Font License 1.1 | Solo como excepción pedida expresamente (palabras clave, `--claves-garamond`); equivalente libre de Apple Garamond |
+| Efectos de sonido (whoosh, pop, hit, click, brillo) | `public/sfx/` | Propios | Sintetizados con ffmpeg para el proyecto (`scripts/sfx.sh`) |
 | Iconos Fluent Emoji en color (Microsoft) | dependencia `@iconify-json/fluent-emoji@1.2.7` | MIT | Emojis animados de los temas; el set con licencia más parecido a los de iOS |
 | Nombres y etiquetas en español de los emoji | `autopilot/create/data/motivos-es.json` (de `emojibase-data@17.0.0`) | MIT · datos de Unicode CLDR (licencia Unicode) | Solo se usan para buscar iconos por palabra; no aparecen en el vídeo |
 | Modelo de detección de caras YuNet | `models/` | MIT | Encuadre que sigue la cara |

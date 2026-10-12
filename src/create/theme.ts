@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { createPropsSchema, sceneSchema } from "./props";
+import { createPropsSchema, MODELS, sceneSchema } from "./props";
 
 // Estilo visual por temática para vídeos creados desde una idea o un guion (motion graphics).
 // La identidad de un cliente (p. ej. Hook House) se usa con AutopilotCreate; este tema se elige según el
@@ -31,9 +31,10 @@ export const themeSchema = z.object({
     card: hex, // tarjetas de lista y halo de los iconos
   }),
   font: z.enum(FONT_KEYS),
-  captionStyle: z.enum(["caja", "color", "subrayado"]), // cómo se destacan las palabras
+  captionStyle: z.enum(["caja", "color", "subrayado", "brillo"]), // cómo se destacan las palabras (brillo = resplandor)
   motion: z.enum(["suave", "rebote", "energico"]),
-  background: z.enum(["burbujas", "patron", "degradado"]),
+  background: z.enum(["burbujas", "patron", "degradado", "estrellas"]),
+  sceneTransition: z.enum(["barrido", "destello"]).default("barrido"), // entre escenas (suave: ninguna)
 });
 export type Theme = z.infer<typeof themeSchema>;
 
@@ -46,6 +47,14 @@ export type ThemedScene = z.infer<typeof themedSceneSchema>;
 // Los iconos llegan ya resueltos por el backend como SVG en data URI (nunca URLs externas ni código)
 const svgDataUri = z.string().regex(/^data:image\/svg\+xml;base64,[A-Za-z0-9+/]+=*$/).max(200_000);
 
+// Efectos de sonido propios (sintetizados para el proyecto, public/sfx/; ver scripts/sfx.sh)
+export const SFX_NAMES = ["whoosh", "pop", "hit", "click", "brillo"] as const;
+export const sfxEventSchema = z.object({
+  name: z.enum(SFX_NAMES),
+  frame: z.number().int().min(0),
+  volume: z.number().min(0).max(1),
+});
+
 export const themedPropsSchema = createPropsSchema
   .omit({ scenes: true, logoSeconds: true })
   .extend({
@@ -54,12 +63,17 @@ export const themedPropsSchema = createPropsSchema
     icons: z.record(iconName, svgDataUri),
     bgIcons: z.array(iconName).max(4),
     pointerIcon: iconName.nullable(),
+    // Palabras clave: fuente (Inter salvo excepción pedida, ver src/design/excepciones.ts) y tamaño relativo
+    accentFont: z.enum(["inter", "garamond"]).default("inter"),
+    accentScale: z.number().min(1).max(1.6).default(1),
+    sfx: z.array(sfxEventSchema).max(80).default([]),
   })
   .superRefine((p, ctx) => {
     const used = [...p.bgIcons, ...(p.pointerIcon ? [p.pointerIcon] : []), ...p.scenes.flatMap((s) => [...(s.icon ? [s.icon] : []), ...s.itemIcons])];
     for (const n of used) if (!p.icons[n]) ctx.addIssue({ code: "custom", message: `Icono sin resolver: ${n}` });
     for (const s of p.scenes) {
       if (s.to >= p.captions.length || s.from > s.to) ctx.addIssue({ code: "custom", message: "Escena fuera de los subtítulos" });
+      if (s.component === "modelo" && !(MODELS as readonly string[]).includes(s.label)) ctx.addIssue({ code: "custom", message: `Modelo desconocido: ${s.label}` });
     }
   });
 export type ThemedProps = z.infer<typeof themedPropsSchema>;
