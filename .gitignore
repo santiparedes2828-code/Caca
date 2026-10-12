@@ -19,7 +19,7 @@ analisis*/mi-audio.mp3
 !public/sfx/*.wav
 
 # Hook House Autopilot: trabajos, bandeja de entrada y cachés (contienen material de clientes)
-data/
+/data/
 inbox/
 .cache/
 .env.*
