@@ -1,0 +1,68 @@
+{
+  "id": "hookhouse",
+  "name": "Hook House",
+  "brand": {
+    "colors": {
+      "bg": "#F7F7F2",
+      "ink": "#0B0B0B",
+      "accent": "#12A150",
+      "accentDark": "#0B5E30",
+      "muted": "#8A8A84",
+      "fill": "#DCDCD5",
+      "white": "#FFFFFF"
+    },
+    "fonts": [
+      { "role": "sans", "family": "Inter", "weight": "800", "style": "normal", "src": "static:fonts/inter-latin-800-normal.woff2" },
+      { "role": "sans", "family": "Inter", "weight": "700", "style": "normal", "src": "static:fonts/inter-latin-700-normal.woff2" },
+      { "role": "sans", "family": "Inter", "weight": "500", "style": "normal", "src": "static:fonts/inter-latin-500-normal.woff2" },
+      { "role": "serif", "family": "EB Garamond", "weight": "700", "style": "italic", "src": "static:fonts/eb-garamond-latin-700-italic.woff2" },
+      { "role": "mono", "family": "JetBrains Mono", "weight": "500", "style": "normal", "src": "static:fonts/jetbrains-mono-latin-500-normal.woff2" }
+    ],
+    "typography": {
+      "headlineWeight": 800,
+      "headlineTracking": "-0.055em",
+      "headlineLineHeight": 0.95,
+      "monoTracking": "0.08em"
+    },
+    "layout": {
+      "margin": 80,
+      "stroke": 8,
+      "radius": 28,
+      "safeZone": { "top": 150, "bottom": 470, "left": 80, "right": 140 }
+    },
+    "motion": {
+      "wordInFrames": 5,
+      "wordBlurPx": 8,
+      "wordRisePx": 10,
+      "dimFrames": 6,
+      "dimOpacity": 0.3,
+      "enterFrames": 10,
+      "enterDamping": 200,
+      "enterScaleFrom": 0.92
+    },
+    "captions": {
+      "variant": "card",
+      "fontRole": "sans",
+      "fontWeight": 800,
+      "fontSize": 74,
+      "lineHeight": 1.08,
+      "tracking": "-0.03em",
+      "maxCharsPerLine": 20,
+      "maxLines": 2,
+      "positionY": 0.66,
+      "highlight": "box",
+      "emphasisRole": "serif",
+      "minFontSize": 48
+    }
+  },
+  "defaults": {
+    "format": "vertical",
+    "fps": 30,
+    "captionMode": "palabra-activa",
+    "intensity": "sutil",
+    "reframe": { "mode": "cover", "focusX": 0.5, "focusY": 0.4 },
+    "captionsRequired": false,
+    "audio": { "normalize": true, "targetLufs": -14, "truePeakDb": -1.5 },
+    "voice": { "provider": "elevenlabs", "voiceId": "1p905cdbJ1e1JQxhFTGJ", "name": "Rodrigo Zabú", "model": "eleven_v4", "language": "es" }
+  }
+}

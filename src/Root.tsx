@@ -6,6 +6,10 @@ import { Promo, promoDuration } from "./Promo/Promo";
 import { Clip, clipDuration } from "./Clip/Clip";
 import { HookHouse, hookHouseDuration } from "./HookHouse/HookHouse";
 import { Viral, viralDuration } from "./Viral/Viral";
+import { AutopilotEdit, calculateEditMetadata } from "./autopilot/AutopilotEdit";
+import { CaptionModesDemo, captionDemoDuration, captionDemoSchema } from "./autopilot/CaptionModesDemo";
+import { editPropsSchema } from "./autopilot/props";
+import { HOOKHOUSE } from "./design/tokens";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -36,6 +40,43 @@ export const RemotionRoot: React.FC = () => {
             titleText: "Welcome to Remotion",
             titleColor: "#000000",
           }}
+        />
+      </Folder>
+      <Folder name="Autopilot">
+        {/* Composición del pipeline de edición: el backend (autopilot/) le pasa todas las props */}
+        <Composition
+          id="AutopilotEdit"
+          component={AutopilotEdit}
+          schema={editPropsSchema}
+          calculateMetadata={calculateEditMetadata}
+          durationInFrames={90}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{
+            fps: 30,
+            width: 1080,
+            height: 1920,
+            durationInFrames: 90,
+            video: { src: "", width: 1920, height: 1080, hasAudio: false, trimStartFrames: 0, volume: 1 },
+            reframe: { mode: "cover" as const, focusX: 0.5, focusY: 0.4 },
+            intensity: "sutil" as const,
+            brand: HOOKHOUSE,
+            captions: {
+              mode: "frases" as const,
+              pages: [{ startMs: 200, endMs: 2800, lines: [[{ text: "Vista previa", startMs: 200, endMs: 2800, emphasis: false }]] }],
+            },
+          }}
+        />
+        <Composition
+          id="CaptionModesDemo"
+          component={CaptionModesDemo}
+          schema={captionDemoSchema}
+          durationInFrames={captionDemoDuration(30)}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ mode: "palabra-activa" as const, intensity: "sutil" as const, variant: "card" as const }}
         />
       </Folder>
       <Composition

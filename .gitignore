@@ -17,3 +17,10 @@ analisis*/mi-audio.mp3
 # ...excepto el audio que usa el render
 !public/audio/*.wav
 !public/sfx/*.wav
+
+# Hook House Autopilot: trabajos, bandeja de entrada y cachés (contienen material de clientes)
+data/
+inbox/
+.cache/
+.env.*
+!.env.example
