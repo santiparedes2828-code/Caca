@@ -1,6 +1,8 @@
 import path from "node:path";
 import { parseArgs } from "node:util";
-import { listClients } from "./clients/profile";
+import { listClients, loadProfile } from "./clients/profile";
+import { submitCreation } from "./create/run";
+import { narrate } from "./narration/tts";
 import { loadConfig, type Config } from "./config";
 import { processInbox } from "./inbox";
 import { findJob, listJobs, requestCancel } from "./jobs/store";
@@ -18,6 +20,11 @@ Uso: npm run autopilot -- <comando> [opciones]
   bandeja [--cliente hookhouse] [--vigilar] [--intervalo 10]
         Procesa los vídeos que dejes en inbox/<cliente>/ (con su .srt/.vtt/.json del mismo nombre
         y opcionalmente <nombre>.job.json con ajustes). Los procesados pasan a inbox/<cliente>/_procesados/.
+  crear --guion guion.txt | --brief "…" [--tipo anuncio] [--segundos 30] [--etiqueta "(01) …"]
+        [--voz narracion.mp3 --tiempos tiempos.json]
+        Crea un vídeo desde cero: guion → narración con la voz de marca (ElevenLabs) → escenas → MP4.
+        Formato del guion: ver autopilot/create/script.ts. --brief necesita ANTHROPIC_API_KEY.
+  narrar --texto "…"                        Genera solo la narración (mp3 + tiempos) con la voz de marca.
   estado [<id>] [--cliente hookhouse]     Lista trabajos o muestra uno.
   reintentar <id>                          Continúa un trabajo fallido desde el paso que falló.
   rehacer-subtitulos <id>                  Rehace subtítulos, render y control desde work/transcript.json
@@ -147,6 +154,14 @@ const main = async () => {
       "sin-musica": { type: "boolean" },
       planificador: { type: "string" },
       "aprobar-plan": { type: "boolean" },
+      guion: { type: "string" },
+      brief: { type: "string" },
+      tipo: { type: "string" },
+      segundos: { type: "string" },
+      voz: { type: "string" },
+      tiempos: { type: "string" },
+      etiqueta: { type: "string" },
+      texto: { type: "string" },
       idioma: { type: "string" },
       vigilar: { type: "boolean" },
       intervalo: { type: "string", default: "10" },
@@ -212,6 +227,28 @@ const main = async () => {
       const job = await approvePlan(cfg, j.clientId, j.id);
       printResult(cfg, job);
       process.exitCode = job.status === "fallido" ? 1 : 0;
+      return;
+    }
+    case "crear": {
+      const job = await submitCreation(cfg, {
+        clientId: values.cliente!,
+        script: values.guion ?? null,
+        brief: values.brief ?? null,
+        type: values.tipo ?? "redes",
+        seconds: values.segundos ? Number(values.segundos) : 30,
+        audio: values.voz ?? null,
+        timings: values.tiempos ?? null,
+        label: values.etiqueta ?? "",
+      });
+      printResult(cfg, job);
+      process.exitCode = job.status === "fallido" ? 1 : 0;
+      return;
+    }
+    case "narrar": {
+      if (!values.texto) throw new Error("Falta --texto");
+      const profile = await loadProfile(cfg.HH_CLIENTS_DIR, values.cliente!);
+      const n = await narrate({ cfg, profile, jobId: "cli", text: values.texto, log: console.log });
+      console.log(`${n.cached ? "Reutilizada de caché" : "Generada"}: ${path.relative(process.cwd(), n.audio)} (${n.words.length} palabras con tiempos en el .json de al lado)`);
       return;
     }
     case "continuar": {

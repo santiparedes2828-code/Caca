@@ -72,3 +72,15 @@ export const prepareWorkingCopy = async (opts: {
   await runOk("ffmpeg", args, { timeoutMs: 3_600_000, signal: opts.signal });
   return { normalized, measured, notes };
 };
+
+// Normaliza un audio suelto (narración) a la sonoridad objetivo, en dos pasadas y de forma lineal
+export const normalizeAudio = async (input: string, output: string, targetLufs: number, truePeakDb: number) => {
+  const m = await measureLoudnorm(["-i", input], { i: targetLufs, tp: truePeakDb });
+  const inputI = m ? Number(m.input_i) : Number.NaN;
+  const af =
+    m && Number.isFinite(inputI) && inputI > -70
+      ? `loudnorm=I=${targetLufs}:TP=${truePeakDb}:LRA=11:measured_I=${m.input_i}:measured_TP=${m.input_tp}:measured_LRA=${m.input_lra}:measured_thresh=${m.input_thresh}:offset=${m.target_offset}:linear=true`
+      : "anull";
+  await runOk("ffmpeg", ["-v", "error", "-y", "-i", input, "-af", `${af},aresample=48000`, "-ac", "2", "-c:a", "aac", "-b:a", "192k", output]);
+  return af !== "anull";
+};

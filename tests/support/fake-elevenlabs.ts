@@ -23,7 +23,7 @@ export const realScribeWords = async () =>
     words: { text: string; type: string; start: number; end: number }[];
   }).words;
 
-export const startFakeElevenLabs = async (script: FakeReply[], fallback: FakeReply = { kind: "ok" }) => {
+export const startFakeElevenLabs = async (script: FakeReply[], fallback: FakeReply = { kind: "ok" }, ttsAudio?: Buffer) => {
   const requests: FakeRequest[] = [];
   const words = await realScribeWords();
   const server = http.createServer(async (req, res) => {
@@ -31,7 +31,7 @@ export const startFakeElevenLabs = async (script: FakeReply[], fallback: FakeRep
     for await (const c of req) chunks.push(c as Buffer);
     const body = Buffer.concat(chunks);
     const rec: FakeRequest = { path: req.url ?? "", apiKey: (req.headers["xi-api-key"] as string) ?? null, fields: {}, fileBytes: 0, fileName: null };
-    if (req.method === "POST") {
+    if (req.method === "POST" && String(req.headers["content-type"]).startsWith("multipart/")) {
       const form = await new Request("http://x", { method: "POST", headers: req.headers as Record<string, string>, body }).formData();
       for (const [k, v] of form.entries()) {
         if (typeof v === "string") rec.fields[k] = v;
@@ -43,6 +43,20 @@ export const startFakeElevenLabs = async (script: FakeReply[], fallback: FakeRep
     }
     requests.push(rec);
     const reply = script.shift() ?? fallback;
+    if (req.url?.startsWith("/v1/text-to-speech/")) {
+      if (reply.kind === "status") {
+        return void res.writeHead(reply.status, { "Content-Type": "application/json" }).end(JSON.stringify({ detail: { status: "error", message: "simulado" } }));
+      }
+      const { text } = JSON.parse(body.toString()) as { text: string };
+      const chars = [...text];
+      res.writeHead(200, { "Content-Type": "application/json" });
+      return void res.end(
+        JSON.stringify({
+          audio_base64: (ttsAudio ?? Buffer.from("x")).toString("base64"),
+          alignment: { characters: chars, character_start_times_seconds: chars.map((_, i) => i * 0.06), character_end_times_seconds: chars.map((_, i) => i * 0.06 + 0.05) },
+        }),
+      );
+    }
     if (req.url === "/v1/user/subscription") {
       res.writeHead(200, { "Content-Type": "application/json" });
       return void res.end(JSON.stringify({ tier: "creator", status: "active", character_count: 1234, character_limit: 100000, next_character_count_reset_unix: 1792000000, voice_limit: 30 }));

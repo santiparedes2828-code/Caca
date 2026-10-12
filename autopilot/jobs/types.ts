@@ -107,7 +107,7 @@ export const jobOverridesSchema = z
   .strict();
 export type JobOverrides = z.infer<typeof jobOverridesSchema>;
 
-export const inputRoleSchema = z.enum(["video", "captions"]);
+export const inputRoleSchema = z.enum(["video", "captions", "guion", "audio"]);
 
 const inputSchema = z.object({
   role: inputRoleSchema,

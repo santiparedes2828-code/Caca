@@ -33,6 +33,9 @@ const schema = z.object({
   HH_STT_TIMEOUT_MS: num(15 * 60_000),
   // Precio por hora de audio de TU plan, solo para estimar (no se inventa: si no se define, no hay estimación)
   HH_ELEVENLABS_STT_USD_PER_HOUR: z.coerce.number().positive().optional(),
+  // Narración (texto a voz): límites en caracteres, que es como factura ElevenLabs la voz
+  HH_TTS_MAX_CHARS_PER_JOB: z.coerce.number().int().positive().default(6000),
+  HH_TTS_MAX_CHARS_PER_DAY: z.coerce.number().int().positive().default(60000),
   // Python para la detección de caras (npm run setup:python crea .venv). Sin él, el foco es fijo y se avisa.
   HH_PYTHON: z.string().optional(),
   HH_FACE_FPS: z.coerce.number().positive().max(10).default(2),

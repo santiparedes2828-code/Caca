@@ -16,9 +16,9 @@ los tokens, dejar este archivo para continuar.
 |---|---|---|
 | 1 Base | ✅ hecha | Pipeline, subtítulos SRT, vertical, QC, informe |
 | 2 Material del cliente | ✅ hecha | Transcripción ElevenLabs, caras, cortes de silencio, escenas, ruido básico |
-| 3 Edición inteligente | 🟡 en curso | Hecho: análisis editorial local, clips, versiones cortas, B-roll y música con licencia, Claude opcional, aprobación del plan. Falta: pruebas automáticas de la Etapa 3 y documentación |
-| 4 ElevenLabs narración | ⏳ | |
-| 5 Creación desde cero | ⏳ | |
+| 3 Edición inteligente | ✅ hecha (básica) | Análisis editorial local, clips, versiones cortas, B-roll y música con licencia, Claude opcional, aprobación del plan |
+| 4 ElevenLabs narración | ✅ hecha (básica) | `autopilot/narration/tts.ts`; probada con API simulada (la real está bloqueada aquí) |
+| 5 Creación desde cero | ✅ hecha (básica) | `autopilot/create/`, composición `src/create/AutopilotCreate.tsx` (reutiliza componentes de src/HookHouse); probada con voz_a real |
 | 6 Automatización | ⏳ | |
 | 7 Interfaz y clientes | ⏳ | |
 
@@ -36,6 +36,10 @@ los tokens, dejar este archivo para continuar.
   `/root/.claude/uploads/c892ae03-04bd-5098-be1f-897ddb43dfb6/c041153d-v09044g40000cnh24lfog65pm4j8q750.mp4`.
 
 ## Registro (lo último arriba)
+
+- 2026-10-12: el usuario pidió ir rápido ("no hace falta que sea perfecto"). Etapas 4 y 5 hechas en versión básica.
+  Siguiente: Etapa 6 (cola) y 7 (web). Pendiente de pulir después: componentes de creación genéricos multicliente
+  (hoy usan los de Hook House), más tipos de escena, e2e de creación.
 
 - 2026-10-12: Etapa 3 a medias, subida a petición del usuario. Probado a mano con voz_a (36 s): 2 clips, versión
   corta deduplicada, B-roll y música de una biblioteca de prueba (`tests/fixtures.ts` → makeTestLibrary). Siguiente:

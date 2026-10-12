@@ -49,7 +49,29 @@ export const subscriptionSchema = z
   })
   .passthrough();
 
+// POST /v1/text-to-speech/{voice_id}/with-timestamps (AudioWithTimestampsResponse del SDK)
+export const ttsResponseSchema = z.object({
+  audio_base64: z.string().min(1),
+  alignment: z
+    .object({
+      characters: z.array(z.string()),
+      character_start_times_seconds: z.array(z.number()),
+      character_end_times_seconds: z.array(z.number()),
+    })
+    .nullish(),
+});
+export type TtsResponse = z.infer<typeof ttsResponseSchema>;
+export type TtsRequest = {
+  voiceId: string;
+  text: string;
+  model: string;
+  language: string | null;
+  settings: { stability?: number; similarity_boost?: number; style?: number; speed?: number };
+  outputFormat: string; // p. ej. mp3_44100_128
+};
+
 export type ElevenLabsClient = {
+  speak: (opts: TtsRequest) => Promise<TtsResponse>;
   transcribe: (opts: SttRequest) => Promise<SttResponse>;
   subscription: () => Promise<z.infer<typeof subscriptionSchema>>;
 };
@@ -124,6 +146,16 @@ export const createElevenLabsClient = (cfg: { apiKey: string; baseUrl: string; r
   };
 
   return {
+    speak: async (o) => {
+      const body = JSON.stringify({ text: o.text, model_id: o.model, ...(o.language ? { language_code: o.language } : {}), voice_settings: o.settings });
+      const r = await call(
+        async () => ({ method: "POST", headers: { "xi-api-key": cfg.apiKey, "Content-Type": "application/json" }, body }),
+        `v1/text-to-speech/${encodeURIComponent(o.voiceId)}/with-timestamps?output_format=${encodeURIComponent(o.outputFormat)}`,
+      );
+      const parsed = ttsResponseSchema.safeParse(await r.json().catch(() => null));
+      if (!parsed.success) throw new ProviderError("elevenlabs_respuesta", "Respuesta de texto a voz con formato inesperado", false);
+      return parsed.data;
+    },
     transcribe: async (o) => {
       const make = async (): Promise<RequestInit> => {
         const form = new FormData();

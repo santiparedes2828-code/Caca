@@ -1,4 +1,4 @@
-import { Composition, Folder } from "remotion";
+import { Composition, Folder, staticFile } from "remotion";
 import { HelloWorld } from "./HelloWorld";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
@@ -9,6 +9,9 @@ import { Viral, viralDuration } from "./Viral/Viral";
 import { AutopilotEdit, calculateEditMetadata } from "./autopilot/AutopilotEdit";
 import { CaptionModesDemo, captionDemoDuration, captionDemoSchema } from "./autopilot/CaptionModesDemo";
 import { editPropsSchema } from "./autopilot/props";
+import { AutopilotCreate, calculateCreateMetadata } from "./create/AutopilotCreate";
+import { createPropsSchema } from "./create/props";
+import captionsDemo from "./data/captions.json";
 import { HOOKHOUSE } from "./design/tokens";
 
 // Each <Composition> is an entry in the sidebar!
@@ -69,6 +72,29 @@ export const RemotionRoot: React.FC = () => {
               mode: "frases" as const,
               pages: [{ startMs: 200, endMs: 2800, lines: [[{ text: "Vista previa", startMs: 200, endMs: 2800, emphasis: false }]] }],
             },
+          }}
+        />
+        {/* Creación desde guion: el backend (autopilot/create) le pasa escenas y narración */}
+        <Composition
+          id="AutopilotCreate"
+          component={AutopilotCreate}
+          schema={createPropsSchema}
+          calculateMetadata={calculateCreateMetadata}
+          durationInFrames={300}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{
+            fps: 30,
+            durationInFrames: 300,
+            audioSrc: staticFile("audio/voz.wav"),
+            captions: captionsDemo,
+            scenes: [
+              { from: 0, to: 6, accent: [5, 6] as [number, number], component: "titular" as const, items: [], label: "", value: "" },
+              { from: 7, to: 12, accent: null, component: "cifra" as const, items: [], label: "clips", value: "3" },
+            ],
+            headerLabel: "(01) demo",
+            logoSeconds: 1.5,
           }}
         />
         <Composition

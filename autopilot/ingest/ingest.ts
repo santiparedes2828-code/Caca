@@ -11,6 +11,8 @@ import { safeName, sha256File } from "../util/fs";
 export const EXT = {
   video: [".mp4", ".mov", ".m4v", ".mkv", ".webm"],
   captions: [".srt", ".vtt", ".json"],
+  guion: [".txt", ".md"],
+  audio: [".mp3", ".wav", ".m4a"],
 } as const;
 
 export class IngestError extends Error {
@@ -51,9 +53,10 @@ const isUtf8Text = (b: Buffer) => {
   }
 };
 
-export type Validated = { role: "video" | "captions"; detected: string; probe: ProbeResult | null; warnings: string[] };
+export type Role = keyof typeof EXT;
+export type Validated = { role: Role; detected: string; probe: ProbeResult | null; warnings: string[] };
 
-export const validateFile = async (cfg: Config, file: string, role: "video" | "captions"): Promise<Validated> => {
+export const validateFile = async (cfg: Config, file: string, role: Role): Promise<Validated> => {
   const lst = await fs.lstat(file).catch(() => null);
   if (!lst) throw new IngestError("no_existe", `No existe el archivo ${path.basename(file)}`);
   if (lst.isSymbolicLink()) throw new IngestError("enlace", "No se aceptan enlaces simbólicos");
@@ -65,12 +68,13 @@ export const validateFile = async (cfg: Config, file: string, role: "video" | "c
   if (!allowed.includes(ext)) {
     throw new IngestError("extension", `Extensión ${ext || "(ninguna)"} no admitida para ${role}. Admitidas: ${allowed.join(" ")}`);
   }
-  const maxBytes = role === "video" ? cfg.HH_MAX_UPLOAD_MB * 1024 * 1024 : 5 * 1024 * 1024;
+  const maxBytes = role === "video" || role === "audio" ? cfg.HH_MAX_UPLOAD_MB * 1024 * 1024 : 5 * 1024 * 1024;
   if (lst.size === 0) throw new IngestError("vacio", `${path.basename(file)} está vacío`);
   if (lst.size > maxBytes) throw new IngestError("tamano", `${path.basename(file)} supera el tamaño máximo (${Math.round(maxBytes / 1048576)} MB)`);
 
   const fh = await fs.open(file, "r");
-  const head = Buffer.alloc(Math.min(lst.size, role === "captions" ? lst.size : 64));
+  const text = role === "captions" || role === "guion";
+  const head = Buffer.alloc(Math.min(lst.size, text ? lst.size : 64));
   await fh.read(head, 0, head.length, 0);
   await fh.close();
   const kind = sniff(head);
@@ -78,11 +82,21 @@ export const validateFile = async (cfg: Config, file: string, role: "video" | "c
     throw new IngestError("formato_peligroso", `${path.basename(file)} es un ${kind}, no un ${role}`);
   }
 
-  if (role === "captions") {
+  if (text) {
     if (!isUtf8Text(head)) throw new IngestError("formato", `${path.basename(file)} no es texto UTF-8`);
     return { role, detected: ext.slice(1), probe: null, warnings: [] };
   }
 
+  if (role === "audio") {
+    if (!["mp3", "wav"].includes(kind) && !(ext === ".m4a" && kind === "mp4") && !(ext === ".mp3" && head[0] === 0xff)) {
+      throw new IngestError("formato", `${path.basename(file)} no es un audio válido (${kind})`);
+    }
+    const pa = await probe(file).catch((e: Error) => {
+      throw new IngestError("ilegible", `${path.basename(file)}: ${e.message}`);
+    });
+    if (!pa.audio) throw new IngestError("sin_audio", `${path.basename(file)} no contiene audio`);
+    return { role, detected: `${kind}/${pa.audio.codec}`, probe: pa, warnings: [] };
+  }
   if (!["mp4", "mov", "matroska"].includes(kind)) {
     throw new IngestError("formato", `${path.basename(file)} tiene extensión ${ext} pero su contenido no es un vídeo (${kind})`);
   }

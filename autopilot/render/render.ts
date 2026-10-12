@@ -5,20 +5,25 @@ import { browserExecutable, type Config } from "../config";
 // Render de la composición AutopilotEdit a MP4 H.264 + AAC (compatible con TikTok, Reels y Shorts).
 export const COMPOSITION_ID = "AutopilotEdit";
 
-export const renderEdit = async (opts: {
+export const renderEdit = (opts: Omit<Parameters<typeof renderComposition>[0], "id" | "props"> & { props: EditProps }) =>
+  renderComposition({ ...opts, id: COMPOSITION_ID, props: editPropsSchema.parse(opts.props) });
+
+// Render genérico de cualquier composición registrada en src/Root.tsx (props ya validadas por quien llama)
+export const renderComposition = async (opts: {
   cfg: Config;
   serveUrl: string;
-  props: EditProps;
+  id: string;
+  props: Record<string, unknown>;
   output: string;
   onProgress?: (p: number) => void;
   shouldCancel?: () => boolean;
   onBrowserError?: (m: string) => void;
 }) => {
-  const inputProps = editPropsSchema.parse(opts.props);
+  const inputProps = opts.props;
   const exe = browserExecutable(opts.cfg);
   const composition = await selectComposition({
     serveUrl: opts.serveUrl,
-    id: COMPOSITION_ID,
+    id: opts.id,
     inputProps,
     browserExecutable: exe,
     timeoutInMilliseconds: opts.cfg.HH_RENDER_TIMEOUT_MS,

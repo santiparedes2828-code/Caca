@@ -13,7 +13,7 @@ export type Check = { id: string; label: string; status: CheckStatus; detail: st
 
 export type QcInput = {
   output: string;
-  source: string; // copia de trabajo (para distinguir negros que ya venían en el original)
+  source: string | null; // copia de trabajo (para distinguir negros que ya venían en el original)
   qcDir: string;
   expected: { width: number; height: number; fps: number; durationSec: number; hasAudio: boolean };
   audioTarget: { lufs: number; truePeakDb: number; normalized: boolean };
@@ -114,7 +114,7 @@ export const runQc = async (q: QcInput): Promise<QcResult> => {
 
   // 4. Fotogramas negros (se comparan con el original para no culpar al render)
   const black = await blackSegments(q.output);
-  const blackSrc = await blackSegments(q.source);
+  const blackSrc = q.source ? await blackSegments(q.source) : [];
   const blackTotal = black.reduce((n, b) => n + (b.endSec - b.startSec), 0);
   const fromRender = black.filter((b) => !blackSrc.some((s) => s.startSec <= b.startSec + 0.2 && s.endSec >= b.endSec - 0.2));
   metrics.blackSec = Number(blackTotal.toFixed(2));
