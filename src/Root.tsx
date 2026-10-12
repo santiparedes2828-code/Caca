@@ -5,6 +5,8 @@ import { Title } from "./HelloWorld/Title";
 import { Promo, promoDuration } from "./Promo/Promo";
 import { Clip, clipDuration } from "./Clip/Clip";
 import { HookHouse, hookHouseDuration } from "./HookHouse/HookHouse";
+import { AntesDespues, antesDespuesSchema, calculateAntesDespuesMetadata } from "./AntesDespues/AntesDespues";
+import einsteinEnvelope from "./AntesDespues/einstein-envolvente.json";
 import { Viral, viralDuration } from "./Viral/Viral";
 import { AutopilotEdit, calculateEditMetadata } from "./autopilot/AutopilotEdit";
 import { CaptionModesDemo, captionDemoDuration, captionDemoSchema } from "./autopilot/CaptionModesDemo";
@@ -183,6 +185,24 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1080}
         height={1920}
+      />
+      <Composition
+        id="AntesDespues"
+        component={AntesDespues}
+        schema={antesDespuesSchema}
+        calculateMetadata={calculateAntesDespuesMetadata}
+        durationInFrames={600}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{
+          video: "antes-despues/einstein.mp4",
+          audio: "antes-despues/einstein.wav",
+          videoSeconds: 25.45,
+          envelope: einsteinEnvelope,
+          introSeconds: 2.6,
+          labels: ["Antes", "Después", "Solo un audio"] as [string, string, string],
+        }}
       />
       <Composition
         id="HookHouse"
