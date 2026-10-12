@@ -9,7 +9,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { SceneFrom } from "./Kinetic";
-import { C, HANDLE, WHIP, aberration, bold } from "./theme";
+import { C, WHIP, aberration, bold } from "./theme";
 
 export type Bg = "light" | "dark" | "black";
 
@@ -102,20 +102,6 @@ const SceneBody: React.FC<{
       >
         {children}
       </AbsoluteFill>
-      <div
-        style={{
-          position: "absolute",
-          top: 1640,
-          width: "100%",
-          textAlign: "center",
-          fontFamily: bold,
-          fontWeight: 600,
-          fontSize: 30,
-          color: bg === "light" ? "rgba(0,0,0,0.25)" : "rgba(255,255,255,0.25)",
-        }}
-      >
-        {HANDLE}
-      </div>
       <Grain />
     </AbsoluteFill>
   );

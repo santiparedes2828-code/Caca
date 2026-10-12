@@ -48,7 +48,7 @@ No hay subtítulos clásicos: **todo el texto es tipografía cinética** que rep
   1. **Rojo con resplandor:** #E3121B, `text-shadow 0 0 18px rgba(227,18,27,.8)` (fondos oscuros: "information density", "his budget", "It is a pacing tool").
   2. **Caja roja:** texto negro en cursiva gruesa sobre rectángulo #E3121B que crece de izquierda a derecha en 6 frames ("his hook.").
   3. **Verde en el CTA:** #2E9B2E ("for the blueprint").
-- **Marca de agua:** `@usuario` en sans 600 de **30 px**, gris al 25 % de opacidad, centrada, y ≈ **1540 px** (80 % del alto).
+- ~~**Marca de agua:** `@usuario` en sans 600 de **30 px**, gris al 25 % de opacidad, centrada, y ≈ **1540 px** (80 % del alto).~~ → Anulado: ver *Correcciones aprendidas*.
 
 ## 3. Textos en pantalla además de la tipografía principal
 
@@ -99,3 +99,5 @@ No hay subtítulos clásicos: **todo el texto es tipografía cinética** que rep
 ## Correcciones aprendidas
 
 _(Aquí se añaden las correcciones que el usuario apruebe. Prevalecen sobre todo lo anterior.)_
+
+1. **Sin marca de agua.** No se pone `@usuario` ni ningún texto de marca en el vídeo (2026-10-12, borrador 1 del vídeo "Edición automática").

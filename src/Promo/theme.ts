@@ -25,8 +25,5 @@ export const C = {
 export const aberration = (px: number) =>
   `drop-shadow(${px}px 0 0 rgba(227,18,27,0.55)) drop-shadow(${-px}px 0 0 rgba(63,208,201,0.55))`;
 
-// Marca de agua (estilo.md §2). Cambiar por el usuario real de TikTok.
-export const HANDLE = "@tu.marca";
-
 // Transiciones (estilo.md §5): whip de 6 frames
 export const WHIP = 6;
