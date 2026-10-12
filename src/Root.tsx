@@ -3,6 +3,7 @@ import { HelloWorld } from "./HelloWorld";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
 import { Promo, promoDuration } from "./Promo/Promo";
+import { Clip, clipDuration } from "./Clip/Clip";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -35,6 +36,14 @@ export const RemotionRoot: React.FC = () => {
           }}
         />
       </Folder>
+      <Composition
+        id="Clip"
+        component={Clip}
+        durationInFrames={clipDuration(30)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="Promo"
         component={Promo}

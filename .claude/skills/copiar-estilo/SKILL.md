@@ -62,6 +62,9 @@ Reutiliza `src/Promo/` como base (copia la carpeta con otro nombre para un víde
 - Cambia valores para que coincidan con el `estilo.md` actual; no copies el estilo de la referencia anterior.
 - Registra la composición en `src/Root.tsx` (1080x1920, 30 fps, duración = última palabra + ~1,2 s).
 - SFX: `public/sfx/whoosh.wav` y `hit.wav` (sintetizados con ffmpeg; `remotion.media` no es accesible aquí).
+- B-roll de objetos/productos: si se piden "reales", genera una foto de estudio sobre fondo blanco (ElevenLabs `creative_generate_image`, modelo `bytedance-seedream-5-pro`; Higgsfield exige plan de pago) y quita el fondo en local:
+  `python3 -I .claude/skills/copiar-estilo/scripts/recortar_fondo.py foto.png public/broll/objeto.png` → `<Img src={staticFile("broll/objeto.png")}>` con sombra.
+- Varios proyectos en el mismo repo: cada uno con su `analisis-N/`, `estilo-<nombre>.md`, `src/data/captions-<nombre>.json` y carpeta `src/<Nombre>/` (ejemplos: `src/Promo/` creado desde guion, `src/Clip/` editando una grabación).
 
 ### Verificar antes de enseñar
 
