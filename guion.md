@@ -21,4 +21,4 @@ Locución completa (la que se envía a ElevenLabs):
 
 Voz: ElevenLabs · Rodrigo Zabú (`1p905cdbJ1e1JQxhFTGJ`) · español latinoamericano · modelo eleven_v4.
 Toma usada: B (`public/audio/voz_b.mp3`, 35,4 s). Tiempos por palabra: ElevenLabs Scribe (`analisis/words_b.json`).
-Procesado: `python3 scripts/procesar_voz.py public/audio/voz_b.mp3 analisis/words_b.json` → `public/audio/voz.wav` (33,8 s) + `src/data/captions.json`.
+Procesado: `python3 -I .claude/skills/copiar-estilo/scripts/cortar_silencios.py public/audio/voz_b.mp3 analisis/words_b.json public/audio/voz.wav` → `public/audio/voz.wav` (33,8 s) + `src/data/captions.json`.
