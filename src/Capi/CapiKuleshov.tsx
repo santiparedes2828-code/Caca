@@ -1,272 +1,81 @@
 import { Audio } from "@remotion/media";
 import React from "react";
 import { AbsoluteFill, Easing, Img, interpolate, random, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
-import { Captions } from "../autopilot/Captions";
 import type { CaptionPage } from "../autopilot/props";
-import { useBrandFonts } from "../design/fonts";
-import { HOOKHOUSE } from "../design/tokens";
 import { B, SANS } from "../HookHouse/brand";
 import { Wordmark } from "../HookHouse/graphics";
+import { Capi2D, mixMouth, mouthAt, type CapiPose } from "./Capi2D";
 import data from "./kuleshov.json";
 
-// Vídeo viral de Hook House con Capi: el efecto Kuleshov (dato real de la historia del montaje). Identidad de la
-// marca (contenido propio), todo el texto en Inter, emojis Fluent, voz de marca (Rodrigo Zabú) y efectos propios.
-// Capi se anima con recortes de su hoja de personaje: cambia de expresión según lo que dice y rebota con la voz.
+// Vídeo viral de Hook House con Capi en 2D, de frente y en el centro, hablando con la voz de marca: el efecto
+// Kuleshov (dato real de la historia del montaje). Arriba, una «pantalla» con los motion graphics; en medio, los
+// subtítulos en Inter Bold; abajo, Capi articulando cada palabra. Identidad Hook House, emojis Fluent, efectos
+// propios.
 
 export const KULESHOV_FPS = 30;
-export const kuleshovDuration = Math.round((data.words[data.words.length - 1].endMs / 1000 + 1.5) * KULESHOV_FPS);
+export const kuleshovDuration = Math.round((data.words[data.words.length - 1].endMs / 1000 + 1.6) * KULESHOV_FPS);
 
 type Word = { text: string; startMs: number; endMs: number };
 const W = data.words as Word[];
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const f = (ms: number) => Math.round((ms / 1000) * KULESHOV_FPS);
-// Fotograma en que empieza la n-ésima aparición de una palabra
+const norm = (t: string) => t.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
 const at = (text: string, nth = 0) => {
-  const hits = W.filter((w) => w.text.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "") === text);
+  const hits = W.filter((w) => norm(w.text) === text);
   return f((hits[nth] ?? hits[0]).startMs);
 };
 const env = (frame: number) => data.envelope[Math.max(0, Math.min(data.envelope.length - 1, frame))] ?? 0;
 const icon = (n: keyof typeof data.icons) => data.icons[n];
+const ease = Easing.bezier(0.22, 1, 0.36, 1);
 
-// Escenas (fotograma de inicio)
-const S = {
-  hook: 0,
-  kuleshov: at("lev") - 4,
-  imagenes: at("con") - 6,
-  publico: at("el", 1) - 4,
-  mismo: at("pero") - 4,
-  frase: at("no") - 3,
-  cierre: at("tú") - 3,
-};
-
-// Palabras clave del guion (color y tamaño en los subtítulos)
 const KEYS = new Set(["experimento", "100", "cerebro", "kuleshov", "sopa", "ataúd", "diván", "hambre", "tristeza", "deseo", "mismo", "grabas", "editas", "graba", "yo"]);
 const PAGES: CaptionPage[] = (data.pages as CaptionPage[]).map((p) => ({
   ...p,
-  lines: p.lines.map((l) => l.map((t) => ({ ...t, emphasis: KEYS.has(t.text.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "")) }))),
+  lines: p.lines.map((l) => l.map((t) => ({ ...t, emphasis: KEYS.has(norm(t.text)) }))),
 }));
-const BRAND = {
-  ...HOOKHOUSE,
-  // Fondo claro: las palabras van en tinta (con su contorno) y las claves en verde
-  colors: { ...HOOKHOUSE.colors, white: HOOKHOUSE.colors.ink },
-  captions: { ...HOOKHOUSE.captions, fontSize: 86, positionY: 0.75 },
-  layout: { ...HOOKHOUSE.layout, safeZone: { ...HOOKHOUSE.layout.safeZone, top: 300 } },
+
+// Tiempos de la historia
+const T = {
+  cien: at("100"),
+  edicion: at("edición"),
+  cerebro: at("cerebro"),
+  lev: at("lev"),
+  actor: at("actor"),
+  expresion: at("expresión"),
+  imagenes: at("imágenes"),
+  sopa: at("sopa"),
+  ataud: at("ataúd"),
+  divan: at("diván"),
+  publico: at("público"),
+  hambre: at("hambre"),
+  tristeza: at("tristeza"),
+  deseo: at("deseo"),
+  pero: at("pero"),
+  mismo: at("mismo", 1),
+  tres: at("tres", 1),
+  no: at("no"),
+  es: at("es", 1),
+  editas: at("editas"),
+  tu: at("tú"),
+  encargo: at("encargo"),
+  yo: at("yo"),
 };
 
-// ——— Piezas ———
+// ——— Pantalla de motion graphics ———
+const SCREEN = { x: 80, y: 300, w: 860, h: 500 };
 
-// Fondo de la marca con una rejilla de puntos que deriva y destellos verdes en los golpes
-const Background: React.FC<{ flash: number }> = ({ flash }) => {
+// Un «plano» dentro de la pantalla: entra deslizando con desenfoque y sale hacia el otro lado
+const Beat: React.FC<{ from: number; to: number; children: React.ReactNode }> = ({ from, to, children }) => {
   const frame = useCurrentFrame();
-  const off = (frame * 0.6) % 60;
-  return (
-    <AbsoluteFill style={{ background: B.bg }}>
-      <AbsoluteFill
-        style={{
-          backgroundImage: `radial-gradient(${B.green}22 2.4px, transparent 2.6px)`,
-          backgroundSize: "60px 60px",
-          backgroundPosition: `${off}px ${off * 0.5}px`,
-        }}
-      />
-      <AbsoluteFill style={{ background: `radial-gradient(circle at 50% 42%, ${B.green}${Math.round(flash * 60).toString(16).padStart(2, "0")} 0%, transparent 62%)` }} />
-    </AbsoluteFill>
-  );
-};
-
-// Rayos que giran detrás de Capi en el gancho
-const Burst: React.FC<{ opacity: number }> = ({ opacity }) => {
-  const frame = useCurrentFrame();
-  return (
-    <div style={{ position: "absolute", left: 540 - 900, top: 760 - 900, width: 1800, height: 1800, opacity, transform: `rotate(${frame * 0.6}deg)` }}>
-      {Array.from({ length: 16 }, (_, i) => (
-        <div
-          key={i}
-          style={{
-            position: "absolute",
-            left: 900 - 60,
-            top: 0,
-            width: 120,
-            height: 900,
-            transformOrigin: "50% 100%",
-            transform: `rotate(${i * 22.5}deg)`,
-            background: `linear-gradient(to top, ${B.green}00, ${B.green}30)`,
-            clipPath: "polygon(35% 0, 65% 0, 52% 100%, 48% 100%)",
-          }}
-        />
-      ))}
-    </div>
-  );
-};
-
-type Expr = "sorprendido" | "hablando" | "tranquilo" | "esceptico" | "riendo";
-
-// Cabeza de Capi que habla: rebota y se inclina con la voz, entra con muelle
-const CapiHead: React.FC<{ expr: Expr; x: number; y: number; size: number; enter: number; flip?: boolean }> = ({ expr, x, y, size, enter, flip }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const s = spring({ frame: frame - enter, fps, config: { damping: 11, stiffness: 160, mass: 0.7 } });
-  const v = env(frame);
-  const bob = Math.sin(frame / 3.1) * v;
-  if (frame < enter) return null;
-  return (
-    <Img
-      src={staticFile(`capi/${expr}.png`)}
-      style={{
-        position: "absolute",
-        left: x - size / 2,
-        top: y - size / 2,
-        width: size,
-        height: size,
-        objectFit: "contain",
-        transform: `translateY(${(1 - s) * 220 - v * 14}px) scale(${(0.4 + 0.6 * s) * (1 + v * 0.05)}) rotate(${bob * 4 + (1 - s) * -12}deg) scaleX(${flip ? -1 : 1})`,
-        transformOrigin: "50% 85%",
-        filter: "drop-shadow(0 22px 30px rgba(0,0,0,0.22))",
-      }}
-    />
-  );
-};
-
-const Emoji: React.FC<{ name: keyof typeof data.icons; x: number; y: number; size: number; enter: number }> = ({ name, x, y, size, enter }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const s = spring({ frame: frame - enter, fps, config: { damping: 8, stiffness: 180, mass: 0.6 } });
-  if (frame < enter) return null;
-  const wob = Math.sin((frame - enter) / 5) * 4 * Math.exp(-(frame - enter) / 30);
-  return (
-    <Img
-      src={icon(name)}
-      style={{
-        position: "absolute",
-        left: x - size / 2,
-        top: y - size / 2,
-        width: size,
-        height: size,
-        transform: `scale(${s}) rotate(${(1 - s) * -30 + wob}deg)`,
-        filter: "drop-shadow(0 14px 18px rgba(0,0,0,0.18))",
-      }}
-    />
-  );
-};
-
-// Fotograma de película: borde negro con perforaciones
-const FilmFrame: React.FC<{ x: number; y: number; w: number; h: number; enter: number; children: React.ReactNode; tint?: string }> = ({ x, y, w, h, enter, children, tint }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const s = spring({ frame: frame - enter, fps, config: { damping: 14, stiffness: 170 } });
-  if (frame < enter) return null;
-  const holes = Math.round(w / 46);
-  const Row: React.FC<{ top: boolean }> = ({ top }) => (
-    <div style={{ position: "absolute", left: 0, right: 0, [top ? "top" : "bottom"]: 8, display: "flex", justifyContent: "space-around" }}>
-      {Array.from({ length: holes }, (_, i) => (
-        <div key={i} style={{ width: 18, height: 14, borderRadius: 4, background: B.bg, opacity: 0.85 }} />
-      ))}
-    </div>
-  );
-  return (
-    <div
-      style={{
-        position: "absolute",
-        left: x,
-        top: y,
-        width: w,
-        height: h,
-        background: B.ink,
-        borderRadius: 18,
-        transform: `translateY(${(1 - s) * 120}px) scale(${0.8 + 0.2 * s})`,
-        opacity: Math.min(1, s * 1.6),
-        boxShadow: "0 24px 50px rgba(0,0,0,0.25)",
-      }}
-    >
-      <Row top />
-      <Row top={false} />
-      <div style={{ position: "absolute", left: 14, right: 14, top: 34, bottom: 34, borderRadius: 8, overflow: "hidden", background: tint ?? "#FFFFFF" }}>
-        <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>{children}</div>
-      </div>
-    </div>
-  );
-};
-
-// La cara del «actor» (Capi sin expresión, del frente de la hoja)
-const ActorFace: React.FC<{ size: number }> = ({ size }) => (
-  <Img src={staticFile("capi/cuerpo-frente.png")} style={{ width: size, height: size * 1.25, objectFit: "cover", objectPosition: "50% 0%" }} />
-);
-
-const Label: React.FC<{ text: string; x: number; y: number; enter: number; size?: number; color?: string; bg?: string }> = ({ text, x, y, enter, size = 44, color = B.white, bg = B.green }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const s = spring({ frame: frame - enter, fps, config: { damping: 10, stiffness: 200, mass: 0.6 } });
-  if (frame < enter) return null;
-  return (
-    <div
-      style={{
-        position: "absolute",
-        left: x,
-        top: y,
-        transform: `translate(-50%, -50%) scale(${s}) rotate(${(1 - s) * 8 - 2}deg)`,
-        padding: `${size * 0.22}px ${size * 0.55}px`,
-        borderRadius: size * 0.35,
-        background: bg,
-        color,
-        fontFamily: SANS,
-        fontWeight: 800,
-        fontSize: size,
-        letterSpacing: "0.04em",
-        whiteSpace: "nowrap",
-        boxShadow: "0 12px 24px rgba(0,0,0,0.18)",
-      }}
-    >
-      {text}
-    </div>
-  );
-};
-
-// Texto grande que entra palabra a palabra con máscara
-const BigLine: React.FC<{ text: string; y: number; enter: number; size: number; color?: string; strike?: number }> = ({ text, y, enter, size, color = B.ink, strike = 0 }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  return (
-    <div style={{ position: "absolute", left: 60, right: 140, top: y, display: "flex", flexWrap: "wrap", justifyContent: "center", columnGap: size * 0.26, fontFamily: SANS, fontWeight: 800, fontSize: size, lineHeight: 1.02, letterSpacing: "-0.04em", color }}>
-      {text.split(" ").map((w, i) => {
-        const s = spring({ frame: frame - enter - i * 3, fps, config: { damping: 14, stiffness: 190 } });
-        return (
-          <span key={i} style={{ display: "inline-block", overflow: "hidden", paddingBottom: size * 0.08 }}>
-            <span style={{ display: "inline-block", transform: `translateY(${(1 - s) * 110}%)` }}>{w}</span>
-          </span>
-        );
-      })}
-      {strike > 0 ? <div style={{ position: "absolute", left: "8%", top: "48%", height: size * 0.12, width: `${84 * strike}%`, background: "#E5484D", borderRadius: 99 }} /> : null}
-    </div>
-  );
-};
-
-// Contador que rueda hasta 100 (el «más de cien años»)
-const Counter: React.FC<{ enter: number }> = ({ enter }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const p = interpolate(frame, [enter, enter + 18], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
-  const s = spring({ frame: frame - enter, fps, config: { damping: 12, stiffness: 170 } });
-  if (frame < enter) return null;
-  return (
-    <div style={{ position: "absolute", left: 0, right: 0, top: 300, textAlign: "center", fontFamily: SANS, transform: `scale(${0.6 + 0.4 * s})`, opacity: Math.min(1, s * 1.5) }}>
-      <div style={{ fontSize: 210, fontWeight: 800, letterSpacing: "-0.05em", color: B.green, lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>+{Math.round(100 * p)}</div>
-      <div style={{ fontSize: 52, fontWeight: 800, color: B.ink, letterSpacing: "0.12em", marginTop: 4 }}>AÑOS</div>
-    </div>
-  );
-};
-
-// Escena con entrada de barrido y empuje de cámara
-const SceneWrap: React.FC<{ from: number; to: number; children: React.ReactNode; dir?: 1 | -1 }> = ({ from, to, children, dir = 1 }) => {
-  const frame = useCurrentFrame();
-  if (frame < from - 1 || frame > to + 6) return null;
-  const inP = interpolate(frame, [from, from + 8], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
-  const outP = interpolate(frame, [to - 1, to + 6], [0, 1], { ...clamp, easing: Easing.in(Easing.cubic) });
-  const push = interpolate(frame, [from, to], [1, 1.06], clamp);
+  if (frame < from - 1 || frame > to + 8) return null;
+  const i = interpolate(frame, [from, from + 10], [0, 1], { ...clamp, easing: ease });
+  const o = interpolate(frame, [to, to + 8], [0, 1], { ...clamp, easing: Easing.in(Easing.cubic) });
   return (
     <AbsoluteFill
       style={{
-        transform: `translateX(${((1 - inP) * 380 - outP * 380) * dir}px) scale(${push})`,
-        filter: inP < 1 || outP > 0 ? `blur(${(1 - inP + outP) * 14}px)` : undefined,
-        opacity: Math.min(inP * 1.4, 1 - outP),
+        transform: `translateX(${(1 - i) * 140 - o * 140}px) scale(${0.94 + 0.06 * i - 0.04 * o})`,
+        opacity: Math.min(i * 1.3, 1 - o),
+        filter: i < 1 || o > 0 ? `blur(${(1 - i + o) * 10}px)` : undefined,
       }}
     >
       {children}
@@ -274,175 +83,401 @@ const SceneWrap: React.FC<{ from: number; to: number; children: React.ReactNode;
   );
 };
 
-// ——— Composición ———
+const pop = (frame: number, enter: number, fps: number, damping = 11) => spring({ frame: frame - enter, fps, config: { damping, stiffness: 190, mass: 0.6 } });
 
+const Title: React.FC<{ text: string; enter: number; size: number; y: number; color?: string; track?: string }> = ({ text, enter, size, y, color = B.ink, track = "-0.04em" }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  return (
+    <div style={{ position: "absolute", left: 30, right: 30, top: y, display: "flex", justifyContent: "center", flexWrap: "wrap", columnGap: size * 0.25, fontFamily: SANS, fontWeight: 800, fontSize: size, lineHeight: 1.04, letterSpacing: track, color }}>
+      {text.split(" ").map((w, i) => {
+        const s = spring({ frame: frame - enter - i * 3, fps, config: { damping: 15, stiffness: 180 } });
+        return (
+          <span key={i} style={{ display: "inline-block", overflow: "hidden", paddingBottom: size * 0.1 }}>
+            <span style={{ display: "inline-block", transform: `translateY(${(1 - s) * 105}%)` }}>{w}</span>
+          </span>
+        );
+      })}
+    </div>
+  );
+};
+
+const Tag: React.FC<{ text: string; x: number; y: number; enter: number; size?: number; bg?: string; rot?: number }> = ({ text, x, y, enter, size = 34, bg = B.green, rot = -3 }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  if (frame < enter) return null;
+  const s = pop(frame, enter, fps, 9);
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: x,
+        top: y,
+        transform: `translate(-50%, -50%) scale(${s}) rotate(${rot + (1 - s) * 14}deg)`,
+        padding: `${size * 0.24}px ${size * 0.6}px`,
+        borderRadius: size * 0.4,
+        background: bg,
+        color: B.white,
+        fontFamily: SANS,
+        fontWeight: 800,
+        fontSize: size,
+        letterSpacing: "0.05em",
+        whiteSpace: "nowrap",
+        boxShadow: "0 10px 22px rgba(0,0,0,0.16)",
+      }}
+    >
+      {text}
+    </div>
+  );
+};
+
+const Emoji: React.FC<{ name: keyof typeof data.icons; x: number; y: number; size: number; enter: number }> = ({ name, x, y, size, enter }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  if (frame < enter) return null;
+  const s = pop(frame, enter, fps, 8);
+  const float = Math.sin((frame - enter) / 14) * 6;
+  return <Img src={icon(name)} style={{ position: "absolute", left: x - size / 2, top: y - size / 2 + float, width: size, height: size, transform: `scale(${s}) rotate(${(1 - s) * -24}deg)`, filter: "drop-shadow(0 12px 16px rgba(0,0,0,0.16))" }} />;
+};
+
+// Cara neutra de Capi (el «actor») dentro de un fotograma
+const NEUTRAL: CapiPose = { mouth: { open: 0, width: 0.85, round: 0 }, blink: 0, brow: 0, browTilt: 0, lookX: 0, lookY: 0, tilt: 0, breathe: 0, wink: 0, smile: 0 };
+const ActorFace: React.FC<{ w: number }> = ({ w }) => (
+  <div style={{ width: w, height: w, overflow: "hidden", position: "relative", background: "#EDEBE2" }}>
+    <div style={{ position: "absolute", left: -w * 0.05, top: w * 0.02 }}>
+      <Capi2D pose={NEUTRAL} width={w * 1.1} />
+    </div>
+  </div>
+);
+
+// Fotograma de película (borde negro con perforaciones)
+const Frame: React.FC<{ w: number; h: number; children: React.ReactNode; glow?: number }> = ({ w, h, children, glow = 0 }) => {
+  const holes = Math.max(3, Math.round(w / 40));
+  const row = (top: boolean) => (
+    <div style={{ position: "absolute", left: 8, right: 8, [top ? "top" : "bottom"]: 7, display: "flex", justifyContent: "space-between" }}>
+      {Array.from({ length: holes }, (_, i) => (
+        <div key={i} style={{ width: 14, height: 11, borderRadius: 3, background: "#F7F7F2", opacity: 0.9 }} />
+      ))}
+    </div>
+  );
+  return (
+    <div style={{ position: "relative", width: w, height: h, background: B.ink, borderRadius: 14, boxShadow: `0 14px 28px rgba(0,0,0,0.22), 0 0 0 ${glow * 8}px ${B.green}` }}>
+      {row(true)}
+      {row(false)}
+      <div style={{ position: "absolute", left: 10, right: 10, top: 28, bottom: 28, borderRadius: 6, overflow: "hidden", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center" }}>{children}</div>
+    </div>
+  );
+};
+
+// Contador que rueda hasta +100
+const Counter: React.FC<{ enter: number }> = ({ enter }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const p = interpolate(frame, [enter, enter + 20], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
+  const s = pop(frame, enter, fps, 12);
+  return (
+    <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: SANS, transform: `scale(${0.7 + 0.3 * s})` }}>
+      <div style={{ fontSize: 230, fontWeight: 800, letterSpacing: "-0.05em", color: B.green, lineHeight: 0.95, fontVariantNumeric: "tabular-nums" }}>+{Math.round(100 * p)}</div>
+      <div style={{ fontSize: 46, fontWeight: 800, color: B.ink, letterSpacing: "0.3em", marginTop: 10 }}>AÑOS</div>
+    </div>
+  );
+};
+
+// La tira de película del experimento: [sopa][cara][ataúd][cara][diván][cara]
+const Strip: React.FC = () => {
+  const frame = useCurrentFrame();
+  const fw = 250;
+  const gap = 16;
+  const cell = fw + gap;
+  // Desplazamiento: centra cada imagen cuando se nombra y al final se aleja para ver la tira entera
+  const stops: [number, number][] = [
+    [T.imagenes - 4, 0.5],
+    [T.ataud - 4, 2.5],
+    [T.divan - 4, 4.5],
+  ];
+  const passed = stops.filter(([t]) => frame >= t);
+  const last = passed[passed.length - 1];
+  const before = passed.length > 1 ? passed[passed.length - 2][1] : 0.5;
+  const k = last ? interpolate(frame, [last[0], last[0] + 12], [0, 1], { ...clamp, easing: ease }) : 1;
+  const center = last ? before + (last[1] - before) * k : 0.5;
+  const zoomOut = interpolate(frame, [T.publico - 6, T.publico + 10], [0, 1], { ...clamp, easing: ease });
+  const scale = 1 - zoomOut * 0.47;
+  const offset = (SCREEN.w / 2 - (center * cell + fw / 2)) * (1 - zoomOut) + (SCREEN.w / 2 - (2.5 * cell + fw / 2) * scale) * zoomOut;
+  const items: [keyof typeof data.icons | "cara", number][] = [
+    ["bowl-with-spoon", T.sopa],
+    ["cara", T.sopa + 6],
+    ["coffin", T.ataud],
+    ["cara", T.ataud + 6],
+    ["couch-and-lamp", T.divan],
+    ["cara", T.divan + 6],
+  ];
+  const labels = [
+    ["HAMBRE", T.hambre],
+    ["TRISTEZA", T.tristeza],
+    ["DESEO", T.deseo],
+  ] as const;
+  const top = SCREEN.h / 2 - 150 * scale - 20;
+  return (
+    <div style={{ position: "absolute", left: 0, top: 0, width: SCREEN.w, height: SCREEN.h }}>
+      <div style={{ position: "absolute", top, left: offset, display: "flex", gap, transform: `scale(${scale})`, transformOrigin: "0 0" }}>
+        {items.map(([n, show], i) => {
+          const visible = frame >= show - 2;
+          const glow = n === "cara" && labels.some(([, e], j) => j === (i - 1) / 2 && frame >= e && frame < e + 14) ? 1 : 0;
+          return (
+            <div key={i} style={{ opacity: visible ? 1 : 0, transform: `translateY(${visible ? 0 : 30}px)` }}>
+            <Frame w={fw} h={300} glow={glow}>
+              {n === "cara" ? (
+                <div style={{ opacity: visible ? 1 : 0 }}>
+                  <ActorFace w={fw - 20} />
+                </div>
+              ) : (
+                <Img src={icon(n)} style={{ width: 160, height: 160, opacity: visible ? 1 : 0 }} />
+              )}
+            </Frame>
+            </div>
+          );
+        })}
+      </div>
+      {labels.map(([t, e], j) => (
+        <Tag key={t} text={t} x={offset + ((2 * j + 1) * cell + fw / 2) * scale} y={top + 300 * scale + 40} enter={e} size={30} rot={j % 2 ? 3 : -3} />
+      ))}
+    </div>
+  );
+};
+
+// Las tres caras se juntan en una
+const Merge: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const m = interpolate(frame, [T.mismo - 8, T.mismo + 2], [0, 1], { ...clamp, easing: Easing.inOut(Easing.cubic) });
+  const big = pop(frame, T.mismo, fps, 10);
+  return (
+    <div style={{ position: "absolute", inset: 0 }}>
+      {[-1, 1, 0].map((d) => (
+        <div key={d} style={{ position: "absolute", left: SCREEN.w / 2 - 110 + d * 250 * (1 - m), top: 60, transform: `scale(${1 + 0.12 * big * (d === 0 ? 1 : 0)}) rotate(${d * 4 * (1 - m)}deg)`, opacity: d === 0 ? 1 : 1 - m }}>
+          <Frame w={220} h={270}>
+            <ActorFace w={200} />
+          </Frame>
+        </div>
+      ))}
+      <Tag text="MISMO PLANO" x={SCREEN.w / 2} y={405} enter={T.mismo} size={56} bg={B.ink} rot={-4} />
+      <Tag text="×3" x={SCREEN.w / 2 + 230} y={300} enter={T.tres} size={48} rot={8} />
+    </div>
+  );
+};
+
+const Screen: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const s = spring({ frame: frame - 2, fps, config: { damping: 14, stiffness: 140 } });
+  const strike = interpolate(frame, [T.es - 2, T.es + 8], [0, 1], { ...clamp, easing: ease });
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: SCREEN.x,
+        top: SCREEN.y,
+        width: SCREEN.w,
+        height: SCREEN.h,
+        borderRadius: 44,
+        background: B.white,
+        overflow: "hidden",
+        boxShadow: "0 30px 60px rgba(0,0,0,0.12), 0 0 0 3px rgba(0,0,0,0.04)",
+        transform: `translateY(${(1 - s) * -80}px) scale(${0.9 + 0.1 * s})`,
+        opacity: Math.min(1, s * 1.5),
+      }}
+    >
+      {/* 1 · Gancho: experimento, +100 años, la edición engaña al cerebro */}
+      <Beat from={0} to={T.cien - 4}>
+        <Emoji name="clapper-board" x={SCREEN.w / 2} y={190} size={220} enter={2} />
+        <Title text="EXPERIMENTO" enter={6} size={84} y={330} track="0.02em" />
+      </Beat>
+      <Beat from={T.cien - 4} to={T.edicion - 4}>
+        <Counter enter={T.cien - 3} />
+      </Beat>
+      <Beat from={T.edicion - 4} to={T.lev - 6}>
+        <Title text="La edición engaña" enter={T.edicion - 2} size={78} y={60} />
+        <Title text="a tu cerebro" enter={T.cerebro - 6} size={78} y={150} color={B.green} />
+        <Emoji name="brain" x={SCREEN.w / 2} y={365} size={190} enter={T.cerebro - 1} />
+      </Beat>
+      {/* 2 · Lev Kuleshov y el actor sin expresión */}
+      <Beat from={T.lev - 6} to={T.imagenes - 8}>
+        <Title text="Lev Kuleshov" enter={T.lev - 3} size={96} y={40} />
+        <Tag text="EL EFECTO KULESHOV" x={SCREEN.w / 2} y={180} enter={T.lev + 8} size={30} />
+        {frame >= T.actor - 2 ? (
+          <div style={{ position: "absolute", left: SCREEN.w / 2 - 110, top: 225, transform: `scale(${pop(frame, T.actor - 2, fps, 12)})` }}>
+            <Frame w={220} h={250}>
+              <ActorFace w={200} />
+            </Frame>
+          </div>
+        ) : null}
+        <Tag text="SIN EXPRESIÓN" x={SCREEN.w / 2 + 225} y={350} enter={T.expresion} size={28} bg={B.ink} rot={5} />
+      </Beat>
+      {/* 3 · Tres imágenes y lo que vio el público */}
+      <Beat from={T.imagenes - 8} to={T.pero - 6}>
+        {frame < T.sopa ? (
+          <div style={{ position: "absolute", inset: 0, opacity: interpolate(frame, [T.sopa - 6, T.sopa], [1, 0], clamp) }}>
+            <Title text="3 imágenes" enter={T.imagenes - 6} size={120} y={120} />
+            <Tag text="1 MISMO ACTOR" x={SCREEN.w / 2} y={320} enter={T.imagenes + 4} size={40} bg={B.ink} rot={-3} />
+          </div>
+        ) : null}
+        <Strip />
+      </Beat>
+      {/* 4 · Era el mismo plano */}
+      <Beat from={T.pero - 6} to={T.no - 6}>
+        <Merge />
+      </Beat>
+      {/* 5 · No es lo que grabas, es cómo lo editas */}
+      <Beat from={T.no - 6} to={T.tu - 6}>
+        <div style={{ position: "absolute", left: 0, right: 0, top: 60 }}>
+          <Title text="No es lo que grabas" enter={T.no} size={64} y={0} color={B.grey} />
+          <div style={{ position: "absolute", left: "15%", top: 38, height: 10, width: `${70 * strike}%`, background: "#E5484D", borderRadius: 99 }} />
+        </div>
+        <Title text="Es cómo" enter={T.es} size={112} y={180} color={B.green} />
+        <Title text="lo editas" enter={T.es + 6} size={112} y={295} color={B.green} />
+      </Beat>
+      {/* 6 · Cierre */}
+      <Beat from={T.tu - 6} to={99999}>
+        <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 26 }}>
+          <div style={{ transform: `scale(${pop(frame, T.tu - 2, fps, 12)})` }}>
+            <Wordmark size={130} />
+          </div>
+          <div style={{ opacity: interpolate(frame, [T.encargo - 4, T.encargo + 6], [0, 1], clamp), fontFamily: SANS, fontWeight: 700, fontSize: 40, color: B.grey }}>edición de video automatizada</div>
+        </div>
+      </Beat>
+    </div>
+  );
+};
+
+// ——— Subtítulos: Inter Bold, 1–3 palabras, la clave en verde, sin contorno ———
+const Captions: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = (frame / fps) * 1000;
+  const page = PAGES.find((p) => t >= p.startMs && t < p.endMs);
+  if (!page) return null;
+  const words = page.lines.flat();
+  return (
+    <div style={{ position: "absolute", left: 80, right: 140, top: 818, height: 130, display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "nowrap", columnGap: 22, fontFamily: SANS, fontWeight: 700, letterSpacing: "-0.02em", whiteSpace: "nowrap" }}>
+      {words.map((w, i) => {
+        const e = Math.round((w.startMs / 1000) * fps) - 1;
+        const s = spring({ frame: frame - e, fps, config: { damping: 12, stiffness: 240, mass: 0.5 } });
+        const on = frame >= e;
+        const key = w.emphasis;
+        return (
+          <span
+            key={`${w.startMs}-${i}`}
+            style={{
+              display: "inline-block",
+              fontSize: key ? 88 : 74,
+              color: key ? B.green : B.ink,
+              opacity: on ? Math.min(1, s * 2) : 0,
+              transform: `translateY(${(1 - s) * 26}px) scale(${0.7 + 0.3 * s})`,
+            }}
+          >
+            {w.text.replace(/[,;:.]+$/, "")}
+          </span>
+        );
+      })}
+    </div>
+  );
+};
+
+// ——— Capi: pose a partir de la voz y de la historia ———
+const BLINKS = (() => {
+  const out: number[] = [];
+  for (let b = 20; b < 1200; b += 78 + Math.round(random(`b${b}`) * 40)) out.push(b);
+  return out;
+})();
+const KEY_STARTS = W.filter((w) => KEYS.has(norm(w.text))).map((w) => f(w.startMs));
+
+const capiPose = (frame: number): CapiPose => {
+  const t = (frame / KULESHOV_FPS) * 1000;
+  const level = (env(frame) + env(frame - 1)) / 2;
+  const mouth = mixMouth(mouthAt(W, t, level), mouthAt(W, t - 33, level), 0.35);
+  let blink = 0;
+  for (const b of BLINKS) {
+    const d = frame - b;
+    if (d >= 0 && d < 5) blink = [0.5, 1, 1, 0.5, 0][d];
+  }
+  // Cejas: arriba al decir cada palabra clave; sorpresa al principio y en «mismo plano»; escéptico con el público
+  const brow = Math.max(0, ...KEY_STARTS.map((k) => (frame >= k - 1 && frame < k + 14 ? 1 - (frame - k) / 14 : 0)));
+  const surprised = frame < 40 || (frame >= T.mismo - 2 && frame < T.mismo + 20) ? 1 : 0;
+  const skeptic = frame >= T.publico && frame < T.pero ? 1 : 0;
+  // Mira a la pantalla cuando aparece algo nuevo
+  const looks = [T.cien, T.cerebro, T.actor, T.sopa, T.ataud, T.divan, T.mismo, T.es];
+  const lookUp = Math.max(0, ...looks.map((k) => (frame >= k && frame < k + 22 ? Math.sin(((frame - k) / 22) * Math.PI) : 0)));
+  return {
+    mouth,
+    blink,
+    brow: Math.min(1, brow * 0.7 + surprised),
+    browTilt: skeptic,
+    lookX: Math.sin(frame / 47) * 0.25,
+    lookY: -lookUp * 0.9,
+    tilt: Math.sin(frame / 38) * 2.2 + level * 2 * Math.sin(frame / 5),
+    breathe: (Math.sin(frame / 22) + 1) / 2,
+    wink: frame >= T.yo && frame < T.yo + 14 ? 1 : 0,
+    smile: frame >= T.tu ? 1 : 0.35,
+  };
+};
+
+const CapiOnStage: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const s = spring({ frame, fps, config: { damping: 12, stiffness: 120, mass: 0.8 } });
+  const keyHop = Math.max(0, ...[T.cerebro, T.mismo, T.editas, T.yo].map((k) => (frame >= k && frame < k + 10 ? Math.sin(((frame - k) / 10) * Math.PI) : 0)));
+  return (
+    <div style={{ position: "absolute", left: 540 - 380, top: 960, transform: `translateY(${(1 - s) * 600 - keyHop * 26}px) scale(${1 + keyHop * 0.03})`, transformOrigin: "50% 100%" }}>
+      <Capi2D pose={capiPose(frame)} width={760} />
+    </div>
+  );
+};
+
+// ——— Composición ———
 export const CapiKuleshov: React.FC = () => {
   const frame = useCurrentFrame();
-  const { fps, durationInFrames } = useVideoConfig();
-  const fonts = useBrandFonts(BRAND);
-  // Golpes de cámara en las claves
-  const hits = [at("100"), at("cerebro"), at("sopa"), at("ataúd"), at("diván"), at("mismo", 1), at("editas"), at("graba")];
-  const punch = Math.max(0, ...hits.map((h) => (frame >= h && frame < h + 14 ? 1 - (frame - h) / 14 : 0)));
-  const shake = punch > 0 ? (random(`s${frame}`) - 0.5) * 16 * punch : 0;
-  const cerebro = at("cerebro");
-  const glitch = frame >= cerebro && frame < cerebro + 8 ? 1 : 0;
-  const hookSize = interpolate(frame, [0, 10], [1500, 640], { ...clamp, easing: Easing.out(Easing.back(1.4)) });
-  const toCorner = interpolate(frame, [S.kuleshov - 8, S.kuleshov + 6], [0, 1], { ...clamp, easing: Easing.inOut(Easing.cubic) });
-  const expr: Expr =
-    frame < at("demuestra") ? "sorprendido" : frame < S.publico ? "hablando" : frame < S.mismo ? "esceptico" : frame < S.frase ? "sorprendido" : "riendo";
-  const showHead = frame < S.frase;
-  const showCaptions = frame < S.frase || frame >= S.cierre;
-  const sfx: { name: string; at: number; v: number }[] = [
-    { name: "hit", at: 0, v: 0.35 },
-    { name: "click", at: at("100"), v: 0.25 },
-    { name: "hit", at: cerebro, v: 0.4 },
-    { name: "whoosh", at: S.kuleshov - 6, v: 0.35 },
-    { name: "pop", at: at("actor"), v: 0.3 },
-    { name: "whoosh", at: S.imagenes - 6, v: 0.3 },
-    { name: "pop", at: at("sopa"), v: 0.35 },
-    { name: "pop", at: at("ataúd"), v: 0.35 },
-    { name: "pop", at: at("diván"), v: 0.35 },
-    { name: "whoosh", at: S.publico - 6, v: 0.3 },
-    { name: "click", at: at("hambre"), v: 0.35 },
-    { name: "click", at: at("tristeza"), v: 0.35 },
-    { name: "click", at: at("deseo"), v: 0.35 },
-    { name: "whoosh", at: S.mismo - 6, v: 0.3 },
-    { name: "hit", at: at("mismo", 1), v: 0.45 },
-    { name: "whoosh", at: S.frase - 6, v: 0.3 },
-    { name: "hit", at: at("editas"), v: 0.4 },
-    { name: "whoosh", at: S.cierre - 6, v: 0.3 },
-    { name: "brillo", at: at("encargo"), v: 0.35 },
+  const hits = [T.cerebro, T.mismo, T.editas];
+  const punch = Math.max(0, ...hits.map((h) => (frame >= h && frame < h + 12 ? 1 - (frame - h) / 12 : 0)));
+  const shake = punch > 0 ? (random(`s${frame}`) - 0.5) * 12 * punch : 0;
+  const sfx: [string, number, number][] = [
+    ["whoosh", 0, 0.3],
+    ["pop", 3, 0.3],
+    ["click", T.cien, 0.25],
+    ["whoosh", T.edicion - 4, 0.22],
+    ["hit", T.cerebro, 0.35],
+    ["whoosh", T.lev - 6, 0.25],
+    ["pop", T.actor - 2, 0.28],
+    ["whoosh", T.imagenes - 8, 0.25],
+    ["pop", T.sopa, 0.3],
+    ["pop", T.ataud, 0.3],
+    ["pop", T.divan, 0.3],
+    ["whoosh", T.publico - 6, 0.2],
+    ["click", T.hambre, 0.3],
+    ["click", T.tristeza, 0.3],
+    ["click", T.deseo, 0.3],
+    ["whoosh", T.pero - 6, 0.25],
+    ["hit", T.mismo, 0.4],
+    ["whoosh", T.no - 6, 0.25],
+    ["hit", T.editas, 0.35],
+    ["whoosh", T.tu - 6, 0.25],
+    ["brillo", T.encargo, 0.3],
   ];
+  const off = (frame * 0.5) % 56;
   return (
     <AbsoluteFill style={{ background: B.bg, overflow: "hidden" }}>
       <Audio src={staticFile("capi/voz-kuleshov.wav")} />
-      {sfx.map((e, i) => (
-        <Sequence key={i} from={Math.max(0, e.at)} durationInFrames={45} layout="none">
-          <Audio src={staticFile(`sfx/${e.name}.wav`)} volume={e.v * 0.55} />
+      {sfx.map(([n, a, v], i) => (
+        <Sequence key={i} from={Math.max(0, a)} durationInFrames={45} layout="none">
+          <Audio src={staticFile(`sfx/${n}.wav`)} volume={v * 0.6} />
         </Sequence>
       ))}
-      <AbsoluteFill style={{ transform: `translate(${shake}px, ${shake * 0.6}px) scale(${1 + punch * 0.035})` }}>
-        <Background flash={punch} />
-
-        {/* 1 · Gancho: Capi sorprendido entra enorme, contador de 100 años y el cerebro engañado */}
-        <SceneWrap from={S.hook} to={S.kuleshov - 2}>
-          <Burst opacity={interpolate(frame, [0, 6], [0, 1], clamp)} />
-          <Counter enter={at("100") - 2} />
-          <Emoji name="brain" x={820} y={560} size={230} enter={cerebro - 1} />
-        </SceneWrap>
-
-        {/* 2 · Kuleshov: el mismo plano de un actor sin expresión */}
-        <SceneWrap from={S.kuleshov} to={S.imagenes - 2}>
-          <Label text="LEV KULESHOV" x={460} y={420} enter={S.kuleshov + 2} size={58} bg={B.ink} />
-          <Label text="EFECTO KULESHOV" x={460} y={510} enter={S.kuleshov + 8} size={34} />
-          <FilmFrame x={210} y={600} w={500} h={560} enter={at("actor") - 2}>
-            <ActorFace size={430} />
-          </FilmFrame>
-          <Label text="SIN EXPRESIÓN" x={460} y={1180} enter={at("expresión")} size={40} bg={B.ink} />
-        </SceneWrap>
-
-        {/* 3 · Tres imágenes: sopa, ataúd y diván */}
-        <SceneWrap from={S.imagenes} to={S.publico - 2}>
-          <Emoji name="film-frames" x={470} y={400} size={150} enter={S.imagenes + 2} />
-          {(
-            [
-              ["bowl-with-spoon", at("plato") - 2],
-              ["coffin", at("ataúd") - 2],
-              ["couch-and-lamp", at("mujer") - 2],
-            ] as const
-          ).map(([n, e], i) => (
-            <FilmFrame key={n} x={70 + i * 300} y={560} w={280} h={330} enter={e}>
-              <Img src={icon(n)} style={{ width: 190, height: 190 }} />
-            </FilmFrame>
-          ))}
-          {(["SOPA", "ATAÚD", "DIVÁN"] as const).map((t, i) => (
-            <Label key={t} text={t} x={210 + i * 300} y={930} enter={[at("sopa"), at("ataúd"), at("diván")][i]} size={36} bg={B.ink} />
-          ))}
-        </SceneWrap>
-
-        {/* 4 · El público vio hambre, tristeza y deseo (con la misma cara) */}
-        <SceneWrap from={S.publico} to={S.mismo - 2} dir={-1}>
-          {(
-            [
-              ["bowl-with-spoon", "HAMBRE", at("hambre")],
-              ["coffin", "TRISTEZA", at("tristeza")],
-              ["couch-and-lamp", "DESEO", at("deseo")],
-            ] as const
-          ).map(([n, t, e], i) => (
-            <React.Fragment key={t}>
-              <FilmFrame x={70} y={460 + i * 255} w={230} h={230} enter={S.publico + 2 + i * 3} tint="#FFFFFF">
-                <Img src={icon(n)} style={{ width: 140, height: 140 }} />
-              </FilmFrame>
-              <FilmFrame x={320} y={460 + i * 255} w={230} h={230} enter={S.publico + 4 + i * 3}>
-                <ActorFace size={190} />
-              </FilmFrame>
-              <Label text={t} x={760} y={575 + i * 255} enter={e} size={50} />
-            </React.Fragment>
-          ))}
-        </SceneWrap>
-
-        {/* 5 · Pero era el mismo plano: las tres caras se juntan en una */}
-        <SceneWrap from={S.mismo} to={S.frase - 2}>
-          {[0, 1, 2].map((i) => {
-            const merge = interpolate(frame, [at("mismo", 1) - 6, at("mismo", 1) + 2], [0, 1], { ...clamp, easing: Easing.inOut(Easing.cubic) });
-            return (
-              <FilmFrame key={i} x={60 + i * 300 * (1 - merge) + 300 * merge} y={480} w={290} h={340} enter={S.mismo + 2 + i * 2}>
-                <ActorFace size={230} />
-              </FilmFrame>
-            );
-          })}
-          <Label text="=" x={360} y={650} enter={S.mismo + 6} size={70} bg={B.ink} />
-          <Label text="=" x={660} y={650} enter={S.mismo + 8} size={70} bg={B.ink} />
-          <Label text="MISMO PLANO" x={450} y={920} enter={at("mismo", 1)} size={76} />
-          <Label text="×3" x={450} y={1030} enter={at("tres", 1)} size={56} bg={B.ink} />
-        </SceneWrap>
-
-        {/* 6 · No es lo que grabas, es cómo lo editas */}
-        <SceneWrap from={S.frase} to={S.cierre - 2}>
-          <BigLine text="No es lo que grabas" y={430} enter={S.frase} size={104} color={B.grey} strike={interpolate(frame, [at("es", 1), at("es", 1) + 8], [0, 1], clamp)} />
-          <BigLine text="Es cómo lo editas" y={720} enter={at("es", 1)} size={128} color={B.green} />
-          <CapiHead expr="riendo" x={540} y={1180} size={420} enter={at("editas")} />
-        </SceneWrap>
-
-        {/* 7 · Cierre: Capi grabando y la marca */}
-        <SceneWrap from={S.cierre} to={durationInFrames + 10} dir={-1}>
-          <Img
-            src={staticFile("capi/grabando.png")}
-            style={{
-              position: "absolute",
-              left: 540 - 330,
-              top: 360,
-              width: 660,
-              height: 720,
-              objectFit: "contain",
-              transform: `translateY(${(1 - spring({ frame: frame - S.cierre, fps, config: { damping: 12, stiffness: 150 } })) * 500}px) rotate(${Math.sin(frame / 9) * 1.5}deg)`,
-              filter: "drop-shadow(0 30px 40px rgba(0,0,0,0.22))",
-              maskImage: "linear-gradient(to bottom, black 78%, transparent 94%)", WebkitMaskImage: "linear-gradient(to bottom, black 78%, transparent 94%)",
-            }}
-          />
-          <div style={{ position: "absolute", top: 1110, left: 0, right: 0, display: "flex", justifyContent: "center", opacity: interpolate(frame, [at("encargo"), at("encargo") + 8], [0, 1], clamp) }}>
-            <Wordmark size={120} />
-          </div>
-        </SceneWrap>
-
-        {/* Capi presentador: enorme en el gancho y luego en la esquina, hablando */}
-        {showHead ? (
-          <CapiHead
-            expr={expr}
-            x={interpolate(toCorner, [0, 1], [540, 880])}
-            y={interpolate(toCorner, [0, 1], [930, 400])}
-            size={interpolate(toCorner, [0, 1], [hookSize, 300])}
-            enter={0}
-          />
-        ) : null}
-
-        {/* Destello con separación de color al «engañar a tu cerebro» */}
-        {glitch ? (
-          <AbsoluteFill style={{ background: `linear-gradient(90deg, rgba(229,72,77,0.18), rgba(18,161,80,0.18), rgba(60,120,255,0.18))`, mixBlendMode: "multiply", transform: `translateX(${(random(`g${frame}`) - 0.5) * 40}px)` }} />
-        ) : null}
+      <AbsoluteFill style={{ backgroundImage: `radial-gradient(${B.green}26 2.2px, transparent 2.4px)`, backgroundSize: "56px 56px", backgroundPosition: `${off}px ${off}px` }} />
+      <AbsoluteFill style={{ background: `radial-gradient(circle at 50% 30%, ${B.green}${Math.round(punch * 50).toString(16).padStart(2, "0")}, transparent 60%)` }} />
+      <AbsoluteFill style={{ transform: `translate(${shake}px, ${shake * 0.5}px) scale(${1 + punch * 0.02})` }}>
+        <Screen />
+        <CapiOnStage />
       </AbsoluteFill>
-
-      {showCaptions ? <Captions pages={PAGES} mode="impacto" brand={BRAND} intensity="redes" fontsReady={fonts} icons={{}} /> : null}
+      <Captions />
     </AbsoluteFill>
   );
 };

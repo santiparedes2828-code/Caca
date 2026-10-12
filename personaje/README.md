@@ -58,3 +58,11 @@ de la casa.
 
 Pendiente: elegir la hoja de personaje, generar la voz (4 tomas) y animar a Capi (vídeo con IA a partir de la
 hoja; antes de generar se calcula y se enseña el coste).
+
+## Capi en 2D para vídeos (12-10-2026)
+
+Por petición del usuario, en los vídeos Capi es un personaje 2D vectorial de frente (`src/Capi/Capi2D.tsx`), no
+recortes de imagen: boca por visema (letra de la palabra que suena, abertura según la envolvente de la voz),
+parpadeo, cejas, mirada, inclinación y respiración. Primer vídeo: `CapiKuleshov` (el efecto Kuleshov), subtítulos en
+Inter Bold con la palabra clave en verde. Las imágenes nuevas del personaje se generan con Canva (ElevenLabs solo
+para voces).
