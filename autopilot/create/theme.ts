@@ -1,7 +1,8 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import type { z } from "zod";
-import { THEME_FONTS, themeSchema, type SFX_NAMES, type Theme } from "../../src/create/theme";
+import { THEME_FONTS, themeSchema, type Cues, type SFX_NAMES, type Theme } from "../../src/create/theme";
+import { chainTimeline, cueFrame, iconFrame, itemFrames, odometerDuration, sceneStartFrame, STEP, typingSchedule, valueFrame } from "../../src/create/timeline";
 import { ROOT } from "../config";
 import motivos from "./data/motivos-es.json";
 
@@ -46,6 +47,8 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "subrayado",
     motion: "suave",
     background: "degradado",
+    reveal: "mascara",
+    sceneTransition: "transforma",
   }),
   preset(["gimnasio", "gym", "entrenamiento", "entrenar", "musculo", "deporte", "futbol", "correr", "running", "fitness", "pesas", "rutina", "cardio"], ["flexed-biceps", "fire", "person-running"], {
     id: "deporte",
@@ -55,6 +58,7 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "caja",
     motion: "energico",
     background: "patron",
+    camera: "sigue",
   }),
   preset(["tecnologia", "inteligencia artificial", "ia", "app", "aplicacion", "software", "programacion", "codigo", "celular", "movil", "internet", "computadora", "ordenador", "robot", "chatgpt"], ["robot", "laptop", "high-voltage"], {
     id: "tecnologia",
@@ -64,6 +68,8 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "color",
     motion: "energico",
     background: "patron",
+    reveal: "mascara",
+    camera: "sigue",
   }),
   preset(["dinero", "ahorro", "ahorrar", "inversion", "invertir", "finanzas", "negocio", "ventas", "vender", "emprender", "emprendimiento", "empresa", "marketing", "cliente", "precio", "sueldo"], ["money-bag", "chart-increasing", "coin"], {
     id: "finanzas",
@@ -73,6 +79,8 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "subrayado",
     motion: "suave",
     background: "degradado",
+    reveal: "mascara",
+    sceneTransition: "transforma",
   }),
   preset(["belleza", "maquillaje", "piel", "skincare", "moda", "ropa", "cabello", "pelo", "unas", "perfume", "outfit"], ["lipstick", "sparkles", "dress"], {
     id: "belleza",
@@ -82,6 +90,8 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "color",
     motion: "suave",
     background: "burbujas",
+    reveal: "mascara",
+    sceneTransition: "transforma",
   }),
   preset(["viaje", "viajar", "playa", "vacaciones", "hotel", "avion", "vuelo", "montana", "turismo", "destino", "ciudad", "pais"], ["airplane", "beach-with-umbrella", "world-map"], {
     id: "viajes",
@@ -91,6 +101,7 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "caja",
     motion: "rebote",
     background: "burbujas",
+    camera: "sigue",
   }),
   preset(["planta", "plantas", "jardin", "bosque", "arbol", "naturaleza", "reciclaje", "reciclar", "ecologia", "clima", "medio ambiente", "flor", "semilla"], ["seedling", "deciduous-tree", "herb"], {
     id: "naturaleza",
@@ -100,6 +111,8 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "subrayado",
     motion: "suave",
     background: "patron",
+    reveal: "mascara",
+    sceneTransition: "transforma",
   }),
   preset(["perro", "gato", "mascota", "cachorro", "gatito", "veterinario", "animal", "animales"], ["dog-face", "cat-face", "paw-prints"], {
     id: "mascotas",
@@ -118,6 +131,7 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "color",
     motion: "energico",
     background: "burbujas",
+    camera: "sigue",
   }),
   preset(
     ["einstein", "newton", "tesla", "curie", "darwin", "hawking", "fisica", "quimica", "relatividad", "cientifico", "atomo", "universo", "espacio", "galaxia", "planeta", "estrella", "gravedad", "cuantica", "nasa", "astronauta", "nobel", "luz", "energia"],
@@ -141,7 +155,29 @@ export const THEME_PRESETS: Preset[] = [
     captionStyle: "caja",
     motion: "energico",
     background: "patron",
+    reveal: "mascara",
+    camera: "sigue",
   }),
+  // Editorial (estilo-animaciones.md): tutoriales de edición, animación y diseño. Va el último: en un empate gana
+  // el tema del contenido
+  preset(
+    ["animacion", "animaciones", "edicion", "editar", "editor", "diseno", "disenador", "tutorial", "consejo", "truco", "instruccion", "prompt", "claude", "creador"],
+    ["artist-palette", "clapper-board", "sparkles"],
+    {
+      id: "editorial",
+      name: "Editorial",
+      // Papel crema, tinta casi negra, naranja y verde salvia (estilo-animaciones.md)
+      palette: { bg: "#EFE8DC", bg2: "#E2D8C7", ink: "#1A1712", accent: "#E58A3A", onAccent: "#1A1712", accent2: "#7F9B7A", card: "#F9F5EC" },
+      font: "inter",
+      captionStyle: "caja",
+      motion: "suave",
+      background: "liso",
+      sceneTransition: "transforma",
+      reveal: "mascara",
+      camera: "sigue",
+      counter: "odometro",
+    },
+  ),
 ];
 
 export const GENERAL_PRESET: Preset = preset([], ["sparkles", "light-bulb", "fire"], {
@@ -152,6 +188,9 @@ export const GENERAL_PRESET: Preset = preset([], ["sparkles", "light-bulb", "fir
   captionStyle: "caja",
   motion: "energico",
   background: "burbujas",
+  reveal: "mascara",
+  camera: "sigue",
+  sceneTransition: "transforma",
 });
 
 export const presetById = (id: string) => [...THEME_PRESETS, GENERAL_PRESET].find((p) => p.theme.id === id) ?? null;
@@ -194,7 +233,10 @@ const tokens = (text: string) =>
 // Las instrucciones de producción («con música baja», «efectos de sonido», «subtítulos…», «duración…») no
 // cuentan para elegir el tema: describen el vídeo, no de qué trata
 export const stripProduction = (text: string) =>
-  text.replace(/(con |y )?(m[uú]sica|efectos? de sonido|subt[ií]tulos?|tipograf[ií]as?|duraci[oó]n)[^,.;\n]*/gi, " ");
+  text
+    .replace(/(con |y )?(m[uú]sica|efectos? de sonido|subt[ií]tulos?|tipograf[ií]as?|duraci[oó]n)[^,.;\n]*/gi, " ")
+    .replace(/(estilo |con |en )?(motion graphics?|animaciones avanzadas)/gi, " ")
+    .replace(/\bcon (muchas |varias )?animaciones\b/gi, " ");
 
 export const pickPreset = (text: string): Preset => {
   text = stripProduction(text);
@@ -253,6 +295,21 @@ const SINONIMOS: Record<string, string> = {
   luz: "light-bulb",
   energia: "high-voltage",
   estrella: "glowing-star",
+  // Redes y vídeo (lo que más sale en los guiones de los clientes)
+  vista: "eyes",
+  visita: "eyes",
+  seguidor: "busts-in-silhouette",
+  like: "red-heart",
+  comentario: "speech-balloon",
+  guarda: "bookmark",
+  guardar: "bookmark",
+  guion: "memo",
+  voz: "studio-microphone",
+  edicion: "clapper-board",
+  editar: "clapper-board",
+  animacion: "film-frames",
+  grabar: "movie-camera",
+  camara: "movie-camera",
 };
 const index = [
   ...(motivos as { entradas: Motif[] }).entradas,
@@ -265,7 +322,7 @@ const index = [
 
 // Puntuación de cada icono para un texto: nombre exacto > primera palabra del nombre > resto del nombre > etiquetas.
 // Los símbolos (grupo 8: formas, flechas, colores) cuentan poco para no confundir "naranja" con "círculo naranja".
-export const findIcons = (text: string, opts: { preferGroups?: number[]; max?: number } = {}) => {
+export const findIcons = (text: string, opts: { preferGroups?: number[]; max?: number; minScore?: number } = {}) => {
   const toks = tokens(text);
   if (!toks.length) return [];
   const scores = new Map<string, number>();
@@ -283,7 +340,7 @@ export const findIcons = (text: string, opts: { preferGroups?: number[]; max?: n
     scores.set(m.icon, Math.max(scores.get(m.icon) ?? 0, s));
   }
   return [...scores.entries()]
-    .filter(([, s]) => s >= 1.5)
+    .filter(([, s]) => s >= (opts.minScore ?? 1.5))
     .sort((a, b) => b[1] - a[1])
     .slice(0, opts.max ?? 5)
     .map(([icon]) => icon);
@@ -316,6 +373,8 @@ const POINTER = "backhand-index-pointing-down";
 const CHECK = "check-mark-button";
 
 type SceneIn = { text: string; accentWords: number[]; component: string; items: string[] };
+// Escenas cuyo protagonista es otro gráfico (sin icono grande)
+const NO_STICKER = new Set(["modelo", "cadena", "paso", "prompt"]);
 
 export const planTheme = (opts: { topic: string; scenes: SceneIn[]; presetId?: string | null }) => {
   const topic = stripProduction(opts.topic);
@@ -326,14 +385,19 @@ export const planTheme = (opts: { topic: string; scenes: SceneIn[]; presetId?: s
   let preset = byId ?? pickPreset(topic);
   if (!byId && preset.theme.id === "general") preset = pickPreset(all);
   const prefer = FOOD.includes(preset.theme.id) ? [4] : NATURE.includes(preset.theme.id) ? [3] : [];
-  const find = (t: string, max = 5) => findIcons(t, { preferGroups: prefer, max });
-  // Iconos del tema: lo que dice la idea primero, luego los del estilo
-  const topicIcons = find(topic, 3);
+  const find = (t: string, max = 5, minScore = 2) => findIcons(t, { preferGroups: prefer, max, minScore });
+  // Iconos del tema: lo que dice la idea primero, luego los del estilo. Para el texto entero solo valen
+  // coincidencias claras (el nombre del emoji), no palabras sueltas como «detrás» o «línea»
+  const topicIcons = find(topic, 3, 4);
   const bgIcons = [...new Set([...topicIcons, ...preset.icons])].slice(0, 3);
-  const fallback = [...new Set([...topicIcons, ...find(all, 3), ...preset.icons])];
+  const fallback = [...new Set([...topicIcons, ...find(all, 3, 4), ...preset.icons])];
   // 1) Escenas con coincidencias: manda la palabra destacada, luego el resto del texto, sin repetir seguido
   const picked: (string | null)[] = [];
   for (const s of opts.scenes) {
+    if (NO_STICKER.has(s.component)) {
+      picked.push(null);
+      continue;
+    }
     const words = s.text.split(" ");
     const accent = s.accentWords.map((i) => words[i]).join(" ");
     const cands = [...(accent ? find(accent) : []), ...find(s.text)];
@@ -342,15 +406,20 @@ export const planTheme = (opts: { topic: string; scenes: SceneIn[]; presetId?: s
   // 2) Escenas sin coincidencias: se alternan los iconos del tema, distintos de los vecinos
   let k = 0;
   for (let i = 0; i < picked.length; i++) {
-    if (picked[i]) continue;
+    if (picked[i] || NO_STICKER.has(opts.scenes[i].component)) continue;
     for (let tries = 0; tries < fallback.length && !picked[i]; tries++) {
       const c = fallback[k++ % fallback.length];
       if (c !== picked[i - 1] && c !== picked[i + 1]) picked[i] = c;
     }
   }
+  // Cadena: iconos solo si todos los bloques tienen uno (si no, todos llevan sus iniciales, como el «Aa»)
+  const chainIcons = (items: string[]) => {
+    const found = items.map((it) => find(it, 1)[0]);
+    return found.every(Boolean) ? (found as string[]) : [];
+  };
   const scenes = opts.scenes.map((s, i) => ({
     icon: picked[i],
-    itemIcons: s.component === "lista" ? s.items.map((it) => find(it, 1)[0] ?? CHECK) : [],
+    itemIcons: s.component === "lista" ? s.items.map((it) => find(it, 1)[0] ?? CHECK) : s.component === "cadena" ? chainIcons(s.items) : [],
   }));
   const pointerIcon = opts.scenes.some((s) => s.component === "cta") ? POINTER : null;
   const names = [...new Set([...bgIcons, ...scenes.flatMap((s) => [...(s.icon ? [s.icon] : []), ...s.itemIcons]), ...(pointerIcon ? [pointerIcon] : [])])];
@@ -359,20 +428,129 @@ export const planTheme = (opts: { topic: string; scenes: SceneIn[]; presetId?: s
   return { theme: preset.theme, bgIcons, scenes, pointerIcon, icons, credits: [`Iconos: ${ICON_CREDIT}`, `Fuente: ${font} · SIL Open Font License 1.1 (public/fonts/licencias)`] };
 };
 
+// ——— Animaciones (estilo-animaciones.md) ———
+// Se pueden pedir para cualquier tema: --animaciones mascara,camara,transforma,odometro | todas | ninguna
+export const ANIMACIONES = ["mascara", "camara", "transforma", "odometro"] as const;
+export type Animacion = (typeof ANIMACIONES)[number];
+
+export const parseAnimaciones = (value: string): Animacion[] | "ninguna" => {
+  const list = value
+    .split(",")
+    .map((x) => norm(x))
+    .filter(Boolean);
+  if (list.includes("ninguna")) return "ninguna";
+  if (list.includes("todas")) return [...ANIMACIONES];
+  const bad = list.filter((x) => !(ANIMACIONES as readonly string[]).includes(x));
+  if (bad.length) throw new Error(`Animación desconocida: ${bad.join(", ")} (válidas: ${ANIMACIONES.join(", ")}, todas, ninguna)`);
+  return list as Animacion[];
+};
+
+export const applyAnimations = (theme: Theme, a: Animacion[] | "ninguna" | null | undefined): Theme => {
+  if (!a) return theme;
+  if (a === "ninguna") {
+    return { ...theme, reveal: "salto", camera: "empuje", counter: "cuenta", sceneTransition: theme.sceneTransition === "transforma" ? "barrido" : theme.sceneTransition };
+  }
+  return themeSchema.parse({
+    ...theme,
+    ...(a.includes("mascara") ? { reveal: "mascara" } : {}),
+    ...(a.includes("camara") ? { camera: "sigue" } : {}),
+    ...(a.includes("transforma") ? { sceneTransition: "transforma" } : {}),
+    ...(a.includes("odometro") ? { counter: "odometro" } : {}),
+  });
+};
+
+// ——— Sincronía con la voz ———
+// Para cada escena, la palabra (índice en los subtítulos) en que se nombra cada pieza: el icono, cada elemento
+// de una lista o una cadena y la cifra o la palabra del CTA. La composición los hace entrar en ese momento.
+
+const UNIDADES = "cero uno dos tres cuatro cinco seis siete ocho nueve diez once doce trece catorce quince dieciseis diecisiete dieciocho diecinueve veinte veintiuno veintidos veintitres veinticuatro veinticinco veintiseis veintisiete veintiocho veintinueve".split(" ");
+const DECENAS = ["", "", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"];
+const CENTENAS = ["", "ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
+// Primera palabra con la que se dice un número en español ("1000" → "mil", "35" → "treinta", "2500" → "dos")
+export const firstNumberWord = (n: number): string => {
+  if (n < 30) return UNIDADES[n];
+  if (n < 100) return DECENAS[Math.floor(n / 10)];
+  if (n === 100) return "cien";
+  if (n < 1000) return CENTENAS[Math.floor(n / 100)];
+  if (n < 2000) return "mil";
+  if (n < 1_000_000) return firstNumberWord(Math.floor(n / 1000));
+  if (n < 2_000_000) return "un";
+  return firstNumberWord(Math.floor(n / 1_000_000));
+};
+
+type CueScene = { from: number; to: number; accent: [number, number] | null; component: string; items: string[]; label: string; value: string };
+
+const wordKeys = (w: string) => {
+  const n = norm(w).replace(/ /g, "");
+  return new Set([n, stem(n)]);
+};
+
+export const planCues = (caps: { text: string }[], scenes: CueScene[], icons: (string | null)[]): Cues[] =>
+  scenes.map((s, k) => {
+    const range = Array.from({ length: s.to - s.from + 1 }, (_, i) => s.from + i);
+    const keys = range.map((i) => wordKeys(caps[i].text));
+    const findWord = (cands: string[], after = -1) => {
+      const want = cands.flatMap((c) => [...wordKeys(c)]).filter(Boolean);
+      const j = range.findIndex((i, n) => i > after && want.some((x) => keys[n].has(x)));
+      return j < 0 ? null : range[j];
+    };
+    // Icono: la palabra que lo trae; si es un icono del tema (no sale de ninguna palabra), entra con la escena
+    const icon = icons[k];
+    const iconCue = icon ? (range.find((i) => findIcons(caps[i].text, { max: 8 }).includes(icon)) ?? null) : null;
+    // Elementos, en orden: por su nombre completo o por sus palabras
+    const items: (number | null)[] = [];
+    let after = -1;
+    for (const it of s.items) {
+      const c = findWord([it.replace(/\s+/g, ""), ...tokens(it), ...it.split(/\s+/)], after);
+      items.push(c);
+      if (c !== null) after = c;
+    }
+    // Cifra: el número escrito con dígitos o en palabras (o su etiqueta); CTA: su palabra
+    let value: number | null = null;
+    if (s.component === "cifra" && s.value) {
+      const digits = s.value.replace(/[^\d]/g, "");
+      const n = digits ? Number(digits) : NaN;
+      value = findWord([digits, ...(Number.isFinite(n) && n <= 1e9 ? [firstNumberWord(n)] : [])].filter(Boolean)) ?? (s.label ? findWord(tokens(s.label)) : null);
+    }
+    if (s.component === "cta" && s.value) value = findWord([s.value]);
+    return { icon: iconCue, value, items };
+  });
+
 // ——— Efectos de sonido ———
-// Propios del proyecto (public/sfx, sintetizados con ffmpeg). Suaves: acompañan sin tapar la voz.
-type SceneTiming = { from: number; to: number; accent: [number, number] | null; component: string; items: string[] };
-export const planSfx = (scenes: SceneTiming[], caps: { startMs: number }[], fps: number, theme: Theme) => {
-  const f = (ms: number) => Math.max(0, Math.round((ms / 1000) * fps));
+// Propios del proyecto (public/sfx, sintetizados con ffmpeg). Suaves: acompañan sin tapar la voz. Usan los mismos
+// tiempos que la composición (src/create/timeline.ts): cada golpe suena cuando se ve.
+type SceneTiming = { from: number; to: number; accent: [number, number] | null; component: string; items: string[]; value: string; body: string; icon: string | null; cues: Cues };
+export const planSfx = (scenes: SceneTiming[], caps: { startMs: number }[], fps: number, theme: Theme, endFrame: number) => {
   const ev: { name: (typeof SFX_NAMES)[number]; frame: number; volume: number }[] = [];
+  const add = (name: (typeof SFX_NAMES)[number], frame: number, volume: number) => ev.push({ name, frame: Math.max(0, Math.round(frame)), volume });
+  const starts = scenes.map((s) => sceneStartFrame(caps[s.from].startMs, fps));
+  const morph = theme.sceneTransition === "transforma";
   scenes.forEach((s, k) => {
-    const start = Math.max(0, f(caps[s.from].startMs) - 4);
-    if (k > 0 && theme.motion !== "suave") ev.push({ name: "whoosh", frame: Math.max(0, start - 6), volume: 0.3 });
-    if (s.component === "modelo" || s.component === "cifra") ev.push({ name: "hit", frame: start + 6, volume: 0.26 });
-    else ev.push({ name: "pop", frame: start + 2, volume: 0.2 });
-    if (s.accent) ev.push({ name: theme.captionStyle === "brillo" ? "brillo" : "click", frame: f(caps[s.accent[0]].startMs), volume: 0.28 });
-    if (s.component === "lista") s.items.forEach((_, i) => ev.push({ name: "click", frame: start + 10 + i * 7, volume: 0.24 }));
-    if (s.component === "cta") ev.push({ name: "pop", frame: start + 10, volume: 0.28 });
+    const start = starts[k];
+    const end = k + 1 < scenes.length ? starts[k + 1] : endFrame;
+    const cue = (i: number | null | undefined) => cueFrame(caps, i, fps);
+    if (k > 0 && (morph || theme.motion !== "suave")) add("whoosh", start - (morph ? 9 : 6), 0.3);
+    const itemCues = s.items.map((_, i) => cue(s.cues.items[i]));
+    if (s.component === "cifra") {
+      const at = valueFrame(start, cue(s.cues.value));
+      add("hit", at + 2, 0.26);
+      // Odómetro: tic-tac mientras ruedan los dígitos
+      if (theme.counter === "odometro" && /\d/.test(s.value)) {
+        const dur = odometerDuration(Math.max(0, s.value.replace(/[^\d]/g, "").length - 1));
+        for (let t = 3; t < dur; t += 3) add("click", at + t, 0.1);
+      }
+    } else if (s.component === "modelo") add("hit", start + 6, 0.26);
+    else if (s.component === "paso") add("pop", start + 2 + STEP.box, 0.26);
+    else if (s.component === "prompt") add("click", typingSchedule(start, end, s.body.replace(/\*/g, "").length).send, 0.3);
+    else if (s.component === "cadena" && s.items.length >= 2) {
+      const tl = chainTimeline(start + 8, itemCues, s.items.length);
+      add("whoosh", tl.tIn, 0.16);
+      for (let i = 1; i < s.items.length; i++) add("hit", tl.hits[i], 0.24);
+      add("pop", tl.action, 0.3);
+    } else add("pop", s.icon ? iconFrame(start, cue(s.cues.icon)) : start + 2, 0.2);
+    if (s.accent) add(theme.captionStyle === "brillo" ? "brillo" : "click", cueFrame(caps, s.accent[0], fps)!, 0.28);
+    if (s.component === "lista") itemFrames(start, itemCues, s.items.length).forEach((t) => add("click", t, 0.24));
+    if (s.component === "cta") add("pop", valueFrame(start, cue(s.cues.value)), 0.28);
   });
   return ev.sort((a, b) => a.frame - b.frame);
 };

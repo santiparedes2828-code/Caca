@@ -76,3 +76,26 @@ test("ciencia con modelos animados, palabras que brillan, efectos de sonido y cl
   assert.ok(pr.audio, "los efectos de sonido van en la pista de audio");
   assert.match(await fs.readFile(path.join(dir, "output", "informe.md"), "utf8"), /EB Garamond Bold Italic/);
 });
+
+test("animaciones de estilo-animaciones.md: paso, tarjeta que escribe, cadena y odómetro, sincronizados con el texto", async () => {
+  const cfg = cfgFor("animaciones");
+  const script = path.join(tmp, "animaciones.txt");
+  await fs.writeFile(
+    script,
+    "[paso: Una idea por escena]\nPrimero, una sola idea por escena.\n\n[prompt: Revela el texto desde una *máscara*. | Claude]\nPídeselo así.\n\n" +
+      "[cadena: Guion | Voz | Vídeo]\nEl guion empuja a la voz y la voz al vídeo.\n\n[cifra: vistas | 1.000]\nComo estas mil vistas.\n",
+  );
+  const job = await submitCreation(cfg, { clientId: "hookhouse", script, preset: "editorial", silent: true, sfx: true });
+  assert.ok(["completado", "requiere_revision"].includes(job.status), JSON.stringify(job.errors));
+  const dir = jobDir(cfg, "hookhouse", job.id);
+  const props = JSON.parse(await fs.readFile(path.join(dir, "work", "create-props.json"), "utf8"));
+  assert.equal(props.theme.id, "editorial");
+  assert.deepEqual(props.scenes.map((s: { component: string }) => s.component), ["paso", "prompt", "cadena", "cifra"]);
+  // Sincronía con la voz: los bloques y la cifra apuntan a las palabras que los nombran
+  assert.deepEqual(props.scenes[2].cues.items.map((i: number) => props.captions[i].text.replace(/[^\p{L}]/gu, "")), ["guion", "voz", "vídeo"]);
+  assert.equal(props.captions[props.scenes[3].cues.value].text, "mil");
+  assert.ok(props.sfx.filter((e: { name: string }) => e.name === "hit").length >= 3, "golpes de la cadena y de la cifra");
+  const pr = await probe(path.join(dir, job.outputs.find((o) => o.kind === "video")!.path));
+  assert.ok(pr.audio, "los efectos de sonido van en la pista de audio");
+  assert.match(await fs.readFile(path.join(dir, "output", "informe.md"), "utf8"), /animaciones: máscara, cámara que sigue, transformación, odómetro/);
+});

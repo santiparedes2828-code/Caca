@@ -3,7 +3,7 @@ import { z } from "zod";
 // Contrato de la composición de creación (vídeo hecho desde un guion con narración).
 // El backend valida estas props; la IA nunca genera código, solo datos de este esquema.
 
-export const SCENE_COMPONENTS = ["titular", "lista", "cifra", "cta", "modelo"] as const;
+export const SCENE_COMPONENTS = ["titular", "lista", "cifra", "cta", "modelo", "cadena", "paso", "prompt"] as const;
 // Modelos animados (motion graphics hechos con código) para la escena [modelo: …]
 export const MODELS = ["atomo", "luz", "formula", "espaciotiempo"] as const;
 
@@ -12,9 +12,10 @@ export const sceneSchema = z.object({
   to: z.number().int().min(0), // índice de la última
   accent: z.tuple([z.number().int(), z.number().int()]).nullable(), // palabras en serif verde
   component: z.enum(SCENE_COMPONENTS),
-  items: z.array(z.string().min(1).max(24)).max(4).default([]), // lista A/B/C
-  label: z.string().max(40).default(""), // cifra: etiqueta | modelo: cuál (MODELS)
-  value: z.string().max(12).default(""), // cifra: valor | cta: palabra | modelo formula: la fórmula
+  items: z.array(z.string().min(1).max(24)).max(4).default([]), // lista A/B/C | cadena: los bloques que se empujan
+  label: z.string().max(40).default(""), // cifra: etiqueta | modelo: cuál (MODELS) | paso: título | prompt: nombre de la tarjeta
+  value: z.string().max(12).default(""), // cifra: valor | cta: palabra | modelo formula: la fórmula | paso: "n/total"
+  body: z.string().max(160).default(""), // prompt: el texto que se escribe (*clave* destacada) | paso: palabra del contador
 });
 export type Scene = z.infer<typeof sceneSchema>;
 

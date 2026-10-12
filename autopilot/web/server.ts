@@ -8,6 +8,7 @@ import { pipeline } from "node:stream/promises";
 import { listClients, loadProfile } from "../clients/profile";
 import { ROOT, type Config } from "../config";
 import { submitCreation } from "../create/run";
+import { parseAnimaciones } from "../create/theme";
 import { jobDir, listJobs, loadJob, requestCancel, saveJob } from "../jobs/store";
 import { jobOverridesSchema, type Job, type JobOverrides } from "../jobs/types";
 import { submitJob } from "../pipeline/run";
@@ -284,6 +285,7 @@ export const createWebServer = (cfg: Config, opts: { worker?: boolean } = {}) =>
             label: up.fields.label ?? "",
             silent: up.fields.silent === "true",
             style: up.fields.style === "tema" || up.fields.style === "marca" ? up.fields.style : "auto",
+            animations: up.fields.animations === "todas" || up.fields.animations === "ninguna" ? parseAnimaciones(up.fields.animations) : null,
           },
           { run: false },
         );

@@ -95,11 +95,12 @@ test("tema de ciencia para Einstein aunque el pedido hable de música, efectos y
 test("efectos de sonido: transición, entrada, brillo en la palabra clave y nada antes del inicio", () => {
   const plan = planTheme({ topic: "Albert Einstein", scenes: parseScript("Ganó el *Nobel*.\n\n[modelo: atomo]\nPublicó cuatro artículos.") });
   const caps = [0, 400, 900, 1400, 1900, 2400].map((ms) => ({ startMs: ms }));
+  const none = { icon: null, value: null, items: [] };
   const scenes = [
-    { from: 0, to: 2, accent: [2, 2] as [number, number], component: "titular", items: [] },
-    { from: 3, to: 5, accent: null, component: "modelo", items: [] },
+    { from: 0, to: 2, accent: [2, 2] as [number, number], component: "titular", items: [], value: "", body: "", icon: "trophy", cues: { ...none, icon: 2 } },
+    { from: 3, to: 5, accent: null, component: "modelo", items: [], value: "", body: "", icon: null, cues: none },
   ];
-  const ev = planSfx(scenes, caps, 30, plan.theme);
+  const ev = planSfx(scenes, caps, 30, plan.theme, 120);
   const names = ev.map((e) => e.name);
   for (const n of ["pop", "brillo", "whoosh", "hit"]) assert.ok(names.includes(n as never), n);
   assert.ok(ev.every((e) => e.frame >= 0 && e.volume > 0 && e.volume <= 0.4));

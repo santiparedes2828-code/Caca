@@ -23,7 +23,7 @@ import { readJson, writeJsonAtomic, writeTextAtomic } from "../util/fs";
 import { createLogger, redact } from "../util/log";
 import { themedPropsSchema, type ThemedProps } from "../../src/create/theme";
 import { alignScript, parseScript, readingTimings, scriptFromBrief, scriptText } from "./script";
-import { planSfx, planTheme, presetById, resolveStyle, type Style } from "./theme";
+import { type Animacion, applyAnimations, planCues, planSfx, planTheme, presetById, resolveStyle, type Style } from "./theme";
 
 // Creación desde cero (Etapa 5): guion (archivo o brief con Claude) → narración con la voz de marca
 // (ElevenLabs, o un audio propio con sus tiempos) → escenas con componentes validados → render → QC.
@@ -44,6 +44,7 @@ export type CreationRequest = {
   sfx?: boolean; // efectos de sonido propios (whoosh, pop, brillo…) en los vídeos con tema
   accentFont?: "inter" | "garamond"; // palabras clave: Inter salvo excepción pedida (src/design/excepciones.ts)
   accentScale?: number; // tamaño de las palabras clave respecto al resto (1 = igual)
+  animations?: Animacion[] | "ninguna" | null; // máscara, cámara que sigue, transformación, odómetro (estilo-animaciones.md)
 };
 
 const LOGO_SECONDS = 1.5;
@@ -80,6 +81,7 @@ export const submitCreation = async (cfg: Config, req: CreationRequest, opts: { 
       sfx: !!req.sfx,
       accentFont: req.accentFont ?? "inter",
       accentScale: req.accentScale ?? 1,
+      animations: req.animations ?? null,
     });
     job.steps.ingest = { status: "hecho", finishedAt: new Date().toISOString() };
     job.status = "recibido";
@@ -119,6 +121,7 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
       sfx?: boolean;
       accentFont?: "inter" | "garamond";
       accentScale?: number;
+      animations?: Animacion[] | "ninguna" | null;
     }>(W("creacion.json"));
     job.attempts++;
     job.costs = { real: [], estimated: [] };
@@ -204,7 +207,7 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
       const acc = s.accentWords.length ? al.map[offset + s.accentWords[0]] : null;
       const accEnd = s.accentWords.length ? al.map[offset + s.accentWords[s.accentWords.length - 1]] : null;
       offset += n;
-      return { from, to, accent: acc === null ? null : [acc, Math.max(acc, accEnd!)], component: s.component, items: s.items, label: s.label, value: s.value };
+      return { from, to, accent: acc === null ? null : [acc, Math.max(acc, accEnd!)], component: s.component, items: s.items, label: s.label, value: s.value, body: s.body };
     });
     // Estilo: identidad de la marca del cliente, o tema según el contenido (motion graphics)
     const brief = await fs.readFile(path.join(dir, "input", "original", "brief.txt"), "utf8").catch(() => "");
@@ -231,27 +234,33 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
     } else {
       compositionId = "AutopilotTheme";
       const plan = planTheme({ topic: brief || scriptText(scenes), scenes, presetId: meta.preset ?? null });
+      // Animaciones pedidas para este vídeo (si no, las del tema)
+      const theme = applyAnimations(plan.theme, meta.animations);
       // Sin logo al final: la última escena (normalmente la llamada a la acción) se queda un momento
       durationInFrames = Math.ceil((lastMs / 1000 + (endMs ? 0.4 : 0.8)) * fps);
+      // Sincronía con la voz: cada pieza entra en la palabra que la nombra
+      const cues = planCues(caps, sceneProps, plan.scenes.map((x) => x.icon));
+      const themedScenes = sceneProps.map((s, k) => ({ ...s, icon: plan.scenes[k].icon, itemIcons: plan.scenes[k].itemIcons, cues: cues[k] }));
       props = themedPropsSchema.parse({
         fps,
         durationInFrames,
         audioSrc: audioFile ? `job:${path.basename(audioFile)}` : null,
         captions: caps,
-        scenes: sceneProps.map((s, k) => ({ ...s, icon: plan.scenes[k].icon, itemIcons: plan.scenes[k].itemIcons })),
+        scenes: themedScenes,
         headerLabel: meta.label,
-        theme: plan.theme,
+        theme,
         icons: plan.icons,
         bgIcons: plan.bgIcons,
         pointerIcon: plan.pointerIcon,
         accentFont: meta.accentFont ?? "inter",
         accentScale: meta.accentScale ?? 1,
-        sfx: meta.sfx ? planSfx(sceneProps, caps, fps, plan.theme) : [],
+        sfx: meta.sfx ? planSfx(themedScenes, caps, fps, theme, durationInFrames) : [],
       });
       credits.push(...plan.credits);
       if (meta.sfx) credits.push("Efectos de sonido: propios del proyecto (public/sfx, sintetizados con ffmpeg)");
       if (meta.accentFont === "garamond") credits.push("Palabras clave: EB Garamond Bold Italic · SIL Open Font License 1.1 (excepción pedida; public/fonts/excepciones)");
-      styleNote = `tema ${plan.theme.name} · iconos ${[...new Set(plan.scenes.map((s) => s.icon).filter(Boolean))].join(", ")}`;
+      const anim = [theme.reveal === "mascara" && "máscara", theme.camera === "sigue" && "cámara que sigue", theme.sceneTransition === "transforma" && "transformación", theme.counter === "odometro" && "odómetro"].filter(Boolean);
+      styleNote = `tema ${plan.theme.name} · iconos ${[...new Set(plan.scenes.map((s) => s.icon).filter(Boolean))].join(", ")}${anim.length ? ` · animaciones: ${anim.join(", ")}` : ""}`;
     }
     await writeJsonAtomic(W("create-props.json"), { ...props, ...("icons" in props ? { icons: Object.keys(props.icons) } : {}) });
     const pages: CaptionPage[] = sceneProps.map((s) => ({

@@ -19,7 +19,7 @@ los tokens, dejar este archivo para continuar.
 | 2 Material del cliente | ✅ hecha | Transcripción ElevenLabs, caras, cortes de silencio, escenas, ruido básico |
 | 3 Edición inteligente | ✅ hecha (básica) | Análisis editorial local, clips, versiones cortas, B-roll y música con licencia, Claude opcional, aprobación del plan |
 | 4 ElevenLabs narración | ✅ hecha (básica) | `autopilot/narration/tts.ts`; probada con API simulada (la real está bloqueada aquí) |
-| 5 Creación desde cero | ✅ hecha (básica) | `autopilot/create/`; `AutopilotTheme` (tema según el contenido, motion graphics) y `AutopilotCreate` (identidad de marca); e2e en `tests/e2e/create.test.ts` |
+| 5 Creación desde cero | ✅ hecha (básica) | `autopilot/create/`; `AutopilotTheme` (tema según el contenido, motion graphics, animaciones de `estilo-animaciones.md`) y `AutopilotCreate` (identidad de marca); e2e en `tests/e2e/create.test.ts` |
 | 6 Automatización | ✅ hecha (básica) | `autopilot/queue/queue.ts`: cola en disco, trabajador, reintentos, recuperación, pausa, lotes, costes |
 | 7 Interfaz y clientes | ✅ hecha (básica) | `autopilot/web/` (servidor, auth scrypt, CSRF, aislamiento) + `web/` (HTML/CSS/JS) |
 
@@ -53,6 +53,14 @@ Artefacto anclado en la barra lateral del usuario: https://claude.ai/artifact/Q3
   `/root/.claude/uploads/c892ae03-04bd-5098-be1f-897ddb43dfb6/c041153d-v09044g40000cnh24lfog65pm4j8q750.mp4`.
 
 ## Registro (lo último arriba)
+
+- 2026-10-12: el usuario pidió llevar a la base las animaciones de un TikTok de referencia (@samunoz.ia, «5
+  instrucciones»; solo estudio local en `analisis4/`, ignorado por Git). Análisis en `estilo-animaciones.md`. Hecho:
+  máscara de texto (`reveal`), cámara que sigue (`camera`), objeto que se transforma (`sceneTransition:
+  "transforma"`), odómetro (`counter`), sincronía con la voz (`cues` por escena, siempre), escenas `[paso]`,
+  `[prompt]` y `[cadena]`, tema «editorial» y `--animaciones`. Código: `src/create/animaciones.tsx`,
+  `src/create/timeline.ts` (tiempos compartidos con los efectos de sonido). Demo sin voz revisada fotograma a
+  fotograma. Pendiente: aro/visor que sigue la cara en la edición (motor A) si el usuario lo quiere.
 
 - 2026-10-12: reel de Einstein desde el panel (25 s, APROBADO): base ampliada con modelos animados
   (`[modelo: …]`), tema «ciencia» (estrellas, brillo, destellos, zoom), efectos de sonido (`--efectos`) y

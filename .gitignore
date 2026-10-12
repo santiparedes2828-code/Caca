@@ -26,3 +26,6 @@ inbox/
 !.env.example
 .venv/
 __pycache__/
+
+# Referencia de un tercero (@samunoz.ia): solo estudio local, nunca a Git
+analisis4/

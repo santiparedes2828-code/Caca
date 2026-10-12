@@ -33,14 +33,32 @@ export const themeSchema = z.object({
   font: z.enum(FONT_KEYS),
   captionStyle: z.enum(["caja", "color", "subrayado", "brillo"]), // cómo se destacan las palabras (brillo = resplandor)
   motion: z.enum(["suave", "rebote", "energico"]),
-  background: z.enum(["burbujas", "patron", "degradado", "estrellas"]),
-  sceneTransition: z.enum(["barrido", "destello"]).default("barrido"), // entre escenas (suave: ninguna)
+  background: z.enum(["burbujas", "patron", "degradado", "estrellas", "liso"]),
+  // Entre escenas. barrido/destello no se usan con movimiento suave; transforma: el icono de la escena crece hasta
+  // ser la pantalla y se recoge en el de la siguiente (estilo-animaciones.md)
+  sceneTransition: z.enum(["barrido", "destello", "transforma"]).default("barrido"),
+  // Cómo entran las palabras del titular: salto (suben con muelle) o mascara (suben desde detrás de una regla)
+  reveal: z.enum(["salto", "mascara"]).default("salto"),
+  // Cámara: empuje (acercamiento lento) o sigue (acompaña la palabra que suena, el bloque empujado, la tarjeta nueva)
+  camera: z.enum(["empuje", "sigue"]).default("empuje"),
+  // Cifras: odometro (los dígitos ruedan dentro de una máscara) o cuenta (de 0 al valor)
+  counter: z.enum(["cuenta", "odometro"]).default("odometro"),
 });
 export type Theme = z.infer<typeof themeSchema>;
 
+// Sincronía con la voz: índice (en captions) de la palabra en que se nombra cada cosa; la pieza entra en ese momento.
+// null = no se nombra (entra a su ritmo).
+export const cuesSchema = z.object({
+  icon: z.number().int().min(0).nullable(), // palabra que eligió el icono de la escena
+  value: z.number().int().min(0).nullable(), // cifra o palabra del CTA
+  items: z.array(z.number().int().min(0).nullable()).max(4), // elementos de la lista o de la cadena
+});
+export type Cues = z.infer<typeof cuesSchema>;
+
 export const themedSceneSchema = sceneSchema.extend({
   icon: iconName.nullable().default(null), // icono grande de la escena
-  itemIcons: z.array(iconName).max(4).default([]), // iconos de los elementos de una lista
+  itemIcons: z.array(iconName).max(4).default([]), // iconos de los elementos de una lista o una cadena
+  cues: cuesSchema.default({ icon: null, value: null, items: [] }),
 });
 export type ThemedScene = z.infer<typeof themedSceneSchema>;
 
@@ -74,6 +92,11 @@ export const themedPropsSchema = createPropsSchema
     for (const s of p.scenes) {
       if (s.to >= p.captions.length || s.from > s.to) ctx.addIssue({ code: "custom", message: "Escena fuera de los subtítulos" });
       if (s.component === "modelo" && !(MODELS as readonly string[]).includes(s.label)) ctx.addIssue({ code: "custom", message: `Modelo desconocido: ${s.label}` });
+      if (s.component === "cadena" && (s.items.length < 2 || s.items.length > 4)) ctx.addIssue({ code: "custom", message: "Una cadena lleva de 2 a 4 bloques" });
+      if (s.component === "paso" && !s.label) ctx.addIssue({ code: "custom", message: "Un paso necesita título" });
+      if (s.component === "prompt" && !s.body) ctx.addIssue({ code: "custom", message: "La tarjeta [prompt] necesita el texto que se escribe" });
+      const cues = [s.cues.icon, s.cues.value, ...s.cues.items].filter((c): c is number => c !== null);
+      if (cues.some((c) => c < s.from || c > s.to)) ctx.addIssue({ code: "custom", message: "Una sincronía apunta a una palabra fuera de su escena" });
     }
   });
 export type ThemedProps = z.infer<typeof themedPropsSchema>;

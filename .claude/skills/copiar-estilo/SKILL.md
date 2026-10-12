@@ -51,7 +51,9 @@ bash .claude/skills/copiar-estilo/scripts/analizar_referencia.sh analisis/refere
 
 ### Montaje (ambos modos)
 
-Reutiliza `src/Promo/` como base (copia la carpeta con otro nombre para un vídeo nuevo):
+Para vídeos que puede hacer el pipeline (`npm run autopilot -- crear`), usa la base: temas, `[paso]`, `[prompt]`, `[cadena]`, máscara de texto, cámara que sigue, transformación y odómetro (ver `estilo-animaciones.md`). Si la referencia trae una animación que la base no tiene, añádela allí (componente en `src/create/`, tiempos en `src/create/timeline.ts`) en vez de hacer una composición suelta.
+
+Para un vídeo a medida, reutiliza `src/Promo/` como base (copia la carpeta con otro nombre para un vídeo nuevo):
 
 | Archivo | Qué hay |
 |---|---|

@@ -18,9 +18,21 @@ import { MODELS, SCENE_COMPONENTS } from "../../src/create/props";
 //   [modelo: formula | E=mc²]
 //   La ecuación más famosa de la historia.
 //
+//   [paso: Máscara de texto]
+//   Primero, que el texto aparezca desde un borde.
+//
+//   [prompt: Revela el texto desde una *máscara*. | Claude]
+//   Pídeselo así.
+//
+//   [cadena: Guion | Voz | Vídeo]
+//   El guion empuja a la voz y la voz al vídeo.
+//
 // Bloques separados por una línea en blanco. La primera línea entre corchetes (opcional) elige el
 // componente; *palabras entre asteriscos* van destacadas. Sin corchetes: titular. [modelo: atomo|luz|formula|espaciotiempo]
-// pone un modelo animado en vez del icono (formula admite el texto: [modelo: formula | E=mc²]).
+// pone un modelo animado en vez del icono (formula admite el texto: [modelo: formula | E=mc²]). [paso: Título]
+// numera solo («PASO 1 DE 5»; [paso: Título | Instrucción] cambia la palabra del contador). [prompt: texto | Nombre]
+// escribe el texto en una tarjeta de chat. [cadena: A | B | C] son bloques que entran y se empujan (2 a 4).
+// Ver estilo-animaciones.md.
 
 export type ScriptScene = {
   text: string; // texto que se narra (sin asteriscos)
@@ -29,6 +41,7 @@ export type ScriptScene = {
   items: string[];
   label: string;
   value: string;
+  body: string;
 };
 
 const MAX_WORDS = 14; // más palabras no caben en el titular a buen tamaño
@@ -46,6 +59,7 @@ export const parseScript = (src: string): ScriptScene[] => {
     let items: string[] = [];
     let label = "";
     let value = "";
+    let body = "";
     const m = lines[0].match(/^\[(\w+)\s*(?::\s*(.*))?\]$/);
     if (m) {
       lines.shift();
@@ -60,6 +74,21 @@ export const parseScript = (src: string): ScriptScene[] => {
         [label = "", value = ""] = args;
         if (!(MODELS as readonly string[]).includes(label)) throw new Error(`Modelo desconocido en el guion: [modelo: ${label}] (válidos: ${MODELS.join(", ")})`);
       }
+      if (component === "cadena") {
+        items = args;
+        if (items.length < 2 || items.length > 4) throw new Error(`Una cadena lleva de 2 a 4 bloques: [cadena: ${m[2] ?? ""}]`);
+      }
+      if (component === "paso") {
+        [label = "", body = ""] = args;
+        if (!label) throw new Error("Falta el título del paso: [paso: Título]");
+      }
+      if (component === "prompt") {
+        [body = "", label = ""] = args;
+        if (!body) throw new Error("Falta el texto de la tarjeta: [prompt: texto | Nombre]");
+      }
+      if (items.some((it) => it.length > 24)) throw new Error(`Cada elemento admite 24 caracteres como máximo: [${m[1]}: ${m[2]}]`);
+      if (label.length > 40) throw new Error(`Texto demasiado largo (máx. 40 caracteres): ${label}`);
+      if (body.length > 160) throw new Error("El texto de la tarjeta admite 160 caracteres como máximo");
     }
     const raw = lines.join(" ").replace(/\s+/g, " ").trim();
     if (!raw) throw new Error("Hay un bloque del guion sin texto que narrar");
@@ -82,15 +111,18 @@ export const parseScript = (src: string): ScriptScene[] => {
       if (last && last.length + c.length <= MAX_WORDS) last.push(...c);
       else merged.push([...c]);
     }
+    // El número de paso y la tarjeta que escribe abren el bloque; los demás gráficos van en la última parte
+    const at = component === "paso" || component === "prompt" ? 0 : merged.length - 1;
     merged.forEach((c, k) => {
-      const lastPart = k === merged.length - 1;
+      const here = k === at;
       scenes.push({
         text: c.map((t) => t.replace(/\*/g, "")).join(" "),
         accentWords: c.flatMap((t, i) => (t.includes("*") ? [i] : [])),
-        component: lastPart ? component : "titular",
-        items: lastPart ? items : [],
-        label: lastPart ? label : "",
-        value: lastPart ? value : "",
+        component: here ? component : "titular",
+        items: here ? items : [],
+        label: here ? label : "",
+        value: here ? value : "",
+        body: here ? body : "",
       });
     });
   }
@@ -158,6 +190,7 @@ const genSchema = z.object({
       items: z.array(z.string()),
       label: z.string(),
       value: z.string(),
+      body: z.string(),
     }),
   ),
   claims_to_verify: z.array(z.string()),
@@ -183,7 +216,9 @@ export const scriptFromBrief = async (opts: {
       "directas, una idea por escena, gancho en la primera escena y llamada a la acción al final. No inventes datos, cifras " +
       "ni testimonios que no estén en el brief: si hace falta una cifra que no tienes, no la pongas. " +
       `Componentes por escena: titular (solo texto), lista (2-3 items de 1-2 palabras en items), cifra (label + value cortos), cta (value = una palabra), ` +
-      `modelo (label = ${MODELS.join("|")}; value = la fórmula si label es formula). ` +
+      `modelo (label = ${MODELS.join("|")}; value = la fórmula si label es formula), ` +
+      "cadena (2-4 items de 1-2 palabras que se empujan en orden: causa → efecto), paso (label = título corto de un paso de una " +
+      "lista numerada), prompt (body = una instrucción corta que se escribe en una tarjeta de chat; label = a quién se escribe). " +
       "accent es una palabra de text que irá destacada.",
     messages: [
       { role: "user", content: `Tipo: ${opts.type}. Duración aproximada: ${opts.seconds} s (unas ${Math.round(opts.seconds * 2.4)} palabras).\nBrief:\n${opts.brief}` },
@@ -204,7 +239,13 @@ export const scriptFromBrief = async (opts: {
               ? `[cta: ${s.value}]\n`
               : s.component === "modelo" && (MODELS as readonly string[]).includes(s.label)
                 ? `[modelo: ${s.label}${s.value ? ` | ${s.value}` : ""}]\n`
-                : "";
+                : s.component === "cadena" && s.items.length >= 2
+                  ? `[cadena: ${s.items.slice(0, 4).join(" | ")}]\n`
+                  : s.component === "paso" && s.label
+                    ? `[paso: ${s.label.slice(0, 40)}]\n`
+                    : s.component === "prompt" && s.body
+                      ? `[prompt: ${s.body.replace(/[|\]\n]/g, " ").slice(0, 160)}${s.label ? ` | ${s.label.slice(0, 40)}` : ""}]\n`
+                      : "";
       const body = s.accent ? s.text.replace(new RegExp(`\\b(${s.accent.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})\\b`), "*$1*") : s.text;
       return head + body;
     })

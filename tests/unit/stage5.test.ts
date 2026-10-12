@@ -49,8 +49,9 @@ test("guion desde brief con Claude (API simulada) → formato de texto revisable
       kind: "plan",
       plan: {
         scenes: [
-          { text: "Tu tienda vende más con vídeo.", component: "titular", accent: "vídeo", items: [], label: "", value: "" },
-          { text: "Escríbeme TIENDA.", component: "cta", accent: "", items: [], label: "", value: "TIENDA" },
+          { text: "Tu tienda vende más con vídeo.", component: "titular", accent: "vídeo", items: [], label: "", value: "", body: "" },
+          { text: "Primero, una idea por escena.", component: "paso", accent: "", items: [], label: "Una idea por escena", value: "", body: "" },
+          { text: "Escríbeme TIENDA.", component: "cta", accent: "", items: [], label: "", value: "TIENDA", body: "" },
         ],
         claims_to_verify: ["vende más"],
       },
@@ -58,9 +59,9 @@ test("guion desde brief con Claude (API simulada) → formato de texto revisable
   ]);
   try {
     const r = await scriptFromBrief({ brief: "Tienda online", type: "anuncio", seconds: 15, model: "claude-opus-5-5", effort: "medium", client: new Anthropic({ apiKey: "x", baseURL: fake.url, maxRetries: 0 }) });
-    assert.equal(r.script, "Tu tienda vende más con *vídeo*.\n\n[cta: TIENDA]\nEscríbeme TIENDA.\n");
+    assert.equal(r.script, "Tu tienda vende más con *vídeo*.\n\n[paso: Una idea por escena]\nPrimero, una idea por escena.\n\n[cta: TIENDA]\nEscríbeme TIENDA.\n");
     assert.deepEqual(r.claims, ["vende más"]);
-    assert.equal(parseScript(r.script).length, 2);
+    assert.equal(parseScript(r.script).length, 3);
   } finally {
     await fake.close();
   }

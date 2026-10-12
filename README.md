@@ -83,13 +83,29 @@ Te entregamos tres clips cada semana.
 Escríbeme auto y te muestro cómo funciona.
 ```
 
-Bloques separados por una línea en blanco; `[titular|lista|cifra|cta|modelo: …]` elige el componente; `*palabra*` se
-destaca. Las escenas largas se dividen solas.
+Bloques separados por una línea en blanco; `[titular|lista|cifra|cta|modelo|paso|prompt|cadena: …]` elige el
+componente; `*palabra*` se destaca. Las escenas largas se dividen solas.
+
+```text
+[paso: Máscara de texto]
+Primero, las palabras aparecen detrás de una línea.
+
+[prompt: Revela el texto desde una *máscara*. | Claude]
+Pídeselo así a tu asistente.
+
+[cadena: Guion | Voz | Vídeo]
+El guion empuja a la voz y la voz al vídeo.
+```
+
+`[paso: Título]` pone un número grande con su etiqueta y se numera solo («PASO 2 DE 5»); `[prompt: texto | Nombre]`
+escribe el texto en una tarjeta de chat y lo envía; `[cadena: A | B | C]` son bloques que entran y se empujan
+hasta provocar una acción.
 
 ### Estilo visual de los vídeos creados
 
 - **Según el tema** (lo normal para ideas): el sistema lee la idea y elige un tema (cítrico, comida, salud,
-  deporte, tecnología, finanzas, belleza, viajes, naturaleza, mascotas, entretenimiento, curiosidades o general).
+  deporte, tecnología, finanzas, belleza, viajes, naturaleza, mascotas, entretenimiento, ciencia, curiosidades,
+  editorial o general).
   Cada tema trae su paleta, su forma de destacar palabras en los subtítulos, su movimiento y su fondo animado
   (el texto siempre en Inter). Cada escena lleva un icono animado relacionado con lo que se dice («limón» → 🍋, «ADN» → 🧬),
   las listas salen en tarjetas y la llamada a la acción en un botón que siempre cabe.
@@ -108,6 +124,17 @@ clave y `--claves-garamond` las pone en EB Garamond Bold Italic (solo si el pedi
 `[modelo: atomo|luz|formula|espaciotiempo]` en el guion pone un modelo animado en la escena
 (`[modelo: formula | E=mc²]`). El tema «ciencia» trae cielo de estrellas, palabras que brillan, zoom y destellos.
 Recursos y licencias en [docs/licencias.md](docs/licencias.md).
+
+**Animaciones** ([estilo-animaciones.md](estilo-animaciones.md)): cada icono, tarjeta, cifra o bloque entra en la
+palabra en que la voz lo nombra. Además, según el tema o con `--animaciones mascara,camara,transforma,odometro`
+(o `todas` / `ninguna`): el texto sube desde detrás de una regla (máscara), la cámara sigue lo que pasa, el icono de
+cada escena crece hasta ser la pantalla y se recoge en el de la siguiente (transformación) y las cifras ruedan como un
+odómetro. El tema «editorial» (papel crema y naranja) las trae todas.
+
+```console
+npm run autopilot -- crear --guion guion.txt --tema editorial --efectos
+npm run autopilot -- crear --guion guion.txt --animaciones todas            # sobre el tema que toque
+```
 
 ## Calidad y revisión
 
