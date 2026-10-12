@@ -78,7 +78,9 @@ export const buildCaptions = (opts: {
       maxCharsPerLine: cap.maxCharsPerLine,
       maxLines: cap.maxLines,
       pauseBreakMs: preset.pauseBreakMs,
-      emphasis: mode === "dinamico",
+      emphasis: mode === "dinamico" || mode === "impacto",
+      emphasisPer: mode === "impacto" ? "frase" : "pagina",
+      phrasing: mode === "impacto",
       keywords: opts.keywords,
     });
   }

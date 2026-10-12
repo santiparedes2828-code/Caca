@@ -36,7 +36,8 @@ bash .claude/skills/copiar-estilo/scripts/analizar_referencia.sh analisis/refere
 
 1. Transcribe con tiempos por palabra:
    `python3 -I .claude/skills/copiar-estilo/scripts/transcribir.py analisis/mi-video.mp4 analisis/words.json`
-   Si sale con código 2 (no puede descargar el modelo de huggingface.co), usa ElevenLabs Scribe (ver *Transcribir con ElevenLabs*) o pide al usuario que permita `huggingface.co` en la red del entorno.
+   Si sale con código 2 (no puede descargar el modelo de huggingface.co), usa la transcripción local del pipeline (`npm run setup:asr` una vez; sherpa-onnx + Parakeet desde las releases de GitHub, el audio no sale del equipo) o ElevenLabs Scribe (ver *Transcribir con ElevenLabs*), o pide al usuario que permita `huggingface.co` en la red del entorno.
+   Para vídeos hablados de clientes (TikTok, Reels, Shorts) lo normal es el pipeline completo con el estilo de `estilo-hablado.md`: `npm run autopilot -- procesar video.mp4 --modo impacto --intensidad redes --graficos`.
 2. Corta silencios > 0,3 s y genera los subtítulos:
    `python3 -I .claude/skills/copiar-estilo/scripts/cortar_silencios.py analisis/mi-video.mp4 analisis/words.json public/video/mi-video-cortado.mp4`
    (corta imagen y sonido a la vez, normaliza a ~-14 LUFS y escribe `src/data/captions.json`).

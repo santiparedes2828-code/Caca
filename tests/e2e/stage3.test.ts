@@ -6,6 +6,7 @@ import { loadConfig, ROOT } from "../../autopilot/config";
 import { jobDir } from "../../autopilot/jobs/store";
 import { probe } from "../../autopilot/media/probe";
 import { approvePlan, submitJob } from "../../autopilot/pipeline/run";
+import { graphicSchema } from "../../src/autopilot/props";
 import { makeSpeechVideo, makeTestLibrary } from "../fixtures";
 import { startFakeAnthropic } from "../support/fake-anthropic";
 
@@ -57,6 +58,59 @@ test("clips con plan aprobado a mano: pausa tras el plan, sin render hasta aprob
   const report = await fs.readFile(path.join(dir, "output/informe.md"), "utf8");
   assert.match(report, /Recursos de terceros y licencias/);
   assert.match(report, /acorde · generado-en-pruebas/);
+});
+
+test("vídeo hablado para redes: subtítulos impacto, zoom alterno, apoyos y gráficos (calendario/lista)", async () => {
+  const cfg = cfgFor("d-redes");
+  // Sin B-roll: en este guion la biblioteca de prueba ocupa justo las enumeraciones (el B-roll real tiene prioridad)
+  const job = await submitJob(cfg, {
+    clientId: "hookhouse",
+    video,
+    captions: words,
+    overrides: { captionMode: "impacto", intensity: "redes", broll: false, graficos: true, music: false, cutSilences: false },
+  });
+  assert.equal(job.status, "completado", JSON.stringify([job.errors, job.warnings]));
+  assert.equal(job.verdict, "APROBADO");
+  const dir = jobDir(cfg, job.clientId, job.id);
+  const props = JSON.parse(await fs.readFile(path.join(dir, "work/variants/principal/props.json"), "utf8"));
+  assert.equal(props.captions.mode, "impacto");
+  assert.equal(props.intensity, "redes");
+  const pages: { startMs: number; endMs: number; lines: { text: string; startMs: number; emphasis: boolean; icon?: string }[][] }[] = props.captions.pages;
+  for (const p of pages) assert.ok(p.lines.flat().length <= 3, JSON.stringify(p));
+  assert.ok(pages.filter((p) => p.lines.flat().some((t) => t.emphasis)).length >= 6);
+  // Gráficos: las enumeraciones del guion («Cortes, subtítulos, zooms, música», «para agencias, coaches y creadores»)
+  const graphics: { kind: string; startMs: number; endMs: number; items?: { text: string }[] }[] = props.graphics;
+  assert.deepEqual(
+    graphics.map((g) => g.items?.map((i) => i.text).join(" · ")),
+    ["Cortes · Subtítulos · Zooms · Música", "Agencias · Coaches · Creadores"],
+  );
+  for (const g of graphics) assert.ok(graphicSchema.safeParse(g).success);
+  // Nunca dos apoyos a la vez: ni emojis ni páginas destacadas mientras hay un gráfico
+  for (const g of graphics) {
+    for (const p of pages) {
+      for (const t of p.lines.flat()) if (t.icon) assert.ok(t.startMs < g.startMs - 300 || t.startMs >= g.endMs + 300);
+    }
+  }
+  const plan = await fs.readFile(path.join(dir, "output/plan.md"), "utf8");
+  assert.match(plan, /## Apoyos gráficos/);
+  const report = await fs.readFile(path.join(dir, "output/informe.md"), "utf8");
+  assert.match(report, /modo impacto/);
+  assert.match(report, /Gráfico/);
+});
+
+test("B-roll y gráficos a la vez: el B-roll con licencia tiene prioridad y nunca se solapan", async () => {
+  const cfg = cfgFor("d-redes-broll");
+  const job = await submitJob(cfg, {
+    clientId: "hookhouse",
+    video,
+    captions: words,
+    overrides: { captionMode: "impacto", intensity: "redes", broll: true, graficos: true, music: false, cutSilences: false, approvePlan: true },
+  });
+  assert.equal(job.status, "requiere_revision");
+  const plan = JSON.parse(await fs.readFile(path.join(jobDir(cfg, job.clientId, job.id), "work/plan.json"), "utf8"));
+  assert.ok(plan.broll.length >= 1);
+  for (const g of plan.graficos) for (const b of plan.broll) assert.ok(b.endMs <= g.startMs || b.startMs >= g.endMs);
+  assert.ok(plan.notes.some((n: string) => /Gráfico descartado \(coincide con un B-roll\)/.test(n)), plan.notes.join("\n"));
 });
 
 test("planificador Claude (API simulada) y vuelta al local si falla; anuncio exige revisión", async () => {

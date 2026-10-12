@@ -4,6 +4,7 @@ import type { z } from "zod";
 import { type Cues, type SceneFx, type SFX_NAMES, THEME_FONTS, themeSchema, type Theme } from "../../src/create/theme";
 import { chainTimeline, cueFrame, iconFrame, itemFrames, odometerDuration, sceneStartFrame, STEP, typingSchedule, valueFrame } from "../../src/create/timeline";
 import { ROOT } from "../config";
+import motivosEn from "./data/motivos-en.json";
 import motivos from "./data/motivos-es.json";
 
 // Elección del estilo visual de un vídeo creado: identidad de marca del cliente o tema según el contenido,
@@ -184,11 +185,28 @@ const STOP = new Set(
     .split(" "),
 );
 
-const tokens = (text: string) =>
+// Inglés: los vídeos hablados de clientes pueden venir en inglés (la edición busca emojis en su idioma)
+const STOP_EN = new Set(
+  "the and for with that this from have has had were was are you your our ours they them their what when which who will would there about into just like over also then than been more some very can could should does did not but all any its it's we're i'm don't".split(
+    " ",
+  ),
+);
+
+const tokens = (text: string, lang: Lang = "es") =>
   norm(text)
     .split(" ")
-    .filter((w) => w.length >= 3 && !STOP.has(w))
+    .filter((w) => w.length >= 3 && !(lang === "en" ? STOP_EN : STOP).has(w))
     .map(stem);
+
+export type Lang = "es" | "en";
+
+// Idioma de un texto por sus palabras más frecuentes (para elegir el índice de emojis)
+export const detectLang = (text: string): Lang => {
+  const words = norm(text).split(" ");
+  const en = words.filter((w) => ["the", "and", "is", "are", "we", "you", "of", "to", "in", "it", "that", "this", "with", "our"].includes(w)).length;
+  const es = words.filter((w) => ["el", "la", "los", "las", "y", "es", "de", "que", "en", "un", "una", "con", "por", "para"].includes(w)).length;
+  return en > es ? "en" : "es";
+};
 
 // ——— Tema ———
 
@@ -272,23 +290,108 @@ const SINONIMOS: Record<string, string> = {
   animacion: "film-frames",
   grabar: "movie-camera",
   camara: "movie-camera",
+  // Negocio (vídeos hablados de clientes)
+  negocio: "briefcase",
+  empresa: "office-building",
+  dinero: "money-bag",
+  millon: "money-bag",
+  ingreso: "money-bag",
+  facturacion: "money-bag",
+  ganancia: "chart-increasing",
+  crecimiento: "chart-increasing",
+  inversion: "chart-increasing",
+  creador: "movie-camera",
+  podcast: "studio-microphone",
+  contenido: "clapper-board",
+  garantia: "check-mark-button",
+  garantizamos: "check-mark-button",
+  objetivo: "bullseye",
+  cliente: "handshake",
+  audiencia: "busts-in-silhouette",
+  idea: "light-bulb",
+  exito: "trophy",
+  // Inmobiliaria
+  casa: "house",
+  vivienda: "house",
+  piso: "house",
+  departamento: "house",
+  apartamento: "house",
+  edificio: "office-building",
+  cocina: "fork-and-knife-with-plate",
+  dormitorio: "bed",
+  habitacion: "bed",
+  recamara: "bed",
+  bano: "bathtub",
+  piscina: "person-swimming",
+  alberca: "person-swimming",
+  pileta: "person-swimming",
+  jardin: "house-with-garden",
+  precio: "money-bag",
+  metro: "straight-ruler",
+  ubicacion: "round-pushpin",
+  zona: "round-pushpin",
+  barrio: "round-pushpin",
+  llave: "key",
+  garaje: "automobile",
+  cochera: "automobile",
+  hipoteca: "bank",
 };
-const index = [
-  ...(motivos as { entradas: Motif[] }).entradas,
-  ...Object.entries(SINONIMOS).map(([word, icon]) => ({ icon, label: word, tags: [], group: 7 })),
-].map((m) => ({
-  ...m,
-  labelTokens: tokens(m.label),
-  tagTokens: new Set(m.tags.flatMap(tokens)),
-}));
+// En inglés: palabras frecuentes de vídeos de negocio y redes que no son el nombre de ningún emoji
+const SYNONYMS_EN: Record<string, string> = {
+  business: "briefcase",
+  money: "money-bag",
+  million: "money-bag",
+  revenue: "money-bag",
+  profit: "chart-increasing",
+  growth: "chart-increasing",
+  views: "eyes",
+  audience: "busts-in-silhouette",
+  followers: "busts-in-silhouette",
+  creator: "movie-camera",
+  podcast: "studio-microphone",
+  content: "clapper-board",
+  video: "movie-camera",
+  guarantee: "check-mark-button",
+  goal: "bullseye",
+  year: "calendar",
+  days: "calendar",
+  house: "house",
+  home: "house-with-garden",
+  kitchen: "fork-and-knife-with-plate",
+  bedroom: "bed",
+  price: "money-bag",
+  bathroom: "bathtub",
+  pool: "person-swimming",
+  garden: "house-with-garden",
+  backyard: "house-with-garden",
+  location: "round-pushpin",
+  neighborhood: "round-pushpin",
+  garage: "automobile",
+  mortgage: "bank",
+  investment: "chart-increasing",
+  apartment: "house",
+  condo: "house",
+};
+// Para comprobar que cada sinónimo apunta a un emoji que existe en EMOJI_SET (prueba de reglas)
+export const ICON_SYNONYMS = { es: SINONIMOS, en: SYNONYMS_EN } as const;
+const buildIndex = (data: { entradas: Motif[] }, synonyms: Record<string, string>, lang: Lang) =>
+  [...data.entradas, ...Object.entries(synonyms).map(([word, icon]) => ({ icon, label: word, tags: [], group: 7 }))].map((m) => ({
+    ...m,
+    labelTokens: tokens(m.label, lang),
+    tagTokens: new Set(m.tags.flatMap((t) => tokens(t, lang))),
+  }));
+const INDEX: Record<Lang, ReturnType<typeof buildIndex>> = {
+  es: buildIndex(motivos as { entradas: Motif[] }, SINONIMOS, "es"),
+  en: buildIndex(motivosEn as { entradas: Motif[] }, SYNONYMS_EN, "en"),
+};
 
 // Puntuación de cada icono para un texto: nombre exacto > primera palabra del nombre > resto del nombre > etiquetas.
 // Los símbolos (grupo 8: formas, flechas, colores) cuentan poco para no confundir "naranja" con "círculo naranja".
-export const findIcons = (text: string, opts: { preferGroups?: number[]; max?: number; minScore?: number } = {}) => {
-  const toks = tokens(text);
+export const findIcons = (text: string, opts: { preferGroups?: number[]; max?: number; minScore?: number; lang?: Lang } = {}) => {
+  const toks = tokens(text, opts.lang);
   if (!toks.length) return [];
   const scores = new Map<string, number>();
-  for (const m of index) {
+  for (const m of INDEX[opts.lang ?? "es"]) {
     let s = 0;
     for (const t of toks) {
       if (m.labelTokens.length === 1 && m.labelTokens[0] === t) s += 6;

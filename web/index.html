@@ -42,16 +42,17 @@
           </label>
           <label>Formato <select name="format"><option value="">(del perfil)</option><option value="vertical">Vertical 9:16</option><option value="cuadrado">Cuadrado 1:1</option><option value="horizontal">Horizontal 16:9</option></select></label>
           <label>Subtítulos
-            <select name="captionMode"><option value="">(del perfil)</option><option value="palabra-activa">Palabra activa</option><option value="dinamico">Dinámico</option><option value="grupos">Grupos</option><option value="frases">Frases</option><option value="palabra">Palabra a palabra</option></select>
+            <select name="captionMode"><option value="">(del perfil)</option><option value="palabra-activa">Palabra activa</option><option value="dinamico">Dinámico</option><option value="grupos">Grupos</option><option value="frases">Frases</option><option value="palabra">Palabra a palabra</option><option value="impacto">Impacto (vídeos hablados para redes)</option></select>
           </label>
-          <label>Intensidad <select name="intensity"><option value="">(del perfil)</option><option value="sutil">Sutil</option><option value="dinamica">Dinámica</option><option value="alto-impacto">Alto impacto</option></select></label>
+          <label>Intensidad <select name="intensity"><option value="">(del perfil)</option><option value="sutil">Sutil</option><option value="dinamica">Dinámica</option><option value="alto-impacto">Alto impacto</option><option value="redes">Redes (zoom alterno)</option></select></label>
           <label>Clips (n.º · mín · máx s) <span class="row"><input name="clipCount" type="number" min="1" max="20" placeholder="3" /><input name="clipMin" type="number" min="5" placeholder="15" /><input name="clipMax" type="number" max="600" placeholder="60" /></span></label>
           <label>Versiones cortas (s, separadas por comas) <input name="shortVersions" placeholder="30,60" /></label>
           <fieldset class="wide checks">
             <label><input type="checkbox" name="cutSilences" checked /> Cortar silencios</label>
             <label><input type="checkbox" name="followFaces" checked /> Seguir caras</label>
-            <label><input type="checkbox" name="transcribe" checked /> Transcribir (ElevenLabs)</label>
+            <label><input type="checkbox" name="transcribe" checked /> Transcribir (ElevenLabs o local)</label>
             <label><input type="checkbox" name="broll" checked /> B-roll de la biblioteca</label>
+            <label><input type="checkbox" name="graficos" /> Gráficos de apoyo (fechas, listas)</label>
             <label><input type="checkbox" name="music" checked /> Música de la biblioteca</label>
             <label><input type="checkbox" name="approvePlan" /> Revisar el plan antes de renderizar</label>
           </fieldset>

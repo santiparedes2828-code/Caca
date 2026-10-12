@@ -6,6 +6,7 @@ import { after, before, test } from "node:test";
 import { loadConfig, ROOT } from "../../autopilot/config";
 import { jobDir } from "../../autopilot/jobs/store";
 import { redoCaptions, retryJob, submitJob } from "../../autopilot/pipeline/run";
+import { localAsrAvailable } from "../../autopilot/transcription/local";
 import { makeSpeechVideo } from "../fixtures";
 import { startFakeElevenLabs } from "../support/fake-elevenlabs";
 
@@ -98,11 +99,30 @@ test("límite de presupuesto → fallo antes de llamar a la API", async () => {
   assert.equal(srv.requests.length, calls);
 });
 
-test("sin clave configurada → continúa sin subtítulos y lo explica", async () => {
-  const cfg = cfgFor("dnokey", { ELEVENLABS_API_KEY: "" });
+test("sin clave configurada (ni transcripción local) → continúa sin subtítulos y lo explica", async () => {
+  const cfg = cfgFor("dnokey", { ELEVENLABS_API_KEY: "", HH_ASR_MODEL_DIR: path.join(tmp, "sin-modelo") });
   const calls = srv.requests.length;
   const job = await submitJob(cfg, { clientId: "hookhouse", video, overrides: { format: "cuadrado" } });
   assert.equal(job.status, "requiere_revision");
   assert.ok(job.warnings.some((w) => w.message.includes("ELEVENLABS_API_KEY")));
   assert.equal(srv.requests.length, calls);
+});
+
+// Transcripción local REAL (sherpa-onnx + Parakeet, sin simulación): solo si el modelo está instalado (npm run setup:asr)
+const localReady = localAsrAvailable(loadConfig(process.env));
+test("sin clave y con la transcripción local instalada → transcribe en este equipo sin llamar a la API", { skip: localReady ? false : "modelo local no instalado (npm run setup:asr)" }, async () => {
+  const cfg = cfgFor("dlocal", { ELEVENLABS_API_KEY: "" });
+  const calls = srv.requests.length;
+  const job = await submitJob(cfg, { clientId: "hookhouse", video, overrides: { format: "cuadrado" } });
+  assert.ok(["completado", "requiere_revision"].includes(job.status), JSON.stringify(job.errors));
+  assert.equal(srv.requests.length, calls, "no se llama a ElevenLabs");
+  const tr = JSON.parse(await fs.readFile(file(cfg, job, "work/transcript.json"), "utf8"));
+  assert.equal(tr.provider, "local");
+  assert.equal(tr.source, "local");
+  assert.ok(tr.words.length >= 12, `${tr.words.length} palabras`);
+  const text = tr.words.map((w: { text: string }) => w.text.toLowerCase()).join(" ");
+  for (const w of ["agencias", "tiktok", "videos"]) assert.ok(text.includes(w), `falta «${w}» en: ${text}`);
+  for (let i = 1; i < tr.words.length; i++) assert.ok(tr.words[i].startMs >= tr.words[i - 1].startMs);
+  const report = await fs.readFile(file(cfg, job, "output/informe.md"), "utf8");
+  assert.match(report, /el audio no salió de él/);
 });

@@ -5,18 +5,18 @@
 | Capa | Carpeta | Responsabilidad |
 |---|---|---|
 | Sistema de diseño | `src/design/` | Esquemas zod de marca (`schema.ts`), tokens Hook House (`tokens.ts`, leídos de `clients/hookhouse/profile.json`), presets de intensidad, carga de fuentes |
-| Composiciones | `src/autopilot/` | `AutopilotEdit` (reencuadre + zoom + subtítulos), `Captions` (5 modos), `paginate.ts` (agrupación de palabras, compartida con el backend), `props.ts` (contrato backend ↔ Remotion) |
+| Composiciones | `src/autopilot/` | `AutopilotEdit` (reencuadre + zoom + B-roll + gráficos + subtítulos), `Captions` (6 modos; `impacto` en `ImpactCaptions.tsx`), `Graphics.tsx` (apoyos gráficos a pantalla completa: calendario y lista), `paginate.ts` (agrupación de palabras, claves por frase y fraseo, compartido con el backend), `geometry.ts` (zoom alterno de `redes`, golpes en las claves), `props.ts` (contrato backend ↔ Remotion) |
 | Clientes | `clients/<id>/profile.json`, `autopilot/clients/` | Identidad y valores por defecto por cliente; añadir uno no requiere código |
 | Trabajos | `autopilot/jobs/` | Modelo y estados, almacén en disco aislado por cliente, bloqueo por trabajo, cancelación |
 | Ingesta | `autopilot/ingest/` | Extensión, tamaño, firma binaria real, ffprobe, copia de solo lectura, nombre seguro |
 | Análisis | `autopilot/media/probe.ts` | Duración, resolución con rotación, fps/VFR, códecs, sonoridad EBU R128, silencios, volumen, negros |
 | Preparación | `autopilot/media/prepare.ts` | Copia de trabajo CFR H.264 y normalización de sonoridad en dos pasadas (no restauración) |
 | Subtítulos | `autopilot/captions/` | SRT/VTT/JSON → formato interno con precisión real; normalización; páginas; SRT final |
-| Transcripción | `autopilot/transcription/` | Cliente REST de ElevenLabs (STT + suscripción), caché por cliente, presupuesto, registro de uso, transcripción editable |
+| Transcripción | `autopilot/transcription/`, `scripts/transcribir_local.py` | Cliente REST de ElevenLabs (STT + suscripción), caché por cliente, presupuesto, registro de uso, transcripción editable; transcripción local (`local.ts`: sherpa-onnx + Parakeet TDT 0.6B v3, tokens → palabras con tiempos y confianza) |
 | Render | `autopilot/render/` | Bundle con caché por hash, servidor local de recursos, `renderMedia` con cancelación |
 | Calidad | `autopilot/qc/` | Controles automáticos, fotogramas de control, informe Markdown/JSON |
 | Visión | `autopilot/vision/`, `autopilot/python/faces.py` | Caras (YuNet vía OpenCV, sin red), trayectoria del encuadre, escenas |
-| Edición | `autopilot/edit/` | Línea de tiempo (cortes no destructivos, remapeo), colocación de subtítulos frente a caras |
+| Edición | `autopilot/edit/` | Línea de tiempo (cortes no destructivos, remapeo), colocación de subtítulos frente a caras; vídeos hablados: `apoyos.ts` (páginas destacadas y emojis junto a las claves), `graficos.ts` (calendario y lista a partir de lo que se dice; los planifica el paso `plan` y se pueden editar antes de aprobarlo) |
 | Editorial | `autopilot/editorial/` | Frases, rasgos, temas, clips candidatos, Claude opcional, biblioteca con licencias |
 | Narración | `autopilot/narration/` | Texto a voz de ElevenLabs con tiempos, caché, límites |
 | Creación | `autopilot/create/`, `src/create/` | Guion (texto o brief con Claude) → narración (o sin voz) → escenas → AutopilotCreate (identidad de marca) o AutopilotTheme (tema según el contenido) |
@@ -34,7 +34,8 @@ bandeja / procesar
   └─ prepare    analizando    work/source.mp4 (CFR, rotación, recorte, −14 LUFS) + prepare.json
   └─ captions   transcribiendo SRT/VTT/JSON del cliente, o work/transcript.json, o ElevenLabs (audio mono 16 kHz)
                               → work/captions.json (páginas + SRT)
-  └─ plan       planificando  work/plan.json: caras (faces.json), encuadre, escenas, cortes de silencio, variantes
+  └─ plan       planificando  work/plan.json: caras (faces.json), encuadre, escenas, cortes de silencio, variantes,
+                              B-roll, música y apoyos gráficos (editables antes de `aprobar`; `rehacer-video` recompone)
   └─ compose    componiendo   work/variants/<id>/props.json + captions.json (remapeo, subtítulos lejos de caras)
   └─ render     renderizando  work/variants/<id>/render.mp4. Clave = hash(props + bundle): no se repite
   └─ qc         verificando   work/qc.json + output/qc/<id>/*.jpg
@@ -72,6 +73,8 @@ Máximo `HH_MAX_ATTEMPTS` intentos.
 - Aislamiento: `data/clients/<cliente>/jobs/<id>/`; ids validados por expresión regular y rutas resueltas con
   `resolveInside`. `findJob` busca en todos los clientes y es solo para la CLI local: una interfaz web debe usar
   `loadJob` con el cliente autenticado (Etapa 7).
+- Transcripción local (proveedor `local`): el audio no sale del equipo; el modelo se instala una vez con
+  `npm run setup:asr` y se ejecuta con Python aislado (`-I`) sobre un WAV de 16 kHz del trabajo.
 - Proveedores externos: solo ElevenLabs, y solo si hay `ELEVENLABS_API_KEY` y el vídeo no trae subtítulos. Recibe
   la pista de audio del tramo editado (mono, 16 kHz, sin metadatos). La respuesta se guarda en la caché del cliente
   (`data/clients/<cliente>/cache/stt/`) y el uso en `data/usage/elevenlabs-stt.jsonl`. ElevenLabs conserva los datos

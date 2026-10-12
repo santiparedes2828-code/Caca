@@ -19,6 +19,14 @@ internet automáticamente: añade solo material con derechos claros.
       "license": { "type": "licencia-comercial", "source": "Banco X, licencia nº …" }
     },
     {
+      "id": "piso-centro-cocina",
+      "file": "piso-centro/cocina.jpg",
+      "kind": "image",
+      "tags": ["cocina"],
+      "presentation": "pantalla",
+      "license": { "type": "cliente", "source": "Fotos de la propiedad entregadas por el cliente el 12-10-2026" }
+    },
+    {
       "id": "pulso-120",
       "file": "pulso-120.mp3",
       "kind": "audio",
@@ -28,6 +36,11 @@ internet automáticamente: añade solo material con derechos claros.
   ]
 }
 ```
+
+`presentation` (opcional): `pantalla` (por defecto, cubre el plano: fotos de la propiedad, planos de recurso) o
+`tarjeta` (imagen con esquinas redondeadas sobre el vídeo: capturas, gráficos). Las etiquetas se emparejan con lo que
+se dice, también con sinónimos de España y Latinoamérica para inmobiliaria (alberca/pileta → piscina, recámara →
+dormitorio, cochera → garaje, departamento → piso, colonia → barrio…; ver `autopilot/editorial/library.ts`).
 
 Tipos de licencia admitidos: `propia`, `cliente`, `cc0`, `cc-by` (exige `attribution`), `licencia-comercial`,
 `generada-ia` (indica la herramienta en `source`), `generado-en-pruebas`. Las atribuciones aparecen en el informe.

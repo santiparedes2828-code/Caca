@@ -4,6 +4,7 @@ import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { INTENSITY } from "../design/intensity";
 import type { Brand, CaptionMode, Intensity } from "../design/schema";
 import { captionBlock, captionLayout } from "./geometry";
+import { ImpactCaptions } from "./ImpactCaptions";
 import type { CaptionPage, CaptionToken } from "./props";
 
 // Subtítulos Hook House. Las páginas (qué palabras van juntas y en qué líneas) las calcula el backend
@@ -15,6 +16,8 @@ import type { CaptionPage, CaptionToken } from "./props";
 //   grupos          las palabras aparecen al sonar (entrada de marca: opacidad + desenfoque + subida)
 //   frases          la página entera aparece de una vez (único modo válido con tiempos por segmento)
 //   dinamico        grupos + resaltado activo + énfasis (Inter, color de acento) + pop según intensidad
+//   impacto         vídeos hablados para redes: 1–3 palabras con pop, clave grande y en color, emoji y cifras
+//                   que ruedan, salida corta (ImpactCaptions, estilo-hablado.md)
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
@@ -135,6 +138,15 @@ const Token: React.FC<{
 };
 
 export const Captions: React.FC<{
+  pages: CaptionPage[];
+  mode: CaptionMode;
+  brand: Brand;
+  intensity: Intensity;
+  fontsReady: boolean;
+  icons?: Record<string, string>;
+}> = (props) => (props.mode === "impacto" ? <ImpactCaptions pages={props.pages} brand={props.brand} icons={props.icons ?? {}} fontsReady={props.fontsReady} /> : <ClassicCaptions {...props} />);
+
+const ClassicCaptions: React.FC<{
   pages: CaptionPage[];
   mode: CaptionMode;
   brand: Brand;

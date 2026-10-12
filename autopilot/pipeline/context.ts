@@ -1,5 +1,6 @@
 import path from "node:path";
 import type { FocusKey } from "../../src/autopilot/geometry";
+import type { Graphic } from "../../src/autopilot/props";
 import type { BuiltCaptions } from "../captions/build";
 import type { LoadedCaptions } from "../captions/load";
 import type { ClientProfile } from "../clients/profile";
@@ -52,7 +53,7 @@ export type Prepared = PrepareResult & { probe: ProbeResult; startSec: number; d
 export type TranscriptionInfo = {
   provider: string;
   model: string;
-  source: "api" | "cache";
+  source: "api" | "cache" | "local";
   words: number;
   withConfidence: number;
   lowConfidence: { text: string; startMs: number }[];
@@ -98,7 +99,9 @@ export type PlanArtifact = {
     rejected: string[];
   };
   // En el tiempo de la copia de trabajo; cada variante toma los que caen en sus tramos
-  broll: { id: string; src: string; kind: "image" | "video"; startMs: number; endMs: number; matched: string[]; credit: string }[];
+  broll: { id: string; src: string; kind: "image" | "video"; presentation?: "pantalla" | "tarjeta"; startMs: number; endMs: number; matched: string[]; credit: string }[];
+  // Apoyos gráficos (calendario, lista) en el tiempo de la copia de trabajo; se pueden editar antes de aprobar el plan
+  graficos?: Graphic[];
   music: null | { id: string; src: string; credit: string };
   rejectedResources: { where: string; reason: string }[];
 };
@@ -106,7 +109,12 @@ export type PlanArtifact = {
 // work/variants/<id>/captions.json
 export type VariantCaptions =
   | { none: true }
-  | ({ none: false; transcription: TranscriptionInfo | null; placement: { moved: number; blocked: number; overFaces: number } } & BuiltCaptions);
+  | ({
+      none: false;
+      transcription: TranscriptionInfo | null;
+      placement: { moved: number; blocked: number; overFaces: number };
+      apoyos?: string[]; // apoyos visuales del modo impacto (emojis, páginas destacadas)
+    } & BuiltCaptions);
 
 export const variantDir = (ctx: Ctx, id: string) => W(ctx, "variants", id);
 

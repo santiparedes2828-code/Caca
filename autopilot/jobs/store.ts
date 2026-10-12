@@ -58,6 +58,7 @@ export const resolveConfig = (profile: ClientProfile, o: JobOverrides = {}): Job
     shortVersions: o.shortVersions ?? profile.defaults.editorial.shortVersions,
     keepPrincipal: o.keepPrincipal ?? (o.editMode && o.editMode !== "talking-head" ? false : profile.defaults.editorial.keepPrincipal),
     broll: o.broll ?? profile.defaults.editorial.broll,
+    graficos: o.graficos ?? profile.defaults.editorial.graficos,
     music: o.music ?? profile.defaults.editorial.music.enabled,
     musicId: o.musicId === undefined ? profile.defaults.editorial.music.id : o.musicId,
     planner: o.planner ?? profile.defaults.editorial.planner,

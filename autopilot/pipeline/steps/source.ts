@@ -4,7 +4,9 @@ import { loadCaptionsFile, normalize } from "../../captions/load";
 import { prepareWorkingCopy } from "../../media/prepare";
 import { loudness, probe, silences, volumeStats } from "../../media/probe";
 import { ProviderError } from "../../transcription/elevenlabs";
+import { localAsrAvailable, transcribeLocal } from "../../transcription/local";
 import { extractSpeechAudio, lowConfidence, transcribeWithElevenLabs, transcriptSchema, type Transcript } from "../../transcription/transcribe";
+import { runOk } from "../../util/exec";
 import { exists, readJson, writeJsonAtomic } from "../../util/fs";
 import { StepError, videoInput, W, warn, type Analysis, type Ctx, type Prepared, type SourceCaptions } from "../context";
 
@@ -64,7 +66,8 @@ export const prepare = async (ctx: Ctx) => {
 };
 
 // Transcripción del tramo editado. Orden: work/transcript.json existente (quizá corregido a mano, sin
-// coste) → proveedor del cliente (ElevenLabs) → nada (se avisa y el vídeo sale sin subtítulos).
+// coste) → proveedor del cliente (ElevenLabs, o local en este equipo) → nada (se avisa y el vídeo sale sin
+// subtítulos). Con ElevenLabs y sin clave, se usa la transcripción local si está instalada (npm run setup:asr).
 const getTranscript = async (ctx: Ctx, prep: Prepared): Promise<Transcript | null> => {
   const file = W(ctx, "transcript.json");
   if (exists(file)) {
@@ -84,6 +87,24 @@ const getTranscript = async (ctx: Ctx, prep: Prepared): Promise<Transcript | nul
   if (!prep.probe.audio) {
     warn(ctx, "captions", "sin_subtitulos", "Sin pista de audio: no hay nada que transcribir");
     return null;
+  }
+  const local = t.provider === "local" || (!ctx.cfg.ELEVENLABS_API_KEY && localAsrAvailable(ctx.cfg));
+  if (local) {
+    if (!localAsrAvailable(ctx.cfg)) {
+      warn(ctx, "captions", "sin_subtitulos", "Sin subtítulos: la transcripción local no está instalada (npm run setup:asr)");
+      return null;
+    }
+    if (t.provider !== "local") ctx.log.info("ELEVENLABS_API_KEY no está configurada: se transcribe en local");
+    const wav = W(ctx, "stt-audio.wav");
+    await runOk("ffmpeg", ["-v", "error", "-y", "-i", W(ctx, "source.mp4"), "-vn", "-map_metadata", "-1", "-ac", "1", "-ar", "16000", "-c:a", "pcm_s16le", wav]);
+    let tr: Transcript;
+    try {
+      tr = await transcribeLocal({ cfg: ctx.cfg, audioWav: wav, workDir: W(ctx), log: (m) => ctx.log.info(m) });
+    } catch (e) {
+      throw new StepError("transcripcion_local", `La transcripción local falló: ${(e as Error).message.slice(0, 300)}`);
+    }
+    await writeJsonAtomic(file, tr);
+    return tr;
   }
   if (!ctx.cfg.ELEVENLABS_API_KEY) {
     warn(

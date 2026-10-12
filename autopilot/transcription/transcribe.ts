@@ -16,7 +16,7 @@ export const transcriptSchema = z.object({
   languageCode: z.string().nullable(),
   languageProbability: z.number().nullable(),
   audioDurationSec: z.number().nullable(),
-  source: z.enum(["api", "cache"]),
+  source: z.enum(["api", "cache", "local"]),
   transcriptionId: z.string().nullable(),
   words: z.array(
     z.object({

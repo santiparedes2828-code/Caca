@@ -39,6 +39,8 @@ const schema = z.object({
   // Python para la detección de caras (npm run setup:python crea .venv). Sin él, el foco es fijo y se avisa.
   HH_PYTHON: z.string().optional(),
   HH_FACE_FPS: z.coerce.number().positive().max(10).default(2),
+  // Transcripción local (npm run setup:asr): carpeta del modelo Parakeet TDT 0.6B v3 de sherpa-onnx
+  HH_ASR_MODEL_DIR: z.string().default(path.join(ROOT, "models", "asr", "sherpa-onnx-nemo-parakeet-tdt-0.6b-v3-int8")),
   // Biblioteca interna de recursos autorizados (B-roll y música)
   HH_LIBRARY_DIR: z.string().default(path.join(ROOT, "library")),
   // Claude (planificador opcional). La clave la lee el SDK de ANTHROPIC_API_KEY; aquí solo se comprueba si existe.

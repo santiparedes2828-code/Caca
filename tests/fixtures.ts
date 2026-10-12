@@ -127,7 +127,8 @@ export const makeTestLibrary = async (dir: string) => {
     path.join(broll, "catalog.json"),
     JSON.stringify({
       items: [
-        ...imgs.map(([id, , tags]) => ({ id, file: `${id}.jpg`, kind: "image", tags, license: lic })),
+        // "subtitulos" es una captura: se presenta en tarjeta sobre el vídeo (estilo de vídeos hablados)
+        ...imgs.map(([id, , tags]) => ({ id, file: `${id}.jpg`, kind: "image", tags, license: lic, ...(id === "subtitulos" ? { presentation: "tarjeta" } : {}) })),
         { id: "sin-licencia", file: "agencias.jpg", kind: "image", tags: ["agencias"] },
       ],
     }),

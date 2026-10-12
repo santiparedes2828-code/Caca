@@ -171,6 +171,19 @@ export const redoCaptions = async (cfg: Config, clientId: string, jobId: string)
   return runJob(cfg, clientId, jobId);
 };
 
+// Volver a componer y renderizar con el plan actual (p. ej. tras editar los apoyos gráficos de work/plan.json en un
+// trabajo ya terminado). No recalcula el plan ni los subtítulos de origen, ni vuelve a pagar nada.
+export const redoVideo = async (cfg: Config, clientId: string, jobId: string): Promise<Job> => {
+  const job = await loadJob(cfg, clientId, jobId);
+  if (job.steps.plan.status !== "hecho") throw new Error("El trabajo no tiene plan: usa reintentar");
+  if (job.attempts >= cfg.HH_MAX_ATTEMPTS + 5) throw new Error("Demasiados intentos en este trabajo");
+  resetFrom(job, "compose");
+  job.renderKey = null;
+  job.status = "recibido";
+  await saveJob(cfg, job);
+  return runJob(cfg, clientId, jobId);
+};
+
 // Aprobación del plan: el trabajo continúa desde la composición (el plan no se recalcula)
 export const approvePlan = async (cfg: Config, clientId: string, jobId: string): Promise<Job> => {
   const job = await loadJob(cfg, clientId, jobId);

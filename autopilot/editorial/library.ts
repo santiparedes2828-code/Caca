@@ -28,6 +28,8 @@ const itemSchema = z.object({
   tags: z.array(z.string().min(2)).default([]),
   description: z.string().default(""),
   mood: z.string().optional(), // música: "energica", "tranquila", "corporativa"…
+  // B-roll: a pantalla completa (fotos de la propiedad, planos) o en tarjeta sobre el vídeo (capturas, gráficos)
+  presentation: z.enum(["pantalla", "tarjeta"]).default("pantalla"),
   license: licenseSchema,
 });
 export type LibraryItem = z.infer<typeof itemSchema> & { scope: "cliente" | "hookhouse"; src: string; durationSec: number | null };
@@ -98,7 +100,50 @@ const norm = (s: string) =>
     .replace(/[̀-ͯ]/g, "")
     .replace(/[^\p{L}\p{N}\s]/gu, " ");
 const stem = (w: string) => (w.length > 5 && w.endsWith("es") ? w.slice(0, -2) : w.length > 4 && w.endsWith("s") ? w.slice(0, -1) : w);
-const words = (s: string) => new Set(norm(s).split(/\s+/).filter((w) => w.length > 2).map(stem));
+// Sinónimos (es/en, también de Latinoamérica) para emparejar lo que se dice con las etiquetas: sobre todo los
+// espacios de una vivienda, para poner las fotos de la propiedad cuando se nombran
+const SINONIMOS: Record<string, string> = {
+  kitchen: "cocina",
+  alberca: "piscina",
+  pileta: "piscina",
+  pool: "piscina",
+  recamara: "dormitorio",
+  habitacion: "dormitorio",
+  cuarto: "dormitorio",
+  bedroom: "dormitorio",
+  bano: "bano",
+  bathroom: "bano",
+  sala: "salon",
+  living: "salon",
+  balcon: "terraza",
+  terrace: "terraza",
+  balcony: "terraza",
+  patio: "jardin",
+  garden: "jardin",
+  yard: "jardin",
+  fachada: "exterior",
+  facade: "exterior",
+  vista: "vista",
+  view: "vista",
+  cochera: "garaje",
+  garage: "garaje",
+  comedor: "comedor",
+  dining: "comedor",
+  departamento: "piso",
+  apartamento: "piso",
+  apartment: "piso",
+  condo: "piso",
+  casa: "casa",
+  house: "casa",
+  home: "casa",
+  precio: "precio",
+  price: "precio",
+  barrio: "barrio",
+  neighborhood: "barrio",
+  colonia: "barrio",
+};
+const canon = (w: string) => SINONIMOS[w] ?? SINONIMOS[stem(w)] ?? stem(w);
+const words = (s: string) => new Set(norm(s).split(/\s+/).filter((w) => w.length > 2).map(canon));
 
 export type BrollPick = { item: LibraryItem; sentence: number; startMs: number; endMs: number; matched: string[] };
 

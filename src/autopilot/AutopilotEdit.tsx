@@ -12,7 +12,8 @@ import {
 import { useBrandFonts } from "../design/fonts";
 import { INTENSITY } from "../design/intensity";
 import { Captions } from "./Captions";
-import { fitVideo, focusAt, zoomSegments } from "./geometry";
+import { Graphics } from "./Graphics";
+import { cutZoomKeys, emphasisPunch, fitVideo, focusAt, zoomSegments } from "./geometry";
 import { Broll, Music } from "./Overlays";
 import type { EditProps } from "./props";
 
@@ -40,6 +41,24 @@ const useZoom = (props: EditProps) => {
   const z = INTENSITY[props.intensity].zoom;
   if (z.mode === "none" || z.amount === 0) return 1;
   const t = (frame / fps) * 1000;
+  if (z.mode === "cortes") {
+    // Vídeos hablados: nivel alterno en cada corte (instantáneo: esconde el salto) o frase (suave), deriva lenta
+    // dentro del tramo y un golpe suave en las palabras clave
+    let acc = 0;
+    const cutsMs = props.video.segments.map((s) => {
+      const at = (acc / fps) * 1000;
+      acc += s.durationInFrames;
+      return at;
+    });
+    const keys = cutZoomKeys(cutsMs, props.captions.pages, (durationInFrames / fps) * 1000, z.minSecondsBetween);
+    const i = Math.max(0, keys.findIndex((k) => t >= k.startMs && t < k.endMs));
+    const k = keys[i];
+    const level = (j: number) => (keys[j].level ? 1 + z.amount : 1);
+    const f0 = (k.startMs / 1000) * fps;
+    const base = k.cut || i === 0 ? level(i) : interpolate(frame, [f0, f0 + z.transitionFrames], [level(i - 1), level(i)], { ...clamp, easing: Easing.inOut(Easing.cubic) });
+    const drift = 1 + 0.025 * interpolate(t, [k.startMs, k.endMs], [0, 1], clamp);
+    return base * drift * (1 + 0.04 * emphasisPunch(props.captions.pages, frame, fps, z.minSecondsBetween));
+  }
   const segs = zoomSegments(
     props.captions.pages,
     z.minSecondsBetween,
@@ -185,6 +204,7 @@ export const AutopilotEdit: React.FC<EditProps> = (props) => {
         </AbsoluteFill>
       ) : null}
       <Broll overlays={props.overlays} brand={brand} />
+      <Graphics graphics={props.graphics} brand={brand} fontsReady={fontsReady} />
       {props.music ? <Music music={props.music} /> : null}
       <Captions
         pages={props.captions.pages}
@@ -192,6 +212,7 @@ export const AutopilotEdit: React.FC<EditProps> = (props) => {
         brand={brand}
         intensity={props.intensity}
         fontsReady={fontsReady}
+        icons={props.icons}
       />
     </AbsoluteFill>
   );

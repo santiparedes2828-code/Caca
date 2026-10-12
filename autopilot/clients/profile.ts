@@ -42,6 +42,8 @@ export const profileSchema = z.object({
         shortVersions: z.array(z.number().min(5).max(600)), // versiones cortas del vídeo principal (s)
         keepPrincipal: z.boolean(), // en modos de clips, entregar también el vídeo completo
         broll: z.boolean(),
+        // Apoyos gráficos hechos con código en vídeos hablados: calendario al decir una fecha, lista al enumerar
+        graficos: z.boolean().default(false),
         music: z.object({ enabled: z.boolean(), mood: z.string().nullable(), id: z.string().nullable(), volumeDb: z.number().min(-40).max(0), duckDb: z.number().min(-40).max(0) }),
         planner: z.enum(["local", "claude"]),
         claude: z.object({ model: z.string(), effort: z.enum(["low", "medium", "high"]) }),
@@ -53,6 +55,7 @@ export const profileSchema = z.object({
         shortVersions: [],
         keepPrincipal: true,
         broll: false,
+        graficos: false,
         music: { enabled: false, mood: null, id: null, volumeDb: -22, duckDb: -10 },
         planner: "local",
         claude: { model: "claude-opus-5-5", effort: "medium" },
@@ -60,7 +63,9 @@ export const profileSchema = z.object({
       }),
     transcription: z
       .object({
-        provider: z.enum(["elevenlabs", "ninguno"]),
+        // local: sherpa-onnx en este equipo, sin enviar el audio fuera (npm run setup:asr). Con elevenlabs y sin
+        // clave configurada, se usa la local si está instalada.
+        provider: z.enum(["elevenlabs", "local", "ninguno"]),
         model: z.string().min(1),
         language: z.string().regex(/^[a-z]{2,3}$/).nullable(), // ISO-639-1/3; null = detección automática
         diarize: z.boolean(),

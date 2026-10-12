@@ -3,7 +3,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { test } from "node:test";
 import { ROOT } from "../../autopilot/config";
-import { EMOJI_SET, GENERAL_PRESET, hasIcon, THEME_PRESETS } from "../../autopilot/create/theme";
+import { EMOJI_SET, GENERAL_PRESET, hasIcon, ICON_SYNONYMS, THEME_PRESETS } from "../../autopilot/create/theme";
 import { THEME_FONTS } from "../../src/create/theme";
 import { ACCENT_FONTS } from "../../src/design/excepciones";
 import { fontSchema } from "../../src/design/schema";
@@ -20,8 +20,10 @@ const files = (dir: string, ext: RegExp): string[] =>
 const OTHER_FONTS = /Garamond|JetBrains|Poppins|Great Vibes|Fredoka|Bebas|Serif Display|Space Grotesk|Archivo Black|SF Pro|Helvetica|Arial|Georgia|monospace/;
 
 test("regla: todo el texto en Inter (perfiles, temas, composiciones, web y fuentes instaladas)", () => {
-  const profile = JSON.parse(readFileSync(path.join(ROOT, "clients/hookhouse/profile.json"), "utf8"));
-  for (const f of profile.brand.fonts) assert.equal(f.family, "Inter");
+  for (const c of readdirSync(path.join(ROOT, "clients"), { withFileTypes: true }).filter((e) => e.isDirectory())) {
+    const profile = JSON.parse(readFileSync(path.join(ROOT, "clients", c.name, "profile.json"), "utf8"));
+    for (const f of profile.brand.fonts) assert.equal(f.family, "Inter", `${c.name}: ${f.family}`);
+  }
   assert.throws(() => fontSchema.parse({ role: "serif", family: "EB Garamond", weight: "700", style: "italic", src: "static:fonts/x.woff2" }), /Inter/);
   assert.deepEqual(Object.values(THEME_FONTS).map((f) => f.family), ["Inter"]);
   for (const p of [...THEME_PRESETS, GENERAL_PRESET]) assert.equal(p.theme.font, "inter");
@@ -41,4 +43,8 @@ test("regla: todo el texto en Inter (perfiles, temas, composiciones, web y fuent
 test("regla: emojis estilo iOS con el set con licencia más parecido (Fluent Emoji en color)", () => {
   assert.equal(EMOJI_SET, "fluent-emoji");
   for (const i of ["tangerine", "lemon", "dna", "backhand-index-pointing-down", "check-mark-button"]) assert.ok(hasIcon(i), i);
+  // Cada sinónimo (es/en) apunta a un emoji que existe en el set (si no, el vídeo saldría sin él)
+  for (const [lang, table] of Object.entries(ICON_SYNONYMS)) {
+    for (const [word, icon] of Object.entries(table)) assert.ok(hasIcon(icon), `${lang}: ${word} → ${icon}`);
+  }
 });

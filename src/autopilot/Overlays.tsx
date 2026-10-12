@@ -24,7 +24,7 @@ const BrollItem: React.FC<{
   frames: number;
 }> = ({ o, brand, frames }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, width, height } = useVideoConfig();
   const m = brand.motion;
   const enter = spring({
     frame,
@@ -40,6 +40,33 @@ const BrollItem: React.FC<{
     objectFit: "cover",
     scale: `${drift}`,
   };
+  if (o.presentation === "tarjeta") {
+    // Tarjeta sobre el vídeo (capturas, gráficos): entra subiendo con muelle, la persona se sigue viendo detrás
+    const u = Math.min(width, height) / 1080;
+    const s = spring({ frame, fps, config: { damping: 14, stiffness: 160 } });
+    return (
+      <AbsoluteFill style={{ opacity: out, backgroundColor: `rgba(0,0,0,${0.18 * Math.min(enter, 1)})` }}>
+        <div
+          style={{
+            position: "absolute",
+            left: width * 0.11,
+            width: width * 0.78,
+            top: height * 0.15,
+            height: height * 0.42,
+            borderRadius: 40 * u,
+            overflow: "hidden",
+            border: `${6 * u}px solid ${brand.colors.white}`,
+            boxShadow: `0 ${24 * u}px ${60 * u}px rgba(0,0,0,0.45)`,
+            backgroundColor: brand.colors.ink,
+            opacity: Math.min(1, s * 1.4),
+            transform: `translateY(${(1 - s) * 90 * u}px) scale(${0.9 + 0.1 * s}) rotate(${(1 - s) * -3}deg)`,
+          }}
+        >
+          {o.kind === "image" ? <Img src={o.src} style={style} /> : <OffthreadVideo src={o.src} muted style={style} />}
+        </div>
+      </AbsoluteFill>
+    );
+  }
   return (
     <AbsoluteFill
       style={{

@@ -1,9 +1,12 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import type { EditProps } from "../../../src/autopilot/props";
+import { graphicSchema, type EditProps, type Graphic } from "../../../src/autopilot/props";
 import { FORMATS } from "../../../src/design/schema";
 import { buildCaptions } from "../../captions/build";
 import { ROOT } from "../../config";
+import { ICON_CREDIT } from "../../create/theme";
+import { planApoyos } from "../../edit/apoyos";
+import { graphicIntervals } from "../../edit/graficos";
 import { pagesOverFaces, placeCaptions } from "../../edit/placement";
 import { remapItems, remapTime, remapTrack, toFrameSegments } from "../../edit/timeline";
 import { cancelRequested, saveJob } from "../../jobs/store";
@@ -93,7 +96,27 @@ export const compose = async (ctx: Ctx) => {
     const faces = await facesFor(ctx, variant);
     const focusTrack = config.followFaces ? remapTrack(variant.segments, plan.focusTrack).filter((k) => k.tMs <= durationMs) : [];
 
+    // Apoyos gráficos del plan (validados: el plan se puede editar a mano antes de aprobarlo) en el tiempo de la variante
+    const graphics: Graphic[] = [];
+    for (const [i, raw] of (plan.graficos ?? []).entries()) {
+      const p = graphicSchema.safeParse(raw);
+      if (!p.success) {
+        warn(ctx, "compose", "grafico_invalido", `Apoyo gráfico #${i + 1} del plan no válido: ${p.error.issues.map((x) => `${x.path.join(".")} ${x.message}`).join("; ")}`);
+        continue;
+      }
+      const g = p.data;
+      const a = remapTime(variant.segments, g.startMs);
+      const e = remapTime(variant.segments, g.endMs);
+      if (a === null || e === null || e - a < 1200) continue;
+      if (g.kind === "calendario") graphics.push({ ...g, startMs: a, endMs: e });
+      else {
+        const items = g.items.map((it) => ({ ...it, startMs: remapTime(variant.segments, it.startMs) }));
+        if (items.every((it): it is { text: string; startMs: number } => it.startMs !== null)) graphics.push({ ...g, startMs: a, endMs: e, items });
+      }
+    }
+
     let caps: VariantCaptions = { none: true };
+    let icons: Record<string, string> = {};
     if (!src.none) {
       const items = remapItems(variant.segments, src.items).filter((w) => w.startMs < durationMs);
       const built = buildCaptions({
@@ -107,6 +130,15 @@ export const compose = async (ctx: Ctx) => {
         keywords: plan.editorial?.keywords,
       });
       for (const w of built.warnings) warn(ctx, "compose", "subtitulos", w);
+      // Vídeos hablados para redes: emojis junto a las claves y páginas destacadas (estilo-hablado.md)
+      let apoyos: string[] | undefined;
+      if (built.mode === "impacto") {
+        const ap = planApoyos(built.pages, { busy: graphicIntervals(graphics) });
+        built.pages = ap.pages;
+        icons = ap.icons;
+        apoyos = ap.notes;
+        for (const n of ap.notes) ctx.log.info(n);
+      }
       const placementInput = {
         pages: built.pages,
         brand: ctx.profile.brand,
@@ -122,14 +154,14 @@ export const compose = async (ctx: Ctx) => {
       const placed = ctx.profile.defaults.editing.avoidFaces && faces.length ? placeCaptions(placementInput) : { pages: built.pages, moved: 0, blocked: 0 };
       const overFaces = faces.length ? pagesOverFaces({ ...placementInput, pages: placed.pages }) : 0;
       if (placed.moved) ctx.log.info(`${placed.moved} páginas de subtítulos movidas para no tapar caras`);
-      caps = { none: false, ...built, pages: placed.pages, transcription: src.transcription, placement: { moved: placed.moved, blocked: placed.blocked, overFaces } };
+      caps = { none: false, ...built, pages: placed.pages, transcription: src.transcription, placement: { moved: placed.moved, blocked: placed.blocked, overFaces }, apoyos };
     }
     // B-roll y música de esta variante (sus tiempos pasan al eje del vídeo final)
     const overlays = (plan.broll ?? []).flatMap((b) => {
       const a = remapTime(variant.segments, b.startMs);
       const e = remapTime(variant.segments, b.endMs);
       // Nunca en los 2,5 primeros segundos: el gancho se dice mirando a cámara
-      return a === null || e === null || e - a < 800 || a < 2500 ? [] : [{ startMs: a, endMs: e, src: b.src, kind: b.kind }];
+      return a === null || e === null || e - a < 800 || a < 2500 ? [] : [{ startMs: a, endMs: e, src: b.src, kind: b.kind, presentation: b.presentation ?? "pantalla" }];
     });
     const speech = src.none ? [] : remapItems(variant.segments, [...src.items, ...src.events.map((e) => ({ text: "·", ...e }))]).map((w) => ({ startMs: w.startMs, endMs: w.endMs }));
     const mus = ctx.profile.defaults.editorial.music;
@@ -149,6 +181,8 @@ export const compose = async (ctx: Ctx) => {
       music,
       intensity: config.intensity,
       brand: ctx.profile.brand,
+      icons,
+      graphics,
       captions: caps.none ? { mode: config.captionMode, pages: [] } : { mode: caps.mode, pages: caps.pages },
     };
     await writeJsonAtomic(path.join(dir, "captions.json"), caps);
@@ -329,14 +363,15 @@ export const deliver = async (ctx: Ctx) => {
     subtítulos:
       !caps0 || caps0.none
         ? "ninguno"
-        : `${caps0.precision === "word" ? "por palabra" : caps0.precision === "segment" ? "por bloque" : "por palabra ESTIMADOS"} · modo ${caps0.mode}${caps0.mode !== caps0.requestedMode ? ` (pedido ${caps0.requestedMode})` : ""}`,
+        : `${caps0.precision === "word" ? "por palabra" : caps0.precision === "segment" ? "por bloque" : "por palabra ESTIMADOS"} · modo ${caps0.mode}${caps0.mode !== caps0.requestedMode ? ` (pedido ${caps0.requestedMode})` : ""}${caps0.apoyos?.length ? ` · apoyos: ${caps0.apoyos.join("; ")}` : ""}`,
     transcripción:
       src.none || !src.transcription
         ? "no (subtítulos aportados por el cliente o sin subtítulos)"
-        : `${src.transcription.provider} ${src.transcription.model} · ${src.transcription.source === "cache" ? "reutilizada de caché, sin coste" : "llamada a la API"} · ${src.transcription.words} palabras`,
+        : `${src.transcription.provider} ${src.transcription.model} · ${src.transcription.source === "cache" ? "reutilizada de caché, sin coste" : src.transcription.source === "local" ? "en este equipo, el audio no salió de él, sin coste" : "llamada a la API"} · ${src.transcription.words} palabras`,
   };
   const variants = sections.map((s) => ({ id: s.variant.id, title: s.variant.title, durationMs: s.variant.durationMs, reason: s.variant.reason, qc: s.qc }));
-  const credits = [...new Set([...(plan.broll ?? []).map((b) => b.credit), ...(plan.music ? [plan.music.credit] : [])])];
+  const withIcons = sections.some((s) => !s.captions.none && s.captions.pages.some((p) => p.lines.flat().some((t) => t.icon)));
+  const credits = [...new Set([...(plan.broll ?? []).map((b) => b.credit), ...(plan.music ? [plan.music.credit] : []), ...(withIcons ? [`Emojis: ${ICON_CREDIT}`] : [])])];
   await writeJsonAtomic(O(ctx, "informe.json"), {
     job: ctx.job,
     analysis: summary,

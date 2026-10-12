@@ -10,14 +10,26 @@ Las 7 etapas funcionan en versión básica (2026-10-12). El usuario pidió prior
   procesado completo. Para verificarlo: `.env` con la clave y `npm run autopilot -- elevenlabs` en tu máquina.
 - **Claude** (planificador y guiones desde brief): sin `ANTHROPIC_API_KEY` en el contenedor; probado con la API
   simulada. Comprobar con una clave real.
-- **Grabación real de una persona hablando a cámara**: los vídeos de prueba usan imagen sintética. Falta pasar una
-  grabación real de cliente (talking head) por todo el pipeline.
+- ~~Grabación real de una persona hablando a cámara~~: hecho el 12-10-2026 con el primer cliente real (`cliente-1`,
+  17 s, inglés, transcripción local): APROBADO. Ver `pruebas/README.md`.
 
 - **Cuenta de ElevenLabs**: el 12-10-2026 ElevenLabs rechazó la narración del vídeo de mandarinas porque
   desactivó el plan gratuito de la cuenta por «actividad inusual». Mientras siga así, la narración y la
   transcripción fallan (el sistema lo informa); se arregla en la cuenta (plan de pago o soporte de ElevenLabs).
 
 ## Por pulir
+
+- Vídeos hablados (estilo-hablado.md), afinar con más grabaciones reales:
+  - Cortes de silencio: con un umbral fijo (−35 dB) no se cortan pausas con ruido de sala; el primer cliente no
+    tenía silencios reales (su clip ya venía editado). Falta un umbral relativo a la voz de cada grabación.
+  - Listas: se detectan si la transcripción pone las comas; si no (p. ej. «personal brands podcasts»), hay que
+    añadirlas en la revisión del plan (`work/plan.json` → `graficos`, luego `aprobar` o `rehacer-video`). Con Claude
+    configurado se podrían proponer más gráficos (cifras, comparativas) validados igual.
+  - Gráficos: solo calendario y lista; faltan cifra/contador a pantalla completa, mapa al nombrar una ciudad (ref. 2)
+    y capturas de interfaz (requieren material del cliente). Durante un gráfico los subtítulos siguen donde estaban.
+  - Emojis: solo si la clave tiene uno claro y su página dura ≥ 0,6 s; con habla rápida salen pocos.
+  - Zoom alterno: sin cortes reales, cambia en los inicios de frase; revisar con clips más largos.
+  - Afirmaciones a verificar (cifras, garantías) solo se marcan con el planificador Claude; el local no las detecta.
 
 - Creación con tema: la elección es por palabras clave (14 temas). Con Claude configurado podría elegir mejor
   (tema, iconos) entre las mismas opciones validadas. Faltan ilustraciones y B-roll temático además de iconos,
@@ -28,8 +40,8 @@ Las 7 etapas funcionan en versión básica (2026-10-12). El usuario pidió prior
   repaso; y en la edición (motor A), el aro y el visor «REC» que siguen la cara (el encuadre ya la sigue).
   La cámara que sigue usa un cálculo aproximado de la posición de cada bloque: con escenas muy cargadas puede
   quedarse corta.
-- Edición: título/gancho animado al inicio de los clips; B-roll en formato tarjeta (no solo pantalla completa);
-  hablante activo en podcasts (diarización ya disponible) para elegir a quién encuadrar.
+- Edición: título/gancho animado al inicio de los clips; hablante activo en podcasts (diarización ya disponible)
+  para elegir a quién encuadrar. (B-roll en tarjeta: hecho, `presentation: "tarjeta"`.)
 - Rendimiento: el modo `blur-fill` dobla el coste de render (dos capas de vídeo); un render de 36 s tarda ~1–3 min con 4 núcleos.
 - Web: sesiones en memoria (se pierden al reiniciar), sin gestión de usuarios desde la propia web, sin HTTPS propio
   (usar un proxy HTTPS si se expone a internet; `HH_WEB_SECURE_COOKIE=1`). Presets guardables por cliente.

@@ -45,6 +45,42 @@ export const zoomSegments = (
   }));
 };
 
+// Zoom de los vídeos hablados (intensidad «redes»): un tramo nuevo en cada corte del vídeo (cut: el cambio de nivel
+// es instantáneo y esconde el salto) y en cada frase nueva separada al menos minSeconds del tramo anterior
+// (cambio suave). Los niveles se alternan 0/1.
+const SENTENCE_END_RE = /[.?!…]["»”)]*$/;
+export const cutZoomKeys = (cutsMs: number[], pages: CaptionPage[], totalMs: number, minSeconds: number) => {
+  const marks = [
+    ...cutsMs.filter((c) => c > 0).map((c) => ({ startMs: c, cut: true })),
+    ...pages
+      .filter((p, i) => i > 0 && SENTENCE_END_RE.test(pages[i - 1].lines.flat().slice(-1)[0]?.text ?? ""))
+      .map((p) => ({ startMs: p.startMs, cut: false })),
+  ].sort((a, b) => a.startMs - b.startMs);
+  const keys = [{ startMs: 0, cut: true }];
+  for (const m of marks) {
+    const last = keys[keys.length - 1];
+    const gap = m.startMs - last.startMs;
+    if (m.cut && gap < 400) last.cut = true;
+    else if (m.cut || gap >= minSeconds * 1000) keys.push(m);
+  }
+  return keys.map((k, i) => ({ ...k, endMs: i + 1 < keys.length ? keys[i + 1].startMs : totalMs, level: i % 2 }));
+};
+
+// Golpe de zoom en las palabras destacadas: sube en 4 frames y baja en 14; como mucho uno cada minSeconds
+export const emphasisPunch = (pages: CaptionPage[], frame: number, fps: number, minSeconds: number) => {
+  let last = -Infinity;
+  let v = 0;
+  for (const p of pages) {
+    for (const tk of p.lines.flat()) {
+      if (!tk.emphasis || tk.startMs - last < minSeconds * 1000) continue;
+      last = tk.startMs;
+      const d = frame - (tk.startMs / 1000) * fps;
+      if (d >= 0 && d < 18) v = Math.max(v, d < 4 ? 1 - (1 - d / 4) ** 2 : 1 - (d - 4) / 14);
+    }
+  }
+  return v;
+};
+
 const easeInOut = (t: number) =>
   t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
 

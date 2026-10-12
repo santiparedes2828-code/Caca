@@ -1,0 +1,81 @@
+{
+  "id": "cliente-1",
+  "name": "Cliente 1 (vídeos hablados para redes)",
+  "brand": {
+    "colors": {
+      "bg": "#111111",
+      "ink": "#0B0B0B",
+      "accent": "#FFD23F",
+      "accentDark": "#C99A00",
+      "muted": "#8A8A84",
+      "fill": "#2A2A2A",
+      "white": "#FFFFFF"
+    },
+    "fonts": [
+      { "role": "sans", "family": "Inter", "weight": "800", "style": "normal", "src": "static:fonts/inter-latin-800-normal.woff2" },
+      { "role": "sans", "family": "Inter", "weight": "700", "style": "normal", "src": "static:fonts/inter-latin-700-normal.woff2" },
+      { "role": "sans", "family": "Inter", "weight": "500", "style": "normal", "src": "static:fonts/inter-latin-500-normal.woff2" },
+      { "role": "serif", "family": "Inter", "weight": "800", "style": "normal", "src": "static:fonts/inter-latin-800-normal.woff2" },
+      { "role": "mono", "family": "Inter", "weight": "700", "style": "normal", "src": "static:fonts/inter-latin-700-normal.woff2" }
+    ],
+    "typography": {
+      "headlineWeight": 800,
+      "headlineTracking": "-0.02em",
+      "headlineLineHeight": 1,
+      "monoTracking": "0.06em"
+    },
+    "layout": {
+      "margin": 80,
+      "stroke": 8,
+      "radius": 28,
+      "safeZone": { "top": 300, "bottom": 470, "left": 80, "right": 140 }
+    },
+    "motion": {
+      "wordInFrames": 4,
+      "wordBlurPx": 6,
+      "wordRisePx": 14,
+      "dimFrames": 6,
+      "dimOpacity": 0.3,
+      "enterFrames": 10,
+      "enterDamping": 200,
+      "enterScaleFrom": 0.92
+    },
+    "captions": {
+      "variant": "shadow",
+      "fontRole": "sans",
+      "fontWeight": 800,
+      "fontSize": 92,
+      "lineHeight": 1.05,
+      "tracking": "-0.01em",
+      "maxCharsPerLine": 16,
+      "maxLines": 2,
+      "positionY": 0.7,
+      "highlight": "color",
+      "emphasisRole": "sans",
+      "minFontSize": 56
+    }
+  },
+  "defaults": {
+    "format": "vertical",
+    "fps": 30,
+    "captionMode": "impacto",
+    "intensity": "redes",
+    "reframe": { "mode": "cover", "focusX": 0.5, "focusY": 0.35 },
+    "captionsRequired": false,
+    "audio": { "normalize": true, "targetLufs": -14, "truePeakDb": -1.5, "denoise": "no" },
+    "editing": { "cutSilences": true, "minSilenceSec": 0.3, "keepPauseSec": 0.12, "silenceDb": -35, "followFaces": true, "avoidFaces": true },
+    "editorial": {
+      "mode": "talking-head",
+      "clips": { "count": 3, "minSec": 15, "maxSec": 60 },
+      "shortVersions": [],
+      "keepPrincipal": true,
+      "broll": true,
+      "graficos": true,
+      "music": { "enabled": false, "mood": null, "id": null, "volumeDb": -24, "duckDb": -10 },
+      "planner": "local",
+      "claude": { "model": "claude-opus-5-5", "effort": "medium" },
+      "approvePlan": false
+    },
+    "transcription": { "provider": "local", "model": "parakeet-tdt-0.6b-v3", "language": null, "diarize": false, "tagAudioEvents": false, "lowConfidenceLogprob": -1.5 }
+  }
+}

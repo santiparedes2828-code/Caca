@@ -128,7 +128,16 @@ export const planEditorial = async (ctx: Ctx, src: SourceCaptions, base: Segment
     const lib = await loadLibrary({ libraryDir: ctx.cfg.HH_LIBRARY_DIR, clientsDir: ctx.cfg.HH_CLIENTS_DIR, clientId: ctx.job.clientId, kind: "broll" });
     rejectedResources.push(...lib.rejected);
     const picks = matchBroll(sentences, lib.items, durMs);
-    broll = picks.map((p) => ({ id: p.item.id, src: p.item.src, kind: p.item.kind as "image" | "video", startMs: p.startMs, endMs: p.endMs, matched: p.matched, credit: credit(p.item) }));
+    broll = picks.map((p) => ({
+      id: p.item.id,
+      src: p.item.src,
+      kind: p.item.kind as "image" | "video",
+      presentation: p.item.presentation,
+      startMs: p.startMs,
+      endMs: p.endMs,
+      matched: p.matched,
+      credit: credit(p.item),
+    }));
     notes.push(
       lib.items.length
         ? `B-roll: ${broll.length} inserciones de la biblioteca (${lib.items.length} recursos con licencia disponibles)`

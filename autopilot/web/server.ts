@@ -126,6 +126,7 @@ const overridesFromForm = (f: Record<string, string>): JobOverrides => {
     followFaces: bool(f.followFaces),
     transcribe: bool(f.transcribe),
     broll: bool(f.broll),
+    graficos: bool(f.graficos),
     music: bool(f.music),
     keepPrincipal: bool(f.keepPrincipal),
     approvePlan: bool(f.approvePlan),

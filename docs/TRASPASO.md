@@ -41,7 +41,9 @@ Artefacto anclado en la barra lateral del usuario: https://claude.ai/artifact/Q3
 
 ## Restricciones del entorno cloud (conocidas)
 
-- Bloqueados: `api.elevenlabs.io`, `elevenlabs.io`, `huggingface.co`. Accesibles: npm, PyPI, storage.googleapis.com.
+- Bloqueados: `api.elevenlabs.io`, `elevenlabs.io`, `huggingface.co`, `openaipublic.azureedge.net` (Whisper),
+  `alphacephei.com` (Vosk). Accesibles: npm, PyPI, storage.googleapis.com y las releases de GitHub (de ahí sale el
+  modelo de transcripción local, `npm run setup:asr`).
 - El conector MCP de ElevenLabs sí funciona desde la sesión (no desde el código del pipeline).
 - Chromium en `/opt/pw-browsers/...` (ver `autopilot/config.ts`).
 
@@ -51,8 +53,22 @@ Artefacto anclado en la barra lateral del usuario: https://claude.ai/artifact/Q3
 - Vídeo subido por el usuario (TikTok de un tercero, @eugenio.esquivel23, con música): solo para pruebas locales;
   NO subir a Git ni a proveedores externos. Ruta en la sesión original:
   `/root/.claude/uploads/c892ae03-04bd-5098-be1f-897ddb43dfb6/c041153d-v09044g40000cnh24lfog65pm4j8q750.mp4`.
+- Primer cliente real (`cliente-1`, chico hablando a cámara en un pódcast, inglés, 17 s): `analisis5/cliente.mp4`;
+  referencias de vídeos hablados de terceros (@andre.visualz, @raw.to.reel): `analisis5/ref1.mp4`, `ref2.mp4`. Todo
+  ignorado por Git y solo local (material de clientes y de terceros: nunca a Git ni a proveedores externos). Los
+  resultados de la prueba están en `pruebas/subtitulos-cliente-1/` (los vídeos, también fuera de Git).
 
 ## Registro (lo último arriba)
+
+- 2026-10-12: vídeos hablados para redes (pedido del usuario con 2 referencias; análisis en `estilo-hablado.md`).
+  Hecho en el motor de edición: subtítulos `impacto` (1–3 palabras con pop, clave por frase más grande y en color,
+  fraseo sin «de/in» al final de página, cifras con su unidad), intensidad `redes` (zoom alterno en cortes o frases,
+  deriva y golpe en las claves), apoyos (página destacada en el gancho y las cifras, emojis en español e inglés),
+  gráficos a pantalla completa (`--graficos`: calendario y lista; editables en el plan; `rehacer-video`), B-roll en
+  tarjeta y sinónimos inmobiliarios, y transcripción local (sherpa-onnx + Parakeet; huggingface y Whisper bloqueados
+  aquí). Prueba obligatoria con el primer cliente real (`cliente-1`): APROBADO, sincronía medida contra el audio
+  (0–120 ms antes de la voz, nunca tarde). El usuario vio la primera versión y pidió «añade lo demás» → gráficos.
+  La lista de esa prueba se añadió en la revisión del plan (la transcripción no puso la coma). Ver `pruebas/README.md`.
 
 - 2026-10-12: corrección del usuario tras la demo: las animaciones eran para aprenderlas, no para usarlas todas
   juntas, sino para dar dinamismo. Ahora `planDynamics` las reparte por escena (`fx` de cada escena: máscara,

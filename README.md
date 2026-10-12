@@ -10,7 +10,7 @@ Reglas permanentes (solo Inter, emojis estilo iOS…) en [CLAUDE.md](CLAUDE.md).
 | Etapa | Qué hace |
 |---|---|
 | 1 Base | Vídeo → vertical 1080x1920 con subtítulos de marca, SRT, informe de calidad; original intacto |
-| 2 Material del cliente | Transcripción (ElevenLabs), encuadre que sigue la cara, subtítulos que no tapan caras, cortes de silencio no destructivos, escenas, ruido |
+| 2 Material del cliente | Transcripción (ElevenLabs o local, sin sacar el audio del equipo), encuadre que sigue la cara, subtítulos que no tapan caras, cortes de silencio no destructivos, escenas, ruido |
 | 3 Edición inteligente | Plan editorial, clips de un vídeo largo, versiones cortas, B-roll y música con licencia, Claude opcional, aprobación del plan |
 | 4 Narración | Voz de marca (ElevenLabs, Rodrigo Zabú) con tiempos por palabra |
 | 5 Creación | Guion o idea → narración (o sin voz) → escenas con motion graphics según el tema (o la identidad de la marca) → MP4 |
@@ -22,6 +22,7 @@ Reglas permanentes (solo Inter, emojis estilo iOS…) en [CLAUDE.md](CLAUDE.md).
 ```console
 npm ci
 npm run setup:python      # opcional: detección de caras (OpenCV en .venv/)
+npm run setup:asr         # opcional: transcripción local (sherpa-onnx + Parakeet, 650 MB; el audio no sale del equipo)
 cp .env.example .env      # y rellena ELEVENLABS_API_KEY (y ANTHROPIC_API_KEY si quieres Claude)
 npm run autopilot -- elevenlabs   # comprueba la clave y muestra tu plan real
 ```
@@ -67,6 +68,31 @@ npm run autopilot -- cola | pausar | reanudar | costes
 
 Salidas en `data/clients/<cliente>/jobs/<id>/output/`: MP4 por variante (principal, clips, cortos), SRT,
 `informe.md`, `plan.md` y fotogramas de control.
+
+### Vídeos hablados para redes (TikTok, Reels, Shorts)
+
+Estilo analizado en [estilo-hablado.md](estilo-hablado.md). Se activa con el perfil del cliente
+(`clients/cliente-1/profile.json` es el ejemplo) o por trabajo:
+
+```console
+npm run autopilot -- procesar grabacion.mp4 --modo impacto --intensidad redes --graficos --cortar-silencios
+npm run autopilot -- procesar visita-piso.mp4 --cliente <cliente> --modo impacto --broll --aprobar-plan
+npm run autopilot -- rehacer-video <id>     # tras editar los gráficos de work/plan.json
+```
+
+- **Subtítulos `impacto`**: bloques de 1–3 palabras que entran al sonar (pop con muelle) y salen en 4 frames; páginas
+  que no acaban en «de», «in»… ni separan una cifra de su unidad; una palabra clave por frase corta, más grande, en
+  ExtraBold y en el color de acento (manda la cifra, luego el concepto del plan, luego lo último que se dice).
+  Contorno oscuro para leer sobre cualquier fondo; siempre dentro de las zonas seguras del perfil (botones de las redes).
+- **Apoyos** (uno cada vez): el gancho y las cifras como página destacada (la cifra rueda hasta su valor), emoji con
+  licencia junto a la clave cuando hay uno claro (en español o inglés) y **gráficos a pantalla completa** hechos con
+  código: calendario al decir una fecha con mes y año, lista con checks al enumerar (`--graficos`). El vídeo se
+  desenfoca detrás y los subtítulos siguen encima. El plan los enseña y se pueden quitar o añadir antes de aprobarlo.
+- **Intensidad `redes`**: zoom alterno 1 ↔ 1,08 en cada corte (o en cada frase si no hay cortes), deriva lenta y un
+  golpe suave en las claves como mucho cada 2,5 s.
+- **B-roll** de la biblioteca con licencia a pantalla completa o **en tarjeta** (capturas); en inmobiliaria, las fotos
+  de la propiedad que entrega el cliente (licencia `cliente`), con sinónimos de España y Latinoamérica (alberca,
+  recámara, cochera…). El B-roll tiene prioridad sobre los gráficos y nunca coinciden.
 
 ### Formato del guion (creación)
 
@@ -143,6 +169,8 @@ quedan en revisión. **La revisión humana sigue siendo necesaria.**
 
 - **ElevenLabs**: transcripción (solo audio mono del tramo) y narración (solo el texto). Caché por cliente, límites
   por trabajo y por día, reintentos sin riesgo de doble cobro, uso en `data/usage/`.
+- **Transcripción local** (proveedor `local`, o automática si no hay clave de ElevenLabs y el modelo está instalado):
+  sherpa-onnx + NVIDIA Parakeet TDT 0.6B v3 en este equipo; el audio no sale de él y no cuesta nada.
 - **Claude** (opcional): elige fragmentos o escribe guiones; recibe solo texto. Su salida se valida y nunca se ejecuta.
 - Costes **reales** (lo que dice el proveedor) y **estimados** (con tarifas configurables) separados en cada informe y
   en `npm run autopilot -- costes`.
@@ -162,5 +190,6 @@ integraciones reales verificadas están anotadas en PENDIENTE.md.
 
 Remotion exige licencia de empresa a partir de cierto tamaño ([condiciones](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md));
 clave en `REMOTION_LICENSE_KEY`. Única fuente: Inter (OFL) en `public/fonts/`; emojis Fluent Emoji en color (MIT);
-modelo de caras YuNet (MIT) en `models/`.
+modelo de caras YuNet (MIT) en `models/`; transcripción local con sherpa-onnx (Apache-2.0) y Parakeet TDT 0.6B v3
+(CC-BY-4.0 según NVIDIA; ver `docs/licencias.md`).
 B-roll y música solo desde `library/` y `clients/<id>/library/` con licencia declarada (ver `library/README.md`).

@@ -29,3 +29,12 @@ __pycache__/
 
 # Referencia de un tercero (@samunoz.ia): solo estudio local, nunca a Git
 analisis4/
+# Referencias de vídeos hablados (terceros) y material del primer cliente: solo local, nunca a Git
+analisis5/
+
+# Modelo de transcripción local (650 MB; se descarga con npm run setup:asr)
+models/asr/
+
+# Pruebas con material de clientes (vídeos, fotogramas, informes): solo local; a Git solo va pruebas/README.md
+pruebas/*
+!pruebas/README.md

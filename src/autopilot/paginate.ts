@@ -19,6 +19,11 @@ export type PaginateOptions = {
   bridgeGapMs?: number;
   emphasis?: boolean; // marca una palabra destacada por página (heurística, ver pickEmphasis)
   keywords?: string[]; // conceptos del plan editorial: si aparecen, se destacan antes que la heurística
+  // "frase": una palabra destacada por frase corta (modo impacto, ver phraseEmphasis)
+  emphasisPer?: "pagina" | "frase";
+  // Fraseo de los vídeos hablados (modo impacto): página nueva también tras una coma, y ninguna página acaba en
+  // palabra de función («in», «de», «the») ni separa una cifra de su unidad («150 / millones»)
+  phrasing?: boolean;
 };
 
 const SENTENCE_END = /[.?!…]["»”)]*$/;
@@ -29,7 +34,27 @@ const STOP = new Set(
     "para pero porque como cuando donde desde hasta sobre entre este esta estos estas ese esa esos esas aquel " +
     "todo toda todos todas nada algo cada otro otra otros otras mismo misma tiene tienen hacer puede pueden " +
     "también siempre nunca ahora antes después muy más menos tanto solo sólo there their about would could should " +
-    "these those which where while because really"
+    "these those which where while because really porque entonces realmente básicamente literalmente tenemos estamos " +
+    "estaba estaban nuestro nuestra nosotros ustedes alguien cualquier mientras bastante demasiado haciendo diciendo " +
+    "before after people things something anything everything actually basically literally little pretty always " +
+    "another around through without between during within myself yourself themselves against across almost already " +
+    "though although whether thinking talking saying getting making"
+  ).split(" "),
+);
+
+// Palabras que se repiten mucho pero no dicen nada por sí solas: no sirven de clave aunque el plan las cuente
+const WEAK = new Set(
+  "first second third last next year years day days time times thing things week weeks month months primero primera segundo segunda ultimo ultima año años dia dias vez veces cosa cosas semana semanas mes meses".split(
+    " ",
+  ),
+);
+
+// Palabras de función (es/en) que no deberían cerrar una página en el modo impacto: se leen con la siguiente
+const FUNCTION = new Set(
+  (
+    "a an the of in on at to for with from by into and or but so our your my his her their its this that these those " +
+    "de del la el lo los las un una unos unas y e o u ni en con por para sin al a su sus mi mis tu tus nuestro nuestra " +
+    "nuestros nuestras que como pero se le les me te nos muy mas más"
   ).split(" "),
 );
 
@@ -72,11 +97,73 @@ export const pickEmphasis = (
 const lineLen = (line: TimedWord[]) =>
   line.reduce((n, w, i) => n + w.text.length + (i > 0 ? 1 : 0), 0);
 
+// Cifras y sus unidades: «150 millones», «90 días» se leen juntas, así que la unidad nunca se destaca sola
+const UNIT = new Set(
+  "million millions billion billions thousand thousands percent millon millones mil miles billon billones porciento euros dolares dollars pesos days dias weeks semanas months meses years anos hours horas minutes minutos".split(
+    " ",
+  ),
+);
+const plain = (t: string) =>
+  t
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\p{L}\p{N}]/gu, "");
+export const isUnitAfterNumber = (words: { text: string }[], i: number) =>
+  i > 0 && i < words.length && /\d/.test(words[i - 1].text) && UNIT.has(plain(words[i].text));
+
+const PHRASE_END = /[.?!…,;:]["»”)]*$/;
+
+export type PhraseEmphasisOptions = {
+  pauseMs?: number; // una pausa así de larga también cierra la frase
+  perWords?: number; // una clave más por cada tantas palabras de la frase
+  minGapMs?: number; // separación mínima entre dos claves
+};
+
+// Palabras destacadas de los vídeos hablados (modo impacto): una por frase corta (final de frase, coma o pausa) y
+// otra más cada ~6 palabras si queda a ≥ 1,2 s de las demás, para que el color y el tamaño no pierdan fuerza. Manda la
+// cifra (2 dígitos o más; su unidad va con ella), luego el concepto del plan (sin palabras flojas como «first» o
+// «año») y si no la palabra de contenido (≥ 6 letras) más al final: en español y en inglés lo nuevo va al final.
+export const phraseEmphasis = (words: TimedWord[], keywords: string[] = [], o: PhraseEmphasisOptions = {}) => {
+  const pauseMs = o.pauseMs ?? 700;
+  const perWords = o.perWords ?? 6;
+  const minGap = o.minGapMs ?? 1200;
+  const strong = new Set(keywords.filter((k) => !WEAK.has(keyForm(k)) && !STOP.has(bare(k))).map(keyForm));
+  const level = (i: number) => {
+    const t = words[i].text;
+    if (/\d{2,}/.test(t)) return 3;
+    if (isUnitAfterNumber(words, i) || WEAK.has(keyForm(t)) || STOP.has(bare(t))) return 0;
+    if (strong.has(keyForm(t))) return 2;
+    return bare(t).length > 5 ? 1 : 0;
+  };
+  const picked: number[] = [];
+  let start = 0;
+  words.forEach((w, i) => {
+    const next = words[i + 1];
+    if (next && !PHRASE_END.test(w.text) && next.startMs - w.endMs < pauseMs) return;
+    const max = Math.ceil((i + 1 - start) / perWords);
+    const ranked = Array.from({ length: i + 1 - start }, (_, k) => start + k)
+      .filter((j) => level(j) > 0)
+      .sort((a, b) => level(b) - level(a) || b - a);
+    let n = 0;
+    for (const j of ranked) {
+      if (n >= max) break;
+      if (picked.some((c) => Math.abs(words[c].startMs - words[j].startMs) < minGap)) continue;
+      picked.push(j);
+      n++;
+    }
+    start = i + 1;
+  });
+  return new Set(picked);
+};
+
 export const paginateWords = (
   words: TimedWord[],
   o: PaginateOptions,
 ): CaptionPage[] => {
   const holdMs = o.holdMs ?? 400;
+  const perSentence = o.emphasis && o.emphasisPer === "frase" ? phraseEmphasis(words, o.keywords) : null;
+  const index = new Map(words.map((w, i) => [w, i]));
   const bridge = o.bridgeGapMs ?? 1000;
   const groups: TimedWord[][][] = [];
   let lines: TimedWord[][] = [[]];
@@ -90,10 +177,20 @@ export const paginateWords = (
 
   words.forEach((w, i) => {
     const prev = words[i - 1];
+    const next = words[i + 1];
     if (count > 0) {
       const pause = prev && w.startMs - prev.endMs >= o.pauseBreakMs;
-      const sentence = prev && SENTENCE_END.test(prev.text);
-      if (count >= o.maxWordsPerPage || pause || sentence) flush();
+      const sentence = prev && (o.phrasing ? PHRASE_END : SENTENCE_END).test(prev.text);
+      // Fraseo: si esta palabra cerraría la página y es de función (o una cifra cuya unidad va detrás), abre la
+      // siguiente, salvo que la página quedara demasiado corta para leerla (< 300 ms)
+      const closes =
+        count + 1 >= o.maxWordsPerPage &&
+        !!next &&
+        !PHRASE_END.test(w.text) &&
+        next.startMs - w.endMs < o.pauseBreakMs &&
+        w.startMs - lines[0][0].startMs >= 300;
+      const dangling = !!o.phrasing && closes && (FUNCTION.has(bare(w.text)) || isUnitAfterNumber(words, i + 1));
+      if (count >= o.maxWordsPerPage || pause || sentence || dangling) flush();
     }
     let line = lines[lines.length - 1];
     if (
@@ -118,20 +215,17 @@ export const paginateWords = (
       next && next.startMs - last.endMs <= bridge
         ? next.startMs
         : last.endMs + holdMs;
-    const emph = o.emphasis ? pickEmphasis(flat, o.keywords) : -1;
+    const emph = o.emphasis && !perSentence ? pickEmphasis(flat, o.keywords) : -1;
     let idx = 0;
     return {
       startMs: first.startMs,
       endMs: next ? Math.min(endMs, next.startMs) : endMs,
       lines: g.map((line) =>
-        line.map(
-          (w): CaptionToken => ({
-            text: w.text,
-            startMs: w.startMs,
-            endMs: w.endMs,
-            emphasis: idx++ === emph,
-          }),
-        ),
+        line.map((w): CaptionToken => {
+          const emphasis = perSentence ? perSentence.has(index.get(w)!) : idx === emph;
+          idx++;
+          return { text: w.text, startMs: w.startMs, endMs: w.endMs, emphasis };
+        }),
       ),
     };
   });

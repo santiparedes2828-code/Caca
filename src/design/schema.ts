@@ -23,10 +23,11 @@ export const captionModeSchema = z.enum([
   "grupos",
   "frases",
   "dinamico",
+  "impacto", // vídeos hablados para redes: 1–3 palabras que entran al sonar, clave grande y en color (estilo-hablado.md)
 ]);
 export type CaptionMode = z.infer<typeof captionModeSchema>;
 
-export const intensitySchema = z.enum(["sutil", "dinamica", "alto-impacto"]);
+export const intensitySchema = z.enum(["sutil", "dinamica", "alto-impacto", "redes"]);
 export type Intensity = z.infer<typeof intensitySchema>;
 
 export const brandSchema = z.object({

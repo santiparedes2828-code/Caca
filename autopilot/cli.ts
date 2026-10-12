@@ -13,7 +13,7 @@ import { loadConfig, type Config } from "./config";
 import { processInbox } from "./inbox";
 import { findJob, listJobs, requestCancel } from "./jobs/store";
 import { jobOverridesSchema, type Job, type JobOverrides } from "./jobs/types";
-import { approvePlan, redoCaptions, retryJob, runJob, submitJob } from "./pipeline/run";
+import { approvePlan, redoCaptions, redoVideo, retryJob, runJob, submitJob } from "./pipeline/run";
 import { createElevenLabsClient } from "./transcription/elevenlabs";
 import { usedSecondsToday } from "./transcription/transcribe";
 
@@ -56,14 +56,16 @@ Uso: npm run autopilot -- <comando> [opciones]
   reintentar <id>                          Continúa un trabajo fallido desde el paso que falló.
   rehacer-subtitulos <id>                  Rehace subtítulos, render y control desde work/transcript.json
                                            (por ejemplo, tras corregir a mano una palabra). No vuelve a pagar.
+  rehacer-video <id>                       Vuelve a componer y renderizar con el plan actual (por ejemplo, tras
+                                           editar los apoyos gráficos en work/plan.json). No recalcula el plan.
   elevenlabs                               Comprueba la clave y muestra el plan y el uso reales de ElevenLabs.
   aprobar <id>                             Aprueba el plan (output/plan.md) de un trabajo en pausa y continúa.
   cancelar <id>                            Pide cancelar un trabajo en curso.
 
 Opciones de procesado:
   --formato vertical|horizontal|cuadrado   (por defecto: el del perfil del cliente)
-  --modo palabra|palabra-activa|grupos|frases|dinamico
-  --intensidad sutil|dinamica|alto-impacto
+  --modo palabra|palabra-activa|grupos|frases|dinamico|impacto   (impacto: vídeos hablados para redes)
+  --intensidad sutil|dinamica|alto-impacto|redes                 (redes: zoom alterno y golpes en las claves)
   --reencuadre cover|blur-fill|contain  --foco-x 0..1  --foco-y 0..1
   --desde <s> --hasta <s>                  Recorte del original (no destructivo)
   --estimar-palabras                       Permite tiempos por palabra estimados a partir de un SRT
@@ -79,12 +81,14 @@ Edición inteligente (Etapa 3):
   --corto 30,60                            Versiones cortas del vídeo (segundos)
   --con-principal | --sin-principal        Entregar también el vídeo completo en modos de clips
   --broll | --sin-broll                    B-roll de la biblioteca autorizada (library/, clients/<id>/library/)
+  --graficos | --sin-graficos              Apoyos gráficos hechos con código: calendario al decir una fecha, lista al enumerar
   --musica [--musica-id ID] | --sin-musica Música autorizada de la biblioteca, con atenuación bajo la voz
   --planificador local|claude              Claude solo elige fragmentos; requiere ANTHROPIC_API_KEY
   --aprobar-plan                           Para tras el plan hasta ejecutar "aprobar <id>"
   --idioma es|en|…                         Idioma de la transcripción (por defecto el del perfil)
 
-Transcripción: si no hay SRT/VTT/JSON, se transcribe con ElevenLabs Scribe (ELEVENLABS_API_KEY en .env).
+Transcripción: si no hay SRT/VTT/JSON, se transcribe con ElevenLabs Scribe (ELEVENLABS_API_KEY en .env) o en este
+equipo con el modelo local (npm run setup:asr; proveedor "local" en el perfil, o sin clave de ElevenLabs).
 `;
 
 // Direcciones IPv4 de esta máquina en sus redes (Wi-Fi, cable, Tailscale…)
@@ -128,6 +132,8 @@ const overridesFrom = (v: Record<string, string | boolean | undefined>): JobOver
   if (v["sin-principal"]) o.keepPrincipal = false;
   if (v.broll) o.broll = true;
   if (v["sin-broll"]) o.broll = false;
+  if (v.graficos) o.graficos = true;
+  if (v["sin-graficos"]) o.graficos = false;
   if (v.musica || v["musica-id"]) o.music = true;
   if (typeof v["musica-id"] === "string") o.musicId = v["musica-id"];
   if (v["sin-musica"]) o.music = false;
@@ -183,6 +189,8 @@ const main = async () => {
       "sin-principal": { type: "boolean" },
       broll: { type: "boolean" },
       "sin-broll": { type: "boolean" },
+      graficos: { type: "boolean" },
+      "sin-graficos": { type: "boolean" },
       musica: { type: "boolean" },
       "musica-id": { type: "string" },
       "sin-musica": { type: "boolean" },
@@ -247,6 +255,13 @@ const main = async () => {
     case "reintentar": {
       const j = await findJob(cfg, positionals[0] ?? "");
       const job = await retryJob(cfg, j.clientId, j.id);
+      printResult(cfg, job);
+      process.exitCode = job.status === "fallido" ? 1 : 0;
+      return;
+    }
+    case "rehacer-video": {
+      const j = await findJob(cfg, positionals[0] ?? "");
+      const job = await redoVideo(cfg, j.clientId, j.id);
       printResult(cfg, job);
       process.exitCode = job.status === "fallido" ? 1 : 0;
       return;

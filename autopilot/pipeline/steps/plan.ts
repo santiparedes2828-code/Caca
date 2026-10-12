@@ -1,4 +1,5 @@
 import { promises as fs } from "node:fs";
+import { planGraficos } from "../../edit/graficos";
 import { planSilenceCuts, totalMs, type Interval } from "../../edit/timeline";
 import { silences } from "../../media/probe";
 import { exists, readJson, writeJsonAtomic, writeTextAtomic } from "../../util/fs";
@@ -100,6 +101,13 @@ export const plan = async (ctx: Ctx) => {
 
   const ed2 = await planEditorial(ctx, src, segments, durMs);
   notes.push(...ed2.notes);
+  // Apoyos gráficos (vídeos hablados): solo con tiempos por palabra reales y lejos del B-roll
+  let graficos: PlanArtifact["graficos"] = [];
+  if (cfgJob.graficos && !src.none && src.precision === "word") {
+    const g = planGraficos(src.items, { durationMs: durMs, busy: ed2.broll });
+    graficos = g.graphics;
+    notes.push(...g.notes);
+  }
   const artifact: PlanArtifact = {
     mode: ctx.job.config.editMode,
     variants: ed2.variants,
@@ -111,6 +119,7 @@ export const plan = async (ctx: Ctx) => {
     notes,
     editorial: ed2.editorial,
     broll: ed2.broll,
+    graficos,
     music: ed2.music,
     rejectedResources: ed2.rejectedResources,
   };
@@ -144,6 +153,14 @@ export const planMarkdown = (ctx: Ctx, p: PlanArtifact) => {
   if (p.broll.length) {
     L.push("", "## B-roll", "");
     for (const b of p.broll) L.push(`- ${fmt(b.startMs)}–${fmt(b.endMs)}: ${b.id} (coincide: ${b.matched.join(", ")}) · ${b.credit}`);
+  }
+  if (p.graficos?.length) {
+    L.push("", "## Apoyos gráficos", "");
+    for (const g of p.graficos) {
+      const what = g.kind === "calendario" ? `calendario ${g.label} ${g.year}` : `lista: ${g.items.map((i) => i.text).join(" · ")}`;
+      L.push(`- ${fmt(g.startMs)}–${fmt(g.endMs)}: ${what}`);
+    }
+    L.push("", "_Para quitar o añadir uno, edita `graficos` en work/plan.json antes de aprobar el plan._");
   }
   if (p.music) L.push("", "## Música", "", `- ${p.music.credit}`);
   if (p.notes.length) L.push("", "## Decisiones", "", ...p.notes.map((n) => `- ${n}`));
