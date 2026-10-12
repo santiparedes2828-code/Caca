@@ -1,6 +1,7 @@
 # Capi · el personaje de Hook House
 
-> Propuesta del 12-10-2026 (pendiente de que el usuario elija el diseño). Habla por la marca en TikTok, Reels y
+> Creado el 12-10-2026. Diseño de referencia: versión 1 (generación `59osg7PvxvNTaFO7XmDw`) y hoja de personaje
+> oficial `JYRTKaEZq4LkU5x3P0Po` (flow «Hook House · Personaje (Capi)» de ElevenLabs). Habla por la marca en TikTok, Reels y
 > Shorts. Reglas de la casa (`CLAUDE.md`): todo el texto de los vídeos en Inter, emojis Fluent, voz de marca.
 
 ## Quién es
@@ -41,3 +42,19 @@ Frase de cierre propuesta: «Tú graba. Del resto me encargo yo.»
 Flow de ElevenLabs «Hook House · Personaje (Capi)»: 4 variaciones con gemini-3-pro-image. Cuando el usuario
 elija una, se usa como referencia fija (hoja de personaje: frente, perfil, expresiones) para mantenerlo igual en
 todos los vídeos.
+
+## Primer vídeo (propuesta de guion, 15–20 s)
+
+Formato «Capi no se estresa». Voz de marca (Rodrigo Zabú). Texto en pantalla en Inter con el modo de subtítulos
+de la casa.
+
+| Tiempo | Imagen | Capi dice |
+|---|---|---|
+| 0–3 s | Capi mira a cámara, ceja levantada | «Grabaste diez minutos de vídeo…» |
+| 3–7 s | Se encoge de hombros, móvil en la mano | «…y ahora te toca una tarde entera editando.» |
+| 7–12 s | Media sonrisa, tranquilo | «Yo no. Lo mando a Hook House y me lo devuelven listo para publicar.» |
+| 12–16 s | Señala a cámara | «Cortes, subtítulos, ritmo. Todo.» |
+| 16–19 s | Guiño; logotipo hookhouse. | «Tú graba. Del resto me encargo yo.» |
+
+Pendiente: elegir la hoja de personaje, generar la voz (4 tomas) y animar a Capi (vídeo con IA a partir de la
+hoja; antes de generar se calcula y se enseña el coste).
