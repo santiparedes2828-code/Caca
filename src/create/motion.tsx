@@ -287,7 +287,8 @@ export const ThemedHeadline: React.FC<{ theme: Theme; caps: Cap[]; from: number;
               whiteSpace: "pre",
               opacity: shown,
               transform: `translateY(${(1 - s) * size * 0.35}px) scale(${(0.75 + 0.25 * s) * (active ? 1.05 : 1)})`,
-              color: box ? p.onAccent : isAccent && theme.captionStyle === "color" ? p.accent : p.ink,
+              // En la caja el texto pasa a su color cuando la caja ya lo cubre (antes se perdería sobre el fondo)
+              color: box ? (grow > 0.55 ? p.onAccent : p.ink) : isAccent && theme.captionStyle === "color" ? p.accent : p.ink,
               padding: box ? "0 0.16em" : undefined,
               zIndex: box ? 1 : undefined,
             }}
