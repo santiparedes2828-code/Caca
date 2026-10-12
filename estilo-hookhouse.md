@@ -18,6 +18,7 @@ Medidas convertidas a **1080x1920** (×1,875 respecto al original). Lo no medibl
 | Titular | **Inter ExtraBold (800)**, tracking **−0,055em**, interlineado **0,95** | |
 | Palabra destacada | **Garamond Bold Italic** → *EB Garamond 700 italic* (Apple Garamond es propietaria) en **verde** | 1 palabra o grupo por titular |
 | Etiquetas | Monoespaciada **JetBrains Mono 500** [SUPOSICIÓN: equivalente], MAYÚSCULAS, tracking +0,08em | |
+| **Voz de marca** | **ElevenLabs · Rodrigo Zabú** (`1p905cdbJ1e1JQxhFTGJ`), español latino, modelo `eleven_v4` | **La misma en todos los vídeos** |
 | Logotipo | ~~`h.`~~ → logotipo de texto **hook** (Inter 800) + ***house*** (Garamond Bold Italic verde) + punto verde | Cabecera y cierre [provisional hasta tener el logo real] |
 
 ## 1. Estructura y ritmo
@@ -78,4 +79,5 @@ _(Aquí se añaden las correcciones que el usuario apruebe. Prevalecen sobre tod
 2. **Objetos y productos del b-roll, siempre como foto realista recortada**, nunca dibujados (2026-10-12, aprendida en el clip "Monster"; los iconos de línea de esta guía son gráficos de interfaz, no productos).
 3. **El logo de Hook House NO es una "h".** Hasta tener el logo real se usa el logotipo de texto hook*house*. (2026-10-12)
 4. **Los efectos 3D deben representar el trabajo de edición**, no formas abstractas: línea de tiempo de clips que se cortan sola, onda de audio con cuchilla sobre los silencios, fotos generadas en abanico, edición desmontada en capas (video / b-roll / zoom / subtítulos / sonido). Implementación: `src/Viral/three.tsx`. (2026-10-12, reel "Este video no lo editó nadie")
+5. **Una sola voz para todos los vídeos de la marca: Rodrigo Zabú (ElevenLabs, `1p905cdbJ1e1JQxhFTGJ`).** Nada de voces de otros proveedores (la voz "Juan" de Higgsfield se descartó por poco profesional). (2026-10-12)
 
