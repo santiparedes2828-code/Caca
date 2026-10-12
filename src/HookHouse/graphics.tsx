@@ -11,15 +11,37 @@ export const useEnter = (start: number) => {
   return { opacity: s, scale: `${0.92 + 0.08 * s}` };
 };
 
-// Cabecera de marca: logo h. + etiqueta mono
+// Logotipo de texto provisional: "hook" (Inter ExtraBold) + "house" (Garamond Bold Italic verde) + punto verde.
+// Sustituir por el logo real de Hook House cuando esté disponible.
+export const Wordmark: React.FC<{ size: number; color?: string; houseOpacity?: number; dot?: number }> = ({
+  size,
+  color = B.ink,
+  houseOpacity = 1,
+  dot = 1,
+}) => (
+  <span style={{ display: "inline-flex", alignItems: "baseline", whiteSpace: "nowrap", lineHeight: 1 }}>
+    <span style={{ fontFamily: SANS, fontWeight: 800, fontSize: size, letterSpacing: "-0.05em", color }}>hook</span>
+    <span style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 700, fontSize: size * 1.08, color: B.green, marginLeft: size * 0.08, opacity: houseOpacity }}>
+      house
+    </span>
+    <span
+      style={{
+        display: "inline-block",
+        width: size * 0.2,
+        height: size * 0.2,
+        borderRadius: "50%",
+        background: B.green,
+        marginLeft: size * 0.06,
+        scale: `${dot}`,
+      }}
+    />
+  </span>
+);
+
+// Cabecera de marca: logotipo + etiqueta mono
 export const Header: React.FC = () => (
   <div style={{ position: "absolute", top: 160, left: 80, right: 80, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-    <div style={{ display: "flex", alignItems: "baseline", gap: 12, fontFamily: SANS, fontWeight: 800, fontSize: 36, letterSpacing: "-0.04em", color: B.ink }}>
-      <span>
-        h<span style={{ color: B.green }}>.</span>
-      </span>
-      <span>hookhouse</span>
-    </div>
+    <Wordmark size={36} />
     <Mono size={22}>
       <span style={{ color: B.green }}>(01)</span> edición automática
     </Mono>
@@ -386,31 +408,18 @@ export const CtaBox: React.FC<{ start: number; text: string; top: number }> = ({
   );
 };
 
-// Logo de cierre: h + punto verde (estilo-hookhouse.md §5)
+// Logo de cierre: logotipo grande + etiqueta mono (estilo-hookhouse.md §5)
 export const Logo: React.FC<{ start: number }> = ({ start }) => {
   const frame = useCurrentFrame();
   const enter = useEnter(start);
-  const dot = interpolate(frame, [start + 6, start + 12], [0, 1], { ...opt, easing: Easing.out(Easing.back(2)) });
+  const house = interpolate(frame, [start + 4, start + 10], [0, 1], opt);
+  const dot = interpolate(frame, [start + 8, start + 14], [0, 1], { ...opt, easing: Easing.out(Easing.back(2.5)) });
   return (
-    <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", ...enter }}>
-      <div style={{ position: "relative", fontFamily: SANS, fontWeight: 800, fontSize: 420, letterSpacing: "-0.06em", color: B.ink, lineHeight: 1 }}>
-        h
-        <span
-          style={{
-            position: "absolute",
-            right: -95,
-            bottom: 34,
-            width: 82,
-            height: 82,
-            borderRadius: 41,
-            background: B.green,
-            scale: `${dot}`,
-          }}
-        />
-      </div>
-      <div style={{ position: "absolute", top: 1180, fontFamily: SERIF, fontStyle: "italic", fontWeight: 700, fontSize: 64, color: B.ink }}>
-        hook house
-      </div>
+    <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 40, ...enter }}>
+      <Wordmark size={170} houseOpacity={house} dot={dot} />
+      <Mono size={26} style={{ opacity: house }}>
+        edición de video automatizada
+      </Mono>
     </div>
   );
 };

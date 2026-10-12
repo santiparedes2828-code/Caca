@@ -18,7 +18,7 @@ Medidas convertidas a **1080x1920** (×1,875 respecto al original). Lo no medibl
 | Titular | **Inter ExtraBold (800)**, tracking **−0,055em**, interlineado **0,95** | |
 | Palabra destacada | **Garamond Bold Italic** → *EB Garamond 700 italic* (Apple Garamond es propietaria) en **verde** | 1 palabra o grupo por titular |
 | Etiquetas | Monoespaciada **JetBrains Mono 500** [SUPOSICIÓN: equivalente], MAYÚSCULAS, tracking +0,08em | |
-| Logotipo | `h.` (Inter 800, punto verde) + "hookhouse" | Cabecera y cierre [SUPOSICIÓN: provisional hasta tener logo] |
+| Logotipo | ~~`h.`~~ → logotipo de texto **hook** (Inter 800) + ***house*** (Garamond Bold Italic verde) + punto verde | Cabecera y cierre [provisional hasta tener el logo real] |
 
 ## 1. Estructura y ritmo
 - 9 secciones en 31 s → **una sección cada ~3,4 s**; dentro de cada sección **algo cambia cada 0,5–1,0 s** (palabra, fila, contador, pestaña).
@@ -54,7 +54,7 @@ Medidas convertidas a **1080x1920** (×1,875 respecto al original). Lo no medibl
 ## 5. Transiciones
 - Sin barridos ni zooms de cámara: **cámara fija**.
 - Cambio de sección = apagado a gris (6 frames) + nueva sección escribiéndose.
-- Cierre: logo `h.` centrado a **300 px** de alto durante **1,5 s** (el punto verde aparece 6 frames después).
+- Cierre: logotipo de texto centrado a **170 px** + etiqueta mono "EDICIÓN DE VIDEO AUTOMATIZADA", durante **1,5 s** ("house" entra a los 4 frames y el punto a los 8).
 
 ## 6. Zooms
 - Ninguno. El movimiento lo dan las palabras, los contadores y los gráficos.
@@ -76,3 +76,6 @@ _(Aquí se añaden las correcciones que el usuario apruebe. Prevalecen sobre tod
 
 1. **Sin marca de agua tipo @usuario** (2026-10-12). El logotipo de la cabecera forma parte del diseño de marca. [SUPOSICIÓN: confirmar con el usuario]
 2. **Objetos y productos del b-roll, siempre como foto realista recortada**, nunca dibujados (2026-10-12, aprendida en el clip "Monster"; los iconos de línea de esta guía son gráficos de interfaz, no productos).
+3. **El logo de Hook House NO es una "h".** Hasta tener el logo real se usa el logotipo de texto hook*house*. (2026-10-12)
+4. **Los efectos 3D deben representar el trabajo de edición**, no formas abstractas: línea de tiempo de clips que se cortan sola, onda de audio con cuchilla sobre los silencios, fotos generadas en abanico, edición desmontada en capas (video / b-roll / zoom / subtítulos / sonido). Implementación: `src/Viral/three.tsx`. (2026-10-12, reel "Este video no lo editó nadie")
+

@@ -3,11 +3,11 @@ import { Audio } from "@remotion/media";
 import React from "react";
 import { AbsoluteFill, Easing, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import captionsJson from "../data/captions-viral.json";
-import { B, MONO, SANS } from "../HookHouse/brand";
-import { ListRow, Logo } from "../HookHouse/graphics";
+import { B, MONO } from "../HookHouse/brand";
+import { ListRow, Logo, Wordmark } from "../HookHouse/graphics";
 import { CaptionsCtx, Headline, Mono, opt } from "../HookHouse/text";
 import { Cta3D, FlipStyle, PhoneCaptions, StyleFile, VoiceAI, Week, ZoomSound } from "./scenes";
-import { ClipField, Logo3D, Product3D, Waveform3D } from "./three";
+import { FilmCut3D, Layers3D, Photos3D, Waveform3D } from "./three";
 
 // Reel "Este video no lo editó nadie" — Hook House (guion-viral.md · estilo-hookhouse.md + 3D).
 // Sin locución: los tiempos salen de scripts/tiempos_texto.py (ritmo de lectura). Si se graba voz,
@@ -39,12 +39,7 @@ const ink = (w: World) => (w === "dark" ? B.bg : B.ink);
 // Cabecera de marca, del color del mundo
 const Header: React.FC<{ world: World }> = ({ world }) => (
   <div style={{ position: "absolute", top: 160, left: 80, right: 80, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-    <div style={{ display: "flex", alignItems: "baseline", gap: 12, fontFamily: SANS, fontWeight: 800, fontSize: 36, letterSpacing: "-0.04em", color: ink(world) }}>
-      <span>
-        h<span style={{ color: B.green }}>.</span>
-      </span>
-      <span>hookhouse</span>
-    </div>
+    <Wordmark size={36} color={ink(world)} />
     <span style={{ fontFamily: MONO, fontSize: 22, letterSpacing: "0.08em", color: world === "dark" ? "#9A9A94" : B.grey }}>
       <span style={{ color: B.green }}>(02)</span> EDICIÓN AUTOMÁTICA
     </span>
@@ -92,7 +87,7 @@ export const Viral: React.FC = () => {
     <CaptionsCtx.Provider value={caps}>
       <AbsoluteFill style={{ backgroundColor: B.ink }}>
         <Scene name="1 · Gancho 3D" {...sc(0)}>
-          <ClipField start={s(0)} split={w(8)} />
+          <FilmCut3D start={s(0)} cut={w(8)} />
           <Headline from={0} to={7} accent={[5, 5]} size={118} top={400} color={B.bg} dimAt={w(8) - 2} />
           <Headline from={8} to={11} accent={[11, 11]} underline size={150} top={790} color={B.bg} />
         </Scene>
@@ -114,13 +109,13 @@ export const Viral: React.FC = () => {
         </Scene>
 
         <Scene name="5 · Imágenes 3D" {...sc(4)}>
-          <Product3D start={w(37)} />
+          <Photos3D start={w(37)} />
           <Headline from={35} to={36} size={112} top={390} color={B.bg} dimAt={w(37) - 2} />
           <Headline from={37} to={39} accent={[39, 39]} size={112} top={630} color={B.bg} />
         </Scene>
 
         <Scene name="6 · Animaciones 3D" {...sc(5)}>
-          <Logo3D start={w(41)} />
+          <Layers3D start={w(40)} />
           <Headline from={40} to={40} size={110} top={390} dimAt={w(41) - 2} />
           <Headline from={41} to={42} accent={[42, 42]} size={230} top={500} />
         </Scene>
