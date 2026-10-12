@@ -139,7 +139,7 @@ const PhoneAfter: React.FC<{ p: MismoClipProps; frame: number; fps: number }> = 
     <>
       <Studio p={p} frame={frame} zoom={base + punch} originY={250} />
       {pageIdx >= 0 ? (
-        <div style={{ position: "absolute", left: 16, right: 16, top: 770, display: "flex", flexWrap: "wrap", justifyContent: "center", columnGap: 14, fontFamily: SANS, fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.05 }}>
+        <div style={{ position: "absolute", left: 16, right: 70, top: 770, display: "flex", flexWrap: "wrap", justifyContent: "center", columnGap: 14, fontFamily: SANS, fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.05 }}>
           {p.words.slice(pages[pageIdx].from, pages[pageIdx].to).map((w, k) => {
             const s = pop(frame, fr(w.startMs) - 1, fps, 11);
             const live = tMs >= w.startMs;
@@ -149,8 +149,8 @@ const PhoneAfter: React.FC<{ p: MismoClipProps; frame: number; fps: number }> = 
                 style={{
                   display: "inline-block",
                   fontSize: w.key ? 66 : 54,
-                  color: "#FFFFFF",
-                  background: w.key ? B.green : "transparent",
+                  color: w.key ? B.green : "#FFFFFF",
+                  background: w.key ? "#0E0F12" : "transparent",
                   borderRadius: 14,
                   padding: w.key ? "0 14px 4px" : 0,
                   opacity: live ? 1 : 0,

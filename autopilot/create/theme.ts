@@ -441,6 +441,10 @@ type SceneIn = { text: string; accentWords: number[]; component: string; items: 
 // Escenas cuyo protagonista es otro gráfico (sin icono grande)
 const NO_STICKER = new Set(["modelo", "cadena", "paso", "prompt"]);
 
+// Emojis que coinciden por el nombre pero significan otra cosa en vídeos sobre contenido: «clip» de vídeo no es un
+// clip de papel, «Shorts» de YouTube no son pantalones cortos, «key words» no es una llave, «one hour» no es la una
+const HOMONYMS = new Set(["paperclip", "linked-paperclips", "shorts", "key", "old-key", "one-oclock", "first-quarter-moon"]);
+
 export const planTheme = (opts: { topic: string; scenes: SceneIn[]; presetId?: string | null }) => {
   const topic = stripProduction(opts.topic);
   const all = `${topic} ${opts.scenes.map((s) => s.text).join(" ")}`;
@@ -454,7 +458,12 @@ export const planTheme = (opts: { topic: string; scenes: SceneIn[]; presetId?: s
   const lang = detectLang(all);
   // En inglés solo valen nombres exactos («microphone»): las coincidencias parciales daban iconos sin sentido
   // («first» → luna en cuarto creciente, «one» → reloj de la una)
-  const find = (t: string, max = 5, minScore = 2) => findIcons(t, { preferGroups: prefer, max, minScore: lang === "en" ? Math.max(minScore, 6) : minScore, lang });
+  // En inglés no se buscan iconos por palabras: el índice inglés casa por partes del nombre y daba emojis sin
+  // relación («one» → bañador de una pieza). Se usan los iconos del tema hasta tener sinónimos en inglés.
+  const find = (t: string, max = 5, minScore = 2) =>
+    (lang === "en" ? [] : findIcons(t, { preferGroups: prefer, max: max + 3, minScore, lang }))
+      .filter((i) => !HOMONYMS.has(i))
+      .slice(0, max);
   // Iconos del tema: lo que dice la idea primero, luego los del estilo. Para el texto entero solo valen
   // coincidencias claras (el nombre del emoji), no palabras sueltas como «detrás» o «línea»
   const topicIcons = find(topic, 3, 4);

@@ -17,6 +17,13 @@ Las 7 etapas funcionan en versión básica (2026-10-12). El usuario pidió prior
   desactivó el plan gratuito de la cuenta por «actividad inusual». Mientras siga así, la narración y la
   transcripción fallan (el sistema lo informa); se arregla en la cuenta (plan de pago o soporte de ElevenLabs).
 
+## Crecimiento (12-10-2026)
+
+- Verificar en el navegador los 22 prospectos (canal, Shorts, contacto) antes de enviar; ampliar a 30+ cuando el
+  entorno permita abrir YouTube y webs (ajuste de red del entorno).
+- Conectar YouTube en Windsor para medir Shorts. TikTok no tiene publicación por Windsor ni por Higgsfield.
+- Iconos de los vídeos con tema en inglés: hoy solo los del tema; falta una lista de sinónimos en inglés.
+
 ## Por pulir
 
 - Vídeos hablados (estilo-hablado.md), afinar con más grabaciones reales:

@@ -60,6 +60,20 @@ Artefacto anclado en la barra lateral del usuario: https://claude.ai/artifact/Q3
 
 ## Registro (lo último arriba)
 
+- 2026-10-12: el usuario pidió actuar como responsable de crecimiento y ventas (primer cliente recurrente en 30 días).
+  Todo en `crecimiento/` (ver su README). Hecho:
+  - base de datos comercial `npm run crm` (`autopilot/crm/`, pruebas en `tests/unit/crm.test.ts`) con 22 prospectos
+    investigados y 7 borradores en inglés;
+  - oferta propuesta (390/690 USD) y estrategia con calendario de 30 días;
+  - vídeos: `MismoClip` EN/ES (`src/Crecimiento/`) y 3 consejos con tema; contador «STEP 1 OF 3» en inglés;
+    iconos por palabras desactivados en inglés y homónimos bloqueados («clip», «shorts»);
+  - panel en el teléfono: https://claude.ai/artifact/QPgVgn1YPTER13x7SB42HS.
+  Bloqueos:
+  - la política de red del entorno da 403 a YouTube, Apple Podcasts y la mayoría de webs, así que los prospectos
+    salen de resultados de búsqueda y faltan por verificar;
+  - las búsquedas web tienen un tope de 200 por turno.
+  Claude no envía mensajes ni publica: el usuario aprueba y envía.
+
 - 2026-10-12: «ponle el sonido»: efectos de sonido propios en el motor de edición (`--efectos`, `editorial.efectos` en
   el perfil; activado en `cliente-1`). Vídeo final del cliente: `pruebas/subtitulos-cliente-1/cliente-1_final_con-sonido_9x16.mp4`
   (APROBADO, −14 LUFS, pico −1,1 dBTP). Comando nuevo `rehacer-video <id>`.
