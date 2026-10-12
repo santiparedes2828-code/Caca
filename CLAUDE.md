@@ -36,6 +36,8 @@ No las cambies salvo que el usuario lo pida expresamente.
    - No alteres ni inventes contenido hablado.
    - No inventes funciones, recursos, URLs, licencias, tarifas ni resultados.
    - No des por funcionales integraciones probadas solo con simulaciones.
+7. **Proveedores (12-10-2026):** ElevenLabs **solo para voces** (narración y transcripción). Las imágenes se
+   generan con **Canva** (más barato). No generar imágenes ni vídeos con ElevenLabs.
 6. El vídeo de TikTok de un tercero (@eugenio.esquivel23) que subió el usuario es solo para pruebas locales:
    nunca a Git ni a proveedores externos.
 

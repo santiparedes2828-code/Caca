@@ -42,3 +42,6 @@ pruebas/*
 # Imágenes generadas del personaje (se guardan en el flow de ElevenLabs; aquí solo en local)
 personaje/*.png
 personaje/*.jpg
+analisis6/
+# Recortes de Capi (se regeneran desde la hoja de personaje, personaje/)
+public/capi/*.png
