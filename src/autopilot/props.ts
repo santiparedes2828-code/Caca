@@ -57,6 +57,26 @@ export const editPropsSchema = z.object({
       y: z.number().min(0).max(1),
     }),
   ),
+  // B-roll a pantalla completa sobre el vídeo (los subtítulos quedan encima). src: URL servida por el backend
+  overlays: z.array(
+    z.object({
+      startMs: z.number().min(0),
+      endMs: z.number().min(0),
+      src: z.string(),
+      kind: z.enum(["image", "video"]),
+    }),
+  ),
+  // Música autorizada: volumen base y atenuación (ducking) mientras hay voz
+  music: z
+    .object({
+      src: z.string(),
+      gain: z.number().min(0).max(1),
+      duckGain: z.number().min(0).max(1),
+      fadeInMs: z.number().min(0),
+      fadeOutMs: z.number().min(0),
+      speech: z.array(z.object({ startMs: z.number(), endMs: z.number() })),
+    })
+    .nullable(),
   intensity: intensitySchema,
   brand: brandSchema,
   captions: z.object({

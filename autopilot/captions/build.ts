@@ -44,6 +44,7 @@ export const buildCaptions = (opts: {
   allowEstimatedWordTiming: boolean;
   trimStartMs: number;
   durationMs: number;
+  keywords?: string[];
 }): BuiltCaptions => {
   const { loaded, brand, intensity } = opts;
   const warnings: string[] = [...loaded.warnings];
@@ -78,6 +79,7 @@ export const buildCaptions = (opts: {
       maxLines: cap.maxLines,
       pauseBreakMs: preset.pauseBreakMs,
       emphasis: mode === "dinamico",
+      keywords: opts.keywords,
     });
   }
   // Ninguna página puede pasar del final del vídeo (la última se mantiene holdMs tras su palabra)

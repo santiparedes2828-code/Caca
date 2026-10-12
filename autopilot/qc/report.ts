@@ -9,7 +9,7 @@ export type ReportVariant = { id: string; title: string | null; durationMs: numb
 export const reportMarkdown = (
   job: Job,
   variants: ReportVariant[] | null,
-  extra: { analysis?: Record<string, unknown>; notes?: string[] } = {},
+  extra: { analysis?: Record<string, unknown>; notes?: string[]; credits?: string[] } = {},
 ) => {
   const L: string[] = [];
   L.push(`# Informe · trabajo ${job.id}`);
@@ -35,6 +35,11 @@ export const reportMarkdown = (
     L.push("");
     L.push("## Decisiones de edición");
     for (const n of extra.notes) L.push(`- ${n}`);
+  }
+  if (extra.credits?.length) {
+    L.push("");
+    L.push("## Recursos de terceros y licencias");
+    for (const c of extra.credits) L.push(`- ${c}`);
   }
   for (const v of variants ?? []) {
     L.push("");

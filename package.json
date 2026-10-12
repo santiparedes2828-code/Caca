@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@anthropic-ai/sdk": "0.133.0",
     "@remotion/bundler": "4.0.534",
     "@remotion/captions": "4.0.534",
     "@remotion/cli": "4.0.534",

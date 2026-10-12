@@ -13,6 +13,7 @@ import { useBrandFonts } from "../design/fonts";
 import { INTENSITY } from "../design/intensity";
 import { Captions } from "./Captions";
 import { fitVideo, focusAt, zoomSegments } from "./geometry";
+import { Broll, Music } from "./Overlays";
 import type { EditProps } from "./props";
 
 // Edición automática de material del cliente: tramos del vídeo encadenados (cortes no destructivos),
@@ -183,6 +184,8 @@ export const AutopilotEdit: React.FC<EditProps> = (props) => {
           />
         </AbsoluteFill>
       ) : null}
+      <Broll overlays={props.overlays} brand={brand} />
+      {props.music ? <Music music={props.music} /> : null}
       <Captions
         pages={props.captions.pages}
         mode={props.captions.mode}

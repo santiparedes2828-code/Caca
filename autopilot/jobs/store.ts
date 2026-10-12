@@ -53,6 +53,15 @@ export const resolveConfig = (profile: ClientProfile, o: JobOverrides = {}): Job
     },
     cutSilences: o.cutSilences ?? profile.defaults.editing.cutSilences,
     followFaces: o.followFaces ?? profile.defaults.editing.followFaces,
+    editMode: o.editMode ?? profile.defaults.editorial.mode,
+    clips: { ...profile.defaults.editorial.clips, ...o.clips },
+    shortVersions: o.shortVersions ?? profile.defaults.editorial.shortVersions,
+    keepPrincipal: o.keepPrincipal ?? (o.editMode && o.editMode !== "talking-head" ? false : profile.defaults.editorial.keepPrincipal),
+    broll: o.broll ?? profile.defaults.editorial.broll,
+    music: o.music ?? profile.defaults.editorial.music.enabled,
+    musicId: o.musicId === undefined ? profile.defaults.editorial.music.id : o.musicId,
+    planner: o.planner ?? profile.defaults.editorial.planner,
+    approvePlan: o.approvePlan ?? profile.defaults.editorial.approvePlan,
   });
 
 export const createJob = async (cfg: Config, profile: ClientProfile, overrides: JobOverrides = {}): Promise<Job> => {
@@ -77,6 +86,7 @@ export const createJob = async (cfg: Config, profile: ClientProfile, overrides: 
     errors: [],
     outputs: [],
     renderKey: null,
+    planApproved: false,
     verdict: null,
     costs: { real: [], estimated: [] },
   };

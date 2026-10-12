@@ -1,10 +1,11 @@
 import { promises as fs } from "node:fs";
 import { planSilenceCuts, totalMs, type Interval } from "../../edit/timeline";
 import { silences } from "../../media/probe";
-import { exists, readJson, writeJsonAtomic } from "../../util/fs";
+import { exists, readJson, writeJsonAtomic, writeTextAtomic } from "../../util/fs";
 import { buildFocusTrack, detectFaces, significantFaces, type FaceDetection } from "../../vision/faces";
 import { scenesWithFrames, type Scene } from "../../vision/scenes";
-import { W, warn, type Ctx, type PlanArtifact, type Prepared, type SourceCaptions, type Variant } from "../context";
+import { O, W, warn, type Ctx, type PlanArtifact, type Prepared, type SourceCaptions } from "../context";
+import { planEditorial } from "./editorial";
 
 // Planificación (Etapa 2): análisis visual de la copia de trabajo y decisiones de edición seguras.
 //   - caras → trayectoria del encuadre y datos para que los subtítulos no las tapen
@@ -97,17 +98,54 @@ export const plan = async (ctx: Ctx) => {
     if (src.none) notes.push("Cortes de silencio sin transcripción: solo se ha usado el nivel de audio");
   }
 
-  const main: Variant = { id: "principal", title: null, segments, durationMs: totalMs(segments), reason: null, score: null };
+  const ed2 = await planEditorial(ctx, src, segments, durMs);
+  notes.push(...ed2.notes);
   const artifact: PlanArtifact = {
-    mode: "edicion",
-    variants: [main],
+    mode: ctx.job.config.editMode,
+    variants: ed2.variants,
     cuts: { count: cuts.length, removedMs: durMs - totalMs(segments) },
     faces: facesInfo,
     focusTrack,
     scenes,
     tailCard,
     notes,
+    editorial: ed2.editorial,
+    broll: ed2.broll,
+    music: ed2.music,
+    rejectedResources: ed2.rejectedResources,
   };
   for (const n of notes) ctx.log.info(n);
   await writeJsonAtomic(W(ctx, "plan.json"), artifact);
+  await writeTextAtomic(O(ctx, "plan.md"), planMarkdown(ctx, artifact));
+  // Aprobación humana opcional: el trabajo se detiene aquí hasta `aprobar <id>`
+  if (ctx.job.config.approvePlan && !ctx.job.planApproved) {
+    ctx.pause = "plan";
+    warn(ctx, "plan", "plan_pendiente", "Plan pendiente de aprobación: revisa output/plan.md y ejecuta `npm run autopilot -- aprobar <id>`");
+  }
+};
+
+const fmt = (ms: number) => `${Math.floor(ms / 60000)}:${String(Math.floor((ms % 60000) / 1000)).padStart(2, "0")}`;
+
+export const planMarkdown = (ctx: Ctx, p: PlanArtifact) => {
+  const L = [`# Plan de edición · trabajo ${ctx.job.id}`, "", `Modo: **${p.mode}**${p.editorial ? ` · planificador ${p.editorial.planner}` : ""}`, ""];
+  L.push("## Vídeos que se van a generar", "");
+  for (const v of p.variants) {
+    const first = v.segments[0];
+    const last = v.segments[v.segments.length - 1];
+    L.push(
+      `- **${v.id}**${v.title ? ` — ${v.title}` : ""}: ${(v.durationMs / 1000).toFixed(1)} s (del original ${fmt(first?.srcStartMs ?? 0)}–${fmt(last?.srcEndMs ?? 0)}, ${v.segments.length} tramos)${v.reason ? `. Motivo: ${v.reason}` : ""}`,
+    );
+  }
+  if (p.editorial?.keywords.length) L.push("", `Conceptos destacados: ${p.editorial.keywords.join(", ")}`);
+  if (p.editorial?.claims.length) {
+    L.push("", "## Afirmaciones a verificar antes de publicar", "");
+    for (const c of p.editorial.claims) L.push(`- ${fmt(c.startMs)} "${c.text}" — ${c.reason}`);
+  }
+  if (p.broll.length) {
+    L.push("", "## B-roll", "");
+    for (const b of p.broll) L.push(`- ${fmt(b.startMs)}–${fmt(b.endMs)}: ${b.id} (coincide: ${b.matched.join(", ")}) · ${b.credit}`);
+  }
+  if (p.music) L.push("", "## Música", "", `- ${p.music.credit}`);
+  if (p.notes.length) L.push("", "## Decisiones", "", ...p.notes.map((n) => `- ${n}`));
+  return L.join("\n") + "\n";
 };

@@ -35,6 +35,29 @@ export const profileSchema = z.object({
         avoidFaces: z.boolean(), // los subtítulos se apartan de las caras
       })
       .default({ cutSilences: false, minSilenceSec: 0.8, keepPauseSec: 0.3, silenceDb: -38, followFaces: true, avoidFaces: true }),
+    editorial: z
+      .object({
+        mode: z.enum(["talking-head", "podcast", "clips", "anuncio", "educativo"]),
+        clips: z.object({ count: z.number().int().min(1).max(20), minSec: z.number().min(5), maxSec: z.number().max(600) }),
+        shortVersions: z.array(z.number().min(5).max(600)), // versiones cortas del vídeo principal (s)
+        keepPrincipal: z.boolean(), // en modos de clips, entregar también el vídeo completo
+        broll: z.boolean(),
+        music: z.object({ enabled: z.boolean(), mood: z.string().nullable(), id: z.string().nullable(), volumeDb: z.number().min(-40).max(0), duckDb: z.number().min(-40).max(0) }),
+        planner: z.enum(["local", "claude"]),
+        claude: z.object({ model: z.string(), effort: z.enum(["low", "medium", "high"]) }),
+        approvePlan: z.boolean(), // parar tras el plan hasta que alguien lo apruebe
+      })
+      .default({
+        mode: "talking-head",
+        clips: { count: 3, minSec: 15, maxSec: 60 },
+        shortVersions: [],
+        keepPrincipal: true,
+        broll: false,
+        music: { enabled: false, mood: null, id: null, volumeDb: -22, duckDb: -10 },
+        planner: "local",
+        claude: { model: "claude-opus-5-5", effort: "medium" },
+        approvePlan: false,
+      }),
     transcription: z
       .object({
         provider: z.enum(["elevenlabs", "ninguno"]),

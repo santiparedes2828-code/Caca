@@ -36,6 +36,17 @@ const schema = z.object({
   // Python para la detección de caras (npm run setup:python crea .venv). Sin él, el foco es fijo y se avisa.
   HH_PYTHON: z.string().optional(),
   HH_FACE_FPS: z.coerce.number().positive().max(10).default(2),
+  // Biblioteca interna de recursos autorizados (B-roll y música)
+  HH_LIBRARY_DIR: z.string().default(path.join(ROOT, "library")),
+  // Claude (planificador opcional). La clave la lee el SDK de ANTHROPIC_API_KEY; aquí solo se comprueba si existe.
+  ANTHROPIC_API_KEY: z
+    .string()
+    .optional()
+    .transform((v) => v?.trim() || undefined),
+  // Tarifas para ESTIMAR coste (USD por millón de tokens). Por defecto, las públicas de claude-opus-5-5
+  // en la referencia oficial (consultada el 2026-10-12); cámbialas si usas otro modelo o tarifa.
+  HH_CLAUDE_USD_PER_MTOK_IN: z.coerce.number().positive().default(4),
+  HH_CLAUDE_USD_PER_MTOK_OUT: z.coerce.number().positive().default(20),
   REMOTION_BROWSER_EXECUTABLE: z.string().optional(),
   REMOTION_LICENSE_KEY: z.string().optional(),
 });

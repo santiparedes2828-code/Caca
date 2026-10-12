@@ -105,3 +105,9 @@ export const toFrameSegments = (segs: Segment[], fps: number) =>
       return { srcStartFrame: a, durationInFrames: b - a };
     })
     .filter((s) => s.durationInFrames > 0);
+
+// Parte de los tramos que cae dentro de [startMs, endMs] (un clip hereda los cortes de silencio internos)
+export const clipSegments = (segs: Segment[], startMs: number, endMs: number): Segment[] =>
+  segs
+    .map((s) => ({ srcStartMs: Math.max(s.srcStartMs, startMs), srcEndMs: Math.min(s.srcEndMs, endMs) }))
+    .filter((s) => s.srcEndMs - s.srcStartMs >= 40);

@@ -13,7 +13,7 @@ import type { Scene } from "../vision/scenes";
 
 // Contexto y artefactos compartidos por los pasos del pipeline.
 
-export type Ctx = { cfg: Config; job: Job; dir: string; profile: ClientProfile; log: Logger };
+export type Ctx = { cfg: Config; job: Job; dir: string; profile: ClientProfile; log: Logger; pause?: "plan" };
 
 export const W = (ctx: Ctx, ...p: string[]) => path.join(ctx.dir, "work", ...p);
 export const O = (ctx: Ctx, ...p: string[]) => path.join(ctx.dir, "output", ...p);
@@ -61,7 +61,12 @@ export type TranscriptionInfo = {
 // work/source-captions.json: subtítulos en el tiempo de la copia de trabajo (antes de cortes)
 export type SourceCaptions =
   | { none: true }
-  | ({ none: false; transcription: TranscriptionInfo | null; events: { startMs: number; endMs: number }[] } & LoadedCaptions);
+  | ({
+      none: false;
+      transcription: TranscriptionInfo | null;
+      events: { startMs: number; endMs: number }[];
+      speakers?: (string | null)[]; // hablante de cada elemento (diarización), si se conoce
+    } & LoadedCaptions);
 
 // Una variante es un vídeo de salida: el principal o un clip. Sus tramos están en el tiempo de la copia de trabajo.
 export type Variant = {
@@ -83,6 +88,19 @@ export type PlanArtifact = {
   scenes: Scene[];
   tailCard: { startMs: number } | null;
   notes: string[];
+  editorial: null | {
+    mode: string;
+    planner: "local" | "claude";
+    sentences: number;
+    keywords: string[];
+    boundaries: number[];
+    claims: { startMs: number; text: string; reason: string }[];
+    rejected: string[];
+  };
+  // En el tiempo de la copia de trabajo; cada variante toma los que caen en sus tramos
+  broll: { id: string; src: string; kind: "image" | "video"; startMs: number; endMs: number; matched: string[]; credit: string }[];
+  music: null | { id: string; src: string; credit: string };
+  rejectedResources: { where: string; reason: string }[];
 };
 
 // work/variants/<id>/captions.json

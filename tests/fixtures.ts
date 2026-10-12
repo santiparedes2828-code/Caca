@@ -100,3 +100,38 @@ export const makeGapVideo = async (dir: string) => {
   await fs.writeFile(json, JSON.stringify(words));
   return { video: out, captions: json, words };
 };
+
+// Biblioteca de prueba: B-roll e imágenes generadas con ffmpeg y una pista musical sintetizada.
+// Licencia "generado-en-pruebas": material creado aquí mismo, sin derechos de terceros.
+export const makeTestLibrary = async (dir: string) => {
+  const broll = path.join(dir, "broll");
+  const music = path.join(dir, "music");
+  await fs.mkdir(broll, { recursive: true });
+  await fs.mkdir(music, { recursive: true });
+  const imgs: [string, string, string[]][] = [
+    ["agencias", "mandelbrot=size=1280x720", ["agencias", "tiktok"]],
+    ["subtitulos", "testsrc2=size=1280x720", ["subtítulos", "zooms"]],
+    ["sistema", "cellauto=size=1280x720:rule=110", ["sistema"]],
+    ["editor", "life=size=1280x720:mold=10:ratio=0.3", ["editor"]],
+  ];
+  for (const [id, src] of imgs) {
+    await runOk("ffmpeg", ["-v", "error", "-y", "-f", "lavfi", "-i", src, "-frames:v", "1", path.join(broll, `${id}.jpg`)]);
+  }
+  await runOk("ffmpeg", [
+    "-v", "error", "-y", "-f", "lavfi", "-i",
+    "aevalsrc=0.15*sin(2*PI*220*t)*(0.6+0.4*sin(2*PI*2*t))+0.1*sin(2*PI*277.18*t)+0.1*sin(2*PI*329.63*t):s=44100:d=20",
+    "-c:a", "libmp3lame", "-b:a", "128k", path.join(music, "acorde.mp3"),
+  ]);
+  const lic = { type: "generado-en-pruebas", source: "tests/fixtures.ts (ffmpeg)" };
+  await fs.writeFile(
+    path.join(broll, "catalog.json"),
+    JSON.stringify({
+      items: [
+        ...imgs.map(([id, , tags]) => ({ id, file: `${id}.jpg`, kind: "image", tags, license: lic })),
+        { id: "sin-licencia", file: "agencias.jpg", kind: "image", tags: ["agencias"] },
+      ],
+    }),
+  );
+  await fs.writeFile(path.join(music, "catalog.json"), JSON.stringify({ items: [{ id: "acorde", file: "acorde.mp3", kind: "audio", mood: "tranquila", license: lic }] }));
+  return { dir };
+};

@@ -64,6 +64,17 @@
     "captionsRequired": false,
     "audio": { "normalize": true, "targetLufs": -14, "truePeakDb": -1.5, "denoise": "no" },
     "editing": { "cutSilences": true, "minSilenceSec": 0.8, "keepPauseSec": 0.3, "silenceDb": -38, "followFaces": true, "avoidFaces": true },
+    "editorial": {
+      "mode": "talking-head",
+      "clips": { "count": 3, "minSec": 15, "maxSec": 60 },
+      "shortVersions": [],
+      "keepPrincipal": true,
+      "broll": true,
+      "music": { "enabled": true, "mood": null, "id": null, "volumeDb": -22, "duckDb": -10 },
+      "planner": "local",
+      "claude": { "model": "claude-opus-5-5", "effort": "medium" },
+      "approvePlan": false
+    },
     "transcription": { "provider": "elevenlabs", "model": "scribe_v2", "language": "es", "diarize": true, "tagAudioEvents": true, "lowConfidenceLogprob": -1 },
     "voice": { "provider": "elevenlabs", "voiceId": "1p905cdbJ1e1JQxhFTGJ", "name": "Rodrigo Zabú", "model": "eleven_v4", "language": "es" }
   }

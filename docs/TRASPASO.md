@@ -16,7 +16,7 @@ los tokens, dejar este archivo para continuar.
 |---|---|---|
 | 1 Base | ✅ hecha | Pipeline, subtítulos SRT, vertical, QC, informe |
 | 2 Material del cliente | ✅ hecha | Transcripción ElevenLabs, caras, cortes de silencio, escenas, ruido básico |
-| 3 Edición inteligente | 🟡 siguiente | Usar variantes del paso plan; ver PENDIENTE.md |
+| 3 Edición inteligente | 🟡 en curso | Hecho: análisis editorial local, clips, versiones cortas, B-roll y música con licencia, Claude opcional, aprobación del plan. Falta: pruebas automáticas de la Etapa 3 y documentación |
 | 4 ElevenLabs narración | ⏳ | |
 | 5 Creación desde cero | ⏳ | |
 | 6 Automatización | ⏳ | |
@@ -36,6 +36,10 @@ los tokens, dejar este archivo para continuar.
   `/root/.claude/uploads/c892ae03-04bd-5098-be1f-897ddb43dfb6/c041153d-v09044g40000cnh24lfog65pm4j8q750.mp4`.
 
 ## Registro (lo último arriba)
+
+- 2026-10-12: Etapa 3 a medias, subida a petición del usuario. Probado a mano con voz_a (36 s): 2 clips, versión
+  corta deduplicada, B-roll y música de una biblioteca de prueba (`tests/fixtures.ts` → makeTestLibrary). Siguiente:
+  pruebas (tests/unit/stage3.test.ts con un servidor falso de la API de Anthropic vía baseURL, e2e de clips) y docs.
 
 - 2026-10-12: Etapa 2 terminada y subida. Siguiente: Etapa 3 (planificador editorial en `autopilot/pipeline/steps/plan.ts`,
   que ya produce `variants`; cada variante se compone, renderiza, verifica y entrega por separado).

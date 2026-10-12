@@ -62,6 +62,16 @@ export const jobConfigSchema = z.object({
   }),
   cutSilences: z.boolean().default(false),
   followFaces: z.boolean().default(false),
+  // Etapa 3 (con valores por defecto para leer trabajos anteriores)
+  editMode: z.enum(["talking-head", "podcast", "clips", "anuncio", "educativo"]).default("talking-head"),
+  clips: z.object({ count: z.number().int(), minSec: z.number(), maxSec: z.number() }).default({ count: 3, minSec: 15, maxSec: 60 }),
+  shortVersions: z.array(z.number()).default([]),
+  keepPrincipal: z.boolean().default(true),
+  broll: z.boolean().default(false),
+  music: z.boolean().default(false),
+  musicId: z.string().nullable().default(null),
+  planner: z.enum(["local", "claude"]).default("local"),
+  approvePlan: z.boolean().default(false),
 });
 export type JobConfig = z.infer<typeof jobConfigSchema>;
 
@@ -84,6 +94,15 @@ export const jobOverridesSchema = z
     audio: z.object({ normalize: z.boolean().optional(), denoise: z.enum(["no", "suave"]).optional() }).optional(),
     cutSilences: z.boolean().optional(),
     followFaces: z.boolean().optional(),
+    editMode: z.enum(["talking-head", "podcast", "clips", "anuncio", "educativo"]).optional(),
+    clips: z.object({ count: z.number().int().min(1).max(20).optional(), minSec: z.number().min(5).optional(), maxSec: z.number().max(600).optional() }).optional(),
+    shortVersions: z.array(z.number().min(5).max(600)).max(5).optional(),
+    keepPrincipal: z.boolean().optional(),
+    broll: z.boolean().optional(),
+    music: z.boolean().optional(),
+    musicId: z.string().nullable().optional(),
+    planner: z.enum(["local", "claude"]).optional(),
+    approvePlan: z.boolean().optional(),
   })
   .strict();
 export type JobOverrides = z.infer<typeof jobOverridesSchema>;
@@ -126,6 +145,7 @@ export const jobSchema = z.object({
   errors: z.array(issueSchema),
   outputs: z.array(z.object({ kind: z.string(), path: z.string(), variant: z.string().optional() })),
   renderKey: z.string().nullable(),
+  planApproved: z.boolean().default(false),
   verdict: verdictSchema.nullable(),
   // Costes: separados en reales (facturados por un proveedor) y estimados. Etapa 1 no usa proveedores de pago.
   costs: z.object({

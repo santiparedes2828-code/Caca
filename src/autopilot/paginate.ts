@@ -18,6 +18,7 @@ export type PaginateOptions = {
   holdMs?: number;
   bridgeGapMs?: number;
   emphasis?: boolean; // marca una palabra destacada por página (heurística, ver pickEmphasis)
+  keywords?: string[]; // conceptos del plan editorial: si aparecen, se destacan antes que la heurística
 };
 
 const SENTENCE_END = /[.?!…]["»”)]*$/;
@@ -36,7 +37,24 @@ const bare = (t: string) => t.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
 
 // Heurística provisional (Etapa 1): número o palabra de contenido más larga (≥ 6 letras).
 // La Etapa 3 la sustituye por el énfasis que decida el plan editorial.
-export const pickEmphasis = (words: TimedWord[]): number => {
+const keyForm = (t: string) => {
+  const b = t
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\p{L}\p{N}]/gu, "");
+  return b.length > 5 && b.endsWith("s") ? b.slice(0, -1) : b;
+};
+
+export const pickEmphasis = (
+  words: TimedWord[],
+  keywords: string[] = [],
+): number => {
+  if (keywords.length) {
+    const keys = new Set(keywords.map(keyForm));
+    const k = words.findIndex((w) => keys.has(keyForm(w.text)));
+    if (k >= 0) return k;
+  }
   const num = words.findIndex((w) => /\d/.test(w.text));
   if (num >= 0) return num;
   let best = -1;
@@ -100,7 +118,7 @@ export const paginateWords = (
       next && next.startMs - last.endMs <= bridge
         ? next.startMs
         : last.endMs + holdMs;
-    const emph = o.emphasis ? pickEmphasis(flat) : -1;
+    const emph = o.emphasis ? pickEmphasis(flat, o.keywords) : -1;
     let idx = 0;
     return {
       startMs: first.startMs,

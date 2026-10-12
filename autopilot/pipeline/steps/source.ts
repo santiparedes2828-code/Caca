@@ -174,6 +174,8 @@ export const captions = async (ctx: Ctx) => {
           warnings,
           source: transcript.provider,
           events: transcript.events.map((e) => ({ startMs: e.startMs, endMs: e.endMs })),
+          // normalize() conserva el orden de las palabras; se emparejan por inicio
+          speakers: items.map((it) => transcript.words.find((w) => w.startMs === it.startMs)?.speaker ?? null),
           transcription: {
             provider: transcript.provider,
             model: transcript.model,

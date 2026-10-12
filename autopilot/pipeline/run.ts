@@ -121,6 +121,12 @@ export const runJob = async (cfg: Config, clientId: string, jobId: string): Prom
       }
       job.steps[step] = { ...job.steps[step], status: "hecho", finishedAt: new Date().toISOString() };
       job.progress = PROGRESS[step];
+      if (ctx.pause) {
+        job.status = "requiere_revision";
+        log.warn(`Trabajo en pausa tras el paso ${step}: pendiente de aprobación`);
+        await saveJob(cfg, job);
+        return job;
+      }
       await saveJob(cfg, job);
     }
     log.info(`Trabajo ${job.id} terminado: ${job.status} (${job.verdict})`);
@@ -160,6 +166,18 @@ export const redoCaptions = async (cfg: Config, clientId: string, jobId: string)
   if (job.attempts >= cfg.HH_MAX_ATTEMPTS + 5) throw new Error("Demasiados intentos en este trabajo");
   resetFrom(job, "captions");
   job.renderKey = null;
+  job.status = "recibido";
+  await saveJob(cfg, job);
+  return runJob(cfg, clientId, jobId);
+};
+
+// Aprobación del plan: el trabajo continúa desde la composición (el plan no se recalcula)
+export const approvePlan = async (cfg: Config, clientId: string, jobId: string): Promise<Job> => {
+  const job = await loadJob(cfg, clientId, jobId);
+  if (job.steps.plan.status !== "hecho") throw new Error("El trabajo no tiene un plan terminado que aprobar");
+  if (job.planApproved) throw new Error("El plan ya estaba aprobado");
+  job.planApproved = true;
+  job.warnings = job.warnings.filter((w) => w.code !== "plan_pendiente");
   job.status = "recibido";
   await saveJob(cfg, job);
   return runJob(cfg, clientId, jobId);

@@ -104,6 +104,7 @@ export const compose = async (ctx: Ctx) => {
         allowEstimatedWordTiming: config.allowEstimatedWordTiming,
         trimStartMs: 0,
         durationMs,
+        keywords: plan.editorial?.keywords,
       });
       for (const w of built.warnings) warn(ctx, "compose", "subtitulos", w);
       const placementInput = {
@@ -123,6 +124,19 @@ export const compose = async (ctx: Ctx) => {
       if (placed.moved) ctx.log.info(`${placed.moved} páginas de subtítulos movidas para no tapar caras`);
       caps = { none: false, ...built, pages: placed.pages, transcription: src.transcription, placement: { moved: placed.moved, blocked: placed.blocked, overFaces } };
     }
+    // B-roll y música de esta variante (sus tiempos pasan al eje del vídeo final)
+    const overlays = (plan.broll ?? []).flatMap((b) => {
+      const a = remapTime(variant.segments, b.startMs);
+      const e = remapTime(variant.segments, b.endMs);
+      // Nunca en los 2,5 primeros segundos: el gancho se dice mirando a cámara
+      return a === null || e === null || e - a < 800 || a < 2500 ? [] : [{ startMs: a, endMs: e, src: b.src, kind: b.kind }];
+    });
+    const speech = src.none ? [] : remapItems(variant.segments, [...src.items, ...src.events.map((e) => ({ text: "·", ...e }))]).map((w) => ({ startMs: w.startMs, endMs: w.endMs }));
+    const mus = ctx.profile.defaults.editorial.music;
+    const db = (d: number) => Number((10 ** (d / 20)).toFixed(4));
+    const music = plan.music
+      ? { src: plan.music.src, gain: db(mus.volumeDb), duckGain: db(mus.volumeDb + mus.duckDb), fadeInMs: 800, fadeOutMs: 1200, speech }
+      : null;
     const props: EditProps = {
       fps: config.fps,
       width: size.width,
@@ -131,6 +145,8 @@ export const compose = async (ctx: Ctx) => {
       video: { src: "job:source.mp4", width: v.width, height: v.height, hasAudio: !!prep.probe.audio, volume: 1, segments },
       reframe: config.reframe,
       focusTrack,
+      overlays,
+      music,
       intensity: config.intensity,
       brand: ctx.profile.brand,
       captions: caps.none ? { mode: config.captionMode, pages: [] } : { mode: caps.mode, pages: caps.pages },
@@ -148,7 +164,17 @@ export const render = async (ctx: Ctx) => {
   const bundle = await getBundle((m) => ctx.log.info(m));
   const sourceSize = (await fs.stat(W(ctx, "source.mp4"))).size;
   const out: RenderIndex = { variants: {} };
-  const server = await startAssetServer({ job: W(ctx), client: path.join(ctx.cfg.HH_CLIENTS_DIR, ctx.job.clientId, "assets") });
+  const server = await startAssetServer({
+    job: W(ctx),
+    client: path.join(ctx.cfg.HH_CLIENTS_DIR, ctx.job.clientId, "assets"),
+    library: ctx.cfg.HH_LIBRARY_DIR,
+    clientlib: path.join(ctx.cfg.HH_CLIENTS_DIR, ctx.job.clientId, "library"),
+  });
+  // "library:broll/x.jpg" → URL del servidor local (solo esas carpetas están montadas)
+  const live = (ref: string) => {
+    const i = ref.indexOf(":");
+    return server.url(ref.slice(0, i), ref.slice(i + 1));
+  };
   try {
     for (const [k, id] of index.variants.entries()) {
       const dir = variantDir(ctx, id);
@@ -160,9 +186,11 @@ export const render = async (ctx: Ctx) => {
         out.variants[id] = prev.variants[id];
         continue;
       }
-      const live: EditProps = {
+      const liveProps: EditProps = {
         ...props,
-        video: { ...props.video, src: server.url("job", props.video.src.slice("job:".length)) },
+        video: { ...props.video, src: live(props.video.src) },
+        overlays: props.overlays.map((o) => ({ ...o, src: live(o.src) })),
+        music: props.music ? { ...props.music, src: live(props.music.src) } : null,
         brand: {
           ...props.brand,
           fonts: props.brand.fonts.map((f) => (f.src.startsWith("client:") ? { ...f, src: `url:${server.url("client", f.src.slice(7))}` } : f)),
@@ -174,7 +202,7 @@ export const render = async (ctx: Ctx) => {
       await renderEdit({
         cfg: ctx.cfg,
         serveUrl: bundle.serveUrl,
-        props: live,
+        props: liveProps,
         output: partial,
         shouldCancel: () => cancelRequested(ctx.cfg, ctx.job),
         onBrowserError: (m) => ctx.log.warn(`Navegador: ${m}`),
@@ -220,7 +248,13 @@ export const qc = async (ctx: Ctx) => {
       output: W(ctx, rendered.variants[id].file),
       source: W(ctx, "source.mp4"),
       qcDir,
-      expected: { width: props.width, height: props.height, fps: props.fps, durationSec: props.durationInFrames / props.fps, hasAudio: props.video.hasAudio },
+      expected: {
+        width: props.width,
+        height: props.height,
+        fps: props.fps,
+        durationSec: props.durationInFrames / props.fps,
+        hasAudio: props.video.hasAudio || !!props.music,
+      },
       audioTarget: { lufs: ctx.job.config.audio.targetLufs, truePeakDb: ctx.job.config.audio.truePeakDb, normalized: prep.normalized },
       captions: caps.none
         ? null
@@ -250,6 +284,10 @@ export const deliver = async (ctx: Ctx) => {
   const rendered = await readJson<RenderIndex>(W(ctx, "render.json"));
   const analysis = await readJson<Analysis>(W(ctx, "analysis.json"));
   const src = await readJson<SourceCaptions>(W(ctx, "source-captions.json"));
+  // Una entrega nueva sustituye a la anterior: se retiran los vídeos y SRT de variantes que ya no existen
+  for (const o of ctx.job.outputs) {
+    if (o.kind === "video" || o.kind === "subtitulos_srt") await fs.rm(path.join(ctx.dir, o.path), { force: true });
+  }
   ctx.job.outputs = [];
   const failed: string[] = [];
   const sections = [];
@@ -272,7 +310,9 @@ export const deliver = async (ctx: Ctx) => {
   }
   ctx.job.outputs.push({ kind: "informe", path: "output/informe.md" }, { kind: "informe_json", path: "output/informe.json" });
   const delivered = plan.variants.length - failed.length;
-  ctx.job.status = delivered === 0 ? "fallido" : qcIdx.verdict === "APROBADO" ? "completado" : "requiere_revision";
+  // Afirmaciones sin verificar (anuncios) o recursos de terceros con atribución: siempre revisión humana
+  const mustReview = (plan.editorial?.claims.length ?? 0) > 0;
+  ctx.job.status = delivered === 0 ? "fallido" : qcIdx.verdict === "APROBADO" && !mustReview ? "completado" : "requiere_revision";
   if (failed.length) ctx.job.errors.push({ step: "qc", code: "qc_fallido", message: `No entregable. ${failed.join(" | ")}` });
 
   const o = analysis.original;
@@ -296,6 +336,12 @@ export const deliver = async (ctx: Ctx) => {
         : `${src.transcription.provider} ${src.transcription.model} · ${src.transcription.source === "cache" ? "reutilizada de caché, sin coste" : "llamada a la API"} · ${src.transcription.words} palabras`,
   };
   const variants = sections.map((s) => ({ id: s.variant.id, title: s.variant.title, durationMs: s.variant.durationMs, reason: s.variant.reason, qc: s.qc }));
-  await writeJsonAtomic(O(ctx, "informe.json"), { job: ctx.job, analysis: summary, plan: { notes: plan.notes, cuts: plan.cuts }, variants });
-  await writeTextAtomic(O(ctx, "informe.md"), reportMarkdown(ctx.job, variants, { analysis: summary, notes: plan.notes }));
+  const credits = [...new Set([...(plan.broll ?? []).map((b) => b.credit), ...(plan.music ? [plan.music.credit] : [])])];
+  await writeJsonAtomic(O(ctx, "informe.json"), {
+    job: ctx.job,
+    analysis: summary,
+    plan: { notes: plan.notes, cuts: plan.cuts, editorial: plan.editorial, credits },
+    variants,
+  });
+  await writeTextAtomic(O(ctx, "informe.md"), reportMarkdown(ctx.job, variants, { analysis: summary, notes: plan.notes, credits }));
 };

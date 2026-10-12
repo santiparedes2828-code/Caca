@@ -5,7 +5,7 @@ import { loadConfig, type Config } from "./config";
 import { processInbox } from "./inbox";
 import { findJob, listJobs, requestCancel } from "./jobs/store";
 import { jobOverridesSchema, type Job, type JobOverrides } from "./jobs/types";
-import { redoCaptions, retryJob, runJob, submitJob } from "./pipeline/run";
+import { approvePlan, redoCaptions, retryJob, runJob, submitJob } from "./pipeline/run";
 import { createElevenLabsClient } from "./transcription/elevenlabs";
 import { usedSecondsToday } from "./transcription/transcribe";
 
@@ -23,6 +23,7 @@ Uso: npm run autopilot -- <comando> [opciones]
   rehacer-subtitulos <id>                  Rehace subtítulos, render y control desde work/transcript.json
                                            (por ejemplo, tras corregir a mano una palabra). No vuelve a pagar.
   elevenlabs                               Comprueba la clave y muestra el plan y el uso reales de ElevenLabs.
+  aprobar <id>                             Aprueba el plan (output/plan.md) de un trabajo en pausa y continúa.
   cancelar <id>                            Pide cancelar un trabajo en curso.
 
 Opciones de procesado:
@@ -37,6 +38,16 @@ Opciones de procesado:
   --cortar-silencios | --sin-cortes        Quita (o no) los silencios sin voz (por defecto: perfil del cliente)
   --seguir-caras | --foco-fijo             El encuadre sigue a la cara principal, o usa --foco-x/--foco-y fijos
   --reducir-ruido                          Reducción de ruido básica (afftdn); no es restauración profesional
+
+Edición inteligente (Etapa 3):
+  --edicion talking-head|podcast|clips|anuncio|educativo   Tipo de vídeo y reglas editoriales
+  --clips N --clip-min S --clip-max S       Número y duración de los clips candidatos
+  --corto 30,60                            Versiones cortas del vídeo (segundos)
+  --con-principal | --sin-principal        Entregar también el vídeo completo en modos de clips
+  --broll | --sin-broll                    B-roll de la biblioteca autorizada (library/, clients/<id>/library/)
+  --musica [--musica-id ID] | --sin-musica Música autorizada de la biblioteca, con atenuación bajo la voz
+  --planificador local|claude              Claude solo elige fragmentos; requiere ANTHROPIC_API_KEY
+  --aprobar-plan                           Para tras el plan hasta ejecutar "aprobar <id>"
   --idioma es|en|…                         Idioma de la transcripción (por defecto el del perfil)
 
 Transcripción: si no hay SRT/VTT/JSON, se transcribe con ElevenLabs Scribe (ELEVENLABS_API_KEY en .env).
@@ -65,6 +76,22 @@ const overridesFrom = (v: Record<string, string | boolean | undefined>): JobOver
   if (v["seguir-caras"]) o.followFaces = true;
   if (v["foco-fijo"]) o.followFaces = false;
   if (v["reducir-ruido"]) o.audio = { ...(o.audio as object), denoise: "suave" };
+  if (v.edicion) o.editMode = v.edicion;
+  const clips: Record<string, number> = {};
+  if (v.clips) clips.count = Number(v.clips);
+  if (v["clip-min"]) clips.minSec = Number(v["clip-min"]);
+  if (v["clip-max"]) clips.maxSec = Number(v["clip-max"]);
+  if (Object.keys(clips).length) o.clips = clips;
+  if (typeof v.corto === "string") o.shortVersions = v.corto.split(",").map(Number);
+  if (v["con-principal"]) o.keepPrincipal = true;
+  if (v["sin-principal"]) o.keepPrincipal = false;
+  if (v.broll) o.broll = true;
+  if (v["sin-broll"]) o.broll = false;
+  if (v.musica || v["musica-id"]) o.music = true;
+  if (typeof v["musica-id"] === "string") o.musicId = v["musica-id"];
+  if (v["sin-musica"]) o.music = false;
+  if (v.planificador) o.planner = v.planificador;
+  if (v["aprobar-plan"]) o.approvePlan = true;
   if (v.idioma) o.language = v.idioma;
   return jobOverridesSchema.parse(o);
 };
@@ -106,6 +133,20 @@ const main = async () => {
       "seguir-caras": { type: "boolean" },
       "foco-fijo": { type: "boolean" },
       "reducir-ruido": { type: "boolean" },
+      edicion: { type: "string" },
+      clips: { type: "string" },
+      "clip-min": { type: "string" },
+      "clip-max": { type: "string" },
+      corto: { type: "string" },
+      "con-principal": { type: "boolean" },
+      "sin-principal": { type: "boolean" },
+      broll: { type: "boolean" },
+      "sin-broll": { type: "boolean" },
+      musica: { type: "boolean" },
+      "musica-id": { type: "string" },
+      "sin-musica": { type: "boolean" },
+      planificador: { type: "string" },
+      "aprobar-plan": { type: "boolean" },
       idioma: { type: "string" },
       vigilar: { type: "boolean" },
       intervalo: { type: "string", default: "10" },
@@ -164,6 +205,13 @@ const main = async () => {
       console.log(`Créditos usados en el periodo: ${sub.character_count} de ${sub.character_limit}`);
       if (sub.next_character_count_reset_unix) console.log(`Próximo reinicio: ${new Date(sub.next_character_count_reset_unix * 1000).toISOString()}`);
       console.log(`Transcrito hoy por Autopilot: ${Math.round(await usedSecondsToday(cfg))} s de ${cfg.HH_STT_MAX_SECONDS_PER_DAY} s permitidos`);
+      return;
+    }
+    case "aprobar": {
+      const j = await findJob(cfg, positionals[0] ?? "");
+      const job = await approvePlan(cfg, j.clientId, j.id);
+      printResult(cfg, job);
+      process.exitCode = job.status === "fallido" ? 1 : 0;
       return;
     }
     case "continuar": {
