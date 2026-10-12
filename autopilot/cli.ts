@@ -1,7 +1,10 @@
+import { existsSync, promises as fs } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 import { listClients, loadProfile } from "./clients/profile";
 import { submitCreation } from "./create/run";
+import { EXT } from "./ingest/ingest";
+import { costSummary, enqueue, pauseQueue, queueStatus, resumeQueue, work } from "./queue/queue";
 import { narrate } from "./narration/tts";
 import { loadConfig, type Config } from "./config";
 import { processInbox } from "./inbox";
@@ -25,6 +28,11 @@ Uso: npm run autopilot -- <comando> [opciones]
         Crea un vídeo desde cero: guion → narración con la voz de marca (ElevenLabs) → escenas → MP4.
         Formato del guion: ver autopilot/create/script.ts. --brief necesita ANTHROPIC_API_KEY.
   narrar --texto "…"                        Genera solo la narración (mp3 + tiempos) con la voz de marca.
+  encolar <video|carpeta> [opciones]      Añade a la cola uno o varios vídeos (lote) sin procesarlos aún.
+  crear … --encolar                        Añade a la cola una creación.
+  trabajador [--concurrencia N] [--una-vez]  Procesa la cola (reintentos automáticos, recuperación tras cortes).
+  cola | pausar | reanudar                 Estado de la cola; pausa o reanuda el trabajador.
+  costes [--dias 30]                       Costes reales y estimados por cliente y alertas de uso diario.
   estado [<id>] [--cliente hookhouse]     Lista trabajos o muestra uno.
   reintentar <id>                          Continúa un trabajo fallido desde el paso que falló.
   rehacer-subtitulos <id>                  Rehace subtítulos, render y control desde work/transcript.json
@@ -162,6 +170,10 @@ const main = async () => {
       tiempos: { type: "string" },
       etiqueta: { type: "string" },
       texto: { type: "string" },
+      encolar: { type: "boolean" },
+      concurrencia: { type: "string" },
+      "una-vez": { type: "boolean" },
+      dias: { type: "string" },
       idioma: { type: "string" },
       vigilar: { type: "boolean" },
       intervalo: { type: "string", default: "10" },
@@ -229,6 +241,51 @@ const main = async () => {
       process.exitCode = job.status === "fallido" ? 1 : 0;
       return;
     }
+    case "encolar": {
+      const target = positionals[0];
+      if (!target) throw new Error("Falta el vídeo o la carpeta");
+      const st = await fs.stat(target);
+      const videos = st.isDirectory()
+        ? (await fs.readdir(target)).filter((f) => (EXT.video as readonly string[]).includes(path.extname(f).toLowerCase())).sort().map((f) => path.join(target, f))
+        : [target];
+      for (const v of videos) {
+        const stem = v.slice(0, v.length - path.extname(v).length);
+        const caps = [".srt", ".vtt", ".json"].map((x) => stem + x).find((c) => existsSync(c));
+        const job = await enqueue(cfg, await submitJob(cfg, { clientId: values.cliente!, video: v, captions: values.srt ?? caps ?? null, overrides: overridesFrom(values) }, { run: false }));
+        console.log(`${job.status === "fallido" ? "✖ rechazado" : "＋ en cola "} ${job.id}  ${path.basename(v)}${job.status === "fallido" ? `: ${job.errors[0]?.message}` : ""}`);
+      }
+      return;
+    }
+    case "trabajador": {
+      const n = await work(cfg, { once: !!values["una-vez"], concurrency: values.concurrencia ? Number(values.concurrencia) : undefined });
+      console.log(`${n} trabajos procesados`);
+      return;
+    }
+    case "cola": {
+      const q = await queueStatus(cfg);
+      console.log(`Cola ${q.paused ? "EN PAUSA" : "activa"}: ${q.pending} pendientes · ${q.running} en curso · ${q.retrying} esperando reintento`);
+      for (const j of q.jobs) console.log(`  ${fmtJob(j)}${j.nextRetryAt ? `  reintento ${j.nextRetryAt}` : ""}`);
+      return;
+    }
+    case "pausar":
+      await pauseQueue(cfg);
+      console.log("Cola en pausa (los trabajos en curso terminan)");
+      return;
+    case "reanudar":
+      await resumeQueue(cfg);
+      console.log("Cola reanudada");
+      return;
+    case "costes": {
+      const c = await costSummary(cfg, values.dias ? Number(values.dias) : 30);
+      console.log(`Últimos ${c.days} días`);
+      for (const [client, r] of Object.entries(c.byClient)) {
+        console.log(`  ${client}: ${r.jobs} trabajos · estimado ${r.estimatedUsd.toFixed(4)} USD`);
+        for (const [k, v] of Object.entries(r.real)) console.log(`    real ${k}: ${Math.round(v * 100) / 100}`);
+      }
+      console.log(`Hoy: ${Math.round(c.today.sttSeconds)} s transcritos · ${c.today.ttsChars} caracteres narrados`);
+      for (const a of c.alerts) console.log(`  ⚠ ${a}`);
+      return;
+    }
     case "crear": {
       const job = await submitCreation(cfg, {
         clientId: values.cliente!,
@@ -239,7 +296,8 @@ const main = async () => {
         audio: values.voz ?? null,
         timings: values.tiempos ?? null,
         label: values.etiqueta ?? "",
-      });
+      }, { run: !values.encolar });
+      if (values.encolar) await enqueue(cfg, job);
       printResult(cfg, job);
       process.exitCode = job.status === "fallido" ? 1 : 0;
       return;

@@ -146,6 +146,10 @@ export const jobSchema = z.object({
   outputs: z.array(z.object({ kind: z.string(), path: z.string(), variant: z.string().optional() })),
   renderKey: z.string().nullable(),
   planApproved: z.boolean().default(false),
+  // Cola (Etapa 6)
+  queuedAt: z.string().nullable().default(null),
+  nextRetryAt: z.string().nullable().default(null),
+  autoRetries: z.number().int().default(0),
   verdict: verdictSchema.nullable(),
   // Costes: separados en reales (facturados por un proveedor) y estimados. Etapa 1 no usa proveedores de pago.
   costs: z.object({

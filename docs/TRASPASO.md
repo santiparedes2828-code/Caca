@@ -19,7 +19,7 @@ los tokens, dejar este archivo para continuar.
 | 3 Edición inteligente | ✅ hecha (básica) | Análisis editorial local, clips, versiones cortas, B-roll y música con licencia, Claude opcional, aprobación del plan |
 | 4 ElevenLabs narración | ✅ hecha (básica) | `autopilot/narration/tts.ts`; probada con API simulada (la real está bloqueada aquí) |
 | 5 Creación desde cero | ✅ hecha (básica) | `autopilot/create/`, composición `src/create/AutopilotCreate.tsx` (reutiliza componentes de src/HookHouse); probada con voz_a real |
-| 6 Automatización | ⏳ | |
+| 6 Automatización | ✅ hecha (básica) | `autopilot/queue/queue.ts`: cola en disco, trabajador, reintentos, recuperación, pausa, lotes, costes |
 | 7 Interfaz y clientes | ⏳ | |
 
 ## Restricciones del entorno cloud (conocidas)

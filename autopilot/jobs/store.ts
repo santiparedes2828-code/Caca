@@ -87,6 +87,9 @@ export const createJob = async (cfg: Config, profile: ClientProfile, overrides: 
     outputs: [],
     renderKey: null,
     planApproved: false,
+    queuedAt: null,
+    nextRetryAt: null,
+    autoRetries: 0,
     verdict: null,
     costs: { real: [], estimated: [] },
   };

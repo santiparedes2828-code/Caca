@@ -40,7 +40,7 @@ export type CreationRequest = {
 
 const LOGO_SECONDS = 1.5;
 
-export const submitCreation = async (cfg: Config, req: CreationRequest): Promise<Job> => {
+export const submitCreation = async (cfg: Config, req: CreationRequest, opts: { run?: boolean } = {}): Promise<Job> => {
   const profile = await loadProfile(cfg.HH_CLIENTS_DIR, req.clientId);
   const job = await createJob(cfg, profile);
   job.type = "creacion";
@@ -71,7 +71,7 @@ export const submitCreation = async (cfg: Config, req: CreationRequest): Promise
     log.error((e as Error).message);
     return job;
   }
-  return runCreation(cfg, profile.id, job.id);
+  return opts.run === false ? job : runCreation(cfg, profile.id, job.id);
 };
 
 export const runCreation = async (cfg: Config, clientId: string, jobId: string): Promise<Job> => {

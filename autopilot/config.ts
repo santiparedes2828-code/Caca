@@ -50,6 +50,13 @@ const schema = z.object({
   // en la referencia oficial (consultada el 2026-10-12); cámbialas si usas otro modelo o tarifa.
   HH_CLAUDE_USD_PER_MTOK_IN: z.coerce.number().positive().default(4),
   HH_CLAUDE_USD_PER_MTOK_OUT: z.coerce.number().positive().default(20),
+  // Cola: trabajos a la vez (cada render ya usa varios núcleos), reintentos automáticos y espera entre ellos
+  HH_QUEUE_CONCURRENCY: z.coerce.number().int().min(1).max(8).default(1),
+  HH_QUEUE_AUTO_RETRIES: z.coerce.number().int().min(0).max(5).default(2),
+  HH_QUEUE_RETRY_BASE_SEC: z.coerce.number().positive().default(60),
+  HH_QUEUE_POLL_SEC: z.coerce.number().positive().default(5),
+  // Alerta de gasto: aviso cuando el uso diario pasa este porcentaje del límite
+  HH_ALERT_PERCENT: z.coerce.number().min(1).max(100).default(80),
   REMOTION_BROWSER_EXECUTABLE: z.string().optional(),
   REMOTION_LICENSE_KEY: z.string().optional(),
 });
