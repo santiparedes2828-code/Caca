@@ -12,3 +12,6 @@ out
 *.wav
 analisis/frames/
 analisis/escenas/
+# ...excepto el audio que usa el render
+!public/audio/*.wav
+!public/sfx/*.wav
