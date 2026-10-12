@@ -99,7 +99,7 @@ export const AutopilotCreate: React.FC<CreateProps> = (props) => {
   return (
     <CaptionsCtx.Provider value={caps}>
       <AbsoluteFill style={{ background: B.bg }}>
-        <Audio src={props.audioSrc} />
+        {props.audioSrc ? <Audio src={props.audioSrc} /> : null}
         <div
           style={{
             position: "absolute",

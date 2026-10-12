@@ -109,7 +109,8 @@ export const runQc = async (q: QcInput): Promise<QcResult> => {
       }
     }
   } else {
-    add("audio", "Pista de audio", "advertencia", pr.audio ? "Render con audio pero el original no tenía" : "El vídeo original no tiene audio: el entregable es mudo");
+    const mute = q.source ? "El vídeo original no tiene audio: el entregable es mudo" : "Sin voz ni sonido: añade un sonido en la plataforma antes de publicar";
+    add("audio", "Pista de audio", "advertencia", pr.audio ? "Render con audio pero el original no tenía" : mute);
   }
 
   // 4. Fotogramas negros (se comparan con el original para no culpar al render)

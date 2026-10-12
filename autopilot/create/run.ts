@@ -21,7 +21,7 @@ import { ProviderError } from "../transcription/elevenlabs";
 import { runOk } from "../util/exec";
 import { readJson, writeJsonAtomic, writeTextAtomic } from "../util/fs";
 import { createLogger, redact } from "../util/log";
-import { alignScript, parseScript, scriptFromBrief, scriptText } from "./script";
+import { alignScript, parseScript, readingTimings, scriptFromBrief, scriptText } from "./script";
 
 // Creación desde cero (Etapa 5): guion (archivo o brief con Claude) → narración con la voz de marca
 // (ElevenLabs, o un audio propio con sus tiempos) → escenas con componentes validados → render → QC.
@@ -36,6 +36,7 @@ export type CreationRequest = {
   audio?: string | null; // narración propia (mp3/wav)
   timings?: string | null; // sus tiempos por palabra (JSON de ElevenLabs/Whisper o Caption[])
   label?: string;
+  silent?: boolean; // sin voz: el texto aparece a ritmo de lectura y el sonido se pone en la plataforma
 };
 
 const LOGO_SECONDS = 1.5;
@@ -51,6 +52,7 @@ export const submitCreation = async (cfg: Config, req: CreationRequest, opts: { 
   try {
     if (!req.script && !req.brief) throw new IngestError("sin_guion", "Falta el guion (--guion archivo) o el brief (--brief \"…\")");
     if (!!req.audio !== !!req.timings) throw new IngestError("narracion", "Para usar un audio propio hacen falta el audio y sus tiempos por palabra (--voz y --tiempos)");
+    if (req.silent && req.audio) throw new IngestError("narracion", "Un vídeo sin voz no lleva narración: quita --voz y --tiempos, o quita --sin-voz");
     const files: [string, "guion" | "audio" | "captions"][] = [];
     if (req.script) files.push([req.script, "guion"]);
     if (req.audio) files.push([req.audio, "audio"]);
@@ -60,7 +62,7 @@ export const submitCreation = async (cfg: Config, req: CreationRequest, opts: { 
       job.inputs.push(await storeOriginal(dir, path.resolve(f), v));
     }
     if (req.brief) await writeTextAtomic(path.join(dir, "input", "original", "brief.txt"), req.brief.slice(0, 4000));
-    await writeJsonAtomic(path.join(dir, "work", "creacion.json"), { type: req.type ?? "redes", seconds: req.seconds ?? 30, label: req.label ?? "" });
+    await writeJsonAtomic(path.join(dir, "work", "creacion.json"), { type: req.type ?? "redes", seconds: req.seconds ?? 30, label: req.label ?? "", silent: !!req.silent });
     job.steps.ingest = { status: "hecho", finishedAt: new Date().toISOString() };
     job.status = "recibido";
     await saveJob(cfg, job);
@@ -89,7 +91,7 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
   };
   try {
     const profile = await loadProfile(cfg.HH_CLIENTS_DIR, clientId);
-    const meta = await readJson<{ type: string; seconds: number; label: string }>(W("creacion.json"));
+    const meta = await readJson<{ type: string; seconds: number; label: string; silent?: boolean }>(W("creacion.json"));
     job.attempts++;
     job.costs = { real: [], estimated: [] };
 
@@ -123,9 +125,18 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
     // 2. Narración
     await step("generando_recursos", 0.25);
     let words: { text: string; startMs: number; endMs: number }[];
-    let audioFile: string;
+    let audioFile: string | null;
+    let endMs: number | null = null;
     const audioIn = job.inputs.find((i) => i.role === "audio");
-    if (audioIn) {
+    if (meta.silent) {
+      const r = readingTimings(scenes);
+      words = r.words;
+      endMs = r.endMs;
+      audioFile = null;
+      if (!job.warnings.some((w) => w.code === "sin_voz")) {
+        job.warnings.push({ step: "compose", code: "sin_voz", message: "Vídeo sin voz ni sonido: añade un sonido en TikTok o Reels antes de publicar" });
+      }
+    } else if (audioIn) {
       const t = job.inputs.find((i) => i.role === "captions")!;
       const parsed = parseCaptionsText(await fs.readFile(path.join(dir, t.path), "utf8"), path.extname(t.path).toLowerCase());
       if (parsed.precision !== "word") throw new ProviderError("tiempos", "Los tiempos de la narración propia deben ser por palabra (JSON)", false);
@@ -141,9 +152,12 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
       if (!n.cached) job.costs.real.push({ provider: "elevenlabs", amount: n.chars, unit: "caracteres narrados", note: `text-to-speech ${n.model} · voz ${n.voice}` });
     }
     // Narración a la sonoridad de la marca (−14 LUFS) antes de componer
-    const normalized = W("narracion-norm.m4a");
-    const okNorm = await normalizeAudio(audioFile, normalized, profile.defaults.audio.targetLufs, profile.defaults.audio.truePeakDb);
-    audioFile = normalized;
+    let okNorm = false;
+    if (audioFile) {
+      const normalized = W("narracion-norm.m4a");
+      okNorm = await normalizeAudio(audioFile, normalized, profile.defaults.audio.targetLufs, profile.defaults.audio.truePeakDb);
+      audioFile = normalized;
+    }
     const al = alignScript(scenes, words);
     if (al.unmatched > al.total * 0.2) {
       throw new ProviderError("guion_audio", `El guion no coincide con la narración (${al.unmatched} de ${al.total} palabras distintas)`, false);
@@ -164,12 +178,12 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
       offset += n;
       return { from, to, accent: acc === null ? null : [acc, Math.max(acc, accEnd!)], component: s.component, items: s.items, label: s.label, value: s.value };
     });
-    const lastMs = words[words.length - 1].endMs;
-    const durationInFrames = Math.ceil(((lastMs + 600) / 1000 + LOGO_SECONDS) * fps);
+    const lastMs = endMs ?? words[words.length - 1].endMs + 600;
+    const durationInFrames = Math.ceil((lastMs / 1000 + LOGO_SECONDS) * fps);
     const props: CreateProps = createPropsSchema.parse({
       fps,
       durationInFrames,
-      audioSrc: `job:${path.basename(audioFile)}`,
+      audioSrc: audioFile ? `job:${path.basename(audioFile)}` : null,
       captions: caps,
       scenes: sceneProps,
       headerLabel: meta.label || `(01) ${meta.type}`,
@@ -192,7 +206,7 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
         cfg,
         serveUrl: bundle.serveUrl,
         id: "AutopilotCreate",
-        props: { ...props, audioSrc: server.url("job", path.basename(audioFile)) },
+        props: { ...props, audioSrc: audioFile ? server.url("job", path.basename(audioFile)) : null },
         output: W("render.partial.mp4"),
         shouldCancel: () => cancelRequested(cfg, job),
         onProgress: (p) => {
@@ -211,7 +225,7 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
       output: W("render.mp4"),
       source: null,
       qcDir: O("qc", "principal"),
-      expected: { width: 1080, height: 1920, fps, durationSec: durationInFrames / fps, hasAudio: true },
+      expected: { width: 1080, height: 1920, fps, durationSec: durationInFrames / fps, hasAudio: !!audioFile },
       audioTarget: { lufs: profile.defaults.audio.targetLufs, truePeakDb: profile.defaults.audio.truePeakDb, normalized: okNorm },
       // El titular reparte el texto en varias líneas por sí mismo: aquí solo se comprueban tiempos y SRT
       captions: { pages, srt, maxCharsPerLine: 400, mode: "titular" },
@@ -235,7 +249,11 @@ export const runCreation = async (cfg: Config, clientId: string, jobId: string):
     await writeTextAtomic(
       O("informe.md"),
       reportMarkdown(job, [{ id: "principal", title: null, durationMs: (durationInFrames / fps) * 1000, reason: `${scenes.length} escenas`, qc }], {
-        analysis: { tipo: meta.type, escenas: scenes.length, narración: audioIn ? "audio propio" : `ElevenLabs · ${profile.defaults.voice?.name}` },
+        analysis: {
+          tipo: meta.type,
+          escenas: scenes.length,
+          narración: meta.silent ? "sin voz (texto a ritmo de lectura)" : audioIn ? "audio propio" : `ElevenLabs · ${profile.defaults.voice?.name}`,
+        },
       }),
     );
     await saveJob(cfg, job);

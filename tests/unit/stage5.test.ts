@@ -4,7 +4,7 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { test } from "node:test";
 import { ROOT } from "../../autopilot/config";
-import { alignScript, parseScript, scriptFromBrief, scriptText } from "../../autopilot/create/script";
+import { alignScript, parseScript, readingTimings, scriptFromBrief, scriptText } from "../../autopilot/create/script";
 import { startFakeAnthropic } from "../support/fake-anthropic";
 
 test("guion: componentes, palabras destacadas y escenas largas partidas", () => {
@@ -18,6 +18,18 @@ test("guion: componentes, palabras destacadas y escenas largas partidas", () => 
   assert.equal(s.at(-1)!.component, "cta");
   assert.throws(() => parseScript("[video: x]\nHola"), /Componente desconocido/);
   assert.throws(() => parseScript("   "), /vacío/);
+});
+
+test("sin voz: tiempos a ritmo de lectura, en orden y con pausa al final de cada escena", () => {
+  const s = parseScript("Esos hilos blancos se llaman *floema*.\n\n[cta: MANDARINA]\nComenta mandarina.");
+  const { words, endMs } = readingTimings(s);
+  assert.deepEqual(words.map((w) => w.text), scriptText(s).split(" "));
+  assert.equal(alignScript(s, words).unmatched, 0);
+  for (let i = 1; i < words.length; i++) assert.ok(words[i].startMs >= words[i - 1].endMs, "sin solapes");
+  assert.ok(words.every((w) => w.endMs - w.startMs >= 260 && w.endMs - w.startMs <= 620));
+  // La segunda escena empieza después de la pausa de la primera, y el final deja la última a la vista
+  assert.ok(words[6].startMs - words[5].endMs >= 900);
+  assert.ok(endMs >= words.at(-1)!.endMs + 900);
 });
 
 test("alineación del guion con la narración real (voz_a, tiempos de ElevenLabs)", async () => {

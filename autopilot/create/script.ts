@@ -92,6 +92,24 @@ export const parseScript = (src: string): ScriptScene[] => {
 
 export const scriptText = (scenes: ScriptScene[]) => scenes.map((s) => s.text).join(" ");
 
+// Sin narración: cada palabra aparece a ritmo de lectura (más tiempo cuanto más larga) y cada escena se
+// mantiene un poco tras su última palabra. Devuelve los tiempos por palabra y el final de la última escena.
+export const readingTimings = (scenes: ScriptScene[], o = { leadMs: 300, holdMs: 900, minSceneMs: 2000 }) => {
+  const words: { text: string; startMs: number; endMs: number }[] = [];
+  let t = o.leadMs;
+  for (const s of scenes) {
+    const start = t;
+    for (const w of s.text.split(" ")) {
+      const letters = w.replace(/[^\p{L}\p{N}]/gu, "").length;
+      const dur = Math.min(620, Math.max(260, 180 + 28 * letters));
+      words.push({ text: w, startMs: t, endMs: t + dur });
+      t += dur;
+    }
+    t = Math.max(start + o.minSceneMs, t + o.holdMs);
+  }
+  return { words, endMs: t };
+};
+
 const norm = (s: string) =>
   s
     .toLowerCase()

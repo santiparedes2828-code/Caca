@@ -27,8 +27,9 @@ Uso: npm run autopilot -- <comando> [opciones]
         Procesa los vídeos que dejes en inbox/<cliente>/ (con su .srt/.vtt/.json del mismo nombre
         y opcionalmente <nombre>.job.json con ajustes). Los procesados pasan a inbox/<cliente>/_procesados/.
   crear --guion guion.txt | --brief "…" [--tipo anuncio] [--segundos 30] [--etiqueta "(01) …"]
-        [--voz narracion.mp3 --tiempos tiempos.json]
+        [--voz narracion.mp3 --tiempos tiempos.json | --sin-voz]
         Crea un vídeo desde cero: guion → narración con la voz de marca (ElevenLabs) → escenas → MP4.
+        --sin-voz: el texto aparece a ritmo de lectura y el sonido se añade en TikTok o Reels.
         Formato del guion: ver autopilot/create/script.ts. --brief necesita ANTHROPIC_API_KEY.
   narrar --texto "…"                        Genera solo la narración (mp3 + tiempos) con la voz de marca.
   encolar <video|carpeta> [opciones]      Añade a la cola uno o varios vídeos (lote) sin procesarlos aún.
@@ -193,6 +194,7 @@ const main = async () => {
       vigilar: { type: "boolean" },
       intervalo: { type: "string", default: "10" },
       red: { type: "boolean" },
+      "sin-voz": { type: "boolean" },
     },
   });
   const cfg = loadConfig();
@@ -348,6 +350,7 @@ const main = async () => {
         audio: values.voz ?? null,
         timings: values.tiempos ?? null,
         label: values.etiqueta ?? "",
+        silent: !!values["sin-voz"],
       }, { run: !values.encolar });
       if (values.encolar) await enqueue(cfg, job);
       printResult(cfg, job);

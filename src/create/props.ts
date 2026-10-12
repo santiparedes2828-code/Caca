@@ -19,7 +19,7 @@ export type Scene = z.infer<typeof sceneSchema>;
 export const createPropsSchema = z.object({
   fps: z.number().int().min(1).max(60),
   durationInFrames: z.number().int().min(1),
-  audioSrc: z.string(), // narración (URL servida por el backend o staticFile)
+  audioSrc: z.string().nullable(), // narración (URL servida por el backend o staticFile); null = sin voz
   captions: z.array(
     z.object({
       text: z.string(),
