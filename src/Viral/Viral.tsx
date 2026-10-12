@@ -10,8 +10,8 @@ import { Cta3D, FlipStyle, PhoneCaptions, StyleFile, VoiceAI, Week, ZoomSound } 
 import { FilmCut3D, Layers3D, Photos3D, Waveform3D } from "./three";
 
 // Reel "Este video no lo editó nadie" — Hook House (guion-viral.md · estilo-hookhouse.md + 3D).
-// Sin locución: los tiempos salen de scripts/tiempos_texto.py (ritmo de lectura). Si se graba voz,
-// se sustituye src/data/captions-viral.json por su transcripción y todo se resincroniza solo.
+// Locución: Rodrigo Zabú (ElevenLabs, eleven_v4) en public/audio/voz_viral.wav; los tiempos de
+// src/data/captions-viral.json salen de su transcripción con Scribe (silencios recortados).
 
 const caps = captionsJson as Caption[];
 const LOGO_SECONDS = 1.6;
@@ -86,6 +86,7 @@ export const Viral: React.FC = () => {
   return (
     <CaptionsCtx.Provider value={caps}>
       <AbsoluteFill style={{ backgroundColor: B.ink }}>
+        <Audio src={staticFile("audio/voz_viral.wav")} />
         <Scene name="1 · Gancho 3D" {...sc(0)}>
           <FilmCut3D start={s(0)} cut={w(8)} />
           <Headline from={0} to={7} accent={[5, 5]} size={118} top={400} color={B.bg} dimAt={w(8) - 2} />

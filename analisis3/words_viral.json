@@ -1,0 +1,640 @@
+{
+ "words": [
+  {
+   "text": "Este",
+   "type": "word",
+   "start": 0.0,
+   "end": 0.24
+  },
+  {
+   "text": "video",
+   "type": "word",
+   "start": 0.32,
+   "end": 0.64
+  },
+  {
+   "text": "no",
+   "type": "word",
+   "start": 0.8,
+   "end": 0.88
+  },
+  {
+   "text": "lo",
+   "type": "word",
+   "start": 0.96,
+   "end": 1.0
+  },
+  {
+   "text": "editó",
+   "type": "word",
+   "start": 1.04,
+   "end": 1.44
+  },
+  {
+   "text": "nadie",
+   "type": "word",
+   "start": 1.6,
+   "end": 1.92
+  },
+  {
+   "text": "a",
+   "type": "word",
+   "start": 1.96,
+   "end": 2.0
+  },
+  {
+   "text": "mano.",
+   "type": "word",
+   "start": 2.08,
+   "end": 2.6
+  },
+  {
+   "text": "Ni",
+   "type": "word",
+   "start": 2.8,
+   "end": 2.96
+  },
+  {
+   "text": "un",
+   "type": "word",
+   "start": 3.04,
+   "end": 3.2
+  },
+  {
+   "text": "solo",
+   "type": "word",
+   "start": 3.28,
+   "end": 3.52
+  },
+  {
+   "text": "corte.",
+   "type": "word",
+   "start": 3.6,
+   "end": 4.08
+  },
+  {
+   "text": "Tú",
+   "type": "word",
+   "start": 4.48,
+   "end": 4.56
+  },
+  {
+   "text": "me",
+   "type": "word",
+   "start": 4.64,
+   "end": 4.72
+  },
+  {
+   "text": "pasas",
+   "type": "word",
+   "start": 4.8,
+   "end": 5.04
+  },
+  {
+   "text": "tu",
+   "type": "word",
+   "start": 5.08,
+   "end": 5.12
+  },
+  {
+   "text": "grabación,",
+   "type": "word",
+   "start": 5.2,
+   "end": 6.0
+  },
+  {
+   "text": "y",
+   "type": "word",
+   "start": 6.04,
+   "end": 6.08
+  },
+  {
+   "text": "mi",
+   "type": "word",
+   "start": 6.16,
+   "end": 6.24
+  },
+  {
+   "text": "sistema",
+   "type": "word",
+   "start": 6.28,
+   "end": 6.64
+  },
+  {
+   "text": "corta",
+   "type": "word",
+   "start": 6.8,
+   "end": 7.04
+  },
+  {
+   "text": "los",
+   "type": "word",
+   "start": 7.12,
+   "end": 7.2
+  },
+  {
+   "text": "silencios,",
+   "type": "word",
+   "start": 7.28,
+   "end": 8.08
+  },
+  {
+   "text": "pone",
+   "type": "word",
+   "start": 8.16,
+   "end": 8.32
+  },
+  {
+   "text": "subtítulos",
+   "type": "word",
+   "start": 8.44,
+   "end": 8.96
+  },
+  {
+   "text": "palabra",
+   "type": "word",
+   "start": 9.04,
+   "end": 9.52
+  },
+  {
+   "text": "por",
+   "type": "word",
+   "start": 9.6,
+   "end": 9.68
+  },
+  {
+   "text": "palabra,",
+   "type": "word",
+   "start": 9.76,
+   "end": 10.48
+  },
+  {
+   "text": "y",
+   "type": "word",
+   "start": 10.52,
+   "end": 10.56
+  },
+  {
+   "text": "mete",
+   "type": "word",
+   "start": 10.68,
+   "end": 10.88
+  },
+  {
+   "text": "zooms",
+   "type": "word",
+   "start": 10.96,
+   "end": 11.28
+  },
+  {
+   "text": "y",
+   "type": "word",
+   "start": 11.36,
+   "end": 11.44
+  },
+  {
+   "text": "efectos",
+   "type": "word",
+   "start": 11.52,
+   "end": 11.92
+  },
+  {
+   "text": "de",
+   "type": "word",
+   "start": 11.96,
+   "end": 12.0
+  },
+  {
+   "text": "sonido.",
+   "type": "word",
+   "start": 12.08,
+   "end": 12.56
+  },
+  {
+   "text": "¿Necesitas",
+   "type": "word",
+   "start": 12.96,
+   "end": 13.52
+  },
+  {
+   "text": "imágenes?",
+   "type": "word",
+   "start": 13.6,
+   "end": 14.24
+  },
+  {
+   "text": "Las",
+   "type": "word",
+   "start": 14.4,
+   "end": 14.64
+  },
+  {
+   "text": "crea",
+   "type": "word",
+   "start": 14.72,
+   "end": 14.96
+  },
+  {
+   "text": "realistas.",
+   "type": "word",
+   "start": 15.04,
+   "end": 15.96
+  },
+  {
+   "text": "¿Animaciones?",
+   "type": "word",
+   "start": 16.16,
+   "end": 17.04
+  },
+  {
+   "text": "En",
+   "type": "word",
+   "start": 17.2,
+   "end": 17.36
+  },
+  {
+   "text": "3D.",
+   "type": "word",
+   "start": 17.44,
+   "end": 17.92
+  },
+  {
+   "text": "¿No",
+   "type": "word",
+   "start": 18.4,
+   "end": 18.48
+  },
+  {
+   "text": "quieres",
+   "type": "word",
+   "start": 18.56,
+   "end": 18.8
+  },
+  {
+   "text": "grabar?",
+   "type": "word",
+   "start": 18.88,
+   "end": 19.36
+  },
+  {
+   "text": "Le",
+   "type": "word",
+   "start": 19.52,
+   "end": 19.6
+  },
+  {
+   "text": "pone",
+   "type": "word",
+   "start": 19.68,
+   "end": 19.84
+  },
+  {
+   "text": "una",
+   "type": "word",
+   "start": 19.92,
+   "end": 20.0
+  },
+  {
+   "text": "voz",
+   "type": "word",
+   "start": 20.08,
+   "end": 20.24
+  },
+  {
+   "text": "con",
+   "type": "word",
+   "start": 20.32,
+   "end": 20.4
+  },
+  {
+   "text": "inteligencia",
+   "type": "word",
+   "start": 20.48,
+   "end": 21.04
+  },
+  {
+   "text": "artificial.",
+   "type": "word",
+   "start": 21.12,
+   "end": 21.76
+  },
+  {
+   "text": "¿Viste",
+   "type": "word",
+   "start": 22.24,
+   "end": 22.56
+  },
+  {
+   "text": "un",
+   "type": "word",
+   "start": 22.6,
+   "end": 22.64
+  },
+  {
+   "text": "video",
+   "type": "word",
+   "start": 22.72,
+   "end": 22.96
+  },
+  {
+   "text": "viral",
+   "type": "word",
+   "start": 23.04,
+   "end": 23.28
+  },
+  {
+   "text": "que",
+   "type": "word",
+   "start": 23.32,
+   "end": 23.36
+  },
+  {
+   "text": "te",
+   "type": "word",
+   "start": 23.44,
+   "end": 23.52
+  },
+  {
+   "text": "encantó?",
+   "type": "word",
+   "start": 23.6,
+   "end": 24.2
+  },
+  {
+   "text": "Copia",
+   "type": "word",
+   "start": 24.4,
+   "end": 24.64
+  },
+  {
+   "text": "su",
+   "type": "word",
+   "start": 24.68,
+   "end": 24.72
+  },
+  {
+   "text": "estilo,",
+   "type": "word",
+   "start": 24.8,
+   "end": 25.44
+  },
+  {
+   "text": "y",
+   "type": "word",
+   "start": 25.48,
+   "end": 25.52
+  },
+  {
+   "text": "lo",
+   "type": "word",
+   "start": 25.56,
+   "end": 25.6
+  },
+  {
+   "text": "adapta",
+   "type": "word",
+   "start": 25.68,
+   "end": 26.0
+  },
+  {
+   "text": "a",
+   "type": "word",
+   "start": 26.027,
+   "end": 26.053
+  },
+  {
+   "text": "tus",
+   "type": "word",
+   "start": 26.08,
+   "end": 26.24
+  },
+  {
+   "text": "colores",
+   "type": "word",
+   "start": 26.32,
+   "end": 26.72
+  },
+  {
+   "text": "y",
+   "type": "word",
+   "start": 26.88,
+   "end": 26.92
+  },
+  {
+   "text": "tu",
+   "type": "word",
+   "start": 26.96,
+   "end": 27.04
+  },
+  {
+   "text": "tipografía.",
+   "type": "word",
+   "start": 27.12,
+   "end": 27.84
+  },
+  {
+   "text": "Y",
+   "type": "word",
+   "start": 28.16,
+   "end": 28.24
+  },
+  {
+   "text": "cada",
+   "type": "word",
+   "start": 28.4,
+   "end": 28.64
+  },
+  {
+   "text": "corrección",
+   "type": "word",
+   "start": 28.72,
+   "end": 29.12
+  },
+  {
+   "text": "que",
+   "type": "word",
+   "start": 29.2,
+   "end": 29.28
+  },
+  {
+   "text": "le",
+   "type": "word",
+   "start": 29.32,
+   "end": 29.36
+  },
+  {
+   "text": "hagas,",
+   "type": "word",
+   "start": 29.44,
+   "end": 29.92
+  },
+  {
+   "text": "la",
+   "type": "word",
+   "start": 30.0,
+   "end": 30.08
+  },
+  {
+   "text": "guarda",
+   "type": "word",
+   "start": 30.16,
+   "end": 30.4
+  },
+  {
+   "text": "para",
+   "type": "word",
+   "start": 30.48,
+   "end": 30.56
+  },
+  {
+   "text": "tus",
+   "type": "word",
+   "start": 30.64,
+   "end": 30.8
+  },
+  {
+   "text": "próximos",
+   "type": "word",
+   "start": 30.88,
+   "end": 31.36
+  },
+  {
+   "text": "videos.",
+   "type": "word",
+   "start": 31.6,
+   "end": 31.92
+  },
+  {
+   "text": "Para",
+   "type": "word",
+   "start": 32.32,
+   "end": 32.48
+  },
+  {
+   "text": "agencias,",
+   "type": "word",
+   "start": 32.56,
+   "end": 33.2
+  },
+  {
+   "text": "coaches",
+   "type": "word",
+   "start": 33.28,
+   "end": 33.68
+  },
+  {
+   "text": "y",
+   "type": "word",
+   "start": 33.76,
+   "end": 33.8
+  },
+  {
+   "text": "creadores",
+   "type": "word",
+   "start": 33.84,
+   "end": 34.32
+  },
+  {
+   "text": "que",
+   "type": "word",
+   "start": 34.36,
+   "end": 34.4
+  },
+  {
+   "text": "quieren",
+   "type": "word",
+   "start": 34.48,
+   "end": 34.72
+  },
+  {
+   "text": "publicar",
+   "type": "word",
+   "start": 34.8,
+   "end": 35.2
+  },
+  {
+   "text": "todos",
+   "type": "word",
+   "start": 35.44,
+   "end": 35.76
+  },
+  {
+   "text": "los",
+   "type": "word",
+   "start": 35.84,
+   "end": 35.92
+  },
+  {
+   "text": "días.",
+   "type": "word",
+   "start": 36.0,
+   "end": 36.4
+  },
+  {
+   "text": "Escríbeme",
+   "type": "word",
+   "start": 36.72,
+   "end": 37.28
+  },
+  {
+   "text": "HOOK",
+   "type": "word",
+   "start": 37.36,
+   "end": 37.68
+  },
+  {
+   "text": "por",
+   "type": "word",
+   "start": 37.76,
+   "end": 37.84
+  },
+  {
+   "text": "DM,",
+   "type": "word",
+   "start": 37.92,
+   "end": 38.4
+  },
+  {
+   "text": "y",
+   "type": "word",
+   "start": 38.56,
+   "end": 38.64
+  },
+  {
+   "text": "te",
+   "type": "word",
+   "start": 38.72,
+   "end": 38.76
+  },
+  {
+   "text": "muestro",
+   "type": "word",
+   "start": 38.8,
+   "end": 39.12
+  },
+  {
+   "text": "cómo",
+   "type": "word",
+   "start": 39.28,
+   "end": 39.44
+  },
+  {
+   "text": "quedaría",
+   "type": "word",
+   "start": 39.52,
+   "end": 39.92
+  },
+  {
+   "text": "el",
+   "type": "word",
+   "start": 39.96,
+   "end": 40.0
+  },
+  {
+   "text": "tuyo.",
+   "type": "word",
+   "start": 40.08,
+   "end": 40.72
+  }
+ ]
+}
