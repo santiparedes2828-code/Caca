@@ -43,8 +43,8 @@ const main = async () => {
   <details><summary>Por qué lo elegí</summary><ul>${p.evidencia_necesidad.map((e) => `<li>${esc(e)}</li>`).join("")}</ul><p class="note">${esc(p.notas)}</p></details>
   ${msgs}
   <details><summary>Comprobar antes de enviar (2 minutos)</summary><ul>
-    <li>Abre el enlace del contacto: ¿sigue ahí?</li>
-    <li>Abre su YouTube y su Instagram: si ya publican clips verticales a menudo, quita la frase «I couldn't find clips…» o descártalo.</li>
+    <li>Abre su perfil de Instagram (el enlace de «Enviar a»): ¿es su cuenta, y ha publicado en las últimas semanas?</li>
+    <li>Mira sus Reels: si ya publica clips editados con subtítulos a menudo, descártalo o dime que ajuste el texto.</li>
     <li>Confirma el título del episodio que cita el mensaje.</li>
     <li>Cambia «[Your name]» por tu nombre.</li>
   </ul></details>
@@ -133,6 +133,7 @@ a { color:var(--accent) }
     <div class="stat"><div class="n">${r.respondieron}</div><div class="t">respondieron</div></div>
     <div class="stat"><div class="n">${todo.filter((t) => t.vencido).length}</div><div class="t">tareas para hoy</div></div>
   </section>
+  <p class="warnbox"><b>Antes de mandar DMs:</b> envíalos desde @hookhouseoficial con la bio en inglés y «Same clip. Two edits.» fijado arriba, porque es lo primero que van a mirar. Los DMs a quien no te sigue llegan a «solicitudes de mensaje». Manda pocos al día (5–10) y personalizados.</p>
   <p class="warnbox"><b>Datos sin abrir las páginas.</b> El entorno bloquea YouTube y la mayoría de webs, así que todo sale de resultados de búsqueda (cada ficha dice qué falta comprobar). Revisa el canal antes de enviar cada mensaje.</p>
   <section>
     <h2>Top ${drafts.length}: para aprobar</h2>

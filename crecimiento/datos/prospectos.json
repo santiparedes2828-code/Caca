@@ -10,14 +10,14 @@
       "pais": "US (postal address in Sammamish, WA appears on the contact page per search snippet)",
       "perfiles": {
         "youtube": null,
-        "instagram": null,
+        "instagram": "https://www.instagram.com/nloper/",
         "tiktok": null,
         "web": "https://www.sidehustlenation.com/",
         "podcast": "https://podcasts.apple.com/podcast/id655135292",
         "linkedin": null,
         "x": null
       },
-      "contacto_publico": "nick@sidehustlenation.com",
+      "contacto_publico": "https://www.instagram.com/nloper/",
       "contacto_fuente": "https://www.sidehustlenation.com/press/",
       "contacto_nivel": "propio",
       "tamano": "48,674 YouTube subscribers, 1,269 videos (SocialCounts tracker, data up to 2026-07-13; channel ID UCzOAAJUiSO2uyu1xyxw__2Q). Third-party estimate, not from YouTube directly.",
@@ -49,7 +49,7 @@
         }
       ],
       "prioridad": "A",
-      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
+      "motivo_prioridad": "Top 10 Instagram (13-10): cuenta de IG encontrada por búsqueda y contenido largo reciente; necesidad inferida",
       "fuentes": [
         "https://socialcounts.org/youtube-live-subscriber-count/UCzOAAJUiSO2uyu1xyxw__2Q",
         "https://pod.wave.co/podcast/the-side-hustle-show/714-my-2025-progress-report-what-worked-what-didnt-and-whats-next",
@@ -60,9 +60,10 @@
         "https://podscan.fm/podcasts/the-side-hustle-show-1",
         "https://podcasts.apple.com/podcast/id655135292",
         "https://podcasts.apple.com/cy/podcast/the-side-hustle-show/id655135292",
-        "https://www.sidehustlenation.com/press/"
+        "https://www.sidehustlenation.com/press/",
+        "https://www.instagram.com/nloper/"
       ],
-      "notas": "All data comes from search-engine snippets; WebFetch could not open any page (DNS failure in this environment). The email comes from the snippet of the official contact page; check it there before using. The YouTube handle/URL, Instagram and TikTok were not verified. A third-party listing shows Shorts metrics for the channel (values not visible), so the channel may already publish Shorts. The YAP Media sponsor address was seen only on a third-party listing.",
+      "notas": "All data comes from search-engine snippets; WebFetch could not open any page (DNS failure in this environment). The email comes from the snippet of the official contact page; check it there before using. The YouTube handle/URL, Instagram and TikTok were not verified. A third-party listing shows Shorts metrics for the channel (values not visible), so the channel may already publish Shorts. The YAP Media sponsor address was seen only on a third-party listing. | Instagram (13-10, media: solo la listan páginas de terceros).",
       "verificado": "2026-10-13",
       "estado": "mensaje-listo",
       "mensajes": [
@@ -110,6 +111,42 @@
           "asunto": "Re: A free clip from \"Buy Buttons, 10 Years Later\"",
           "texto": "Hi Nick,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
           "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": null,
+          "texto": "Hi Nick! Episode 762, \"Buy Buttons, 10 Years Later\", is great Reel material: which platforms still work a decade on is a 40-second answer people save. I edit podcast episodes into vertical clips: strongest line first, word-by-word captions, zooms. Want a free clip from that episode to see the style?\n\n— [Your name], Hook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": null,
+          "texto": "Hi Nick, just bumping this in case it got buried in requests. Happy to make that free clip, no strings attached.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": null,
+          "texto": "Hi Nick! Here's how I'd open a Reel from episode 762, \"Buy Buttons, 10 Years Later\": open on the one platform that still works 10 years later, then why. If you want to see it edited, reply \"send it\" and you'll have it in 48 hours.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": null,
+          "texto": "Hi Nick, I'll stop here so I don't clutter your inbox. If Reels from your episodes become a priority, the free clip offer stands. Keep up the great work!",
+          "aprobado": false
         }
       ],
       "proximo_seguimiento": null,
@@ -127,14 +164,14 @@
       "pais": "US (Dayton, Ohio per Dayton Daily News snippet)",
       "perfiles": {
         "youtube": "https://www.youtube.com/@RyanHawk",
-        "instagram": null,
+        "instagram": "https://www.instagram.com/ryanhawk12/",
         "tiktok": null,
         "web": "https://learningleader.com/",
         "podcast": "https://podcasts.apple.com/co/podcast/the-learning-leader-show-with-ryan-hawk/id985396258",
         "linkedin": null,
         "x": null
       },
-      "contacto_publico": "Ryan@LearningLeader.com",
+      "contacto_publico": "https://www.instagram.com/ryanhawk12/",
       "contacto_fuente": "https://learningleader.com/?p=32",
       "contacto_nivel": "propio",
       "tamano": "YouTube subscribers not verified. Partnership kit says over 250,000 monthly listeners (podcast audience, self-reported).",
@@ -156,7 +193,7 @@
         }
       ],
       "prioridad": "A",
-      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
+      "motivo_prioridad": "Top 10 Instagram (13-10): cuenta de IG encontrada por búsqueda y contenido largo reciente; necesidad inferida",
       "fuentes": [
         "https://learningleader.com/partner/",
         "https://podwise.ai/podcasts/4194",
@@ -167,9 +204,10 @@
         "https://podcast.creatorscience.com/ryan-hawk/",
         "https://www.daytondailynews.com/local/dayton-leadership-podcaster-ryan-hawk-launches-partnership-with-new-company/3XNBWTCFQ5BBLB2A7VE3JL27WA/",
         "https://podwise.ai/episodes/9001202",
-        "https://learningleader.com/?p=32"
+        "https://learningleader.com/?p=32",
+        "https://www.instagram.com/ryanhawk12/"
       ],
-      "notas": "Exact titles of episodes 705-708 were not visible: the guests were Dr. Martin Seligman (705), Andy Stanley & Sam Kaufman (707) and Danny Meyer (708). YouTube subscriber count, Instagram/TikTok handles and the content of the partner page (email or form) were not verified. Shorts frequency was inferred only from search results.",
+      "notas": "Exact titles of episodes 705-708 were not visible: the guests were Dr. Martin Seligman (705), Andy Stanley & Sam Kaufman (707) and Danny Meyer (708). YouTube subscriber count, Instagram/TikTok handles and the content of the partner page (email or form) were not verified. Shorts frequency was inferred only from search results. | Instagram (13-10, alta: bio lo nombra host de The Learning Leader Show).",
       "verificado": "2026-10-13",
       "estado": "mensaje-listo",
       "mensajes": [
@@ -216,6 +254,42 @@
           "paso": "seguimiento-3",
           "asunto": "Re: A clip idea from your Danny Meyer episode",
           "texto": "Hi Ryan,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": null,
+          "texto": "Hey Ryan! Your episode with Danny Meyer has so many lines that would work as Reels on their own (the 49/51 hiring idea alone is a 30-second clip). I edit podcast episodes into vertical clips: strongest line first, word-by-word captions, zooms. Want me to cut one from that episode for free so you can see the style?\n\n— [Your name], Hook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": null,
+          "texto": "Hi Ryan, just bumping this in case it got buried in requests. Happy to make that free clip, no strings attached.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": null,
+          "texto": "Hi Ryan! Here's how I'd open a Reel from the Danny Meyer episode: open on the 49/51 hiring formula in one sentence, before any context. If you want to see it edited, reply \"send it\" and you'll have it in 48 hours.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": null,
+          "texto": "Hi Ryan, I'll stop here so I don't clutter your inbox. If Reels from your episodes become a priority, the free clip offer stands. Keep up the great work!",
           "aprobado": false
         }
       ],
@@ -865,14 +939,14 @@
       "pais": "United States (Findlay, Ohio)",
       "perfiles": {
         "youtube": null,
-        "instagram": null,
+        "instagram": "https://www.instagram.com/ohmlsflatfee/",
         "tiktok": null,
         "web": "https://ohiomlsflatfee.com/talkingrealty/",
         "podcast": "https://podcasts.apple.com/us/podcast/talking-realty/id1725864716",
         "linkedin": null,
         "x": null
       },
-      "contacto_publico": "Glen@OhioMLSFlatFee.com",
+      "contacto_publico": "https://www.instagram.com/ohmlsflatfee/",
       "contacto_fuente": "https://ohiomlsflatfee.com/talkingrealty/",
       "contacto_nivel": "propio",
       "tamano": null,
@@ -904,7 +978,7 @@
         }
       ],
       "prioridad": "A",
-      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
+      "motivo_prioridad": "Top 10 Instagram (13-10): cuenta de IG encontrada por búsqueda y contenido largo reciente; necesidad inferida",
       "fuentes": [
         "https://www.iheart.com/podcast/269-talking-realty-143162414/",
         "https://podcasts.apple.com/us/podcast/talking-realty/id1725864716",
@@ -912,9 +986,10 @@
         "https://ohiomlsflatfee.com/talkingrealty/",
         "https://my.flexmls.com/GlenWhitten",
         "https://www.homes.com/real-estate-agents/glen-whitten/x7pztxm/",
-        "https://www.experience.com/reviews/glen-6487516"
+        "https://www.experience.com/reviews/glen-6487516",
+        "https://www.instagram.com/ohmlsflatfee/"
       ],
-      "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. YouTube channel URL, subscriber count and Instagram/TikTok presence not verified. Phone numbers differ between listings (419-790-3106 vs 419-763-6358). Episode counts disagree across directories (Apple 88, Podchaser 79 stale). | 13-10: el episodio «Full-Price Offer» no se encontró; el mensaje usa el Ep 104 (2026-09-09).",
+      "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. YouTube channel URL, subscriber count and Instagram/TikTok presence not verified. Phone numbers differ between listings (419-790-3106 vs 419-763-6358). Episode counts disagree across directories (Apple 88, Podchaser 79 stale). | 13-10: el episodio «Full-Price Offer» no se encontró; el mensaje usa el Ep 104 (2026-09-09). | Instagram (13-10, media: cuenta de su empresa (OhioMLSFlatFee); no lo nombra a él).",
       "verificado": "2026-10-13",
       "estado": "mensaje-listo",
       "mensajes": [
@@ -961,6 +1036,42 @@
           "paso": "seguimiento-3",
           "asunto": "Re: A clip from Talking Realty Ep 104",
           "texto": "Hi Glen,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": null,
+          "texto": "Hi Glen! Talking Realty Ep 104 (\"Stop Pricing It to Leave Room to Negotiate\") answers a question sellers ask all the time, and that makes it a perfect Reel. I edit video podcasts into vertical clips: the answer first, captions word by word, zooms. Want me to cut one from that episode for free so you can see it?\n\n— [Your name], Hook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": null,
+          "texto": "Hi Glen, just bumping this in case it got buried in requests. Happy to make that free clip, no strings attached.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": null,
+          "texto": "Hi Glen! Here's how I'd open a Reel from Talking Realty Ep 104: open with \"Pricing high to leave room to negotiate can cost you the bidding war\". If you want to see it edited, reply \"send it\" and you'll have it in 48 hours.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": null,
+          "texto": "Hi Glen, I'll stop here so I don't clutter your inbox. If Reels from your episodes become a priority, the free clip offer stands. Keep up the great work!",
           "aprobado": false
         }
       ],
@@ -1023,7 +1134,7 @@
       ],
       "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Exact title of #214 and #213 not seen (only summaries). Subscriber count unknown. Shorts tab not opened, so other recent Shorts may exist. Business sells CEO peer groups at $6,000–$10,000/yr (practicalfounders.com/ceo-peer-groups), so budget is plausible.",
       "verificado": "2026-10-13",
-      "estado": "mensaje-listo",
+      "estado": "nuevo",
       "mensajes": [
         {
           "fecha": "2026-10-12",
@@ -1068,6 +1179,15 @@
           "paso": "seguimiento-3",
           "asunto": "Re: Short clips from Practical Founders",
           "texto": "Hi Greg,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "otro",
+          "tipo": "nota",
+          "paso": "otro",
+          "asunto": null,
+          "texto": "13-10: sin Instagram encontrado; queda el formulario de su web",
           "aprobado": false
         }
       ],
@@ -1497,14 +1617,14 @@
       "pais": "Canada",
       "perfiles": {
         "youtube": "https://www.youtube.com/@davedubeau",
-        "instagram": null,
+        "instagram": "https://www.instagram.com/thedavedubeau1/",
         "tiktok": null,
         "web": "https://davedubeau.com/home",
         "podcast": "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776",
         "linkedin": null,
         "x": null
       },
-      "contacto_publico": "support@davedubeau.com",
+      "contacto_publico": "https://www.instagram.com/thedavedubeau1/",
       "contacto_fuente": "https://davedubeau.com/termsandconditions",
       "contacto_nivel": "propio",
       "tamano": "Apple Podcasts 5.0 rating from 42 ratings (per search result); YouTube subscriber count not seen",
@@ -1532,15 +1652,16 @@
         }
       ],
       "prioridad": "A",
-      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
+      "motivo_prioridad": "Top 10 Instagram (13-10): cuenta de IG encontrada por búsqueda y contenido largo reciente; necesidad inferida",
       "fuentes": [
         "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776",
         "https://davedubeau.com/termsandconditions",
         "https://davedubeau.com/home",
         "https://resultsenterprises.com/start",
-        "https://davedubeau.podbean.com/page/22/"
+        "https://davedubeau.podbean.com/page/22/",
+        "https://www.instagram.com/thedavedubeau1/"
       ],
-      "notas": "Pages could not be opened; everything comes from search-result summaries. Episode dates come from the Apple Podcasts listing as summarized by search. Apple labels it 'Podcast' (not 'Video Podcast'); YouTube full episodes confirmed only via one episode note (Nov 2025). support@ is a generic support inbox (terms page also gives phone 530.564.0227 and Kamloops, BC address). Shorts/TikTok absence not verified on the platforms.",
+      "notas": "Pages could not be opened; everything comes from search-result summaries. Episode dates come from the Apple Podcasts listing as summarized by search. Apple labels it 'Podcast' (not 'Video Podcast'); YouTube full episodes confirmed only via one episode note (Nov 2025). support@ is a generic support inbox (terms page also gives phone 530.564.0227 and Kamloops, BC address). Shorts/TikTok absence not verified on the platforms. | Instagram (13-10, media: bio de podcaster inmobiliario que ayuda a levantar capital).",
       "verificado": "2026-10-13",
       "estado": "mensaje-listo",
       "mensajes": [
@@ -1578,6 +1699,42 @@
           "paso": "seguimiento-3",
           "asunto": "Re: Clips from Property Profits (for Dave)",
           "texto": "Hi Dave (or whoever reads this inbox,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": null,
+          "texto": "Hi Dave! You publish Property Profits almost daily, which is a lot of great material for Reels. \"Safe Is Sexy in Medical Real Estate\" with Merrick Lee is a strong one. I edit podcast episodes into vertical clips with the hook first, animated captions and zooms. Want a free clip from that episode to see the style?\n\n— [Your name], Hook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": null,
+          "texto": "Hi Dave, just bumping this in case it got buried in requests. Happy to make that free clip, no strings attached.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": null,
+          "texto": "Hi Dave! Here's how I'd open a Reel from the Merrick Lee episode: open on Merrick Lee's single reason medical real estate is \"safe\". If you want to see it edited, reply \"send it\" and you'll have it in 48 hours.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": null,
+          "texto": "Hi Dave, I'll stop here so I don't clutter your inbox. If Reels from your episodes become a priority, the free clip offer stands. Keep up the great work!",
           "aprobado": false
         }
       ],
@@ -1976,7 +2133,7 @@
         "linkedin": null,
         "x": null
       },
-      "contacto_publico": "greg@velocityhousebuyers.com",
+      "contacto_publico": "https://www.instagram.com/grego_37/",
       "contacto_fuente": "https://www.velocityhousebuyers.com/contact-us/",
       "contacto_nivel": "propio",
       "tamano": "Podcast with 330 to 574 episodes, depending on the platform; audience size unknown",
@@ -1997,16 +2154,17 @@
         }
       ],
       "prioridad": "A",
-      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
+      "motivo_prioridad": "Top 10 Instagram (13-10): cuenta de IG encontrada por búsqueda y contenido largo reciente; necesidad inferida",
       "fuentes": [
         "https://podcastaddict.com/podcast/the-real-estate-investing-fast-track/4524533",
         "https://podcasts.apple.com/us/podcast/the-real-estate-investing-fast-track/id1459746507",
         "https://www.youtube.com/@realestateinvestingfasttrack",
         "https://www.velocityhousebuyers.com/contact-us/",
         "https://reevyew.com/helbeck/",
-        "https://www.iheart.com/podcast/256-the-real-estate-investing-43043688/"
+        "https://www.iheart.com/podcast/256-the-real-estate-investing-43043688/",
+        "https://www.instagram.com/grego_37/"
       ],
-      "notas": "Pages could not be opened; only search results were seen. Episode dates come from Podcast Addict snippets. The search summary said the 2026-09-03 episode ranks investing strategies, but its exact title was not seen. The Instagram URL was built from the handle @grego_37 shown in podcast listings and was not opened. Coaching is by application, according to a third-party review site.",
+      "notas": "Pages could not be opened; only search results were seen. Episode dates come from Podcast Addict snippets. The search summary said the 2026-09-03 episode ranks investing strategies, but its exact title was not seen. The Instagram URL was built from the handle @grego_37 shown in podcast listings and was not opened. Coaching is by application, according to a third-party review site. | Instagram (13-10, media: enlazada desde las notas de su propio podcast).",
       "verificado": "2026-10-13",
       "estado": "mensaje-listo",
       "mensajes": [
@@ -2044,6 +2202,42 @@
           "paso": "seguimiento-3",
           "asunto": "Re: A clip from \"$18k Profit On A Deal No One Wanted\"",
           "texto": "Hi Greg,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": null,
+          "texto": "Hey Greg! \"$18k Profit On A Deal No One Wanted\" is a ready-made Reel hook: the number and the twist are already in the title. I edit podcast episodes into vertical clips with the hook first, animated captions and zooms. Want me to cut one from that episode for free so you can see the style?\n\n— [Your name], Hook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": null,
+          "texto": "Hi Greg, just bumping this in case it got buried in requests. Happy to make that free clip, no strings attached.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": null,
+          "texto": "Hi Greg! Here's how I'd open a Reel from \"$18k Profit On A Deal No One Wanted\": open on the $18k number and why nobody wanted the deal. If you want to see it edited, reply \"send it\" and you'll have it in 48 hours.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": null,
+          "texto": "Hi Greg, I'll stop here so I don't clutter your inbox. If Reels from your episodes become a priority, the free clip offer stands. Keep up the great work!",
           "aprobado": false
         }
       ],
@@ -2103,7 +2297,7 @@
       ],
       "notas": "Pages could not be opened; only search results were seen. The exact wording of the 2026-10-06 title comes from a search snippet and may differ slightly. Whether the YouTube channel has Shorts was not verified. He is an established author (book, Kiplinger contributor), so he may already work with a marketing provider. | Fuente del contacto: https://keilfp.com/blogpodcast/ (search result for keilfp.com podcast pages showed jeremy@keilfp.com; the site also offers a complimentary intro call)",
       "verificado": "2026-10-13",
-      "estado": "mensaje-listo",
+      "estado": "nuevo",
       "mensajes": [
         {
           "fecha": "2026-10-13",
@@ -2140,6 +2334,15 @@
           "asunto": "Re: A clip from your Retire Today episode",
           "texto": "Hi Jeremy,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
           "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "otro",
+          "tipo": "nota",
+          "paso": "otro",
+          "asunto": null,
+          "texto": "13-10: Instagram sin confirmar (@jeremy_keil, confianza baja); queda el email",
+          "aprobado": false
         }
       ],
       "proximo_seguimiento": null,
@@ -2157,7 +2360,7 @@
       "pais": "United States (Charleston SC / Palo Alto CA)",
       "perfiles": {
         "youtube": null,
-        "instagram": null,
+        "instagram": "https://www.instagram.com/alisonwealthmanagement/",
         "tiktok": null,
         "web": "https://www.alisonwealth.com/",
         "podcast": "https://podcasts.apple.com/ca/podcast/holistic-wealth-and-health-podcast/id1516518362",
@@ -2192,7 +2395,7 @@
       ],
       "notas": "Pages could not be opened; only search results were seen. The 2026-10-07 date comes from one search summary of the Apple page; another summary showed only '3–5 days ago'. Greg Dillon's affiliation conflicts between sources (Prosperity Capital Advisors vs OneTeam Financial). The show was previously hosted by Jason L Smith (JL Smith Group), so check who owns the production before pitching. | Contacto completo: Dave.Alison@AlisonWealth.com (also info@alisonwealth.com; intro-call booking at https://www.alisonwealth.com/dave)",
       "verificado": "2026-10-13",
-      "estado": "mensaje-listo",
+      "estado": "nuevo",
       "mensajes": [
         {
           "fecha": "2026-10-13",
@@ -2228,6 +2431,15 @@
           "paso": "seguimiento-3",
           "asunto": "Re: Clips for the relaunched Holistic Wealth and Health Podcast",
           "texto": "Hi Dave,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "otro",
+          "tipo": "nota",
+          "paso": "otro",
+          "asunto": null,
+          "texto": "13-10: REVISAR: Metacast atribuye «Holistic Wealth and Health Podcast» a Jason L Smith; el programa propio de Dave Alison sería «Complete Wealth Management With Dave Alison». El borrador por email cita el programa equivocado: no usar.",
           "aprobado": false
         }
       ],
@@ -2301,14 +2513,14 @@
       "pais": "United States (Indianapolis, Indiana)",
       "perfiles": {
         "youtube": null,
-        "instagram": null,
+        "instagram": "https://www.instagram.com/advancedsellingpodcast/",
         "tiktok": null,
         "web": "https://advancedsellingpodcast.com/",
         "podcast": "https://podcasts.apple.com/us/podcast/the-advanced-selling-podcast/id148759439",
         "linkedin": null,
         "x": null
       },
-      "contacto_publico": "https://advancedsellingpodcast.com/contact/",
+      "contacto_publico": "https://www.instagram.com/advancedsellingpodcast/",
       "contacto_fuente": "https://advancedsellingpodcast.com/contact/",
       "contacto_nivel": "propio",
       "tamano": "900+ episodes since 2006",
@@ -2330,16 +2542,17 @@
         }
       ],
       "prioridad": "A",
-      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
+      "motivo_prioridad": "Top 10 Instagram (13-10): cuenta de IG encontrada por búsqueda y contenido largo reciente; necesidad inferida",
       "fuentes": [
         "https://www.buzzsprout.com/2517440",
         "https://rss.buzzsprout.com/2517440.rss",
         "https://podcasts.apple.com/us/podcast/the-advanced-selling-podcast/id148759439",
         "https://advancedsellingpodcast.com/contact/",
         "https://advancedsellingpodcast.com/",
-        "https://he.player.fm/1BgCrwp"
+        "https://he.player.fm/1BgCrwp",
+        "https://www.instagram.com/advancedsellingpodcast/"
       ],
-      "notas": "Pages could not be opened; only search results were seen. The business email on the contact page appeared masked in results. listener@advancedsellingpodcast.com is for listener questions. Ep 898's title differs between Buzzsprout and the RSS feed. The exact title of Ep 901 (2026-10-05) was not seen; the search said it is Part 2 of 'Are Your Sales Skills Atrophying?'. | Contacto completo: https://advancedsellingpodcast.com/contact/ (listener@advancedsellingpodcast.com for listener questions) | listener@advancedsellingpodcast.com es para preguntas de oyentes; el contacto comercial es el formulario.",
+      "notas": "Pages could not be opened; only search results were seen. The business email on the contact page appeared masked in results. listener@advancedsellingpodcast.com is for listener questions. Ep 898's title differs between Buzzsprout and the RSS feed. The exact title of Ep 901 (2026-10-05) was not seen; the search said it is Part 2 of 'Are Your Sales Skills Atrophying?'. | Contacto completo: https://advancedsellingpodcast.com/contact/ (listener@advancedsellingpodcast.com for listener questions) | listener@advancedsellingpodcast.com es para preguntas de oyentes; el contacto comercial es el formulario. | Instagram (13-10, alta: cuenta del programa).",
       "verificado": "2026-10-13",
       "estado": "mensaje-listo",
       "mensajes": [
@@ -2377,6 +2590,42 @@
           "paso": "seguimiento-3",
           "asunto": "Re: Short clips from The Advanced Selling Podcast",
           "texto": "Hi Bill and Bryan,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": null,
+          "texto": "Hi guys! 900 episodes is a huge library for Reels. Ep 900, \"Are Your Sales Skills Atrophying?\", is a question every salesperson would stop for in a feed. I edit podcast episodes into vertical clips with the key line first, animated captions and zooms. Want a free clip from that episode to see the style?\n\n— [Your name], Hook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": null,
+          "texto": "Hi guys, just bumping this in case it got buried in requests. Happy to make that free clip, no strings attached.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": null,
+          "texto": "Hi guys! Here's how I'd open a Reel from Ep 900, \"Are Your Sales Skills Atrophying?\": open on the one sign that your sales skills are slipping. If you want to see it edited, reply \"send it\" and you'll have it in 48 hours.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": null,
+          "texto": "Hi guys, I'll stop here so I don't clutter your inbox. If Reels from your episodes become a priority, the free clip offer stands. Keep up the great work!",
           "aprobado": false
         }
       ],
@@ -2502,14 +2751,14 @@
       "pais": "United States (Los Angeles, California)",
       "perfiles": {
         "youtube": "https://www.youtube.com/playlist?list=PLbCTvmi1msxrLKxLHDkxgdqhchYieNBgX",
-        "instagram": null,
+        "instagram": "https://www.instagram.com/billgrossprobate/",
         "tiktok": null,
         "web": "https://www.thelaprobateexpert.com/",
         "podcast": "https://podcasts.apple.com/us/podcast/probate-weekly/id1575381330",
         "linkedin": null,
         "x": null
       },
-      "contacto_publico": "bill@thelaprobateexpert.com",
+      "contacto_publico": "https://www.instagram.com/billgrossprobate/",
       "contacto_fuente": "https://www.thelaprobateexpert.com/",
       "contacto_nivel": "propio",
       "tamano": "305+ episodes, according to the show page; audience size unknown",
@@ -2531,7 +2780,7 @@
         }
       ],
       "prioridad": "A",
-      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
+      "motivo_prioridad": "Top 10 Instagram (13-10): cuenta de IG encontrada por búsqueda y contenido largo reciente; necesidad inferida",
       "fuentes": [
         "https://creators.spotify.com/pod/profile/probateweekly/",
         "https://rephonic.com/podcasts/probate-weekly",
@@ -2540,9 +2789,10 @@
         "https://www.thelaprobateexpert.com/consult",
         "https://www.thelaprobateexpert.com/podcasts/probate-weekly",
         "https://www.youtube.com/playlist?list=PLbCTvmi1msxrLKxLHDkxgdqhchYieNBgX",
-        "https://probatemastery.com/probate-leads-and-transactions-real-estate-coaching/"
+        "https://probatemastery.com/probate-leads-and-transactions-real-estate-coaching/",
+        "https://www.instagram.com/billgrossprobate/"
       ],
-      "notas": "Pages could not be opened; only search results were seen. The exact episode titles come from aggregator snippets (Rephonic, Spotify for Creators). The YouTube handle @BillGrossProbate came from a podcast listing and was not opened. Whether each episode has a video version is not verified. | Fuente del contacto: https://www.thelaprobateexpert.com/ (search results for the site, including https://www.thelaprobateexpert.com/consult, showed bill@thelaprobateexpert.com and (310) 210-0008)",
+      "notas": "Pages could not be opened; only search results were seen. The exact episode titles come from aggregator snippets (Rephonic, Spotify for Creators). The YouTube handle @BillGrossProbate came from a podcast listing and was not opened. Whether each episode has a video version is not verified. | Fuente del contacto: https://www.thelaprobateexpert.com/ (search results for the site, including https://www.thelaprobateexpert.com/consult, showed bill@thelaprobateexpert.com and (310) 210-0008) | Instagram (13-10, alta: mismo usuario que su YouTube y LinkedIn).",
       "verificado": "2026-10-13",
       "estado": "mensaje-listo",
       "mensajes": [
@@ -2581,8 +2831,760 @@
           "asunto": "Re: Vertical clips from Probate Weekly",
           "texto": "Hi Bill,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
           "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": null,
+          "texto": "Hi Bill! \"Why Half of LA Probate Leads Can't Sell\" is the kind of line agents stop scrolling for. I edit podcast episodes into vertical Reels with the hook first, animated captions and zooms. Would you like me to cut one clip from that episode for free so you can see how it would look here?\n\n— [Your name], Hook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": null,
+          "texto": "Hi Bill, just bumping this in case it got buried in requests. Happy to make that free clip, no strings attached.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": null,
+          "texto": "Hi Bill! Here's how I'd open a Reel from \"Why Half of LA Probate Leads Can't Sell\": open on \"Half of LA probate leads can't sell\" and the first reason. If you want to see it edited, reply \"send it\" and you'll have it in 48 hours.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": null,
+          "texto": "Hi Bill, I'll stop here so I don't clutter your inbox. If Reels from your episodes become a priority, the free clip offer stands. Keep up the great work!",
+          "aprobado": false
         }
       ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "karl-bryan",
+      "nombre": "Karl Bryan (Business Coaching Secrets / Focused.com)",
+      "segmento": "profesional",
+      "nicho": "business coaching for coaches; sells Profit Acceleration Software and coaching programs",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": "https://www.youtube.com/playlist?list=PLgAS-54wc6siJm0EfTc5SLaUR3amtU_0S",
+        "instagram": "https://www.instagram.com/karlfbryan/",
+        "tiktok": null,
+        "web": "https://karlbryan.com/",
+        "podcast": "https://podcasts.apple.com/us/podcast/business-coaching-secrets/id1477099279",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://www.instagram.com/karlfbryan/",
+      "contacto_fuente": "https://www.instagram.com/karlfbryan/",
+      "contacto_nivel": "propio",
+      "tamano": "Instagram snippet: ~9,996 followers, 650 following, 33 posts (https://www.instagram.com/karlfbryan/); podcast ~306 episodes, weekly (https://www.listennotes.com/podcasts/business-coaching-secrets-karl-bryan-N5sSLy0td1D/)",
+      "frecuencia": "Weekly podcast; latest seen BCS 365 on Sep 25, 2026 (Apple Podcasts listing)",
+      "evidencia_necesidad": [
+        "Medium: only 33 Instagram posts shown vs a weekly podcast with 300+ episodes and a YouTube playlist, so long-form output is barely repurposed on IG (https://www.instagram.com/karlfbryan/, https://www.listennotes.com/podcasts/business-coaching-secrets-karl-bryan-N5sSLy0td1D/)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "BCS 365 (on attracting clients; full title not shown in snippet)",
+          "url": "https://podcasts.apple.com/us/podcast/business-coaching-secrets/id1477099279",
+          "fecha": "2026-09-25"
+        },
+        {
+          "titulo": "BCS 364 (solo episode on money mindset and habits for coaches; full title not shown)",
+          "url": "https://podcasts.apple.com/us/podcast/business-coaching-secrets/id1477099279",
+          "fecha": "2026-09-18"
+        },
+        {
+          "titulo": "BCS 355 - Turning Pain Into Power: Zen Lessons for Business Coaches",
+          "url": "https://podcastaddict.com/business-coaching-secrets/episode/228579152",
+          "fecha": "2026-07-17"
+        }
+      ],
+      "prioridad": "A",
+      "motivo_prioridad": "Top 10 Instagram (13-10): cuenta de IG encontrada por búsqueda y contenido largo reciente; necesidad inferida",
+      "fuentes": [
+        "https://www.instagram.com/karlfbryan/",
+        "https://podcasts.apple.com/us/podcast/business-coaching-secrets/id1477099279",
+        "https://www.listennotes.com/podcasts/business-coaching-secrets-karl-bryan-N5sSLy0td1D/",
+        "https://www.youtube.com/playlist?list=PLgAS-54wc6siJm0EfTc5SLaUR3amtU_0S",
+        "https://karlbryan.com/business-coaching-secrets-podcast/",
+        "https://podcastaddict.com/business-coaching-secrets/episode/228579152"
+      ],
+      "notas": "Pages not opened; IG data from search snippet (date unknown). Whether the YouTube playlist has recent uploads was not verified. Co-host 'Road Dog' named in listings. Bio says founder of Focused.com and The Six-Figure Coach Magazine.",
+      "verificado": "2026-10-13",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": null,
+          "texto": "Hi Karl! You put out a Business Coaching Secrets episode every week, and there's a lot in there that would work as Reels for coaches. I edit podcast episodes into vertical clips: the strongest line first, word-by-word captions, zooms. Would you like me to cut one from a recent episode for free so you can judge the quality?\n\n— [Your name], Hook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": null,
+          "texto": "Hi Karl, just bumping this in case it got buried in requests. Happy to make that free clip, no strings attached.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": null,
+          "texto": "Hi Karl! Here's how I'd open a Reel from a recent Business Coaching Secrets episode: open on your single best line about attracting clients, then one example. If you want to see it edited, reply \"send it\" and you'll have it in 48 hours.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": null,
+          "texto": "Hi Karl, I'll stop here so I don't clutter your inbox. If Reels from your episodes become a priority, the free clip offer stands. Keep up the great work!",
+          "aprobado": false
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "kindal-boyle",
+      "nombre": "Kindal Boyle (Fit Womens Weekly Podcast)",
+      "segmento": "profesional",
+      "nicho": "online strength/fitness coaching for women 30s-40s",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": "https://www.instagram.com/trainerkindal/",
+        "tiktok": null,
+        "web": "https://fitwomensweekly.com/",
+        "podcast": "https://podcasts.apple.com/us/podcast/fit-womens-weekly-podcast/id622413963",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://www.instagram.com/trainerkindal/",
+      "contacto_fuente": "https://www.instagram.com/trainerkindal/",
+      "contacto_nivel": "propio",
+      "tamano": "Instagram snippet: ~5,205 followers, 3,355 posts (https://www.instagram.com/trainerkindal/); podcast ~781 episodes, 4.5/5 from 270 ratings (Apple US)",
+      "frecuencia": "Semiweekly video podcast; September 2026 episodes listed (Sep 16, Sep 23) per Apple US listing",
+      "evidencia_necesidad": [
+        "Weak (inferred): a semiweekly video podcast with 781 episodes is long-form raw material for Reels; how the IG Reels are edited was not seen (https://podcasts.apple.com/us/podcast/fit-womens-weekly-podcast/id622413963)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Step counts for weight loss (title paraphrased in snippet)",
+          "url": "https://podcasts.apple.com/us/podcast/fit-womens-weekly-podcast/id622413963",
+          "fecha": "Sep 23 (2026 inferred from US listing)"
+        },
+        {
+          "titulo": "Encore episode with Dr. Carolyn Dean on magnesium",
+          "url": "https://podcasts.apple.com/us/podcast/fit-womens-weekly-podcast/id622413963",
+          "fecha": "September 2026"
+        },
+        {
+          "titulo": "'Diet horror stories' episode",
+          "url": "https://podcasts.apple.com/us/podcast/fit-womens-weekly-podcast/id622413963",
+          "fecha": "Sep 16 (2026 inferred)"
+        }
+      ],
+      "prioridad": "A",
+      "motivo_prioridad": "Top 10 Instagram (13-10): cuenta de IG encontrada por búsqueda y contenido largo reciente; necesidad inferida",
+      "fuentes": [
+        "https://www.instagram.com/trainerkindal/",
+        "https://podcasts.apple.com/us/podcast/fit-womens-weekly-podcast/id622413963",
+        "https://search.podderapp.com/podcast/fit-womens-weekly-podcast"
+      ],
+      "notas": "Episode titles are search-summary paraphrases, not exact; one summary did not confirm the year on the Sep 16/23 items, though a second search on the same US page reported September 2026 episodes. fitwomensweekly.com was named in results but not opened. YouTube channel not found.",
+      "verificado": "2026-10-13",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": null,
+          "texto": "Hi Kindal! Your recent Fit Womens Weekly episode on step counts for weight loss is exactly the kind of answer women save and send to a friend. I edit video podcasts into vertical Reels: the answer first, word-by-word captions, zooms. Want me to cut one clip from it for free so you can see the style?\n\n— [Your name], Hook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": null,
+          "texto": "Hi Kindal, just bumping this in case it got buried in requests. Happy to make that free clip, no strings attached.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": null,
+          "texto": "Hi Kindal! Here's how I'd open a Reel from your recent episode on step counts: open on the step count number you recommend, then the one reason. If you want to see it edited, reply \"send it\" and you'll have it in 48 hours.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": null,
+          "texto": "Hi Kindal, I'll stop here so I don't clutter your inbox. If Reels from your episodes become a priority, the free clip offer stands. Keep up the great work!",
+          "aprobado": false
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "laura-jackson-amanda-quinn",
+      "nombre": "Laura Jackson & Amanda Quinn (FIT CHICKS / FIT CHICKS Academy - FIT CHICKS Chat)",
+      "segmento": "profesional",
+      "nicho": "women's fitness, nutrition and coach certifications (Canada)",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": "https://www.youtube.com/playlist?list=PLG2QXjhX7R8aNkDCVV0JFYHqSY4opeiBP",
+        "instagram": "https://www.instagram.com/fitchicksacademy/",
+        "tiktok": null,
+        "web": "https://fitchicksacademy.com/fit-chicks-chat-podcast/",
+        "podcast": "https://podcasts.apple.com/us/podcast/fit-chicks-chat/id1112631196",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://www.instagram.com/fitchicksacademy/",
+      "contacto_fuente": "https://www.instagram.com/fitchicksacademy/",
+      "contacto_nivel": "propio",
+      "tamano": "@fitchicksacademy ~6,000 followers per search snippet (https://www.instagram.com/fitchicksacademy/); brand handle @fitchicks also cited (https://healthpreneurgroup.com/the-fit-chicks/), its count not seen",
+      "frecuencia": "Podcast with 630+ episodes; Ep 636 dated 22 Sept (2026 per search context)",
+      "evidencia_necesidad": [
+        "Weak (inferred): 630+ episodes plus a YouTube playlist, while the Academy IG has ~6k followers; Reels quality not seen (https://podcasts.apple.com/ie/podcast/fit-chicks-chat/id1112631196)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Episode 636 - weight loss myths (title paraphrased)",
+          "url": "https://podcasts.apple.com/ie/podcast/fit-chicks-chat/id1112631196",
+          "fecha": "22 Sept 2026"
+        },
+        {
+          "titulo": "Episode 638 - coach on support that fits real life (paraphrased)",
+          "url": "https://podcasts.apple.com/ie/podcast/fit-chicks-chat/id1112631196",
+          "fecha": "after 22 Sept 2026 (exact date not shown)"
+        }
+      ],
+      "prioridad": "A",
+      "motivo_prioridad": "Top 10 Instagram (13-10): cuenta de IG encontrada por búsqueda y contenido largo reciente; necesidad inferida",
+      "fuentes": [
+        "https://www.instagram.com/fitchicksacademy/",
+        "https://podcasts.apple.com/ie/podcast/fit-chicks-chat/id1112631196",
+        "https://www.listennotes.com/podcasts/fit-chicks-chat-laura-jackson-amanda-quinn-Rehn1TJbtDW/",
+        "https://www.youtube.com/playlist?list=PLG2QXjhX7R8aNkDCVV0JFYHqSY4opeiBP",
+        "https://healthpreneurgroup.com/the-fit-chicks/",
+        "https://fitchicksacademy.com/fit-chicks-chat-podcast/"
+      ],
+      "notas": "Country Canada per hosts' description ('Canada's largest women's only fitness company'), left pais null per schema convention. Whether the YouTube playlist is full video episodes or recent was not verified. @fitchicks follower count not seen; it may exceed 100k.",
+      "verificado": "2026-10-13",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": null,
+          "texto": "Hi Laura and Amanda! Your recent FIT CHICKS Chat episode on weight loss myths would make great Reels: each myth is its own 30-second clip. I edit podcast episodes into vertical clips with the hook first, word-by-word captions and zooms. Want me to cut one for free so you can see the style?\n\n— [Your name], Hook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": null,
+          "texto": "Hi Laura and Amanda, just bumping this in case it got buried in requests. Happy to make that free clip, no strings attached.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": null,
+          "texto": "Hi Laura and Amanda! Here's how I'd open a Reel from your recent episode on weight loss myths: open on the most common myth, stated as a question, then bust it. If you want to see it edited, reply \"send it\" and you'll have it in 48 hours.",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "instagram",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": null,
+          "texto": "Hi Laura and Amanda, I'll stop here so I don't clutter your inbox. If Reels from your episodes become a priority, the free clip offer stands. Keep up the great work!",
+          "aprobado": false
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "joanna",
+      "nombre": "Joanna (Jo) Lott (Women in The Coaching Arena)",
+      "segmento": "profesional",
+      "nicho": "business coaching for qualified coaches (UK)",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": "https://www.instagram.com/joannalottcoaching/",
+        "tiktok": null,
+        "web": null,
+        "podcast": "https://podcasts.apple.com/gb/podcast/women-in-the-coaching-arena/id1677428210",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://www.instagram.com/joannalottcoaching/",
+      "contacto_fuente": "https://www.instagram.com/joannalottcoaching/",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "Instagram ~2,500 followers per search snippet ('Jo ACC | The Coaches' Coach') (https://www.instagram.com/joannalottcoaching/)",
+      "frecuencia": "Weekly video podcast, Thursdays; latest seen Video 190 on Oct 8, 2026",
+      "evidencia_necesidad": [
+        "Weak (inferred): weekly video podcast (190 episodes) vs a ~2.5k-follower IG; Reels style not seen (https://podcasts.apple.com/gb/podcast/women-in-the-coaching-arena/id1677428210)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "190 | I've Spent 6 Years Getting Coaching Clients. Here's What Works in 2026",
+          "url": "https://podcasts.apple.com/gb/podcast/women-in-the-coaching-arena/id1677428210",
+          "fecha": "2026-10-08"
+        },
+        {
+          "titulo": "189 | How I Built a £200K+ Coaching Business Around My Life",
+          "url": "https://podcasts.apple.com/gb/podcast/women-in-the-coaching-arena/id1677428210",
+          "fecha": "2026-10-01"
+        }
+      ],
+      "prioridad": "B",
+      "motivo_prioridad": "Very recent weekly video podcast and small IG; need inferred and IG-to-podcast link not confirmed.",
+      "fuentes": [
+        "https://www.instagram.com/joannalottcoaching/",
+        "https://podcasts.apple.com/gb/podcast/women-in-the-coaching-arena/id1677428210"
+      ],
+      "notas": "The IG snippet does not mention the podcast; the link is inferred from the matching name and niche (coach for coaches). Confirm before DM. YouTube URL not found.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "kristy-castillo",
+      "nombre": "Kristy Castillo (The Unf*ck Your Fitness Podcast)",
+      "segmento": "profesional",
+      "nicho": "online fitness and nutrition coaching for women",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": "https://www.instagram.com/kristycastillofit/",
+        "tiktok": null,
+        "web": null,
+        "podcast": "https://podcasts.apple.com/us/podcast/the-unf-ck-your-fitness-podcast/id1615788860",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://www.instagram.com/kristycastillofit/",
+      "contacto_fuente": "https://www.instagram.com/kristycastillofit/",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "Instagram snippet: ~14K followers, 933 following, 2,225 posts; bio names the podcast (https://www.instagram.com/kristycastillofit/); Apple US: video podcast, 253 episodes, 4.9 (201 ratings)",
+      "frecuencia": "Listed as semiweekly video podcast; episodes 247-253 are 2026 episodes (ep 223 opens 'Welcome to 2026'), exact dates not shown",
+      "evidencia_necesidad": [
+        "Weak (inferred): Apple lists it as a video podcast with 250+ episodes, raw material for Reels; IG Reels quality not seen (https://podcasts.apple.com/us/podcast/the-unf-ck-your-fitness-podcast/id1615788860)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "251. How to transition between calorie deficit, maintenance, build phase",
+          "url": "https://unfuckyourfitness.buzzsprout.com/1945876/episodes/19505407-251-how-to-transition-between-calorie-deficit-maintenance-build-phase",
+          "fecha": "2026 (exact date not visible)"
+        },
+        {
+          "titulo": "247. Exercise, Fertility and Pregnancy with Dr. Hannah Ryles",
+          "url": "https://unfuckyourfitness.buzzsprout.com/1945876/episodes/19358952-247-exercise-fertility-and-pregnancy-with-dr-hannah-ryles",
+          "fecha": "2026 (exact date not visible)"
+        }
+      ],
+      "prioridad": "B",
+      "motivo_prioridad": "Active video podcast and IG in range; the 60-day window could not be confirmed with a date.",
+      "fuentes": [
+        "https://www.instagram.com/kristycastillofit/",
+        "https://podcasts.apple.com/us/podcast/the-unf-ck-your-fitness-podcast/id1615788860",
+        "https://unfuckyourfitness.buzzsprout.com/1945876/episodes",
+        "https://unfuckyourfitness.buzzsprout.com/1945876/episodes/18360785-222-when-growth-demands-a-pivot-the-rebranding-of-unf-ck-your-fitness"
+      ],
+      "notas": "Exact dates of episodes 247-253 not seen; open the Buzzsprout episodes page to confirm. Brand was rebranded from Kristy Castillo Fit to Unf*ck Your Fitness (ep 222). YouTube channel not found.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "billie-blake-risboskin",
+      "nombre": "Billie Blake Risboskin (Ready To Lose podcast)",
+      "segmento": "profesional",
+      "nicho": "weight-loss and life coaching for women, no-diet approach",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": "https://www.instagram.com/readytolosecoach/",
+        "tiktok": null,
+        "web": null,
+        "podcast": "https://castbox.fm/channel/Ready-To-Lose-id6774711",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://www.instagram.com/readytolosecoach/",
+      "contacto_fuente": "https://www.instagram.com/readytolosecoach/",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "Instagram snippet: ~5,021 followers, 3,128 posts; bio names the Ready to Lose Podcast (https://www.instagram.com/readytolosecoach/)",
+      "frecuencia": "Biweekly per Podscan; latest seen #273 on Jul 13, 2026 (outside 60 days)",
+      "evidencia_necesidad": [
+        "Weak (inferred): podcast plus many posts; in ep 273 she mentions her audio failed to record a 25-minute session, a hint of DIY production (https://www.podscan.fm/podcasts/ready-to-lose)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "273. My Summer Weight Loss Plan",
+          "url": "https://www.podscan.fm/podcasts/ready-to-lose",
+          "fecha": "2026-07-13"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "No episode confirmed in the last 60 days; audio-only format not ruled out; host-IG link inferred.",
+      "fuentes": [
+        "https://www.instagram.com/readytolosecoach/",
+        "https://www.podscan.fm/podcasts/ready-to-lose",
+        "https://castbox.fm/channel/Ready-To-Lose-id6774711"
+      ],
+      "notas": "IG snippet does not name the owner; link to Billie Blake Risboskin inferred from the podcast name. No YouTube/video version found. Newer episodes may exist but were not indexed.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "stacy-mitchell-rdn",
+      "nombre": "Stacy Mitchell, RDN (Daily Dietitian Podcast)",
+      "segmento": "profesional",
+      "nicho": "registered dietitian and personal trainer; nutrition coaching",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": "https://www.instagram.com/dailydietitianrd/",
+        "tiktok": null,
+        "web": "https://dailydietitian.com/category/podcast",
+        "podcast": "https://podscan.fm/podcasts/daily-dietitian-podcast",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://www.instagram.com/dailydietitianrd/",
+      "contacto_fuente": "https://www.instagram.com/dailydietitianrd/",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "Instagram snippet: ~2,606 followers, 2,370 following, 524 posts; bio points to the Daily Dietitian Podcast (https://www.instagram.com/dailydietitianrd/)",
+      "frecuencia": "Latest seen Episode 230 on Jul 22, 2026 (outside 60 days); 227 on May 20, 2026",
+      "evidencia_necesidad": [
+        "Weak (inferred): 230 episodes vs 524 IG posts; Reels style not seen (https://podscan.fm/podcasts/daily-dietitian-podcast)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "230. Clear Protein: Is It Better... or Just Better Marketing?",
+          "url": "https://podscan.fm/podcasts/daily-dietitian-podcast",
+          "fecha": "2026-07-22"
+        },
+        {
+          "titulo": "227. Gut Health Trends: What Actually Helps Your Gut (and What I'd Skip as a Dietitian)",
+          "url": "https://www.podengine.ai/podcasts/daily-dietitian-podcast",
+          "fecha": "2026-05-20"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Small IG in range but no episode confirmed in last 60 days and no video version confirmed.",
+      "fuentes": [
+        "https://www.instagram.com/dailydietitianrd/",
+        "https://podscan.fm/podcasts/daily-dietitian-podcast",
+        "https://www.podengine.ai/podcasts/daily-dietitian-podcast",
+        "https://dailydietitian.com/category/podcast"
+      ],
+      "notas": "Surname Mitchell comes from podcast listings (podcastai.com); IG snippet shows only 'Stacy'. YouTube not found.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "sammie-ellard-king",
+      "nombre": "Sammie Ellard-King (The Money Gains Podcast / Gains App)",
+      "segmento": "podcaster",
+      "nicho": "UK personal finance education; launching the Gains App",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": "https://www.instagram.com/moneygainspodcast/",
+        "tiktok": null,
+        "web": null,
+        "podcast": "https://themoneygainspodcast.buzzsprout.com/1979293",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://www.instagram.com/moneygainspodcast/",
+      "contacto_fuente": "https://www.instagram.com/moneygainspodcast/",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "Instagram snippet: ~6,462 followers, 125 posts; bio lists YouTube, Spotify & Apple Podcasts (https://www.instagram.com/moneygainspodcast/)",
+      "frecuencia": "Latest dated episodes seen: May 20 and May 28, 2026 (outside 60 days); 173-198 episodes per directories",
+      "evidencia_necesidad": [
+        "Weak-medium: only 125 IG posts vs 170+ episodes that are also on YouTube (https://www.instagram.com/moneygainspodcast/, https://themoneygainspodcast.buzzsprout.com/1979293/episodes)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Rob Dix on building the Gains App (title paraphrased)",
+          "url": "https://podcastrex.com/shows/the-money-gains-podcast",
+          "fecha": "2026-05-28"
+        },
+        {
+          "titulo": "Wealth Manager Jay Lawrence (Rathbones): why buying a house is a poor financial decision in 2026 (paraphrased)",
+          "url": "https://podcastrex.com/shows/the-money-gains-podcast",
+          "fecha": "2026-05-20"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Good post-to-episode gap but no episode confirmed in the last 60 days; UK-based.",
+      "fuentes": [
+        "https://www.instagram.com/moneygainspodcast/",
+        "https://themoneygainspodcast.buzzsprout.com/1979293/episodes",
+        "https://podcastrex.com/shows/the-money-gains-podcast",
+        "https://www.podbean.com/itunes/1670382337"
+      ],
+      "notas": "UK (English-speaking). YouTube channel URL not found. Newer episodes likely exist but were not seen. Selling: Gains App (launching late autumn per one episode).",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "brad-walsh",
+      "nombre": "Brad Walsh (Empowerography podcast)",
+      "segmento": "podcaster",
+      "nicho": "interview podcast with women entrepreneurs; podcast coach",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": "https://www.instagram.com/empowerographypodcast/",
+        "tiktok": null,
+        "web": null,
+        "podcast": "https://podscan.fm/podcasts/empowerography",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://www.instagram.com/empowerographypodcast/",
+      "contacto_fuente": "https://www.instagram.com/empowerographypodcast/",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "Instagram snippet: ~4,251 followers, 7,956 following, 2,048 posts; bio 'podcast host and podcast coach' (https://www.instagram.com/empowerographypodcast/); ~781 episodes per Podscan",
+      "frecuencia": "Very prolific (781 episodes); latest dated episode seen Jan 9, 2026 (outside 60 days)",
+      "evidencia_necesidad": [
+        "Weak (inferred): very large back catalogue of interviews; Reels style not seen (https://podscan.fm/podcasts/empowerography)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Stop Hoarding Your Brilliance: Why Your Voice Is Bigger Than Your Fear (with Leisa Reid)",
+          "url": "https://podbay.fm/p/empowerography/e/1767932921",
+          "fecha": "2026-01-09"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "No episode confirmed within 60 days; video format not confirmed.",
+      "fuentes": [
+        "https://www.instagram.com/empowerographypodcast/",
+        "https://podscan.fm/podcasts/empowerography",
+        "https://podbay.fm/p/empowerography/e/1767932921"
+      ],
+      "notas": "Recent episodes likely exist given the volume but none dated after Jan 2026 were seen. YouTube not found.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "sara-jane-maxwell-pcc",
+      "nombre": "Sara Jane Maxwell, PCC (Money Natters - Wealth Mindset podcast)",
+      "segmento": "profesional",
+      "nicho": "wealth/money mindset coaching",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": "https://www.instagram.com/yourwealthcoach_/",
+        "tiktok": null,
+        "web": null,
+        "podcast": null,
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://www.instagram.com/yourwealthcoach_/",
+      "contacto_fuente": "https://www.instagram.com/yourwealthcoach_/",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "Instagram snippet: ~2,381 followers, 113 posts (https://www.instagram.com/yourwealthcoach_/)",
+      "frecuencia": "Not verified; no episode dates seen",
+      "evidencia_necesidad": [
+        "Weak (inferred): only 113 IG posts for a coach with a podcast (https://www.instagram.com/yourwealthcoach_/)"
+      ],
+      "contenido_reciente": [],
+      "prioridad": "C",
+      "motivo_prioridad": "IG in range with few posts, but no recent long-form content verified.",
+      "fuentes": [
+        "https://www.instagram.com/yourwealthcoach_/"
+      ],
+      "notas": "Podcast existence comes only from the IG bio snippet ('Wealth Mindset Podcast - Money Natters'); no episode, date, YouTube or website found. Snippet was in Spanish UI ('Fotos y videos'); language of content assumed English from the bio text.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "odette-coronel",
+      "nombre": "Odette Coronel (relationship coach - Life & Love by Design)",
+      "segmento": "profesional",
+      "nicho": "relationship coaching and coach supervision",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": "https://www.instagram.com/odettecoronelcoaching/",
+        "tiktok": null,
+        "web": null,
+        "podcast": null,
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://www.instagram.com/odettecoronelcoaching/",
+      "contacto_fuente": "https://www.instagram.com/odettecoronelcoaching/",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "Instagram snippet: ~2,333 followers, 3,916 following, 549 posts; bio 'Relationship Coach, Coach Supervisor, Podcast Host' (https://www.instagram.com/odettecoronelcoaching/)",
+      "frecuencia": "Not verified; podcast episodes not found",
+      "evidencia_necesidad": [
+        "Weak (inferred): podcast host with a small IG; no Reels evidence seen (https://www.instagram.com/odettecoronelcoaching/)"
+      ],
+      "contenido_reciente": [],
+      "prioridad": "C",
+      "motivo_prioridad": "IG in range, but no recent long-form content found.",
+      "fuentes": [
+        "https://www.instagram.com/odettecoronelcoaching/"
+      ],
+      "notas": "A search for the show 'Life & Love by Design' returned no matching podcast; existence and activity unverified.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "effy-blue",
+      "nombre": "Effy Blue (Curious Fox Podcast)",
+      "segmento": "profesional",
+      "nicho": "dating/relationship coaching",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": "https://www.instagram.com/coacheffyblue/",
+        "tiktok": null,
+        "web": null,
+        "podcast": null,
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://www.instagram.com/coacheffyblue/",
+      "contacto_fuente": "https://www.instagram.com/coacheffyblue/",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "Instagram snippet: ~4,349 followers, 883 following, 123 posts; listed as co-host of the Curious Fox Podcast (https://www.instagram.com/coacheffyblue/)",
+      "frecuencia": "Not verified; podcast episodes not found",
+      "evidencia_necesidad": [
+        "Weak (inferred): only 123 IG posts for a coach and podcast co-host (https://www.instagram.com/coacheffyblue/)"
+      ],
+      "contenido_reciente": [],
+      "prioridad": "C",
+      "motivo_prioridad": "Low post count suggests a gap, but no recent long-form content verified.",
+      "fuentes": [
+        "https://www.instagram.com/coacheffyblue/"
+      ],
+      "notas": "A search for 'Curious Fox' podcast + Effy Blue returned nothing relevant; podcast activity unverified.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
       "proximo_seguimiento": null,
       "resultado": null,
       "valor_mensual": null,
