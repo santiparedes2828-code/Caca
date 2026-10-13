@@ -38,6 +38,15 @@ No las cambies salvo que el usuario lo pida expresamente.
    - No des por funcionales integraciones probadas solo con simulaciones.
 7. **Proveedores (12-10-2026):** ElevenLabs **solo para voces** (narración y transcripción). Las imágenes se
    generan con **Canva** (más barato). No generar imágenes ni vídeos con ElevenLabs.
+8. **Vídeos hablados y pódcast (13-10-2026):**
+   - **Subtítulos «apilados»** (por defecto en modo impacto): el contexto va pequeño y en minúscula, y la palabra
+     clave va enorme, en mayúscula y apilada, en blanco con degradado y sombra (foto de referencia «it works / THE
+     ONLINE ECOSYSTEM»). Código en `src/autopilot/StackedCaptions.tsx`; `impactStyle: "pop"` recupera el estilo
+     anterior.
+   - **Motion graphics en vez de B-roll** cada vez que haga falta, siempre en estilo «estudio»: gris claro con
+     cuadrícula, estrellas moradas, arco gris, cifras naranjas que cuentan, barras en degradado y listas numeradas.
+     Referencia: un vídeo de motion graphics de Pinterest, solo para estudio local en `analisis8/`. Código en
+     `src/autopilot/Graphics.tsx`; detección de cifras, comparaciones, listas y fechas en `autopilot/edit/graficos.ts`.
 6. El vídeo de TikTok de un tercero (@eugenio.esquivel23) que subió el usuario es solo para pruebas locales:
    nunca a Git ni a proveedores externos.
 

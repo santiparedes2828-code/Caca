@@ -26,7 +26,7 @@ const clean = (t: string) => t.replace(/[,;:]+$/, "");
 
 // Dígitos que ruedan dentro de una ventana con los bordes difuminados hasta su valor (8–14 frames, primero los de
 // la izquierda). Solo en las cifras de las páginas destacadas: una cifra pequeña que rueda no se lee mientras suena.
-const Rolling: React.FC<{ text: string; at: number }> = ({ text, at }) => {
+export const Rolling: React.FC<{ text: string; at: number }> = ({ text, at }) => {
   const frame = useCurrentFrame();
   let d = 0;
   return (

@@ -4,7 +4,7 @@ import { graphicSchema, type EditProps, type Graphic } from "../../../src/autopi
 import { FORMATS } from "../../../src/design/schema";
 import { buildCaptions } from "../../captions/build";
 import { ROOT } from "../../config";
-import { ICON_CREDIT } from "../../create/theme";
+import { hasIcon, ICON_CREDIT, iconDataUri } from "../../create/theme";
 import { planApoyos } from "../../edit/apoyos";
 import { graphicIntervals } from "../../edit/graficos";
 import { planEditSfx } from "../../edit/sonido";
@@ -109,10 +109,13 @@ export const compose = async (ctx: Ctx) => {
       const a = remapTime(variant.segments, g.startMs);
       const e = remapTime(variant.segments, g.endMs);
       if (a === null || e === null || e - a < 1200) continue;
-      if (g.kind === "calendario") graphics.push({ ...g, startMs: a, endMs: e });
-      else {
+      if (g.kind === "calendario" || g.kind === "cifra") graphics.push({ ...g, startMs: a, endMs: e });
+      else if (g.kind === "lista") {
         const items = g.items.map((it) => ({ ...it, startMs: remapTime(variant.segments, it.startMs) }));
         if (items.every((it): it is { text: string; startMs: number } => it.startMs !== null)) graphics.push({ ...g, startMs: a, endMs: e, items });
+      } else {
+        const items = g.items.map((it) => ({ ...it, startMs: remapTime(variant.segments, it.startMs) }));
+        if (items.every((it): it is (typeof g.items)[number] => it.startMs !== null)) graphics.push({ ...g, startMs: a, endMs: e, items });
       }
     }
 
@@ -190,7 +193,7 @@ export const compose = async (ctx: Ctx) => {
       music,
       intensity: config.intensity,
       brand: ctx.profile.brand,
-      icons,
+      icons: { ...icons, ...Object.fromEntries(graphics.flatMap((g) => (g.kind === "cifra" && g.icon && hasIcon(g.icon) ? [[g.icon, iconDataUri(g.icon)]] : []))) },
       graphics,
       sfx: efectos.sfx,
       captions: caps.none ? { mode: config.captionMode, pages: [] } : { mode: caps.mode, pages: caps.pages },

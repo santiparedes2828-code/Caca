@@ -82,6 +82,9 @@ export const brandSchema = z.object({
     highlight: z.enum(["box", "color"]),
     emphasisRole: z.enum(["sans", "serif", "mono"]),
     minFontSize: z.number().min(16).max(200),
+    // Modo impacto: «apilado» (por defecto desde el 13-10-2026, pedido del usuario): contexto pequeño en minúscula y
+    // claves enormes en mayúscula apiladas; «pop»: el estilo anterior (palabras con contorno y clave en color)
+    impactStyle: z.enum(["pop", "apilado"]).optional(),
   }),
 });
 export type Brand = z.infer<typeof brandSchema>;

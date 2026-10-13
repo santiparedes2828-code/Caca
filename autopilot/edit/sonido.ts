@@ -28,8 +28,8 @@ export const planEditSfx = (o: {
   for (const g of o.graphics) {
     add("whoosh", at(g.startMs) - 5, VOL.whoosh);
     add("whoosh", at(g.endMs) - 7, VOL.whooshOut);
-    if (g.kind === "calendario") add("pop", at(g.startMs) + 5, VOL.pop);
-    // El check se dibuja 5 frames después de que se diga el elemento (Graphics.tsx)
+    if (g.kind === "calendario" || g.kind === "cifra") add("pop", at(g.startMs) + 5, VOL.pop);
+    // Cada elemento (o barra) entra cuando se dice (Graphics.tsx)
     else for (const it of g.items) add("click", at(it.startMs) - 1 + 5, VOL.click);
   }
   for (const b of o.overlays) add("whoosh", at(b.startMs) - 5, VOL.whoosh);

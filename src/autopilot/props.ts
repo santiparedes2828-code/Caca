@@ -50,6 +50,26 @@ export const graphicSchema = z.discriminatedUnion("kind", [
     // cada elemento aparece con su check cuando se dice
     items: z.array(z.object({ text: z.string().min(1).max(32), startMs: z.number().min(0) })).min(2).max(5),
   }),
+  // Una cifra dicha («35,000 decisions»): cuenta hasta su valor, con lo que acompaña dicho debajo
+  z.object({
+    kind: z.literal("cifra"),
+    startMs: z.number().min(0),
+    endMs: z.number().min(0),
+    value: z.number(),
+    display: z.string().min(1).max(16), // como se mostrará al final («$1.5M», «35,000»)
+    label: z.string().max(40).default(""),
+    icon: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).optional(),
+  }),
+  // Dos o tres cifras comparadas («a hundred grand… now one point five million»): barras que crecen al decirse
+  z.object({
+    kind: z.literal("comparacion"),
+    startMs: z.number().min(0),
+    endMs: z.number().min(0),
+    items: z
+      .array(z.object({ label: z.string().max(24), value: z.number().min(0), display: z.string().min(1).max(16), startMs: z.number().min(0) }))
+      .min(2)
+      .max(3),
+  }),
 ]);
 export type Graphic = z.infer<typeof graphicSchema>;
 

@@ -5,6 +5,7 @@ import { INTENSITY } from "../design/intensity";
 import type { Brand, CaptionMode, Intensity } from "../design/schema";
 import { captionBlock, captionLayout } from "./geometry";
 import { ImpactCaptions } from "./ImpactCaptions";
+import { StackedCaptions } from "./StackedCaptions";
 import type { CaptionPage, CaptionToken } from "./props";
 
 // Subtítulos Hook House. Las páginas (qué palabras van juntas y en qué líneas) las calcula el backend
@@ -144,7 +145,18 @@ export const Captions: React.FC<{
   intensity: Intensity;
   fontsReady: boolean;
   icons?: Record<string, string>;
-}> = (props) => (props.mode === "impacto" ? <ImpactCaptions pages={props.pages} brand={props.brand} icons={props.icons ?? {}} fontsReady={props.fontsReady} /> : <ClassicCaptions {...props} />);
+  // Intervalos con un apoyo gráfico a pantalla completa (fondo claro): los subtítulos apilados pasan a tinta
+  light?: { startMs: number; endMs: number }[];
+}> = (props) =>
+  props.mode === "impacto" ? (
+    props.brand.captions.impactStyle === "pop" ? (
+      <ImpactCaptions pages={props.pages} brand={props.brand} icons={props.icons ?? {}} fontsReady={props.fontsReady} />
+    ) : (
+      <StackedCaptions pages={props.pages} brand={props.brand} fontsReady={props.fontsReady} light={props.light ?? []} />
+    )
+  ) : (
+    <ClassicCaptions {...props} />
+  );
 
 const ClassicCaptions: React.FC<{
   pages: CaptionPage[];

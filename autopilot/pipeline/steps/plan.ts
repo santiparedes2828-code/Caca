@@ -157,7 +157,14 @@ export const planMarkdown = (ctx: Ctx, p: PlanArtifact) => {
   if (p.graficos?.length) {
     L.push("", "## Apoyos gráficos", "");
     for (const g of p.graficos) {
-      const what = g.kind === "calendario" ? `calendario ${g.label} ${g.year}` : `lista: ${g.items.map((i) => i.text).join(" · ")}`;
+      const what =
+        g.kind === "calendario"
+          ? `calendario ${g.label} ${g.year}`
+          : g.kind === "lista"
+            ? `lista: ${g.items.map((i) => i.text).join(" · ")}`
+            : g.kind === "cifra"
+              ? `cifra: ${g.display} ${g.label}`
+              : `comparación: ${g.items.map((i) => `${i.label} ${i.display}`.trim()).join(" → ")}`;
       L.push(`- ${fmt(g.startMs)}–${fmt(g.endMs)}: ${what}`);
     }
     L.push("", "_Para quitar o añadir uno, edita `graficos` en work/plan.json antes de aprobar el plan._");

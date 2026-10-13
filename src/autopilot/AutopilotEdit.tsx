@@ -204,7 +204,7 @@ export const AutopilotEdit: React.FC<EditProps> = (props) => {
         </AbsoluteFill>
       ) : null}
       <Broll overlays={props.overlays} brand={brand} />
-      <Graphics graphics={props.graphics} brand={brand} fontsReady={fontsReady} />
+      <Graphics graphics={props.graphics} brand={brand} fontsReady={fontsReady} icons={props.icons} />
       {props.music ? <Music music={props.music} /> : null}
       {props.sfx.length ? <SoundEffects sfx={props.sfx} /> : null}
       <Captions
@@ -214,6 +214,7 @@ export const AutopilotEdit: React.FC<EditProps> = (props) => {
         intensity={props.intensity}
         fontsReady={fontsReady}
         icons={props.icons}
+        light={props.graphics}
       />
     </AbsoluteFill>
   );
