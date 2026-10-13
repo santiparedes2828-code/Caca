@@ -14,7 +14,7 @@ Cada paso queda en la base de datos (`npm run crm`).
 | Respuesta | cuando conteste | según la tabla de abajo | `respuesta <id> --texto "…"` (pasa a «respondio») |
 | Muestra | si pide el clip | 1 clip de su episodio en 48 h | `estado <id> prueba --nota "clip enviado <fecha>"` |
 | Propuesta | tras la muestra | la oferta (`oferta.md`) | `estado <id> propuesta`; poner `valor_mensual` |
-| Cierre | paga | bienvenida + calendario de entregas | `estado <id> cliente --nota "Starter 390 USD desde <fecha>"` |
+| Cierre | paga | bienvenida + calendario de entregas | `estado <id> cliente --nota "Medio 374,99 USD desde <fecha>"` |
 
 `npm run crm -- pendientes` muestra cada día:
 - qué borradores faltan por aprobar;
@@ -28,12 +28,12 @@ Cada paso queda en la base de datos (`npm run crm`).
 > Reels, Shorts, LinkedIn). You'll have the clip within 48 hours.
 
 **Tras entregar la muestra:**
-> Here's your clip: {link}. If you'd like this every week, the Starter plan is $390/month for 12 clips (3 a week),
-> month to month. Happy to start with your next episode.
+> Here's your clip: {link}. If you'd like this every week, plans start at $175/month for 6 clips. For a weekly
+> show, Pro fits best: $374.99 for 12 clips (3 a week), month to month. Happy to start with your next episode.
 
 **«¿Cuánto cuesta?» antes de la muestra:**
-> Starter is $390/month for 12 clips (3 a week); Growth is $690 for 24. But judge the quality first: the first clip is
-> free.
+> Basic is $175/month for 6 clips, Pro $374.99 for 12 (3 a week), Max $679.99 for 24. But judge the quality first:
+> the first clip is free.
 
 **«Ya tenemos editor»:**
 > Makes sense. If they're ever overloaded or you want to test more clips per week, I'm happy to help. The free clip

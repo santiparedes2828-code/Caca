@@ -14,7 +14,7 @@ YouTube Shorts.
 | `investigacion/prospectos-*.json` | Investigación en bruto por segmento (podcasters, educativos, profesionales). |
 | `investigacion/mercado.md` | Competidores, precios publicados, datos de plataformas y dónde buscan editor los clientes, con fuentes. |
 | `mensajes/*.txt` | Primeros mensajes en inglés, personalizados (también guardados como borradores en la base). |
-| `oferta.md` | Oferta mensual propuesta (Starter 390 USD, Growth 690 USD), texto en inglés y seguimientos. |
+| `oferta.md` | Oferta mensual (Básico 175 USD, Medio 374,99 USD, Max 679,99 USD), texto en inglés y seguimientos. |
 | `estrategia.md` | Estrategia, decisiones, calendario de 30 días y cómo medir. |
 | `metricas.md` | Línea base real (Windsor) y registro semanal. |
 | `contenido/` | Guiones (`*.txt`), vídeos 9:16 (`*.mp4`, fuera de Git) y descripciones (`descripciones.md`). |

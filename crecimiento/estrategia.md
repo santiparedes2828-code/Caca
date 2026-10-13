@@ -1,6 +1,6 @@
 # Estrategia de 30 días: primer cliente recurrente (13-10-2026 → 11-11-2026)
 
-**Meta:** conversaciones comerciales y un cliente recurrente (Starter, 390 USD/mes, ver `oferta.md`). Las redes
+**Meta:** conversaciones comerciales y un cliente recurrente (plan Medio, 374,99 USD/mes, o el que elija; ver `oferta.md`). Las redes
 sirven para que, cuando un prospecto mire el perfil, vea pruebas del trabajo. No se persiguen solo visualizaciones.
 
 **Sin promesas:**
@@ -105,4 +105,4 @@ Regla de decisión, a partir de la semana 2:
 - 60 prospectos verificados y 40 contactados.
 - 6 conversaciones.
 - 3 clips de muestra entregados.
-- 1 cliente Starter.
+- 1 cliente recurrente (cualquier plan).

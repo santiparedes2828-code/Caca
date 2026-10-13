@@ -64,7 +64,7 @@ Artefacto anclado en la barra lateral del usuario: https://claude.ai/artifact/Q3
   Todo en `crecimiento/` (ver su README). Hecho:
   - base de datos comercial `npm run crm` (`autopilot/crm/`, pruebas en `tests/unit/crm.test.ts`) con 22 prospectos
     investigados y 7 borradores en inglés;
-  - oferta propuesta (390/690 USD) y estrategia con calendario de 30 días;
+  - oferta (175 / 374,99 / 679,99 USD, precios del usuario del 13-10) y estrategia con calendario de 30 días;
   - vídeos: `MismoClip` EN/ES (`src/Crecimiento/`) y 3 consejos con tema; contador «STEP 1 OF 3» en inglés;
     iconos por palabras desactivados en inglés y homónimos bloqueados («clip», «shorts»);
   - panel en el teléfono: https://claude.ai/artifact/QPgVgn1YPTER13x7SB42HS.
