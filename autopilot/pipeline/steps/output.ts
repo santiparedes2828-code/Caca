@@ -7,6 +7,7 @@ import { ROOT } from "../../config";
 import { hasIcon, ICON_CREDIT, iconDataUri } from "../../create/theme";
 import { planApoyos } from "../../edit/apoyos";
 import { graphicIntervals } from "../../edit/graficos";
+import { MAX_HUECO_MS, rellenarHuecos } from "../../edit/relleno";
 import { planEditSfx } from "../../edit/sonido";
 import { pagesOverFaces, placeCaptions } from "../../edit/placement";
 import { remapItems, remapTime, remapTrack, toFrameSegments } from "../../edit/timeline";
@@ -109,7 +110,7 @@ export const compose = async (ctx: Ctx) => {
       const a = remapTime(variant.segments, g.startMs);
       const e = remapTime(variant.segments, g.endMs);
       if (a === null || e === null || e - a < 1200) continue;
-      if (g.kind === "calendario" || g.kind === "cifra") graphics.push({ ...g, startMs: a, endMs: e });
+      if (g.kind === "calendario" || g.kind === "cifra" || g.kind === "concepto") graphics.push({ ...g, startMs: a, endMs: e });
       else if (g.kind === "lista") {
         const items = g.items.map((it) => ({ ...it, startMs: remapTime(variant.segments, it.startMs) }));
         if (items.every((it): it is { text: string; startMs: number } => it.startMs !== null)) graphics.push({ ...g, startMs: a, endMs: e, items });
@@ -119,6 +120,13 @@ export const compose = async (ctx: Ctx) => {
       }
     }
 
+    // B-roll y música de esta variante (sus tiempos pasan al eje del vídeo final)
+    const overlays = (plan.broll ?? []).flatMap((b) => {
+      const a = remapTime(variant.segments, b.startMs);
+      const e = remapTime(variant.segments, b.endMs);
+      // Nunca en los 2,5 primeros segundos: el gancho se dice mirando a cámara
+      return a === null || e === null || e - a < 800 || a < 2500 ? [] : [{ startMs: a, endMs: e, src: b.src, kind: b.kind, presentation: b.presentation ?? "pantalla" }];
+    });
     let caps: VariantCaptions = { none: true };
     let icons: Record<string, string> = {};
     if (!src.none) {
@@ -137,10 +145,16 @@ export const compose = async (ctx: Ctx) => {
       // Vídeos hablados para redes: emojis junto a las claves y páginas destacadas (estilo-hablado.md)
       let apoyos: string[] | undefined;
       if (built.mode === "impacto") {
+        // Regla del usuario: nunca más de 3 s sin B-roll o motion graphic (autopilot/edit/relleno.ts)
+        const fill = rellenarHuecos({ pages: built.pages, graphics, busy: overlays, durationMs });
+        graphics.splice(0, graphics.length, ...fill.graphics);
+        const fillNote = `Apoyos de relleno: ${fill.added.length} (${fill.added.filter((g) => g.modo === "pantalla").length} a pantalla completa); máximo ${(fill.maxGapMs / 1000).toFixed(1)} s sin apoyo visual`;
+        ctx.log.info(fillNote);
+        if (fill.maxGapMs > MAX_HUECO_MS) warn(ctx, "compose", "hueco_sin_apoyo", `${fillNote} (más de 3 s: no había palabras que mostrar en algún tramo)`);
         const ap = planApoyos(built.pages, { busy: graphicIntervals(graphics) });
         built.pages = ap.pages;
         icons = ap.icons;
-        apoyos = ap.notes;
+        apoyos = [fillNote, ...ap.notes];
         for (const n of ap.notes) ctx.log.info(n);
       }
       const placementInput = {
@@ -160,13 +174,6 @@ export const compose = async (ctx: Ctx) => {
       if (placed.moved) ctx.log.info(`${placed.moved} páginas de subtítulos movidas para no tapar caras`);
       caps = { none: false, ...built, pages: placed.pages, transcription: src.transcription, placement: { moved: placed.moved, blocked: placed.blocked, overFaces }, apoyos };
     }
-    // B-roll y música de esta variante (sus tiempos pasan al eje del vídeo final)
-    const overlays = (plan.broll ?? []).flatMap((b) => {
-      const a = remapTime(variant.segments, b.startMs);
-      const e = remapTime(variant.segments, b.endMs);
-      // Nunca en los 2,5 primeros segundos: el gancho se dice mirando a cámara
-      return a === null || e === null || e - a < 800 || a < 2500 ? [] : [{ startMs: a, endMs: e, src: b.src, kind: b.kind, presentation: b.presentation ?? "pantalla" }];
-    });
     // Efectos de sonido propios en los apoyos visuales (opción `efectos`)
     const efectos = config.efectos
       ? planEditSfx({ pages: caps.none ? [] : caps.pages, graphics, overlays, fps: config.fps, durationInFrames })
@@ -193,7 +200,7 @@ export const compose = async (ctx: Ctx) => {
       music,
       intensity: config.intensity,
       brand: ctx.profile.brand,
-      icons: { ...icons, ...Object.fromEntries(graphics.flatMap((g) => (g.kind === "cifra" && g.icon && hasIcon(g.icon) ? [[g.icon, iconDataUri(g.icon)]] : []))) },
+      icons: { ...icons, ...Object.fromEntries(graphics.flatMap((g) => ((g.kind === "cifra" || g.kind === "concepto") && g.icon && hasIcon(g.icon) ? [[g.icon, iconDataUri(g.icon)]] : []))) },
       graphics,
       sfx: efectos.sfx,
       captions: caps.none ? { mode: config.captionMode, pages: [] } : { mode: caps.mode, pages: caps.pages },

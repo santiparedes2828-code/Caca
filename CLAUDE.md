@@ -47,6 +47,10 @@ No las cambies salvo que el usuario lo pida expresamente.
      cuadrícula, estrellas moradas, arco gris, cifras naranjas que cuentan, barras en degradado y listas numeradas.
      Referencia: un vídeo de motion graphics de Pinterest, solo para estudio local en `analisis8/`. Código en
      `src/autopilot/Graphics.tsx`; detección de cifras, comparaciones, listas y fechas en `autopilot/edit/graficos.ts`.
+   - **Nunca más de 3 s sin un B-roll o motion graphic** (13-10-2026: «eso quita atención»). Después de los apoyos
+     con datos, cada hueco se rellena con un concepto de lo que se está diciendo, tal cual: una pegatina con emoji
+     y la palabra en el borde izquierdo, o una escena a pantalla completa (una de cada tres si el hueco es largo).
+     Código en `autopilot/edit/relleno.ts`. El informe indica el máximo de segundos sin apoyo; si pasa de 3 s, avisa.
 6. El vídeo de TikTok de un tercero (@eugenio.esquivel23) que subió el usuario es solo para pruebas locales:
    nunca a Git ni a proveedores externos.
 

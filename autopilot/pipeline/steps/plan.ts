@@ -164,6 +164,8 @@ export const planMarkdown = (ctx: Ctx, p: PlanArtifact) => {
             ? `lista: ${g.items.map((i) => i.text).join(" · ")}`
             : g.kind === "cifra"
               ? `cifra: ${g.display} ${g.label}`
+              : g.kind === "concepto"
+                ? `concepto: ${g.text}`
               : `comparación: ${g.items.map((i) => `${i.label} ${i.display}`.trim()).join(" → ")}`;
       L.push(`- ${fmt(g.startMs)}–${fmt(g.endMs)}: ${what}`);
     }

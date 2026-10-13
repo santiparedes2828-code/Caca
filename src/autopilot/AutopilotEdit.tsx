@@ -214,7 +214,7 @@ export const AutopilotEdit: React.FC<EditProps> = (props) => {
         intensity={props.intensity}
         fontsReady={fontsReady}
         icons={props.icons}
-        light={props.graphics}
+        light={props.graphics.filter((g) => !(g.kind === "concepto" && g.modo === "tarjeta"))}
       />
     </AbsoluteFill>
   );

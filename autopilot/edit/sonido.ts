@@ -26,9 +26,14 @@ export const planEditSfx = (o: {
     if (f < o.durationInFrames - 2) ev.push({ name, frame: f, volume });
   };
   for (const g of o.graphics) {
+    // Las tarjetas de relleno son frecuentes: solo un pop suave al entrar
+    if (g.kind === "concepto" && g.modo === "tarjeta") {
+      add("pop", at(g.startMs) + 2, VOL.pop * 0.8);
+      continue;
+    }
     add("whoosh", at(g.startMs) - 5, VOL.whoosh);
     add("whoosh", at(g.endMs) - 7, VOL.whooshOut);
-    if (g.kind === "calendario" || g.kind === "cifra") add("pop", at(g.startMs) + 5, VOL.pop);
+    if (g.kind === "calendario" || g.kind === "cifra" || g.kind === "concepto") add("pop", at(g.startMs) + 5, VOL.pop);
     // Cada elemento (o barra) entra cuando se dice (Graphics.tsx)
     else for (const it of g.items) add("click", at(it.startMs) - 1 + 5, VOL.click);
   }

@@ -60,6 +60,17 @@ export const graphicSchema = z.discriminatedUnion("kind", [
     label: z.string().max(40).default(""),
     icon: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).optional(),
   }),
+  // Palabra con más peso de lo que se dice (relleno para que nunca pasen más de 3 s sin apoyo visual): en tarjeta sobre
+  // el vídeo o a pantalla completa
+  z.object({
+    kind: z.literal("concepto"),
+    startMs: z.number().min(0),
+    endMs: z.number().min(0),
+    text: z.string().min(1).max(28),
+    context: z.string().max(60).default(""),
+    icon: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).optional(),
+    modo: z.enum(["tarjeta", "pantalla"]),
+  }),
   // Dos o tres cifras comparadas («a hundred grand… now one point five million»): barras que crecen al decirse
   z.object({
     kind: z.literal("comparacion"),

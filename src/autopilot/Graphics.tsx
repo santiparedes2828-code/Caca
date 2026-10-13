@@ -16,6 +16,7 @@ type Calendario = Extract<Graphic, { kind: "calendario" }>;
 type Lista = Extract<Graphic, { kind: "lista" }>;
 type Cifra = Extract<Graphic, { kind: "cifra" }>;
 type Comparacion = Extract<Graphic, { kind: "comparacion" }>;
+type Concepto = Extract<Graphic, { kind: "concepto" }>;
 
 const WEEK = { es: ["L", "M", "X", "J", "V", "S", "D"], en: ["M", "T", "W", "T", "F", "S", "S"] } as const;
 
@@ -305,6 +306,97 @@ const StudioList: React.FC<{ g: Lista; u: number; w: number; fontsReady: boolean
   );
 };
 
+// Concepto a pantalla completa: el emoji en un círculo punteado, el contexto pequeño y la palabra grande que entra
+// desenfocada (como «Your Brain / Makes over» de la referencia)
+const ConceptScene: React.FC<{ g: Concepto; u: number; from: number; icon: string | null }> = ({ g, u, from, icon }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const ring = spring({ frame: frame - from - 2, fps, config: { damping: 12, stiffness: 140 } });
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 26 * u, textAlign: "center" }}>
+      {icon ? (
+        <div style={{ width: 280 * u, height: 280 * u, borderRadius: "50%", border: `${3 * u}px dashed rgba(0,0,0,0.25)`, display: "flex", alignItems: "center", justifyContent: "center", transform: `scale(${ring}) rotate(${(1 - ring) * -40}deg)` }}>
+          <Img src={icon} style={{ width: 180 * u, height: 180 * u, filter: `drop-shadow(0 ${10 * u}px ${18 * u}px rgba(0,0,0,0.25))` }} />
+        </div>
+      ) : null}
+      {g.context ? (
+        <BlurIn at={from + 3}>
+          <div style={{ fontWeight: 500, fontSize: 48 * u, color: S.muted, maxWidth: 820 * u }}>{g.context}</div>
+        </BlurIn>
+      ) : null}
+      <BlurIn at={from + 6}>
+        <div style={{ fontWeight: 800, fontSize: 150 * u, letterSpacing: "-0.04em", lineHeight: 0.95, color: S.ink }}>{g.text.toUpperCase()}</div>
+      </BlurIn>
+    </div>
+  );
+};
+
+// Concepto en tarjeta sobre el vídeo (el que habla sigue a la vista): tarjeta clara con cuadrícula, emoji y la
+// palabra; entra con un pequeño salto desenfocado y sale en 5 frames. Va encima de los subtítulos.
+const ConceptCard: React.FC<{ g: Concepto; brand: Brand; icon: string | null }> = ({ g, brand, icon }) => {
+  const frame = useCurrentFrame();
+  const { fps, width, height } = useVideoConfig();
+  const lay = captionLayout(brand, width, height);
+  const u = lay.unit;
+  const a = Math.round((g.startMs / 1000) * fps);
+  const b = Math.round((g.endMs / 1000) * fps);
+  const s = spring({ frame: frame - a, fps, config: { damping: 12, stiffness: 190, mass: 0.6 } });
+  const out = interpolate(frame, [b - 5, b], [0, 1], { ...clamp, easing: Easing.in(Easing.cubic) });
+  const blur = interpolate(frame - a, [0, 6], [12, 0], clamp) + out * 8;
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: height * 0.4,
+        paddingLeft: lay.left,
+        display: "flex",
+        // En el borde izquierdo: lejos de la cara (centrada) y de los botones de TikTok/Reels (a la derecha)
+        justifyContent: "flex-start",
+        opacity: Math.min(1, s * 1.5) * (1 - out),
+        filter: `blur(${blur}px)`,
+        transform: `translateY(${(1 - s) * 40 * u}px) scale(${(0.86 + 0.14 * s) * (1 - 0.06 * out)}) rotate(${(1 - s) * -4}deg)`,
+      }}
+    >
+      {icon ? (
+        // Pegatina: el emoji en un círculo claro con borde punteado y la palabra debajo, pequeña
+        <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", gap: 14 * u, fontFamily: FAMILY }}>
+          <div
+            style={{
+              width: 210 * u,
+              height: 210 * u,
+              borderRadius: "50%",
+              background: S.bg,
+              backgroundImage: `linear-gradient(${S.grid} 1px, transparent 1px), linear-gradient(90deg, ${S.grid} 1px, transparent 1px)`,
+              backgroundSize: `${26 * u}px ${26 * u}px`,
+              outline: `${3 * u}px dashed rgba(255,255,255,0.85)`,
+              outlineOffset: 8 * u,
+              boxShadow: `0 ${20 * u}px ${50 * u}px rgba(0,0,0,0.35)`,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Img src={icon} style={{ width: 140 * u, height: 140 * u, transform: `rotate(${Math.sin(frame / 7) * 6}deg)` }} />
+          </div>
+          <div style={{ padding: `${6 * u}px ${20 * u}px`, borderRadius: 999, background: S.ink, color: "#fff", fontWeight: 700, fontSize: 38 * u, letterSpacing: "0.04em", whiteSpace: "nowrap" }}>{g.text.toUpperCase()}</div>
+          <div style={{ position: "absolute", right: -30 * u, top: -20 * u }}>
+            <svg width={64 * u} height={64 * u} viewBox="-50 -50 100 100" style={{ transform: `rotate(${frame * 2}deg)` }}>
+              <path d="M0 -50 C 6 -12, 12 -6, 50 0 C 12 6, 6 12, 0 50 C -6 12, -12 6, -50 0 C -12 -6, -6 -12, 0 -50 Z" fill={S.purple2} />
+            </svg>
+          </div>
+        </div>
+      ) : (
+        // Sin emoji claro: la palabra en una etiqueta clara de borde discontinuo
+        <div style={{ padding: `${16 * u}px ${34 * u}px`, borderRadius: 24 * u, background: S.bg, border: `${3 * u}px dashed rgba(20,20,20,0.45)`, boxShadow: `0 ${20 * u}px ${50 * u}px rgba(0,0,0,0.35)`, fontFamily: FAMILY, fontWeight: 800, fontSize: 80 * u, letterSpacing: "-0.03em", color: S.ink, whiteSpace: "nowrap" }}>
+          {g.text.toUpperCase()}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Cutaway: React.FC<{ g: Graphic; brand: Brand; fontsReady: boolean; icons: Record<string, string> }> = ({ g, brand, fontsReady, icons }) => {
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
@@ -344,6 +436,8 @@ const Cutaway: React.FC<{ g: Graphic; brand: Brand; fontsReady: boolean; icons: 
           <StudioList g={g} u={u} w={w} fontsReady={fontsReady} />
         ) : g.kind === "cifra" ? (
           <Counter g={g} u={u} from={a} icon={g.icon ? (icons[g.icon] ?? null) : null} />
+        ) : g.kind === "concepto" ? (
+          <ConceptScene g={g} u={u} from={a} icon={g.icon ? (icons[g.icon] ?? null) : null} />
         ) : (
           <Bars g={g} u={u} w={w} />
         )}
@@ -357,5 +451,7 @@ export const Graphics: React.FC<{ graphics: Graphic[]; brand: Brand; fontsReady:
   const { fps } = useVideoConfig();
   const t = (frame / fps) * 1000;
   const g = graphics.find((x) => t >= x.startMs && t < x.endMs);
-  return g ? <Cutaway g={g} brand={brand} fontsReady={fontsReady} icons={icons ?? {}} /> : null;
+  if (!g) return null;
+  if (g.kind === "concepto" && g.modo === "tarjeta") return <ConceptCard g={g} brand={brand} icon={g.icon ? (icons?.[g.icon] ?? null) : null} />;
+  return <Cutaway g={g} brand={brand} fontsReady={fontsReady} icons={icons ?? {}} />;
 };
