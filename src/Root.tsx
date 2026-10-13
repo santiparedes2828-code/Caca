@@ -11,6 +11,7 @@ import { CapiKuleshov, kuleshovDuration } from "./Capi/CapiKuleshov";
 import { AntesDespuesFijo, antesDespuesFijoSchema, calculateAntesDespuesFijoMetadata } from "./AntesDespues/AntesDespuesFijo";
 import { MISMO_CLIP_EN, MISMO_CLIP_ES, MismoClip, mismoClipDuration, mismoClipSchema } from "./Crecimiento/MismoClip";
 import { Viral, viralDuration } from "./Viral/Viral";
+import { calculateMontajeMetadata, Montaje, montajeSchema } from "./Montaje/Montaje";
 import { AutopilotEdit, calculateEditMetadata } from "./autopilot/AutopilotEdit";
 import { CaptionModesDemo, captionDemoDuration, captionDemoSchema } from "./autopilot/CaptionModesDemo";
 import { editPropsSchema } from "./autopilot/props";
@@ -219,6 +220,23 @@ export const RemotionRoot: React.FC = () => {
           envelope: einsteinEnvelope,
           introSeconds: 2.6,
           labels: ["Antes", "Después", "Solo un audio"] as [string, string, string],
+        }}
+      />
+      <Composition
+        id="Montaje"
+        component={Montaje}
+        schema={montajeSchema}
+        calculateMetadata={calculateMontajeMetadata}
+        durationInFrames={300}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{
+          bpm: 120,
+          accent: "#2C8FB0",
+          musicVolume: 0.5,
+          segments: [{ src: "broll/muestra.mp4", from: 0, beats: 4, vertical: true, zoom: "in" as const, focusX: 50, big: "Muestra", leak: false }],
+          end: { beats: 4, title: "Marca", lines: [], cta: "Reservá" },
         }}
       />
       <Composition
