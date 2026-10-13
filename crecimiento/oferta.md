@@ -58,7 +58,7 @@ cuando el prospecto lo pide.
 | Transcripción | 0 USD | 0 USD | 0 USD | local, con sherpa-onnx y Parakeet en tu equipo; la nube (ElevenLabs) solo si hiciera falta |
 | Render y control de calidad | 0 USD extra | 0 USD extra | 0 USD extra | en tu equipo; la electricidad no está estimada |
 | Música y recursos | 0 USD | 0 USD | 0 USD | no se compra nada |
-| **Tu tiempo (estimación a comprobar con el primer cliente)** | **3–4 h** | **5–7 h** | **9–13 h** | 20–30 min por clip + gestión; el sistema hace transcripción, cortes, subtítulos, zooms y QC |
+| **Tu tiempo por mes y por cliente (estimación a comprobar con el primer cliente)** | **3–4 h** | **5–7 h** | **9–13 h** | 20–30 min por clip + gestión; el sistema hace transcripción, cortes, subtítulos, zooms y QC |
 | Suscripciones que ya pagas (Claude, ElevenLabs, Canva, Windsor) | ? | ? | ? | **no conozco sus importes**: dímelos y los reparto entre clientes |
 
 **Margen aproximado** (antes de suscripciones):

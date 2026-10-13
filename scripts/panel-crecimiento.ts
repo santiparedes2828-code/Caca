@@ -149,9 +149,9 @@ a { color:var(--accent) }
     </div>
     <p class="sub">Margen estimado por mes, descontando la comisión de cobro y antes de tus suscripciones:</p>
     <ul class="sub">
-      <li>Básico: 165–170 USD, por 3–4 h de tu tiempo.</li>
-      <li>Medio: 354–364 USD, por 5–7 h.</li>
-      <li>Max: 643–660 USD, por 9–13 h.</li>
+      <li>Básico: 165–170 USD, por 3–4 h de tu tiempo al mes.</li>
+      <li>Medio: 354–364 USD, por 5–7 h al mes.</li>
+      <li>Max: 643–660 USD, por 9–13 h al mes.</li>
     </ul>
     <p class="sub">Transcripción y render: 0 USD, en tu equipo. Detalle en <code>crecimiento/oferta.md</code>.</p>
   </section>
