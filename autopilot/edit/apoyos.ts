@@ -1,10 +1,11 @@
 import { isUnitAfterNumber } from "../../src/autopilot/paginate";
 import type { CaptionPage, CaptionToken } from "../../src/autopilot/props";
-import { detectLang, findIcons, iconDataUri, type Lang } from "../create/theme";
+import { detectLang, editIconDataUri, type Lang } from "../create/theme";
+import { iconFor } from "./relleno";
 
 // Apoyos visuales de los vídeos hablados (estilo-hablado.md), sobre los subtítulos del modo impacto:
 //   - página destacada: la palabra clave enorme en su propia línea (el gancho del principio y las cifras)
-//   - emoji con licencia (Fluent Emoji en color) que salta junto a la palabra clave cuando hay uno claro
+//   - emoji (PNG de Apple si está en library/emojis-apple; si no, Fluent Emoji) que salta junto a la palabra clave cuando hay uno claro
 // Pocos y espaciados, y nunca dos a la vez: la protagonista es la persona (corrección del 12-10-2026: los efectos
 // dan ritmo, no se juntan). Las fotos y vídeos (B-roll) los pone la biblioteca con licencia, aparte.
 
@@ -59,10 +60,11 @@ export const planApoyos = (pages: CaptionPage[], o: ApoyosOptions = {}) => {
     // 2) Emoji junto a la clave si hay uno claro (nombre del emoji o sinónimo), como mucho uno cada iconGap, sin
     //    repetir el mismo en el vídeo y solo si da tiempo a verlo (las claves a final de frase, que duran más)
     if (key.startMs - lastIcon < iconGap || p.endMs - key.startMs < iconMin) return p;
-    const icon = findIcons(key.text, { lang, max: 1, minScore: 4 })[0];
+    //    Solo si aporta: un concepto claro de la lista o el nombre exacto del emoji
+    const icon = iconFor(key.text.replace(/[.,;:!?…"»”)]+$/u, ""), lang);
     if (!icon || icons[icon]) return p;
     lastIcon = last = key.startMs;
-    icons[icon] = iconDataUri(icon);
+    icons[icon] = editIconDataUri(icon);
     notes.push(`Emoji ${icon} junto a «${key.text}» en ${(key.startMs / 1000).toFixed(1)} s`);
     return { ...p, lines: p.lines.map((l) => l.map((t) => (t === key ? { ...t, icon } : t))) };
   });

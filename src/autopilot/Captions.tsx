@@ -152,7 +152,7 @@ export const Captions: React.FC<{
     props.brand.captions.impactStyle === "pop" ? (
       <ImpactCaptions pages={props.pages} brand={props.brand} icons={props.icons ?? {}} fontsReady={props.fontsReady} />
     ) : (
-      <StackedCaptions pages={props.pages} brand={props.brand} fontsReady={props.fontsReady} light={props.light ?? []} />
+      <StackedCaptions pages={props.pages} brand={props.brand} fontsReady={props.fontsReady} light={props.light ?? []} icons={props.icons ?? {}} />
     )
   ) : (
     <ClassicCaptions {...props} />

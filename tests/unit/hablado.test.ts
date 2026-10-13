@@ -131,7 +131,7 @@ test("apoyos: gancho y cifras destacadas, emojis claros que se ven y nunca dos a
   assert.deepEqual(ap.pages[4].lines.map((l) => l.map((t) => t.text)), [["up"], ["150", "million"], ["views"]], "la unidad va con la cifra");
   assert.equal(ap.pages[5].lines.flat()[1].icon, undefined);
   assert.deepEqual(Object.keys(ap.icons), ["movie-camera"]);
-  assert.match(ap.icons["movie-camera"], /^data:image\/svg\+xml;base64,/);
+  assert.match(ap.icons["movie-camera"], /^data:image\/(png|svg\+xml);base64,/, "PNG de Apple si están en local; si no, Fluent");
   // Mientras hay un gráfico a pantalla completa no se añade nada más
   const busy = planApoyos(pages, { lang: "en", busy: [{ startMs: 7000, endMs: 13000 }] });
   assert.equal(busy.pages[2].lines.flat()[1].icon, undefined);

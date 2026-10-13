@@ -4,7 +4,7 @@ import { graphicSchema, type EditProps, type Graphic } from "../../../src/autopi
 import { FORMATS } from "../../../src/design/schema";
 import { buildCaptions } from "../../captions/build";
 import { ROOT } from "../../config";
-import { hasIcon, ICON_CREDIT, iconDataUri } from "../../create/theme";
+import { editIconDataUri, hasIcon, ICON_CREDIT } from "../../create/theme";
 import { planApoyos } from "../../edit/apoyos";
 import { graphicIntervals } from "../../edit/graficos";
 import { MAX_HUECO_MS, rellenarHuecos } from "../../edit/relleno";
@@ -153,6 +153,13 @@ export const compose = async (ctx: Ctx) => {
         if (fill.maxGapMs > MAX_HUECO_MS) warn(ctx, "compose", "hueco_sin_apoyo", `${fillNote} (más de 3 s: no había palabras que mostrar en algún tramo)`);
         const ap = planApoyos(built.pages, { busy: graphicIntervals(graphics) });
         built.pages = ap.pages;
+        // El emoji va junto a la palabra clave del subtítulo; una tarjeta cercana (±4 s) con el mismo emoji lo repetiría,
+        // así que esa tarjeta se queda solo con la palabra
+        const near = ap.pages.flatMap((p) => p.lines.flat().filter((t) => t.icon).map((t) => ({ icon: t.icon, ms: t.startMs })));
+        graphics.forEach((g, i) => {
+          if (g.kind === "concepto" && g.modo === "tarjeta" && g.icon && near.some((n) => n.icon === g.icon && Math.abs(n.ms - g.startMs) < 4000))
+            graphics[i] = { ...g, icon: undefined };
+        });
         icons = ap.icons;
         apoyos = [fillNote, ...ap.notes];
         for (const n of ap.notes) ctx.log.info(n);
@@ -200,7 +207,7 @@ export const compose = async (ctx: Ctx) => {
       music,
       intensity: config.intensity,
       brand: ctx.profile.brand,
-      icons: { ...icons, ...Object.fromEntries(graphics.flatMap((g) => ((g.kind === "cifra" || g.kind === "concepto") && g.icon && hasIcon(g.icon) ? [[g.icon, iconDataUri(g.icon)]] : []))) },
+      icons: { ...icons, ...Object.fromEntries(graphics.flatMap((g) => ((g.kind === "cifra" || g.kind === "concepto") && g.icon && hasIcon(g.icon) ? [[g.icon, editIconDataUri(g.icon)]] : []))) },
       graphics,
       sfx: efectos.sfx,
       captions: caps.none ? { mode: config.captionMode, pages: [] } : { mode: caps.mode, pages: caps.pages },

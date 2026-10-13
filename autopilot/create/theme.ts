@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import type { z } from "zod";
 import { type Cues, type SceneFx, type SFX_NAMES, THEME_FONTS, themeSchema, type Theme } from "../../src/create/theme";
@@ -426,6 +426,19 @@ export const iconDataUri = (name: string) => {
   const h = icon.height ?? set.height ?? 32;
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w * 16}" height="${h * 16}" viewBox="0 0 ${w} ${h}">${icon.body}</svg>`;
   return `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
+};
+
+// Al EDITAR los vídeos del usuario (pedido del 13-10-2026), emojis de Apple en PNG con fondo transparente: los que
+// entregó él («ahí tienes todos los emojis que quiero en png»), con el mismo nombre que los de Fluent. Son de Apple:
+// solo en local, fuera de Git (.gitignore) y nunca a terceros. Si no están (otra máquina, CI), el set con licencia.
+const APPLE_DIR = path.join(ROOT, "library/emojis-apple");
+const applePng = (name: string) => {
+  const f = path.join(APPLE_DIR, `${name}.png`);
+  return /^[a-z0-9-]+$/.test(name) && existsSync(f) ? f : null;
+};
+export const editIconDataUri = (name: string) => {
+  const png = applePng(name);
+  return png ? `data:image/png;base64,${readFileSync(png).toString("base64")}` : iconDataUri(name);
 };
 
 export const ICON_CREDIT = (motivos as { fuente: { iconos: string } }).fuente.iconos;

@@ -1,6 +1,6 @@
 import { measureText } from "@remotion/layout-utils";
 import React, { useMemo } from "react";
-import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { Img, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import type { Brand } from "../design/schema";
 import { captionLayout } from "./geometry";
 import { Rolling } from "./ImpactCaptions";
@@ -11,6 +11,8 @@ import type { CaptionPage, CaptionToken } from "./props";
 // en su propia línea, apiladas casi tocándose y con un ligero desplazamiento alterno. Blanco con un degradado suave
 // hacia gris y sombra. Las páginas sin clave van en una sola línea mediana en mayúscula. Sobre un apoyo gráfico de
 // fondo claro el texto pasa a tinta. Solo Inter (regla de la casa).
+// Emojis (pedido del 13-10-2026): imagen PNG con fondo transparente (los de Apple que dio el usuario), a la derecha de
+// la palabra clave y dentro del bloque del subtítulo, así no tapa caras ni texto. Entran con un salto corto.
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const FAMILY = '"Inter"';
@@ -21,6 +23,28 @@ const FUNCTION = new Set("a an the to of in on at and or but so for with we i yo
 type Row = { kind: "small" | "big"; tokens: CaptionToken[]; size: number; offset: number };
 
 const clean = (t: string) => t.replace(/[,;:.!?]+$/, "");
+const EMOJI = { size: 1.15, gap: 0.2 } as const; // respecto al tamaño de la línea grande (gap = columnGap de la línea)
+const iconOf = (r: Row) => (r.kind === "big" ? r.tokens[0]?.icon : undefined);
+
+const Emoji: React.FC<{ src: string; t: CaptionToken; size: number }> = ({ src, t, size }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const local = frame - (Math.round((t.startMs / 1000) * fps) + 3); // justo después de la palabra
+  const s = spring({ frame: local, fps, config: { damping: 10, stiffness: 190, mass: 0.6 } });
+  if (local < 0) return null;
+  return (
+    <Img
+      src={src}
+      style={{
+        width: size * EMOJI.size,
+        height: size * EMOJI.size,
+        alignSelf: "center",
+        transform: `translateY(${(1 - s) * size * 0.25}px) scale(${s}) rotate(${(1 - s) * -22}deg)`,
+        filter: `drop-shadow(0 ${size * 0.04}px ${size * 0.08}px rgba(0,0,0,0.45))`,
+      }}
+    />
+  );
+};
 
 const rowsOf = (page: CaptionPage, base: number): Row[] => {
   const flat0 = page.lines.flat();
@@ -94,7 +118,13 @@ const Token: React.FC<{ t: CaptionToken; row: Row; light: boolean; feature: bool
   );
 };
 
-export const StackedCaptions: React.FC<{ pages: CaptionPage[]; brand: Brand; fontsReady: boolean; light: { startMs: number; endMs: number }[] }> = ({ pages, brand, fontsReady, light }) => {
+export const StackedCaptions: React.FC<{
+  pages: CaptionPage[];
+  brand: Brand;
+  fontsReady: boolean;
+  light: { startMs: number; endMs: number }[];
+  icons?: Record<string, string>;
+}> = ({ pages, brand, fontsReady, light, icons = {} }) => {
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
   const t = (frame / fps) * 1000;
@@ -112,11 +142,14 @@ export const StackedCaptions: React.FC<{ pages: CaptionPage[]; brand: Brand; fon
     if (!fontsReady) return rs;
     return rs.map((r) => {
       const text = r.tokens.map((x) => (r.kind === "small" ? clean(x.text).toLowerCase() : clean(x.text).toUpperCase())).join(" ");
-      const w = measureText({ text, fontFamily: FAMILY, fontWeight: r.kind === "small" ? 700 : 800, fontSize: r.size, letterSpacing: r.kind === "small" ? "0em" : "-0.04em", validateFontIsLoaded: false }).width;
+      const icon = iconOf(r);
+      const w =
+        measureText({ text, fontFamily: FAMILY, fontWeight: r.kind === "small" ? 700 : 800, fontSize: r.size, letterSpacing: r.kind === "small" ? "0em" : "-0.04em", validateFontIsLoaded: false }).width +
+        (icon && icons[icon] ? r.size * (EMOJI.size + EMOJI.gap) : 0);
       const room = maxW * (1 - Math.abs(r.offset) * 2) * 0.96;
       return w > room ? { ...r, size: (r.size * room) / w } : r;
     });
-  }, [page, base, fontsReady, maxW]);
+  }, [page, base, fontsReady, maxW, icons]);
 
   if (!page) return null;
   const onLight = light.some((g) => t >= g.startMs && t < g.endMs);
@@ -163,6 +196,7 @@ export const StackedCaptions: React.FC<{ pages: CaptionPage[]; brand: Brand; fon
           {r.tokens.map((tok, k) => (
             <Token key={`${tok.startMs}-${k}`} t={tok} row={r} light={onLight} feature={!!page.feature} />
           ))}
+          {iconOf(r) && icons[iconOf(r)!] ? <Emoji src={icons[iconOf(r)!]} t={r.tokens[0]} size={r.size} /> : null}
         </div>
       ))}
     </div>

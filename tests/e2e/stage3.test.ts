@@ -79,9 +79,9 @@ test("vídeo hablado para redes: subtítulos impacto, zoom alterno, apoyos, grá
   for (const p of pages) assert.ok(p.lines.flat().length <= 3, JSON.stringify(p));
   assert.ok(pages.filter((p) => p.lines.flat().some((t) => t.emphasis)).length >= 6);
   // Gráficos: las enumeraciones del guion («Cortes, subtítulos, zooms, música», «para agencias, coaches y creadores»)
-  const graphics: { kind: string; startMs: number; endMs: number; items?: { text: string }[] }[] = props.graphics;
+  const graphics: { kind: string; modo?: string; startMs: number; endMs: number; items?: { text: string }[] }[] = props.graphics;
   assert.deepEqual(
-    graphics.map((g) => g.items?.map((i) => i.text).join(" · ")),
+    graphics.filter((g) => g.kind === "lista").map((g) => g.items?.map((i) => i.text).join(" · ")),
     ["Cortes · Subtítulos · Zooms · Música", "Agencias · Coaches · Creadores"],
   );
   for (const g of graphics) assert.ok(graphicSchema.safeParse(g).success);
@@ -93,7 +93,9 @@ test("vídeo hablado para redes: subtítulos impacto, zoom alterno, apoyos, grá
   }
   // Efectos de sonido en los gráficos (whoosh de entrada y salida, tic en cada check) sin saturar la voz
   const sfx: { name: string; frame: number }[] = props.sfx;
-  for (const g of graphics) assert.ok(sfx.some((e) => e.name === "whoosh" && Math.abs(e.frame - (g.startMs / 1000) * 30) <= 6));
+  // (las tarjetas de concepto que rellenan huecos de más de 3 s solo llevan un pop)
+  for (const g of graphics.filter((x) => !(x.kind === "concepto" && x.modo === "tarjeta")))
+    assert.ok(sfx.some((e) => e.name === "whoosh" && Math.abs(e.frame - (g.startMs / 1000) * 30) <= 6));
   assert.equal(sfx.filter((e) => e.name === "click").length, 7, "un tic por elemento de las dos listas (4 + 3)");
   assert.ok(job.outputs.some((o) => o.kind === "video"));
   const plan = await fs.readFile(path.join(dir, "output/plan.md"), "utf8");

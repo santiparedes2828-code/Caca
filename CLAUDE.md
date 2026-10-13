@@ -17,11 +17,13 @@ No las cambies salvo que el usuario lo pida expresamente.
    para el reel de Einstein): palabras clave en EB Garamond Bold Italic, el equivalente libre de Apple
    Garamond, que es de Apple. Se activa por trabajo con `--claves-garamond`. Las fuentes de excepción viven en
    `public/fonts/excepciones/` y `src/design/excepciones.ts`. Si un pedido choca con esta regla, pregunta.
-2. **Emojis: estilo iOS cuando hagan falta.** Los emojis de Apple son propiedad de Apple y solo tienen licencia
-   para mostrarse en sus dispositivos, así que no se incrustan en los vídeos. Se usa el set con licencia más
-   parecido: **Fluent Emoji en color** (Microsoft, MIT), definido en `EMOJI_SET` de
-   `autopilot/create/theme.ts`. Si el usuario quiere exactamente los de iOS, se añaden desde el iPhone en el
-   editor de TikTok o Instagram.
+2. **Emojis: los de Apple/iPhone al editar (13-10-2026).** El usuario dio los PNG con fondo transparente
+   (`library/emojis-apple/<nombre>.png`, mismo nombre que en Fluent). Al editar sus vídeos se usan como imagen,
+   nunca como texto (`editIconDataUri` en `autopilot/create/theme.ts`): junto a la palabra clave del subtítulo,
+   con un salto corto de entrada, solo si el concepto es claro (`iconFor` en `autopilot/edit/relleno.ts`) y sin
+   tapar caras ni texto. Comprueba en fotogramas del vídeo exportado que aparecen. Son de Apple: **solo en local,
+   nunca a Git ni a terceros** (están en `.gitignore`). Si faltan (otra máquina, CI) o en el motor de creación,
+   se usa el set con licencia más parecido: **Fluent Emoji en color** (Microsoft, MIT, `EMOJI_SET`).
 3. **Identidad Hook House** (verde #12A150, logotipo «hookhouse.»): solo para contenido de la propia marca.
    Los vídeos desde una idea usan motion graphics según el tema (`--estilo auto|tema|marca`).
 4. **Voz de marca**: ElevenLabs · Rodrigo Zabú (`1p905cdbJ1e1JQxhFTGJ`), modelo `eleven_v4`. Se generan 4

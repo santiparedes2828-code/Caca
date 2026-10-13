@@ -57,9 +57,9 @@ const pick = (pages: CaptionPage[], a: number, b: number, used: Set<string>, lan
 
 // Conceptos frecuentes en vídeos hablados de negocio y contenido → emoji (raíz de la palabra, inglés y español)
 const CONCEPTS: [RegExp, string][] = [
-  [/^(idea|ideas|ideation|brainstorm|creativ|creat|pensar|creativ)/, "light-bulb"],
+  [/^(idea|ideas|ideation|brainstorm|creativ|create$|creating|creation|crear|pensar)/, "light-bulb"],
   [/^(brain|mind|mente|cerebro|think|piens)/, "brain"],
-  [/^(video|videos|film|filming|camera|grab|rodaj|shoot)/, "movie-camera"],
+  [/^(video|videos|film|filming|camera|grab|rodaj|shoot|creator|creador)/, "movie-camera"],
   [/^(edit|edici|editing|cut|cort|montaj)/, "clapper-board"],
   [/^(money|grand|dollar|million|budget|spend|cost|dinero|dolar|millon|presupuest|gast|cuesta|precio|price|paid|pay)/, "money-bag"],
   [/^(grow|growth|crec|scale|escal|increas|aument|views|vistas)/, "chart-increasing"],
@@ -82,7 +82,7 @@ const CONCEPTS: [RegExp, string][] = [
   [/^(energy|energ|power|poder|fuerza|strong)/, "high-voltage"],
 ];
 
-const iconFor = (text: string, lang: "es" | "en") => {
+export const iconFor = (text: string, lang: "es" | "en") => {
   const w = text
     .toLowerCase()
     .normalize("NFD")

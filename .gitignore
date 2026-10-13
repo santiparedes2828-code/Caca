@@ -47,3 +47,7 @@ analisis6/
 public/capi/*.png
 analisis7/
 analisis8/
+
+# Emojis de Apple que dio el usuario (copyright de Apple): solo en local, nunca a Git
+library/emojis-apple/
+library/emojis-usuario-raw/
