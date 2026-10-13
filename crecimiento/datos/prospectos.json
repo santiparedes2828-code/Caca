@@ -18,7 +18,8 @@
         "x": null
       },
       "contacto_publico": "nick@sidehustlenation.com",
-      "contacto_fuente": "https://www.sidehustlenation.com/contact/",
+      "contacto_fuente": "https://www.sidehustlenation.com/press/",
+      "contacto_nivel": "propio",
       "tamano": "48,674 YouTube subscribers, 1,269 videos (SocialCounts tracker, data up to 2026-07-13; channel ID UCzOAAJUiSO2uyu1xyxw__2Q). Third-party estimate, not from YouTube directly.",
       "frecuencia": "About 6 episodes/month per host's 2025 year-end report (ep. 714). Episodes 718-726 ran Jan-Mar 2026; '732: 24 Years of Side Hustle Advice' dated 2026-04-06; Podscan lists latest episode 2026-07-30. Activity in Aug-Oct 2026 NOT verified.",
       "evidencia_necesidad": [
@@ -26,6 +27,11 @@
         "YouTube is a large part of reach: Libsyn ad profile says 60% of reach comes from the YouTube simulcast (https://advertising.libsyn.com/TheSideHustleShowBusinessIdeasforPartTimeEntrepreneurship), so short-form clips could feed it."
       ],
       "contenido_reciente": [
+        {
+          "titulo": "762: Buy Buttons, 10 Years Later",
+          "url": "https://podcasts.apple.com/cy/podcast/the-side-hustle-show/id655135292",
+          "fecha": "2026-10-01"
+        },
         {
           "titulo": "732: 24 Years of Side Hustle Advice",
           "url": "https://www.castfox.net/podcast/the-side-hustle-show-745272/episode/732-24-years-of-side-hustle-advice-493879",
@@ -42,8 +48,8 @@
           "fecha": null
         }
       ],
-      "prioridad": "B",
-      "motivo_prioridad": "Regular publishing (~6 eps/month) and a public business email on the official contact page. Need not demonstrated: no proof either way about Shorts/Reels. Caveat: a YouTube listing gives a sponsor address at Yapmedia.com, which suggests the show is in the YAP Media network (it may already have clipping support).",
+      "prioridad": "A",
+      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
       "fuentes": [
         "https://socialcounts.org/youtube-live-subscriber-count/UCzOAAJUiSO2uyu1xyxw__2Q",
         "https://pod.wave.co/podcast/the-side-hustle-show/714-my-2025-progress-report-what-worked-what-didnt-and-whats-next",
@@ -52,10 +58,12 @@
         "https://vling.net/channel/UCzOAAJUiSO2uyu1xyxw__2Q/channel-info",
         "https://www.castfox.net/podcast/the-side-hustle-show-745272/episode/732-24-years-of-side-hustle-advice-493879",
         "https://podscan.fm/podcasts/the-side-hustle-show-1",
-        "https://podcasts.apple.com/podcast/id655135292"
+        "https://podcasts.apple.com/podcast/id655135292",
+        "https://podcasts.apple.com/cy/podcast/the-side-hustle-show/id655135292",
+        "https://www.sidehustlenation.com/press/"
       ],
       "notas": "All data comes from search-engine snippets; WebFetch could not open any page (DNS failure in this environment). The email comes from the snippet of the official contact page; check it there before using. The YouTube handle/URL, Instagram and TikTok were not verified. A third-party listing shows Shorts metrics for the channel (values not visible), so the channel may already publish Shorts. The YAP Media sponsor address was seen only on a third-party listing.",
-      "verificado": "2026-10-12",
+      "verificado": "2026-10-13",
       "estado": "mensaje-listo",
       "mensajes": [
         {
@@ -64,13 +72,51 @@
           "tipo": "borrador",
           "paso": "primer-contacto",
           "asunto": "Free clip from your latest episode",
-          "texto": "Hi Nick,\n\nI came across the Side Hustle Show. An episode like \"24 Years of Side Hustle Advice\" (ep. 732) is full of 30-second moments that would work on their own as Shorts or Reels.\n\nI run Hook House, a small editing studio that turns podcast episodes into vertical clips: hook first, word-by-word captions, zooms and B-roll, ready for YouTube Shorts, Reels and TikTok.\n\nI couldn't find clips of the show on Reels or TikTok. If someone already handles that for you, feel free to ignore this.\n\nIf not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?\n\n[Your name]\nHook House"
+          "texto": "Hi Nick,\n\nI came across the Side Hustle Show. An episode like \"24 Years of Side Hustle Advice\" (ep. 732) is full of 30-second moments that would work on their own as Shorts or Reels.\n\nI run Hook House, a small editing studio that turns podcast episodes into vertical clips: hook first, word-by-word captions, zooms and B-roll, ready for YouTube Shorts, Reels and TikTok.\n\nI couldn't find clips of the show on Reels or TikTok. If someone already handles that for you, feel free to ignore this.\n\nIf not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "A free clip from \"Buy Buttons, 10 Years Later\"",
+          "texto": "Hi Nick,\n\nI came across episode 762, \"Buy Buttons, 10 Years Later\". Revisiting which platforms still work a decade on is the kind of answer that travels well as a 40-second clip.\n\nI run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.\n\nI couldn't find clips of the show on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.\n\nIf not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": "Re: A free clip from \"Buy Buttons, 10 Years Later\"",
+          "texto": "Hi Nick,\n\nQuick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": "Re: A free clip from \"Buy Buttons, 10 Years Later\"",
+          "texto": "Hi Nick,\n\nHere's how I'd open a clip from \"Buy Buttons, 10 Years Later\": open on the one platform that still works 10 years later, then the reason why. If you'd like to see it edited, just reply \"send it\" and you'll have it within 48 hours.\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": "Re: A free clip from \"Buy Buttons, 10 Years Later\"",
+          "texto": "Hi Nick,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
         }
       ],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
-      "actualizado": "2026-10-12"
+      "actualizado": "2026-10-13"
     },
     {
       "id": "the-learning-leader-show",
@@ -88,8 +134,9 @@
         "linkedin": null,
         "x": null
       },
-      "contacto_publico": "https://learningleader.com/partner/",
-      "contacto_fuente": "https://learningleader.com/partner/",
+      "contacto_publico": "Ryan@LearningLeader.com",
+      "contacto_fuente": "https://learningleader.com/?p=32",
+      "contacto_nivel": "propio",
       "tamano": "YouTube subscribers not verified. Partnership kit says over 250,000 monthly listeners (podcast audience, self-reported).",
       "frecuencia": "Weekly (partnership kit: new episodes every Sunday for nine years). Episode 705 dated 2026-09-10 (TuneIn), 707 dated 2026-09-20 and 708 dated 2026-09-27 (Podwise).",
       "evidencia_necesidad": [
@@ -98,13 +145,18 @@
       ],
       "contenido_reciente": [
         {
+          "titulo": "708: Danny Meyer - How You Make People Feel",
+          "url": "https://podwise.ai/episodes/9001202",
+          "fecha": "2026-09-27"
+        },
+        {
           "titulo": "World-Renowned Performance Expert \"Stop Playing Defense With Your Life\" I The Learning Leader Show",
           "url": "https://www.youtube.com/watch?v=sfeADQyaptY",
           "fecha": null
         }
       ],
-      "prioridad": "B",
-      "motivo_prioridad": "Very regular weekly publishing (latest seen 2026-09-27) plus weak signs that Shorts are rare. The public contact is a partnership page; no email or form was verified on it. The show may be larger than the ideal range (250k monthly listeners).",
+      "prioridad": "A",
+      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
       "fuentes": [
         "https://learningleader.com/partner/",
         "https://podwise.ai/podcasts/4194",
@@ -113,10 +165,12 @@
         "https://www.youtube.com/shorts/z3F94qivJHk",
         "https://www.youtube.com/watch?v=sfeADQyaptY",
         "https://podcast.creatorscience.com/ryan-hawk/",
-        "https://www.daytondailynews.com/local/dayton-leadership-podcaster-ryan-hawk-launches-partnership-with-new-company/3XNBWTCFQ5BBLB2A7VE3JL27WA/"
+        "https://www.daytondailynews.com/local/dayton-leadership-podcaster-ryan-hawk-launches-partnership-with-new-company/3XNBWTCFQ5BBLB2A7VE3JL27WA/",
+        "https://podwise.ai/episodes/9001202",
+        "https://learningleader.com/?p=32"
       ],
       "notas": "Exact titles of episodes 705-708 were not visible: the guests were Dr. Martin Seligman (705), Andy Stanley & Sam Kaufman (707) and Danny Meyer (708). YouTube subscriber count, Instagram/TikTok handles and the content of the partner page (email or form) were not verified. Shorts frequency was inferred only from search results.",
-      "verificado": "2026-10-12",
+      "verificado": "2026-10-13",
       "estado": "mensaje-listo",
       "mensajes": [
         {
@@ -125,13 +179,51 @@
           "tipo": "borrador",
           "paso": "primer-contacto",
           "asunto": "Free clip from your latest episode",
-          "texto": "Hi Ryan,\n\nYour recent run of guests (Martin Seligman, Andy Stanley, Danny Meyer) has the kind of lines that stop a scroll. Most of them stay inside the full episodes on YouTube, though; I only found a handful of Shorts.\n\nI run Hook House, a small editing studio that turns long conversations into vertical clips: strongest line first, animated captions, zooms and B-roll, for Shorts, Reels and TikTok.\n\nIf clips are already handled, no worries. If not, I'd like to edit one clip from a recent episode for free so you can see the quality. Should I send it to you or someone on your team?\n\n[Your name]\nHook House"
+          "texto": "Hi Ryan,\n\nYour recent run of guests (Martin Seligman, Andy Stanley, Danny Meyer) has the kind of lines that stop a scroll. Most of them stay inside the full episodes on YouTube, though; I only found a handful of Shorts.\n\nI run Hook House, a small editing studio that turns long conversations into vertical clips: strongest line first, animated captions, zooms and B-roll, for Shorts, Reels and TikTok.\n\nIf clips are already handled, no worries. If not, I'd like to edit one clip from a recent episode for free so you can see the quality. Should I send it to you or someone on your team?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "A clip idea from your Danny Meyer episode",
+          "texto": "Hi Ryan,\n\nYour episode with Danny Meyer (\"How You Make People Feel\") has lines that work on their own: the 49/51 hiring idea alone is a 30-second clip.\n\nI run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.\n\nI couldn't find clips of the show on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.\n\nIf not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": "Re: A clip idea from your Danny Meyer episode",
+          "texto": "Hi Ryan,\n\nQuick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": "Re: A clip idea from your Danny Meyer episode",
+          "texto": "Hi Ryan,\n\nHere's how I'd open a clip from \"Danny Meyer - How You Make People Feel\": open on the 49/51 hiring formula, stated in one sentence, before any context. If you'd like to see it edited, just reply \"send it\" and you'll have it within 48 hours.\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": "Re: A clip idea from your Danny Meyer episode",
+          "texto": "Hi Ryan,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
         }
       ],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
-      "actualizado": "2026-10-12"
+      "actualizado": "2026-10-13"
     },
     {
       "id": "the-saas-podcast",
@@ -150,13 +242,20 @@
         "x": null
       },
       "contacto_publico": "https://saasclub.io/sponsor/",
-      "contacto_fuente": "https://saasclub.io/sponsor/",
+      "contacto_fuente": "https://saasclub.io/?p=6013808",
+      "contacto_nivel": "propio",
       "tamano": "YouTube subscribers not verified. The sponsor page claims 15,000+ B2B SaaS founders/operators reached across audio, YouTube and a 5,000-subscriber newsletter.",
       "frecuencia": "Weekly founder interviews (show description). Podwise lists an episode on founder-led sales dated 2026-10-01; Podbean lists one dated 2026-07-23.",
       "evidencia_necesidad": [
         "No concrete evidence of need found. The channel has a Shorts tab (https://www.youtube.com/channel/UCZbyAKrrtV87PywXc9vydng/shorts), so it already makes some Shorts; their style and frequency were not checked."
       ],
-      "contenido_reciente": [],
+      "contenido_reciente": [
+        {
+          "titulo": "Founder-Led Sales: He Learned to Sell and Closed 50 Customers (guest Shahar Azulay, groundcover)",
+          "url": "https://podwise.ai/episodes/9033253",
+          "fecha": "2026-10-01"
+        }
+      ],
       "prioridad": "C",
       "motivo_prioridad": "Active weekly (latest seen 2026-10-01) and has a sponsor/contact page. However, it already publishes Shorts and no need was shown. The public route is a sponsorship page, not a general contact email.",
       "fuentes": [
@@ -166,16 +265,18 @@
         "https://saasclub.io/?p=6013808",
         "https://www.youtube.com/@saasclub",
         "https://www.youtube.com/channel/UCZbyAKrrtV87PywXc9vydng/shorts",
-        "https://podcastaddict.com/podcast/4032150"
+        "https://podcastaddict.com/podcast/4032150",
+        "https://podwise.ai/episodes/9033253"
       ],
-      "notas": "Exact recent episode titles were not visible in snippets, so contenido_reciente is empty. The site footer has a 'Contact' link whose URL was not seen; the full email (****@saasclub.io) is masked in a directory and was not used. Subscriber count was not verified.",
-      "verificado": "2026-10-12",
+      "notas": "Exact recent episode titles were not visible in snippets, so contenido_reciente is empty. The site footer has a 'Contact' link whose URL was not seen; the full email (****@saasclub.io) is masked in a directory and was not used. Subscriber count was not verified. | 13-10: el invitado del episodio del 2026-10-01 es Shahar Azulay (groundcover), no Ev Kontsevoy.",
+      "verificado": "2026-10-13",
       "estado": "nuevo",
       "mensajes": [],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
-      "actualizado": "2026-10-12"
+      "actualizado": "2026-10-13"
     },
     {
       "id": "smart-agency-masterclass",
@@ -195,6 +296,7 @@
       },
       "contacto_publico": null,
       "contacto_fuente": null,
+      "contacto_nivel": "sin-verificar",
       "tamano": "YouTube subscribers not verified. iHeart listing says 950+ episodes and 10M+ downloads (self-reported).",
       "frecuencia": "Podwise lists episode #932 dated 2026-09-30, so the show is active; exact cadence not verified.",
       "evidencia_necesidad": [
@@ -215,6 +317,7 @@
       "mensajes": [],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
       "actualizado": "2026-10-12"
     },
@@ -236,6 +339,7 @@
       },
       "contacto_publico": null,
       "contacto_fuente": null,
+      "contacto_nivel": "sin-verificar",
       "tamano": "YouTube subscribers not verified. Marketing Week: 200+ episodes and over 3M downloads when Evans went full time.",
       "frecuencia": "1 episode every ~9 days, 273 episodes total (MyPodcastData, rankings dated July 2026). Weekly spin-off 'Uncensored Renegades' launched January 2026. Sept-Oct 2026 episodes NOT verified.",
       "evidencia_necesidad": [
@@ -265,6 +369,7 @@
       "mensajes": [],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
       "actualizado": "2026-10-12"
     },
@@ -284,14 +389,20 @@
         "linkedin": null,
         "x": null
       },
-      "contacto_publico": "https://thebootstrappedfounder.com/sponsor/",
-      "contacto_fuente": "https://thebootstrappedfounder.com/sponsor/",
+      "contacto_publico": "https://thebootstrappedfounder.com/podcast (page says 'You can also sponsor the show'; no email seen)",
+      "contacto_fuente": "https://thebootstrappedfounder.com/podcast",
+      "contacto_nivel": "propio",
       "tamano": "2,500 YouTube subscribers and 12,000+ monthly downloads (self-reported media kit on Notion, date unknown).",
       "frecuencia": "Media kit says twice-weekly; the official podcast page says weekly. Latest dated episodes seen: 439 (2026-04-03) and 438 (2026-03-20). Activity in the last 30-60 days NOT verified.",
       "evidencia_necesidad": [
         "Small YouTube channel (2,500 subscribers per the media kit) next to a 440+ episode back catalogue, which suggests little repurposing. Inference; Shorts/TikTok presence was not checked."
       ],
       "contenido_reciente": [
+        {
+          "titulo": "439: The Increasing Risk of Building in Public",
+          "url": "https://www.listennotes.com/podcasts/the-bootstrapped-founder-arvid-kahl-5afrHm3sQKP/",
+          "fecha": "2026-04-03"
+        },
         {
           "titulo": "Episode 439: The Increasing Risk of Building in Public",
           "url": "https://www.mypodcastdata.com/podcast/show/the-bootstrapped-founder-arvid-kahl-1sm2",
@@ -310,16 +421,28 @@
         "https://thebootstrappedfounder.com/sponsor/",
         "https://thebootstrappedfounder.com/podcast",
         "https://www.mypodcastdata.com/podcast/show/the-bootstrapped-founder-arvid-kahl-1sm2",
-        "https://www.podengine.ai/podcasts/the-bootstrapped-founder"
+        "https://www.podengine.ai/podcasts/the-bootstrapped-founder",
+        "https://www.listennotes.com/podcasts/the-bootstrapped-founder-arvid-kahl-5afrHm3sQKP/"
       ],
       "notas": "The sponsor page mentions a contact form ('fill out this form'), but its URL was not seen; newsletter sponsorships go through ConvertKit. The YouTube handle was not verified. The media kit date is unknown, so 2,500 subscribers may be outdated.",
-      "verificado": "2026-10-12",
-      "estado": "nuevo",
-      "mensajes": [],
+      "verificado": "2026-10-13",
+      "estado": "no-encaja",
+      "mensajes": [
+        {
+          "fecha": "2026-10-13",
+          "canal": "otro",
+          "tipo": "nota",
+          "paso": "otro",
+          "asunto": null,
+          "texto": "Verificación 13-10: sin actividad reciente o sin contacto propio",
+          "aprobado": false
+        }
+      ],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
-      "actualizado": "2026-10-12"
+      "actualizado": "2026-10-13"
     },
     {
       "id": "the-b2b-playbook",
@@ -339,6 +462,7 @@
       },
       "contacto_publico": null,
       "contacto_fuente": null,
+      "contacto_nivel": "sin-verificar",
       "tamano": "YouTube subscribers not verified. ~250 episodes (Pod Engine).",
       "frecuencia": "Weekly per the show's site and YouTube playlist description. Latest dated episode seen: #231, 2026-05-24. Recent activity (Aug-Oct 2026) NOT verified.",
       "evidencia_necesidad": [
@@ -368,6 +492,7 @@
       "mensajes": [],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
       "actualizado": "2026-10-12"
     },
@@ -389,6 +514,7 @@
       },
       "contacto_publico": null,
       "contacto_fuente": null,
+      "contacto_nivel": "sin-verificar",
       "tamano": "YouTube subscribers not verified. 457-490 episodes depending on directory.",
       "frecuencia": "Listed at two episodes per week (The B2B Playbook listicle). Latest dated episodes seen: #483 (2026-04-29) and #487 (2026-06-08). Recent activity NOT verified.",
       "evidencia_necesidad": [
@@ -421,6 +547,7 @@
       "mensajes": [],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
       "actualizado": "2026-10-12"
     },
@@ -442,6 +569,7 @@
       },
       "contacto_publico": null,
       "contacto_fuente": null,
+      "contacto_nivel": "sin-verificar",
       "tamano": "YouTube subscribers not verified. 105 episodes (Podcast Addict, listing dated 2026-07-08).",
       "frecuencia": "Fortnightly (Pocket Casts). Recent activity after July 2026 NOT verified.",
       "evidencia_necesidad": [
@@ -462,6 +590,7 @@
       "mensajes": [],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
       "actualizado": "2026-10-12"
     },
@@ -483,6 +612,7 @@
       },
       "contacto_publico": null,
       "contacto_fuente": null,
+      "contacto_nivel": "sin-verificar",
       "tamano": "YouTube subscribers not verified. 839 episodes, 4.8 rating from 239 reviews (Pod Engine).",
       "frecuencia": "Pod Engine lists episodes dated 2026-06-01 and 2026-06-03. Activity after June 2026 NOT verified.",
       "evidencia_necesidad": [
@@ -502,6 +632,7 @@
       "mensajes": [],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
       "actualizado": "2026-10-12"
     },
@@ -521,14 +652,20 @@
         "linkedin": null,
         "x": null
       },
-      "contacto_publico": "https://careercontessa.com/contact",
-      "contacto_fuente": "https://careercontessa.com/contact",
+      "contacto_publico": "media kit request via https://careercontessa.com/for-employers",
+      "contacto_fuente": "https://careercontessa.com/for-employers",
+      "contacto_nivel": "propio",
       "tamano": "YouTube subscribers not verified. 393 episodes (Pod Engine).",
       "frecuencia": "Pod Engine lists episodes dated 2026-05-26 and 2026-06-02; TuneIn shows February 2026 episodes. Activity after June 2026 NOT verified.",
       "evidencia_necesidad": [
         "No concrete evidence of need found; Feedspot lists a YouTube link among the show's platforms, but Shorts presence was not checked."
       ],
       "contenido_reciente": [
+        {
+          "titulo": "Episode on writing emails busy people read (exact title not seen)",
+          "url": "https://mypodcastdata.com/en/podcast/show/career-contessa-career-contessa-1xmi/episodes",
+          "fecha": "2026-06-02"
+        },
         {
           "titulo": "Mid-Career and Losing Steam? (partial title as shown in TuneIn snippet)",
           "url": "https://tunein.com/podcasts/p3823596",
@@ -542,16 +679,29 @@
         "https://tunein.com/podcasts/p3823596",
         "https://careercontessa.com/contact",
         "https://www.careercontessa.com/meet-the-team/",
-        "https://podcast.feedspot.com/los_angeles_career_podcasts/"
+        "https://podcast.feedspot.com/los_angeles_career_podcasts/",
+        "https://mypodcastdata.com/en/podcast/show/career-contessa-career-contessa-1xmi/episodes",
+        "https://careercontessa.com/for-employers"
       ],
       "notas": "The contact URL appeared as a search result, but its content (form or email) was not seen. The episode title is partial. The YouTube URL is unknown.",
-      "verificado": "2026-10-12",
-      "estado": "nuevo",
-      "mensajes": [],
+      "verificado": "2026-10-13",
+      "estado": "no-encaja",
+      "mensajes": [
+        {
+          "fecha": "2026-10-13",
+          "canal": "otro",
+          "tipo": "nota",
+          "paso": "otro",
+          "asunto": null,
+          "texto": "Verificación 13-10: sin actividad reciente o sin contacto propio",
+          "aprobado": false
+        }
+      ],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
-      "actualizado": "2026-10-12"
+      "actualizado": "2026-10-13"
     },
     {
       "id": "sam-witteveen",
@@ -571,6 +721,7 @@
       },
       "contacto_publico": null,
       "contacto_fuente": null,
+      "contacto_nivel": "ninguno",
       "tamano": "about 125K subscribers (developereducators.com, data from about Jul 2026); about 135K subscribers and 375 videos (youtubesubhub.com and Social Blade search snippets, Sep-Oct 2026)",
       "frecuencia": "Weekly per developereducators.com's 'weekly' upload label. showmeyourchannel.com lists several long-form uploads in Aug 2026 and one dated 09/06/2026. Not checked on YouTube itself.",
       "evidencia_necesidad": [
@@ -579,6 +730,11 @@
         "No sign of a TikTok or Instagram presence came up in searches. Not confirmed."
       ],
       "contenido_reciente": [
+        {
+          "titulo": "Gemini Live Avatars (title as given by aggregator)",
+          "url": "https://ai-tldr.dev/releases/sam-witteveen-gemini-live-avatars-sep27/",
+          "fecha": "2026-09-27"
+        },
         {
           "titulo": "NVIDIA Doubles Down on Local AI With PAIR",
           "url": null,
@@ -594,11 +750,12 @@
         "https://socialblade.com/youtube/handle/samwitteveenai",
         "https://socialcounts.org/youtube-live-subscriber-count/UC55ODQSvARtgSyc8ThfiepQ",
         "https://x.com/Sam_Witteveen",
-        "https://sessionize.com/sam-witteveen/"
+        "https://sessionize.com/sam-witteveen/",
+        "https://ai-tldr.dev/releases/sam-witteveen-gemini-live-avatars-sep27/"
       ],
       "notas": "All data comes from search-result snippets. WebFetch could not open any page in this environment (DNS failure), and YouTube itself was blocked. Subscriber counts differ by source and date. Upload cadence comes from third-party trackers, not from the YouTube uploads tab. No business email was verified: ZoomInfo shows only a masked company email (s***@reddragon.ai), which was NOT used. Check the YouTube About page for a business email. He is also CEO and co-founder of Red Dragon AI (Singapore, per Crunchbase), so this is not a pure solo creator and his country is not stated. Recent Shorts seen in snippets (not exact titles/URLs verified): local real-time TTS, AMD Ryzen AI Halo, Gemini Omni Flash, Ornith 1.0 LLMs. Recent long-form topics were described only loosely (local voice TTS, GLM comparison, Docker sandboxes for agents, Qwen serving tutorial), so the titles are not recorded.",
-      "verificado": "2026-10-12",
-      "estado": "mensaje-listo",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
       "mensajes": [
         {
           "fecha": "2026-10-12",
@@ -606,13 +763,24 @@
           "tipo": "borrador",
           "paso": "primer-contacto",
           "asunto": "Free clip from your latest episode",
-          "texto": "Hi Sam,\n\nYour weekly deep dives on local models and agents are packed with \"wait, it can do that?\" moments. Most of them live only in the long videos; I saw about one Short a month.\n\nI run Hook House, a small editing studio that turns long-form videos into vertical Shorts: the payoff first, captions, zooms and on-screen highlights. They point viewers back to the full tutorial.\n\nIf Shorts aren't a priority, no problem. If they are, I'd like to cut one from a recent video for free so you can judge the quality. Want me to?\n\n[Your name]\nHook House"
+          "texto": "Hi Sam,\n\nYour weekly deep dives on local models and agents are packed with \"wait, it can do that?\" moments. Most of them live only in the long videos; I saw about one Short a month.\n\nI run Hook House, a small editing studio that turns long-form videos into vertical Shorts: the payoff first, captions, zooms and on-screen highlights. They point viewers back to the full tutorial.\n\nIf Shorts aren't a priority, no problem. If they are, I'd like to cut one from a recent video for free so you can judge the quality. Want me to?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "otro",
+          "tipo": "nota",
+          "paso": "otro",
+          "asunto": null,
+          "texto": "13-10: fuera del top 10 hasta verificar contacto o actividad",
+          "aprobado": false
         }
       ],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
-      "actualizado": "2026-10-12"
+      "actualizado": "2026-10-13"
     },
     {
       "id": "leaving-the-village",
@@ -630,8 +798,9 @@
         "linkedin": "https://www.linkedin.com/in/kelvinoliver/",
         "x": null
       },
-      "contacto_publico": "https://www.leavingthevillage.com/ (the site offers booking a 30-minute call with Kelvin; this is aimed at schools and districts)",
-      "contacto_fuente": "https://www.leavingthevillage.com/",
+      "contacto_publico": "info@leavingthevillage.com",
+      "contacto_fuente": "https://www.leavingthevillage.com/contact",
+      "contacto_nivel": "propio",
       "tamano": "2.17K subscribers, 135 videos, 323,417 views (YT.Careers business profile, capture date not shown)",
       "frecuencia": null,
       "evidencia_necesidad": [
@@ -655,11 +824,12 @@
         "https://www.youtube.com/watch?v=KU1yyVDA3Qc",
         "https://www.leavingthevillage.com/",
         "https://www.leavingthevillage.com/meettheconsultant",
-        "https://www.linkedin.com/in/kelvinoliver/"
+        "https://www.linkedin.com/in/kelvinoliver/",
+        "https://www.leavingthevillage.com/contact"
       ],
       "notas": "All data comes from search-result snippets. No page could be opened (WebFetch DNS failure; YouTube blocked). Upload frequency, the latest upload date and current Shorts output are unverified. The job post is old and may have been filled. The video listed under recent content was seen in search results, but its date is unknown and it may not be recent. ContactOut lists an email, which was NOT used because it is not published by the creator. Country is not stated.",
-      "verificado": "2026-10-12",
-      "estado": "mensaje-listo",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
       "mensajes": [
         {
           "fecha": "2026-10-12",
@@ -667,13 +837,24 @@
           "tipo": "borrador",
           "paso": "primer-contacto",
           "asunto": "Free clip from your latest episode",
-          "texto": "Hi Kelvin,\n\nI saw a while ago that Leaving The Village was looking for an editor for long-form videos and 5–7 Shorts a week. I don't know if you filled the role, so I'll keep this short.\n\nI run Hook House, a small editing studio that turns seminars, interviews and Q&As into vertical clips with captions, zooms and clear on-screen key points. A video like \"Restorative Practices Isn't About Changing Students' Behavior\" has several moments teachers would share.\n\nIf the role is still open or you need extra help, I'll edit one Short for free so you can see the quality first.\n\n[Your name]\nHook House"
+          "texto": "Hi Kelvin,\n\nI saw a while ago that Leaving The Village was looking for an editor for long-form videos and 5–7 Shorts a week. I don't know if you filled the role, so I'll keep this short.\n\nI run Hook House, a small editing studio that turns seminars, interviews and Q&As into vertical clips with captions, zooms and clear on-screen key points. A video like \"Restorative Practices Isn't About Changing Students' Behavior\" has several moments teachers would share.\n\nIf the role is still open or you need extra help, I'll edit one Short for free so you can see the quality first.\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "otro",
+          "tipo": "nota",
+          "paso": "otro",
+          "asunto": null,
+          "texto": "13-10: fuera del top 10 hasta verificar contacto o actividad",
+          "aprobado": false
         }
       ],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
-      "actualizado": "2026-10-12"
+      "actualizado": "2026-10-13"
     },
     {
       "id": "glen-whitten",
@@ -692,7 +873,8 @@
         "x": null
       },
       "contacto_publico": "Glen@OhioMLSFlatFee.com",
-      "contacto_fuente": "https://ohiomlsflatfee.com/talkingrealty/ ; https://my.flexmls.com/GlenWhitten (email shown in search snippets of his own brokerage/podcast page and flexmls profile)",
+      "contacto_fuente": "https://ohiomlsflatfee.com/talkingrealty/",
+      "contacto_nivel": "propio",
       "tamano": null,
       "frecuencia": "Regular, roughly weekly: iHeart lists Episode 106 dated 2026-09-23; Episodes 101–103 shortly before. Amazon Music links YouTube videos for 2026 episodes (e.g. one dated 2026-02-18).",
       "evidencia_necesidad": [
@@ -700,6 +882,11 @@
         "A search for Glen Whitten on Instagram/TikTok returned no accounts of his (only other agents), so no sign of vertical clips from the podcast – absence NOT confirmed by opening the platforms"
       ],
       "contenido_reciente": [
+        {
+          "titulo": "Stop Pricing It to Leave Room to Negotiate | Ep 104",
+          "url": "https://podcasts.apple.com/us/podcast/talking-realty/id1725864716",
+          "fecha": "2026-09-09"
+        },
         {
           "titulo": "Do You Have to Accept a Full-Price Offer on Your House? | Episode 106",
           "url": "https://www.iheart.com/podcast/269-talking-realty-143162414/",
@@ -716,8 +903,8 @@
           "fecha": null
         }
       ],
-      "prioridad": "B",
-      "motivo_prioridad": "Publishes a video podcast regularly (latest seen 2026-09-23) and lists a public business email; need for shorts is plausible but not confirmed.",
+      "prioridad": "A",
+      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
       "fuentes": [
         "https://www.iheart.com/podcast/269-talking-realty-143162414/",
         "https://podcasts.apple.com/us/podcast/talking-realty/id1725864716",
@@ -727,8 +914,8 @@
         "https://www.homes.com/real-estate-agents/glen-whitten/x7pztxm/",
         "https://www.experience.com/reviews/glen-6487516"
       ],
-      "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. YouTube channel URL, subscriber count and Instagram/TikTok presence not verified. Phone numbers differ between listings (419-790-3106 vs 419-763-6358). Episode counts disagree across directories (Apple 88, Podchaser 79 stale).",
-      "verificado": "2026-10-12",
+      "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. YouTube channel URL, subscriber count and Instagram/TikTok presence not verified. Phone numbers differ between listings (419-790-3106 vs 419-763-6358). Episode counts disagree across directories (Apple 88, Podchaser 79 stale). | 13-10: el episodio «Full-Price Offer» no se encontró; el mensaje usa el Ep 104 (2026-09-09).",
+      "verificado": "2026-10-13",
       "estado": "mensaje-listo",
       "mensajes": [
         {
@@ -737,13 +924,51 @@
           "tipo": "borrador",
           "paso": "primer-contacto",
           "asunto": "Free clip from your latest episode",
-          "texto": "Hi Glen,\n\nI came across Talking Realty. \"Do You Have to Accept a Full-Price Offer on Your House?\" is exactly the kind of question sellers search for and share.\n\nI run Hook House, a small editing studio that turns video podcasts into short vertical clips: the answer up front, captions word by word, zooms. Made for Reels, TikTok and YouTube Shorts, where local sellers scroll every day.\n\nI couldn't find vertical clips of the show. If you already post them, ignore this.\n\nIf not, I'll edit one clip from episode 106 for free so you can see how it would look. Want me to send it?\n\n[Your name]\nHook House"
+          "texto": "Hi Glen,\n\nI came across Talking Realty. \"Do You Have to Accept a Full-Price Offer on Your House?\" is exactly the kind of question sellers search for and share.\n\nI run Hook House, a small editing studio that turns video podcasts into short vertical clips: the answer up front, captions word by word, zooms. Made for Reels, TikTok and YouTube Shorts, where local sellers scroll every day.\n\nI couldn't find vertical clips of the show. If you already post them, ignore this.\n\nIf not, I'll edit one clip from episode 106 for free so you can see how it would look. Want me to send it?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "A clip from Talking Realty Ep 104",
+          "texto": "Hi Glen,\n\nI came across Talking Realty. Ep 104, \"Stop Pricing It to Leave Room to Negotiate\", answers a question sellers ask all the time, and that makes it a great short clip.\n\nI run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok. Local sellers scroll those feeds every day.\n\nI couldn't find clips of Talking Realty on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.\n\nIf not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": "Re: A clip from Talking Realty Ep 104",
+          "texto": "Hi Glen,\n\nQuick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": "Re: A clip from Talking Realty Ep 104",
+          "texto": "Hi Glen,\n\nHere's how I'd open a clip from \"Stop Pricing It to Leave Room to Negotiate\": open with \"Pricing high to leave room to negotiate can cost you the bidding war\". If you'd like to see it edited, just reply \"send it\" and you'll have it within 48 hours.\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": "Re: A clip from Talking Realty Ep 104",
+          "texto": "Hi Glen,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
         }
       ],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
-      "actualizado": "2026-10-12"
+      "actualizado": "2026-10-13"
     },
     {
       "id": "greg-head",
@@ -761,8 +986,9 @@
         "linkedin": "https://www.linkedin.com/in/gregheadaz/",
         "x": null
       },
-      "contacto_publico": null,
-      "contacto_fuente": "https://practicalfounders.com/articles/mentor-time-with-greg-where-i-mentor-in-phoenix-and-dallas/ (mentions a 'contact me here' link; target URL not visible)",
+      "contacto_publico": "https://practicalfounders.com/contact-practical-founders/",
+      "contacto_fuente": "https://practicalfounders.com/contact-practical-founders/",
+      "contacto_nivel": "propio",
       "tamano": null,
       "frecuencia": "Weekly interviews; #214 (Heath Adams, The Cyber Mentor) aired 2026-09-18 per podcast feed snippets.",
       "evidencia_necesidad": [
@@ -771,13 +997,18 @@
       ],
       "contenido_reciente": [
         {
+          "titulo": "#215 Steve Wolfe: How This Early-Stage Growth Equity Partner Is Investing in SaaS in 2026",
+          "url": "https://sites.libsyn.com/416864/website/2026/07",
+          "fecha": "2026-09-25"
+        },
+        {
           "titulo": "#214 Heath Adams (The Cyber Mentor) [title as summarized in search results; exact title not seen]",
           "url": "https://podcastaddict.com/podcast/practical-founders-podcast/4120105",
           "fecha": "2026-09-18"
         }
       ],
-      "prioridad": "B",
-      "motivo_prioridad": "Regular weekly video podcast plus visible gap in shorts; no direct public email/form URL confirmed.",
+      "prioridad": "A",
+      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
       "fuentes": [
         "https://practicalfounders.com/podcast/",
         "https://podcasts.apple.com/us/podcast/practical-founders-podcast/id1628317831",
@@ -786,10 +1017,12 @@
         "https://www.youtube.com/shorts/rANx_l8KuLg",
         "https://www.linkedin.com/in/gregheadaz/",
         "https://practicalfounders.com/ceo-peer-groups/",
-        "https://practicalfounders.com/articles/mentor-time-with-greg-where-i-mentor-in-phoenix-and-dallas/"
+        "https://practicalfounders.com/articles/mentor-time-with-greg-where-i-mentor-in-phoenix-and-dallas/",
+        "https://sites.libsyn.com/416864/website/2026/07",
+        "https://practicalfounders.com/contact-practical-founders/"
       ],
       "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Exact title of #214 and #213 not seen (only summaries). Subscriber count unknown. Shorts tab not opened, so other recent Shorts may exist. Business sells CEO peer groups at $6,000–$10,000/yr (practicalfounders.com/ceo-peer-groups), so budget is plausible.",
-      "verificado": "2026-10-12",
+      "verificado": "2026-10-13",
       "estado": "mensaje-listo",
       "mensajes": [
         {
@@ -798,13 +1031,51 @@
           "tipo": "borrador",
           "paso": "primer-contacto",
           "asunto": "Free clip from your latest episode",
-          "texto": "Hi Greg,\n\nPractical Founders puts out a founder interview every week (most recently with Heath Adams). On YouTube I only found an occasional Short.\n\nFounders scroll LinkedIn, Shorts and Reels between meetings, and a 40-second clip of a founder explaining one hard decision travels far.\n\nI run Hook House, a small editing studio that turns interviews into vertical clips with the key line first, captions and zooms. I'd like to edit one clip from a recent episode for free so you can see if it's useful. Interested?\n\n[Your name]\nHook House"
+          "texto": "Hi Greg,\n\nPractical Founders puts out a founder interview every week (most recently with Heath Adams). On YouTube I only found an occasional Short.\n\nFounders scroll LinkedIn, Shorts and Reels between meetings, and a 40-second clip of a founder explaining one hard decision travels far.\n\nI run Hook House, a small editing studio that turns interviews into vertical clips with the key line first, captions and zooms. I'd like to edit one clip from a recent episode for free so you can see if it's useful. Interested?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "formulario",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "Short clips from Practical Founders",
+          "texto": "Hi Greg,\n\nPractical Founders puts out a founder interview every week. #214 with Heath Adams, \"He Stopped Being the Face of the Company Before He Sold It\", is a story founders would share.\n\nI run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.\n\nI couldn't find clips of the show on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.\n\nIf not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "formulario",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": "Re: Short clips from Practical Founders",
+          "texto": "Hi Greg,\n\nQuick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "formulario",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": "Re: Short clips from Practical Founders",
+          "texto": "Hi Greg,\n\nHere's how I'd open a clip from \"He Stopped Being the Face of the Company Before He Sold It\": open on the moment Heath decided to step back from being the face of the company. If you'd like to see it edited, just reply \"send it\" and you'll have it within 48 hours.\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "formulario",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": "Re: Short clips from Practical Founders",
+          "texto": "Hi Greg,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
         }
       ],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
-      "actualizado": "2026-10-12"
+      "actualizado": "2026-10-13"
     },
     {
       "id": "sixsides-gavin-tye-mitchell-davis",
@@ -824,6 +1095,7 @@
       },
       "contacto_publico": null,
       "contacto_fuente": null,
+      "contacto_nivel": "sin-verificar",
       "tamano": null,
       "frecuencia": "Episode 81 dated 2026-09-14, which announces a short break (honeymoon); Episode 62 dated 2026-05-04 → ~19 episodes in ~4.5 months (≈ weekly).",
       "evidencia_necesidad": [
@@ -857,6 +1129,7 @@
       "mensajes": [],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
       "actualizado": "2026-10-12"
     },
@@ -878,6 +1151,7 @@
       },
       "contacto_publico": null,
       "contacto_fuente": null,
+      "contacto_nivel": "sin-verificar",
       "tamano": null,
       "frecuencia": "Weekly: Ep. 131 page dated 2026-07-21, Ep. 130 2026-07-14; directory lists Ep. 138 on Sep 8 and bonus Ep. 137 on Sep 1 (year not shown, 2026 inferred from numbering).",
       "evidencia_necesidad": [
@@ -918,6 +1192,7 @@
       "mensajes": [],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
       "actualizado": "2026-10-12"
     },
@@ -939,6 +1214,7 @@
       },
       "contacto_publico": null,
       "contacto_fuente": null,
+      "contacto_nivel": "sin-verificar",
       "tamano": null,
       "frecuencia": "Weekly per channel description; Podcast Addict lists episodes on 2026-10-07 and 2026-09-23.",
       "evidencia_necesidad": [
@@ -973,6 +1249,7 @@
       "mensajes": [],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
       "actualizado": "2026-10-12"
     },
@@ -994,6 +1271,7 @@
       },
       "contacto_publico": null,
       "contacto_fuente": null,
+      "contacto_nivel": "sin-verificar",
       "tamano": null,
       "frecuencia": "Weekly: episodes on 2026-09-02, 09-09, 09-16 and 09-23 per directory snippets.",
       "evidencia_necesidad": [
@@ -1027,6 +1305,7 @@
       "mensajes": [],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
       "actualizado": "2026-10-12"
     },
@@ -1046,14 +1325,21 @@
         "linkedin": null,
         "x": null
       },
-      "contacto_publico": "info@attorneyify.com",
-      "contacto_fuente": "https://attorneyify.com/ (contact info section, as shown in search snippets; admin@attorneyify.com also listed)",
+      "contacto_publico": "admin@attorneyify.com",
+      "contacto_fuente": "https://attorneyify.com/contact/",
+      "contacto_nivel": "propio",
       "tamano": null,
       "frecuencia": "Channel description promises weekly tips and live Q&As; no dated 2026 upload was seen, so actual recent activity is unverified.",
       "evidencia_necesidad": [
         "Channel relies on long live streams ('Immigration Attorney Ify is live!', https://www.youtube.com/watch?v=-r4M2QYxJ9k) – raw long-form material suited to clipping; whether she already cuts shorts was not verified"
       ],
-      "contenido_reciente": [],
+      "contenido_reciente": [
+        {
+          "titulo": "Immigration Attorney Ify is live!",
+          "url": "https://www.youtube.com/watch?v=-r4M2QYxJ9k",
+          "fecha": "unknown (snippet said '192 days ago', roughly April 2026, unreliable)"
+        }
+      ],
       "prioridad": "C",
       "motivo_prioridad": "Has a public business email and long-form live content, but recency and need are unverified.",
       "fuentes": [
@@ -1061,16 +1347,18 @@
         "https://www.youtube.com/watch?v=-r4M2QYxJ9k",
         "https://attorneyify.com/",
         "https://attorneyify.com/about/",
-        "https://www.facebook.com/attorneyify/"
+        "https://www.facebook.com/attorneyify/",
+        "https://attorneyify.com/contact/"
       ],
       "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Do NOT confuse with Ify Immigration Law Firm (Charlotte, NC, theifylawfirm.com) – sources mix their phone numbers (the live video lists 919-925-2295). Recent upload dates unknown.",
-      "verificado": "2026-10-12",
+      "verificado": "2026-10-13",
       "estado": "nuevo",
       "mensajes": [],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
-      "actualizado": "2026-10-12"
+      "actualizado": "2026-10-13"
     },
     {
       "id": "debbie-shadid",
@@ -1089,7 +1377,8 @@
         "x": null
       },
       "contacto_publico": "https://debbieshadid.com/schedule",
-      "contacto_fuente": "https://debbieshadid.com/podcast",
+      "contacto_fuente": "https://www.buzzsprout.com/887899/episodes/19450241-ep-360-mindset-mistakes-that-lose-consultations",
+      "contacto_nivel": "propio",
       "tamano": "Instagram: 4,095 followers, 3,332 posts (search snippet of instagram.com/debbieshadid, seen 2026-10-12)",
       "frecuencia": "Weekly or more: EP 386 dated 2026-09-23, EP 379 dated 2026-09-04 (EP numbers advance ~7 in under 3 weeks); show notes point to YouTube for weekly episodes.",
       "evidencia_necesidad": [
@@ -1099,7 +1388,7 @@
       "contenido_reciente": [
         {
           "titulo": "EP 386 - Why Your Coaching Offer Isn't Selling (It's Not Your Niche!)",
-          "url": "https://debbieshadid.com/podcast",
+          "url": "https://music.amazon.com/podcasts/742a3b08-4bf1-4ab8-90f7-1d3d382e659f/life-coach-business-building-school-with-debbie-shadid",
           "fecha": "2026-09-23"
         },
         {
@@ -1121,11 +1410,13 @@
         "https://music.amazon.com/podcasts/742a3b08-4bf1-4ab8-90f7-1d3d382e659f",
         "https://www.youtube.com/@debbieshadid",
         "https://www.instagram.com/debbieshadid/",
-        "https://www.facebook.com/debbieshadid/"
+        "https://www.facebook.com/debbieshadid/",
+        "https://music.amazon.com/podcasts/742a3b08-4bf1-4ab8-90f7-1d3d382e659f/life-coach-business-building-school-with-debbie-shadid",
+        "https://www.buzzsprout.com/887899/episodes/19450241-ep-360-mindset-mistakes-that-lose-consultations"
       ],
       "notas": "WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Country not stated in results. Whether each episode is posted as video on YouTube, YouTube subscriber count, and whether her Instagram Reels are edited/captioned were not verified. No email found. | Fuente del contacto: Podcast show notes ('Book a call with me here: https://debbieshadid.com/schedule') as shown in search snippets of https://debbieshadid.com/podcast / Apple Podcasts",
-      "verificado": "2026-10-12",
-      "estado": "mensaje-listo",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
       "mensajes": [
         {
           "fecha": "2026-10-12",
@@ -1133,13 +1424,24 @@
           "tipo": "borrador",
           "paso": "primer-contacto",
           "asunto": "Free clip from your latest episode",
-          "texto": "Hi Debbie,\n\nI came across \"Why Your Coaching Offer Isn't Selling (It's Not Your Niche!)\". That title alone is a hook, and there are several 30-second answers inside the episode that could each be a Reel.\n\nI run Hook House, a small editing studio that turns weekly video episodes into short vertical clips: strongest line first, word-by-word captions, zooms, for Reels, TikTok and YouTube Shorts.\n\nIf you already have someone clipping your episodes, please ignore this. If not, I'd like to edit one clip from that episode for free so you can judge the quality. Shall I send it?\n\n[Your name]\nHook House"
+          "texto": "Hi Debbie,\n\nI came across \"Why Your Coaching Offer Isn't Selling (It's Not Your Niche!)\". That title alone is a hook, and there are several 30-second answers inside the episode that could each be a Reel.\n\nI run Hook House, a small editing studio that turns weekly video episodes into short vertical clips: strongest line first, word-by-word captions, zooms, for Reels, TikTok and YouTube Shorts.\n\nIf you already have someone clipping your episodes, please ignore this. If not, I'd like to edit one clip from that episode for free so you can judge the quality. Shall I send it?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "otro",
+          "tipo": "nota",
+          "paso": "otro",
+          "asunto": null,
+          "texto": "13-10: fuera del top 10 hasta verificar contacto o actividad",
+          "aprobado": false
         }
       ],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
-      "actualizado": "2026-10-12"
+      "actualizado": "2026-10-13"
     },
     {
       "id": "christian-morrison",
@@ -1159,6 +1461,7 @@
       },
       "contacto_publico": "Christian@Christian-Morrison.com",
       "contacto_fuente": "https://www.youtube.com/channel/UCwITWJ4Mx8FY1TTojBSaTyw",
+      "contacto_nivel": "sin-verificar",
       "tamano": null,
       "frecuencia": "Unverified: no dated 2026 upload seen; channel is listed in a 2026 Feedspot directory of South Dakota real-estate YouTubers.",
       "evidencia_necesidad": [
@@ -1181,8 +1484,1110 @@
       "mensajes": [],
       "proximo_seguimiento": null,
       "resultado": null,
+      "valor_mensual": null,
       "creado": "2026-10-12",
       "actualizado": "2026-10-12"
+    },
+    {
+      "id": "property-profits-real-estate-podcast",
+      "nombre": "Property Profits Real Estate Podcast (Dave Dubeau)",
+      "segmento": "podcaster",
+      "nicho": "real estate investing / raising private capital for syndicators",
+      "idioma": "en",
+      "pais": "Canada",
+      "perfiles": {
+        "youtube": "https://www.youtube.com/@davedubeau",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://davedubeau.com/home",
+        "podcast": "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "support@davedubeau.com",
+      "contacto_fuente": "https://davedubeau.com/termsandconditions",
+      "contacto_nivel": "propio",
+      "tamano": "Apple Podcasts 5.0 rating from 42 ratings (per search result); YouTube subscriber count not seen",
+      "frecuencia": "Near-daily: episodes listed every day 22-30 Sep 2026, 1 Oct 2026; latest seen 12 Oct 2026 ('Safe Is Sexy in Medical Real Estate with Merrick Lee')",
+      "evidencia_necesidad": [
+        "Full episodes are posted to YouTube (episode notes say 'Watch this episode on YouTube'), but a search for his Shorts/short clips returned nothing (https://davedubeau.podbean.com/page/22/). Weak evidence: absence in search results only, the channel's Shorts tab was not opened.",
+        "No TikTok or Instagram Reels account found in any search (weak, absence-based).",
+        "Publishes near-daily 20-minute interviews: high volume of raw material for clips (https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776)."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Safe Is Sexy in Medical Real Estate with Merrick Lee",
+          "url": "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776",
+          "fecha": "2026-10-12"
+        },
+        {
+          "titulo": "Why Trust Still Wins When Your Investor Network Hits a Ceiling with Dave Dubeau",
+          "url": "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776",
+          "fecha": "2026-10-01"
+        },
+        {
+          "titulo": "Funding Small Town Commercial Projects with Jordan Blanchard",
+          "url": "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776",
+          "fecha": "2026-09-30"
+        }
+      ],
+      "prioridad": "A",
+      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
+      "fuentes": [
+        "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776",
+        "https://davedubeau.com/termsandconditions",
+        "https://davedubeau.com/home",
+        "https://resultsenterprises.com/start",
+        "https://davedubeau.podbean.com/page/22/"
+      ],
+      "notas": "Pages could not be opened; everything comes from search-result summaries. Episode dates come from the Apple Podcasts listing as summarized by search. Apple labels it 'Podcast' (not 'Video Podcast'); YouTube full episodes confirmed only via one episode note (Nov 2025). support@ is a generic support inbox (terms page also gives phone 530.564.0227 and Kamloops, BC address). Shorts/TikTok absence not verified on the platforms.",
+      "verificado": "2026-10-13",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "Clips from Property Profits (for Dave)",
+          "texto": "Hi Dave (or whoever reads this inbox, please pass it on),\n\nYou publish Property Profits almost daily, and episodes like \"Safe Is Sexy in Medical Real Estate with Merrick Lee\" go up on YouTube in full.\n\nI run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.\n\nI couldn't find clips of the show on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.\n\nIf not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": "Re: Clips from Property Profits (for Dave)",
+          "texto": "Hi Dave (or whoever reads this inbox,\n\nQuick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": "Re: Clips from Property Profits (for Dave)",
+          "texto": "Hi Dave (or whoever reads this inbox,\n\nHere's how I'd open a clip from \"Safe Is Sexy in Medical Real Estate with Merrick Lee\": open on Merrick Lee's single reason medical real estate is \"safe\". If you'd like to see it edited, just reply \"send it\" and you'll have it within 48 hours.\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": "Re: Clips from Property Profits (for Dave)",
+          "texto": "Hi Dave (or whoever reads this inbox,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "real-estate-investing-school-podcast",
+      "nombre": "Real Estate Investing School Podcast (Brody Fausett)",
+      "segmento": "podcaster",
+      "nicho": "real estate investing (rentals, short-term rentals, land, deals)",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": "https://www.youtube.com/channel/UCsEZ1DJWMXlGv0bYqBlWN-Q",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://realestateinvestingschool.com/",
+        "podcast": "https://podcasts.apple.com/us/podcast/real-estate-investing-school-podcast/id1636610988",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "support@realestateinvestingschool.com",
+      "contacto_fuente": "https://go.realestateinvestingschool.com/privacy",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "About 300 episodes, Years Active 2022-2026 (Apple listing per search); audience size not seen",
+      "frecuencia": "Updated weekly (Apple); latest entries dated Sep 14, Sep 7, Aug 31 (year not shown in snippet; Apple shows Years Active 2022-2026)",
+      "evidencia_necesidad": [
+        "Apple labels it a 'Video Podcast' and the YouTube channel posts full long episodes (e.g. '5 Years of Real Estate Investing Lessons in 37 Minutes' https://www.youtube.com/watch?v=9EXi-EX5LJ4).",
+        "A search for Brody Fausett / Real Estate Investing School on TikTok, Instagram or Shorts found no accounts (weak, absence-based; platforms not checked directly)."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Episode with Seth Williams on land flipping and self storage (exact title not seen)",
+          "url": "https://podcasts.apple.com/us/podcast/real-estate-investing-school-podcast/id1636610988",
+          "fecha": "Sep 14 (year not confirmed, probably 2026)"
+        },
+        {
+          "titulo": "Interview with Kathy Fettke on buying rentals in 2026 markets (exact title not seen)",
+          "url": "https://podcasts.apple.com/us/podcast/real-estate-investing-school-podcast/id1636610988",
+          "fecha": "Aug 31 or Sep 7 (year not confirmed)"
+        }
+      ],
+      "prioridad": "B",
+      "motivo_prioridad": "Own-domain email, weekly video podcast; recent episodes likely within 60 days but year not confirmed, and need evidence is only absence of short-form accounts in search.",
+      "fuentes": [
+        "https://podcasts.apple.com/us/podcast/real-estate-investing-school-podcast/id1636610988",
+        "https://realestateinvestingschool.com/",
+        "https://go.realestateinvestingschool.com/privacy",
+        "https://go.realestateinvestingschool.com/terms",
+        "https://www.youtube.com/channel/UCsEZ1DJWMXlGv0bYqBlWN-Q",
+        "https://abetterlife.transistor.fm/35"
+      ],
+      "notas": "Pages could not be opened; only search results. Host info conflicts: one directory (Metacast/Podbean summaries) named Joe Jensen as host; YouTube results name Brody Fausett as host and Brody is the founder (A Better Life episode). Hosts may rotate (show notes list Brody, Joe and Wendell). The email is the company's general support inbox from its privacy/terms pages, not a podcast-specific address. Recent episode exact titles and year not verified.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "the-product-boss-podcast",
+      "nombre": "The Product Boss Podcast (Jacqueline Snyder)",
+      "segmento": "podcaster",
+      "nicho": "business for physical-product entrepreneurs / e-commerce",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": "https://www.youtube.com/playlist?list=PLIfk7y6hBlb3SqRXVVVndWe3WqGoyYxsb",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://www.theproductboss.com/",
+        "podcast": "https://www.theproductboss.com/theproductbosspodcast",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "team@theproductboss.com",
+      "contacto_fuente": "https://www.theproductboss.com/contactus",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "Site claims over 5 million downloads; 760+ episodes (episode763 URL seen)",
+      "frecuencia": "Twice a week per its site; latest dated episode seen 3 Sep 2026",
+      "evidencia_necesidad": [
+        "There is a 'The Product Boss Podcast' YouTube playlist, but searches found no Shorts, TikTok or Reels clips of the show (weak, absence-based) (https://www.youtube.com/playlist?list=PLIfk7y6hBlb3SqRXVVVndWe3WqGoyYxsb)."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Could Your Business Handle 3X the Sales? Here's What to Fix First with Saltbox CEO Katerina Cirilli",
+          "url": "https://www.theproductboss.com/theproductbosspodcast",
+          "fecha": "2026-09-03"
+        },
+        {
+          "titulo": "The 4-Step Q4 Planning Framework for Product Businesses",
+          "url": "https://www.theproductboss.com/thepodcast/episode763-gpmmb",
+          "fecha": "not shown (likely 2026)"
+        }
+      ],
+      "prioridad": "B",
+      "motivo_prioridad": "Own-domain email and an episode within 60 days, but it is not confirmed that current episodes are filmed as video (only an older YouTube playlist seen) and need evidence is weak.",
+      "fuentes": [
+        "https://www.theproductboss.com/contactus",
+        "https://www.theproductboss.com/theproductbosspodcast",
+        "https://www.theproductboss.com/",
+        "https://www.youtube.com/playlist?list=PLIfk7y6hBlb3SqRXVVVndWe3WqGoyYxsb",
+        "https://apple.co/2KI4xX8"
+      ],
+      "notas": "Pages could not be opened; only search results. The 3 Sep 2026 date came from the episode listing, but the same snippet carried a conflicting '277 days ago' tag. Older episode pages give hello@theproductboss.com instead; team@ is from the contact page. Video format of current episodes NOT verified: may be mainly audio. Has a team and paid programs, so may have in-house content help.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "real-investing-for-everyday-investors",
+      "nombre": "Real Investing For Everyday Investors (Tim Herriage)",
+      "segmento": "podcaster",
+      "nicho": "real estate investing / lending",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://timherriage.com/shows/real-investing-show/",
+        "podcast": "https://realinvesting.buzzsprout.com/",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "therriage@ternus.com",
+      "contacto_fuente": "https://timherriage.com/contact-tim/",
+      "contacto_nivel": "sin-verificar",
+      "tamano": null,
+      "frecuencia": "Show page says new episode every Wednesday (now a solo weekly briefing); no dated recent episode seen",
+      "evidencia_necesidad": [
+        "Buzzsprout pages tell listeners to follow on YouTube for video content, but no Shorts, TikTok or Reels for the show turned up in searches (weak, absence-based) (https://realinvesting.buzzsprout.com/273198/follow).",
+        "Format changed from a co-hosted conversation show to a solo weekly briefing (https://timherriage.com/shows/real-investing-show/): a relaunch moment when clips could help, but this is inference."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "The Future of Lending: Simplifying Sales, Scaling Remote Teams | Real Investing w/ Bryan Partridge",
+          "url": "https://realinvesting.buzzsprout.com/273198/episodes/17059092-the-future-of-lending-simplifying-sales-scaling-remote-teams-real-investing-w-bryan-partridge",
+          "fecha": "not shown (Buzzsprout ID suggests 2025)"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Own-domain contact exists, but no episode dated within the last 60 days was found and the YouTube URL was not seen.",
+      "fuentes": [
+        "https://timherriage.com/contact-tim/",
+        "https://timherriage.com/shows/real-investing-show/",
+        "https://realinvesting.buzzsprout.com/273198/follow",
+        "https://podnews.net/podcast/i5yfx"
+      ],
+      "notas": "Pages could not be opened; only search results. The email domain (ternus.com) is his company Ternus, shown on his own site's contact page. Recent episode dates and the YouTube channel URL are unverified. A search summary also mentioned a 'How to Beat the Bank' briefing at reireport.com, not confirmed. | Contacto completo: therriage@ternus.com (contact form at https://timherriage.com/contact-tim/ is the preferred route)",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "rental-property-owner-real-estate-investor-podcast",
+      "nombre": "Rental Property Owner & Real Estate Investor Podcast (Brian Hamrick)",
+      "segmento": "podcaster",
+      "nicho": "real estate investing / landlords",
+      "idioma": "en",
+      "pais": "US",
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://www.higinvestor.com/",
+        "podcast": "https://podcasts.apple.com/us/podcast/rental-property-owner-real-estate-investor-podcast/id1083618984",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "brian@higinvestor.com",
+      "contacto_fuente": "https://www.higinvestor.com/single-post/2016/11/21/MICHIGAN%E2%80%99S-SECOND-LARGEST-CITY-KEEPS-PACE-WITH-MULTIFAMILY-HOUSING-DEMAND",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "Over 2.3 million downloads; 573-617 episodes (Apple listings per search)",
+      "frecuencia": "Weekly (every Monday per description); latest dated episode seen 26 Jan 2026",
+      "evidencia_necesidad": [
+        "Apple labels it a 'Video Podcast', yet searches found no YouTube channel for the show, let alone Shorts/TikTok (https://rporeipodcast.libsyn.com/). Moderate-weak: suggests video is not being repurposed, but based on absence in search."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Building Affordable Homes in Hawaii's Lava Zones: Fuzzy Jardine on Respecting the Land and Creating Generational Wealth",
+          "url": "https://rporeipodcast.libsyn.com/building-affordable-homes-in-hawaiis-lava-zones-fuzzy-jardine-on-respecting-the-land-and-creating-generational-wealth",
+          "fecha": "2026-01-26"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Own-domain email (from a 2021-era page) and a video podcast with no visible short-form, but no episode within 60 days was confirmed.",
+      "fuentes": [
+        "https://podcasts.apple.com/us/podcast/rental-property-owner-real-estate-investor-podcast/id1083618984",
+        "https://www.higinvestor.com/",
+        "https://www.higinvestor.com/single-post/2016/11/21/MICHIGAN%E2%80%99S-SECOND-LARGEST-CITY-KEEPS-PACE-WITH-MULTIFAMILY-HOUSING-DEMAND",
+        "https://rporeipodcast.libsyn.com/"
+      ],
+      "notas": "Pages could not be opened; only search results. The email is on an old blog page (footer dated 2021), may be outdated. The show is produced by the Rental Property Owners Association (RPOA) of Michigan, which may control production decisions. Episode counts conflict between Apple storefronts. Newer episodes after Jan 2026 likely exist but were not seen.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "passive-income-pilots",
+      "nombre": "Passive Income Pilots (Tait Duryea & Ryan Gibson)",
+      "segmento": "podcaster",
+      "nicho": "personal finance / passive investing for airline pilots",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://passiveincomepilots.com/podcast/passive-income-pilots",
+        "podcast": "https://podcasts.apple.com/us/podcast/id1676373775",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "ask@passiveincomepilots.com",
+      "contacto_fuente": "https://passiveincomepilots.com/episode/149-side-hustles-every-pilot-should-consider",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "About 159-163 episodes (directories); ran its first live conference 8-9 Oct 2026 in Las Vegas",
+      "frecuencia": "Roughly weekly; latest dated episode seen 28 Jul 2026 (#163)",
+      "evidencia_necesidad": [
+        "Episode pages link Instagram (@PassiveIncomePilots), X and LinkedIn, but no YouTube channel or Shorts turned up in searches (https://passiveincomepilots.com/episode/149-side-hustles-every-pilot-should-consider). Weak, absence-based."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "#163 - From Pilot Spouse to Café Owner with Brenda Gage",
+          "url": "https://podcasts.apple.com/us/podcast/id1676373775",
+          "fecha": "2026-07-28"
+        },
+        {
+          "titulo": "#159 - How Deferred Sales Trusts Work with Trevor Kuresa",
+          "url": "https://podcasts.apple.com/us/podcast/id1676373775",
+          "fecha": "2026-06-30"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Own-domain email, but the latest episode found is older than 60 days and the show is not confirmed as a video podcast.",
+      "fuentes": [
+        "https://passiveincomepilots.com/episode/149-side-hustles-every-pilot-should-consider",
+        "https://passiveincomepilots.com/podcast/passive-income-pilots",
+        "https://podcasts.apple.com/us/podcast/id1676373775",
+        "https://www.insideselfstorage.com/people/cofounder-self-storage-investment-group-spartan-co-hosts-wealth-growing-podcast-airline"
+      ],
+      "notas": "Pages could not be opened; only search results. Video format NOT verified (no YouTube found). Episodes after #163 likely exist but were not seen. Co-host Ryan Gibson is cofounder of Spartan Investment Group (self-storage), which may have marketing staff.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "your-career-podcast",
+      "nombre": "Your Career Podcast (Jane Jackson)",
+      "segmento": "podcaster",
+      "nicho": "career change / career coaching",
+      "idioma": "en",
+      "pais": "Australia",
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://janejacksoncoach.com/",
+        "podcast": "https://janejacksoncoach.com/podcast/",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "jane@janejacksoncoach.com",
+      "contacto_fuente": "https://janejacksoncoach.com/podcast/",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "About 284-285 episodes",
+      "frecuencia": "Irregular; latest dated listing seen 10 Jul 2026 (Podcast Addict)",
+      "evidencia_necesidad": [
+        "A FeedSpot directory listing shows YouTube for the show, but no Shorts/TikTok/Reels clips were found in searches (https://podcast.feedspot.com/career_coach_podcasts/). Weak, absence-based."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Give to Gain for Career and Business Growth",
+          "url": "https://janejackson.buzzsprout.com/43475/episodes/18928317-give-to-gain-for-career-and-business-growth",
+          "fecha": "not shown (2026, Buzzsprout ID)"
+        },
+        {
+          "titulo": "5 Ways to Control End of Year Stress at Work and Enter 2026 with Energy and Positivity",
+          "url": "https://yourcareerpodcastwithjanejackson.buzzsprout.com/43475/episodes/18361414-5-ways-to-control-end-of-year-stress-at-work-and-enter-2026-with-energy-and-positivity",
+          "fecha": "late 2025 (inferred from title)"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Clear own-domain email, but no episode within 60 days confirmed and video format unverified.",
+      "fuentes": [
+        "https://janejacksoncoach.com/podcast/",
+        "https://janejacksoncoach.com/",
+        "https://podcastaddict.com/podcast/2157095",
+        "https://podcast.feedspot.com/career_coach_podcasts/"
+      ],
+      "notas": "Pages could not be opened; only search results. Based in Sydney. Not confirmed that the podcast is filmed as video; YouTube link seen only through a third-party directory. Episode dates not on own pages.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "the-retipster-podcast",
+      "nombre": "The REtipster Podcast (Seth Williams)",
+      "segmento": "podcaster",
+      "nicho": "land investing / real estate",
+      "idioma": "en",
+      "pais": null,
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://retipster.com/",
+        "podcast": "https://podcasts.apple.com/podcast/id1330014697",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://retipster.com/contact/",
+      "contacto_fuente": "https://retipster.com/contact/",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "273+ episodes",
+      "frecuencia": "Regular; episode 273 is the latest number seen, date not confirmed (an iHeart listing showed 16 Jun 2026 near it)",
+      "evidencia_necesidad": [
+        "No evidence found either way about Shorts/TikTok; not verified. Very weak."
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "273: Turning Raw Land Into Housing That Sells Fast w/ Robert Howell",
+          "url": "https://retipster.buzzsprout.com/440197/episodes/19120642-turning-raw-land-into-housing-that-sells-fast-w-robert-howell",
+          "fecha": "not confirmed (mid-2026)"
+        },
+        {
+          "titulo": "Why Your Land Deals Aren't Closing w/ Ajay Sharma",
+          "url": "https://retipster.buzzsprout.com/440197/episodes/19103349-why-your-land-deals-aren-t-closing-w-ajay-sharma",
+          "fecha": "not confirmed (mid-2026)"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Own-domain contact form, but no dated episode in the last 60 days, no need evidence, and likely a mid-size brand with its own team.",
+      "fuentes": [
+        "https://retipster.com/contact/",
+        "https://retipster.com/",
+        "https://retipster.buzzsprout.com/440197/episodes/19120642-turning-raw-land-into-housing-that-sells-fast-w-robert-howell",
+        "https://www.iheart.com/podcast/46865418/"
+      ],
+      "notas": "Pages could not be opened; only search results. Contact is a form (contact page tells guest contributors to use it); the only email seen is a support address on retipster.club for products, not used. Video format and YouTube channel URL not verified. Weakest of the list; included as filler.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "greg-helbeck",
+      "nombre": "Greg Helbeck (Velocity House Buyers – The Real Estate Investing Fast Track)",
+      "segmento": "profesional",
+      "nicho": "Real estate investor / wholesaler and sales trainer (Hudson Valley NY and Dallas TX); investing education show",
+      "idioma": "en",
+      "pais": "United States (New York)",
+      "perfiles": {
+        "youtube": "https://www.youtube.com/@realestateinvestingfasttrack",
+        "instagram": "https://www.instagram.com/grego_37/",
+        "tiktok": null,
+        "web": "https://www.velocityhousebuyers.com/",
+        "podcast": "https://podcasts.apple.com/us/podcast/the-real-estate-investing-fast-track/id1459746507",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "greg@velocityhousebuyers.com",
+      "contacto_fuente": "https://www.velocityhousebuyers.com/contact-us/",
+      "contacto_nivel": "propio",
+      "tamano": "Podcast with 330 to 574 episodes, depending on the platform; audience size unknown",
+      "frecuencia": "Roughly weekly. Latest seen: 2026-09-11 (Podcast Addict); also 2026-09-03, 2026-08-25 and 2026-08-20",
+      "evidencia_necesidad": [
+        "A search for Greg Helbeck on TikTok, YouTube Shorts or Reels found no short-form accounts or videos. WEAK evidence: absence is not confirmed by opening the platforms. He has an Instagram handle (@grego_37) from podcast listings, with unknown activity (https://resimpli.com/?p=12218)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Real Estate Strategies Ranked in a PERFECT MARKET",
+          "url": "https://podcastaddict.com/podcast/the-real-estate-investing-fast-track/4524533",
+          "fecha": "2026-09-11"
+        },
+        {
+          "titulo": "$18k Profit On A Deal No One Wanted",
+          "url": "https://podcastaddict.com/podcast/the-real-estate-investing-fast-track/4524533",
+          "fecha": "2026-08-25"
+        }
+      ],
+      "prioridad": "A",
+      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
+      "fuentes": [
+        "https://podcastaddict.com/podcast/the-real-estate-investing-fast-track/4524533",
+        "https://podcasts.apple.com/us/podcast/the-real-estate-investing-fast-track/id1459746507",
+        "https://www.youtube.com/@realestateinvestingfasttrack",
+        "https://www.velocityhousebuyers.com/contact-us/",
+        "https://reevyew.com/helbeck/",
+        "https://www.iheart.com/podcast/256-the-real-estate-investing-43043688/"
+      ],
+      "notas": "Pages could not be opened; only search results were seen. Episode dates come from Podcast Addict snippets. The search summary said the 2026-09-03 episode ranks investing strategies, but its exact title was not seen. The Instagram URL was built from the handle @grego_37 shown in podcast listings and was not opened. Coaching is by application, according to a third-party review site.",
+      "verificado": "2026-10-13",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "A clip from \"$18k Profit On A Deal No One Wanted\"",
+          "texto": "Hi Greg,\n\nI came across The Real Estate Investing Fast Track. \"$18k Profit On A Deal No One Wanted\" is a ready-made hook: the number and the twist are already in the title.\n\nI run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.\n\nI couldn't find clips of the show on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.\n\nIf not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": "Re: A clip from \"$18k Profit On A Deal No One Wanted\"",
+          "texto": "Hi Greg,\n\nQuick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": "Re: A clip from \"$18k Profit On A Deal No One Wanted\"",
+          "texto": "Hi Greg,\n\nHere's how I'd open a clip from \"$18k Profit On A Deal No One Wanted\": open on the $18k number and why nobody wanted the deal. If you'd like to see it edited, just reply \"send it\" and you'll have it within 48 hours.\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": "Re: A clip from \"$18k Profit On A Deal No One Wanted\"",
+          "texto": "Hi Greg,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "jeremy-keil-cfp-cfa",
+      "nombre": "Jeremy Keil, CFP, CFA (Keil Financial Partners – Retire Today / Mr. Retirement)",
+      "segmento": "profesional",
+      "nicho": "Retirement financial planner (Milwaukee RIA); weekly retirement-planning video podcast",
+      "idioma": "en",
+      "pais": "United States (Milwaukee, Wisconsin)",
+      "perfiles": {
+        "youtube": "https://www.youtube.com/@MrRetirement",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://keilfp.com/",
+        "podcast": "https://podcasts.apple.com/us/podcast/retire-today/id1488769337",
+        "linkedin": "https://www.linkedin.com/in/mrretirement/",
+        "x": null
+      },
+      "contacto_publico": "jeremy@keilfp.com",
+      "contacto_fuente": "https://keilfp.com/blogpodcast/",
+      "contacto_nivel": "propio",
+      "tamano": "300+ podcast episodes (https://keilfp.com/blogpodcast/episode-300/); YouTube subscriber count unknown",
+      "frecuencia": "Weekly (new episodes every Wednesday, according to Apple). Latest seen: 2026-10-06",
+      "evidencia_necesidad": [
+        "A search for 'Mr. Retirement' with TikTok, Instagram or #shorts found no short-form accounts or Shorts. WEAK evidence: not confirmed by opening the YouTube channel, which may already contain Shorts (https://podcasts.apple.com/us/podcast/id1488769337)",
+        "Apple lists Retire Today as a 'Video Podcast', so there is long-form video to repurpose (https://podcasts.apple.com/us/podcast/retire-today/id1488769337)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Building a Retirement You Can Love When You're Single (True Retirement Story with Arlene C. Nelson)",
+          "url": "https://keilfp.com/blogpodcast/",
+          "fecha": "2026-10-06"
+        },
+        {
+          "titulo": "Do You Really Need a Financial Advisor in Retirement?",
+          "url": "https://podcasts.apple.com/us/podcast/retire-today/id1488769337",
+          "fecha": "2026-09-15"
+        }
+      ],
+      "prioridad": "A",
+      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
+      "fuentes": [
+        "https://keilfp.com/blogpodcast/",
+        "https://keilfp.com/blogpodcast/best-retirement-books/",
+        "https://keilfp.com/",
+        "https://podcasts.apple.com/us/podcast/retire-today/id1488769337",
+        "https://www.youtube.com/@MrRetirement",
+        "https://www.youtube.com/playlist?list=PLFyppQjlzmqu4xEXdFwzXm5qI_urvhTG1",
+        "https://www.linkedin.com/in/mrretirement/"
+      ],
+      "notas": "Pages could not be opened; only search results were seen. The exact wording of the 2026-10-06 title comes from a search snippet and may differ slightly. Whether the YouTube channel has Shorts was not verified. He is an established author (book, Kiplinger contributor), so he may already work with a marketing provider. | Fuente del contacto: https://keilfp.com/blogpodcast/ (search result for keilfp.com podcast pages showed jeremy@keilfp.com; the site also offers a complimentary intro call)",
+      "verificado": "2026-10-13",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "A clip from your Retire Today episode",
+          "texto": "Hi Jeremy,\n\nI came across Retire Today. The true retirement story with Arlene C. Nelson about building a retirement you love when you're single is exactly the kind of moment people save and send to a friend.\n\nI run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.\n\nI couldn't find clips of the show on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.\n\nIf not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": "Re: A clip from your Retire Today episode",
+          "texto": "Hi Jeremy,\n\nQuick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": "Re: A clip from your Retire Today episode",
+          "texto": "Hi Jeremy,\n\nHere's how I'd open a clip from \"Building a Retirement You Can Love When You're Single\": open on Arlene's single most surprising decision, then your one-line takeaway. If you'd like to see it edited, just reply \"send it\" and you'll have it within 48 hours.\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": "Re: A clip from your Retire Today episode",
+          "texto": "Hi Jeremy,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "dave-alison-cfp-greg-dillon",
+      "nombre": "Dave Alison, CFP & Greg Dillon (Alison Wealth / Prosperity Capital Advisors – Holistic Wealth and Health Podcast)",
+      "segmento": "profesional",
+      "nicho": "Wealth managers / CFPs; relaunched holistic-wealth video podcast (new hosts since Sept 2026)",
+      "idioma": "en",
+      "pais": "United States (Charleston SC / Palo Alto CA)",
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://www.alisonwealth.com/",
+        "podcast": "https://podcasts.apple.com/ca/podcast/holistic-wealth-and-health-podcast/id1516518362",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "Dave.Alison@AlisonWealth.com",
+      "contacto_fuente": "https://www.alisonwealth.com/contact",
+      "contacto_nivel": "propio",
+      "tamano": null,
+      "frecuencia": "Every other week, according to Spotify (Apple says monthly). Relaunched in September 2026: launch episode 2026-09-23, latest 2026-10-07",
+      "evidencia_necesidad": [
+        "The show was just relaunched as a 'Video Podcast' with new hosts (new episodes from September 2026), so a clip workflow probably is not set up yet. Moderate inference, not confirmed (https://www.jlsmithgroup.com/a-new-chapter-for-holistic-wealth-health)",
+        "No YouTube, TikTok or Instagram accounts for the relaunched show appeared in the search results. WEAK evidence: not searched specifically (https://podcasts.apple.com/ca/podcast/holistic-wealth-and-health-podcast/id1516518362)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Retirement Planning for a 100-Year Life: What Longevity Changes",
+          "url": "https://podcasts.apple.com/ca/podcast/holistic-wealth-and-health-podcast/id1516518362",
+          "fecha": "2026-10-07"
+        }
+      ],
+      "prioridad": "A",
+      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
+      "fuentes": [
+        "https://podcasts.apple.com/ca/podcast/holistic-wealth-and-health-podcast/id1516518362",
+        "https://open.spotify.com/show/0dx7WW3dpiXb5vQdSzUbAJ",
+        "https://www.jlsmithgroup.com/a-new-chapter-for-holistic-wealth-health",
+        "https://www.alisonwealth.com/contact",
+        "https://www.alisonwealth.com/dave",
+        "https://www.alisonwealth.com/podcast"
+      ],
+      "notas": "Pages could not be opened; only search results were seen. The 2026-10-07 date comes from one search summary of the Apple page; another summary showed only '3–5 days ago'. Greg Dillon's affiliation conflicts between sources (Prosperity Capital Advisors vs OneTeam Financial). The show was previously hosted by Jason L Smith (JL Smith Group), so check who owns the production before pitching. | Contacto completo: Dave.Alison@AlisonWealth.com (also info@alisonwealth.com; intro-call booking at https://www.alisonwealth.com/dave)",
+      "verificado": "2026-10-13",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "Clips for the relaunched Holistic Wealth and Health Podcast",
+          "texto": "Hi Dave,\n\nI saw that the Holistic Wealth and Health Podcast relaunched as a video podcast in September. \"Retirement Planning for a 100-Year Life\" is a strong topic to start building short clips from.\n\nI run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.\n\nWith a relaunch, setting up a weekly clip routine from day one is much easier than adding it later.\n\nIf not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": "Re: Clips for the relaunched Holistic Wealth and Health Podcast",
+          "texto": "Hi Dave,\n\nQuick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": "Re: Clips for the relaunched Holistic Wealth and Health Podcast",
+          "texto": "Hi Dave,\n\nHere's how I'd open a clip from \"Retirement Planning for a 100-Year Life\": open on what a 100-year life changes about retirement math, in one sentence. If you'd like to see it edited, just reply \"send it\" and you'll have it within 48 hours.\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": "Re: Clips for the relaunched Holistic Wealth and Health Podcast",
+          "texto": "Hi Dave,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "joanne-s-williams-lcsw",
+      "nombre": "Joanne S. Williams, LCSW (Anxiety Simplified – Beyond Traditional Psychology)",
+      "segmento": "educativo",
+      "nicho": "Licensed clinical social worker / anxiety therapist; weekly mental-health education video podcast",
+      "idioma": "en",
+      "pais": "United States",
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://anxietysimplified.net/",
+        "podcast": "https://podcasts.apple.com/us/podcast/anxiety-simplified-beyond-traditional-psychology/id1520712021",
+        "linkedin": "https://www.linkedin.com/in/joanne-s-williams-lcsw-644836114/",
+        "x": null
+      },
+      "contacto_publico": "esa@esaevaluation.com / 760-485-6784",
+      "contacto_fuente": "https://anxietysimplified.net/",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "323 episodes since 2020",
+      "frecuencia": "Weekly. Latest seen: Episode 323, 2026-09-27; earlier episodes on 2026-09-20 and 2026-09-13 (Libsyn)",
+      "evidencia_necesidad": [
+        "Apple lists the show as a 'Video Podcast', so there is long-form video to cut into clips (https://podcasts.apple.com/us/podcast/anxiety-simplified-beyond-traditional-psychology/id1520712021)",
+        "No TikTok, Reels or Shorts presence appeared in the searches about her. WEAK evidence: not searched specifically on each platform (https://anxietysimplified.libsyn.com/)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Episode # 323- Why am I So Angry! What Your Anger Is Trying to Tell You",
+          "url": "https://anxietysimplified.libsyn.com/",
+          "fecha": "2026-09-27"
+        },
+        {
+          "titulo": "Episode 321 – Quiet Quitting on Your Life",
+          "url": "https://anxietysimplified.libsyn.com/",
+          "fecha": "2026-09-13"
+        }
+      ],
+      "prioridad": "B",
+      "motivo_prioridad": "A solo practitioner with a weekly video podcast (latest 2026-09-27) and contact details on her own site. Need evidence is weak.",
+      "fuentes": [
+        "https://anxietysimplified.libsyn.com/",
+        "https://podcasts.apple.com/us/podcast/anxiety-simplified-beyond-traditional-psychology/id1520712021",
+        "https://anxietysimplified.net/",
+        "https://www.linkedin.com/in/joanne-s-williams-lcsw-644836114/"
+      ],
+      "notas": "Pages could not be opened; only search results were seen. The contact email on her site belongs to her emotional-support-animal evaluation business (esaevaluation.com), not a podcast-specific address. The site shows both 760-485-6784 and 760-485-6785. Dates come only from the Libsyn page. Her state was not confirmed.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "bill-caskey-bryan-neale",
+      "nombre": "Bill Caskey & Bryan Neale (The Advanced Selling Podcast)",
+      "segmento": "profesional",
+      "nicho": "B2B sales trainers / consultants; weekly sales-education video podcast (20 years, 900+ episodes)",
+      "idioma": "en",
+      "pais": "United States (Indianapolis, Indiana)",
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://advancedsellingpodcast.com/",
+        "podcast": "https://podcasts.apple.com/us/podcast/the-advanced-selling-podcast/id148759439",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://advancedsellingpodcast.com/contact/",
+      "contacto_fuente": "https://advancedsellingpodcast.com/contact/",
+      "contacto_nivel": "propio",
+      "tamano": "900+ episodes since 2006",
+      "frecuencia": "Weekly. Latest seen: Episode 901, 2026-10-05; Ep 900 2026-09-28; Ep 899 2026-09-21",
+      "evidencia_necesidad": [
+        "A search for the show on YouTube Shorts, TikTok or Instagram found no official accounts. The TikTok and Instagram links on Player FM belong to another company (GHA Marketing). MEDIUM-WEAK evidence (https://he.player.fm/1BgCrwp)",
+        "Apple lists it as a 'Video Podcast' (https://podcasts.apple.com/us/podcast/the-advanced-selling-podcast/id148759439)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "Are Your Sales Skills Atrophying? (Ep 900)",
+          "url": "https://www.buzzsprout.com/2517440",
+          "fecha": "2026-09-28"
+        },
+        {
+          "titulo": "20 Years of Selling: What's Changed (and What Hasn't) (Ep 899)",
+          "url": "https://www.buzzsprout.com/2517440",
+          "fecha": "2026-09-21"
+        }
+      ],
+      "prioridad": "A",
+      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
+      "fuentes": [
+        "https://www.buzzsprout.com/2517440",
+        "https://rss.buzzsprout.com/2517440.rss",
+        "https://podcasts.apple.com/us/podcast/the-advanced-selling-podcast/id148759439",
+        "https://advancedsellingpodcast.com/contact/",
+        "https://advancedsellingpodcast.com/",
+        "https://he.player.fm/1BgCrwp"
+      ],
+      "notas": "Pages could not be opened; only search results were seen. The business email on the contact page appeared masked in results. listener@advancedsellingpodcast.com is for listener questions. Ep 898's title differs between Buzzsprout and the RSS feed. The exact title of Ep 901 (2026-10-05) was not seen; the search said it is Part 2 of 'Are Your Sales Skills Atrophying?'. | Contacto completo: https://advancedsellingpodcast.com/contact/ (listener@advancedsellingpodcast.com for listener questions) | listener@advancedsellingpodcast.com es para preguntas de oyentes; el contacto comercial es el formulario.",
+      "verificado": "2026-10-13",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-13",
+          "canal": "formulario",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "Short clips from The Advanced Selling Podcast",
+          "texto": "Hi Bill and Bryan,\n\nNine hundred episodes is a huge library. Ep 900, \"Are Your Sales Skills Atrophying?\", is a question every salesperson would stop for in a feed.\n\nI run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.\n\nI couldn't find clips of the show on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.\n\nIf not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "formulario",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": "Re: Short clips from The Advanced Selling Podcast",
+          "texto": "Hi Bill and Bryan,\n\nQuick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "formulario",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": "Re: Short clips from The Advanced Selling Podcast",
+          "texto": "Hi Bill and Bryan,\n\nHere's how I'd open a clip from \"Are Your Sales Skills Atrophying?\": open on the one sign that your sales skills are slipping. If you'd like to see it edited, just reply \"send it\" and you'll have it within 48 hours.\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "formulario",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": "Re: Short clips from The Advanced Selling Podcast",
+          "texto": "Hi Bill and Bryan,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "mitch-van-erina-roxx",
+      "nombre": "Mitch Van & Erina Roxx (UpScale Business Coaching – UpScale podcast)",
+      "segmento": "profesional",
+      "nicho": "Business coaching for trade and construction business owners; weekly video podcast",
+      "idioma": "en",
+      "pais": "Australia",
+      "perfiles": {
+        "youtube": null,
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://www.upscalecoaching.com.au/",
+        "podcast": "https://creators.spotify.com/pod/profile/up-scale/",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "https://www.upscalecoaching.com.au/contact-us/",
+      "contacto_fuente": "https://www.upscalecoaching.com.au/contact-us/",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "Claims 1,000+ tradies coached (self-reported); 368+ podcast episodes",
+      "frecuencia": "Weekly. Latest dated: Ep 367, 2026-09-27 (Ep 368 probably early October; Podchaser shows latest 2026-10-04)",
+      "evidencia_necesidad": [
+        "Low need: podcast listings tell listeners to follow them on Instagram for daily content, so they probably already produce short-form content. This argues AGAINST need (https://www.podengine.ai/podcasts/upscale-build-your-profitable-trade-and-construction-business)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "2 Days in Thailand with Taki Moore (Ep 367)",
+          "url": "https://creators.spotify.com/pod/profile/up-scale/",
+          "fecha": "2026-09-27"
+        },
+        {
+          "titulo": "Tradie Dad Leigh Ryan on Why Your Apprentices Are an Investment, Not Cheap Labour (Ep 367)",
+          "url": "https://creators.spotify.com/pod/profile/up-scale/",
+          "fecha": "2026-09-23"
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Contact page on their own domain and recent weekly content. However, they already post daily on Instagram, and their size suggests an in-house team.",
+      "fuentes": [
+        "https://creators.spotify.com/pod/profile/up-scale/",
+        "https://www.podchaser.com/podcasts/upscale-build-your-profitable-5022920",
+        "https://www.upscalecoaching.com.au/contact-us/",
+        "https://www.upscalecoaching.com.au/",
+        "https://upscale-coaching.com/schedule-podcast",
+        "https://www.podengine.ai/podcasts/upscale-build-your-profitable-trade-and-construction-business"
+      ],
+      "notas": "Pages could not be opened; only search results were seen. Episode numbering is inconsistent (two episodes labelled 367). The co-host surname appears as both 'Roxx' and 'Roch'. lachy@up-scale.me appeared only on a third-party partner directory (NextMinute), so it is not used. Whether the episodes are filmed is based only on listings saying the show is 'on YouTube'. | Contacto completo: https://www.upscalecoaching.com.au/contact-us/ (phone 1300 168 556 / 0483 909 337; free 15-minute call)",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "elsa-w-smith",
+      "nombre": "Elsa W. Smith (Law Offices of Elsa W. Smith, LLC – Wills, Women & Wealth Podcast)",
+      "segmento": "profesional",
+      "nicho": "Estate planning and probate attorney (Maryland/DC); estate-planning education for women",
+      "idioma": "en",
+      "pais": "United States (Annapolis, Maryland)",
+      "perfiles": {
+        "youtube": "https://www.youtube.com/@elsawsmithlaw",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://www.elsawsmithlaw.com/",
+        "podcast": "https://podcasts.apple.com/us/podcast/wills-women-wealth-podcast-with-attorney-elsa-w-smith/id1664612752",
+        "linkedin": "https://www.linkedin.com/in/elsawsmithlaw/",
+        "x": null
+      },
+      "contacto_publico": "info@elsawsmithlaw.com",
+      "contacto_fuente": "https://www.elsawsmithlaw.com/book-a-free-15-min-call/",
+      "contacto_nivel": "sin-verificar",
+      "tamano": "90 podcast episodes since 2023",
+      "frecuencia": "Regular podcast (Episode 90 is the latest seen). The exact 2026 date was NOT confirmed; Apple snippets showed only '2d ago' or '19 days ago' at an unknown crawl date",
+      "evidencia_necesidad": [
+        "Episode 90's notes say 'portions of this episode were originally recorded as educational videos', so she films long-form educational video (https://podcasts.apple.com/us/podcast/wills-women-wealth-podcast-with-attorney-elsa-w-smith/id1664612752)",
+        "No TikTok presence appeared. The Instagram link on her site exists, but its activity is unknown. WEAK evidence (https://www.elsawsmithlaw.com/meet-elsa-w-smith/)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "The Three Assumptions Keeping Women From Estate Planning (Episode 90)",
+          "url": "https://podcasts.apple.com/us/podcast/wills-women-wealth-podcast-with-attorney-elsa-w-smith/id1664612752",
+          "fecha": null
+        }
+      ],
+      "prioridad": "C",
+      "motivo_prioridad": "Email on her own domain and an evident video practice, but the date of the latest content is not confirmed within 60 days, so this is not ready to contact yet.",
+      "fuentes": [
+        "https://podcasts.apple.com/us/podcast/wills-women-wealth-podcast-with-attorney-elsa-w-smith/id1664612752",
+        "https://www.elsawsmithlaw.com/resources/wills-women-wealth-podcast/",
+        "https://www.elsawsmithlaw.com/meet-elsa-w-smith/",
+        "https://www.elsawsmithlaw.com/book-a-free-15-min-call/",
+        "https://www.elsawsmithlaw.com/2026"
+      ],
+      "notas": "Pages could not be opened; only search results were seen. The 60-day recency requirement is NOT met with certainty: no exact date for Episode 90 was found. Confirm on Apple or YouTube before contacting. The weekly 'Women Winning Wednesdays' show was found only in older listings.",
+      "verificado": "2026-10-13",
+      "estado": "nuevo",
+      "mensajes": [],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
+    },
+    {
+      "id": "bill-gross",
+      "nombre": "Bill Gross (The LA Probate Expert – Probate Weekly)",
+      "segmento": "profesional",
+      "nicho": "Probate and trust real estate broker (eXp Realty, Beverly Hills); educational show for attorneys, executors and agents",
+      "idioma": "en",
+      "pais": "United States (Los Angeles, California)",
+      "perfiles": {
+        "youtube": "https://www.youtube.com/playlist?list=PLbCTvmi1msxrLKxLHDkxgdqhchYieNBgX",
+        "instagram": null,
+        "tiktok": null,
+        "web": "https://www.thelaprobateexpert.com/",
+        "podcast": "https://podcasts.apple.com/us/podcast/probate-weekly/id1575381330",
+        "linkedin": null,
+        "x": null
+      },
+      "contacto_publico": "bill@thelaprobateexpert.com",
+      "contacto_fuente": "https://www.thelaprobateexpert.com/",
+      "contacto_nivel": "propio",
+      "tamano": "305+ episodes, according to the show page; audience size unknown",
+      "frecuencia": "Weekly show (Thursday live call), with several episodes per batch. Latest seen: 2026-10-06 (Spotify for Creators / Rephonic)",
+      "evidencia_necesidad": [
+        "A search for Bill Gross on TikTok, Instagram Reels or Shorts found no accounts. Only the podcast and YouTube channel @BillGrossProbate appeared. MEDIUM-WEAK evidence: absence is not confirmed by opening the platforms (https://estateprofessionalsmastermind.buzzsprout.com/1763298/15429506)",
+        "Rephonic tags one 3-minute YouTube video from the 2026-10-06 batch, so he already posts some short pieces. Need is probably for vertical clips with captions rather than starting from zero (https://rephonic.com/podcasts/probate-weekly)"
+      ],
+      "contenido_reciente": [
+        {
+          "titulo": "How Real Estate Pros Can Rank on AI Models (with David Colgan)",
+          "url": "https://creators.spotify.com/pod/profile/probateweekly/",
+          "fecha": "2026-10-06"
+        },
+        {
+          "titulo": "Why Half of LA Probate Leads Can't Sell (with Travis Waters)",
+          "url": "https://rephonic.com/podcasts/probate-weekly",
+          "fecha": "2026-10-06"
+        }
+      ],
+      "prioridad": "A",
+      "motivo_prioridad": "Top 10 (13-10): contacto en su propio dominio, episodio reciente y vídeo; necesidad de clips inferida de búsquedas",
+      "fuentes": [
+        "https://creators.spotify.com/pod/profile/probateweekly/",
+        "https://rephonic.com/podcasts/probate-weekly",
+        "https://podcasts.apple.com/us/podcast/probate-weekly/id1575381330",
+        "https://www.thelaprobateexpert.com/",
+        "https://www.thelaprobateexpert.com/consult",
+        "https://www.thelaprobateexpert.com/podcasts/probate-weekly",
+        "https://www.youtube.com/playlist?list=PLbCTvmi1msxrLKxLHDkxgdqhchYieNBgX",
+        "https://probatemastery.com/probate-leads-and-transactions-real-estate-coaching/"
+      ],
+      "notas": "Pages could not be opened; only search results were seen. The exact episode titles come from aggregator snippets (Rephonic, Spotify for Creators). The YouTube handle @BillGrossProbate came from a podcast listing and was not opened. Whether each episode has a video version is not verified. | Fuente del contacto: https://www.thelaprobateexpert.com/ (search results for the site, including https://www.thelaprobateexpert.com/consult, showed bill@thelaprobateexpert.com and (310) 210-0008)",
+      "verificado": "2026-10-13",
+      "estado": "mensaje-listo",
+      "mensajes": [
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "primer-contacto",
+          "asunto": "Vertical clips from Probate Weekly",
+          "texto": "Hi Bill,\n\nI came across Probate Weekly. \"Why Half of LA Probate Leads Can't Sell\" is the kind of claim agents and investors stop scrolling for.\n\nI run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.\n\nI saw you already post some shorter videos on YouTube. Vertical cuts with captions are what Reels and TikTok reward, and I couldn't find you there; if I missed it, ignore this.\n\nIf not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-1",
+          "asunto": "Re: Vertical clips from Probate Weekly",
+          "texto": "Hi Bill,\n\nQuick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-2",
+          "asunto": "Re: Vertical clips from Probate Weekly",
+          "texto": "Hi Bill,\n\nHere's how I'd open a clip from \"Why Half of LA Probate Leads Can't Sell\": open on \"Half of LA probate leads can't sell\" and the first reason. If you'd like to see it edited, just reply \"send it\" and you'll have it within 48 hours.\n\n[Your name]\nHook House",
+          "aprobado": false
+        },
+        {
+          "fecha": "2026-10-13",
+          "canal": "email",
+          "tipo": "borrador",
+          "paso": "seguimiento-3",
+          "asunto": "Re: Vertical clips from Probate Weekly",
+          "texto": "Hi Bill,\n\nI'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!\n\n[Your name]\nHook House",
+          "aprobado": false
+        }
+      ],
+      "proximo_seguimiento": null,
+      "resultado": null,
+      "valor_mensual": null,
+      "creado": "2026-10-13",
+      "actualizado": "2026-10-13"
     }
   ]
 }

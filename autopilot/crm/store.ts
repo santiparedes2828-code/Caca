@@ -27,7 +27,10 @@ const normUrl = (u: string) =>
   u
     .toLowerCase()
     .replace(/^https?:\/\/(www\.|m\.)?/, "")
-    .replace(/[?#].*$/, "")
+    .replace(/#.*$/, "")
+    // la consulta identifica la página en algunos sitios (?list= de YouTube, ?v=…): solo se quitan los parámetros de campaña
+    .replace(/([?&])(utm_[^=&]*|fbclid|gclid|si)=[^&]*/g, "$1")
+    .replace(/[?&]+$/, "")
     .replace(/\/(featured|videos|about|shorts|streams)$/, "")
     .replace(/\/+$/, "");
 

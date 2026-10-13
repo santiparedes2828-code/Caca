@@ -1,297 +1,357 @@
 [
-  {
-    "nombre": "Property Profits Real Estate Podcast (Dave Dubeau)",
-    "segmento": "podcaster",
-    "nicho": "real estate investing / raising private capital for syndicators",
-    "idioma": "en",
-    "pais": "Canada",
-    "perfiles": {
-      "youtube": "https://www.youtube.com/@davedubeau",
-      "instagram": null,
-      "tiktok": null,
-      "web": "https://davedubeau.com/home",
-      "podcast": "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776",
-      "linkedin": null
-    },
-    "contacto_publico": "support@davedubeau.com",
-    "contacto_fuente": "https://davedubeau.com/termsandconditions",
-    "tamano": "Apple Podcasts 5.0 rating from 42 ratings (per search result); YouTube subscriber count not seen",
-    "frecuencia": "Near-daily: episodes listed every day 22-30 Sep 2026, 1 Oct 2026; latest seen 12 Oct 2026 ('Safe Is Sexy in Medical Real Estate with Merrick Lee')",
-    "evidencia_necesidad": [
-      "Full episodes are posted to YouTube (episode notes say 'Watch this episode on YouTube'), but a search for his Shorts/short clips returned nothing (https://davedubeau.podbean.com/page/22/). Weak evidence: absence in search results only, the channel's Shorts tab was not opened.",
-      "No TikTok or Instagram Reels account found in any search (weak, absence-based).",
-      "Publishes near-daily 20-minute interviews: high volume of raw material for clips (https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776)."
-    ],
-    "contenido_reciente": [
-      {"titulo": "Safe Is Sexy in Medical Real Estate with Merrick Lee", "url": "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776", "fecha": "2026-10-12"},
-      {"titulo": "Why Trust Still Wins When Your Investor Network Hits a Ceiling with Dave Dubeau", "url": "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776", "fecha": "2026-10-01"},
-      {"titulo": "Funding Small Town Commercial Projects with Jordan Blanchard", "url": "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776", "fecha": "2026-09-30"}
-    ],
-    "prioridad": "B",
-    "motivo_prioridad": "Own-domain email and very recent, frequent episodes with full videos on YouTube; need evidence is only the absence of Shorts/TikTok in search results. Caveat: he sells a podcast-based lead-gen service to syndicators, so he may already have production help.",
-    "fuentes": [
-      "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776",
-      "https://davedubeau.com/termsandconditions",
-      "https://davedubeau.com/home",
-      "https://resultsenterprises.com/start",
-      "https://davedubeau.podbean.com/page/22/"
-    ],
-    "notas": "Pages could not be opened; everything comes from search-result summaries. Episode dates come from the Apple Podcasts listing as summarized by search. Apple labels it 'Podcast' (not 'Video Podcast'); YouTube full episodes confirmed only via one episode note (Nov 2025). support@ is a generic support inbox (terms page also gives phone 530.564.0227 and Kamloops, BC address). Shorts/TikTok absence not verified on the platforms.",
-    "verificado": "2026-10-13"
+ {
+  "nombre": "Property Profits Real Estate Podcast (Dave Dubeau)",
+  "segmento": "podcaster",
+  "nicho": "real estate investing / raising private capital for syndicators",
+  "idioma": "en",
+  "pais": "Canada",
+  "perfiles": {
+   "youtube": "https://www.youtube.com/@davedubeau",
+   "instagram": null,
+   "tiktok": null,
+   "web": "https://davedubeau.com/home",
+   "podcast": "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776",
+   "linkedin": null
   },
-  {
-    "nombre": "Real Estate Investing School Podcast (Brody Fausett)",
-    "segmento": "podcaster",
-    "nicho": "real estate investing (rentals, short-term rentals, land, deals)",
-    "idioma": "en",
-    "pais": null,
-    "perfiles": {
-      "youtube": "https://www.youtube.com/channel/UCsEZ1DJWMXlGv0bYqBlWN-Q",
-      "instagram": null,
-      "tiktok": null,
-      "web": "https://realestateinvestingschool.com/",
-      "podcast": "https://podcasts.apple.com/us/podcast/real-estate-investing-school-podcast/id1636610988",
-      "linkedin": null
-    },
-    "contacto_publico": "support@realestateinvestingschool.com",
-    "contacto_fuente": "https://go.realestateinvestingschool.com/privacy",
-    "tamano": "About 300 episodes, Years Active 2022-2026 (Apple listing per search); audience size not seen",
-    "frecuencia": "Updated weekly (Apple); latest entries dated Sep 14, Sep 7, Aug 31 (year not shown in snippet; Apple shows Years Active 2022-2026)",
-    "evidencia_necesidad": [
-      "Apple labels it a 'Video Podcast' and the YouTube channel posts full long episodes (e.g. '5 Years of Real Estate Investing Lessons in 37 Minutes' https://www.youtube.com/watch?v=9EXi-EX5LJ4).",
-      "A search for Brody Fausett / Real Estate Investing School on TikTok, Instagram or Shorts found no accounts (weak, absence-based; platforms not checked directly)."
-    ],
-    "contenido_reciente": [
-      {"titulo": "Episode with Seth Williams on land flipping and self storage (exact title not seen)", "url": "https://podcasts.apple.com/us/podcast/real-estate-investing-school-podcast/id1636610988", "fecha": "Sep 14 (year not confirmed, probably 2026)"},
-      {"titulo": "Interview with Kathy Fettke on buying rentals in 2026 markets (exact title not seen)", "url": "https://podcasts.apple.com/us/podcast/real-estate-investing-school-podcast/id1636610988", "fecha": "Aug 31 or Sep 7 (year not confirmed)"}
-    ],
-    "prioridad": "B",
-    "motivo_prioridad": "Own-domain email, weekly video podcast; recent episodes likely within 60 days but year not confirmed, and need evidence is only absence of short-form accounts in search.",
-    "fuentes": [
-      "https://podcasts.apple.com/us/podcast/real-estate-investing-school-podcast/id1636610988",
-      "https://realestateinvestingschool.com/",
-      "https://go.realestateinvestingschool.com/privacy",
-      "https://go.realestateinvestingschool.com/terms",
-      "https://www.youtube.com/channel/UCsEZ1DJWMXlGv0bYqBlWN-Q",
-      "https://abetterlife.transistor.fm/35"
-    ],
-    "notas": "Pages could not be opened; only search results. Host info conflicts: one directory (Metacast/Podbean summaries) named Joe Jensen as host; YouTube results name Brody Fausett as host and Brody is the founder (A Better Life episode). Hosts may rotate (show notes list Brody, Joe and Wendell). The email is the company's general support inbox from its privacy/terms pages, not a podcast-specific address. Recent episode exact titles and year not verified.",
-    "verificado": "2026-10-13"
+  "contacto_publico": "support@davedubeau.com",
+  "contacto_fuente": "https://davedubeau.com/termsandconditions",
+  "tamano": "Apple Podcasts 5.0 rating from 42 ratings (per search result); YouTube subscriber count not seen",
+  "frecuencia": "Near-daily: episodes listed every day 22-30 Sep 2026, 1 Oct 2026; latest seen 12 Oct 2026 ('Safe Is Sexy in Medical Real Estate with Merrick Lee')",
+  "evidencia_necesidad": [
+   "Full episodes are posted to YouTube (episode notes say 'Watch this episode on YouTube'), but a search for his Shorts/short clips returned nothing (https://davedubeau.podbean.com/page/22/). Weak evidence: absence in search results only, the channel's Shorts tab was not opened.",
+   "No TikTok or Instagram Reels account found in any search (weak, absence-based).",
+   "Publishes near-daily 20-minute interviews: high volume of raw material for clips (https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776)."
+  ],
+  "contenido_reciente": [
+   {
+    "titulo": "Safe Is Sexy in Medical Real Estate with Merrick Lee",
+    "url": "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776",
+    "fecha": "2026-10-12"
+   },
+   {
+    "titulo": "Why Trust Still Wins When Your Investor Network Hits a Ceiling with Dave Dubeau",
+    "url": "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776",
+    "fecha": "2026-10-01"
+   },
+   {
+    "titulo": "Funding Small Town Commercial Projects with Jordan Blanchard",
+    "url": "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776",
+    "fecha": "2026-09-30"
+   }
+  ],
+  "prioridad": "B",
+  "motivo_prioridad": "Own-domain email and very recent, frequent episodes with full videos on YouTube; need evidence is only the absence of Shorts/TikTok in search results. Caveat: he sells a podcast-based lead-gen service to syndicators, so he may already have production help.",
+  "fuentes": [
+   "https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776",
+   "https://davedubeau.com/termsandconditions",
+   "https://davedubeau.com/home",
+   "https://resultsenterprises.com/start",
+   "https://davedubeau.podbean.com/page/22/"
+  ],
+  "notas": "Pages could not be opened; everything comes from search-result summaries. Episode dates come from the Apple Podcasts listing as summarized by search. Apple labels it 'Podcast' (not 'Video Podcast'); YouTube full episodes confirmed only via one episode note (Nov 2025). support@ is a generic support inbox (terms page also gives phone 530.564.0227 and Kamloops, BC address). Shorts/TikTok absence not verified on the platforms.",
+  "verificado": "2026-10-13"
+ },
+ {
+  "nombre": "Real Estate Investing School Podcast (Brody Fausett)",
+  "segmento": "podcaster",
+  "nicho": "real estate investing (rentals, short-term rentals, land, deals)",
+  "idioma": "en",
+  "pais": null,
+  "perfiles": {
+   "youtube": "https://www.youtube.com/channel/UCsEZ1DJWMXlGv0bYqBlWN-Q",
+   "instagram": null,
+   "tiktok": null,
+   "web": "https://realestateinvestingschool.com/",
+   "podcast": "https://podcasts.apple.com/us/podcast/real-estate-investing-school-podcast/id1636610988",
+   "linkedin": null
   },
-  {
-    "nombre": "The Product Boss Podcast (Jacqueline Snyder)",
-    "segmento": "podcaster",
-    "nicho": "business for physical-product entrepreneurs / e-commerce",
-    "idioma": "en",
-    "pais": null,
-    "perfiles": {
-      "youtube": "https://www.youtube.com/playlist?list=PLIfk7y6hBlb3SqRXVVVndWe3WqGoyYxsb",
-      "instagram": null,
-      "tiktok": null,
-      "web": "https://www.theproductboss.com/",
-      "podcast": "https://www.theproductboss.com/theproductbosspodcast",
-      "linkedin": null
-    },
-    "contacto_publico": "team@theproductboss.com",
-    "contacto_fuente": "https://www.theproductboss.com/contactus",
-    "tamano": "Site claims over 5 million downloads; 760+ episodes (episode763 URL seen)",
-    "frecuencia": "Twice a week per its site; latest dated episode seen 3 Sep 2026",
-    "evidencia_necesidad": [
-      "There is a 'The Product Boss Podcast' YouTube playlist, but searches found no Shorts, TikTok or Reels clips of the show (weak, absence-based) (https://www.youtube.com/playlist?list=PLIfk7y6hBlb3SqRXVVVndWe3WqGoyYxsb)."
-    ],
-    "contenido_reciente": [
-      {"titulo": "Could Your Business Handle 3X the Sales? Here's What to Fix First with Saltbox CEO Katerina Cirilli", "url": "https://www.theproductboss.com/theproductbosspodcast", "fecha": "2026-09-03"},
-      {"titulo": "The 4-Step Q4 Planning Framework for Product Businesses", "url": "https://www.theproductboss.com/thepodcast/episode763-gpmmb", "fecha": "not shown (likely 2026)"}
-    ],
-    "prioridad": "B",
-    "motivo_prioridad": "Own-domain email and an episode within 60 days, but it is not confirmed that current episodes are filmed as video (only an older YouTube playlist seen) and need evidence is weak.",
-    "fuentes": [
-      "https://www.theproductboss.com/contactus",
-      "https://www.theproductboss.com/theproductbosspodcast",
-      "https://www.theproductboss.com/",
-      "https://www.youtube.com/playlist?list=PLIfk7y6hBlb3SqRXVVVndWe3WqGoyYxsb",
-      "https://apple.co/2KI4xX8"
-    ],
-    "notas": "Pages could not be opened; only search results. The 3 Sep 2026 date came from the episode listing, but the same snippet carried a conflicting '277 days ago' tag. Older episode pages give hello@theproductboss.com instead; team@ is from the contact page. Video format of current episodes NOT verified: may be mainly audio. Has a team and paid programs, so may have in-house content help.",
-    "verificado": "2026-10-13"
+  "contacto_publico": "support@realestateinvestingschool.com",
+  "contacto_fuente": "https://go.realestateinvestingschool.com/privacy",
+  "tamano": "About 300 episodes, Years Active 2022-2026 (Apple listing per search); audience size not seen",
+  "frecuencia": "Updated weekly (Apple); latest entries dated Sep 14, Sep 7, Aug 31 (year not shown in snippet; Apple shows Years Active 2022-2026)",
+  "evidencia_necesidad": [
+   "Apple labels it a 'Video Podcast' and the YouTube channel posts full long episodes (e.g. '5 Years of Real Estate Investing Lessons in 37 Minutes' https://www.youtube.com/watch?v=9EXi-EX5LJ4).",
+   "A search for Brody Fausett / Real Estate Investing School on TikTok, Instagram or Shorts found no accounts (weak, absence-based; platforms not checked directly)."
+  ],
+  "contenido_reciente": [
+   {
+    "titulo": "Episode with Seth Williams on land flipping and self storage (exact title not seen)",
+    "url": "https://podcasts.apple.com/us/podcast/real-estate-investing-school-podcast/id1636610988",
+    "fecha": "Sep 14 (year not confirmed, probably 2026)"
+   },
+   {
+    "titulo": "Interview with Kathy Fettke on buying rentals in 2026 markets (exact title not seen)",
+    "url": "https://podcasts.apple.com/us/podcast/real-estate-investing-school-podcast/id1636610988",
+    "fecha": "Aug 31 or Sep 7 (year not confirmed)"
+   }
+  ],
+  "prioridad": "B",
+  "motivo_prioridad": "Own-domain email, weekly video podcast; recent episodes likely within 60 days but year not confirmed, and need evidence is only absence of short-form accounts in search.",
+  "fuentes": [
+   "https://podcasts.apple.com/us/podcast/real-estate-investing-school-podcast/id1636610988",
+   "https://realestateinvestingschool.com/",
+   "https://go.realestateinvestingschool.com/privacy",
+   "https://go.realestateinvestingschool.com/terms",
+   "https://www.youtube.com/channel/UCsEZ1DJWMXlGv0bYqBlWN-Q",
+   "https://abetterlife.transistor.fm/35"
+  ],
+  "notas": "Pages could not be opened; only search results. Host info conflicts: one directory (Metacast/Podbean summaries) named Joe Jensen as host; YouTube results name Brody Fausett as host and Brody is the founder (A Better Life episode). Hosts may rotate (show notes list Brody, Joe and Wendell). The email is the company's general support inbox from its privacy/terms pages, not a podcast-specific address. Recent episode exact titles and year not verified.",
+  "verificado": "2026-10-13"
+ },
+ {
+  "nombre": "The Product Boss Podcast (Jacqueline Snyder)",
+  "segmento": "podcaster",
+  "nicho": "business for physical-product entrepreneurs / e-commerce",
+  "idioma": "en",
+  "pais": null,
+  "perfiles": {
+   "youtube": "https://www.youtube.com/playlist?list=PLIfk7y6hBlb3SqRXVVVndWe3WqGoyYxsb",
+   "instagram": null,
+   "tiktok": null,
+   "web": "https://www.theproductboss.com/",
+   "podcast": "https://www.theproductboss.com/theproductbosspodcast",
+   "linkedin": null
   },
-  {
-    "nombre": "Real Investing For Everyday Investors (Tim Herriage)",
-    "segmento": "podcaster",
-    "nicho": "real estate investing / lending",
-    "idioma": "en",
-    "pais": null,
-    "perfiles": {
-      "youtube": null,
-      "instagram": null,
-      "tiktok": null,
-      "web": "https://timherriage.com/shows/real-investing-show/",
-      "podcast": "https://realinvesting.buzzsprout.com/",
-      "linkedin": null
-    },
-    "contacto_publico": "therriage@ternus.com (contact form at https://timherriage.com/contact-tim/ is the preferred route)",
-    "contacto_fuente": "https://timherriage.com/contact-tim/",
-    "tamano": null,
-    "frecuencia": "Show page says new episode every Wednesday (now a solo weekly briefing); no dated recent episode seen",
-    "evidencia_necesidad": [
-      "Buzzsprout pages tell listeners to follow on YouTube for video content, but no Shorts, TikTok or Reels for the show turned up in searches (weak, absence-based) (https://realinvesting.buzzsprout.com/273198/follow).",
-      "Format changed from a co-hosted conversation show to a solo weekly briefing (https://timherriage.com/shows/real-investing-show/): a relaunch moment when clips could help, but this is inference."
-    ],
-    "contenido_reciente": [
-      {"titulo": "The Future of Lending: Simplifying Sales, Scaling Remote Teams | Real Investing w/ Bryan Partridge", "url": "https://realinvesting.buzzsprout.com/273198/episodes/17059092-the-future-of-lending-simplifying-sales-scaling-remote-teams-real-investing-w-bryan-partridge", "fecha": "not shown (Buzzsprout ID suggests 2025)"}
-    ],
-    "prioridad": "C",
-    "motivo_prioridad": "Own-domain contact exists, but no episode dated within the last 60 days was found and the YouTube URL was not seen.",
-    "fuentes": [
-      "https://timherriage.com/contact-tim/",
-      "https://timherriage.com/shows/real-investing-show/",
-      "https://realinvesting.buzzsprout.com/273198/follow",
-      "https://podnews.net/podcast/i5yfx"
-    ],
-    "notas": "Pages could not be opened; only search results. The email domain (ternus.com) is his company Ternus, shown on his own site's contact page. Recent episode dates and the YouTube channel URL are unverified. A search summary also mentioned a 'How to Beat the Bank' briefing at reireport.com, not confirmed.",
-    "verificado": "2026-10-13"
+  "contacto_publico": "team@theproductboss.com",
+  "contacto_fuente": "https://www.theproductboss.com/contactus",
+  "tamano": "Site claims over 5 million downloads; 760+ episodes (episode763 URL seen)",
+  "frecuencia": "Twice a week per its site; latest dated episode seen 3 Sep 2026",
+  "evidencia_necesidad": [
+   "There is a 'The Product Boss Podcast' YouTube playlist, but searches found no Shorts, TikTok or Reels clips of the show (weak, absence-based) (https://www.youtube.com/playlist?list=PLIfk7y6hBlb3SqRXVVVndWe3WqGoyYxsb)."
+  ],
+  "contenido_reciente": [
+   {
+    "titulo": "Could Your Business Handle 3X the Sales? Here's What to Fix First with Saltbox CEO Katerina Cirilli",
+    "url": "https://www.theproductboss.com/theproductbosspodcast",
+    "fecha": "2026-09-03"
+   },
+   {
+    "titulo": "The 4-Step Q4 Planning Framework for Product Businesses",
+    "url": "https://www.theproductboss.com/thepodcast/episode763-gpmmb",
+    "fecha": "not shown (likely 2026)"
+   }
+  ],
+  "prioridad": "B",
+  "motivo_prioridad": "Own-domain email and an episode within 60 days, but it is not confirmed that current episodes are filmed as video (only an older YouTube playlist seen) and need evidence is weak.",
+  "fuentes": [
+   "https://www.theproductboss.com/contactus",
+   "https://www.theproductboss.com/theproductbosspodcast",
+   "https://www.theproductboss.com/",
+   "https://www.youtube.com/playlist?list=PLIfk7y6hBlb3SqRXVVVndWe3WqGoyYxsb",
+   "https://apple.co/2KI4xX8"
+  ],
+  "notas": "Pages could not be opened; only search results. The 3 Sep 2026 date came from the episode listing, but the same snippet carried a conflicting '277 days ago' tag. Older episode pages give hello@theproductboss.com instead; team@ is from the contact page. Video format of current episodes NOT verified: may be mainly audio. Has a team and paid programs, so may have in-house content help.",
+  "verificado": "2026-10-13"
+ },
+ {
+  "nombre": "Real Investing For Everyday Investors (Tim Herriage)",
+  "segmento": "podcaster",
+  "nicho": "real estate investing / lending",
+  "idioma": "en",
+  "pais": null,
+  "perfiles": {
+   "youtube": null,
+   "instagram": null,
+   "tiktok": null,
+   "web": "https://timherriage.com/shows/real-investing-show/",
+   "podcast": "https://realinvesting.buzzsprout.com/",
+   "linkedin": null
   },
-  {
-    "nombre": "Rental Property Owner & Real Estate Investor Podcast (Brian Hamrick)",
-    "segmento": "podcaster",
-    "nicho": "real estate investing / landlords",
-    "idioma": "en",
-    "pais": "US",
-    "perfiles": {
-      "youtube": null,
-      "instagram": null,
-      "tiktok": null,
-      "web": "https://www.higinvestor.com/",
-      "podcast": "https://podcasts.apple.com/us/podcast/rental-property-owner-real-estate-investor-podcast/id1083618984",
-      "linkedin": null
-    },
-    "contacto_publico": "brian@higinvestor.com",
-    "contacto_fuente": "https://www.higinvestor.com/single-post/2016/11/21/MICHIGAN%E2%80%99S-SECOND-LARGEST-CITY-KEEPS-PACE-WITH-MULTIFAMILY-HOUSING-DEMAND",
-    "tamano": "Over 2.3 million downloads; 573-617 episodes (Apple listings per search)",
-    "frecuencia": "Weekly (every Monday per description); latest dated episode seen 26 Jan 2026",
-    "evidencia_necesidad": [
-      "Apple labels it a 'Video Podcast', yet searches found no YouTube channel for the show, let alone Shorts/TikTok (https://rporeipodcast.libsyn.com/). Moderate-weak: suggests video is not being repurposed, but based on absence in search."
-    ],
-    "contenido_reciente": [
-      {"titulo": "Building Affordable Homes in Hawaii's Lava Zones: Fuzzy Jardine on Respecting the Land and Creating Generational Wealth", "url": "https://rporeipodcast.libsyn.com/building-affordable-homes-in-hawaiis-lava-zones-fuzzy-jardine-on-respecting-the-land-and-creating-generational-wealth", "fecha": "2026-01-26"}
-    ],
-    "prioridad": "C",
-    "motivo_prioridad": "Own-domain email (from a 2021-era page) and a video podcast with no visible short-form, but no episode within 60 days was confirmed.",
-    "fuentes": [
-      "https://podcasts.apple.com/us/podcast/rental-property-owner-real-estate-investor-podcast/id1083618984",
-      "https://www.higinvestor.com/",
-      "https://www.higinvestor.com/single-post/2016/11/21/MICHIGAN%E2%80%99S-SECOND-LARGEST-CITY-KEEPS-PACE-WITH-MULTIFAMILY-HOUSING-DEMAND",
-      "https://rporeipodcast.libsyn.com/"
-    ],
-    "notas": "Pages could not be opened; only search results. The email is on an old blog page (footer dated 2021), may be outdated. The show is produced by the Rental Property Owners Association (RPOA) of Michigan, which may control production decisions. Episode counts conflict between Apple storefronts. Newer episodes after Jan 2026 likely exist but were not seen.",
-    "verificado": "2026-10-13"
+  "contacto_publico": "therriage@ternus.com",
+  "contacto_fuente": "https://timherriage.com/contact-tim/",
+  "tamano": null,
+  "frecuencia": "Show page says new episode every Wednesday (now a solo weekly briefing); no dated recent episode seen",
+  "evidencia_necesidad": [
+   "Buzzsprout pages tell listeners to follow on YouTube for video content, but no Shorts, TikTok or Reels for the show turned up in searches (weak, absence-based) (https://realinvesting.buzzsprout.com/273198/follow).",
+   "Format changed from a co-hosted conversation show to a solo weekly briefing (https://timherriage.com/shows/real-investing-show/): a relaunch moment when clips could help, but this is inference."
+  ],
+  "contenido_reciente": [
+   {
+    "titulo": "The Future of Lending: Simplifying Sales, Scaling Remote Teams | Real Investing w/ Bryan Partridge",
+    "url": "https://realinvesting.buzzsprout.com/273198/episodes/17059092-the-future-of-lending-simplifying-sales-scaling-remote-teams-real-investing-w-bryan-partridge",
+    "fecha": "not shown (Buzzsprout ID suggests 2025)"
+   }
+  ],
+  "prioridad": "C",
+  "motivo_prioridad": "Own-domain contact exists, but no episode dated within the last 60 days was found and the YouTube URL was not seen.",
+  "fuentes": [
+   "https://timherriage.com/contact-tim/",
+   "https://timherriage.com/shows/real-investing-show/",
+   "https://realinvesting.buzzsprout.com/273198/follow",
+   "https://podnews.net/podcast/i5yfx"
+  ],
+  "notas": "Pages could not be opened; only search results. The email domain (ternus.com) is his company Ternus, shown on his own site's contact page. Recent episode dates and the YouTube channel URL are unverified. A search summary also mentioned a 'How to Beat the Bank' briefing at reireport.com, not confirmed. | Contacto completo: therriage@ternus.com (contact form at https://timherriage.com/contact-tim/ is the preferred route)",
+  "verificado": "2026-10-13"
+ },
+ {
+  "nombre": "Rental Property Owner & Real Estate Investor Podcast (Brian Hamrick)",
+  "segmento": "podcaster",
+  "nicho": "real estate investing / landlords",
+  "idioma": "en",
+  "pais": "US",
+  "perfiles": {
+   "youtube": null,
+   "instagram": null,
+   "tiktok": null,
+   "web": "https://www.higinvestor.com/",
+   "podcast": "https://podcasts.apple.com/us/podcast/rental-property-owner-real-estate-investor-podcast/id1083618984",
+   "linkedin": null
   },
-  {
-    "nombre": "Passive Income Pilots (Tait Duryea & Ryan Gibson)",
-    "segmento": "podcaster",
-    "nicho": "personal finance / passive investing for airline pilots",
-    "idioma": "en",
-    "pais": null,
-    "perfiles": {
-      "youtube": null,
-      "instagram": null,
-      "tiktok": null,
-      "web": "https://passiveincomepilots.com/podcast/passive-income-pilots",
-      "podcast": "https://podcasts.apple.com/us/podcast/id1676373775",
-      "linkedin": null
-    },
-    "contacto_publico": "ask@passiveincomepilots.com",
-    "contacto_fuente": "https://passiveincomepilots.com/episode/149-side-hustles-every-pilot-should-consider",
-    "tamano": "About 159-163 episodes (directories); ran its first live conference 8-9 Oct 2026 in Las Vegas",
-    "frecuencia": "Roughly weekly; latest dated episode seen 28 Jul 2026 (#163)",
-    "evidencia_necesidad": [
-      "Episode pages link Instagram (@PassiveIncomePilots), X and LinkedIn, but no YouTube channel or Shorts turned up in searches (https://passiveincomepilots.com/episode/149-side-hustles-every-pilot-should-consider). Weak, absence-based."
-    ],
-    "contenido_reciente": [
-      {"titulo": "#163 - From Pilot Spouse to Café Owner with Brenda Gage", "url": "https://podcasts.apple.com/us/podcast/id1676373775", "fecha": "2026-07-28"},
-      {"titulo": "#159 - How Deferred Sales Trusts Work with Trevor Kuresa", "url": "https://podcasts.apple.com/us/podcast/id1676373775", "fecha": "2026-06-30"}
-    ],
-    "prioridad": "C",
-    "motivo_prioridad": "Own-domain email, but the latest episode found is older than 60 days and the show is not confirmed as a video podcast.",
-    "fuentes": [
-      "https://passiveincomepilots.com/episode/149-side-hustles-every-pilot-should-consider",
-      "https://passiveincomepilots.com/podcast/passive-income-pilots",
-      "https://podcasts.apple.com/us/podcast/id1676373775",
-      "https://www.insideselfstorage.com/people/cofounder-self-storage-investment-group-spartan-co-hosts-wealth-growing-podcast-airline"
-    ],
-    "notas": "Pages could not be opened; only search results. Video format NOT verified (no YouTube found). Episodes after #163 likely exist but were not seen. Co-host Ryan Gibson is cofounder of Spartan Investment Group (self-storage), which may have marketing staff.",
-    "verificado": "2026-10-13"
+  "contacto_publico": "brian@higinvestor.com",
+  "contacto_fuente": "https://www.higinvestor.com/single-post/2016/11/21/MICHIGAN%E2%80%99S-SECOND-LARGEST-CITY-KEEPS-PACE-WITH-MULTIFAMILY-HOUSING-DEMAND",
+  "tamano": "Over 2.3 million downloads; 573-617 episodes (Apple listings per search)",
+  "frecuencia": "Weekly (every Monday per description); latest dated episode seen 26 Jan 2026",
+  "evidencia_necesidad": [
+   "Apple labels it a 'Video Podcast', yet searches found no YouTube channel for the show, let alone Shorts/TikTok (https://rporeipodcast.libsyn.com/). Moderate-weak: suggests video is not being repurposed, but based on absence in search."
+  ],
+  "contenido_reciente": [
+   {
+    "titulo": "Building Affordable Homes in Hawaii's Lava Zones: Fuzzy Jardine on Respecting the Land and Creating Generational Wealth",
+    "url": "https://rporeipodcast.libsyn.com/building-affordable-homes-in-hawaiis-lava-zones-fuzzy-jardine-on-respecting-the-land-and-creating-generational-wealth",
+    "fecha": "2026-01-26"
+   }
+  ],
+  "prioridad": "C",
+  "motivo_prioridad": "Own-domain email (from a 2021-era page) and a video podcast with no visible short-form, but no episode within 60 days was confirmed.",
+  "fuentes": [
+   "https://podcasts.apple.com/us/podcast/rental-property-owner-real-estate-investor-podcast/id1083618984",
+   "https://www.higinvestor.com/",
+   "https://www.higinvestor.com/single-post/2016/11/21/MICHIGAN%E2%80%99S-SECOND-LARGEST-CITY-KEEPS-PACE-WITH-MULTIFAMILY-HOUSING-DEMAND",
+   "https://rporeipodcast.libsyn.com/"
+  ],
+  "notas": "Pages could not be opened; only search results. The email is on an old blog page (footer dated 2021), may be outdated. The show is produced by the Rental Property Owners Association (RPOA) of Michigan, which may control production decisions. Episode counts conflict between Apple storefronts. Newer episodes after Jan 2026 likely exist but were not seen.",
+  "verificado": "2026-10-13"
+ },
+ {
+  "nombre": "Passive Income Pilots (Tait Duryea & Ryan Gibson)",
+  "segmento": "podcaster",
+  "nicho": "personal finance / passive investing for airline pilots",
+  "idioma": "en",
+  "pais": null,
+  "perfiles": {
+   "youtube": null,
+   "instagram": null,
+   "tiktok": null,
+   "web": "https://passiveincomepilots.com/podcast/passive-income-pilots",
+   "podcast": "https://podcasts.apple.com/us/podcast/id1676373775",
+   "linkedin": null
   },
-  {
-    "nombre": "Your Career Podcast (Jane Jackson)",
-    "segmento": "podcaster",
-    "nicho": "career change / career coaching",
-    "idioma": "en",
-    "pais": "Australia",
-    "perfiles": {
-      "youtube": null,
-      "instagram": null,
-      "tiktok": null,
-      "web": "https://janejacksoncoach.com/",
-      "podcast": "https://janejacksoncoach.com/podcast/",
-      "linkedin": null
-    },
-    "contacto_publico": "jane@janejacksoncoach.com",
-    "contacto_fuente": "https://janejacksoncoach.com/podcast/",
-    "tamano": "About 284-285 episodes",
-    "frecuencia": "Irregular; latest dated listing seen 10 Jul 2026 (Podcast Addict)",
-    "evidencia_necesidad": [
-      "A FeedSpot directory listing shows YouTube for the show, but no Shorts/TikTok/Reels clips were found in searches (https://podcast.feedspot.com/career_coach_podcasts/). Weak, absence-based."
-    ],
-    "contenido_reciente": [
-      {"titulo": "Give to Gain for Career and Business Growth", "url": "https://janejackson.buzzsprout.com/43475/episodes/18928317-give-to-gain-for-career-and-business-growth", "fecha": "not shown (2026, Buzzsprout ID)"},
-      {"titulo": "5 Ways to Control End of Year Stress at Work and Enter 2026 with Energy and Positivity", "url": "https://yourcareerpodcastwithjanejackson.buzzsprout.com/43475/episodes/18361414-5-ways-to-control-end-of-year-stress-at-work-and-enter-2026-with-energy-and-positivity", "fecha": "late 2025 (inferred from title)"}
-    ],
-    "prioridad": "C",
-    "motivo_prioridad": "Clear own-domain email, but no episode within 60 days confirmed and video format unverified.",
-    "fuentes": [
-      "https://janejacksoncoach.com/podcast/",
-      "https://janejacksoncoach.com/",
-      "https://podcastaddict.com/podcast/2157095",
-      "https://podcast.feedspot.com/career_coach_podcasts/"
-    ],
-    "notas": "Pages could not be opened; only search results. Based in Sydney. Not confirmed that the podcast is filmed as video; YouTube link seen only through a third-party directory. Episode dates not on own pages.",
-    "verificado": "2026-10-13"
+  "contacto_publico": "ask@passiveincomepilots.com",
+  "contacto_fuente": "https://passiveincomepilots.com/episode/149-side-hustles-every-pilot-should-consider",
+  "tamano": "About 159-163 episodes (directories); ran its first live conference 8-9 Oct 2026 in Las Vegas",
+  "frecuencia": "Roughly weekly; latest dated episode seen 28 Jul 2026 (#163)",
+  "evidencia_necesidad": [
+   "Episode pages link Instagram (@PassiveIncomePilots), X and LinkedIn, but no YouTube channel or Shorts turned up in searches (https://passiveincomepilots.com/episode/149-side-hustles-every-pilot-should-consider). Weak, absence-based."
+  ],
+  "contenido_reciente": [
+   {
+    "titulo": "#163 - From Pilot Spouse to Café Owner with Brenda Gage",
+    "url": "https://podcasts.apple.com/us/podcast/id1676373775",
+    "fecha": "2026-07-28"
+   },
+   {
+    "titulo": "#159 - How Deferred Sales Trusts Work with Trevor Kuresa",
+    "url": "https://podcasts.apple.com/us/podcast/id1676373775",
+    "fecha": "2026-06-30"
+   }
+  ],
+  "prioridad": "C",
+  "motivo_prioridad": "Own-domain email, but the latest episode found is older than 60 days and the show is not confirmed as a video podcast.",
+  "fuentes": [
+   "https://passiveincomepilots.com/episode/149-side-hustles-every-pilot-should-consider",
+   "https://passiveincomepilots.com/podcast/passive-income-pilots",
+   "https://podcasts.apple.com/us/podcast/id1676373775",
+   "https://www.insideselfstorage.com/people/cofounder-self-storage-investment-group-spartan-co-hosts-wealth-growing-podcast-airline"
+  ],
+  "notas": "Pages could not be opened; only search results. Video format NOT verified (no YouTube found). Episodes after #163 likely exist but were not seen. Co-host Ryan Gibson is cofounder of Spartan Investment Group (self-storage), which may have marketing staff.",
+  "verificado": "2026-10-13"
+ },
+ {
+  "nombre": "Your Career Podcast (Jane Jackson)",
+  "segmento": "podcaster",
+  "nicho": "career change / career coaching",
+  "idioma": "en",
+  "pais": "Australia",
+  "perfiles": {
+   "youtube": null,
+   "instagram": null,
+   "tiktok": null,
+   "web": "https://janejacksoncoach.com/",
+   "podcast": "https://janejacksoncoach.com/podcast/",
+   "linkedin": null
   },
-  {
-    "nombre": "The REtipster Podcast (Seth Williams)",
-    "segmento": "podcaster",
-    "nicho": "land investing / real estate",
-    "idioma": "en",
-    "pais": null,
-    "perfiles": {
-      "youtube": null,
-      "instagram": null,
-      "tiktok": null,
-      "web": "https://retipster.com/",
-      "podcast": "https://podcasts.apple.com/podcast/id1330014697",
-      "linkedin": null
-    },
-    "contacto_publico": "https://retipster.com/contact/",
-    "contacto_fuente": "https://retipster.com/contact/",
-    "tamano": "273+ episodes",
-    "frecuencia": "Regular; episode 273 is the latest number seen, date not confirmed (an iHeart listing showed 16 Jun 2026 near it)",
-    "evidencia_necesidad": [
-      "No evidence found either way about Shorts/TikTok; not verified. Very weak."
-    ],
-    "contenido_reciente": [
-      {"titulo": "273: Turning Raw Land Into Housing That Sells Fast w/ Robert Howell", "url": "https://retipster.buzzsprout.com/440197/episodes/19120642-turning-raw-land-into-housing-that-sells-fast-w-robert-howell", "fecha": "not confirmed (mid-2026)"},
-      {"titulo": "Why Your Land Deals Aren't Closing w/ Ajay Sharma", "url": "https://retipster.buzzsprout.com/440197/episodes/19103349-why-your-land-deals-aren-t-closing-w-ajay-sharma", "fecha": "not confirmed (mid-2026)"}
-    ],
-    "prioridad": "C",
-    "motivo_prioridad": "Own-domain contact form, but no dated episode in the last 60 days, no need evidence, and likely a mid-size brand with its own team.",
-    "fuentes": [
-      "https://retipster.com/contact/",
-      "https://retipster.com/",
-      "https://retipster.buzzsprout.com/440197/episodes/19120642-turning-raw-land-into-housing-that-sells-fast-w-robert-howell",
-      "https://www.iheart.com/podcast/46865418/"
-    ],
-    "notas": "Pages could not be opened; only search results. Contact is a form (contact page tells guest contributors to use it); the only email seen is a support address on retipster.club for products, not used. Video format and YouTube channel URL not verified. Weakest of the list; included as filler.",
-    "verificado": "2026-10-13"
-  }
+  "contacto_publico": "jane@janejacksoncoach.com",
+  "contacto_fuente": "https://janejacksoncoach.com/podcast/",
+  "tamano": "About 284-285 episodes",
+  "frecuencia": "Irregular; latest dated listing seen 10 Jul 2026 (Podcast Addict)",
+  "evidencia_necesidad": [
+   "A FeedSpot directory listing shows YouTube for the show, but no Shorts/TikTok/Reels clips were found in searches (https://podcast.feedspot.com/career_coach_podcasts/). Weak, absence-based."
+  ],
+  "contenido_reciente": [
+   {
+    "titulo": "Give to Gain for Career and Business Growth",
+    "url": "https://janejackson.buzzsprout.com/43475/episodes/18928317-give-to-gain-for-career-and-business-growth",
+    "fecha": "not shown (2026, Buzzsprout ID)"
+   },
+   {
+    "titulo": "5 Ways to Control End of Year Stress at Work and Enter 2026 with Energy and Positivity",
+    "url": "https://yourcareerpodcastwithjanejackson.buzzsprout.com/43475/episodes/18361414-5-ways-to-control-end-of-year-stress-at-work-and-enter-2026-with-energy-and-positivity",
+    "fecha": "late 2025 (inferred from title)"
+   }
+  ],
+  "prioridad": "C",
+  "motivo_prioridad": "Clear own-domain email, but no episode within 60 days confirmed and video format unverified.",
+  "fuentes": [
+   "https://janejacksoncoach.com/podcast/",
+   "https://janejacksoncoach.com/",
+   "https://podcastaddict.com/podcast/2157095",
+   "https://podcast.feedspot.com/career_coach_podcasts/"
+  ],
+  "notas": "Pages could not be opened; only search results. Based in Sydney. Not confirmed that the podcast is filmed as video; YouTube link seen only through a third-party directory. Episode dates not on own pages.",
+  "verificado": "2026-10-13"
+ },
+ {
+  "nombre": "The REtipster Podcast (Seth Williams)",
+  "segmento": "podcaster",
+  "nicho": "land investing / real estate",
+  "idioma": "en",
+  "pais": null,
+  "perfiles": {
+   "youtube": null,
+   "instagram": null,
+   "tiktok": null,
+   "web": "https://retipster.com/",
+   "podcast": "https://podcasts.apple.com/podcast/id1330014697",
+   "linkedin": null
+  },
+  "contacto_publico": "https://retipster.com/contact/",
+  "contacto_fuente": "https://retipster.com/contact/",
+  "tamano": "273+ episodes",
+  "frecuencia": "Regular; episode 273 is the latest number seen, date not confirmed (an iHeart listing showed 16 Jun 2026 near it)",
+  "evidencia_necesidad": [
+   "No evidence found either way about Shorts/TikTok; not verified. Very weak."
+  ],
+  "contenido_reciente": [
+   {
+    "titulo": "273: Turning Raw Land Into Housing That Sells Fast w/ Robert Howell",
+    "url": "https://retipster.buzzsprout.com/440197/episodes/19120642-turning-raw-land-into-housing-that-sells-fast-w-robert-howell",
+    "fecha": "not confirmed (mid-2026)"
+   },
+   {
+    "titulo": "Why Your Land Deals Aren't Closing w/ Ajay Sharma",
+    "url": "https://retipster.buzzsprout.com/440197/episodes/19103349-why-your-land-deals-aren-t-closing-w-ajay-sharma",
+    "fecha": "not confirmed (mid-2026)"
+   }
+  ],
+  "prioridad": "C",
+  "motivo_prioridad": "Own-domain contact form, but no dated episode in the last 60 days, no need evidence, and likely a mid-size brand with its own team.",
+  "fuentes": [
+   "https://retipster.com/contact/",
+   "https://retipster.com/",
+   "https://retipster.buzzsprout.com/440197/episodes/19120642-turning-raw-land-into-housing-that-sells-fast-w-robert-howell",
+   "https://www.iheart.com/podcast/46865418/"
+  ],
+  "notas": "Pages could not be opened; only search results. Contact is a form (contact page tells guest contributors to use it); the only email seen is a support address on retipster.club for products, not used. Video format and YouTube channel URL not verified. Weakest of the list; included as filler.",
+  "verificado": "2026-10-13"
+ }
 ]

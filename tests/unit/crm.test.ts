@@ -96,3 +96,18 @@ test("un borrador sin aprobar no se puede marcar como enviado; aprobado sí", as
   assert.equal(t.accion, "seguimiento-1 (borrador listo)");
   assert.equal(t.vencido, true);
 });
+
+test("dos listas de YouTube distintas no son duplicados; la misma con utm sí", () => {
+  const db = emptyDb();
+  importProspects(db, [{ ...base, nombre: "Show A", perfiles: { youtube: "https://www.youtube.com/playlist?list=AAA" }, contacto_publico: null }], "2026-10-13");
+  const r = importProspects(
+    db,
+    [
+      { ...base, nombre: "Show B", perfiles: { youtube: "https://www.youtube.com/playlist?list=BBB" }, contacto_publico: null },
+      { ...base, nombre: "Show C", perfiles: { youtube: "https://www.youtube.com/playlist?list=AAA&utm_source=x" }, contacto_publico: null },
+    ],
+    "2026-10-13",
+  );
+  assert.equal(r.added.length, 1);
+  assert.equal(r.duplicates.length, 1);
+});

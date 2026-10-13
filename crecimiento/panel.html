@@ -21,6 +21,7 @@ h3 { font-weight:700; font-size:1rem; margin:0; min-width:0 }
 .warnbox { border-left:4px solid var(--warn); background:var(--surface); padding:12px 14px; border-radius:0 10px 10px 0; font-size:.92rem }
 .draft { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; display:flex; flex-direction:column; gap:8px; min-width:0 }
 .draft header, summary { display:flex; align-items:center; gap:10px; }
+.num { display:inline-grid; place-items:center; min-width:30px; height:30px; border-radius:9px; background:var(--accent); color:var(--accent-ink); font-weight:800; flex:none }
 .prio { display:inline-grid; place-items:center; width:26px; height:26px; border-radius:8px; font-weight:800; font-size:.8rem; flex:none; border:1px solid var(--line) }
 .pA, .pB { background:var(--accent); color:var(--accent-ink); border-color:transparent }
 .pC { background:var(--mono); color:var(--muted) }
@@ -51,189 +52,418 @@ a { color:var(--accent) }
 <div class="wrap">
   <section>
     <h1>hook<b>house.</b> · primer cliente en 30 días</h1>
-    <p class="sub">Prospectos reales, mensajes listos para que los apruebes y envíes tú, y lo que toca hoy. Actualizado 2026-10-12 desde <code>crecimiento/datos/prospectos.json</code>.</p>
+    <p class="sub">Prospectos reales, mensajes listos para que los apruebes y envíes tú, y lo que toca hoy. Actualizado 2026-10-13 desde <code>crecimiento/datos/prospectos.json</code>.</p>
   </section>
   <section class="stats" aria-label="Resumen">
-    <div class="stat"><div class="n">22</div><div class="t">prospectos en la base</div></div>
-    <div class="stat"><div class="n">6</div><div class="t">prioridad A o B</div></div>
-    <div class="stat"><div class="n">7</div><div class="t">mensajes por aprobar</div></div>
+    <div class="stat"><div class="n">38</div><div class="t">prospectos en la base</div></div>
+    <div class="stat"><div class="n">15</div><div class="t">prioridad A o B</div></div>
+    <div class="stat"><div class="n">10</div><div class="t">prospectos por aprobar</div></div>
     <div class="stat"><div class="n">0</div><div class="t">contactados</div></div>
     <div class="stat"><div class="n">0</div><div class="t">respondieron</div></div>
-    <div class="stat"><div class="n">7</div><div class="t">tareas para hoy</div></div>
+    <div class="stat"><div class="n">10</div><div class="t">tareas para hoy</div></div>
   </section>
   <p class="warnbox"><b>Datos sin abrir las páginas.</b> El entorno bloquea YouTube y la mayoría de webs, así que todo sale de resultados de búsqueda (cada ficha dice qué falta comprobar). Revisa el canal antes de enviar cada mensaje.</p>
   <section>
-    <h2>Para aprobar y enviar</h2>
-    <div class="list"><article class="draft" id="d0">
-  <header><span class="prio pB">B</span><h3>Debbie Shadid (Life Coach Business Building School)</h3></header>
-  <p class="meta">Business coach for life coaches (women 50+) · profesional</p>
-  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">https://debbieshadid.com/schedule</span> · <a href="https://debbieshadid.com/podcast" target="_blank" rel="noopener">dónde lo vimos</a></p>
-  <p class="contact"><span class="lbl">Asunto</span> <span class="sel">Free clip from your latest episode</span></p>
-  <pre class="msg" id="m0">Hi Debbie,
+    <h2>Top 10: para aprobar</h2>
+    <p class="sub">Revisa cada uno y dime en el chat cuáles apruebas (por ejemplo «apruebo 1, 3 y 7» o «apruebo 2 cambiando…»). Nada se envía hasta entonces, y lo envías tú.</p>
+    <div class="list"><article class="draft" id="p1">
+  <header><span class="num">1</span><h3>Bill Caskey &amp; Bryan Neale (The Advanced Selling Podcast)</h3></header>
+  <p class="meta">B2B sales trainers / consultants; weekly sales-education video podcast (20 years, 900+ episodes) · 900+ episodes since 2006</p>
+  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">https://advancedsellingpodcast.com/contact/</span> · <a href="https://advancedsellingpodcast.com/contact/" target="_blank" rel="noopener">en su propia web o canal</a></p>
+  <p class="contact"><span class="lbl">Último episodio</span> Are Your Sales Skills Atrophying? (Ep 900) (2026-09-28) <a href="https://www.buzzsprout.com/2517440" target="_blank" rel="noopener">fuente</a></p>
+  <details><summary>Por qué lo elegí</summary><ul><li>A search for the show on YouTube Shorts, TikTok or Instagram found no official accounts. The TikTok and Instagram links on Player FM belong to another company (GHA Marketing). MEDIUM-WEAK evidence (https://he.player.fm/1BgCrwp)</li><li>Apple lists it as a 'Video Podcast' (https://podcasts.apple.com/us/podcast/the-advanced-selling-podcast/id148759439)</li></ul><p class="note">Pages could not be opened; only search results were seen. The business email on the contact page appeared masked in results. listener@advancedsellingpodcast.com is for listener questions. Ep 898's title differs between Buzzsprout and the RSS feed. The exact title of Ep 901 (2026-10-05) was not seen; the search said it is Part 2 of 'Are Your Sales Skills Atrophying?'. | Contacto completo: https://advancedsellingpodcast.com/contact/ (listener@advancedsellingpodcast.com for listener questions) | listener@advancedsellingpodcast.com es para preguntas de oyentes; el contacto comercial es el formulario.</p></details>
+  <p class="lbl">Primer mensaje</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Short clips from The Advanced Selling Podcast</span></p><pre class="msg" id="m0-0">Hi Bill and Bryan,
 
-I came across &quot;Why Your Coaching Offer Isn't Selling (It's Not Your Niche!)&quot;. That title alone is a hook, and there are several 30-second answers inside the episode that could each be a Reel.
+Nine hundred episodes is a huge library. Ep 900, &quot;Are Your Sales Skills Atrophying?&quot;, is a question every salesperson would stop for in a feed.
 
-I run Hook House, a small editing studio that turns weekly video episodes into short vertical clips: strongest line first, word-by-word captions, zooms, for Reels, TikTok and YouTube Shorts.
+I run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.
 
-If you already have someone clipping your episodes, please ignore this. If not, I'd like to edit one clip from that episode for free so you can judge the quality. Shall I send it?
-
-[Your name]
-Hook House</pre>
-  <div class="row"><button type="button" data-copy="m0" id="b0">Copiar mensaje</button><span class="hint" id="h0"></span></div>
-  <details><summary>Comprobar antes de enviar</summary><ul>
-    <li>Abre su canal: ¿publicó en los últimos 30 días?</li>
-    <li>¿De verdad no tiene clips verticales (Shorts, Reels, TikTok)? Si los tiene, cambia la segunda frase o descártalo.</li>
-    <li>¿El título del episodio que cita el mensaje es exacto?</li>
-    <li>¿El contacto aparece en su propia web o canal?</li>
-    <li>Pon tu nombre en lugar de «[Your name]». Al enviarlo: <code>npm run crm -- enviado debbie-shadid --canal formulario</code></li>
-  </ul></details>
-</article>
-<article class="draft" id="d1">
-  <header><span class="prio pB">B</span><h3>Glen Whitten (Talking Realty / Ohio Property Group – OhioMLSFlatFee.com)</h3></header>
-  <p class="meta">Realtor / designated managing broker, home-seller education video podcast · profesional</p>
-  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">Glen@OhioMLSFlatFee.com</span> · <a href="https://ohiomlsflatfee.com/talkingrealty/ ; https://my.flexmls.com/GlenWhitten (email shown in search snippets of his own brokerage/podcast page and flexmls profile)" target="_blank" rel="noopener">dónde lo vimos</a></p>
-  <p class="contact"><span class="lbl">Asunto</span> <span class="sel">Free clip from your latest episode</span></p>
-  <pre class="msg" id="m1">Hi Glen,
-
-I came across Talking Realty. &quot;Do You Have to Accept a Full-Price Offer on Your House?&quot; is exactly the kind of question sellers search for and share.
-
-I run Hook House, a small editing studio that turns video podcasts into short vertical clips: the answer up front, captions word by word, zooms. Made for Reels, TikTok and YouTube Shorts, where local sellers scroll every day.
-
-I couldn't find vertical clips of the show. If you already post them, ignore this.
-
-If not, I'll edit one clip from episode 106 for free so you can see how it would look. Want me to send it?
-
-[Your name]
-Hook House</pre>
-  <div class="row"><button type="button" data-copy="m1" id="b1">Copiar mensaje</button><span class="hint" id="h1"></span></div>
-  <details><summary>Comprobar antes de enviar</summary><ul>
-    <li>Abre su canal: ¿publicó en los últimos 30 días?</li>
-    <li>¿De verdad no tiene clips verticales (Shorts, Reels, TikTok)? Si los tiene, cambia la segunda frase o descártalo.</li>
-    <li>¿El título del episodio que cita el mensaje es exacto?</li>
-    <li>¿El contacto aparece en su propia web o canal?</li>
-    <li>Pon tu nombre en lugar de «[Your name]». Al enviarlo: <code>npm run crm -- enviado glen-whitten --canal email</code></li>
-  </ul></details>
-</article>
-<article class="draft" id="d2">
-  <header><span class="prio pB">B</span><h3>Greg Head (Practical Founders)</h3></header>
-  <p class="meta">B2B SaaS founder community / CEO peer groups; weekly founder-interview video podcast · profesional</p>
-  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">sin contacto público: buscar en su web o su canal</span> · <a href="https://practicalfounders.com/articles/mentor-time-with-greg-where-i-mentor-in-phoenix-and-dallas/ (mentions a 'contact me here' link; target URL not visible)" target="_blank" rel="noopener">dónde lo vimos</a></p>
-  <p class="contact"><span class="lbl">Asunto</span> <span class="sel">Free clip from your latest episode</span></p>
-  <pre class="msg" id="m2">Hi Greg,
-
-Practical Founders puts out a founder interview every week (most recently with Heath Adams). On YouTube I only found an occasional Short.
-
-Founders scroll LinkedIn, Shorts and Reels between meetings, and a 40-second clip of a founder explaining one hard decision travels far.
-
-I run Hook House, a small editing studio that turns interviews into vertical clips with the key line first, captions and zooms. I'd like to edit one clip from a recent episode for free so you can see if it's useful. Interested?
-
-[Your name]
-Hook House</pre>
-  <div class="row"><button type="button" data-copy="m2" id="b2">Copiar mensaje</button><span class="hint" id="h2"></span></div>
-  <details><summary>Comprobar antes de enviar</summary><ul>
-    <li>Abre su canal: ¿publicó en los últimos 30 días?</li>
-    <li>¿De verdad no tiene clips verticales (Shorts, Reels, TikTok)? Si los tiene, cambia la segunda frase o descártalo.</li>
-    <li>¿El título del episodio que cita el mensaje es exacto?</li>
-    <li>¿El contacto aparece en su propia web o canal?</li>
-    <li>Pon tu nombre en lugar de «[Your name]». Al enviarlo: <code>npm run crm -- enviado greg-head --canal otro</code></li>
-  </ul></details>
-</article>
-<article class="draft" id="d3">
-  <header><span class="prio pB">B</span><h3>Sam Witteveen (Sam Witteveen)</h3></header>
-  <p class="meta">tech/AI tutorials (LLMs, agents, local AI) · educativo</p>
-  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">sin contacto público: buscar en su web o su canal</span> </p>
-  <p class="contact"><span class="lbl">Asunto</span> <span class="sel">Free clip from your latest episode</span></p>
-  <pre class="msg" id="m3">Hi Sam,
-
-Your weekly deep dives on local models and agents are packed with &quot;wait, it can do that?&quot; moments. Most of them live only in the long videos; I saw about one Short a month.
-
-I run Hook House, a small editing studio that turns long-form videos into vertical Shorts: the payoff first, captions, zooms and on-screen highlights. They point viewers back to the full tutorial.
-
-If Shorts aren't a priority, no problem. If they are, I'd like to cut one from a recent video for free so you can judge the quality. Want me to?
-
-[Your name]
-Hook House</pre>
-  <div class="row"><button type="button" data-copy="m3" id="b3">Copiar mensaje</button><span class="hint" id="h3"></span></div>
-  <details><summary>Comprobar antes de enviar</summary><ul>
-    <li>Abre su canal: ¿publicó en los últimos 30 días?</li>
-    <li>¿De verdad no tiene clips verticales (Shorts, Reels, TikTok)? Si los tiene, cambia la segunda frase o descártalo.</li>
-    <li>¿El título del episodio que cita el mensaje es exacto?</li>
-    <li>¿El contacto aparece en su propia web o canal?</li>
-    <li>Pon tu nombre en lugar de «[Your name]». Al enviarlo: <code>npm run crm -- enviado sam-witteveen --canal otro</code></li>
-  </ul></details>
-</article>
-<article class="draft" id="d4">
-  <header><span class="prio pB">B</span><h3>The Learning Leader Show (Ryan Hawk)</h3></header>
-  <p class="meta">leadership / self-improvement / career · podcaster</p>
-  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">https://learningleader.com/partner/</span> · <a href="https://learningleader.com/partner/" target="_blank" rel="noopener">dónde lo vimos</a></p>
-  <p class="contact"><span class="lbl">Asunto</span> <span class="sel">Free clip from your latest episode</span></p>
-  <pre class="msg" id="m4">Hi Ryan,
-
-Your recent run of guests (Martin Seligman, Andy Stanley, Danny Meyer) has the kind of lines that stop a scroll. Most of them stay inside the full episodes on YouTube, though; I only found a handful of Shorts.
-
-I run Hook House, a small editing studio that turns long conversations into vertical clips: strongest line first, animated captions, zooms and B-roll, for Shorts, Reels and TikTok.
-
-If clips are already handled, no worries. If not, I'd like to edit one clip from a recent episode for free so you can see the quality. Should I send it to you or someone on your team?
-
-[Your name]
-Hook House</pre>
-  <div class="row"><button type="button" data-copy="m4" id="b4">Copiar mensaje</button><span class="hint" id="h4"></span></div>
-  <details><summary>Comprobar antes de enviar</summary><ul>
-    <li>Abre su canal: ¿publicó en los últimos 30 días?</li>
-    <li>¿De verdad no tiene clips verticales (Shorts, Reels, TikTok)? Si los tiene, cambia la segunda frase o descártalo.</li>
-    <li>¿El título del episodio que cita el mensaje es exacto?</li>
-    <li>¿El contacto aparece en su propia web o canal?</li>
-    <li>Pon tu nombre en lugar de «[Your name]». Al enviarlo: <code>npm run crm -- enviado the-learning-leader-show --canal formulario</code></li>
-  </ul></details>
-</article>
-<article class="draft" id="d5">
-  <header><span class="prio pB">B</span><h3>The Side Hustle Show (Nick Loper)</h3></header>
-  <p class="meta">side hustles / small business / entrepreneurship · podcaster</p>
-  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">nick@sidehustlenation.com</span> · <a href="https://www.sidehustlenation.com/contact/" target="_blank" rel="noopener">dónde lo vimos</a></p>
-  <p class="contact"><span class="lbl">Asunto</span> <span class="sel">Free clip from your latest episode</span></p>
-  <pre class="msg" id="m5">Hi Nick,
-
-I came across the Side Hustle Show. An episode like &quot;24 Years of Side Hustle Advice&quot; (ep. 732) is full of 30-second moments that would work on their own as Shorts or Reels.
-
-I run Hook House, a small editing studio that turns podcast episodes into vertical clips: hook first, word-by-word captions, zooms and B-roll, ready for YouTube Shorts, Reels and TikTok.
-
-I couldn't find clips of the show on Reels or TikTok. If someone already handles that for you, feel free to ignore this.
+I couldn't find clips of the show on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.
 
 If not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?
 
 [Your name]
-Hook House</pre>
-  <div class="row"><button type="button" data-copy="m5" id="b5">Copiar mensaje</button><span class="hint" id="h5"></span></div>
-  <details><summary>Comprobar antes de enviar</summary><ul>
-    <li>Abre su canal: ¿publicó en los últimos 30 días?</li>
-    <li>¿De verdad no tiene clips verticales (Shorts, Reels, TikTok)? Si los tiene, cambia la segunda frase o descártalo.</li>
-    <li>¿El título del episodio que cita el mensaje es exacto?</li>
-    <li>¿El contacto aparece en su propia web o canal?</li>
-    <li>Pon tu nombre en lugar de «[Your name]». Al enviarlo: <code>npm run crm -- enviado the-side-hustle-show --canal email</code></li>
-  </ul></details>
-</article>
-<article class="draft" id="d6">
-  <header><span class="prio pC">C</span><h3>Leaving The Village (Kelvin Oliver)</h3></header>
-  <p class="meta">K-12 education / behavior management for teachers and parents · educativo</p>
-  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">https://www.leavingthevillage.com/ (the site offers booking a 30-minute call with Kelvin; this is aimed at schools and districts)</span> · <a href="https://www.leavingthevillage.com/" target="_blank" rel="noopener">dónde lo vimos</a></p>
-  <p class="contact"><span class="lbl">Asunto</span> <span class="sel">Free clip from your latest episode</span></p>
-  <pre class="msg" id="m6">Hi Kelvin,
+Hook House</pre><div class="row"><button type="button" data-copy="m0-0">Copiar</button><span class="hint" data-hint="m0-0"></span></div><details><summary>Seguimiento 1 · día 3</summary><p class="lbl">Seguimiento 1 · día 3</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: Short clips from The Advanced Selling Podcast</span></p><pre class="msg" id="m0-1">Hi Bill and Bryan,
 
-I saw a while ago that Leaving The Village was looking for an editor for long-form videos and 5–7 Shorts a week. I don't know if you filled the role, so I'll keep this short.
-
-I run Hook House, a small editing studio that turns seminars, interviews and Q&amp;As into vertical clips with captions, zooms and clear on-screen key points. A video like &quot;Restorative Practices Isn't About Changing Students' Behavior&quot; has several moments teachers would share.
-
-If the role is still open or you need extra help, I'll edit one Short for free so you can see the quality first.
+Quick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?
 
 [Your name]
-Hook House</pre>
-  <div class="row"><button type="button" data-copy="m6" id="b6">Copiar mensaje</button><span class="hint" id="h6"></span></div>
-  <details><summary>Comprobar antes de enviar</summary><ul>
-    <li>Abre su canal: ¿publicó en los últimos 30 días?</li>
-    <li>¿De verdad no tiene clips verticales (Shorts, Reels, TikTok)? Si los tiene, cambia la segunda frase o descártalo.</li>
-    <li>¿El título del episodio que cita el mensaje es exacto?</li>
-    <li>¿El contacto aparece en su propia web o canal?</li>
-    <li>Pon tu nombre en lugar de «[Your name]». Al enviarlo: <code>npm run crm -- enviado leaving-the-village --canal formulario</code></li>
+Hook House</pre><div class="row"><button type="button" data-copy="m0-1">Copiar</button><span class="hint" data-hint="m0-1"></span></div></details><details><summary>Seguimiento 2 · día 7</summary><p class="lbl">Seguimiento 2 · día 7</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: Short clips from The Advanced Selling Podcast</span></p><pre class="msg" id="m0-2">Hi Bill and Bryan,
+
+Here's how I'd open a clip from &quot;Are Your Sales Skills Atrophying?&quot;: open on the one sign that your sales skills are slipping. If you'd like to see it edited, just reply &quot;send it&quot; and you'll have it within 48 hours.
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m0-2">Copiar</button><span class="hint" data-hint="m0-2"></span></div></details><details><summary>Seguimiento 3 · día 14</summary><p class="lbl">Seguimiento 3 · día 14</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: Short clips from The Advanced Selling Podcast</span></p><pre class="msg" id="m0-3">Hi Bill and Bryan,
+
+I'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m0-3">Copiar</button><span class="hint" data-hint="m0-3"></span></div></details>
+  <details><summary>Comprobar antes de enviar (2 minutos)</summary><ul>
+    <li>Abre el enlace del contacto: ¿sigue ahí?</li>
+    <li>Abre su YouTube y su Instagram: si ya publican clips verticales a menudo, quita la frase «I couldn't find clips…» o descártalo.</li>
+    <li>Confirma el título del episodio que cita el mensaje.</li>
+    <li>Cambia «[Your name]» por tu nombre.</li>
+  </ul></details>
+</article>
+<article class="draft" id="p2">
+  <header><span class="num">2</span><h3>Bill Gross (The LA Probate Expert – Probate Weekly)</h3></header>
+  <p class="meta">Probate and trust real estate broker (eXp Realty, Beverly Hills); educational show for attorneys, executors and agents · 305+ episodes, according to the show page; audience size unknown</p>
+  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">bill@thelaprobateexpert.com</span> · <a href="https://www.thelaprobateexpert.com/" target="_blank" rel="noopener">en su propia web o canal</a></p>
+  <p class="contact"><span class="lbl">Último episodio</span> How Real Estate Pros Can Rank on AI Models (with David Colgan) (2026-10-06) <a href="https://creators.spotify.com/pod/profile/probateweekly/" target="_blank" rel="noopener">fuente</a></p>
+  <details><summary>Por qué lo elegí</summary><ul><li>A search for Bill Gross on TikTok, Instagram Reels or Shorts found no accounts. Only the podcast and YouTube channel @BillGrossProbate appeared. MEDIUM-WEAK evidence: absence is not confirmed by opening the platforms (https://estateprofessionalsmastermind.buzzsprout.com/1763298/15429506)</li><li>Rephonic tags one 3-minute YouTube video from the 2026-10-06 batch, so he already posts some short pieces. Need is probably for vertical clips with captions rather than starting from zero (https://rephonic.com/podcasts/probate-weekly)</li></ul><p class="note">Pages could not be opened; only search results were seen. The exact episode titles come from aggregator snippets (Rephonic, Spotify for Creators). The YouTube handle @BillGrossProbate came from a podcast listing and was not opened. Whether each episode has a video version is not verified. | Fuente del contacto: https://www.thelaprobateexpert.com/ (search results for the site, including https://www.thelaprobateexpert.com/consult, showed bill@thelaprobateexpert.com and (310) 210-0008)</p></details>
+  <p class="lbl">Primer mensaje</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Vertical clips from Probate Weekly</span></p><pre class="msg" id="m1-0">Hi Bill,
+
+I came across Probate Weekly. &quot;Why Half of LA Probate Leads Can't Sell&quot; is the kind of claim agents and investors stop scrolling for.
+
+I run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.
+
+I saw you already post some shorter videos on YouTube. Vertical cuts with captions are what Reels and TikTok reward, and I couldn't find you there; if I missed it, ignore this.
+
+If not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m1-0">Copiar</button><span class="hint" data-hint="m1-0"></span></div><details><summary>Seguimiento 1 · día 3</summary><p class="lbl">Seguimiento 1 · día 3</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: Vertical clips from Probate Weekly</span></p><pre class="msg" id="m1-1">Hi Bill,
+
+Quick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m1-1">Copiar</button><span class="hint" data-hint="m1-1"></span></div></details><details><summary>Seguimiento 2 · día 7</summary><p class="lbl">Seguimiento 2 · día 7</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: Vertical clips from Probate Weekly</span></p><pre class="msg" id="m1-2">Hi Bill,
+
+Here's how I'd open a clip from &quot;Why Half of LA Probate Leads Can't Sell&quot;: open on &quot;Half of LA probate leads can't sell&quot; and the first reason. If you'd like to see it edited, just reply &quot;send it&quot; and you'll have it within 48 hours.
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m1-2">Copiar</button><span class="hint" data-hint="m1-2"></span></div></details><details><summary>Seguimiento 3 · día 14</summary><p class="lbl">Seguimiento 3 · día 14</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: Vertical clips from Probate Weekly</span></p><pre class="msg" id="m1-3">Hi Bill,
+
+I'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m1-3">Copiar</button><span class="hint" data-hint="m1-3"></span></div></details>
+  <details><summary>Comprobar antes de enviar (2 minutos)</summary><ul>
+    <li>Abre el enlace del contacto: ¿sigue ahí?</li>
+    <li>Abre su YouTube y su Instagram: si ya publican clips verticales a menudo, quita la frase «I couldn't find clips…» o descártalo.</li>
+    <li>Confirma el título del episodio que cita el mensaje.</li>
+    <li>Cambia «[Your name]» por tu nombre.</li>
+  </ul></details>
+</article>
+<article class="draft" id="p3">
+  <header><span class="num">3</span><h3>Dave Alison, CFP &amp; Greg Dillon (Alison Wealth / Prosperity Capital Advisors – Holistic Wealth and Health Podcast)</h3></header>
+  <p class="meta">Wealth managers / CFPs; relaunched holistic-wealth video podcast (new hosts since Sept 2026)</p>
+  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">Dave.Alison@AlisonWealth.com</span> · <a href="https://www.alisonwealth.com/contact" target="_blank" rel="noopener">en su propia web o canal</a></p>
+  <p class="contact"><span class="lbl">Último episodio</span> Retirement Planning for a 100-Year Life: What Longevity Changes (2026-10-07) <a href="https://podcasts.apple.com/ca/podcast/holistic-wealth-and-health-podcast/id1516518362" target="_blank" rel="noopener">fuente</a></p>
+  <details><summary>Por qué lo elegí</summary><ul><li>The show was just relaunched as a 'Video Podcast' with new hosts (new episodes from September 2026), so a clip workflow probably is not set up yet. Moderate inference, not confirmed (https://www.jlsmithgroup.com/a-new-chapter-for-holistic-wealth-health)</li><li>No YouTube, TikTok or Instagram accounts for the relaunched show appeared in the search results. WEAK evidence: not searched specifically (https://podcasts.apple.com/ca/podcast/holistic-wealth-and-health-podcast/id1516518362)</li></ul><p class="note">Pages could not be opened; only search results were seen. The 2026-10-07 date comes from one search summary of the Apple page; another summary showed only '3–5 days ago'. Greg Dillon's affiliation conflicts between sources (Prosperity Capital Advisors vs OneTeam Financial). The show was previously hosted by Jason L Smith (JL Smith Group), so check who owns the production before pitching. | Contacto completo: Dave.Alison@AlisonWealth.com (also info@alisonwealth.com; intro-call booking at https://www.alisonwealth.com/dave)</p></details>
+  <p class="lbl">Primer mensaje</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Clips for the relaunched Holistic Wealth and Health Podcast</span></p><pre class="msg" id="m2-0">Hi Dave,
+
+I saw that the Holistic Wealth and Health Podcast relaunched as a video podcast in September. &quot;Retirement Planning for a 100-Year Life&quot; is a strong topic to start building short clips from.
+
+I run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.
+
+With a relaunch, setting up a weekly clip routine from day one is much easier than adding it later.
+
+If not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m2-0">Copiar</button><span class="hint" data-hint="m2-0"></span></div><details><summary>Seguimiento 1 · día 3</summary><p class="lbl">Seguimiento 1 · día 3</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: Clips for the relaunched Holistic Wealth and Health Podcast</span></p><pre class="msg" id="m2-1">Hi Dave,
+
+Quick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m2-1">Copiar</button><span class="hint" data-hint="m2-1"></span></div></details><details><summary>Seguimiento 2 · día 7</summary><p class="lbl">Seguimiento 2 · día 7</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: Clips for the relaunched Holistic Wealth and Health Podcast</span></p><pre class="msg" id="m2-2">Hi Dave,
+
+Here's how I'd open a clip from &quot;Retirement Planning for a 100-Year Life&quot;: open on what a 100-year life changes about retirement math, in one sentence. If you'd like to see it edited, just reply &quot;send it&quot; and you'll have it within 48 hours.
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m2-2">Copiar</button><span class="hint" data-hint="m2-2"></span></div></details><details><summary>Seguimiento 3 · día 14</summary><p class="lbl">Seguimiento 3 · día 14</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: Clips for the relaunched Holistic Wealth and Health Podcast</span></p><pre class="msg" id="m2-3">Hi Dave,
+
+I'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m2-3">Copiar</button><span class="hint" data-hint="m2-3"></span></div></details>
+  <details><summary>Comprobar antes de enviar (2 minutos)</summary><ul>
+    <li>Abre el enlace del contacto: ¿sigue ahí?</li>
+    <li>Abre su YouTube y su Instagram: si ya publican clips verticales a menudo, quita la frase «I couldn't find clips…» o descártalo.</li>
+    <li>Confirma el título del episodio que cita el mensaje.</li>
+    <li>Cambia «[Your name]» por tu nombre.</li>
+  </ul></details>
+</article>
+<article class="draft" id="p4">
+  <header><span class="num">4</span><h3>Glen Whitten (Talking Realty / Ohio Property Group – OhioMLSFlatFee.com)</h3></header>
+  <p class="meta">Realtor / designated managing broker, home-seller education video podcast</p>
+  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">Glen@OhioMLSFlatFee.com</span> · <a href="https://ohiomlsflatfee.com/talkingrealty/" target="_blank" rel="noopener">en su propia web o canal</a></p>
+  <p class="contact"><span class="lbl">Último episodio</span> Stop Pricing It to Leave Room to Negotiate | Ep 104 (2026-09-09) <a href="https://podcasts.apple.com/us/podcast/talking-realty/id1725864716" target="_blank" rel="noopener">fuente</a></p>
+  <details><summary>Por qué lo elegí</summary><ul><li>Apple lists the show as a 'Video Podcast' with full episodes linked on YouTube (https://podcasts.apple.com/us/podcast/talking-realty/id1725864716, https://music.amazon.com/podcasts/34611d9b-2db4-4cf3-b691-4ab3183d1945)</li><li>A search for Glen Whitten on Instagram/TikTok returned no accounts of his (only other agents), so no sign of vertical clips from the podcast – absence NOT confirmed by opening the platforms</li></ul><p class="note">WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. YouTube channel URL, subscriber count and Instagram/TikTok presence not verified. Phone numbers differ between listings (419-790-3106 vs 419-763-6358). Episode counts disagree across directories (Apple 88, Podchaser 79 stale). | 13-10: el episodio «Full-Price Offer» no se encontró; el mensaje usa el Ep 104 (2026-09-09).</p></details>
+  <p class="lbl">Primer mensaje</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">A clip from Talking Realty Ep 104</span></p><pre class="msg" id="m3-0">Hi Glen,
+
+I came across Talking Realty. Ep 104, &quot;Stop Pricing It to Leave Room to Negotiate&quot;, answers a question sellers ask all the time, and that makes it a great short clip.
+
+I run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok. Local sellers scroll those feeds every day.
+
+I couldn't find clips of Talking Realty on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.
+
+If not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m3-0">Copiar</button><span class="hint" data-hint="m3-0"></span></div><details><summary>Seguimiento 1 · día 3</summary><p class="lbl">Seguimiento 1 · día 3</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: A clip from Talking Realty Ep 104</span></p><pre class="msg" id="m3-1">Hi Glen,
+
+Quick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m3-1">Copiar</button><span class="hint" data-hint="m3-1"></span></div></details><details><summary>Seguimiento 2 · día 7</summary><p class="lbl">Seguimiento 2 · día 7</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: A clip from Talking Realty Ep 104</span></p><pre class="msg" id="m3-2">Hi Glen,
+
+Here's how I'd open a clip from &quot;Stop Pricing It to Leave Room to Negotiate&quot;: open with &quot;Pricing high to leave room to negotiate can cost you the bidding war&quot;. If you'd like to see it edited, just reply &quot;send it&quot; and you'll have it within 48 hours.
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m3-2">Copiar</button><span class="hint" data-hint="m3-2"></span></div></details><details><summary>Seguimiento 3 · día 14</summary><p class="lbl">Seguimiento 3 · día 14</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: A clip from Talking Realty Ep 104</span></p><pre class="msg" id="m3-3">Hi Glen,
+
+I'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m3-3">Copiar</button><span class="hint" data-hint="m3-3"></span></div></details>
+  <details><summary>Comprobar antes de enviar (2 minutos)</summary><ul>
+    <li>Abre el enlace del contacto: ¿sigue ahí?</li>
+    <li>Abre su YouTube y su Instagram: si ya publican clips verticales a menudo, quita la frase «I couldn't find clips…» o descártalo.</li>
+    <li>Confirma el título del episodio que cita el mensaje.</li>
+    <li>Cambia «[Your name]» por tu nombre.</li>
+  </ul></details>
+</article>
+<article class="draft" id="p5">
+  <header><span class="num">5</span><h3>Greg Head (Practical Founders)</h3></header>
+  <p class="meta">B2B SaaS founder community / CEO peer groups; weekly founder-interview video podcast</p>
+  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">https://practicalfounders.com/contact-practical-founders/</span> · <a href="https://practicalfounders.com/contact-practical-founders/" target="_blank" rel="noopener">en su propia web o canal</a></p>
+  <p class="contact"><span class="lbl">Último episodio</span> #215 Steve Wolfe: How This Early-Stage Growth Equity Partner Is Investing in SaaS in 2026 (2026-09-25) <a href="https://sites.libsyn.com/416864/website/2026/07" target="_blank" rel="noopener">fuente</a></p>
+  <details><summary>Por qué lo elegí</summary><ul><li>Only one YouTube Short surfaced ('Greg Head, Practical Founders - Three Superpowers', https://www.youtube.com/shorts/rANx_l8KuLg), indexed ~346 days ago, suggesting shorts are sporadic despite a weekly long-form show</li><li>No Instagram or TikTok account surfaced in searches (not verified on the platforms)</li></ul><p class="note">WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Exact title of #214 and #213 not seen (only summaries). Subscriber count unknown. Shorts tab not opened, so other recent Shorts may exist. Business sells CEO peer groups at $6,000–$10,000/yr (practicalfounders.com/ceo-peer-groups), so budget is plausible.</p></details>
+  <p class="lbl">Primer mensaje</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Short clips from Practical Founders</span></p><pre class="msg" id="m4-0">Hi Greg,
+
+Practical Founders puts out a founder interview every week. #214 with Heath Adams, &quot;He Stopped Being the Face of the Company Before He Sold It&quot;, is a story founders would share.
+
+I run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.
+
+I couldn't find clips of the show on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.
+
+If not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m4-0">Copiar</button><span class="hint" data-hint="m4-0"></span></div><details><summary>Seguimiento 1 · día 3</summary><p class="lbl">Seguimiento 1 · día 3</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: Short clips from Practical Founders</span></p><pre class="msg" id="m4-1">Hi Greg,
+
+Quick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m4-1">Copiar</button><span class="hint" data-hint="m4-1"></span></div></details><details><summary>Seguimiento 2 · día 7</summary><p class="lbl">Seguimiento 2 · día 7</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: Short clips from Practical Founders</span></p><pre class="msg" id="m4-2">Hi Greg,
+
+Here's how I'd open a clip from &quot;He Stopped Being the Face of the Company Before He Sold It&quot;: open on the moment Heath decided to step back from being the face of the company. If you'd like to see it edited, just reply &quot;send it&quot; and you'll have it within 48 hours.
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m4-2">Copiar</button><span class="hint" data-hint="m4-2"></span></div></details><details><summary>Seguimiento 3 · día 14</summary><p class="lbl">Seguimiento 3 · día 14</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: Short clips from Practical Founders</span></p><pre class="msg" id="m4-3">Hi Greg,
+
+I'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m4-3">Copiar</button><span class="hint" data-hint="m4-3"></span></div></details>
+  <details><summary>Comprobar antes de enviar (2 minutos)</summary><ul>
+    <li>Abre el enlace del contacto: ¿sigue ahí?</li>
+    <li>Abre su YouTube y su Instagram: si ya publican clips verticales a menudo, quita la frase «I couldn't find clips…» o descártalo.</li>
+    <li>Confirma el título del episodio que cita el mensaje.</li>
+    <li>Cambia «[Your name]» por tu nombre.</li>
+  </ul></details>
+</article>
+<article class="draft" id="p6">
+  <header><span class="num">6</span><h3>Greg Helbeck (Velocity House Buyers – The Real Estate Investing Fast Track)</h3></header>
+  <p class="meta">Real estate investor / wholesaler and sales trainer (Hudson Valley NY and Dallas TX); investing education show · Podcast with 330 to 574 episodes, depending on the platform; audience size unknown</p>
+  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">greg@velocityhousebuyers.com</span> · <a href="https://www.velocityhousebuyers.com/contact-us/" target="_blank" rel="noopener">en su propia web o canal</a></p>
+  <p class="contact"><span class="lbl">Último episodio</span> Real Estate Strategies Ranked in a PERFECT MARKET (2026-09-11) <a href="https://podcastaddict.com/podcast/the-real-estate-investing-fast-track/4524533" target="_blank" rel="noopener">fuente</a></p>
+  <details><summary>Por qué lo elegí</summary><ul><li>A search for Greg Helbeck on TikTok, YouTube Shorts or Reels found no short-form accounts or videos. WEAK evidence: absence is not confirmed by opening the platforms. He has an Instagram handle (@grego_37) from podcast listings, with unknown activity (https://resimpli.com/?p=12218)</li></ul><p class="note">Pages could not be opened; only search results were seen. Episode dates come from Podcast Addict snippets. The search summary said the 2026-09-03 episode ranks investing strategies, but its exact title was not seen. The Instagram URL was built from the handle @grego_37 shown in podcast listings and was not opened. Coaching is by application, according to a third-party review site.</p></details>
+  <p class="lbl">Primer mensaje</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">A clip from &quot;$18k Profit On A Deal No One Wanted&quot;</span></p><pre class="msg" id="m5-0">Hi Greg,
+
+I came across The Real Estate Investing Fast Track. &quot;$18k Profit On A Deal No One Wanted&quot; is a ready-made hook: the number and the twist are already in the title.
+
+I run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.
+
+I couldn't find clips of the show on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.
+
+If not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m5-0">Copiar</button><span class="hint" data-hint="m5-0"></span></div><details><summary>Seguimiento 1 · día 3</summary><p class="lbl">Seguimiento 1 · día 3</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: A clip from &quot;$18k Profit On A Deal No One Wanted&quot;</span></p><pre class="msg" id="m5-1">Hi Greg,
+
+Quick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m5-1">Copiar</button><span class="hint" data-hint="m5-1"></span></div></details><details><summary>Seguimiento 2 · día 7</summary><p class="lbl">Seguimiento 2 · día 7</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: A clip from &quot;$18k Profit On A Deal No One Wanted&quot;</span></p><pre class="msg" id="m5-2">Hi Greg,
+
+Here's how I'd open a clip from &quot;$18k Profit On A Deal No One Wanted&quot;: open on the $18k number and why nobody wanted the deal. If you'd like to see it edited, just reply &quot;send it&quot; and you'll have it within 48 hours.
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m5-2">Copiar</button><span class="hint" data-hint="m5-2"></span></div></details><details><summary>Seguimiento 3 · día 14</summary><p class="lbl">Seguimiento 3 · día 14</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: A clip from &quot;$18k Profit On A Deal No One Wanted&quot;</span></p><pre class="msg" id="m5-3">Hi Greg,
+
+I'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m5-3">Copiar</button><span class="hint" data-hint="m5-3"></span></div></details>
+  <details><summary>Comprobar antes de enviar (2 minutos)</summary><ul>
+    <li>Abre el enlace del contacto: ¿sigue ahí?</li>
+    <li>Abre su YouTube y su Instagram: si ya publican clips verticales a menudo, quita la frase «I couldn't find clips…» o descártalo.</li>
+    <li>Confirma el título del episodio que cita el mensaje.</li>
+    <li>Cambia «[Your name]» por tu nombre.</li>
+  </ul></details>
+</article>
+<article class="draft" id="p7">
+  <header><span class="num">7</span><h3>Jeremy Keil, CFP, CFA (Keil Financial Partners – Retire Today / Mr. Retirement)</h3></header>
+  <p class="meta">Retirement financial planner (Milwaukee RIA); weekly retirement-planning video podcast · 300+ podcast episodes (https://keilfp.com/blogpodcast/episode-300/); YouTube subscriber count unknown</p>
+  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">jeremy@keilfp.com</span> · <a href="https://keilfp.com/blogpodcast/" target="_blank" rel="noopener">en su propia web o canal</a></p>
+  <p class="contact"><span class="lbl">Último episodio</span> Building a Retirement You Can Love When You're Single (True Retirement Story with Arlene C. Nelson) (2026-10-06) <a href="https://keilfp.com/blogpodcast/" target="_blank" rel="noopener">fuente</a></p>
+  <details><summary>Por qué lo elegí</summary><ul><li>A search for 'Mr. Retirement' with TikTok, Instagram or #shorts found no short-form accounts or Shorts. WEAK evidence: not confirmed by opening the YouTube channel, which may already contain Shorts (https://podcasts.apple.com/us/podcast/id1488769337)</li><li>Apple lists Retire Today as a 'Video Podcast', so there is long-form video to repurpose (https://podcasts.apple.com/us/podcast/retire-today/id1488769337)</li></ul><p class="note">Pages could not be opened; only search results were seen. The exact wording of the 2026-10-06 title comes from a search snippet and may differ slightly. Whether the YouTube channel has Shorts was not verified. He is an established author (book, Kiplinger contributor), so he may already work with a marketing provider. | Fuente del contacto: https://keilfp.com/blogpodcast/ (search result for keilfp.com podcast pages showed jeremy@keilfp.com; the site also offers a complimentary intro call)</p></details>
+  <p class="lbl">Primer mensaje</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">A clip from your Retire Today episode</span></p><pre class="msg" id="m6-0">Hi Jeremy,
+
+I came across Retire Today. The true retirement story with Arlene C. Nelson about building a retirement you love when you're single is exactly the kind of moment people save and send to a friend.
+
+I run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.
+
+I couldn't find clips of the show on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.
+
+If not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m6-0">Copiar</button><span class="hint" data-hint="m6-0"></span></div><details><summary>Seguimiento 1 · día 3</summary><p class="lbl">Seguimiento 1 · día 3</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: A clip from your Retire Today episode</span></p><pre class="msg" id="m6-1">Hi Jeremy,
+
+Quick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m6-1">Copiar</button><span class="hint" data-hint="m6-1"></span></div></details><details><summary>Seguimiento 2 · día 7</summary><p class="lbl">Seguimiento 2 · día 7</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: A clip from your Retire Today episode</span></p><pre class="msg" id="m6-2">Hi Jeremy,
+
+Here's how I'd open a clip from &quot;Building a Retirement You Can Love When You're Single&quot;: open on Arlene's single most surprising decision, then your one-line takeaway. If you'd like to see it edited, just reply &quot;send it&quot; and you'll have it within 48 hours.
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m6-2">Copiar</button><span class="hint" data-hint="m6-2"></span></div></details><details><summary>Seguimiento 3 · día 14</summary><p class="lbl">Seguimiento 3 · día 14</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: A clip from your Retire Today episode</span></p><pre class="msg" id="m6-3">Hi Jeremy,
+
+I'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m6-3">Copiar</button><span class="hint" data-hint="m6-3"></span></div></details>
+  <details><summary>Comprobar antes de enviar (2 minutos)</summary><ul>
+    <li>Abre el enlace del contacto: ¿sigue ahí?</li>
+    <li>Abre su YouTube y su Instagram: si ya publican clips verticales a menudo, quita la frase «I couldn't find clips…» o descártalo.</li>
+    <li>Confirma el título del episodio que cita el mensaje.</li>
+    <li>Cambia «[Your name]» por tu nombre.</li>
+  </ul></details>
+</article>
+<article class="draft" id="p8">
+  <header><span class="num">8</span><h3>Property Profits Real Estate Podcast (Dave Dubeau)</h3></header>
+  <p class="meta">real estate investing / raising private capital for syndicators · Apple Podcasts 5.0 rating from 42 ratings (per search result); YouTube subscriber count not seen</p>
+  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">support@davedubeau.com</span> · <a href="https://davedubeau.com/termsandconditions" target="_blank" rel="noopener">en su propia web o canal</a></p>
+  <p class="contact"><span class="lbl">Último episodio</span> Safe Is Sexy in Medical Real Estate with Merrick Lee (2026-10-12) <a href="https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776" target="_blank" rel="noopener">fuente</a></p>
+  <details><summary>Por qué lo elegí</summary><ul><li>Full episodes are posted to YouTube (episode notes say 'Watch this episode on YouTube'), but a search for his Shorts/short clips returned nothing (https://davedubeau.podbean.com/page/22/). Weak evidence: absence in search results only, the channel's Shorts tab was not opened.</li><li>No TikTok or Instagram Reels account found in any search (weak, absence-based).</li><li>Publishes near-daily 20-minute interviews: high volume of raw material for clips (https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776).</li></ul><p class="note">Pages could not be opened; everything comes from search-result summaries. Episode dates come from the Apple Podcasts listing as summarized by search. Apple labels it 'Podcast' (not 'Video Podcast'); YouTube full episodes confirmed only via one episode note (Nov 2025). support@ is a generic support inbox (terms page also gives phone 530.564.0227 and Kamloops, BC address). Shorts/TikTok absence not verified on the platforms.</p></details>
+  <p class="lbl">Primer mensaje</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Clips from Property Profits (for Dave)</span></p><pre class="msg" id="m7-0">Hi Dave (or whoever reads this inbox, please pass it on),
+
+You publish Property Profits almost daily, and episodes like &quot;Safe Is Sexy in Medical Real Estate with Merrick Lee&quot; go up on YouTube in full.
+
+I run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.
+
+I couldn't find clips of the show on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.
+
+If not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m7-0">Copiar</button><span class="hint" data-hint="m7-0"></span></div><details><summary>Seguimiento 1 · día 3</summary><p class="lbl">Seguimiento 1 · día 3</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: Clips from Property Profits (for Dave)</span></p><pre class="msg" id="m7-1">Hi Dave (or whoever reads this inbox,
+
+Quick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m7-1">Copiar</button><span class="hint" data-hint="m7-1"></span></div></details><details><summary>Seguimiento 2 · día 7</summary><p class="lbl">Seguimiento 2 · día 7</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: Clips from Property Profits (for Dave)</span></p><pre class="msg" id="m7-2">Hi Dave (or whoever reads this inbox,
+
+Here's how I'd open a clip from &quot;Safe Is Sexy in Medical Real Estate with Merrick Lee&quot;: open on Merrick Lee's single reason medical real estate is &quot;safe&quot;. If you'd like to see it edited, just reply &quot;send it&quot; and you'll have it within 48 hours.
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m7-2">Copiar</button><span class="hint" data-hint="m7-2"></span></div></details><details><summary>Seguimiento 3 · día 14</summary><p class="lbl">Seguimiento 3 · día 14</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: Clips from Property Profits (for Dave)</span></p><pre class="msg" id="m7-3">Hi Dave (or whoever reads this inbox,
+
+I'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m7-3">Copiar</button><span class="hint" data-hint="m7-3"></span></div></details>
+  <details><summary>Comprobar antes de enviar (2 minutos)</summary><ul>
+    <li>Abre el enlace del contacto: ¿sigue ahí?</li>
+    <li>Abre su YouTube y su Instagram: si ya publican clips verticales a menudo, quita la frase «I couldn't find clips…» o descártalo.</li>
+    <li>Confirma el título del episodio que cita el mensaje.</li>
+    <li>Cambia «[Your name]» por tu nombre.</li>
+  </ul></details>
+</article>
+<article class="draft" id="p9">
+  <header><span class="num">9</span><h3>The Learning Leader Show (Ryan Hawk)</h3></header>
+  <p class="meta">leadership / self-improvement / career · YouTube subscribers not verified. Partnership kit says over 250,000 monthly listeners (podcast audience, self-reported).</p>
+  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">Ryan@LearningLeader.com</span> · <a href="https://learningleader.com/?p=32" target="_blank" rel="noopener">en su propia web o canal</a></p>
+  <p class="contact"><span class="lbl">Último episodio</span> 708: Danny Meyer - How You Make People Feel (2026-09-27) <a href="https://podwise.ai/episodes/9001202" target="_blank" rel="noopener">fuente</a></p>
+  <details><summary>Por qué lo elegí</summary><ul><li>A YouTube-only search surfaced just one Short from @RyanHawk, about 638 days old (https://www.youtube.com/shorts/z3F94qivJHk). This suggests Shorts are rare, but the Shorts tab itself was not checked.</li><li>Long-form full episodes are published on YouTube (e.g. https://www.youtube.com/watch?v=sfeADQyaptY).</li></ul><p class="note">Exact titles of episodes 705-708 were not visible: the guests were Dr. Martin Seligman (705), Andy Stanley &amp; Sam Kaufman (707) and Danny Meyer (708). YouTube subscriber count, Instagram/TikTok handles and the content of the partner page (email or form) were not verified. Shorts frequency was inferred only from search results.</p></details>
+  <p class="lbl">Primer mensaje</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">A clip idea from your Danny Meyer episode</span></p><pre class="msg" id="m8-0">Hi Ryan,
+
+Your episode with Danny Meyer (&quot;How You Make People Feel&quot;) has lines that work on their own: the 49/51 hiring idea alone is a 30-second clip.
+
+I run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.
+
+I couldn't find clips of the show on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.
+
+If not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m8-0">Copiar</button><span class="hint" data-hint="m8-0"></span></div><details><summary>Seguimiento 1 · día 3</summary><p class="lbl">Seguimiento 1 · día 3</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: A clip idea from your Danny Meyer episode</span></p><pre class="msg" id="m8-1">Hi Ryan,
+
+Quick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m8-1">Copiar</button><span class="hint" data-hint="m8-1"></span></div></details><details><summary>Seguimiento 2 · día 7</summary><p class="lbl">Seguimiento 2 · día 7</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: A clip idea from your Danny Meyer episode</span></p><pre class="msg" id="m8-2">Hi Ryan,
+
+Here's how I'd open a clip from &quot;Danny Meyer - How You Make People Feel&quot;: open on the 49/51 hiring formula, stated in one sentence, before any context. If you'd like to see it edited, just reply &quot;send it&quot; and you'll have it within 48 hours.
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m8-2">Copiar</button><span class="hint" data-hint="m8-2"></span></div></details><details><summary>Seguimiento 3 · día 14</summary><p class="lbl">Seguimiento 3 · día 14</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: A clip idea from your Danny Meyer episode</span></p><pre class="msg" id="m8-3">Hi Ryan,
+
+I'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m8-3">Copiar</button><span class="hint" data-hint="m8-3"></span></div></details>
+  <details><summary>Comprobar antes de enviar (2 minutos)</summary><ul>
+    <li>Abre el enlace del contacto: ¿sigue ahí?</li>
+    <li>Abre su YouTube y su Instagram: si ya publican clips verticales a menudo, quita la frase «I couldn't find clips…» o descártalo.</li>
+    <li>Confirma el título del episodio que cita el mensaje.</li>
+    <li>Cambia «[Your name]» por tu nombre.</li>
+  </ul></details>
+</article>
+<article class="draft" id="p10">
+  <header><span class="num">10</span><h3>The Side Hustle Show (Nick Loper)</h3></header>
+  <p class="meta">side hustles / small business / entrepreneurship · 48,674 YouTube subscribers, 1,269 videos (SocialCounts tracker, data up to 2026-07-13; channel ID UCzOAAJUiSO2uyu1xyxw__2Q). Third-party estimate, not from YouTube directly.</p>
+  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">nick@sidehustlenation.com</span> · <a href="https://www.sidehustlenation.com/press/" target="_blank" rel="noopener">en su propia web o canal</a></p>
+  <p class="contact"><span class="lbl">Último episodio</span> 762: Buy Buttons, 10 Years Later (2026-10-01) <a href="https://podcasts.apple.com/cy/podcast/the-side-hustle-show/id655135292" target="_blank" rel="noopener">fuente</a></p>
+  <details><summary>Por qué lo elegí</summary><ul><li>Web search found no official Side Hustle Nation clips on TikTok, Instagram Reels or YouTube Shorts (search only, not proof they don't exist).</li><li>YouTube is a large part of reach: Libsyn ad profile says 60% of reach comes from the YouTube simulcast (https://advertising.libsyn.com/TheSideHustleShowBusinessIdeasforPartTimeEntrepreneurship), so short-form clips could feed it.</li></ul><p class="note">All data comes from search-engine snippets; WebFetch could not open any page (DNS failure in this environment). The email comes from the snippet of the official contact page; check it there before using. The YouTube handle/URL, Instagram and TikTok were not verified. A third-party listing shows Shorts metrics for the channel (values not visible), so the channel may already publish Shorts. The YAP Media sponsor address was seen only on a third-party listing.</p></details>
+  <p class="lbl">Primer mensaje</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">A free clip from &quot;Buy Buttons, 10 Years Later&quot;</span></p><pre class="msg" id="m9-0">Hi Nick,
+
+I came across episode 762, &quot;Buy Buttons, 10 Years Later&quot;. Revisiting which platforms still work a decade on is the kind of answer that travels well as a 40-second clip.
+
+I run Hook House, a small editing studio that turns video podcasts into vertical clips: the strongest line first, word-by-word captions, zooms and cuts, ready for Shorts, Reels and TikTok.
+
+I couldn't find clips of the show on Shorts, Reels or TikTok. If I missed them or someone already handles that, feel free to ignore this.
+
+If not, I'd like to edit one clip from a recent episode for free, so you can judge the quality before talking about anything else. Want me to send it over?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m9-0">Copiar</button><span class="hint" data-hint="m9-0"></span></div><details><summary>Seguimiento 1 · día 3</summary><p class="lbl">Seguimiento 1 · día 3</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: A free clip from &quot;Buy Buttons, 10 Years Later&quot;</span></p><pre class="msg" id="m9-1">Hi Nick,
+
+Quick bump on this. Happy to cut one clip from your latest episode for free, no strings attached. Should I go ahead?
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m9-1">Copiar</button><span class="hint" data-hint="m9-1"></span></div></details><details><summary>Seguimiento 2 · día 7</summary><p class="lbl">Seguimiento 2 · día 7</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: A free clip from &quot;Buy Buttons, 10 Years Later&quot;</span></p><pre class="msg" id="m9-2">Hi Nick,
+
+Here's how I'd open a clip from &quot;Buy Buttons, 10 Years Later&quot;: open on the one platform that still works 10 years later, then the reason why. If you'd like to see it edited, just reply &quot;send it&quot; and you'll have it within 48 hours.
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m9-2">Copiar</button><span class="hint" data-hint="m9-2"></span></div></details><details><summary>Seguimiento 3 · día 14</summary><p class="lbl">Seguimiento 3 · día 14</p><p class="contact"><span class="lbl">Asunto</span> <span class="sel">Re: A free clip from &quot;Buy Buttons, 10 Years Later&quot;</span></p><pre class="msg" id="m9-3">Hi Nick,
+
+I'll stop here so I don't fill your inbox. If short clips become a priority later, the free clip offer stands. Good luck with the show!
+
+[Your name]
+Hook House</pre><div class="row"><button type="button" data-copy="m9-3">Copiar</button><span class="hint" data-hint="m9-3"></span></div></details>
+  <details><summary>Comprobar antes de enviar (2 minutos)</summary><ul>
+    <li>Abre el enlace del contacto: ¿sigue ahí?</li>
+    <li>Abre su YouTube y su Instagram: si ya publican clips verticales a menudo, quita la frase «I couldn't find clips…» o descártalo.</li>
+    <li>Confirma el título del episodio que cita el mensaje.</li>
+    <li>Cambia «[Your name]» por tu nombre.</li>
   </ul></details>
 </article></div>
   </section>
@@ -244,71 +474,127 @@ Hook House</pre>
       <div><p class="lbl">Growth</p><p class="price">690 USD/mes</p><p class="meta">24 clips (6/semana) + nota mensual de retención</p></div>
       <div><p class="lbl">Muestra</p><p class="price">Gratis</p><p class="meta">1 clip de un episodio suyo, sin compromiso</p></div>
     </div>
+    <p class="sub">Costes estimados por mes (Starter):
+      <ul>
+        <li>Comisión de cobro: unos 12–22 USD, según la pasarela y si el cliente es internacional.</li>
+        <li>Transcripción y render: 0 USD, en tu equipo.</li>
+        <li>Tu tiempo: 5–7 h (estimación).</li>
+      </ul>
+      Margen: unos 368–378 USD, es decir 53–76 USD por hora, antes de tus suscripciones.<br>
+      Detalle en <code>crecimiento/oferta.md</code>.</p>
   </section>
   <section>
-    <h2>Todos los prospectos (22)</h2>
+    <h2>Todos los prospectos (38)</h2>
     <div class="list"><details class="pros">
-  <summary><span class="prio pB">B</span><span class="name">Debbie Shadid (Life Coach Business Building School)</span><span class="state">mensaje-listo</span></summary>
+  <summary><span class="prio pA">A</span><span class="name">Bill Caskey &amp; Bryan Neale (The Advanced Selling Podcast)</span><span class="state">mensaje-listo</span></summary>
   <div class="body">
-    <p class="meta">Business coach for life coaches (women 50+) · profesional · Instagram: 4,095 followers, 3,332 posts (search snippet of instagram.com/debbieshadid, seen 2026-10-12)</p>
-    <p><span class="lbl">Frecuencia</span> Weekly or more: EP 386 dated 2026-09-23, EP 379 dated 2026-09-04 (EP numbers advance ~7 in under 3 weeks); show notes point to YouTube for weekly episodes.</p>
-    <p><span class="lbl">Contacto</span> <span class="sel">https://debbieshadid.com/schedule</span></p>
-    <p class="lbl">Evidencia de necesidad</p><ul><li>Show notes direct listeners to youtube.com/@debbieshadid for weekly episodes, i.e. long-form video exists (https://debbieshadid.com/podcast)</li><li>Searches for her YouTube Shorts or TikTok returned nothing of hers – no TikTok account surfaced (not confirmed by opening the platforms)</li></ul>
-    <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/@debbieshadid" target="_blank" rel="noopener">youtube</a> · <a href="https://www.instagram.com/debbieshadid/" target="_blank" rel="noopener">instagram</a> · <a href="https://debbieshadid.com/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/us/podcast/life-coach-business-building-school-with-debbie-shadid/id1502118085" target="_blank" rel="noopener">podcast</a></p>
-    <p class="note">WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Country not stated in results. Whether each episode is posted as video on YouTube, YouTube subscriber count, and whether her Instagram Reels are edited/captioned were not verified. No email found. | Fuente del contacto: Podcast show notes ('Book a call with me here: https://debbieshadid.com/schedule') as shown in search snippets of https://debbieshadid.com/podcast / Apple Podcasts</p>
-    <p class="links">Fuentes: <a href="https://debbieshadid.com/podcast" target="_blank" rel="noopener">1</a> <a href="https://podcasts.apple.com/us/podcast/life-coach-business-building-school-with-debbie-shadid/id1502118085" target="_blank" rel="noopener">2</a> <a href="https://music.amazon.com/podcasts/742a3b08-4bf1-4ab8-90f7-1d3d382e659f" target="_blank" rel="noopener">3</a> <a href="https://www.youtube.com/@debbieshadid" target="_blank" rel="noopener">4</a> <a href="https://www.instagram.com/debbieshadid/" target="_blank" rel="noopener">5</a> <a href="https://www.facebook.com/debbieshadid/" target="_blank" rel="noopener">6</a></p>
+    <p class="meta">B2B sales trainers / consultants; weekly sales-education video podcast (20 years, 900+ episodes) · profesional · 900+ episodes since 2006</p>
+    <p><span class="lbl">Frecuencia</span> Weekly. Latest seen: Episode 901, 2026-10-05; Ep 900 2026-09-28; Ep 899 2026-09-21</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">https://advancedsellingpodcast.com/contact/</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>A search for the show on YouTube Shorts, TikTok or Instagram found no official accounts. The TikTok and Instagram links on Player FM belong to another company (GHA Marketing). MEDIUM-WEAK evidence (https://he.player.fm/1BgCrwp)</li><li>Apple lists it as a 'Video Podcast' (https://podcasts.apple.com/us/podcast/the-advanced-selling-podcast/id148759439)</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://advancedsellingpodcast.com/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/us/podcast/the-advanced-selling-podcast/id148759439" target="_blank" rel="noopener">podcast</a></p>
+    <p class="note">Pages could not be opened; only search results were seen. The business email on the contact page appeared masked in results. listener@advancedsellingpodcast.com is for listener questions. Ep 898's title differs between Buzzsprout and the RSS feed. The exact title of Ep 901 (2026-10-05) was not seen; the search said it is Part 2 of 'Are Your Sales Skills Atrophying?'. | Contacto completo: https://advancedsellingpodcast.com/contact/ (listener@advancedsellingpodcast.com for listener questions) | listener@advancedsellingpodcast.com es para preguntas de oyentes; el contacto comercial es el formulario.</p>
+    <p class="links">Fuentes: <a href="https://www.buzzsprout.com/2517440" target="_blank" rel="noopener">1</a> <a href="https://rss.buzzsprout.com/2517440.rss" target="_blank" rel="noopener">2</a> <a href="https://podcasts.apple.com/us/podcast/the-advanced-selling-podcast/id148759439" target="_blank" rel="noopener">3</a> <a href="https://advancedsellingpodcast.com/contact/" target="_blank" rel="noopener">4</a> <a href="https://advancedsellingpodcast.com/" target="_blank" rel="noopener">5</a> <a href="https://he.player.fm/1BgCrwp" target="_blank" rel="noopener">6</a></p>
   </div>
 </details>
 <details class="pros">
-  <summary><span class="prio pB">B</span><span class="name">Glen Whitten (Talking Realty / Ohio Property Group – OhioMLSFlatFee.com)</span><span class="state">mensaje-listo</span></summary>
+  <summary><span class="prio pA">A</span><span class="name">Bill Gross (The LA Probate Expert – Probate Weekly)</span><span class="state">mensaje-listo</span></summary>
+  <div class="body">
+    <p class="meta">Probate and trust real estate broker (eXp Realty, Beverly Hills); educational show for attorneys, executors and agents · profesional · 305+ episodes, according to the show page; audience size unknown</p>
+    <p><span class="lbl">Frecuencia</span> Weekly show (Thursday live call), with several episodes per batch. Latest seen: 2026-10-06 (Spotify for Creators / Rephonic)</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">bill@thelaprobateexpert.com</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>A search for Bill Gross on TikTok, Instagram Reels or Shorts found no accounts. Only the podcast and YouTube channel @BillGrossProbate appeared. MEDIUM-WEAK evidence: absence is not confirmed by opening the platforms (https://estateprofessionalsmastermind.buzzsprout.com/1763298/15429506)</li><li>Rephonic tags one 3-minute YouTube video from the 2026-10-06 batch, so he already posts some short pieces. Need is probably for vertical clips with captions rather than starting from zero (https://rephonic.com/podcasts/probate-weekly)</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/playlist?list=PLbCTvmi1msxrLKxLHDkxgdqhchYieNBgX" target="_blank" rel="noopener">youtube</a> · <a href="https://www.thelaprobateexpert.com/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/us/podcast/probate-weekly/id1575381330" target="_blank" rel="noopener">podcast</a></p>
+    <p class="note">Pages could not be opened; only search results were seen. The exact episode titles come from aggregator snippets (Rephonic, Spotify for Creators). The YouTube handle @BillGrossProbate came from a podcast listing and was not opened. Whether each episode has a video version is not verified. | Fuente del contacto: https://www.thelaprobateexpert.com/ (search results for the site, including https://www.thelaprobateexpert.com/consult, showed bill@thelaprobateexpert.com and (310) 210-0008)</p>
+    <p class="links">Fuentes: <a href="https://creators.spotify.com/pod/profile/probateweekly/" target="_blank" rel="noopener">1</a> <a href="https://rephonic.com/podcasts/probate-weekly" target="_blank" rel="noopener">2</a> <a href="https://podcasts.apple.com/us/podcast/probate-weekly/id1575381330" target="_blank" rel="noopener">3</a> <a href="https://www.thelaprobateexpert.com/" target="_blank" rel="noopener">4</a> <a href="https://www.thelaprobateexpert.com/consult" target="_blank" rel="noopener">5</a> <a href="https://www.thelaprobateexpert.com/podcasts/probate-weekly" target="_blank" rel="noopener">6</a> <a href="https://www.youtube.com/playlist?list=PLbCTvmi1msxrLKxLHDkxgdqhchYieNBgX" target="_blank" rel="noopener">7</a> <a href="https://probatemastery.com/probate-leads-and-transactions-real-estate-coaching/" target="_blank" rel="noopener">8</a></p>
+  </div>
+</details>
+<details class="pros">
+  <summary><span class="prio pA">A</span><span class="name">Dave Alison, CFP &amp; Greg Dillon (Alison Wealth / Prosperity Capital Advisors – Holistic Wealth and Health Podcast)</span><span class="state">mensaje-listo</span></summary>
+  <div class="body">
+    <p class="meta">Wealth managers / CFPs; relaunched holistic-wealth video podcast (new hosts since Sept 2026) · profesional</p>
+    <p><span class="lbl">Frecuencia</span> Every other week, according to Spotify (Apple says monthly). Relaunched in September 2026: launch episode 2026-09-23, latest 2026-10-07</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">Dave.Alison@AlisonWealth.com</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>The show was just relaunched as a 'Video Podcast' with new hosts (new episodes from September 2026), so a clip workflow probably is not set up yet. Moderate inference, not confirmed (https://www.jlsmithgroup.com/a-new-chapter-for-holistic-wealth-health)</li><li>No YouTube, TikTok or Instagram accounts for the relaunched show appeared in the search results. WEAK evidence: not searched specifically (https://podcasts.apple.com/ca/podcast/holistic-wealth-and-health-podcast/id1516518362)</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://www.alisonwealth.com/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/ca/podcast/holistic-wealth-and-health-podcast/id1516518362" target="_blank" rel="noopener">podcast</a></p>
+    <p class="note">Pages could not be opened; only search results were seen. The 2026-10-07 date comes from one search summary of the Apple page; another summary showed only '3–5 days ago'. Greg Dillon's affiliation conflicts between sources (Prosperity Capital Advisors vs OneTeam Financial). The show was previously hosted by Jason L Smith (JL Smith Group), so check who owns the production before pitching. | Contacto completo: Dave.Alison@AlisonWealth.com (also info@alisonwealth.com; intro-call booking at https://www.alisonwealth.com/dave)</p>
+    <p class="links">Fuentes: <a href="https://podcasts.apple.com/ca/podcast/holistic-wealth-and-health-podcast/id1516518362" target="_blank" rel="noopener">1</a> <a href="https://open.spotify.com/show/0dx7WW3dpiXb5vQdSzUbAJ" target="_blank" rel="noopener">2</a> <a href="https://www.jlsmithgroup.com/a-new-chapter-for-holistic-wealth-health" target="_blank" rel="noopener">3</a> <a href="https://www.alisonwealth.com/contact" target="_blank" rel="noopener">4</a> <a href="https://www.alisonwealth.com/dave" target="_blank" rel="noopener">5</a> <a href="https://www.alisonwealth.com/podcast" target="_blank" rel="noopener">6</a></p>
+  </div>
+</details>
+<details class="pros">
+  <summary><span class="prio pA">A</span><span class="name">Glen Whitten (Talking Realty / Ohio Property Group – OhioMLSFlatFee.com)</span><span class="state">mensaje-listo</span></summary>
   <div class="body">
     <p class="meta">Realtor / designated managing broker, home-seller education video podcast · profesional</p>
     <p><span class="lbl">Frecuencia</span> Regular, roughly weekly: iHeart lists Episode 106 dated 2026-09-23; Episodes 101–103 shortly before. Amazon Music links YouTube videos for 2026 episodes (e.g. one dated 2026-02-18).</p>
     <p><span class="lbl">Contacto</span> <span class="sel">Glen@OhioMLSFlatFee.com</span></p>
     <p class="lbl">Evidencia de necesidad</p><ul><li>Apple lists the show as a 'Video Podcast' with full episodes linked on YouTube (https://podcasts.apple.com/us/podcast/talking-realty/id1725864716, https://music.amazon.com/podcasts/34611d9b-2db4-4cf3-b691-4ab3183d1945)</li><li>A search for Glen Whitten on Instagram/TikTok returned no accounts of his (only other agents), so no sign of vertical clips from the podcast – absence NOT confirmed by opening the platforms</li></ul>
     <p class="lbl">Perfiles</p><p class="links"><a href="https://ohiomlsflatfee.com/talkingrealty/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/us/podcast/talking-realty/id1725864716" target="_blank" rel="noopener">podcast</a></p>
-    <p class="note">WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. YouTube channel URL, subscriber count and Instagram/TikTok presence not verified. Phone numbers differ between listings (419-790-3106 vs 419-763-6358). Episode counts disagree across directories (Apple 88, Podchaser 79 stale).</p>
+    <p class="note">WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. YouTube channel URL, subscriber count and Instagram/TikTok presence not verified. Phone numbers differ between listings (419-790-3106 vs 419-763-6358). Episode counts disagree across directories (Apple 88, Podchaser 79 stale). | 13-10: el episodio «Full-Price Offer» no se encontró; el mensaje usa el Ep 104 (2026-09-09).</p>
     <p class="links">Fuentes: <a href="https://www.iheart.com/podcast/269-talking-realty-143162414/" target="_blank" rel="noopener">1</a> <a href="https://podcasts.apple.com/us/podcast/talking-realty/id1725864716" target="_blank" rel="noopener">2</a> <a href="https://music.amazon.com/podcasts/34611d9b-2db4-4cf3-b691-4ab3183d1945" target="_blank" rel="noopener">3</a> <a href="https://ohiomlsflatfee.com/talkingrealty/" target="_blank" rel="noopener">4</a> <a href="https://my.flexmls.com/GlenWhitten" target="_blank" rel="noopener">5</a> <a href="https://www.homes.com/real-estate-agents/glen-whitten/x7pztxm/" target="_blank" rel="noopener">6</a> <a href="https://www.experience.com/reviews/glen-6487516" target="_blank" rel="noopener">7</a></p>
   </div>
 </details>
 <details class="pros">
-  <summary><span class="prio pB">B</span><span class="name">Greg Head (Practical Founders)</span><span class="state">mensaje-listo</span></summary>
+  <summary><span class="prio pA">A</span><span class="name">Greg Head (Practical Founders)</span><span class="state">mensaje-listo</span></summary>
   <div class="body">
     <p class="meta">B2B SaaS founder community / CEO peer groups; weekly founder-interview video podcast · profesional</p>
     <p><span class="lbl">Frecuencia</span> Weekly interviews; #214 (Heath Adams, The Cyber Mentor) aired 2026-09-18 per podcast feed snippets.</p>
-    <p><span class="lbl">Contacto</span> <span class="sel">—</span></p>
+    <p><span class="lbl">Contacto</span> <span class="sel">https://practicalfounders.com/contact-practical-founders/</span></p>
     <p class="lbl">Evidencia de necesidad</p><ul><li>Only one YouTube Short surfaced ('Greg Head, Practical Founders - Three Superpowers', https://www.youtube.com/shorts/rANx_l8KuLg), indexed ~346 days ago, suggesting shorts are sporadic despite a weekly long-form show</li><li>No Instagram or TikTok account surfaced in searches (not verified on the platforms)</li></ul>
     <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/@PracticalFounders" target="_blank" rel="noopener">youtube</a> · <a href="https://practicalfounders.com/" target="_blank" rel="noopener">web</a> · <a href="https://practicalfounders.com/podcast/" target="_blank" rel="noopener">podcast</a> · <a href="https://www.linkedin.com/in/gregheadaz/" target="_blank" rel="noopener">linkedin</a></p>
     <p class="note">WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Exact title of #214 and #213 not seen (only summaries). Subscriber count unknown. Shorts tab not opened, so other recent Shorts may exist. Business sells CEO peer groups at $6,000–$10,000/yr (practicalfounders.com/ceo-peer-groups), so budget is plausible.</p>
-    <p class="links">Fuentes: <a href="https://practicalfounders.com/podcast/" target="_blank" rel="noopener">1</a> <a href="https://podcasts.apple.com/us/podcast/practical-founders-podcast/id1628317831" target="_blank" rel="noopener">2</a> <a href="https://podcastaddict.com/podcast/practical-founders-podcast/4120105" target="_blank" rel="noopener">3</a> <a href="https://rss.libsyn.com/shows/416864/destinations/3461528.xml" target="_blank" rel="noopener">4</a> <a href="https://www.youtube.com/shorts/rANx_l8KuLg" target="_blank" rel="noopener">5</a> <a href="https://www.linkedin.com/in/gregheadaz/" target="_blank" rel="noopener">6</a> <a href="https://practicalfounders.com/ceo-peer-groups/" target="_blank" rel="noopener">7</a> <a href="https://practicalfounders.com/articles/mentor-time-with-greg-where-i-mentor-in-phoenix-and-dallas/" target="_blank" rel="noopener">8</a></p>
+    <p class="links">Fuentes: <a href="https://practicalfounders.com/podcast/" target="_blank" rel="noopener">1</a> <a href="https://podcasts.apple.com/us/podcast/practical-founders-podcast/id1628317831" target="_blank" rel="noopener">2</a> <a href="https://podcastaddict.com/podcast/practical-founders-podcast/4120105" target="_blank" rel="noopener">3</a> <a href="https://rss.libsyn.com/shows/416864/destinations/3461528.xml" target="_blank" rel="noopener">4</a> <a href="https://www.youtube.com/shorts/rANx_l8KuLg" target="_blank" rel="noopener">5</a> <a href="https://www.linkedin.com/in/gregheadaz/" target="_blank" rel="noopener">6</a> <a href="https://practicalfounders.com/ceo-peer-groups/" target="_blank" rel="noopener">7</a> <a href="https://practicalfounders.com/articles/mentor-time-with-greg-where-i-mentor-in-phoenix-and-dallas/" target="_blank" rel="noopener">8</a> <a href="https://sites.libsyn.com/416864/website/2026/07" target="_blank" rel="noopener">9</a> <a href="https://practicalfounders.com/contact-practical-founders/" target="_blank" rel="noopener">10</a></p>
   </div>
 </details>
 <details class="pros">
-  <summary><span class="prio pB">B</span><span class="name">Sam Witteveen (Sam Witteveen)</span><span class="state">mensaje-listo</span></summary>
+  <summary><span class="prio pA">A</span><span class="name">Greg Helbeck (Velocity House Buyers – The Real Estate Investing Fast Track)</span><span class="state">mensaje-listo</span></summary>
   <div class="body">
-    <p class="meta">tech/AI tutorials (LLMs, agents, local AI) · educativo · about 125K subscribers (developereducators.com, data from about Jul 2026); about 135K subscribers and 375 videos (youtubesubhub.com and Social Blade search snippets, Sep-Oct 2026)</p>
-    <p><span class="lbl">Frecuencia</span> Weekly per developereducators.com's 'weekly' upload label. showmeyourchannel.com lists several long-form uploads in Aug 2026 and one dated 09/06/2026. Not checked on YouTube itself.</p>
-    <p><span class="lbl">Contacto</span> <span class="sel">—</span></p>
-    <p class="lbl">Evidencia de necesidad</p><ul><li>youtubesubhub.com estimates Shorts at about 1 in the latest 25 uploads, so output is almost all long-form (https://youtubesubhub.com/@samwitteveenai)</li><li>showmeyourchannel.com shows only about 4 Shorts from late June to late August 2026, roughly one a month, against weekly long-form (https://www.showmeyourchannel.com/youtuber/samwitteveenai)</li><li>No sign of a TikTok or Instagram presence came up in searches. Not confirmed.</li></ul>
-    <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/@samwitteveenai" target="_blank" rel="noopener">youtube</a></p>
-    <p class="note">All data comes from search-result snippets. WebFetch could not open any page in this environment (DNS failure), and YouTube itself was blocked. Subscriber counts differ by source and date. Upload cadence comes from third-party trackers, not from the YouTube uploads tab. No business email was verified: ZoomInfo shows only a masked company email (s***@reddragon.ai), which was NOT used. Check the YouTube About page for a business email. He is also CEO and co-founder of Red Dragon AI (Singapore, per Crunchbase), so this is not a pure solo creator and his country is not stated. Recent Shorts seen in snippets (not exact titles/URLs verified): local real-time TTS, AMD Ryzen AI Halo, Gemini Omni Flash, Ornith 1.0 LLMs. Recent long-form topics were described only loosely (local voice TTS, GLM comparison, Docker sandboxes for agents, Qwen serving tutorial), so the titles are not recorded.</p>
-    <p class="links">Fuentes: <a href="https://youtubesubhub.com/@samwitteveenai" target="_blank" rel="noopener">1</a> <a href="https://developereducators.com/channel/samwitteveenai/" target="_blank" rel="noopener">2</a> <a href="https://www.showmeyourchannel.com/youtuber/samwitteveenai" target="_blank" rel="noopener">3</a> <a href="https://socialblade.com/youtube/handle/samwitteveenai" target="_blank" rel="noopener">4</a> <a href="https://socialcounts.org/youtube-live-subscriber-count/UC55ODQSvARtgSyc8ThfiepQ" target="_blank" rel="noopener">5</a> <a href="https://x.com/Sam_Witteveen" target="_blank" rel="noopener">6</a> <a href="https://sessionize.com/sam-witteveen/" target="_blank" rel="noopener">7</a></p>
+    <p class="meta">Real estate investor / wholesaler and sales trainer (Hudson Valley NY and Dallas TX); investing education show · profesional · Podcast with 330 to 574 episodes, depending on the platform; audience size unknown</p>
+    <p><span class="lbl">Frecuencia</span> Roughly weekly. Latest seen: 2026-09-11 (Podcast Addict); also 2026-09-03, 2026-08-25 and 2026-08-20</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">greg@velocityhousebuyers.com</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>A search for Greg Helbeck on TikTok, YouTube Shorts or Reels found no short-form accounts or videos. WEAK evidence: absence is not confirmed by opening the platforms. He has an Instagram handle (@grego_37) from podcast listings, with unknown activity (https://resimpli.com/?p=12218)</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/@realestateinvestingfasttrack" target="_blank" rel="noopener">youtube</a> · <a href="https://www.instagram.com/grego_37/" target="_blank" rel="noopener">instagram</a> · <a href="https://www.velocityhousebuyers.com/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/us/podcast/the-real-estate-investing-fast-track/id1459746507" target="_blank" rel="noopener">podcast</a></p>
+    <p class="note">Pages could not be opened; only search results were seen. Episode dates come from Podcast Addict snippets. The search summary said the 2026-09-03 episode ranks investing strategies, but its exact title was not seen. The Instagram URL was built from the handle @grego_37 shown in podcast listings and was not opened. Coaching is by application, according to a third-party review site.</p>
+    <p class="links">Fuentes: <a href="https://podcastaddict.com/podcast/the-real-estate-investing-fast-track/4524533" target="_blank" rel="noopener">1</a> <a href="https://podcasts.apple.com/us/podcast/the-real-estate-investing-fast-track/id1459746507" target="_blank" rel="noopener">2</a> <a href="https://www.youtube.com/@realestateinvestingfasttrack" target="_blank" rel="noopener">3</a> <a href="https://www.velocityhousebuyers.com/contact-us/" target="_blank" rel="noopener">4</a> <a href="https://reevyew.com/helbeck/" target="_blank" rel="noopener">5</a> <a href="https://www.iheart.com/podcast/256-the-real-estate-investing-43043688/" target="_blank" rel="noopener">6</a></p>
   </div>
 </details>
 <details class="pros">
-  <summary><span class="prio pB">B</span><span class="name">The Learning Leader Show (Ryan Hawk)</span><span class="state">mensaje-listo</span></summary>
+  <summary><span class="prio pA">A</span><span class="name">Jeremy Keil, CFP, CFA (Keil Financial Partners – Retire Today / Mr. Retirement)</span><span class="state">mensaje-listo</span></summary>
+  <div class="body">
+    <p class="meta">Retirement financial planner (Milwaukee RIA); weekly retirement-planning video podcast · profesional · 300+ podcast episodes (https://keilfp.com/blogpodcast/episode-300/); YouTube subscriber count unknown</p>
+    <p><span class="lbl">Frecuencia</span> Weekly (new episodes every Wednesday, according to Apple). Latest seen: 2026-10-06</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">jeremy@keilfp.com</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>A search for 'Mr. Retirement' with TikTok, Instagram or #shorts found no short-form accounts or Shorts. WEAK evidence: not confirmed by opening the YouTube channel, which may already contain Shorts (https://podcasts.apple.com/us/podcast/id1488769337)</li><li>Apple lists Retire Today as a 'Video Podcast', so there is long-form video to repurpose (https://podcasts.apple.com/us/podcast/retire-today/id1488769337)</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/@MrRetirement" target="_blank" rel="noopener">youtube</a> · <a href="https://keilfp.com/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/us/podcast/retire-today/id1488769337" target="_blank" rel="noopener">podcast</a> · <a href="https://www.linkedin.com/in/mrretirement/" target="_blank" rel="noopener">linkedin</a></p>
+    <p class="note">Pages could not be opened; only search results were seen. The exact wording of the 2026-10-06 title comes from a search snippet and may differ slightly. Whether the YouTube channel has Shorts was not verified. He is an established author (book, Kiplinger contributor), so he may already work with a marketing provider. | Fuente del contacto: https://keilfp.com/blogpodcast/ (search result for keilfp.com podcast pages showed jeremy@keilfp.com; the site also offers a complimentary intro call)</p>
+    <p class="links">Fuentes: <a href="https://keilfp.com/blogpodcast/" target="_blank" rel="noopener">1</a> <a href="https://keilfp.com/blogpodcast/best-retirement-books/" target="_blank" rel="noopener">2</a> <a href="https://keilfp.com/" target="_blank" rel="noopener">3</a> <a href="https://podcasts.apple.com/us/podcast/retire-today/id1488769337" target="_blank" rel="noopener">4</a> <a href="https://www.youtube.com/@MrRetirement" target="_blank" rel="noopener">5</a> <a href="https://www.youtube.com/playlist?list=PLFyppQjlzmqu4xEXdFwzXm5qI_urvhTG1" target="_blank" rel="noopener">6</a> <a href="https://www.linkedin.com/in/mrretirement/" target="_blank" rel="noopener">7</a></p>
+  </div>
+</details>
+<details class="pros">
+  <summary><span class="prio pA">A</span><span class="name">Property Profits Real Estate Podcast (Dave Dubeau)</span><span class="state">mensaje-listo</span></summary>
+  <div class="body">
+    <p class="meta">real estate investing / raising private capital for syndicators · podcaster · Apple Podcasts 5.0 rating from 42 ratings (per search result); YouTube subscriber count not seen</p>
+    <p><span class="lbl">Frecuencia</span> Near-daily: episodes listed every day 22-30 Sep 2026, 1 Oct 2026; latest seen 12 Oct 2026 ('Safe Is Sexy in Medical Real Estate with Merrick Lee')</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">support@davedubeau.com</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>Full episodes are posted to YouTube (episode notes say 'Watch this episode on YouTube'), but a search for his Shorts/short clips returned nothing (https://davedubeau.podbean.com/page/22/). Weak evidence: absence in search results only, the channel's Shorts tab was not opened.</li><li>No TikTok or Instagram Reels account found in any search (weak, absence-based).</li><li>Publishes near-daily 20-minute interviews: high volume of raw material for clips (https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776).</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/@davedubeau" target="_blank" rel="noopener">youtube</a> · <a href="https://davedubeau.com/home" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776" target="_blank" rel="noopener">podcast</a></p>
+    <p class="note">Pages could not be opened; everything comes from search-result summaries. Episode dates come from the Apple Podcasts listing as summarized by search. Apple labels it 'Podcast' (not 'Video Podcast'); YouTube full episodes confirmed only via one episode note (Nov 2025). support@ is a generic support inbox (terms page also gives phone 530.564.0227 and Kamloops, BC address). Shorts/TikTok absence not verified on the platforms.</p>
+    <p class="links">Fuentes: <a href="https://podcasts.apple.com/us/podcast/property-profits-real-estate-podcast/id1445202776" target="_blank" rel="noopener">1</a> <a href="https://davedubeau.com/termsandconditions" target="_blank" rel="noopener">2</a> <a href="https://davedubeau.com/home" target="_blank" rel="noopener">3</a> <a href="https://resultsenterprises.com/start" target="_blank" rel="noopener">4</a> <a href="https://davedubeau.podbean.com/page/22/" target="_blank" rel="noopener">5</a></p>
+  </div>
+</details>
+<details class="pros">
+  <summary><span class="prio pA">A</span><span class="name">The Learning Leader Show (Ryan Hawk)</span><span class="state">mensaje-listo</span></summary>
   <div class="body">
     <p class="meta">leadership / self-improvement / career · podcaster · YouTube subscribers not verified. Partnership kit says over 250,000 monthly listeners (podcast audience, self-reported).</p>
     <p><span class="lbl">Frecuencia</span> Weekly (partnership kit: new episodes every Sunday for nine years). Episode 705 dated 2026-09-10 (TuneIn), 707 dated 2026-09-20 and 708 dated 2026-09-27 (Podwise).</p>
-    <p><span class="lbl">Contacto</span> <span class="sel">https://learningleader.com/partner/</span></p>
+    <p><span class="lbl">Contacto</span> <span class="sel">Ryan@LearningLeader.com</span></p>
     <p class="lbl">Evidencia de necesidad</p><ul><li>A YouTube-only search surfaced just one Short from @RyanHawk, about 638 days old (https://www.youtube.com/shorts/z3F94qivJHk). This suggests Shorts are rare, but the Shorts tab itself was not checked.</li><li>Long-form full episodes are published on YouTube (e.g. https://www.youtube.com/watch?v=sfeADQyaptY).</li></ul>
     <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/@RyanHawk" target="_blank" rel="noopener">youtube</a> · <a href="https://learningleader.com/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/co/podcast/the-learning-leader-show-with-ryan-hawk/id985396258" target="_blank" rel="noopener">podcast</a></p>
     <p class="note">Exact titles of episodes 705-708 were not visible: the guests were Dr. Martin Seligman (705), Andy Stanley &amp; Sam Kaufman (707) and Danny Meyer (708). YouTube subscriber count, Instagram/TikTok handles and the content of the partner page (email or form) were not verified. Shorts frequency was inferred only from search results.</p>
-    <p class="links">Fuentes: <a href="https://learningleader.com/partner/" target="_blank" rel="noopener">1</a> <a href="https://podwise.ai/podcasts/4194" target="_blank" rel="noopener">2</a> <a href="https://tunein.com/podcasts/p1135222/" target="_blank" rel="noopener">3</a> <a href="https://www.youtube.com/@RyanHawk" target="_blank" rel="noopener">4</a> <a href="https://www.youtube.com/shorts/z3F94qivJHk" target="_blank" rel="noopener">5</a> <a href="https://www.youtube.com/watch?v=sfeADQyaptY" target="_blank" rel="noopener">6</a> <a href="https://podcast.creatorscience.com/ryan-hawk/" target="_blank" rel="noopener">7</a> <a href="https://www.daytondailynews.com/local/dayton-leadership-podcaster-ryan-hawk-launches-partnership-with-new-company/3XNBWTCFQ5BBLB2A7VE3JL27WA/" target="_blank" rel="noopener">8</a></p>
+    <p class="links">Fuentes: <a href="https://learningleader.com/partner/" target="_blank" rel="noopener">1</a> <a href="https://podwise.ai/podcasts/4194" target="_blank" rel="noopener">2</a> <a href="https://tunein.com/podcasts/p1135222/" target="_blank" rel="noopener">3</a> <a href="https://www.youtube.com/@RyanHawk" target="_blank" rel="noopener">4</a> <a href="https://www.youtube.com/shorts/z3F94qivJHk" target="_blank" rel="noopener">5</a> <a href="https://www.youtube.com/watch?v=sfeADQyaptY" target="_blank" rel="noopener">6</a> <a href="https://podcast.creatorscience.com/ryan-hawk/" target="_blank" rel="noopener">7</a> <a href="https://www.daytondailynews.com/local/dayton-leadership-podcaster-ryan-hawk-launches-partnership-with-new-company/3XNBWTCFQ5BBLB2A7VE3JL27WA/" target="_blank" rel="noopener">8</a> <a href="https://podwise.ai/episodes/9001202" target="_blank" rel="noopener">9</a> <a href="https://learningleader.com/?p=32" target="_blank" rel="noopener">10</a></p>
   </div>
 </details>
 <details class="pros">
-  <summary><span class="prio pB">B</span><span class="name">The Side Hustle Show (Nick Loper)</span><span class="state">mensaje-listo</span></summary>
+  <summary><span class="prio pA">A</span><span class="name">The Side Hustle Show (Nick Loper)</span><span class="state">mensaje-listo</span></summary>
   <div class="body">
     <p class="meta">side hustles / small business / entrepreneurship · podcaster · 48,674 YouTube subscribers, 1,269 videos (SocialCounts tracker, data up to 2026-07-13; channel ID UCzOAAJUiSO2uyu1xyxw__2Q). Third-party estimate, not from YouTube directly.</p>
     <p><span class="lbl">Frecuencia</span> About 6 episodes/month per host's 2025 year-end report (ep. 714). Episodes 718-726 ran Jan-Mar 2026; '732: 24 Years of Side Hustle Advice' dated 2026-04-06; Podscan lists latest episode 2026-07-30. Activity in Aug-Oct 2026 NOT verified.</p>
@@ -316,7 +602,67 @@ Hook House</pre>
     <p class="lbl">Evidencia de necesidad</p><ul><li>Web search found no official Side Hustle Nation clips on TikTok, Instagram Reels or YouTube Shorts (search only, not proof they don't exist).</li><li>YouTube is a large part of reach: Libsyn ad profile says 60% of reach comes from the YouTube simulcast (https://advertising.libsyn.com/TheSideHustleShowBusinessIdeasforPartTimeEntrepreneurship), so short-form clips could feed it.</li></ul>
     <p class="lbl">Perfiles</p><p class="links"><a href="https://www.sidehustlenation.com/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/podcast/id655135292" target="_blank" rel="noopener">podcast</a></p>
     <p class="note">All data comes from search-engine snippets; WebFetch could not open any page (DNS failure in this environment). The email comes from the snippet of the official contact page; check it there before using. The YouTube handle/URL, Instagram and TikTok were not verified. A third-party listing shows Shorts metrics for the channel (values not visible), so the channel may already publish Shorts. The YAP Media sponsor address was seen only on a third-party listing.</p>
-    <p class="links">Fuentes: <a href="https://socialcounts.org/youtube-live-subscriber-count/UCzOAAJUiSO2uyu1xyxw__2Q" target="_blank" rel="noopener">1</a> <a href="https://pod.wave.co/podcast/the-side-hustle-show/714-my-2025-progress-report-what-worked-what-didnt-and-whats-next" target="_blank" rel="noopener">2</a> <a href="https://advertising.libsyn.com/TheSideHustleShowBusinessIdeasforPartTimeEntrepreneurship" target="_blank" rel="noopener">3</a> <a href="https://www.sidehustlenation.com/contact/" target="_blank" rel="noopener">4</a> <a href="https://vling.net/channel/UCzOAAJUiSO2uyu1xyxw__2Q/channel-info" target="_blank" rel="noopener">5</a> <a href="https://www.castfox.net/podcast/the-side-hustle-show-745272/episode/732-24-years-of-side-hustle-advice-493879" target="_blank" rel="noopener">6</a> <a href="https://podscan.fm/podcasts/the-side-hustle-show-1" target="_blank" rel="noopener">7</a> <a href="https://podcasts.apple.com/podcast/id655135292" target="_blank" rel="noopener">8</a></p>
+    <p class="links">Fuentes: <a href="https://socialcounts.org/youtube-live-subscriber-count/UCzOAAJUiSO2uyu1xyxw__2Q" target="_blank" rel="noopener">1</a> <a href="https://pod.wave.co/podcast/the-side-hustle-show/714-my-2025-progress-report-what-worked-what-didnt-and-whats-next" target="_blank" rel="noopener">2</a> <a href="https://advertising.libsyn.com/TheSideHustleShowBusinessIdeasforPartTimeEntrepreneurship" target="_blank" rel="noopener">3</a> <a href="https://www.sidehustlenation.com/contact/" target="_blank" rel="noopener">4</a> <a href="https://vling.net/channel/UCzOAAJUiSO2uyu1xyxw__2Q/channel-info" target="_blank" rel="noopener">5</a> <a href="https://www.castfox.net/podcast/the-side-hustle-show-745272/episode/732-24-years-of-side-hustle-advice-493879" target="_blank" rel="noopener">6</a> <a href="https://podscan.fm/podcasts/the-side-hustle-show-1" target="_blank" rel="noopener">7</a> <a href="https://podcasts.apple.com/podcast/id655135292" target="_blank" rel="noopener">8</a> <a href="https://podcasts.apple.com/cy/podcast/the-side-hustle-show/id655135292" target="_blank" rel="noopener">9</a> <a href="https://www.sidehustlenation.com/press/" target="_blank" rel="noopener">10</a></p>
+  </div>
+</details>
+<details class="pros">
+  <summary><span class="prio pB">B</span><span class="name">Debbie Shadid (Life Coach Business Building School)</span><span class="state">nuevo</span></summary>
+  <div class="body">
+    <p class="meta">Business coach for life coaches (women 50+) · profesional · Instagram: 4,095 followers, 3,332 posts (search snippet of instagram.com/debbieshadid, seen 2026-10-12)</p>
+    <p><span class="lbl">Frecuencia</span> Weekly or more: EP 386 dated 2026-09-23, EP 379 dated 2026-09-04 (EP numbers advance ~7 in under 3 weeks); show notes point to YouTube for weekly episodes.</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">https://debbieshadid.com/schedule</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>Show notes direct listeners to youtube.com/@debbieshadid for weekly episodes, i.e. long-form video exists (https://debbieshadid.com/podcast)</li><li>Searches for her YouTube Shorts or TikTok returned nothing of hers – no TikTok account surfaced (not confirmed by opening the platforms)</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/@debbieshadid" target="_blank" rel="noopener">youtube</a> · <a href="https://www.instagram.com/debbieshadid/" target="_blank" rel="noopener">instagram</a> · <a href="https://debbieshadid.com/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/us/podcast/life-coach-business-building-school-with-debbie-shadid/id1502118085" target="_blank" rel="noopener">podcast</a></p>
+    <p class="note">WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Country not stated in results. Whether each episode is posted as video on YouTube, YouTube subscriber count, and whether her Instagram Reels are edited/captioned were not verified. No email found. | Fuente del contacto: Podcast show notes ('Book a call with me here: https://debbieshadid.com/schedule') as shown in search snippets of https://debbieshadid.com/podcast / Apple Podcasts</p>
+    <p class="links">Fuentes: <a href="https://debbieshadid.com/podcast" target="_blank" rel="noopener">1</a> <a href="https://podcasts.apple.com/us/podcast/life-coach-business-building-school-with-debbie-shadid/id1502118085" target="_blank" rel="noopener">2</a> <a href="https://music.amazon.com/podcasts/742a3b08-4bf1-4ab8-90f7-1d3d382e659f" target="_blank" rel="noopener">3</a> <a href="https://www.youtube.com/@debbieshadid" target="_blank" rel="noopener">4</a> <a href="https://www.instagram.com/debbieshadid/" target="_blank" rel="noopener">5</a> <a href="https://www.facebook.com/debbieshadid/" target="_blank" rel="noopener">6</a> <a href="https://music.amazon.com/podcasts/742a3b08-4bf1-4ab8-90f7-1d3d382e659f/life-coach-business-building-school-with-debbie-shadid" target="_blank" rel="noopener">7</a> <a href="https://www.buzzsprout.com/887899/episodes/19450241-ep-360-mindset-mistakes-that-lose-consultations" target="_blank" rel="noopener">8</a></p>
+  </div>
+</details>
+<details class="pros">
+  <summary><span class="prio pB">B</span><span class="name">Joanne S. Williams, LCSW (Anxiety Simplified – Beyond Traditional Psychology)</span><span class="state">nuevo</span></summary>
+  <div class="body">
+    <p class="meta">Licensed clinical social worker / anxiety therapist; weekly mental-health education video podcast · educativo · 323 episodes since 2020</p>
+    <p><span class="lbl">Frecuencia</span> Weekly. Latest seen: Episode 323, 2026-09-27; earlier episodes on 2026-09-20 and 2026-09-13 (Libsyn)</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">esa@esaevaluation.com / 760-485-6784</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>Apple lists the show as a 'Video Podcast', so there is long-form video to cut into clips (https://podcasts.apple.com/us/podcast/anxiety-simplified-beyond-traditional-psychology/id1520712021)</li><li>No TikTok, Reels or Shorts presence appeared in the searches about her. WEAK evidence: not searched specifically on each platform (https://anxietysimplified.libsyn.com/)</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://anxietysimplified.net/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/us/podcast/anxiety-simplified-beyond-traditional-psychology/id1520712021" target="_blank" rel="noopener">podcast</a> · <a href="https://www.linkedin.com/in/joanne-s-williams-lcsw-644836114/" target="_blank" rel="noopener">linkedin</a></p>
+    <p class="note">Pages could not be opened; only search results were seen. The contact email on her site belongs to her emotional-support-animal evaluation business (esaevaluation.com), not a podcast-specific address. The site shows both 760-485-6784 and 760-485-6785. Dates come only from the Libsyn page. Her state was not confirmed.</p>
+    <p class="links">Fuentes: <a href="https://anxietysimplified.libsyn.com/" target="_blank" rel="noopener">1</a> <a href="https://podcasts.apple.com/us/podcast/anxiety-simplified-beyond-traditional-psychology/id1520712021" target="_blank" rel="noopener">2</a> <a href="https://anxietysimplified.net/" target="_blank" rel="noopener">3</a> <a href="https://www.linkedin.com/in/joanne-s-williams-lcsw-644836114/" target="_blank" rel="noopener">4</a></p>
+  </div>
+</details>
+<details class="pros">
+  <summary><span class="prio pB">B</span><span class="name">Real Estate Investing School Podcast (Brody Fausett)</span><span class="state">nuevo</span></summary>
+  <div class="body">
+    <p class="meta">real estate investing (rentals, short-term rentals, land, deals) · podcaster · About 300 episodes, Years Active 2022-2026 (Apple listing per search); audience size not seen</p>
+    <p><span class="lbl">Frecuencia</span> Updated weekly (Apple); latest entries dated Sep 14, Sep 7, Aug 31 (year not shown in snippet; Apple shows Years Active 2022-2026)</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">support@realestateinvestingschool.com</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>Apple labels it a 'Video Podcast' and the YouTube channel posts full long episodes (e.g. '5 Years of Real Estate Investing Lessons in 37 Minutes' https://www.youtube.com/watch?v=9EXi-EX5LJ4).</li><li>A search for Brody Fausett / Real Estate Investing School on TikTok, Instagram or Shorts found no accounts (weak, absence-based; platforms not checked directly).</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/channel/UCsEZ1DJWMXlGv0bYqBlWN-Q" target="_blank" rel="noopener">youtube</a> · <a href="https://realestateinvestingschool.com/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/us/podcast/real-estate-investing-school-podcast/id1636610988" target="_blank" rel="noopener">podcast</a></p>
+    <p class="note">Pages could not be opened; only search results. Host info conflicts: one directory (Metacast/Podbean summaries) named Joe Jensen as host; YouTube results name Brody Fausett as host and Brody is the founder (A Better Life episode). Hosts may rotate (show notes list Brody, Joe and Wendell). The email is the company's general support inbox from its privacy/terms pages, not a podcast-specific address. Recent episode exact titles and year not verified.</p>
+    <p class="links">Fuentes: <a href="https://podcasts.apple.com/us/podcast/real-estate-investing-school-podcast/id1636610988" target="_blank" rel="noopener">1</a> <a href="https://realestateinvestingschool.com/" target="_blank" rel="noopener">2</a> <a href="https://go.realestateinvestingschool.com/privacy" target="_blank" rel="noopener">3</a> <a href="https://go.realestateinvestingschool.com/terms" target="_blank" rel="noopener">4</a> <a href="https://www.youtube.com/channel/UCsEZ1DJWMXlGv0bYqBlWN-Q" target="_blank" rel="noopener">5</a> <a href="https://abetterlife.transistor.fm/35" target="_blank" rel="noopener">6</a></p>
+  </div>
+</details>
+<details class="pros">
+  <summary><span class="prio pB">B</span><span class="name">Sam Witteveen (Sam Witteveen)</span><span class="state">nuevo</span></summary>
+  <div class="body">
+    <p class="meta">tech/AI tutorials (LLMs, agents, local AI) · educativo · about 125K subscribers (developereducators.com, data from about Jul 2026); about 135K subscribers and 375 videos (youtubesubhub.com and Social Blade search snippets, Sep-Oct 2026)</p>
+    <p><span class="lbl">Frecuencia</span> Weekly per developereducators.com's 'weekly' upload label. showmeyourchannel.com lists several long-form uploads in Aug 2026 and one dated 09/06/2026. Not checked on YouTube itself.</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">—</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>youtubesubhub.com estimates Shorts at about 1 in the latest 25 uploads, so output is almost all long-form (https://youtubesubhub.com/@samwitteveenai)</li><li>showmeyourchannel.com shows only about 4 Shorts from late June to late August 2026, roughly one a month, against weekly long-form (https://www.showmeyourchannel.com/youtuber/samwitteveenai)</li><li>No sign of a TikTok or Instagram presence came up in searches. Not confirmed.</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/@samwitteveenai" target="_blank" rel="noopener">youtube</a></p>
+    <p class="note">All data comes from search-result snippets. WebFetch could not open any page in this environment (DNS failure), and YouTube itself was blocked. Subscriber counts differ by source and date. Upload cadence comes from third-party trackers, not from the YouTube uploads tab. No business email was verified: ZoomInfo shows only a masked company email (s***@reddragon.ai), which was NOT used. Check the YouTube About page for a business email. He is also CEO and co-founder of Red Dragon AI (Singapore, per Crunchbase), so this is not a pure solo creator and his country is not stated. Recent Shorts seen in snippets (not exact titles/URLs verified): local real-time TTS, AMD Ryzen AI Halo, Gemini Omni Flash, Ornith 1.0 LLMs. Recent long-form topics were described only loosely (local voice TTS, GLM comparison, Docker sandboxes for agents, Qwen serving tutorial), so the titles are not recorded.</p>
+    <p class="links">Fuentes: <a href="https://youtubesubhub.com/@samwitteveenai" target="_blank" rel="noopener">1</a> <a href="https://developereducators.com/channel/samwitteveenai/" target="_blank" rel="noopener">2</a> <a href="https://www.showmeyourchannel.com/youtuber/samwitteveenai" target="_blank" rel="noopener">3</a> <a href="https://socialblade.com/youtube/handle/samwitteveenai" target="_blank" rel="noopener">4</a> <a href="https://socialcounts.org/youtube-live-subscriber-count/UC55ODQSvARtgSyc8ThfiepQ" target="_blank" rel="noopener">5</a> <a href="https://x.com/Sam_Witteveen" target="_blank" rel="noopener">6</a> <a href="https://sessionize.com/sam-witteveen/" target="_blank" rel="noopener">7</a> <a href="https://ai-tldr.dev/releases/sam-witteveen-gemini-live-avatars-sep27/" target="_blank" rel="noopener">8</a></p>
+  </div>
+</details>
+<details class="pros">
+  <summary><span class="prio pB">B</span><span class="name">The Product Boss Podcast (Jacqueline Snyder)</span><span class="state">nuevo</span></summary>
+  <div class="body">
+    <p class="meta">business for physical-product entrepreneurs / e-commerce · podcaster · Site claims over 5 million downloads; 760+ episodes (episode763 URL seen)</p>
+    <p><span class="lbl">Frecuencia</span> Twice a week per its site; latest dated episode seen 3 Sep 2026</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">team@theproductboss.com</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>There is a 'The Product Boss Podcast' YouTube playlist, but searches found no Shorts, TikTok or Reels clips of the show (weak, absence-based) (https://www.youtube.com/playlist?list=PLIfk7y6hBlb3SqRXVVVndWe3WqGoyYxsb).</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/playlist?list=PLIfk7y6hBlb3SqRXVVVndWe3WqGoyYxsb" target="_blank" rel="noopener">youtube</a> · <a href="https://www.theproductboss.com/" target="_blank" rel="noopener">web</a> · <a href="https://www.theproductboss.com/theproductbosspodcast" target="_blank" rel="noopener">podcast</a></p>
+    <p class="note">Pages could not be opened; only search results. The 3 Sep 2026 date came from the episode listing, but the same snippet carried a conflicting '277 days ago' tag. Older episode pages give hello@theproductboss.com instead; team@ is from the contact page. Video format of current episodes NOT verified: may be mainly audio. Has a team and paid programs, so may have in-house content help.</p>
+    <p class="links">Fuentes: <a href="https://www.theproductboss.com/contactus" target="_blank" rel="noopener">1</a> <a href="https://www.theproductboss.com/theproductbosspodcast" target="_blank" rel="noopener">2</a> <a href="https://www.theproductboss.com/" target="_blank" rel="noopener">3</a> <a href="https://www.youtube.com/playlist?list=PLIfk7y6hBlb3SqRXVVVndWe3WqGoyYxsb" target="_blank" rel="noopener">4</a> <a href="https://apple.co/2KI4xX8" target="_blank" rel="noopener">5</a></p>
   </div>
 </details>
 <details class="pros">
@@ -332,15 +678,15 @@ Hook House</pre>
   </div>
 </details>
 <details class="pros">
-  <summary><span class="prio pC">C</span><span class="name">Career Contessa (Lauren McGoodwin)</span><span class="state">nuevo</span></summary>
+  <summary><span class="prio pC">C</span><span class="name">Career Contessa (Lauren McGoodwin)</span><span class="state">no-encaja</span></summary>
   <div class="body">
     <p class="meta">career / women in the workplace · podcaster · YouTube subscribers not verified. 393 episodes (Pod Engine).</p>
     <p><span class="lbl">Frecuencia</span> Pod Engine lists episodes dated 2026-05-26 and 2026-06-02; TuneIn shows February 2026 episodes. Activity after June 2026 NOT verified.</p>
-    <p><span class="lbl">Contacto</span> <span class="sel">https://careercontessa.com/contact</span></p>
+    <p><span class="lbl">Contacto</span> <span class="sel">media kit request via https://careercontessa.com/for-employers</span></p>
     <p class="lbl">Evidencia de necesidad</p><ul><li>No concrete evidence of need found; Feedspot lists a YouTube link among the show's platforms, but Shorts presence was not checked.</li></ul>
     <p class="lbl">Perfiles</p><p class="links"><a href="https://www.careercontessa.com/" target="_blank" rel="noopener">web</a> · <a href="https://www.podengine.ai/podcasts/career-contessa" target="_blank" rel="noopener">podcast</a></p>
     <p class="note">The contact URL appeared as a search result, but its content (form or email) was not seen. The episode title is partial. The YouTube URL is unknown.</p>
-    <p class="links">Fuentes: <a href="https://www.podengine.ai/podcasts/career-contessa" target="_blank" rel="noopener">1</a> <a href="https://tunein.com/podcasts/p3823596" target="_blank" rel="noopener">2</a> <a href="https://careercontessa.com/contact" target="_blank" rel="noopener">3</a> <a href="https://www.careercontessa.com/meet-the-team/" target="_blank" rel="noopener">4</a> <a href="https://podcast.feedspot.com/los_angeles_career_podcasts/" target="_blank" rel="noopener">5</a></p>
+    <p class="links">Fuentes: <a href="https://www.podengine.ai/podcasts/career-contessa" target="_blank" rel="noopener">1</a> <a href="https://tunein.com/podcasts/p3823596" target="_blank" rel="noopener">2</a> <a href="https://careercontessa.com/contact" target="_blank" rel="noopener">3</a> <a href="https://www.careercontessa.com/meet-the-team/" target="_blank" rel="noopener">4</a> <a href="https://podcast.feedspot.com/los_angeles_career_podcasts/" target="_blank" rel="noopener">5</a> <a href="https://mypodcastdata.com/en/podcast/show/career-contessa-career-contessa-1xmi/episodes" target="_blank" rel="noopener">6</a> <a href="https://careercontessa.com/for-employers" target="_blank" rel="noopener">7</a></p>
   </div>
 </details>
 <details class="pros">
@@ -368,6 +714,18 @@ Hook House</pre>
   </div>
 </details>
 <details class="pros">
+  <summary><span class="prio pC">C</span><span class="name">Elsa W. Smith (Law Offices of Elsa W. Smith, LLC – Wills, Women &amp; Wealth Podcast)</span><span class="state">nuevo</span></summary>
+  <div class="body">
+    <p class="meta">Estate planning and probate attorney (Maryland/DC); estate-planning education for women · profesional · 90 podcast episodes since 2023</p>
+    <p><span class="lbl">Frecuencia</span> Regular podcast (Episode 90 is the latest seen). The exact 2026 date was NOT confirmed; Apple snippets showed only '2d ago' or '19 days ago' at an unknown crawl date</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">info@elsawsmithlaw.com</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>Episode 90's notes say 'portions of this episode were originally recorded as educational videos', so she films long-form educational video (https://podcasts.apple.com/us/podcast/wills-women-wealth-podcast-with-attorney-elsa-w-smith/id1664612752)</li><li>No TikTok presence appeared. The Instagram link on her site exists, but its activity is unknown. WEAK evidence (https://www.elsawsmithlaw.com/meet-elsa-w-smith/)</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/@elsawsmithlaw" target="_blank" rel="noopener">youtube</a> · <a href="https://www.elsawsmithlaw.com/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/us/podcast/wills-women-wealth-podcast-with-attorney-elsa-w-smith/id1664612752" target="_blank" rel="noopener">podcast</a> · <a href="https://www.linkedin.com/in/elsawsmithlaw/" target="_blank" rel="noopener">linkedin</a></p>
+    <p class="note">Pages could not be opened; only search results were seen. The 60-day recency requirement is NOT met with certainty: no exact date for Episode 90 was found. Confirm on Apple or YouTube before contacting. The weekly 'Women Winning Wednesdays' show was found only in older listings.</p>
+    <p class="links">Fuentes: <a href="https://podcasts.apple.com/us/podcast/wills-women-wealth-podcast-with-attorney-elsa-w-smith/id1664612752" target="_blank" rel="noopener">1</a> <a href="https://www.elsawsmithlaw.com/resources/wills-women-wealth-podcast/" target="_blank" rel="noopener">2</a> <a href="https://www.elsawsmithlaw.com/meet-elsa-w-smith/" target="_blank" rel="noopener">3</a> <a href="https://www.elsawsmithlaw.com/book-a-free-15-min-call/" target="_blank" rel="noopener">4</a> <a href="https://www.elsawsmithlaw.com/2026" target="_blank" rel="noopener">5</a></p>
+  </div>
+</details>
+<details class="pros">
   <summary><span class="prio pC">C</span><span class="name">Happen To Your Career (Scott Anthony Barlow)</span><span class="state">nuevo</span></summary>
   <div class="body">
     <p class="meta">career change / career design · podcaster · YouTube subscribers not verified. 839 episodes, 4.8 rating from 239 reviews (Pod Engine).</p>
@@ -384,11 +742,11 @@ Hook House</pre>
   <div class="body">
     <p class="meta">Immigration &amp; family attorney with educational YouTube channel and live Q&amp;As · profesional</p>
     <p><span class="lbl">Frecuencia</span> Channel description promises weekly tips and live Q&amp;As; no dated 2026 upload was seen, so actual recent activity is unverified.</p>
-    <p><span class="lbl">Contacto</span> <span class="sel">info@attorneyify.com</span></p>
+    <p><span class="lbl">Contacto</span> <span class="sel">admin@attorneyify.com</span></p>
     <p class="lbl">Evidencia de necesidad</p><ul><li>Channel relies on long live streams ('Immigration Attorney Ify is live!', https://www.youtube.com/watch?v=-r4M2QYxJ9k) – raw long-form material suited to clipping; whether she already cuts shorts was not verified</li></ul>
     <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/@Immigrationattorneyify" target="_blank" rel="noopener">youtube</a> · <a href="https://attorneyify.com/" target="_blank" rel="noopener">web</a></p>
     <p class="note">WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Do NOT confuse with Ify Immigration Law Firm (Charlotte, NC, theifylawfirm.com) – sources mix their phone numbers (the live video lists 919-925-2295). Recent upload dates unknown.</p>
-    <p class="links">Fuentes: <a href="https://www.youtube.com/@Immigrationattorneyify" target="_blank" rel="noopener">1</a> <a href="https://www.youtube.com/watch?v=-r4M2QYxJ9k" target="_blank" rel="noopener">2</a> <a href="https://attorneyify.com/" target="_blank" rel="noopener">3</a> <a href="https://attorneyify.com/about/" target="_blank" rel="noopener">4</a> <a href="https://www.facebook.com/attorneyify/" target="_blank" rel="noopener">5</a></p>
+    <p class="links">Fuentes: <a href="https://www.youtube.com/@Immigrationattorneyify" target="_blank" rel="noopener">1</a> <a href="https://www.youtube.com/watch?v=-r4M2QYxJ9k" target="_blank" rel="noopener">2</a> <a href="https://attorneyify.com/" target="_blank" rel="noopener">3</a> <a href="https://attorneyify.com/about/" target="_blank" rel="noopener">4</a> <a href="https://www.facebook.com/attorneyify/" target="_blank" rel="noopener">5</a> <a href="https://attorneyify.com/contact/" target="_blank" rel="noopener">6</a></p>
   </div>
 </details>
 <details class="pros">
@@ -404,15 +762,15 @@ Hook House</pre>
   </div>
 </details>
 <details class="pros">
-  <summary><span class="prio pC">C</span><span class="name">Leaving The Village (Kelvin Oliver)</span><span class="state">mensaje-listo</span></summary>
+  <summary><span class="prio pC">C</span><span class="name">Leaving The Village (Kelvin Oliver)</span><span class="state">nuevo</span></summary>
   <div class="body">
     <p class="meta">K-12 education / behavior management for teachers and parents · educativo · 2.17K subscribers, 135 videos, 323,417 views (YT.Careers business profile, capture date not shown)</p>
     <p><span class="lbl">Frecuencia</span> sin verificar</p>
-    <p><span class="lbl">Contacto</span> <span class="sel">https://www.leavingthevillage.com/ (the site offers booking a 30-minute call with Kelvin; this is aimed at schools and districts)</span></p>
+    <p><span class="lbl">Contacto</span> <span class="sel">info@leavingthevillage.com</span></p>
     <p class="lbl">Evidencia de necesidad</p><ul><li>Public job post on YT.Careers: 'YouTube Video Editor for Educational Consulting Channel - Leaving The Village'. It asks for 2-3 long-form videos per week (10-20 min) and 5-7 Shorts per week (30-60 s), paying $75-150 per video and $15-30 per clip, and requires captions, graphics and B-roll (https://yt.careers/youtube-jobs/160). Shown as about 411 days old, so it was posted around Aug-Sep 2025 and may be closed.</li><li>The channel's content comes from seminars, interviews and Q&amp;A sessions (YouTube channel description seen in search snippet). That long-form source material suits clipping.</li></ul>
     <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/c/LeavingtheVillage" target="_blank" rel="noopener">youtube</a> · <a href="https://www.leavingthevillage.com/" target="_blank" rel="noopener">web</a> · <a href="https://www.linkedin.com/in/kelvinoliver/" target="_blank" rel="noopener">linkedin</a></p>
     <p class="note">All data comes from search-result snippets. No page could be opened (WebFetch DNS failure; YouTube blocked). Upload frequency, the latest upload date and current Shorts output are unverified. The job post is old and may have been filled. The video listed under recent content was seen in search results, but its date is unknown and it may not be recent. ContactOut lists an email, which was NOT used because it is not published by the creator. Country is not stated.</p>
-    <p class="links">Fuentes: <a href="https://yt.careers/youtube-jobs/160" target="_blank" rel="noopener">1</a> <a href="https://yt.careers/businesses/293" target="_blank" rel="noopener">2</a> <a href="https://www.youtube.com/user/leavingthevillage" target="_blank" rel="noopener">3</a> <a href="https://www.youtube.com/c/LeavingtheVillage" target="_blank" rel="noopener">4</a> <a href="https://www.youtube.com/watch?v=KU1yyVDA3Qc" target="_blank" rel="noopener">5</a> <a href="https://www.leavingthevillage.com/" target="_blank" rel="noopener">6</a> <a href="https://www.leavingthevillage.com/meettheconsultant" target="_blank" rel="noopener">7</a> <a href="https://www.linkedin.com/in/kelvinoliver/" target="_blank" rel="noopener">8</a></p>
+    <p class="links">Fuentes: <a href="https://yt.careers/youtube-jobs/160" target="_blank" rel="noopener">1</a> <a href="https://yt.careers/businesses/293" target="_blank" rel="noopener">2</a> <a href="https://www.youtube.com/user/leavingthevillage" target="_blank" rel="noopener">3</a> <a href="https://www.youtube.com/c/LeavingtheVillage" target="_blank" rel="noopener">4</a> <a href="https://www.youtube.com/watch?v=KU1yyVDA3Qc" target="_blank" rel="noopener">5</a> <a href="https://www.leavingthevillage.com/" target="_blank" rel="noopener">6</a> <a href="https://www.leavingthevillage.com/meettheconsultant" target="_blank" rel="noopener">7</a> <a href="https://www.linkedin.com/in/kelvinoliver/" target="_blank" rel="noopener">8</a> <a href="https://www.leavingthevillage.com/contact" target="_blank" rel="noopener">9</a></p>
   </div>
 </details>
 <details class="pros">
@@ -437,6 +795,54 @@ Hook House</pre>
     <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/@TaxSavings" target="_blank" rel="noopener">youtube</a> · <a href="https://taxsavingspodcast.com/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/us/podcast/small-business-tax-savings-podcast/id1377376636" target="_blank" rel="noopener">podcast</a> · <a href="https://www.linkedin.com/in/mikejesowshek/" target="_blank" rel="noopener">linkedin</a></p>
     <p class="note">WebFetch y curl fallaron para todos los dominios en esta sesión (ENOTFOUND / proxy 403); todos los datos proceden de resultados de WebSearch (títulos y fragmentos), no de páginas abiertas. Episode dates vary between directories. Whether each episode is published as full video not confirmed. No email/form found.</p>
     <p class="links">Fuentes: <a href="https://taxsavingspodcast.com/" target="_blank" rel="noopener">1</a> <a href="https://podcasts.apple.com/us/podcast/small-business-tax-savings-podcast/id1377376636" target="_blank" rel="noopener">2</a> <a href="https://www.buzzsprout.com/1837660/episodes" target="_blank" rel="noopener">3</a> <a href="https://www.youtube.com/@TaxSavings" target="_blank" rel="noopener">4</a> <a href="https://www.youtube.com/@TaxSavings/shorts" target="_blank" rel="noopener">5</a> <a href="https://www.linkedin.com/in/mikejesowshek/" target="_blank" rel="noopener">6</a></p>
+  </div>
+</details>
+<details class="pros">
+  <summary><span class="prio pC">C</span><span class="name">Mitch Van &amp; Erina Roxx (UpScale Business Coaching – UpScale podcast)</span><span class="state">nuevo</span></summary>
+  <div class="body">
+    <p class="meta">Business coaching for trade and construction business owners; weekly video podcast · profesional · Claims 1,000+ tradies coached (self-reported); 368+ podcast episodes</p>
+    <p><span class="lbl">Frecuencia</span> Weekly. Latest dated: Ep 367, 2026-09-27 (Ep 368 probably early October; Podchaser shows latest 2026-10-04)</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">https://www.upscalecoaching.com.au/contact-us/</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>Low need: podcast listings tell listeners to follow them on Instagram for daily content, so they probably already produce short-form content. This argues AGAINST need (https://www.podengine.ai/podcasts/upscale-build-your-profitable-trade-and-construction-business)</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://www.upscalecoaching.com.au/" target="_blank" rel="noopener">web</a> · <a href="https://creators.spotify.com/pod/profile/up-scale/" target="_blank" rel="noopener">podcast</a></p>
+    <p class="note">Pages could not be opened; only search results were seen. Episode numbering is inconsistent (two episodes labelled 367). The co-host surname appears as both 'Roxx' and 'Roch'. lachy@up-scale.me appeared only on a third-party partner directory (NextMinute), so it is not used. Whether the episodes are filmed is based only on listings saying the show is 'on YouTube'. | Contacto completo: https://www.upscalecoaching.com.au/contact-us/ (phone 1300 168 556 / 0483 909 337; free 15-minute call)</p>
+    <p class="links">Fuentes: <a href="https://creators.spotify.com/pod/profile/up-scale/" target="_blank" rel="noopener">1</a> <a href="https://www.podchaser.com/podcasts/upscale-build-your-profitable-5022920" target="_blank" rel="noopener">2</a> <a href="https://www.upscalecoaching.com.au/contact-us/" target="_blank" rel="noopener">3</a> <a href="https://www.upscalecoaching.com.au/" target="_blank" rel="noopener">4</a> <a href="https://upscale-coaching.com/schedule-podcast" target="_blank" rel="noopener">5</a> <a href="https://www.podengine.ai/podcasts/upscale-build-your-profitable-trade-and-construction-business" target="_blank" rel="noopener">6</a></p>
+  </div>
+</details>
+<details class="pros">
+  <summary><span class="prio pC">C</span><span class="name">Passive Income Pilots (Tait Duryea &amp; Ryan Gibson)</span><span class="state">nuevo</span></summary>
+  <div class="body">
+    <p class="meta">personal finance / passive investing for airline pilots · podcaster · About 159-163 episodes (directories); ran its first live conference 8-9 Oct 2026 in Las Vegas</p>
+    <p><span class="lbl">Frecuencia</span> Roughly weekly; latest dated episode seen 28 Jul 2026 (#163)</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">ask@passiveincomepilots.com</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>Episode pages link Instagram (@PassiveIncomePilots), X and LinkedIn, but no YouTube channel or Shorts turned up in searches (https://passiveincomepilots.com/episode/149-side-hustles-every-pilot-should-consider). Weak, absence-based.</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://passiveincomepilots.com/podcast/passive-income-pilots" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/us/podcast/id1676373775" target="_blank" rel="noopener">podcast</a></p>
+    <p class="note">Pages could not be opened; only search results. Video format NOT verified (no YouTube found). Episodes after #163 likely exist but were not seen. Co-host Ryan Gibson is cofounder of Spartan Investment Group (self-storage), which may have marketing staff.</p>
+    <p class="links">Fuentes: <a href="https://passiveincomepilots.com/episode/149-side-hustles-every-pilot-should-consider" target="_blank" rel="noopener">1</a> <a href="https://passiveincomepilots.com/podcast/passive-income-pilots" target="_blank" rel="noopener">2</a> <a href="https://podcasts.apple.com/us/podcast/id1676373775" target="_blank" rel="noopener">3</a> <a href="https://www.insideselfstorage.com/people/cofounder-self-storage-investment-group-spartan-co-hosts-wealth-growing-podcast-airline" target="_blank" rel="noopener">4</a></p>
+  </div>
+</details>
+<details class="pros">
+  <summary><span class="prio pC">C</span><span class="name">Real Investing For Everyday Investors (Tim Herriage)</span><span class="state">nuevo</span></summary>
+  <div class="body">
+    <p class="meta">real estate investing / lending · podcaster</p>
+    <p><span class="lbl">Frecuencia</span> Show page says new episode every Wednesday (now a solo weekly briefing); no dated recent episode seen</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">therriage@ternus.com</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>Buzzsprout pages tell listeners to follow on YouTube for video content, but no Shorts, TikTok or Reels for the show turned up in searches (weak, absence-based) (https://realinvesting.buzzsprout.com/273198/follow).</li><li>Format changed from a co-hosted conversation show to a solo weekly briefing (https://timherriage.com/shows/real-investing-show/): a relaunch moment when clips could help, but this is inference.</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://timherriage.com/shows/real-investing-show/" target="_blank" rel="noopener">web</a> · <a href="https://realinvesting.buzzsprout.com/" target="_blank" rel="noopener">podcast</a></p>
+    <p class="note">Pages could not be opened; only search results. The email domain (ternus.com) is his company Ternus, shown on his own site's contact page. Recent episode dates and the YouTube channel URL are unverified. A search summary also mentioned a 'How to Beat the Bank' briefing at reireport.com, not confirmed. | Contacto completo: therriage@ternus.com (contact form at https://timherriage.com/contact-tim/ is the preferred route)</p>
+    <p class="links">Fuentes: <a href="https://timherriage.com/contact-tim/" target="_blank" rel="noopener">1</a> <a href="https://timherriage.com/shows/real-investing-show/" target="_blank" rel="noopener">2</a> <a href="https://realinvesting.buzzsprout.com/273198/follow" target="_blank" rel="noopener">3</a> <a href="https://podnews.net/podcast/i5yfx" target="_blank" rel="noopener">4</a></p>
+  </div>
+</details>
+<details class="pros">
+  <summary><span class="prio pC">C</span><span class="name">Rental Property Owner &amp; Real Estate Investor Podcast (Brian Hamrick)</span><span class="state">nuevo</span></summary>
+  <div class="body">
+    <p class="meta">real estate investing / landlords · podcaster · Over 2.3 million downloads; 573-617 episodes (Apple listings per search)</p>
+    <p><span class="lbl">Frecuencia</span> Weekly (every Monday per description); latest dated episode seen 26 Jan 2026</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">brian@higinvestor.com</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>Apple labels it a 'Video Podcast', yet searches found no YouTube channel for the show, let alone Shorts/TikTok (https://rporeipodcast.libsyn.com/). Moderate-weak: suggests video is not being repurposed, but based on absence in search.</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://www.higinvestor.com/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/us/podcast/rental-property-owner-real-estate-investor-podcast/id1083618984" target="_blank" rel="noopener">podcast</a></p>
+    <p class="note">Pages could not be opened; only search results. The email is on an old blog page (footer dated 2021), may be outdated. The show is produced by the Rental Property Owners Association (RPOA) of Michigan, which may control production decisions. Episode counts conflict between Apple storefronts. Newer episodes after Jan 2026 likely exist but were not seen.</p>
+    <p class="links">Fuentes: <a href="https://podcasts.apple.com/us/podcast/rental-property-owner-real-estate-investor-podcast/id1083618984" target="_blank" rel="noopener">1</a> <a href="https://www.higinvestor.com/" target="_blank" rel="noopener">2</a> <a href="https://www.higinvestor.com/single-post/2016/11/21/MICHIGAN%E2%80%99S-SECOND-LARGEST-CITY-KEEPS-PACE-WITH-MULTIFAMILY-HOUSING-DEMAND" target="_blank" rel="noopener">3</a> <a href="https://rporeipodcast.libsyn.com/" target="_blank" rel="noopener">4</a></p>
   </div>
 </details>
 <details class="pros">
@@ -476,15 +882,27 @@ Hook House</pre>
   </div>
 </details>
 <details class="pros">
-  <summary><span class="prio pC">C</span><span class="name">The Bootstrapped Founder (Arvid Kahl)</span><span class="state">nuevo</span></summary>
+  <summary><span class="prio pC">C</span><span class="name">The Bootstrapped Founder (Arvid Kahl)</span><span class="state">no-encaja</span></summary>
   <div class="body">
     <p class="meta">bootstrapped SaaS / indie founders · podcaster · 2,500 YouTube subscribers and 12,000+ monthly downloads (self-reported media kit on Notion, date unknown).</p>
     <p><span class="lbl">Frecuencia</span> Media kit says twice-weekly; the official podcast page says weekly. Latest dated episodes seen: 439 (2026-04-03) and 438 (2026-03-20). Activity in the last 30-60 days NOT verified.</p>
-    <p><span class="lbl">Contacto</span> <span class="sel">https://thebootstrappedfounder.com/sponsor/</span></p>
+    <p><span class="lbl">Contacto</span> <span class="sel">https://thebootstrappedfounder.com/podcast (page says 'You can also sponsor the show'; no email seen)</span></p>
     <p class="lbl">Evidencia de necesidad</p><ul><li>Small YouTube channel (2,500 subscribers per the media kit) next to a 440+ episode back catalogue, which suggests little repurposing. Inference; Shorts/TikTok presence was not checked.</li></ul>
     <p class="lbl">Perfiles</p><p class="links"><a href="https://thebootstrappedfounder.com/" target="_blank" rel="noopener">web</a> · <a href="https://thebootstrappedfounder.com/podcast" target="_blank" rel="noopener">podcast</a></p>
     <p class="note">The sponsor page mentions a contact form ('fill out this form'), but its URL was not seen; newsletter sponsorships go through ConvertKit. The YouTube handle was not verified. The media kit date is unknown, so 2,500 subscribers may be outdated.</p>
-    <p class="links">Fuentes: <a href="https://rain-existence-ea8.notion.site/The-Bootstrapped-Founder-Media-Kit-e1a5bebffe4d41a98100312d1e266756" target="_blank" rel="noopener">1</a> <a href="https://thebootstrappedfounder.com/sponsor/" target="_blank" rel="noopener">2</a> <a href="https://thebootstrappedfounder.com/podcast" target="_blank" rel="noopener">3</a> <a href="https://www.mypodcastdata.com/podcast/show/the-bootstrapped-founder-arvid-kahl-1sm2" target="_blank" rel="noopener">4</a> <a href="https://www.podengine.ai/podcasts/the-bootstrapped-founder" target="_blank" rel="noopener">5</a></p>
+    <p class="links">Fuentes: <a href="https://rain-existence-ea8.notion.site/The-Bootstrapped-Founder-Media-Kit-e1a5bebffe4d41a98100312d1e266756" target="_blank" rel="noopener">1</a> <a href="https://thebootstrappedfounder.com/sponsor/" target="_blank" rel="noopener">2</a> <a href="https://thebootstrappedfounder.com/podcast" target="_blank" rel="noopener">3</a> <a href="https://www.mypodcastdata.com/podcast/show/the-bootstrapped-founder-arvid-kahl-1sm2" target="_blank" rel="noopener">4</a> <a href="https://www.podengine.ai/podcasts/the-bootstrapped-founder" target="_blank" rel="noopener">5</a> <a href="https://www.listennotes.com/podcasts/the-bootstrapped-founder-arvid-kahl-5afrHm3sQKP/" target="_blank" rel="noopener">6</a></p>
+  </div>
+</details>
+<details class="pros">
+  <summary><span class="prio pC">C</span><span class="name">The REtipster Podcast (Seth Williams)</span><span class="state">nuevo</span></summary>
+  <div class="body">
+    <p class="meta">land investing / real estate · podcaster · 273+ episodes</p>
+    <p><span class="lbl">Frecuencia</span> Regular; episode 273 is the latest number seen, date not confirmed (an iHeart listing showed 16 Jun 2026 near it)</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">https://retipster.com/contact/</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>No evidence found either way about Shorts/TikTok; not verified. Very weak.</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://retipster.com/" target="_blank" rel="noopener">web</a> · <a href="https://podcasts.apple.com/podcast/id1330014697" target="_blank" rel="noopener">podcast</a></p>
+    <p class="note">Pages could not be opened; only search results. Contact is a form (contact page tells guest contributors to use it); the only email seen is a support address on retipster.club for products, not used. Video format and YouTube channel URL not verified. Weakest of the list; included as filler.</p>
+    <p class="links">Fuentes: <a href="https://retipster.com/contact/" target="_blank" rel="noopener">1</a> <a href="https://retipster.com/" target="_blank" rel="noopener">2</a> <a href="https://retipster.buzzsprout.com/440197/episodes/19120642-turning-raw-land-into-housing-that-sells-fast-w-robert-howell" target="_blank" rel="noopener">3</a> <a href="https://www.iheart.com/podcast/46865418/" target="_blank" rel="noopener">4</a></p>
   </div>
 </details>
 <details class="pros">
@@ -495,8 +913,8 @@ Hook House</pre>
     <p><span class="lbl">Contacto</span> <span class="sel">https://saasclub.io/sponsor/</span></p>
     <p class="lbl">Evidencia de necesidad</p><ul><li>No concrete evidence of need found. The channel has a Shorts tab (https://www.youtube.com/channel/UCZbyAKrrtV87PywXc9vydng/shorts), so it already makes some Shorts; their style and frequency were not checked.</li></ul>
     <p class="lbl">Perfiles</p><p class="links"><a href="https://www.youtube.com/@saasclub" target="_blank" rel="noopener">youtube</a> · <a href="https://saasclub.io/" target="_blank" rel="noopener">web</a> · <a href="https://podcastaddict.com/podcast/4032150" target="_blank" rel="noopener">podcast</a></p>
-    <p class="note">Exact recent episode titles were not visible in snippets, so contenido_reciente is empty. The site footer has a 'Contact' link whose URL was not seen; the full email (****@saasclub.io) is masked in a directory and was not used. Subscriber count was not verified.</p>
-    <p class="links">Fuentes: <a href="https://podwise.ai/podcasts/1273" target="_blank" rel="noopener">1</a> <a href="https://www.podbean.com/podcast-detail/twcse-371d6/The-SaaS-Podcast---Real-Lessons-on-Growing-Profitable-SaaS" target="_blank" rel="noopener">2</a> <a href="https://saasclub.io/sponsor/" target="_blank" rel="noopener">3</a> <a href="https://saasclub.io/?p=6013808" target="_blank" rel="noopener">4</a> <a href="https://www.youtube.com/@saasclub" target="_blank" rel="noopener">5</a> <a href="https://www.youtube.com/channel/UCZbyAKrrtV87PywXc9vydng/shorts" target="_blank" rel="noopener">6</a> <a href="https://podcastaddict.com/podcast/4032150" target="_blank" rel="noopener">7</a></p>
+    <p class="note">Exact recent episode titles were not visible in snippets, so contenido_reciente is empty. The site footer has a 'Contact' link whose URL was not seen; the full email (****@saasclub.io) is masked in a directory and was not used. Subscriber count was not verified. | 13-10: el invitado del episodio del 2026-10-01 es Shahar Azulay (groundcover), no Ev Kontsevoy.</p>
+    <p class="links">Fuentes: <a href="https://podwise.ai/podcasts/1273" target="_blank" rel="noopener">1</a> <a href="https://www.podbean.com/podcast-detail/twcse-371d6/The-SaaS-Podcast---Real-Lessons-on-Growing-Profitable-SaaS" target="_blank" rel="noopener">2</a> <a href="https://saasclub.io/sponsor/" target="_blank" rel="noopener">3</a> <a href="https://saasclub.io/?p=6013808" target="_blank" rel="noopener">4</a> <a href="https://www.youtube.com/@saasclub" target="_blank" rel="noopener">5</a> <a href="https://www.youtube.com/channel/UCZbyAKrrtV87PywXc9vydng/shorts" target="_blank" rel="noopener">6</a> <a href="https://podcastaddict.com/podcast/4032150" target="_blank" rel="noopener">7</a> <a href="https://podwise.ai/episodes/9033253" target="_blank" rel="noopener">8</a></p>
   </div>
 </details>
 <details class="pros">
@@ -510,6 +928,18 @@ Hook House</pre>
     <p class="note">Sources conflict on whether Evans is still at System1. No website contact page was found. Date of the Liquid Death video is unknown.</p>
     <p class="links">Fuentes: <a href="https://www.youtube.com/@uncensoredcmo" target="_blank" rel="noopener">1</a> <a href="https://www.mypodcastdata.com/podcast/show/uncensored-cmo-jon-evans-lAq7K5AL" target="_blank" rel="noopener">2</a> <a href="https://marketingweek.com/system1s-jon-evans-uncensored-cmo/" target="_blank" rel="noopener">3</a> <a href="https://www.elfbeauty.com/articles/meet-the-uncensored-renegades-kory-marchisotto-and-jon-evans-turn-up-the-volume-on-real-talk-in-new-podcast-series" target="_blank" rel="noopener">4</a> <a href="https://ucmo.transistor.fm/151" target="_blank" rel="noopener">5</a> <a href="https://www.youtube.com/watch?v=x9807YB1px0" target="_blank" rel="noopener">6</a></p>
   </div>
+</details>
+<details class="pros">
+  <summary><span class="prio pC">C</span><span class="name">Your Career Podcast (Jane Jackson)</span><span class="state">nuevo</span></summary>
+  <div class="body">
+    <p class="meta">career change / career coaching · podcaster · About 284-285 episodes</p>
+    <p><span class="lbl">Frecuencia</span> Irregular; latest dated listing seen 10 Jul 2026 (Podcast Addict)</p>
+    <p><span class="lbl">Contacto</span> <span class="sel">jane@janejacksoncoach.com</span></p>
+    <p class="lbl">Evidencia de necesidad</p><ul><li>A FeedSpot directory listing shows YouTube for the show, but no Shorts/TikTok/Reels clips were found in searches (https://podcast.feedspot.com/career_coach_podcasts/). Weak, absence-based.</li></ul>
+    <p class="lbl">Perfiles</p><p class="links"><a href="https://janejacksoncoach.com/" target="_blank" rel="noopener">web</a> · <a href="https://janejacksoncoach.com/podcast/" target="_blank" rel="noopener">podcast</a></p>
+    <p class="note">Pages could not be opened; only search results. Based in Sydney. Not confirmed that the podcast is filmed as video; YouTube link seen only through a third-party directory. Episode dates not on own pages.</p>
+    <p class="links">Fuentes: <a href="https://janejacksoncoach.com/podcast/" target="_blank" rel="noopener">1</a> <a href="https://janejacksoncoach.com/" target="_blank" rel="noopener">2</a> <a href="https://podcastaddict.com/podcast/2157095" target="_blank" rel="noopener">3</a> <a href="https://podcast.feedspot.com/career_coach_podcasts/" target="_blank" rel="noopener">4</a></p>
+  </div>
 </details></div>
   </section>
 </div>
@@ -517,7 +947,7 @@ Hook House</pre>
 document.querySelectorAll("button[data-copy]").forEach((b) => {
   b.addEventListener("click", () => {
     const el = document.getElementById(b.dataset.copy);
-    const hint = document.getElementById("h" + b.id.slice(1));
+    const hint = document.querySelector('[data-hint="' + b.dataset.copy + '"]');
     const done = (t) => { if (hint) hint.textContent = t; };
     const select = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); done("Seleccionado: cópialo con el menú del teléfono"); };
     try { navigator.clipboard.writeText(el.textContent).then(() => done("Copiado"), select); } catch (e) { select(); }

@@ -19,22 +19,34 @@ const main = async () => {
   const list = [...db.prospectos].sort((a, b) => order[a.prioridad] - order[b.prioridad] || a.nombre.localeCompare(b.nombre));
   const drafts = list.filter((p) => p.estado === "mensaje-listo");
 
+  const latest = (p: (typeof list)[number], paso: string) => [...p.mensajes].reverse().find((m) => m.tipo === "borrador" && m.paso === paso);
+  const NIVEL = { propio: "en su propia web o canal", tercero: "solo en directorios", ninguno: "no encontrado", "sin-verificar": "sin verificar" } as const;
   const draftCards = drafts
     .map((p, i) => {
-      const d = [...p.mensajes].reverse().find((m) => m.tipo === "borrador")!;
-      return `<article class="draft" id="d${i}">
-  <header><span class="prio p${p.prioridad}">${p.prioridad}</span><h3>${esc(p.nombre)}</h3></header>
-  <p class="meta">${esc(p.nicho)} · ${esc(p.segmento)}</p>
-  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">${esc(p.contacto_publico ?? "sin contacto público: buscar en su web o su canal")}</span> ${p.contacto_fuente ? `· ${link(p.contacto_fuente, "dónde lo vimos")}` : ""}</p>
-  ${d.asunto ? `<p class="contact"><span class="lbl">Asunto</span> <span class="sel">${esc(d.asunto)}</span></p>` : ""}
-  <pre class="msg" id="m${i}">${esc(d.texto)}</pre>
-  <div class="row"><button type="button" data-copy="m${i}" id="b${i}">Copiar mensaje</button><span class="hint" id="h${i}"></span></div>
-  <details><summary>Comprobar antes de enviar</summary><ul>
-    <li>Abre su canal: ¿publicó en los últimos 30 días?</li>
-    <li>¿De verdad no tiene clips verticales (Shorts, Reels, TikTok)? Si los tiene, cambia la segunda frase o descártalo.</li>
-    <li>¿El título del episodio que cita el mensaje es exacto?</li>
-    <li>¿El contacto aparece en su propia web o canal?</li>
-    <li>Pon tu nombre en lugar de «[Your name]». Al enviarlo: <code>npm run crm -- enviado ${esc(p.id)} --canal ${esc(d.canal)}</code></li>
+      const steps = (["primer-contacto", "seguimiento-1", "seguimiento-2", "seguimiento-3"] as const).map((k) => [k, latest(p, k)] as const).filter(([, m]) => m);
+      const d = steps[0]?.[1];
+      if (!d) return "";
+      const last = p.contenido_reciente[0];
+      const msgs = steps
+        .map(([k, m], j) => {
+          const key = `m${i}-${j}`;
+          const label = k === "primer-contacto" ? "Primer mensaje" : k === "seguimiento-1" ? "Seguimiento 1 · día 3" : k === "seguimiento-2" ? "Seguimiento 2 · día 7" : "Seguimiento 3 · día 14";
+          const body = `<p class="lbl">${label}${m!.aprobado ? " · aprobado" : ""}</p>${m!.asunto ? `<p class="contact"><span class="lbl">Asunto</span> <span class="sel">${esc(m!.asunto)}</span></p>` : ""}<pre class="msg" id="${key}">${esc(m!.texto)}</pre><div class="row"><button type="button" data-copy="${key}">Copiar</button><span class="hint" data-hint="${key}"></span></div>`;
+          return j === 0 ? body : `<details><summary>${label}</summary>${body}</details>`;
+        })
+        .join("");
+      return `<article class="draft" id="p${i + 1}">
+  <header><span class="num">${i + 1}</span><h3>${esc(p.nombre)}</h3></header>
+  <p class="meta">${esc(p.nicho)}${p.tamano ? ` · ${esc(p.tamano)}` : ""}</p>
+  <p class="contact"><span class="lbl">Enviar a</span> <span class="sel">${esc(p.contacto_publico ?? "—")}</span> ${p.contacto_fuente ? `· ${link(p.contacto_fuente, NIVEL[p.contacto_nivel])}` : ""}</p>
+  ${last ? `<p class="contact"><span class="lbl">Último episodio</span> ${esc(last.titulo)}${last.fecha ? ` (${esc(last.fecha)})` : ""} ${link(last.url, "fuente")}</p>` : ""}
+  <details><summary>Por qué lo elegí</summary><ul>${p.evidencia_necesidad.map((e) => `<li>${esc(e)}</li>`).join("")}</ul><p class="note">${esc(p.notas)}</p></details>
+  ${msgs}
+  <details><summary>Comprobar antes de enviar (2 minutos)</summary><ul>
+    <li>Abre el enlace del contacto: ¿sigue ahí?</li>
+    <li>Abre su YouTube y su Instagram: si ya publican clips verticales a menudo, quita la frase «I couldn't find clips…» o descártalo.</li>
+    <li>Confirma el título del episodio que cita el mensaje.</li>
+    <li>Cambia «[Your name]» por tu nombre.</li>
   </ul></details>
 </article>`;
     })
@@ -80,6 +92,7 @@ h3 { font-weight:700; font-size:1rem; margin:0; min-width:0 }
 .warnbox { border-left:4px solid var(--warn); background:var(--surface); padding:12px 14px; border-radius:0 10px 10px 0; font-size:.92rem }
 .draft { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; display:flex; flex-direction:column; gap:8px; min-width:0 }
 .draft header, summary { display:flex; align-items:center; gap:10px; }
+.num { display:inline-grid; place-items:center; min-width:30px; height:30px; border-radius:9px; background:var(--accent); color:var(--accent-ink); font-weight:800; flex:none }
 .prio { display:inline-grid; place-items:center; width:26px; height:26px; border-radius:8px; font-weight:800; font-size:.8rem; flex:none; border:1px solid var(--line) }
 .pA, .pB { background:var(--accent); color:var(--accent-ink); border-color:transparent }
 .pC { background:var(--mono); color:var(--muted) }
@@ -115,14 +128,15 @@ a { color:var(--accent) }
   <section class="stats" aria-label="Resumen">
     <div class="stat"><div class="n">${r.total}</div><div class="t">prospectos en la base</div></div>
     <div class="stat"><div class="n">${(r.porPrioridad.A ?? 0) + (r.porPrioridad.B ?? 0)}</div><div class="t">prioridad A o B</div></div>
-    <div class="stat"><div class="n">${drafts.length}</div><div class="t">mensajes por aprobar</div></div>
+    <div class="stat"><div class="n">${drafts.length}</div><div class="t">prospectos por aprobar</div></div>
     <div class="stat"><div class="n">${r.contactados}</div><div class="t">contactados</div></div>
     <div class="stat"><div class="n">${r.respondieron}</div><div class="t">respondieron</div></div>
     <div class="stat"><div class="n">${todo.filter((t) => t.vencido).length}</div><div class="t">tareas para hoy</div></div>
   </section>
   <p class="warnbox"><b>Datos sin abrir las páginas.</b> El entorno bloquea YouTube y la mayoría de webs, así que todo sale de resultados de búsqueda (cada ficha dice qué falta comprobar). Revisa el canal antes de enviar cada mensaje.</p>
   <section>
-    <h2>Para aprobar y enviar</h2>
+    <h2>Top ${drafts.length}: para aprobar</h2>
+    <p class="sub">Revisa cada uno y dime en el chat cuáles apruebas (por ejemplo «apruebo 1, 3 y 7» o «apruebo 2 cambiando…»). Nada se envía hasta entonces, y lo envías tú.</p>
     <div class="list">${draftCards || "<p class='sub'>No hay borradores pendientes.</p>"}</div>
   </section>
   <section>
@@ -132,6 +146,14 @@ a { color:var(--accent) }
       <div><p class="lbl">Growth</p><p class="price">690 USD/mes</p><p class="meta">24 clips (6/semana) + nota mensual de retención</p></div>
       <div><p class="lbl">Muestra</p><p class="price">Gratis</p><p class="meta">1 clip de un episodio suyo, sin compromiso</p></div>
     </div>
+    <p class="sub">Costes estimados por mes (Starter):
+      <ul>
+        <li>Comisión de cobro: unos 12–22 USD, según la pasarela y si el cliente es internacional.</li>
+        <li>Transcripción y render: 0 USD, en tu equipo.</li>
+        <li>Tu tiempo: 5–7 h (estimación).</li>
+      </ul>
+      Margen: unos 368–378 USD, es decir 53–76 USD por hora, antes de tus suscripciones.<br>
+      Detalle en <code>crecimiento/oferta.md</code>.</p>
   </section>
   <section>
     <h2>Todos los prospectos (${r.total})</h2>
@@ -142,7 +164,7 @@ a { color:var(--accent) }
 document.querySelectorAll("button[data-copy]").forEach((b) => {
   b.addEventListener("click", () => {
     const el = document.getElementById(b.dataset.copy);
-    const hint = document.getElementById("h" + b.id.slice(1));
+    const hint = document.querySelector('[data-hint="' + b.dataset.copy + '"]');
     const done = (t) => { if (hint) hint.textContent = t; };
     const select = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); done("Seleccionado: cópialo con el menú del teléfono"); };
     try { navigator.clipboard.writeText(el.textContent).then(() => done("Copiado"), select); } catch (e) { select(); }
