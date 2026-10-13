@@ -49,7 +49,7 @@ test("borrador → enviado → seguimientos a 3, 7 y 14 días → respuesta", ()
   const id = "the-example-show";
   addMessage(db, id, { canal: "email", tipo: "borrador", paso: "primer-contacto", asunto: "Hi", texto: "Hello" }, "2026-10-12");
   assert.equal(db.prospectos[0].estado, "mensaje-listo");
-  assert.equal(pendientes(db, "2026-10-12")[0].accion, "aprobar y enviar el primer mensaje");
+  assert.equal(pendientes(db, "2026-10-12")[0].accion, "revisar y aprobar el primer mensaje");
   addMessage(db, id, { canal: "email", tipo: "enviado", paso: "primer-contacto", asunto: "Hi", texto: "Hello", fecha: "2026-10-13" }, "2026-10-13");
   assert.equal(db.prospectos[0].estado, "contactado");
   assert.equal(db.prospectos[0].proximo_seguimiento, "2026-10-16");
@@ -77,4 +77,22 @@ test("guarda y vuelve a cargar la base validada; exporta CSV", async () => {
   const csv = toCsv(again);
   assert.match(csv.split("\n")[0], /^id,nombre,segmento/);
   assert.match(csv, /"The Example Show \(Jane Doe\)"|The Example Show \(Jane Doe\)/);
+});
+
+test("un borrador sin aprobar no se puede marcar como enviado; aprobado sí", async () => {
+  const { approveDraft, markSent } = await import("../../autopilot/crm/store");
+  const db = emptyDb();
+  importProspects(db, [base], "2026-10-12");
+  const id = "the-example-show";
+  addMessage(db, id, { canal: "email", tipo: "borrador", paso: "primer-contacto", asunto: "Hi", texto: "Hello" }, "2026-10-12");
+  addMessage(db, id, { canal: "email", tipo: "borrador", paso: "seguimiento-1", asunto: null, texto: "Bump" }, "2026-10-12");
+  assert.equal(pendientes(db, "2026-10-12")[0].accion, "revisar y aprobar el primer mensaje");
+  assert.throws(() => markSent(db, id, "primer-contacto", undefined, "2026-10-13"), /no está aprobado/);
+  approveDraft(db, id, "primer-contacto", "2026-10-12");
+  assert.equal(pendientes(db, "2026-10-12")[0].accion, "aprobado: enviar el primer mensaje");
+  markSent(db, id, "primer-contacto", undefined, "2026-10-13");
+  assert.equal(db.prospectos[0].estado, "contactado");
+  const t = pendientes(db, "2026-10-16")[0];
+  assert.equal(t.accion, "seguimiento-1 (borrador listo)");
+  assert.equal(t.vencido, true);
 });

@@ -42,6 +42,7 @@ export const mensajeSchema = z.object({
   paso: z.enum(["primer-contacto", "seguimiento-1", "seguimiento-2", "seguimiento-3", "respuesta", "propuesta", "otro"]).default("otro"),
   asunto: z.string().nullable().default(null),
   texto: z.string().min(1),
+  aprobado: z.boolean().default(false), // el usuario revisó destinatario y texto; sin esto no se marca como enviado
 });
 export type Mensaje = z.infer<typeof mensajeSchema>;
 
@@ -55,6 +56,8 @@ export const prospectoSchema = z.object({
   perfiles: perfilesSchema,
   contacto_publico: z.string().nullable().default(null),
   contacto_fuente: url.nullable().default(null),
+  // propio: visto en su web o canal · tercero: solo en directorios · sin-verificar: aún no comprobado
+  contacto_nivel: z.enum(["propio", "tercero", "ninguno", "sin-verificar"]).default("sin-verificar"),
   tamano: z.string().nullable().default(null),
   frecuencia: z.string().nullable().default(null),
   evidencia_necesidad: z.array(z.string().min(5)).min(1, "sin evidencia de necesidad no entra"),
@@ -68,6 +71,7 @@ export const prospectoSchema = z.object({
   mensajes: z.array(mensajeSchema).default([]),
   proximo_seguimiento: fecha.nullable().default(null),
   resultado: z.string().nullable().default(null), // p. ej. «cliente 300 USD/mes desde 2026-11-01»
+  valor_mensual: z.number().nullable().default(null), // USD/mes si es cliente o hay propuesta
   creado: fecha,
   actualizado: fecha,
 });

@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 import { ESTADOS, type Estado, type Mensaje } from "./schema";
-import { addMessage, DB_PATH, getProspect, hoy, importProspects, loadDb, pendientes, resumen, saveDb, setEstado, toCsv } from "./store";
+import { addMessage, approveDraft, DB_PATH, getProspect, hoy, importProspects, loadDb, markSent, pendientes, resumen, saveDb, setEstado, toCsv } from "./store";
 
 const HELP = `Hook House · base de datos comercial (${path.relative(process.cwd(), DB_PATH)})
 
@@ -13,6 +13,7 @@ Uso: npm run crm -- <comando>
   ver <id>                          Ficha completa con mensajes.
   borrador <id> --canal email --texto archivo.txt [--asunto "…"] [--paso primer-contacto]
                                     Guarda un mensaje para que lo apruebes (estado «mensaje-listo»).
+  aprobar <id> [--paso primer-contacto]   Apruebas destinatario y texto de ese borrador (lo haces tú).
   enviado <id> --canal email [--paso primer-contacto] [--fecha AAAA-MM-DD]
                                     Marca que TÚ enviaste el último borrador de ese paso; programa el seguimiento.
   respuesta <id> --texto "…" [--canal email]   Registra una respuesta (estado «respondio»).
@@ -76,11 +77,14 @@ const main = async () => {
       console.log(`Borrador guardado para ${args[0]}`);
       break;
     }
+    case "aprobar": {
+      approveDraft(db, args[0], paso);
+      await saveDb(db);
+      console.log(`${args[0]}: borrador «${paso}» aprobado`);
+      break;
+    }
     case "enviado": {
-      const p = getProspect(db, args[0]);
-      const draft = [...p.mensajes].reverse().find((m) => m.tipo === "borrador" && m.paso === paso);
-      if (!draft) throw new Error(`No hay borrador del paso «${paso}» para ${args[0]}`);
-      addMessage(db, args[0], { ...draft, canal, tipo: "enviado", fecha: values.fecha ?? hoy() });
+      markSent(db, args[0], paso, values.canal === "email" && !process.argv.includes("--canal") ? undefined : canal, values.fecha ?? hoy());
       await saveDb(db);
       console.log(`${args[0]}: enviado (${paso}); próximo seguimiento: ${getProspect(db, args[0]).proximo_seguimiento ?? "—"}`);
       break;

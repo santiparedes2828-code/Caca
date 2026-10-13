@@ -1,6 +1,7 @@
+import type { z } from "zod";
 import { existsSync, promises as fs } from "node:fs";
 import path from "node:path";
-import { CADENCIA, dbSchema, prospectoSchema, type Db, type Estado, type Mensaje, type Prospecto } from "./schema";
+import { CADENCIA, dbSchema, mensajeSchema, prospectoSchema, type Db, type Estado, type Mensaje, type Prospecto } from "./schema";
 
 export const DB_PATH = path.resolve("crecimiento/datos/prospectos.json");
 
@@ -101,15 +102,17 @@ export const setEstado = (db: Db, id: string, estado: Estado, nota?: string, tod
   const p = getProspect(db, id);
   p.estado = estado;
   p.actualizado = today;
-  if (nota) p.mensajes.push({ fecha: today, canal: "otro", tipo: "nota", paso: "otro", asunto: null, texto: nota });
+  if (nota) p.mensajes.push(mensajeSchema.parse({ fecha: today, canal: "otro", tipo: "nota", paso: "otro", asunto: null, texto: nota }));
   if (["respondio", "llamada", "prueba", "propuesta", "cliente", "perdido", "no-encaja"].includes(estado)) p.proximo_seguimiento = null;
   return p;
 };
 
 // Registra un mensaje. Un «enviado» lo marca el usuario después de enviarlo él (Claude no envía nada).
-export const addMessage = (db: Db, id: string, m: Omit<Mensaje, "fecha"> & { fecha?: string }, today = hoy()) => {
+export type MensajeIn = Omit<z.input<typeof mensajeSchema>, "fecha"> & { fecha?: string };
+
+export const addMessage = (db: Db, id: string, m: MensajeIn, today = hoy()) => {
   const p = getProspect(db, id);
-  const msg: Mensaje = { ...m, fecha: m.fecha ?? today };
+  const msg: Mensaje = mensajeSchema.parse({ ...m, fecha: m.fecha ?? today });
   p.mensajes.push(msg);
   p.actualizado = today;
   if (msg.tipo === "borrador" && p.estado === "nuevo") p.estado = "mensaje-listo";
@@ -128,14 +131,37 @@ export const addMessage = (db: Db, id: string, m: Omit<Mensaje, "fecha"> & { fec
 
 export type Pendiente = { id: string; nombre: string; accion: string; fecha: string; vencido: boolean };
 
+// El usuario aprueba el borrador de un paso (destinatario y texto). Solo los aprobados pueden marcarse como enviados.
+export const approveDraft = (db: Db, id: string, paso: Mensaje["paso"], today = hoy()) => {
+  const p = getProspect(db, id);
+  const draft = [...p.mensajes].reverse().find((m) => m.tipo === "borrador" && m.paso === paso);
+  if (!draft) throw new Error(`No hay borrador del paso «${paso}» para ${id}`);
+  draft.aprobado = true;
+  p.actualizado = today;
+  return draft;
+};
+
+export const markSent = (db: Db, id: string, paso: Mensaje["paso"], canal?: Mensaje["canal"], fecha = hoy()) => {
+  const p = getProspect(db, id);
+  const draft = [...p.mensajes].reverse().find((m) => m.tipo === "borrador" && m.paso === paso);
+  if (!draft) throw new Error(`No hay borrador del paso «${paso}» para ${id}`);
+  if (!draft.aprobado) throw new Error(`El borrador «${paso}» de ${id} no está aprobado: revísalo y ejecuta «aprobar» primero`);
+  return addMessage(db, id, { ...draft, canal: canal ?? draft.canal, tipo: "enviado", fecha }, fecha);
+};
+
 // Qué toca hoy: seguimientos vencidos, borradores por aprobar y contactados que agotaron la cadencia.
 export const pendientes = (db: Db, today = hoy()): Pendiente[] => {
   const out: Pendiente[] = [];
   for (const p of db.prospectos) {
-    if (p.estado === "mensaje-listo") out.push({ id: p.id, nombre: p.nombre, accion: "aprobar y enviar el primer mensaje", fecha: p.actualizado, vencido: true });
+    if (p.estado === "mensaje-listo") {
+      const first = [...p.mensajes].reverse().find((m) => m.tipo === "borrador" && m.paso === "primer-contacto");
+      out.push({ id: p.id, nombre: p.nombre, accion: first?.aprobado ? "aprobado: enviar el primer mensaje" : "revisar y aprobar el primer mensaje", fecha: p.actualizado, vencido: true });
+    }
     if (p.estado === "contactado") {
       const enviados = p.mensajes.filter((x) => x.tipo === "enviado").length;
-      if (p.proximo_seguimiento) out.push({ id: p.id, nombre: p.nombre, accion: `seguimiento ${enviados}`, fecha: p.proximo_seguimiento, vencido: p.proximo_seguimiento <= today });
+      const paso = `seguimiento-${enviados}` as Mensaje["paso"];
+      const ready = p.mensajes.some((m) => m.tipo === "borrador" && m.paso === paso);
+      if (p.proximo_seguimiento) out.push({ id: p.id, nombre: p.nombre, accion: `${paso}${ready ? " (borrador listo)" : " (falta borrador)"}`, fecha: p.proximo_seguimiento, vencido: p.proximo_seguimiento <= today });
       else out.push({ id: p.id, nombre: p.nombre, accion: "cadencia agotada sin respuesta: marcar «perdido»", fecha: p.actualizado, vencido: true });
     }
   }
