@@ -68,3 +68,13 @@ Todas las piezas son 1080x1920 (9:16).
 ## Capi · El efecto Kuleshov (ES): `pruebas/capi/capi_efecto-kuleshov_9x16.mp4`
 
 Descripción ya entregada en el chat el 12-10-2026 (versión larga y corta).
+
+## v04 · MrBeast tarda 5 meses en un video (ES): `v04-mrbeast-5-meses-es.mp4`
+
+> MrBeast tarda unos 5 meses en hacer UN video (lo contó él: meses de idea, semanas grabando, 3 semanas de edición).
+> Vos no necesitás grabar más: necesitás recortar mejor lo que ya grabaste 🎬
+> 1️⃣ Grabá largo 2️⃣ Cortá clips 3️⃣ Publicá todo
+>
+> Escribí CLIP y te edito uno gratis.
+>
+> #mrbeast #creadoresdecontenido #edicióndevideo #podcast #reels #tiktoktips
