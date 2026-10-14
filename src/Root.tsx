@@ -12,6 +12,7 @@ import { AntesDespuesFijo, antesDespuesFijoSchema, calculateAntesDespuesFijoMeta
 import { MISMO_CLIP_EN, MISMO_CLIP_ES, MismoClip, mismoClipDuration, mismoClipSchema } from "./Crecimiento/MismoClip";
 import { Viral, viralDuration } from "./Viral/Viral";
 import { Neon, neonDuration } from "./Neon/Neon";
+import { Collage, collageDuration } from "./Collage/Collage";
 import { calculateMontajeMetadata, Montaje, montajeSchema } from "./Montaje/Montaje";
 import { AutopilotEdit, calculateEditMetadata } from "./autopilot/AutopilotEdit";
 import { CaptionModesDemo, captionDemoDuration, captionDemoSchema } from "./autopilot/CaptionModesDemo";
@@ -223,6 +224,7 @@ export const RemotionRoot: React.FC = () => {
           labels: ["Antes", "Después", "Solo un audio"] as [string, string, string],
         }}
       />
+      <Composition id="Collage" component={Collage} durationInFrames={collageDuration} fps={30} width={1080} height={1920} defaultProps={{ env: [] as number[] }} />
       <Composition id="Neon" component={Neon} durationInFrames={neonDuration} fps={30} width={1080} height={1920} />
       <Composition
         id="Montaje"
