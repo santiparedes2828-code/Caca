@@ -13,6 +13,7 @@ import { MISMO_CLIP_EN, MISMO_CLIP_ES, MismoClip, mismoClipDuration, mismoClipSc
 import { Viral, viralDuration } from "./Viral/Viral";
 import { Neon, neonDuration } from "./Neon/Neon";
 import { Leonardo, leonardoDuration } from "./Leonardo/Leonardo";
+import { PodcastMuere, podcastMuereDuration } from "./PodcastMuere/PodcastMuere";
 import { Collage, collageDuration } from "./Collage/Collage";
 import { calculateMontajeMetadata, Montaje, montajeSchema } from "./Montaje/Montaje";
 import { AutopilotEdit, calculateEditMetadata } from "./autopilot/AutopilotEdit";
@@ -226,6 +227,7 @@ export const RemotionRoot: React.FC = () => {
         }}
       />
       <Composition id="Collage" component={Collage} durationInFrames={collageDuration} fps={30} width={1080} height={1920} defaultProps={{ env: [] as number[] }} />
+      <Composition id="PodcastMuere" component={PodcastMuere} durationInFrames={podcastMuereDuration} fps={30} width={1080} height={1920} />
       <Composition id="Leonardo" component={Leonardo} durationInFrames={leonardoDuration} fps={30} width={1080} height={1920} />
       <Composition id="Neon" component={Neon} durationInFrames={neonDuration} fps={30} width={1080} height={1920} />
       <Composition

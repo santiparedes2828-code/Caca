@@ -78,3 +78,14 @@ Descripción ya entregada en el chat el 12-10-2026 (versión larga y corta).
 > Escribí CLIP y te edito uno gratis.
 >
 > #mrbeast #creadoresdecontenido #edicióndevideo #podcast #reels #tiktoktips
+
+## v06 · Tu podcast de una hora se está muriendo en TikTok (ES): `v06-tu-podcast-se-muere-es.mp4`
+
+> Tu podcast de una hora se está muriendo en TikTok 🎙️
+> Nadie mira 60 minutos en el feed, pero adentro hay frases que sí se comparten.
+> 1️⃣ Encontrá la frase 2️⃣ Ponela primero 3️⃣ Subtítulos 4️⃣ Cortá los silencios
+> 1 episodio = 6 clips = 1 mes de publicaciones.
+>
+> Comentá CLIP y te edito uno gratis 👇
+>
+> #podcast #podcastespañol #edicióndevideo #creadoresdecontenido #tiktoktips #reels
