@@ -89,3 +89,26 @@ Descripción ya entregada en el chat el 12-10-2026 (versión larga y corta).
 > Comentá CLIP y te edito uno gratis 👇
 >
 > #podcast #podcastespañol #edicióndevideo #creadoresdecontenido #tiktoktips #reels
+
+## v07 · Así es como un episodio se convierte en 6 clips (ES): `v07-asi-funciona-hook-house-es.mp4`
+
+> Así funciona Hook House 🎙️➡️📱
+> 1️⃣ Me mandás el link del episodio
+> 2️⃣ Encuentro las frases que enganchan
+> 3️⃣ Gancho primero, subtítulos animados y cero silencios
+> En 48 horas tenés tus clips listos para subir.
+>
+> Comentá CLIP y te edito uno gratis 👇
+>
+> #podcast #podcastespañol #edicióndevideo #creadoresdecontenido #clips #reels
+
+## v08 · 3 cosas que tiene todo clip de podcast que se comparte (ES): `v08-3-cosas-clip-podcast-es.mp4`
+
+> 3 cosas que tiene todo clip de podcast que se comparte 👇
+> 1️⃣ Arranca con la frase más fuerte (no con «hola, bienvenidos»)
+> 2️⃣ Subtítulos que se mueven, para que se entienda sin sonido
+> 3️⃣ Nada de silencios ni muletillas
+>
+> En Hook House hacemos esas 3 en cada clip. Comentá CLIP y te edito uno gratis.
+>
+> #podcast #tipsdepodcast #edicióndevideo #creadoresdecontenido #tiktoktips #reels

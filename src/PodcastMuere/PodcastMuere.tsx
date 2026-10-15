@@ -9,23 +9,23 @@ import { INTER, loadInter } from "../design/inter";
 
 loadInter();
 
-const F = (s: number) => Math.round(s * 30);
-const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+export const F = (s: number) => Math.round(s * 30);
+export const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const CUTS = [0, 3.3, 5.8, 10.5, 15.6, 19.1, 22.6];
 // Golpes: palabras clave (segundos absolutos) que sacuden la cámara y suenan
 const HITS = [0.3, 1.8, 3.3, 4.3, 6.9, 9.4, 10.5, 11.8, 13.0, 14.1, 15.6, 16.6, 17.8, 19.7];
 export const podcastMuereDuration = F(CUTS[CUTS.length - 1]);
 
-const useAt = (s: number, cfg = { damping: 12, stiffness: 220, mass: 0.6 }) => {
+export const useAt = (s: number, cfg = { damping: 12, stiffness: 220, mass: 0.6 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   return spring({ frame: frame - F(s), fps, config: cfg });
 };
 
-const glow = (size: number) => `0 0 ${size * 0.12}px rgba(255,255,255,0.9), 0 0 ${size * 0.35}px rgba(255,255,255,0.4)`;
+export const glow = (size: number) => `0 0 ${size * 0.12}px rgba(255,255,255,0.9), 0 0 ${size * 0.35}px rgba(255,255,255,0.4)`;
 
 // Palabra que entra de golpe: desde grande y desenfocada a su tamaño, con un pequeño rebote
-const Slam: React.FC<{ text: string; at: number; size: number; top: number; italic?: boolean; dim?: boolean }> = ({ text, at, size, top, italic = true, dim }) => {
+export const Slam: React.FC<{ text: string; at: number; size: number; top: number; italic?: boolean; dim?: boolean }> = ({ text, at, size, top, italic = true, dim }) => {
   const s = useAt(at);
   const frame = useCurrentFrame();
   if (frame < F(at) - 1) return null;
@@ -55,13 +55,13 @@ const Slam: React.FC<{ text: string; at: number; size: number; top: number; ital
   );
 };
 
-const Halo: React.FC<{ y?: number }> = ({ y = 45 }) => {
+export const Halo: React.FC<{ y?: number }> = ({ y = 45 }) => {
   const frame = useCurrentFrame();
   return <AbsoluteFill style={{ background: `radial-gradient(65% 42% at ${50 + Math.sin(frame / 40) * 8}% ${y}%, #3d3d3d 0%, #141414 55%, #000 100%)` }} />;
 };
 
 // Polvo de luz que sube
-const Dust: React.FC = () => {
+export const Dust: React.FC = () => {
   const frame = useCurrentFrame();
   return (
     <>
@@ -76,7 +76,7 @@ const Dust: React.FC = () => {
 };
 
 // Micrófono de podcast en línea blanca con brillo
-const Mic: React.FC<{ x: number; y: number; scale?: number }> = ({ x, y, scale = 1 }) => (
+export const Mic: React.FC<{ x: number; y: number; scale?: number }> = ({ x, y, scale = 1 }) => (
   <svg width={260 * scale} height={420 * scale} viewBox="0 0 260 420" style={{ position: "absolute", left: x, top: y, filter: "drop-shadow(0 0 12px #fff) drop-shadow(0 0 30px rgba(255,255,255,0.5))" }}>
     <rect x={70} y={10} width={120} height={200} rx={60} fill="#fff" />
     {[50, 85, 120, 155].map((yy) => (
@@ -89,7 +89,7 @@ const Mic: React.FC<{ x: number; y: number; scale?: number }> = ({ x, y, scale =
 );
 
 // Línea de pulso que se aplana
-const Pulse: React.FC<{ flatAt: number }> = ({ flatAt }) => {
+export const Pulse: React.FC<{ flatAt: number }> = ({ flatAt }) => {
   const frame = useCurrentFrame();
   const flat = interpolate(frame, [F(flatAt), F(flatAt) + 12], [1, 0], clamp);
   const pts = Array.from({ length: 120 }, (_, i) => {
@@ -106,7 +106,7 @@ const Pulse: React.FC<{ flatAt: number }> = ({ flatAt }) => {
 };
 
 // Onda larga de un episodio con un tramo resaltado
-const LongWave: React.FC<{ highlightAt: number }> = ({ highlightAt }) => {
+export const LongWave: React.FC<{ highlightAt: number }> = ({ highlightAt }) => {
   const frame = useCurrentFrame();
   const h = useAt(highlightAt, { damping: 14, stiffness: 120, mass: 0.8 });
   const n = 90;
@@ -122,7 +122,7 @@ const LongWave: React.FC<{ highlightAt: number }> = ({ highlightAt }) => {
   );
 };
 
-const Phone: React.FC<{ i: number; at: number }> = ({ i, at }) => {
+export const Phone: React.FC<{ i: number; at: number }> = ({ i, at }) => {
   const s = useAt(at + i * 0.07, { damping: 13, stiffness: 160, mass: 0.7 });
   const frame = useCurrentFrame();
   const ang = (i - 2.5) * 13 * s;
@@ -197,7 +197,7 @@ const C: React.FC = () => {
   );
 };
 
-const Step: React.FC<{ at: number; end: number; small: string; big: string; children?: React.ReactNode }> = ({ at, end, small, big, children }) => {
+export const Step: React.FC<{ at: number; end: number; small: string; big: string; children?: React.ReactNode }> = ({ at, end, small, big, children }) => {
   const frame = useCurrentFrame();
   if (frame < F(at) - 1 || frame >= F(end)) return null;
   return (
