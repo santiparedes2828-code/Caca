@@ -112,3 +112,15 @@ Descripción ya entregada en el chat el 12-10-2026 (versión larga y corta).
 > En Hook House hacemos esas 3 en cada clip. Comentá CLIP y te edito uno gratis.
 >
 > #podcast #tipsdepodcast #edicióndevideo #creadoresdecontenido #tiktoktips #reels
+
+## v09 · ¿Cuál es la diferencia? (ES): `v09-cual-es-la-diferencia-es.mp4`
+
+> ¿Cuál es la diferencia entre un clip que nadie ve y uno que se comparte? 🤔
+> Mismo podcast. Misma frase. Cambia la edición:
+> ❌ «hola, bienvenidos» → ✅ la frase más fuerte primero
+> ❌ subtítulos planos → ✅ subtítulos que se mueven
+> ❌ silencios → ✅ cortes limpios
+>
+> Comentá CLIP y te edito uno gratis 👇
+>
+> #podcast #antesydespues #edicióndevideo #creadoresdecontenido #tiktoktips #reels

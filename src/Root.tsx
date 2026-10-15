@@ -16,6 +16,7 @@ import { Leonardo, leonardoDuration } from "./Leonardo/Leonardo";
 import { PodcastMuere, podcastMuereDuration } from "./PodcastMuere/PodcastMuere";
 import { HHReel, reelDuration } from "./PodcastMuere/HHReels";
 import { Collage, collageDuration } from "./Collage/Collage";
+import { Diferencia, diferenciaDuration } from "./Collage/Diferencia";
 import { calculateMontajeMetadata, Montaje, montajeSchema } from "./Montaje/Montaje";
 import { AutopilotEdit, calculateEditMetadata } from "./autopilot/AutopilotEdit";
 import { CaptionModesDemo, captionDemoDuration, captionDemoSchema } from "./autopilot/CaptionModesDemo";
@@ -227,6 +228,7 @@ export const RemotionRoot: React.FC = () => {
           labels: ["Antes", "Después", "Solo un audio"] as [string, string, string],
         }}
       />
+      <Composition id="Diferencia" component={Diferencia} durationInFrames={diferenciaDuration} fps={30} width={1080} height={1920} />
       <Composition id="Collage" component={Collage} durationInFrames={collageDuration} fps={30} width={1080} height={1920} defaultProps={{ env: [] as number[] }} />
       <Composition id="ReelV07" component={HHReel} durationInFrames={reelDuration("v07")} fps={30} width={1080} height={1920} defaultProps={{ id: "v07" as const }} />
       <Composition id="ReelV08" component={HHReel} durationInFrames={reelDuration("v08")} fps={30} width={1080} height={1920} defaultProps={{ id: "v08" as const }} />

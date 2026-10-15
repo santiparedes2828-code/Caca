@@ -10,21 +10,21 @@ import { INTER, loadInter } from "../design/inter";
 
 loadInter();
 
-const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-const MINT = "#9EDDD2";
+export const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+export const MINT = "#9EDDD2";
 const PHONE = { x: 330, y: 300, w: 660, h: 1240 };
 // Escenas: inicio en segundos (según la transcripción del audio)
 const CUTS = [0, 2.1, 4.6, 5.9, 7.8, 10.2, 12.1, 14.3, 18.1];
 export const collageDuration = Math.round(CUTS[CUTS.length - 1] * 30);
 
-const useIn = (delay: number, cfg = { damping: 14, stiffness: 170, mass: 0.7 }) => {
+export const useIn = (delay: number, cfg = { damping: 14, stiffness: 170, mass: 0.7 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   return spring({ frame: frame - delay, fps, config: cfg });
 };
 
 // Texto que se escribe letra a letra
-const Typed: React.FC<{ text: string; size: number; delay?: number; cps?: number; color?: string; weight?: number; style?: React.CSSProperties }> = ({ text, size, delay = 0, cps = 22, color = "#111", weight = 800, style }) => {
+export const Typed: React.FC<{ text: string; size: number; delay?: number; cps?: number; color?: string; weight?: number; style?: React.CSSProperties }> = ({ text, size, delay = 0, cps = 22, color = "#111", weight = 800, style }) => {
   const frame = useCurrentFrame();
   const n = Math.max(0, Math.floor(((frame - delay) / 30) * cps));
   return (
@@ -35,13 +35,13 @@ const Typed: React.FC<{ text: string; size: number; delay?: number; cps?: number
   );
 };
 
-const Strike: React.FC<{ delay: number; w: number; h: number; style?: React.CSSProperties }> = ({ delay, w, h, style }) => {
+export const Strike: React.FC<{ delay: number; w: number; h: number; style?: React.CSSProperties }> = ({ delay, w, h, style }) => {
   const frame = useCurrentFrame();
   const p = interpolate(frame, [delay, delay + 6], [0, 1], clamp);
   return <div style={{ position: "absolute", width: w * p, height: h, background: "#E0261B", ...style }} />;
 };
 
-const Squiggle: React.FC<{ top: number; delay?: number }> = ({ top, delay = 0 }) => {
+export const Squiggle: React.FC<{ top: number; delay?: number }> = ({ top, delay = 0 }) => {
   const frame = useCurrentFrame();
   const len = interpolate(frame, [delay, delay + 18], [1400, 0], clamp);
   return (
@@ -51,7 +51,7 @@ const Squiggle: React.FC<{ top: number; delay?: number }> = ({ top, delay = 0 })
   );
 };
 
-const Icon: React.FC<{ name: string; size: number; delay: number; style?: React.CSSProperties }> = ({ name, size, delay, style }) => {
+export const Icon: React.FC<{ name: string; size: number; delay: number; style?: React.CSSProperties }> = ({ name, size, delay, style }) => {
   const s = useIn(delay, { damping: 10, stiffness: 190, mass: 0.6 });
   return <Img src={staticFile(`collage/${name}.svg`)} style={{ position: "absolute", width: size, height: size, transform: `scale(${s}) rotate(${(1 - s) * -30}deg)`, filter: "drop-shadow(0 10px 14px rgba(0,0,0,0.3))", ...style }} />;
 };
@@ -66,7 +66,7 @@ const Beast: React.FC<{ bw?: boolean; width: number; style?: React.CSSProperties
   );
 };
 
-const Grid: React.FC = () => (
+export const Grid: React.FC = () => (
   <AbsoluteFill style={{ background: "#E9E9E9" }}>
     <div style={{ position: "absolute", left: 90, top: 280, width: 480, height: 640, backgroundImage: "linear-gradient(#222 2px, transparent 2px), linear-gradient(90deg, #222 2px, transparent 2px)", backgroundSize: "60px 60px", opacity: 0.55, maskImage: "radial-gradient(closest-side, black 55%, transparent 100%)" }} />
   </AbsoluteFill>
@@ -190,7 +190,7 @@ const E8: React.FC = () => {
 };
 const SCENES = [E1, E2, E3, E4, E5, E6, E7, E8];
 
-const Wave: React.FC<{ env: number[] }> = ({ env }) => {
+export const Wave: React.FC<{ env: number[] }> = ({ env }) => {
   const frame = useCurrentFrame();
   const n = 15;
   return (
