@@ -139,3 +139,17 @@ Descripción ya entregada en el chat el 12-10-2026 (versión larga y corta).
 > Guardalo para tu próximo clip 📌 Y si no querés hacerlo vos, comentá CLIP.
 >
 > #podcast #podcastespañol #edicióndevideo #tipsdepodcast #creadoresdecontenido #reels
+
+## v11 · Tu podcast no necesita más episodios (ES, estilo «Firma»): `v11-tu-podcast-no-necesita-mas-episodios-es.mp4`
+
+> Tu podcast no necesita más episodios. Necesita esto 👇
+>
+> 1 clip. 30 segundos. 1 sola idea.
+> Que alguien lo vea sin saber quién sos… y quiera escuchar el episodio entero.
+>
+> Un buen clip no resume: abre la puerta 🚪
+> En Hook House convertimos cada episodio en 6 puertas.
+>
+> Comentá CLIP y te edito la primera gratis.
+>
+> #podcast #podcastespañol #edicióndevideo #creadoresdecontenido #marcapersonal #reels
