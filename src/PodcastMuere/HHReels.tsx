@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Audio, interpolate, random, Sequence, spring, staticFile, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Audio, Img, interpolate, random, Sequence, spring, staticFile, useCurrentFrame } from "remotion";
 import { INTER } from "../design/inter";
 import { clamp, Dust, F, glow, Halo, LongWave, Phone, Slam, useAt } from "./PodcastMuere";
 
@@ -153,6 +153,76 @@ const Logo: React.FC<{ at: number }> = ({ at }) => {
   );
 };
 
+// ——— Piezas del v10 «Dejá de subir los clips de tu podcast así» (16-10-2026) ———
+// Emojis de Apple en PNG (los que dio el usuario; solo en local, fuera de Git) y textos solo en blanco y negro.
+const Apple: React.FC<{ name: string; size: number; at: number; x: number; y: number; spin?: boolean }> = ({ name, size, at, x, y, spin }) => {
+  const s = useAt(at, { damping: 9, stiffness: 200, mass: 0.6 });
+  const frame = useCurrentFrame();
+  const bob = Math.sin((frame - F(at)) / 7) * 10;
+  return (
+    <Img
+      src={staticFile(`hhreels/apple/${name}.png`)}
+      style={{ position: "absolute", left: x, top: y, width: size, height: size, opacity: s > 0.02 ? 1 : 0, transform: `translateY(${bob}px) scale(${s}) rotate(${spin ? (frame - F(at)) * 4 : (1 - s) * -35}deg)`, filter: "drop-shadow(0 0 30px rgba(255,255,255,0.35))" }}
+    />
+  );
+};
+
+// Teléfono con un clip aburrido que se va de un deslizón
+const BoringPhone: React.FC<{ swipeAt: number; text: string; textAt: number }> = ({ swipeAt, text, textAt }) => {
+  const frame = useCurrentFrame();
+  const away = interpolate(frame, [F(swipeAt), F(swipeAt) + 9], [0, 1], { ...clamp, easing: (t) => t * t });
+  const n = Math.max(0, Math.floor((frame - F(textAt)) / 1.6));
+  return (
+    <div style={{ position: "absolute", left: 270, top: 520, width: 540, height: 960, borderRadius: 60, border: "8px solid #fff", background: "#1b1b1b", boxShadow: "0 0 50px rgba(255,255,255,0.35)", transform: `translateY(${-1500 * away}px) rotate(${-8 * away}deg)`, overflow: "hidden" }}>
+      <div style={{ position: "absolute", left: 40, right: 40, top: 330, fontFamily: INTER, fontWeight: 500, fontSize: 62, color: "rgba(255,255,255,0.8)", textAlign: "center" }}>{text.slice(0, n)}</div>
+      <div style={{ position: "absolute", left: 60, right: 60, bottom: 90, height: 8, borderRadius: 8, background: "rgba(255,255,255,0.2)" }}>
+        <div style={{ width: `${Math.min(100, frame * 0.6)}%`, height: "100%", background: "#fff", borderRadius: 8 }} />
+      </div>
+    </div>
+  );
+};
+
+// Línea de tiempo del clip: el bloque de la frase fuerte salta al principio
+const Timeline: React.FC<{ moveAt: number; ctxAt: number }> = ({ moveAt, ctxAt }) => {
+  const frame = useCurrentFrame();
+  const m = spring({ frame: frame - F(moveAt), fps: 30, config: { damping: 12, stiffness: 140, mass: 0.8 } });
+  const c = spring({ frame: frame - F(ctxAt), fps: 30, config: { damping: 14, stiffness: 160 } });
+  const W = 900;
+  const blocks = [
+    { label: "intro", w: 300, from: 0, to: 330, dim: true },
+    { label: "contexto", w: 300, from: 300, to: 630, dim: false },
+    { label: "FRASE", w: 300, from: 600, to: 0, dim: false },
+  ];
+  return (
+    <div style={{ position: "absolute", left: (1080 - W) / 2, top: 900, width: W, height: 170 }}>
+      {blocks.map((b, i) => {
+        const x = i === 2 ? b.from + (b.to - b.from) * m : i === 0 ? b.from + (b.to - b.from) * m : b.from + (b.to - b.from) * m;
+        const lift = i === 2 ? -Math.sin(Math.min(1, m) * Math.PI) * 160 : 0;
+        const hot = i === 2;
+        const gone = i === 0 ? m : 0;
+        return (
+          <div key={b.label} style={{ position: "absolute", left: x, top: lift, width: b.w - 14, height: 150, borderRadius: 24, border: "6px solid #fff", background: hot ? "#fff" : "transparent", color: hot ? "#000" : "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: INTER, fontWeight: 800, fontSize: 46, opacity: 1 - 0.75 * gone + (i === 1 ? 0 : 0), boxShadow: hot ? "0 0 40px #fff" : "0 0 18px rgba(255,255,255,0.4)", transform: `scale(${i === 1 ? 1 + 0.08 * c * Math.sin(frame / 4) * (c > 0.5 ? 1 : 0) : 1})`, textDecoration: i === 0 && m > 0.6 ? "line-through" : "none" }}>
+            {b.label}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+// «palabra por palabra»: cada palabra gigante entra sola
+const WordByWord: React.FC<{ words: [string, number][] }> = ({ words }) => {
+  const frame = useCurrentFrame();
+  const cur = [...words].reverse().find(([, at]) => frame >= F(at));
+  if (!cur) return null;
+  const s = spring({ frame: frame - F(cur[1]), fps: 30, config: { damping: 9, stiffness: 260, mass: 0.5 } });
+  return (
+    <div style={{ position: "absolute", left: 0, right: 0, top: 860, textAlign: "center", fontFamily: INTER, fontWeight: 800, fontStyle: "italic", fontSize: 210, color: "#000", letterSpacing: "-0.05em" }}>
+      <span style={{ background: "#fff", padding: "0 34px 14px", display: "inline-block", transform: `scale(${1.6 - 0.6 * s}) rotate(${(1 - s) * 6}deg)`, boxShadow: "0 0 60px rgba(255,255,255,0.7)" }}>{cur[0]}</span>
+    </div>
+  );
+};
+
 // Escena de llamada a la acción común (tiempos relativos a «Comentá»)
 const cta = (start: number, clip: number, gratis: number): Scene => ({
   start,
@@ -164,7 +234,7 @@ const cta = (start: number, clip: number, gratis: number): Scene => ({
   graphic: () => <Comment at={clip - start} />,
 });
 
-export const REELS: Record<"v07" | "v08", Reel> = {
+export const REELS: Record<"v07" | "v08" | "v10", Reel> = {
   v07: {
     voice: "hhreels/v1.wav",
     end: 23.6,
@@ -310,11 +380,129 @@ export const REELS: Record<"v07" | "v08", Reel> = {
       cta(20.6, 21.2, 22.7),
     ],
   },
+
+  v10: {
+    voice: "hhreels/v4.wav",
+    end: 27.7,
+    hits: [0, 2.2, 6.4, 8.5, 11.2, 12.4, 14.6, 16.4, 17.4, 19.0, 19.6, 19.8, 21.7, 22.6, 25.9, 26.6],
+    scenes: [
+      {
+        start: 0,
+        texts: [
+          { text: "DEJÁ DE SUBIR", at: 0, size: 140, top: 150 },
+          { text: "los clips de tu podcast", at: 1.0, size: 62, top: 320, dim: true },
+          { text: "ASÍ", at: 2.2, size: 260, top: 1500 },
+        ],
+        graphic: () => (
+          <>
+            <BoringPhone swipeAt={99} text="bueno, como te decía…" textAt={0.4} />
+            <Apple name="yawning-face" size={200} at={0.8} x={700} y={1260} />
+          </>
+        ),
+      },
+      {
+        start: 2.8,
+        texts: [
+          { text: "si arranca con", at: 0.2, size: 64, top: 300, dim: true },
+          { text: "ya lo", at: 3.1, size: 70, top: 1480, dim: true },
+          { text: "PERDISTE", at: 3.5, size: 190, top: 1570 },
+        ],
+        graphic: () => (
+          <>
+            <BoringPhone swipeAt={3.1} text="«bueno, como te decía…»" textAt={1.3} />
+            <Apple name="backhand-index-pointing-up" size={230} at={2.7} x={430} y={1250} />
+          </>
+        ),
+      },
+      {
+        start: 7.4,
+        texts: [
+          { text: "la gente decide en", at: 0.1, size: 66, top: 420, dim: true },
+          { text: "SEGUNDOS", at: 1.1, size: 200, top: 510 },
+          { text: "si se queda", at: 1.8, size: 80, top: 1420, dim: true },
+        ],
+        graphic: () => <Apple name="stopwatch" size={360} at={0.4} x={360} y={860} />,
+      },
+      {
+        start: 10.1,
+        texts: [
+          { text: "hacé esto:", at: 0, size: 70, top: 220, dim: true },
+          { text: "ARRANCÁ POR EL FINAL", at: 1.1, size: 100, top: 320 },
+          { text: "la frase más fuerte,", at: 2.9, size: 66, top: 1300, dim: true },
+          { text: "PRIMERO", at: 4.5, size: 190, top: 1390 },
+        ],
+        graphic: () => (
+          <>
+            <Timeline moveAt={2.3} ctxAt={99} />
+            <Apple name="fire" size={150} at={2.9} x={110} y={700} />
+          </>
+        ),
+      },
+      {
+        start: 15.4,
+        texts: [
+          { text: "después,", at: 0, size: 70, top: 420, dim: true },
+          { text: "EL CONTEXTO", at: 1.0, size: 150, top: 510 },
+        ],
+        graphic: () => <Timeline moveAt={-1} ctxAt={1.0} />,
+      },
+      {
+        start: 17.4,
+        texts: [
+          { text: "SUBTÍTULOS", at: 0, size: 150, top: 330 },
+          { text: "GRANDES", at: 0.8, size: 150, top: 490 },
+        ],
+        graphic: () => (
+          <WordByWord
+            words={[
+              ["palabra", 1.6],
+              ["por", 2.2],
+              ["palabra", 2.4],
+            ]}
+          />
+        ),
+      },
+      {
+        start: 20.5,
+        texts: [
+          { text: "cortá todo lo que", at: 0.2, size: 70, top: 470, dim: true },
+          { text: "NO SUMA", at: 1.2, size: 200, top: 560 },
+        ],
+        graphic: () => (
+          <>
+            <CutWave at={1.3} />
+            <Apple name="scissors" size={220} at={1.0} x={430} y={1250} spin />
+          </>
+        ),
+      },
+      {
+        start: 22.6,
+        texts: [
+          { text: "GUARDALO", at: 0, size: 190, top: 380 },
+          { text: "para tu próximo clip", at: 0.8, size: 70, top: 1340, dim: true },
+        ],
+        graphic: () => <Apple name="bookmark" size={380} at={0.1} x={350} y={760} />,
+      },
+      {
+        start: 24.3,
+        texts: [
+          { text: "y si no querés hacerlo vos", at: 0.2, size: 60, top: 400, dim: true },
+          { text: "COMENTÁ", at: 1.6, size: 150, top: 480 },
+        ],
+        graphic: () => (
+          <>
+            <Comment at={2.3} />
+            <Apple name="speech-balloon" size={170} at={2.3} x={800} y={1180} />
+          </>
+        ),
+      },
+    ],
+  },
 };
 
-export const reelDuration = (id: "v07" | "v08") => F(REELS[id].end);
+export const reelDuration = (id: "v07" | "v08" | "v10") => F(REELS[id].end);
 
-export const HHReel: React.FC<{ id: "v07" | "v08" }> = ({ id }) => {
+export const HHReel: React.FC<{ id: "v07" | "v08" | "v10" }> = ({ id }) => {
   const reel = REELS[id];
   const frame = useCurrentFrame();
   const t = frame / 30;

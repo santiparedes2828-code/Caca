@@ -124,3 +124,18 @@ Descripción ya entregada en el chat el 12-10-2026 (versión larga y corta).
 > Comentá CLIP y te edito uno gratis 👇
 >
 > #podcast #antesydespues #edicióndevideo #creadoresdecontenido #tiktoktips #reels
+
+## v10 · Dejá de subir los clips de tu podcast así (ES): `v10-deja-de-subir-clips-asi-es.mp4`
+
+> Dejá de subir los clips de tu podcast así 🚫
+> Si arranca con «bueno, como te decía…», ya lo perdiste.
+>
+> Hacé esto 👇
+> 🔥 Arrancá por el final: la frase más fuerte, primero
+> 🧩 Después, el contexto
+> 🔠 Subtítulos grandes, palabra por palabra
+> ✂️ Cortá todo lo que no suma
+>
+> Guardalo para tu próximo clip 📌 Y si no querés hacerlo vos, comentá CLIP.
+>
+> #podcast #podcastespañol #edicióndevideo #tipsdepodcast #creadoresdecontenido #reels

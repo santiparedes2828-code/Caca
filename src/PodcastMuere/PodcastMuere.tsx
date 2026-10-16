@@ -25,7 +25,11 @@ export const useAt = (s: number, cfg = { damping: 12, stiffness: 220, mass: 0.6 
 export const glow = (size: number) => `0 0 ${size * 0.12}px rgba(255,255,255,0.9), 0 0 ${size * 0.35}px rgba(255,255,255,0.4)`;
 
 // Palabra que entra de golpe: desde grande y desenfocada a su tamaño, con un pequeño rebote
-export const Slam: React.FC<{ text: string; at: number; size: number; top: number; italic?: boolean; dim?: boolean }> = ({ text, at, size, top, italic = true, dim }) => {
+export const Slam: React.FC<{ text: string; at: number; size: number; top: number; italic?: boolean; dim?: boolean }> = ({ text, at, size: wanted, top, italic = true, dim }) => {
+  // Las palabras grandes se achican solas si no caben en una línea (nunca se salen de la pantalla)
+  const oneLine = 1450 / Math.max(4, text.length);
+  const longest = 1450 / Math.max(4, ...text.split(" ").map((w) => w.length));
+  const size = dim ? wanted : Math.min(wanted, oneLine >= wanted * 0.75 ? oneLine : longest);
   const s = useAt(at);
   const frame = useCurrentFrame();
   if (frame < F(at) - 1) return null;

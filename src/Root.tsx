@@ -231,6 +231,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Diferencia" component={Diferencia} durationInFrames={diferenciaDuration} fps={30} width={1080} height={1920} />
       <Composition id="Collage" component={Collage} durationInFrames={collageDuration} fps={30} width={1080} height={1920} defaultProps={{ env: [] as number[] }} />
       <Composition id="ReelV07" component={HHReel} durationInFrames={reelDuration("v07")} fps={30} width={1080} height={1920} defaultProps={{ id: "v07" as const }} />
+      <Composition id="ReelV10" component={HHReel} durationInFrames={reelDuration("v10")} fps={30} width={1080} height={1920} defaultProps={{ id: "v10" as const }} />
       <Composition id="ReelV08" component={HHReel} durationInFrames={reelDuration("v08")} fps={30} width={1080} height={1920} defaultProps={{ id: "v08" as const }} />
       <Composition id="PodcastMuere" component={PodcastMuere} durationInFrames={podcastMuereDuration} fps={30} width={1080} height={1920} />
       <Composition id="Leonardo" component={Leonardo} durationInFrames={leonardoDuration} fps={30} width={1080} height={1920} />
