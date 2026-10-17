@@ -248,7 +248,7 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1080}
         height={1920}
-        defaultProps={{ id: "00", end: 10, voice: "sfx/pop.wav", accent: "#E8622C", capColor: "#FFFFFF", capBg: "rgba(10,10,10,0.72)", capY: 1340, keys: [], words: [], scenes: [{ start: 0, bg: "#F3EEE4", tr: "cut" }], els: [], sfx: [], cam: [], shakes: [] }}
+        defaultProps={{ id: "00", end: 10, voice: "sfx/pop.wav", accent: "#E8622C", capColor: "#FFFFFF", capBg: "rgba(10,10,10,0.72)", capY: 1340, keys: [], words: [], scenes: [{ start: 0, bg: "#F3EEE4", tr: "cut", fx: "none" }], capStyle: "box", els: [], sfx: [], cam: [], shakes: [] }}
       />
       <Composition id="Firma" component={Firma} durationInFrames={firmaDuration} fps={30} width={1080} height={1920} />
       <Composition id="Neon" component={Neon} durationInFrames={neonDuration} fps={30} width={1080} height={1920} />

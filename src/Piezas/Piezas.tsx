@@ -50,7 +50,12 @@ const el = z.object({
   fixed: z.boolean().optional(), // fuera de la cámara (títulos que no deben moverse con ella)
 });
 // Transiciones de escena: corte, fundido, barrido con desenfoque, zoom a través, cortina o círculo
-const scene = z.object({ start: z.number(), bg: z.string(), tr: z.enum(["cut", "fade", "whip", "zoom", "wipe", "circle"]).default("fade") });
+const scene = z.object({
+  start: z.number(),
+  bg: z.string(),
+  tr: z.enum(["cut", "fade", "whip", "zoom", "wipe", "circle"]).default("fade"),
+  fx: z.enum(["none", "grid", "dots", "lines", "paper", "vignette"]).default("none"), // textura de fondo
+});
 const word = z.object({ text: z.string(), start: z.number(), end: z.number() });
 export const piezaSchema = z.object({
   id: z.string(),
@@ -61,6 +66,8 @@ export const piezaSchema = z.object({
   capColor: z.string().default("#FFFFFF"),
   capBg: z.string().default("rgba(10,10,10,0.72)"),
   capY: z.number().default(1340),
+  // Estilo de subtítulos: caja (por defecto), cinético (2 palabras gigantes), karaoke (barra bajo la palabra), lateral (izquierda apilado) o ninguno
+  capStyle: z.enum(["box", "kinetic", "karaoke", "side", "none"]).default("box"),
   keys: z.array(z.string()).default([]),
   words: z.array(word),
   scenes: z.array(scene).min(1),
@@ -190,7 +197,103 @@ const groups = (words: Pieza["words"]) => {
 };
 const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9ñ]/g, "");
 
+// Textura del fondo de la escena (se mueve con la cámara para dar profundidad)
+const Fx: React.FC<{ fx: string; ink: string; frame: number }> = ({ fx, ink, frame }) => {
+  if (fx === "grid") return <AbsoluteFill style={{ backgroundImage: `linear-gradient(${ink} 2px, transparent 2px), linear-gradient(90deg, ${ink} 2px, transparent 2px)`, backgroundSize: "90px 90px", backgroundPosition: `${frame * 0.6}px ${frame * 0.3}px`, opacity: 0.08 }} />;
+  if (fx === "dots") return <AbsoluteFill style={{ backgroundImage: `radial-gradient(${ink} 3px, transparent 3.5px)`, backgroundSize: "44px 44px", backgroundPosition: `0 ${-frame * 0.8}px`, opacity: 0.12 }} />;
+  if (fx === "lines") return <AbsoluteFill style={{ backgroundImage: `repeating-linear-gradient(-35deg, ${ink} 0 3px, transparent 3px 38px)`, backgroundPosition: `${frame * 1.5}px 0`, opacity: 0.07 }} />;
+  if (fx === "paper") return <AbsoluteFill style={{ backgroundImage: "radial-gradient(rgba(0,0,0,0.5) 1px, transparent 1.6px), radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1.6px)", backgroundSize: "7px 7px, 11px 11px", backgroundPosition: "0 0, 3px 5px", opacity: 0.16 }} />;
+  if (fx === "vignette") return <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.65) 100%)" }} />;
+  return null;
+};
+const inkOf = (bg: string) => {
+  const m = /^#([0-9a-f]{6})$/i.exec(bg);
+  if (!m) return "#000";
+  const n = parseInt(m[1], 16);
+  return ((n >> 16) & 255) * 0.3 + ((n >> 8) & 255) * 0.59 + (n & 255) * 0.11 > 140 ? "#000" : "#fff";
+};
+
 const Captions: React.FC<{ p: Pieza; t: number }> = ({ p, t }) => {
+  if (p.capStyle === "none") return null;
+  if (p.capStyle === "kinetic") return <KineticCaps p={p} t={t} />;
+  if (p.capStyle === "karaoke") return <KaraokeCaps p={p} t={t} />;
+  if (p.capStyle === "side") return <SideCaps p={p} t={t} />;
+  return <BoxCaps p={p} t={t} />;
+};
+
+const useGroup = (p: Pieza, t: number) => {
+  const gs = React.useMemo(() => groups(p.words), [p.words]);
+  return gs.find((x, i) => t >= x[0].start - 0.05 && t < (gs[i + 1]?.[0].start ?? x[x.length - 1].end + 0.6));
+};
+const isKey = (p: Pieza, w: string) => p.keys.some((k) => norm(k) === norm(w));
+
+// Contorno oscuro grueso (sombras en 16 direcciones) para leer texto blanco sobre cualquier fondo
+const OUTLINE = [...Array(16)].map((_, i) => `${(Math.cos((i / 16) * Math.PI * 2) * 7).toFixed(1)}px ${(Math.sin((i / 16) * Math.PI * 2) * 7).toFixed(1)}px 0 #111`).join(", ") + ", 0 10px 24px rgba(0,0,0,0.5)";
+
+// Cinético: solo las 1–3 palabras actuales, enormes, cada una entra con golpe
+const KineticCaps: React.FC<{ p: Pieza; t: number }> = ({ p, t }) => {
+  const i = p.words.findIndex((w, k) => t >= w.start - 0.03 && t < (p.words[k + 1]?.start ?? w.end + 0.5));
+  if (i < 0) return null;
+  // Bloques de hasta 2 palabras que se reinician después de cada signo de puntuación
+  let from = i;
+  while (from > 0 && i - from < 1 && !/[.,:;?!…]$/.test(p.words[from - 1].text)) from--;
+  const ws = p.words.slice(from, i + 1);
+  return (
+    <div style={{ position: "absolute", left: 100, right: 180, top: p.capY - 40, display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "0 22px", zIndex: 50 }}>
+      {ws.map((w, k) => {
+        const a = interpolate(t, [w.start - 0.03, w.start + 0.1], [0, 1], { ...clamp, easing: ease });
+        const key = isKey(p, w.text);
+        return (
+          <span key={k} style={{ fontFamily: INTER, fontWeight: 800, fontSize: key ? 104 : 84, letterSpacing: "-0.04em", lineHeight: 1.05, color: key ? p.accent : p.capColor, textTransform: "uppercase", opacity: a, transform: `scale(${1.35 - 0.35 * a}) rotate(${(1 - a) * -6}deg)`, textShadow: OUTLINE }}>
+            {w.text}
+          </span>
+        );
+      })}
+    </div>
+  );
+};
+
+// Karaoke: frase en blanco sin caja y una barra de color que viaja bajo la palabra que suena
+const KaraokeCaps: React.FC<{ p: Pieza; t: number }> = ({ p, t }) => {
+  const g = useGroup(p, t);
+  if (!g) return null;
+  const inT = interpolate(t, [g[0].start - 0.05, g[0].start + 0.15], [0, 1], clamp);
+  return (
+    <div style={{ position: "absolute", left: 100, right: 180, top: p.capY, display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "6px 16px", zIndex: 50, opacity: inT }}>
+      {g.map((w, i) => {
+        const on = t >= w.start;
+        const cur = on && t < (g[i + 1]?.start ?? w.end + 0.3);
+        return (
+          <span key={i} style={{ position: "relative", fontFamily: INTER, fontWeight: 800, fontSize: 58, letterSpacing: "-0.03em", color: cur ? "#111" : p.capColor, textShadow: cur ? "none" : "0 3px 14px rgba(0,0,0,0.6)", padding: "0 8px", zIndex: 1 }}>
+            <span style={{ position: "absolute", inset: "6px 0", background: p.accent, borderRadius: 10, transform: `scaleX(${cur ? 1 : 0})`, transformOrigin: "left", zIndex: -1 }} />
+            {w.text}
+          </span>
+        );
+      })}
+    </div>
+  );
+};
+
+// Lateral: líneas apiladas alineadas a la izquierda, la última palabra en grande
+const SideCaps: React.FC<{ p: Pieza; t: number }> = ({ p, t }) => {
+  const g = useGroup(p, t);
+  if (!g) return null;
+  return (
+    <div style={{ position: "absolute", left: 100, width: 760, top: p.capY - 60, zIndex: 50, fontFamily: INTER, textAlign: "left" }}>
+      {g.map((w, i) => {
+        const a = interpolate(t, [w.start - 0.03, w.start + 0.12], [0, 1], { ...clamp, easing: ease });
+        const key = isKey(p, w.text);
+        return (
+          <span key={i} style={{ display: "inline-block", marginRight: 16, fontWeight: key ? 800 : 700, fontSize: key ? 76 : 50, letterSpacing: "-0.03em", color: key ? p.accent : p.capColor, opacity: 0.25 + 0.75 * a, transform: `translateX(${(1 - a) * -30}px)`, textShadow: "0 3px 14px rgba(0,0,0,0.55)" }}>
+            {w.text}
+          </span>
+        );
+      })}
+    </div>
+  );
+};
+
+const BoxCaps: React.FC<{ p: Pieza; t: number }> = ({ p, t }) => {
   const gs = React.useMemo(() => groups(p.words), [p.words]);
   const keys = React.useMemo(() => new Set(p.keys.map(norm)), [p.keys]);
   const g = gs.find((x, i) => t >= x[0].start - 0.05 && t < (gs[i + 1]?.[0].start ?? x[x.length - 1].end + 0.6));
@@ -248,7 +351,9 @@ export const Pieza: React.FC<Pieza> = (p) => {
   const trBlur = tr === "whip" || tr === "zoom" ? (1 - k) * 24 : 0;
   return (
     <AbsoluteFill style={{ background: prevBg, overflow: "hidden" }}>
-      <AbsoluteFill style={{ background: sc.bg, opacity: fade, clipPath: bgClip }} />
+      <AbsoluteFill style={{ background: sc.bg, opacity: fade, clipPath: bgClip }}>
+        <Fx fx={sc.fx} ink={inkOf(sc.bg)} frame={frame} />
+      </AbsoluteFill>
       <AbsoluteFill
         style={{
           transform: `perspective(1800px) translate(${cx + sx + trX + Math.sin(frame / 90) * 4}px, ${cy + sy + Math.cos(frame / 110) * 4}px) scale(${cs * trS * (1.01 + Math.sin(frame / 70) * 0.006)}) rotate(${cr}deg) rotateX(${crx}deg) rotateY(${cry}deg)`,
