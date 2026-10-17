@@ -1,0 +1,31 @@
+1
+00:00:00,000 --> 00:00:01,840
+Esto es lo que ves.
+
+2
+00:00:02,160 --> 00:00:04,720
+Y esto es lo que pasa por debajo.
+
+3
+00:00:05,040 --> 00:00:06,800
+La voz marca el ritmo.
+
+4
+00:00:06,800 --> 00:00:08,640
+El texto acompaña la idea.
+
+5
+00:00:08,640 --> 00:00:11,280
+Las imágenes muestran lo que cuesta explicar.
+
+6
+00:00:11,280 --> 00:00:13,440
+Y el sonido une los cambios.
+
+7
+00:00:13,440 --> 00:00:16,640
+Cuando las capas trabajan juntas, la edición deja de
+
+8
+00:00:16,640 --> 00:00:18,400
+parecer una colección de efectos.
