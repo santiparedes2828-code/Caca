@@ -311,7 +311,10 @@ const StudioList: React.FC<{ g: Lista; u: number; w: number; fontsReady: boolean
 const ConceptScene: React.FC<{ g: Concepto; u: number; from: number; icon: string | null }> = ({ g, u, from, icon }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const { width } = useVideoConfig();
   const ring = spring({ frame: frame - from - 2, fps, config: { damping: 12, stiffness: 140 } });
+  // La palabra se achica si no cabe en el ancho (p. ej. «COMPARARTE» se salía de la pantalla)
+  const word = Math.min(150 * u, (width * 0.84) / (0.68 * Math.max(4, g.text.length)));
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 26 * u, textAlign: "center" }}>
       {icon ? (
@@ -325,7 +328,7 @@ const ConceptScene: React.FC<{ g: Concepto; u: number; from: number; icon: strin
         </BlurIn>
       ) : null}
       <BlurIn at={from + 6}>
-        <div style={{ fontWeight: 800, fontSize: 150 * u, letterSpacing: "-0.04em", lineHeight: 0.95, color: S.ink }}>{g.text.toUpperCase()}</div>
+        <div style={{ fontWeight: 800, fontSize: word, letterSpacing: "-0.04em", lineHeight: 0.95, color: S.ink }}>{g.text.toUpperCase()}</div>
       </BlurIn>
     </div>
   );
