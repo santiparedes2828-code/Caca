@@ -1,0 +1,27 @@
+1
+00:00:00,000 --> 00:00:02,560
+Mirá esta animación sin efectos.
+
+2
+00:00:04,800 --> 00:00:07,360
+Ahora, la misma con sonido.
+
+3
+00:00:09,600 --> 00:00:13,200
+El movimiento no cambió: agregamos un roce, un clic
+
+4
+00:00:13,280 --> 00:00:15,600
+y un golpe suave cuando el producto llega.
+
+5
+00:00:15,600 --> 00:00:18,880
+Son detalles pequeños, pero la escena se siente distinta.
+
+6
+00:00:18,880 --> 00:00:20,320
+Volvé a escuchar las dos.
+
+7
+00:00:20,320 --> 00:00:21,360
+¿Con cuál te quedás?

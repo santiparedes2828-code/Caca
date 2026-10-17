@@ -223,7 +223,8 @@ const Captions: React.FC<{ p: Pieza; t: number }> = ({ p, t }) => {
 
 const useGroup = (p: Pieza, t: number) => {
   const gs = React.useMemo(() => groups(p.words), [p.words]);
-  return gs.find((x, i) => t >= x[0].start - 0.05 && t < (gs[i + 1]?.[0].start ?? x[x.length - 1].end + 0.6));
+  // Cada frase se ve hasta la siguiente, salvo en pausas largas (se oculta 0,8 s después de su última palabra)
+  return gs.find((x, i) => t >= x[0].start - 0.05 && t < Math.min(gs[i + 1]?.[0].start ?? 1e9, x[x.length - 1].end + 0.8));
 };
 const isKey = (p: Pieza, w: string) => p.keys.some((k) => norm(k) === norm(w));
 
@@ -296,7 +297,7 @@ const SideCaps: React.FC<{ p: Pieza; t: number }> = ({ p, t }) => {
 const BoxCaps: React.FC<{ p: Pieza; t: number }> = ({ p, t }) => {
   const gs = React.useMemo(() => groups(p.words), [p.words]);
   const keys = React.useMemo(() => new Set(p.keys.map(norm)), [p.keys]);
-  const g = gs.find((x, i) => t >= x[0].start - 0.05 && t < (gs[i + 1]?.[0].start ?? x[x.length - 1].end + 0.6));
+  const g = gs.find((x, i) => t >= x[0].start - 0.05 && t < Math.min(gs[i + 1]?.[0].start ?? 1e9, x[x.length - 1].end + 0.8));
   if (!g) return null;
   const inT = interpolate(t, [g[0].start - 0.05, g[0].start + 0.12], [0, 1], clamp);
   return (

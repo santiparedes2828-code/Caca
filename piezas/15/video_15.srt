@@ -1,0 +1,31 @@
+1
+00:00:00,080 --> 00:00:01,280
+Mirá el precio.
+
+2
+00:00:01,280 --> 00:00:02,800
+No, mirá el título.
+
+3
+00:00:03,040 --> 00:00:05,200
+Esperá, también el descuento.
+
+4
+00:00:05,200 --> 00:00:08,480
+Si todo grita, cuesta saber por dónde empezar.
+
+5
+00:00:08,480 --> 00:00:12,720
+Hagamos espacio: primero el producto, después la idea y
+
+6
+00:00:12,720 --> 00:00:14,000
+al final la acción.
+
+7
+00:00:14,000 --> 00:00:16,400
+No eliminamos información importante.
+
+8
+00:00:16,400 --> 00:00:18,320
+Le dimos un orden que se puede seguir.
