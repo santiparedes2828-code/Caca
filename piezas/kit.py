@@ -51,8 +51,8 @@ def S(x, y, w, h, t0, t1=None, color="#000", r=0, enter="pop", mv=(), z=2, rot=0
 def E(name, x, y, w, t0, t1=None, enter="pop", mv=(), z=4, rot=0, exit_="fade", **x_):
     return {"type": "emoji", "name": name, "z": z, "kf": _anim({"x": x, "y": y, "w": w, "rot": rot}, t0, t1, enter, mv, exit_), **_mask(enter, x_)}
 
-def P(text, x, y, t0, t1=None, color="#111", fg="#fff", size=26, enter="pop", mv=(), z=6, rot=0):
-    return {"type": "pill", "text": text, "size": size, "color": color, "stroke": fg, "z": z, "kf": _anim({"x": x, "y": y, "rot": rot}, t0, t1, enter, mv)}
+def P(text, x, y, t0, t1=None, color="#111", fg="#fff", size=26, enter="pop", mv=(), z=6, rot=0, **x_):
+    return {"type": "pill", "text": text, "size": size, "color": color, "stroke": fg, "z": z, "kf": _anim({"x": x, "y": y, "rot": rot}, t0, t1, enter, mv), **_mask(enter, x_)}
 
 def speed_lines(t0, t1, color="#FFFFFF", n=9, y0=520, y1=1180, z=1):
     out = []
