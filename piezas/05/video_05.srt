@@ -1,0 +1,31 @@
+1
+00:00:00,000 --> 00:00:01,600
+Acá hice cinco cambios.
+
+2
+00:00:01,600 --> 00:00:02,640
+¿Los viste?
+
+3
+00:00:02,640 --> 00:00:05,920
+Saqué una repetición, acerqué el plano cuando llegaba la
+
+4
+00:00:05,920 --> 00:00:09,520
+idea importante, limpié un ruido, simplifiqué el texto y
+
+5
+00:00:09,520 --> 00:00:11,280
+dejé respirar el cierre.
+
+6
+00:00:11,280 --> 00:00:13,120
+No todo necesita una explosión.
+
+7
+00:00:13,360 --> 00:00:16,720
+A veces, editar bien es hacer que mirar resulte
+
+8
+00:00:16,720 --> 00:00:17,280
+más fácil.

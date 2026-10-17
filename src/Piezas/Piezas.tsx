@@ -24,6 +24,10 @@ const kf = z.object({
   o: z.number().optional(),
   s: z.number().optional(), // escala
   fill: z.string().optional(),
+  rx: z.number().optional(), // giro 3D en X (grados)
+  ry: z.number().optional(), // giro 3D en Y (grados)
+  blur: z.number().optional(), // desenfoque (px)
+  rev: z.number().optional(), // máscara: 0 oculto, 1 revelado
 });
 type KF = z.infer<typeof kf>;
 const el = z.object({
@@ -40,8 +44,13 @@ const el = z.object({
   grad: z.string().optional(), // degradado CSS en vez de color plano
   shadow: z.boolean().optional(),
   z: z.number().optional(),
+  mask: z.enum(["left", "up", "circle"]).optional(), // revelado con máscara según «rev»
+  letters: z.number().optional(), // texto que entra letra a letra desde este segundo
+  glitch: z.boolean().optional(), // separación RGB sutil
+  fixed: z.boolean().optional(), // fuera de la cámara (títulos que no deben moverse con ella)
 });
-const scene = z.object({ start: z.number(), bg: z.string() });
+// Transiciones de escena: corte, fundido, barrido con desenfoque, zoom a través, cortina o círculo
+const scene = z.object({ start: z.number(), bg: z.string(), tr: z.enum(["cut", "fade", "whip", "zoom", "wipe", "circle"]).default("fade") });
 const word = z.object({ text: z.string(), start: z.number(), end: z.number() });
 export const piezaSchema = z.object({
   id: z.string(),
@@ -57,6 +66,8 @@ export const piezaSchema = z.object({
   scenes: z.array(scene).min(1),
   els: z.array(el),
   sfx: z.array(z.object({ t: z.number(), name: z.string(), v: z.number().optional() })).default([]),
+  cam: z.array(kf).default([]), // cámara virtual (x/y desplazamiento, s zoom, rot, rx, ry) en tiempos absolutos
+  shakes: z.array(z.object({ t: z.number(), a: z.number().default(14) })).default([]),
 });
 type Pieza = z.infer<typeof piezaSchema>;
 type El = z.infer<typeof el>;
@@ -89,8 +100,22 @@ const Element: React.FC<{ e: El; t: number }> = ({ e, t }) => {
   const o = val(e.kf, "o", t, 1);
   const s = val(e.kf, "s", t, 1);
   const rot = val(e.kf, "rot", t, 0);
-  if (o <= 0.001) return null;
-  const base: React.CSSProperties = { position: "absolute", left: x, top: y, opacity: o, transform: `translate(-50%, -50%) rotate(${rot}deg) scale(${s})`, zIndex: e.z ?? 1 };
+  const rx = val(e.kf, "rx", t, 0);
+  const ry = val(e.kf, "ry", t, 0);
+  const blur = val(e.kf, "blur", t, 0);
+  const rev = val(e.kf, "rev", t, 1);
+  if (o <= 0.001 || rev <= 0.001) return null;
+  const clip = !e.mask || rev >= 0.999 ? undefined : e.mask === "left" ? `inset(-20% ${(1 - rev) * 100}% -20% -20%)` : e.mask === "up" ? `inset(${(1 - rev) * 100}% -20% -20% -20%)` : `circle(${rev * 75}% at 50% 50%)`;
+  const base: React.CSSProperties = {
+    position: "absolute",
+    left: x,
+    top: y,
+    opacity: o,
+    transform: `translate(-50%, -50%) perspective(1400px) rotateX(${rx}deg) rotateY(${ry}deg) rotate(${rot}deg) scale(${s})`,
+    filter: blur > 0.2 ? `blur(${blur}px)` : undefined,
+    clipPath: clip,
+    zIndex: e.z ?? 1,
+  };
   if (e.type === "shape") {
     const r = val(e.kf, "r", t, 0);
     const fill = colorAt(e.kf, t, e.color ?? "#000");
@@ -116,9 +141,34 @@ const Element: React.FC<{ e: El; t: number }> = ({ e, t }) => {
         {e.text}
       </div>
     );
+  const g = e.glitch ? 3 + Math.abs(Math.sin(t * 23)) * 4 : 0;
+  const textStyle: React.CSSProperties = {
+    ...base,
+    width: w,
+    textAlign: "center",
+    fontFamily: INTER,
+    fontWeight: e.weight ?? 800,
+    fontSize: e.size ?? 80,
+    lineHeight: 1.02,
+    letterSpacing: (e.weight ?? 800) >= 800 ? "-0.04em" : "-0.01em",
+    color: colorAt(e.kf, t, e.color ?? "#111"),
+    whiteSpace: "pre-line",
+    textShadow: g ? `${g}px 0 rgba(255,40,90,0.75), ${-g}px 0 rgba(0,210,255,0.75)` : undefined,
+  };
+  if (e.letters === undefined) return <div style={textStyle}>{e.text}</div>;
+  // Letra a letra: cada carácter sube, se enfoca y aparece con un pequeño desfase
   return (
-    <div style={{ ...base, width: w, textAlign: "center", fontFamily: INTER, fontWeight: e.weight ?? 800, fontSize: e.size ?? 80, lineHeight: 1.02, letterSpacing: (e.weight ?? 800) >= 800 ? "-0.04em" : "-0.01em", color: colorAt(e.kf, t, e.color ?? "#111"), whiteSpace: "pre-line" }}>
-      {e.text}
+    <div style={textStyle}>
+      {[...(e.text ?? "")].map((ch, i) => {
+        const p = interpolate(t, [e.letters! + i * 0.035, e.letters! + i * 0.035 + 0.28], [0, 1], { ...clamp, easing: ease });
+        return ch === "\n" ? (
+          <br key={i} />
+        ) : (
+          <span key={i} style={{ display: "inline-block", whiteSpace: "pre", opacity: p, transform: `translateY(${(1 - p) * 60}px) rotate(${(1 - p) * 8}deg)`, filter: p < 1 ? `blur(${(1 - p) * 8}px)` : undefined }}>
+            {ch}
+          </span>
+        );
+      })}
     </div>
   );
 };
@@ -170,16 +220,55 @@ export const Pieza: React.FC<Pieza> = (p) => {
   const si = Math.max(0, p.scenes.findIndex((s, i) => t >= s.start && t < (p.scenes[i + 1]?.start ?? 1e9)));
   const sc = p.scenes[si];
   const since = t - sc.start;
-  const fade = si === 0 ? 1 : interpolate(since, [0, 0.25], [0, 1], clamp);
+  const tr = si === 0 ? "cut" : sc.tr;
+  const k = interpolate(since, [0, tr === "zoom" ? 0.35 : 0.28], [0, 1], { ...clamp, easing: ease });
+  const fade = si === 0 || tr === "cut" || tr === "whip" || tr === "zoom" ? 1 : tr === "fade" ? k : 1;
+  const bgClip = tr === "wipe" && k < 1 ? `inset(0 ${(1 - k) * 100}% 0 0)` : tr === "circle" && k < 1 ? `circle(${k * 120}% at 50% 50%)` : undefined;
   const prevBg = si > 0 ? p.scenes[si - 1].bg : sc.bg;
   const total = F(p.end);
+  // Cámara virtual + movimiento de la transición + temblor en los golpes
+  const cx = val(p.cam, "x", t, 0);
+  const cy = val(p.cam, "y", t, 0);
+  const cs = val(p.cam, "s", t, 1);
+  const cr = val(p.cam, "rot", t, 0);
+  const crx = val(p.cam, "rx", t, 0);
+  const cry = val(p.cam, "ry", t, 0);
+  let sx = 0;
+  let sy = 0;
+  for (const sh of p.shakes) {
+    const d = t - sh.t;
+    if (d >= 0 && d < 0.5) {
+      const a = sh.a * Math.exp(-d * 9);
+      sx += Math.sin(d * 90) * a;
+      sy += Math.cos(d * 70) * a * 0.7;
+    }
+  }
+  const trX = tr === "whip" ? (1 - k) * 700 : 0;
+  const trS = tr === "zoom" ? 1 + (1 - k) * 0.6 : 1;
+  const trBlur = tr === "whip" || tr === "zoom" ? (1 - k) * 24 : 0;
   return (
     <AbsoluteFill style={{ background: prevBg, overflow: "hidden" }}>
-      <AbsoluteFill style={{ background: sc.bg, opacity: fade }} />
-      <AbsoluteFill style={{ transform: `scale(${1.01 + Math.sin(frame / 70) * 0.006}) translate(${Math.sin(frame / 90) * 4}px, ${Math.cos(frame / 110) * 4}px)` }}>
-        {[...p.els].sort((a, b) => (a.z ?? 1) - (b.z ?? 1)).map((e, i) => (
-          <Element key={i} e={e} t={t} />
-        ))}
+      <AbsoluteFill style={{ background: sc.bg, opacity: fade, clipPath: bgClip }} />
+      <AbsoluteFill
+        style={{
+          transform: `perspective(1800px) translate(${cx + sx + trX + Math.sin(frame / 90) * 4}px, ${cy + sy + Math.cos(frame / 110) * 4}px) scale(${cs * trS * (1.01 + Math.sin(frame / 70) * 0.006)}) rotate(${cr}deg) rotateX(${crx}deg) rotateY(${cry}deg)`,
+          filter: trBlur > 0.3 ? `blur(${trBlur}px)` : undefined,
+        }}
+      >
+        {[...p.els]
+          .filter((e) => !e.fixed)
+          .sort((a, b) => (a.z ?? 1) - (b.z ?? 1))
+          .map((e, i) => (
+            <Element key={i} e={e} t={t} />
+          ))}
+      </AbsoluteFill>
+      <AbsoluteFill style={{ transform: `translate(${sx * 0.5}px, ${sy * 0.5}px)` }}>
+        {[...p.els]
+          .filter((e) => e.fixed)
+          .sort((a, b) => (a.z ?? 1) - (b.z ?? 1))
+          .map((e, i) => (
+            <Element key={i} e={e} t={t} />
+          ))}
       </AbsoluteFill>
       <AbsoluteFill style={{ opacity: 0.05, backgroundImage: "radial-gradient(rgba(0,0,0,0.9) 1px, transparent 1.4px)", backgroundSize: "5px 5px", backgroundPosition: `${random(`a${frame}`) * 5}px ${random(`b${frame}`) * 5}px`, pointerEvents: "none" }} />
       <Captions p={p} t={t} />
