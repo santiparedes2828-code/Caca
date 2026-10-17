@@ -13,6 +13,7 @@ import { MISMO_CLIP_EN, MISMO_CLIP_ES, MismoClip, mismoClipDuration, mismoClipSc
 import { Viral, viralDuration } from "./Viral/Viral";
 import { Neon, neonDuration } from "./Neon/Neon";
 import { Firma, firmaDuration } from "./Firma/Firma";
+import { ClaudeMG, claudeMGDuration } from "./ClaudeMG/ClaudeMG";
 import { Leonardo, leonardoDuration } from "./Leonardo/Leonardo";
 import { PodcastMuere, podcastMuereDuration } from "./PodcastMuere/PodcastMuere";
 import { HHReel, reelDuration } from "./PodcastMuere/HHReels";
@@ -236,6 +237,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="ReelV08" component={HHReel} durationInFrames={reelDuration("v08")} fps={30} width={1080} height={1920} defaultProps={{ id: "v08" as const }} />
       <Composition id="PodcastMuere" component={PodcastMuere} durationInFrames={podcastMuereDuration} fps={30} width={1080} height={1920} />
       <Composition id="Leonardo" component={Leonardo} durationInFrames={leonardoDuration} fps={30} width={1080} height={1920} />
+      <Composition id="ClaudeMG" component={ClaudeMG} durationInFrames={claudeMGDuration} fps={30} width={1920} height={1080} />
       <Composition id="Firma" component={Firma} durationInFrames={firmaDuration} fps={30} width={1080} height={1920} />
       <Composition id="Neon" component={Neon} durationInFrames={neonDuration} fps={30} width={1080} height={1920} />
       <Composition
