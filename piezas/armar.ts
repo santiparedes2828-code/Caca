@@ -39,10 +39,13 @@ const readingTimes = (script: string[]) => {
   // Alineación voraz: cada palabra del guion busca su igual en las 4 siguientes del ASR; si no, reparte el hueco
   const out: { text: string; start: number; end: number }[] = [];
   let j = 0;
-  script.forEach((w) => {
+  const same = (a: string, b: string) => a === b || (b.length > 3 && a.startsWith(b.slice(0, 4)));
+  script.forEach((w, si) => {
     const n = norm(w);
     let k = -1;
-    for (let d = 0; d < 4 && j + d < asr.length; d++) if (asr[j + d].n === n || (n.length > 3 && asr[j + d].n.startsWith(n.slice(0, 4)))) { k = j + d; break; }
+    // Las palabras cortas («se», «la») solo se buscan en la posición actual: si el ASR las omitió, no deben saltar adelante
+    const win = n.length <= 2 ? 1 : 4;
+    for (let d = 0; d < win && j + d < asr.length; d++) if (same(asr[j + d].n, n)) { k = j + d; break; }
     if (k >= 0) {
       out.push({ text: w, start: asr[k].start, end: asr[k].end });
       j = k + 1;
@@ -51,7 +54,9 @@ const readingTimes = (script: string[]) => {
       const st = prev ? prev.end : 0;
       const a = asr[j];
       out.push({ text: w, start: a ? Math.max(st, Math.min(a.start, st + 0.4)) : st, end: a ? Math.max(st + 0.15, a.end) : st + 0.3 });
-      if (a && norm(w).length > 0) j++;
+      // No consumir la palabra del ASR si corresponde a la siguiente del guion (la actual fue omitida)
+      const next = script[si + 1] ? norm(script[si + 1]) : "";
+      if (a && norm(w).length > 0 && !(next && same(a.n, next))) j++;
     }
   });
   const diseno = JSON.parse(readFileSync(path.join(dir, "diseno.json"), "utf8"));
