@@ -72,3 +72,7 @@ public/piezas/
 
 # Portadas de las 30 piezas: llevan emojis de Apple renderizados (solo en local)
 crecimiento/contenido/30piezas/portada_*.png
+
+# Reel de portfolio: fragmentos renderizados y portada (llevan emojis de Apple; solo en local)
+public/portfolio/*.mp4
+crecimiento/contenido/portfolio/*.png

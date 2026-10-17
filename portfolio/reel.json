@@ -1,0 +1,41 @@
+{
+  "bpm": 120,
+  "fragmentos": [
+    {
+      "pieza": "14",
+      "desde": 3.55,
+      "dur": 4.0,
+      "titulo": "Producto · tres anuncios"
+    },
+    {
+      "pieza": "10",
+      "desde": 5.9,
+      "dur": 4.0,
+      "titulo": "Tipografía cinética"
+    },
+    {
+      "pieza": "25",
+      "desde": 9.9,
+      "dur": 4.0,
+      "titulo": "Anuncio de marca"
+    },
+    {
+      "pieza": "05",
+      "desde": 2.5,
+      "dur": 4.0,
+      "titulo": "Motion graphics · interfaz"
+    },
+    {
+      "pieza": "13",
+      "desde": 5.7,
+      "dur": 4.0,
+      "titulo": "Escena animada"
+    },
+    {
+      "pieza": "12",
+      "desde": 4.6,
+      "dur": 4.0,
+      "titulo": "Historia sin cara"
+    }
+  ]
+}
