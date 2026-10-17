@@ -1,0 +1,31 @@
+1
+00:00:00,000 --> 00:00:03,760
+El comienzo es el mismo: una pelota cae, rebota
+
+2
+00:00:03,760 --> 00:00:05,280
+y se acerca al borde.
+
+3
+00:00:05,280 --> 00:00:07,280
+Final uno: se cae.
+
+4
+00:00:07,280 --> 00:00:10,480
+Final dos: el borde se dobla y la devuelve
+
+5
+00:00:10,480 --> 00:00:11,360
+al inicio.
+
+6
+00:00:11,360 --> 00:00:14,160
+Una decisión cambia la sorpresa y las ganas de
+
+7
+00:00:14,160 --> 00:00:15,280
+verlo otra vez.
+
+8
+00:00:15,280 --> 00:00:16,960
+¿Qué final publicarías vos?
