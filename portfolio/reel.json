@@ -2,40 +2,55 @@
   "bpm": 120,
   "fragmentos": [
     {
+      "id": "14a",
       "pieza": "14",
-      "desde": 3.55,
-      "dur": 4.0,
-      "titulo": "Producto · tres anuncios"
+      "desde": 0.1,
+      "dur": 1.0,
+      "titulo": "Zapatilla a pantalla completa"
     },
     {
+      "id": "14b",
+      "pieza": "14",
+      "desde": 3.45,
+      "dur": 2.5,
+      "titulo": "Producto · versión deportiva"
+    },
+    {
+      "id": "25",
+      "pieza": "25",
+      "desde": 9.9,
+      "dur": 3.5,
+      "titulo": "Anuncio de marca",
+      "filtro": "brightness(1.28) contrast(1.18) saturate(1.12)"
+    },
+    {
+      "id": "03",
+      "pieza": "03",
+      "desde": 11.0,
+      "dur": 3.0,
+      "titulo": "Anuncio de producto"
+    },
+    {
+      "id": "10",
       "pieza": "10",
-      "desde": 5.9,
-      "dur": 4.0,
+      "desde": 6.1,
+      "dur": 2.0,
       "titulo": "Tipografía cinética"
     },
     {
-      "pieza": "25",
-      "desde": 9.9,
-      "dur": 4.0,
-      "titulo": "Anuncio de marca"
-    },
-    {
-      "pieza": "05",
-      "desde": 2.5,
-      "dur": 4.0,
-      "titulo": "Motion graphics · interfaz"
-    },
-    {
+      "id": "13",
       "pieza": "13",
-      "desde": 5.7,
-      "dur": 4.0,
+      "desde": 5.8,
+      "dur": 3.0,
       "titulo": "Escena animada"
     },
     {
-      "pieza": "12",
-      "desde": 4.6,
-      "dur": 4.0,
-      "titulo": "Historia sin cara"
+      "id": "24",
+      "pieza": "24",
+      "desde": 12.4,
+      "dur": 3.0,
+      "titulo": "Tráiler"
     }
-  ]
+  ],
+  "cierre": 3.0
 }

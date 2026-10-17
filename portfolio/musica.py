@@ -1,7 +1,8 @@
 # Música propia del reel de portfolio, sintetizada aquí (sin muestras de terceros): 120 BPM, 28 s,
 # bombo en cada tiempo, charles a contratiempo, bajo y acordes suaves (Am · F · C · G), final que se apaga.
 import numpy as np, wave
-SR, BPM, DUR = 48000, 120, 28.0
+import sys
+SR, BPM, DUR = 48000, 120, float(sys.argv[1]) if len(sys.argv) > 1 else 28.0
 beat = 60 / BPM
 t = np.arange(int(SR * DUR)) / SR
 out = np.zeros_like(t)

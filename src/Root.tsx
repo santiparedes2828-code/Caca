@@ -4,6 +4,7 @@ import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
 import { Promo, promoDuration } from "./Promo/Promo";
 import { Portfolio, PORTFOLIO_FRAMES } from "./Portfolio/Portfolio";
+import { HHAnuncio, ANUNCIO_FRAMES } from "./HHAnuncio/HHAnuncio";
 import { Clip, clipDuration } from "./Clip/Clip";
 import { HookHouse, hookHouseDuration } from "./HookHouse/HookHouse";
 import { AntesDespues, antesDespuesSchema, calculateAntesDespuesMetadata } from "./AntesDespues/AntesDespues";
@@ -251,6 +252,7 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
         defaultProps={{ id: "00", end: 10, voice: "sfx/pop.wav", accent: "#E8622C", capColor: "#FFFFFF", capBg: "rgba(10,10,10,0.72)", capY: 1340, keys: [], words: [], scenes: [{ start: 0, bg: "#F3EEE4", tr: "cut", fx: "none" }], capStyle: "box", els: [], sfx: [], cam: [], shakes: [] }}
       />
+      <Composition id="HHAnuncio" component={HHAnuncio} durationInFrames={ANUNCIO_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Portfolio" component={Portfolio} durationInFrames={PORTFOLIO_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Firma" component={Firma} durationInFrames={firmaDuration} fps={30} width={1080} height={1920} />
       <Composition id="Neon" component={Neon} durationInFrames={neonDuration} fps={30} width={1080} height={1920} />

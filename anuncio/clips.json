@@ -1,0 +1,68 @@
+{
+  "salida": "public/anuncio",
+  "fragmentos": [
+    {
+      "id": "f1",
+      "pieza": "03",
+      "desde": 10.95,
+      "dur": 5.2,
+      "titulo": "Anuncio de producto (Nómada)"
+    },
+    {
+      "id": "f2",
+      "pieza": "25",
+      "desde": 9.4,
+      "dur": 3.2,
+      "titulo": "Anuncio de marca (Pausa)"
+    },
+    {
+      "id": "f3",
+      "pieza": "24",
+      "desde": 11.8,
+      "dur": 3.2,
+      "titulo": "Tráiler"
+    },
+    {
+      "id": "f4",
+      "pieza": "13",
+      "desde": 5.3,
+      "dur": 3.2,
+      "titulo": "Escena animada"
+    },
+    {
+      "id": "f5",
+      "pieza": "14",
+      "desde": 3.3,
+      "dur": 12.6,
+      "titulo": "Producto en tres mundos"
+    },
+    {
+      "id": "c1",
+      "pieza": "10",
+      "desde": 6.1,
+      "dur": 3.5,
+      "titulo": "Tipografía cinética"
+    },
+    {
+      "id": "c2",
+      "pieza": "12",
+      "desde": 4.6,
+      "dur": 4.0,
+      "titulo": "Historia sin cara"
+    },
+    {
+      "id": "c3",
+      "pieza": "02",
+      "desde": 4.8,
+      "dur": 4.0,
+      "titulo": "Mismo objeto, tres géneros"
+    },
+    {
+      "id": "c4",
+      "pieza": "21",
+      "desde": 1.8,
+      "dur": 4.0,
+      "titulo": "Dos finales"
+    }
+  ]
+}
