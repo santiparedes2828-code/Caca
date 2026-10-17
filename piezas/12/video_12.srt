@@ -1,0 +1,39 @@
+1
+00:00:00,080 --> 00:00:01,680
+No querés aparecer en cámara.
+
+2
+00:00:01,920 --> 00:00:04,480
+Bien: contemos una historia con objetos.
+
+3
+00:00:04,720 --> 00:00:05,920
+Una alarma.
+
+4
+00:00:05,920 --> 00:00:07,120
+Un café frío.
+
+5
+00:00:07,200 --> 00:00:09,040
+Veinte pestañas abiertas.
+
+6
+00:00:09,040 --> 00:00:11,040
+Y una sola tarea terminada.
+
+7
+00:00:11,040 --> 00:00:13,440
+Ya entendiste el problema sin ver una cara.
+
+8
+00:00:13,440 --> 00:00:15,680
+La clave está en qué mostrás y en qué
+
+9
+00:00:15,680 --> 00:00:16,080
+orden.
+
+10
+00:00:16,160 --> 00:00:17,360
+¿Harías contenido así?

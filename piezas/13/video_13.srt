@@ -1,0 +1,27 @@
+1
+00:00:00,000 --> 00:00:03,200
+Podría escribir: el tiempo se me fue.
+
+2
+00:00:03,520 --> 00:00:05,760
+O podría mostrarlo así.
+
+3
+00:00:05,840 --> 00:00:10,640
+Las horas se escapan, el calendario se dobla y
+
+4
+00:00:10,640 --> 00:00:14,400
+el día desaparece antes de terminar la tarea.
+
+5
+00:00:14,720 --> 00:00:16,480
+La frase sigue siendo la misma.
+
+6
+00:00:16,480 --> 00:00:19,880
+Pero ahora tiene una imagen que podés recordar.
+
+7
+00:00:19,880 --> 00:00:21,080
+¿Qué frase animamos después?

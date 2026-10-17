@@ -264,7 +264,7 @@ const KaraokeCaps: React.FC<{ p: Pieza; t: number }> = ({ p, t }) => {
         const on = t >= w.start;
         const cur = on && t < (g[i + 1]?.start ?? w.end + 0.3);
         return (
-          <span key={i} style={{ position: "relative", fontFamily: INTER, fontWeight: 800, fontSize: 58, letterSpacing: "-0.03em", color: cur ? "#111" : p.capColor, textShadow: cur ? "none" : "0 3px 14px rgba(0,0,0,0.6)", padding: "0 8px", zIndex: 1 }}>
+          <span key={i} style={{ position: "relative", fontFamily: INTER, fontWeight: 800, fontSize: 58, letterSpacing: "-0.03em", color: cur ? "#111" : p.capColor, textShadow: cur ? "none" : OUTLINE, opacity: on ? 1 : 0.85, padding: "0 8px", zIndex: 1 }}>
             <span style={{ position: "absolute", inset: "6px 0", background: p.accent, borderRadius: 10, transform: `scaleX(${cur ? 1 : 0})`, transformOrigin: "left", zIndex: -1 }} />
             {w.text}
           </span>
