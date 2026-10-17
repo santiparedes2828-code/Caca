@@ -1,0 +1,27 @@
+1
+00:00:00,000 --> 00:00:02,880
+Una reseña real puede contar una pequeña historia.
+
+2
+00:00:03,120 --> 00:00:05,520
+Primero, el problema que tenía la persona.
+
+3
+00:00:05,520 --> 00:00:07,120
+Después, qué probó.
+
+4
+00:00:07,280 --> 00:00:10,720
+Y al final, lo que dijo sobre su experiencia.
+
+5
+00:00:10,720 --> 00:00:12,880
+Usá sus palabras y su permiso.
+
+6
+00:00:12,880 --> 00:00:16,560
+La edición puede destacar el testimonio; no debería inventarlo.
+
+7
+00:00:16,720 --> 00:00:18,440
+Así lo presentaría en pantalla.

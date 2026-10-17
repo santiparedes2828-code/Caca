@@ -1,0 +1,35 @@
+1
+00:00:00,000 --> 00:00:03,280
+Leé esta frase: no dije que vos lo hiciste.
+
+2
+00:00:03,520 --> 00:00:06,160
+Ahora cambiamos la palabra que destacamos.
+
+3
+00:00:06,160 --> 00:00:07,440
+No dije.
+
+4
+00:00:07,440 --> 00:00:08,000
+Vos.
+
+5
+00:00:08,320 --> 00:00:09,680
+Lo hiciste.
+
+6
+00:00:09,680 --> 00:00:12,560
+Las palabras son las mismas, pero el foco cambia
+
+7
+00:00:12,560 --> 00:00:13,680
+lo que entendemos.
+
+8
+00:00:13,680 --> 00:00:16,080
+Por eso los subtítulos también se editan.
+
+9
+00:00:16,080 --> 00:00:18,320
+No alcanza con pintarlos todos de amarillo.

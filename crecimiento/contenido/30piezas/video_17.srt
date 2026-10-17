@@ -1,0 +1,31 @@
+1
+00:00:00,000 --> 00:00:03,440
+Tu servicio puede ser buenísimo y seguir siendo difícil
+
+2
+00:00:03,440 --> 00:00:04,640
+de explicar.
+
+3
+00:00:04,640 --> 00:00:09,040
+Mirá este ejemplo: alguien reserva, recibe una confirmación y
+
+4
+00:00:09,040 --> 00:00:10,400
+llega a su turno.
+
+5
+00:00:10,400 --> 00:00:12,720
+Tres pasos, tres escenas.
+
+6
+00:00:12,720 --> 00:00:15,440
+Si tu cliente entiende qué pasa después, ya le
+
+7
+00:00:15,440 --> 00:00:16,720
+sacaste una duda.
+
+8
+00:00:16,720 --> 00:00:19,040
+¿Cómo mostrarías el proceso de tu negocio?

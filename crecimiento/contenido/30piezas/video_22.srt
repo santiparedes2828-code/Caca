@@ -1,0 +1,31 @@
+1
+00:00:00,000 --> 00:00:02,080
+Pensá tu tienda como una máquina.
+
+2
+00:00:02,080 --> 00:00:03,920
+El anuncio trae una visita.
+
+3
+00:00:03,920 --> 00:00:05,680
+La página explica el producto.
+
+4
+00:00:05,680 --> 00:00:07,840
+El pago tiene que poder completarse.
+
+5
+00:00:07,840 --> 00:00:10,160
+Si una parte se traba, un video más lindo
+
+6
+00:00:10,160 --> 00:00:11,040
+no arregla todo.
+
+7
+00:00:11,280 --> 00:00:14,240
+La edición puede ayudar a comunicar, pero la experiencia
+
+8
+00:00:14,240 --> 00:00:15,440
+completa también importa.

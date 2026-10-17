@@ -1,0 +1,35 @@
+1
+00:00:00,080 --> 00:00:03,040
+Acercar la cámara cada segundo no salva una idea
+
+2
+00:00:03,040 --> 00:00:03,840
+confusa.
+
+3
+00:00:03,840 --> 00:00:07,120
+Mirá este ejemplo: mucho zoom, pero no sabemos qué
+
+4
+00:00:07,120 --> 00:00:07,840
+importa.
+
+5
+00:00:07,840 --> 00:00:10,880
+Ahora dejamos el plano quieto y acercamos justo cuando
+
+6
+00:00:10,880 --> 00:00:12,160
+aparece el detalle.
+
+7
+00:00:12,160 --> 00:00:14,160
+El movimiento tiene una razón.
+
+8
+00:00:14,160 --> 00:00:17,200
+Ahí está la diferencia entre mover cosas y dirigir
+
+9
+00:00:17,200 --> 00:00:17,760
+la mirada.

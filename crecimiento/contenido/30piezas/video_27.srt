@@ -1,0 +1,31 @@
+1
+00:00:00,000 --> 00:00:02,400
+Este video tiene una buena idea escondida.
+
+2
+00:00:02,400 --> 00:00:05,440
+Voy a hacer tres cambios: empezar por la pregunta,
+
+3
+00:00:05,440 --> 00:00:08,560
+reemplazar una explicación larga por una imagen y sacar
+
+4
+00:00:08,560 --> 00:00:09,600
+una repetición.
+
+5
+00:00:09,600 --> 00:00:10,400
+Nada más.
+
+6
+00:00:10,400 --> 00:00:11,840
+Ahora mirá la diferencia.
+
+7
+00:00:11,840 --> 00:00:14,160
+Antes de agregar efectos, fijate si la historia se
+
+8
+00:00:14,160 --> 00:00:15,120
+entiende y avanza.

@@ -1,0 +1,27 @@
+1
+00:00:00,000 --> 00:00:02,800
+Te mandan un audio larguísimo para explicar una sola
+
+2
+00:00:02,800 --> 00:00:03,360
+idea.
+
+3
+00:00:03,360 --> 00:00:06,720
+El trabajo empieza antes de animar: encontrar esa idea,
+
+4
+00:00:06,720 --> 00:00:09,120
+ordenar lo importante y sacar las vueltas.
+
+5
+00:00:09,120 --> 00:00:11,360
+Después sí, imágenes y texto.
+
+6
+00:00:11,360 --> 00:00:13,840
+Mirá cómo este mensaje se convierte en una explicación
+
+7
+00:00:13,840 --> 00:00:15,680
+que podés seguir de principio a fin.
