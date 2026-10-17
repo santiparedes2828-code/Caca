@@ -1,0 +1,31 @@
+1
+00:00:00,000 --> 00:00:02,400
+Hola, qué tal, bienvenidos, hoy vamos a hablar de…
+
+2
+00:00:02,640 --> 00:00:03,120
+Pará.
+
+3
+00:00:03,280 --> 00:00:05,200
+Todavía no me dijiste por qué mirar.
+
+4
+00:00:05,200 --> 00:00:08,080
+Probemos así: este error está escondiendo lo mejor de
+
+5
+00:00:08,080 --> 00:00:08,800
+tu video.
+
+6
+00:00:08,800 --> 00:00:10,240
+Ahora sí hay una pregunta.
+
+7
+00:00:10,240 --> 00:00:11,680
+La presentación puede esperar.
+
+8
+00:00:11,840 --> 00:00:13,920
+Mostrá primero qué vale la pena descubrir.

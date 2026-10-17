@@ -69,3 +69,6 @@ analisis15/
 analisis16/
 analisis-piezas/
 public/piezas/
+
+# Portadas de las 30 piezas: llevan emojis de Apple renderizados (solo en local)
+crecimiento/contenido/30piezas/portada_*.png

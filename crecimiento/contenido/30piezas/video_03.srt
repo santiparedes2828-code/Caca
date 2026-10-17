@@ -1,0 +1,27 @@
+1
+00:00:00,000 --> 00:00:02,560
+Para mostrar bien este producto no voy a construir
+
+2
+00:00:02,560 --> 00:00:03,840
+un estudio de cine.
+
+3
+00:00:03,840 --> 00:00:07,040
+Voy a usar una foto, recortarla y darle profundidad.
+
+4
+00:00:07,040 --> 00:00:09,760
+Después, una idea por pantalla: qué es, para quién
+
+5
+00:00:09,840 --> 00:00:10,960
+y qué hacer ahora.
+
+6
+00:00:10,960 --> 00:00:12,160
+Mirá el resultado.
+
+7
+00:00:12,160 --> 00:00:14,720
+Tu producto también puede tener una presentación así.

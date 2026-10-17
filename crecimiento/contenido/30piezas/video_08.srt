@@ -1,0 +1,27 @@
+1
+00:00:00,000 --> 00:00:03,200
+Un episodio largo puede esconder una historia corta.
+
+2
+00:00:03,200 --> 00:00:06,400
+Primero, encontrá una frase que abra una pregunta.
+
+3
+00:00:06,400 --> 00:00:08,880
+Después, dejá el contexto necesario.
+
+4
+00:00:08,960 --> 00:00:11,600
+Y cerrá con la respuesta, sin cambiar lo que
+
+5
+00:00:11,600 --> 00:00:13,040
+quiso decir la persona.
+
+6
+00:00:13,040 --> 00:00:15,680
+Así editaría un tráiler de podcast que invite a
+
+7
+00:00:15,680 --> 00:00:17,040
+escuchar el episodio completo.
