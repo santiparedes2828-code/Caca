@@ -6,6 +6,7 @@ import { Promo, promoDuration } from "./Promo/Promo";
 import { Clip, clipDuration } from "./Clip/Clip";
 import { HookHouse, hookHouseDuration } from "./HookHouse/HookHouse";
 import { Viral, viralDuration } from "./Viral/Viral";
+import { Pulgar, pulgarDuration } from "./Pulgar/Pulgar";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -38,6 +39,14 @@ export const RemotionRoot: React.FC = () => {
           }}
         />
       </Folder>
+      <Composition
+        id="Pulgar"
+        component={Pulgar}
+        durationInFrames={pulgarDuration(30)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="Viral"
         component={Viral}
