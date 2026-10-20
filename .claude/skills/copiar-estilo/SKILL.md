@@ -45,7 +45,7 @@ bash .claude/skills/copiar-estilo/scripts/analizar_referencia.sh analisis/refere
 ### Modo B · Crear desde guion (sin grabación)
 
 1. Pregunta (AskUserQuestion) lo que cambie el resultado: voz (IA / sin voz / la graba el usuario), imágenes (gráficos en código / IA), palabra del CTA, idioma.
-2. Escribe `guion.md` con la fórmula de guion de `estilo.md`: tabla escena · locución · línea script · línea de impacto (palabra destacada) · gráfico. **No inventes cifras, plazos ni promesas del negocio**: deja huecos o pregúntalos.
+2. Escribe `guion.md` aplicando **siempre la skill `formula-viral`** (lo más raro en el primer segundo, cada frase se ve cuando se oye, respuesta al final; pasa su checklist) y la fórmula de guion de `estilo.md`: tabla escena · locución · línea script · línea de impacto (palabra destacada) · gráfico. **No inventes cifras, plazos ni promesas del negocio**: deja huecos o pregúntalos.
 3. Voz IA (ElevenLabs): `creative_list_voices` → `creative_generate_speech` con `estimate_only: true` primero y di el coste → generar → `creative_get_flow_run_status` → descargar `content_url` con curl (storage.googleapis.com es accesible) a `public/audio/`.
 4. Tiempos por palabra de la toma elegida (Scribe, ver abajo) → `cortar_silencios.py public/audio/voz_X.mp3 analisis/words_X.json public/audio/voz.wav`.
 
