@@ -14,6 +14,8 @@ analisis*/frames/
 analisis*/escenas/
 analisis*/hojas/
 analisis*/mi-audio.mp3
+analisis*/full/
+analisis*/voz.mp3
 # ...excepto el audio que usa el render
 !public/audio/*.wav
 !public/sfx/*.wav

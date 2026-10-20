@@ -1,0 +1,25 @@
+[Parsed_volumedetect_0 @ 0x55c30e5d5b00] mean_volume: -17.3 dB
+[Parsed_volumedetect_0 @ 0x55c30e5d5b00] max_volume: -0.0 dB
+    I:         -14.0 LUFS
+    LRA:         2.9 LU
+    Peak:       -0.0 dBFS
+Silencios (> 0,25 s, -35 dB):
+silence_start: 2.55651	silence_end: 2.80937
+silence_start: 4.48537	silence_end: 5.01349
+silence_start: 5.97757	silence_end: 6.29592
+silence_start: 7.53574	silence_end: 7.83408
+silence_start: 8.59501	silence_end: 9.01694
+silence_start: 11.3993	silence_end: 11.741
+silence_start: 13.2659	silence_end: 13.5291
+silence_start: 14.7212	silence_end: 15.0278
+silence_start: 15.2808	silence_end: 15.6736
+silence_start: 20.15	silence_end: 20.5955
+silence_start: 21.0369	silence_end: 21.3598
+silence_start: 23.5648	silence_end: 23.8292
+silence_start: 27.1843	silence_end: 27.5979
+silence_start: 32.8144	silence_end: 33.2416
+silence_start: 44.3449	silence_end: 44.8557
+silence_start: 47.2576	silence_end: 47.5191
+silence_start: 49.0874	silence_end: 49.4339
+silence_start: 51.3584	silence_end: 52.9709
+silence_start: 54.1378	silence_end: 54.7976
