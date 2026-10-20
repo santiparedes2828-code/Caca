@@ -1,4 +1,4 @@
-"""Línea de tiempo de lectura (sin voz) para el reel "¿Por qué se detuvo tu pulgar?" (guion-pulgar.md).
+"""[Obsoleto: el vídeo ya usa los tiempos de la voz] Línea de tiempo de lectura (sin voz) para el reel "¿Por qué se detuvo tu pulgar?" (guion-pulgar.md).
 
 Escribe src/data/captions-pulgar.json con el mismo formato que las transcripciones (Caption de @remotion/captions)
 e imprime el índice de la primera palabra de cada escena.

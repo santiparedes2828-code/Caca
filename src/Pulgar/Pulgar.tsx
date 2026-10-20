@@ -9,8 +9,9 @@ import { CaptionsCtx, Headline, opt } from "../HookHouse/text";
 import { Clover, DmChat, Fire, FirstSecond, LockBox, OpenBox, SpinClock, ThumbDrop, ThumbFeed, TwoPhones } from "./graphics";
 
 // Reel "¿Por qué se detuvo tu pulgar?" — Hook House (guion-pulgar.md · skill formula-viral · estilo-hookhouse.md).
-// Sin locución: el texto se lee palabra a palabra con los tiempos de lectura de scripts/timeline_pulgar.py.
-// Cama rítmica y SFX en public/sfx; la cama se corta en seco cuando el pulgar se congela.
+// Locución: Rodrigo Zabú (ElevenLabs, eleven_v4, toma 2) en public/audio/voz_pulgar.wav; los tiempos de
+// src/data/captions-pulgar.json salen de su transcripción con Scribe (analisis/words_pulgar.json).
+// Cama rítmica y SFX en public/sfx; la cama va por debajo de la voz y se corta en seco cuando el pulgar se congela.
 
 const caps = captionsJson as Caption[];
 const LOGO_SECONDS = 1.8;
@@ -75,9 +76,10 @@ export const Pulgar: React.FC = () => {
     <CaptionsCtx.Provider value={caps}>
       <AbsoluteFill style={{ backgroundColor: B.ink }}>
         {/* Cama: suena desde el frame 0, se corta al congelarse el pulgar y vuelve con la escena 2 */}
+        <Audio src={staticFile("audio/voz_pulgar.wav")} />
         <Audio
           src={staticFile("sfx/cama.wav")}
-          volume={(f) => (f >= freeze && f < s(13) ? 0 : interpolate(f, [logo, logo + 30], [0.82, 0], opt))}
+          volume={(f) => (f >= freeze && f < s(13) ? 0 : interpolate(f, [logo - 10, logo, logo + 30], [0.22, 0.5, 0], opt))}
         />
 
         <Scene name="1 · Gancho: pulgar" {...sc(0)}>

@@ -1,688 +1,688 @@
 [
  {
   "text": "Tu",
-  "startMs": 250,
-  "endMs": 500,
-  "timestampMs": 375,
+  "startMs": 0,
+  "endMs": 160,
+  "timestampMs": 80,
   "confidence": null
  },
  {
   "text": "pulgar",
-  "startMs": 540,
-  "endMs": 890,
-  "timestampMs": 715,
+  "startMs": 200,
+  "endMs": 480,
+  "timestampMs": 340,
   "confidence": null
  },
  {
   "text": "estaba",
-  "startMs": 930,
-  "endMs": 1280,
-  "timestampMs": 1105,
+  "startMs": 560,
+  "endMs": 800,
+  "timestampMs": 680,
   "confidence": null
  },
  {
   "text": "a",
-  "startMs": 1320,
-  "endMs": 1545,
-  "timestampMs": 1432,
+  "startMs": 920,
+  "endMs": 1040,
+  "timestampMs": 980,
   "confidence": null
  },
  {
   "text": "punto",
-  "startMs": 1585,
-  "endMs": 1910,
-  "timestampMs": 1748,
+  "startMs": 1080,
+  "endMs": 1360,
+  "timestampMs": 1220,
   "confidence": null
  },
  {
   "text": "de",
-  "startMs": 1950,
-  "endMs": 2200,
-  "timestampMs": 2075,
+  "startMs": 1440,
+  "endMs": 1520,
+  "timestampMs": 1480,
   "confidence": null
  },
  {
   "text": "pasar",
-  "startMs": 2240,
-  "endMs": 2565,
-  "timestampMs": 2402,
+  "startMs": 1600,
+  "endMs": 1760,
+  "timestampMs": 1680,
   "confidence": null
  },
  {
   "text": "este",
-  "startMs": 2605,
-  "endMs": 2905,
-  "timestampMs": 2755,
+  "startMs": 1840,
+  "endMs": 2000,
+  "timestampMs": 1920,
   "confidence": null
  },
  {
   "text": "video…",
-  "startMs": 2945,
-  "endMs": 3295,
-  "timestampMs": 3120,
+  "startMs": 2080,
+  "endMs": 2560,
+  "timestampMs": 2320,
   "confidence": null
  },
  {
   "text": "¿por",
-  "startMs": 4035,
-  "endMs": 4335,
-  "timestampMs": 4185,
+  "startMs": 2960,
+  "endMs": 3120,
+  "timestampMs": 3040,
   "confidence": null
  },
  {
   "text": "qué",
-  "startMs": 4375,
-  "endMs": 4650,
-  "timestampMs": 4512,
+  "startMs": 3160,
+  "endMs": 3200,
+  "timestampMs": 3180,
   "confidence": null
  },
  {
   "text": "se",
-  "startMs": 4690,
-  "endMs": 4940,
-  "timestampMs": 4815,
+  "startMs": 3280,
+  "endMs": 3360,
+  "timestampMs": 3320,
   "confidence": null
  },
  {
   "text": "detuvo?",
-  "startMs": 4980,
-  "endMs": 5355,
-  "timestampMs": 5167,
+  "startMs": 3480,
+  "endMs": 3920,
+  "timestampMs": 3700,
   "confidence": null
  },
  {
   "text": "No",
-  "startMs": 6375,
-  "endMs": 6625,
-  "timestampMs": 6500,
+  "startMs": 4400,
+  "endMs": 4560,
+  "timestampMs": 4480,
   "confidence": null
  },
  {
   "text": "fue",
-  "startMs": 6665,
-  "endMs": 6940,
-  "timestampMs": 6802,
+  "startMs": 4640,
+  "endMs": 4720,
+  "timestampMs": 4680,
   "confidence": null
  },
  {
   "text": "suerte.",
-  "startMs": 6980,
-  "endMs": 7355,
-  "timestampMs": 7168,
+  "startMs": 4800,
+  "endMs": 5280,
+  "timestampMs": 5040,
   "confidence": null
  },
  {
   "text": "Fue",
-  "startMs": 7815,
-  "endMs": 8090,
-  "timestampMs": 7953,
+  "startMs": 5600,
+  "endMs": 5760,
+  "timestampMs": 5680,
   "confidence": null
  },
  {
   "text": "la",
-  "startMs": 8130,
-  "endMs": 8380,
-  "timestampMs": 8255,
+  "startMs": 5840,
+  "endMs": 5920,
+  "timestampMs": 5880,
   "confidence": null
  },
  {
   "text": "edición.",
-  "startMs": 8420,
-  "endMs": 8820,
-  "timestampMs": 8620,
+  "startMs": 6000,
+  "endMs": 6640,
+  "timestampMs": 6320,
   "confidence": null
  },
  {
   "text": "¿Y",
-  "startMs": 9430,
-  "endMs": 9680,
-  "timestampMs": 9555,
+  "startMs": 7040,
+  "endMs": 7120,
+  "timestampMs": 7080,
   "confidence": null
  },
  {
   "text": "qué",
-  "startMs": 9720,
-  "endMs": 9995,
-  "timestampMs": 9857,
+  "startMs": 7200,
+  "endMs": 7280,
+  "timestampMs": 7240,
   "confidence": null
  },
  {
   "text": "tiene",
-  "startMs": 10035,
-  "endMs": 10360,
-  "timestampMs": 10197,
+  "startMs": 7320,
+  "endMs": 7520,
+  "timestampMs": 7420,
   "confidence": null
  },
  {
   "text": "esta",
-  "startMs": 10400,
-  "endMs": 10700,
-  "timestampMs": 10550,
+  "startMs": 7640,
+  "endMs": 7760,
+  "timestampMs": 7700,
   "confidence": null
  },
  {
   "text": "edición",
-  "startMs": 10740,
-  "endMs": 11115,
-  "timestampMs": 10927,
+  "startMs": 7840,
+  "endMs": 8240,
+  "timestampMs": 8040,
   "confidence": null
  },
  {
   "text": "que",
-  "startMs": 11155,
-  "endMs": 11430,
-  "timestampMs": 11292,
+  "startMs": 8320,
+  "endMs": 8400,
+  "timestampMs": 8360,
   "confidence": null
  },
  {
   "text": "no",
-  "startMs": 11470,
-  "endMs": 11720,
-  "timestampMs": 11595,
+  "startMs": 8440,
+  "endMs": 8480,
+  "timestampMs": 8460,
   "confidence": null
  },
  {
   "text": "tenga",
-  "startMs": 11760,
-  "endMs": 12085,
-  "timestampMs": 11922,
+  "startMs": 8560,
+  "endMs": 8800,
+  "timestampMs": 8680,
   "confidence": null
  },
  {
   "text": "la",
-  "startMs": 12125,
-  "endMs": 12375,
-  "timestampMs": 12250,
+  "startMs": 8840,
+  "endMs": 8880,
+  "timestampMs": 8860,
   "confidence": null
  },
  {
   "text": "tuya?",
-  "startMs": 12415,
-  "endMs": 12740,
-  "timestampMs": 12577,
+  "startMs": 8960,
+  "endMs": 9280,
+  "timestampMs": 9120,
   "confidence": null
  },
  {
   "text": "Tres",
-  "startMs": 13410,
-  "endMs": 13710,
-  "timestampMs": 13560,
+  "startMs": 9680,
+  "endMs": 9840,
+  "timestampMs": 9760,
   "confidence": null
  },
  {
   "text": "cosas.",
-  "startMs": 13750,
-  "endMs": 14100,
-  "timestampMs": 13925,
+  "startMs": 10000,
+  "endMs": 10680,
+  "timestampMs": 10340,
   "confidence": null
  },
  {
   "text": "Uno:",
-  "startMs": 14710,
-  "endMs": 15010,
-  "timestampMs": 14860,
+  "startMs": 10880,
+  "endMs": 11520,
+  "timestampMs": 11200,
   "confidence": null
  },
  {
   "text": "en",
-  "startMs": 15330,
-  "endMs": 15580,
-  "timestampMs": 15455,
+  "startMs": 11600,
+  "endMs": 11680,
+  "timestampMs": 11640,
   "confidence": null
  },
  {
   "text": "el",
-  "startMs": 15620,
-  "endMs": 15870,
-  "timestampMs": 15745,
+  "startMs": 11720,
+  "endMs": 11760,
+  "timestampMs": 11740,
   "confidence": null
  },
  {
   "text": "primer",
-  "startMs": 15910,
-  "endMs": 16260,
-  "timestampMs": 16085,
+  "startMs": 11840,
+  "endMs": 12080,
+  "timestampMs": 11960,
   "confidence": null
  },
  {
   "text": "segundo",
-  "startMs": 16300,
-  "endMs": 16675,
-  "timestampMs": 16487,
+  "startMs": 12160,
+  "endMs": 12560,
+  "timestampMs": 12360,
   "confidence": null
  },
  {
   "text": "pasa",
-  "startMs": 16715,
-  "endMs": 17015,
-  "timestampMs": 16865,
+  "startMs": 12720,
+  "endMs": 12960,
+  "timestampMs": 12840,
   "confidence": null
  },
  {
   "text": "algo",
-  "startMs": 17055,
-  "endMs": 17355,
-  "timestampMs": 17205,
+  "startMs": 13080,
+  "endMs": 13200,
+  "timestampMs": 13140,
   "confidence": null
  },
  {
   "text": "raro.",
-  "startMs": 17395,
-  "endMs": 17720,
-  "timestampMs": 17557,
+  "startMs": 13280,
+  "endMs": 13680,
+  "timestampMs": 13480,
   "confidence": null
  },
  {
   "text": "Dos:",
-  "startMs": 18330,
-  "endMs": 18630,
-  "timestampMs": 18480,
+  "startMs": 14160,
+  "endMs": 14880,
+  "timestampMs": 14520,
   "confidence": null
  },
  {
   "text": "lo",
-  "startMs": 18950,
-  "endMs": 19200,
-  "timestampMs": 19075,
+  "startMs": 14920,
+  "endMs": 14960,
+  "timestampMs": 14940,
   "confidence": null
  },
  {
   "text": "que",
-  "startMs": 19240,
-  "endMs": 19515,
-  "timestampMs": 19377,
+  "startMs": 15040,
+  "endMs": 15200,
+  "timestampMs": 15120,
   "confidence": null
  },
  {
-  "text": "lees,",
-  "startMs": 19555,
-  "endMs": 19880,
-  "timestampMs": 19717,
+  "text": "oyes,",
+  "startMs": 15320,
+  "endMs": 15920,
+  "timestampMs": 15620,
   "confidence": null
  },
  {
   "text": "lo",
-  "startMs": 20100,
-  "endMs": 20350,
-  "timestampMs": 20225,
+  "startMs": 16000,
+  "endMs": 16080,
+  "timestampMs": 16040,
   "confidence": null
  },
  {
   "text": "ves.",
-  "startMs": 20390,
-  "endMs": 20690,
-  "timestampMs": 20540,
+  "startMs": 16280,
+  "endMs": 16560,
+  "timestampMs": 16420,
   "confidence": null
  },
  {
   "text": "Si",
-  "startMs": 21150,
-  "endMs": 21400,
-  "timestampMs": 21275,
+  "startMs": 16880,
+  "endMs": 16960,
+  "timestampMs": 16920,
   "confidence": null
  },
  {
-  "text": "lees",
-  "startMs": 21440,
-  "endMs": 21740,
-  "timestampMs": 21590,
+  "text": "digo",
+  "startMs": 17040,
+  "endMs": 17280,
+  "timestampMs": 17160,
   "confidence": null
  },
  {
   "text": "«fuego»,",
-  "startMs": 21780,
-  "endMs": 22180,
-  "timestampMs": 21980,
+  "startMs": 17440,
+  "endMs": 18240,
+  "timestampMs": 17840,
   "confidence": null
  },
  {
   "text": "arde.",
-  "startMs": 22400,
-  "endMs": 22725,
-  "timestampMs": 22562,
+  "startMs": 18440,
+  "endMs": 18720,
+  "timestampMs": 18580,
   "confidence": null
  },
  {
   "text": "Y",
-  "startMs": 23835,
-  "endMs": 24060,
-  "timestampMs": 23947,
+  "startMs": 19040,
+  "endMs": 19120,
+  "timestampMs": 19080,
   "confidence": null
  },
  {
   "text": "tres:",
-  "startMs": 24100,
-  "endMs": 24425,
-  "timestampMs": 24262,
+  "startMs": 19200,
+  "endMs": 19920,
+  "timestampMs": 19560,
   "confidence": null
  },
  {
   "text": "la",
-  "startMs": 24745,
-  "endMs": 24995,
-  "timestampMs": 24870,
+  "startMs": 20000,
+  "endMs": 20080,
+  "timestampMs": 20040,
   "confidence": null
  },
  {
   "text": "respuesta",
-  "startMs": 25035,
-  "endMs": 25460,
-  "timestampMs": 25247,
+  "startMs": 20360,
+  "endMs": 20640,
+  "timestampMs": 20500,
   "confidence": null
  },
  {
   "text": "la",
-  "startMs": 25500,
-  "endMs": 25750,
-  "timestampMs": 25625,
+  "startMs": 20720,
+  "endMs": 20800,
+  "timestampMs": 20760,
   "confidence": null
  },
  {
   "text": "guardo",
-  "startMs": 25790,
-  "endMs": 26140,
-  "timestampMs": 25965,
+  "startMs": 20880,
+  "endMs": 21120,
+  "timestampMs": 21000,
   "confidence": null
  },
  {
   "text": "para",
-  "startMs": 26180,
-  "endMs": 26480,
-  "timestampMs": 26330,
+  "startMs": 21200,
+  "endMs": 21360,
+  "timestampMs": 21280,
   "confidence": null
  },
  {
   "text": "el",
-  "startMs": 26520,
-  "endMs": 26770,
-  "timestampMs": 26645,
+  "startMs": 21400,
+  "endMs": 21440,
+  "timestampMs": 21420,
   "confidence": null
  },
  {
   "text": "final.",
-  "startMs": 26810,
-  "endMs": 27160,
-  "timestampMs": 26985,
+  "startMs": 21520,
+  "endMs": 21920,
+  "timestampMs": 21720,
   "confidence": null
  },
  {
   "text": "Por",
-  "startMs": 27620,
-  "endMs": 27895,
-  "timestampMs": 27757,
+  "startMs": 22240,
+  "endMs": 22320,
+  "timestampMs": 22280,
   "confidence": null
  },
  {
   "text": "eso",
-  "startMs": 27935,
-  "endMs": 28210,
-  "timestampMs": 28072,
+  "startMs": 22400,
+  "endMs": 22640,
+  "timestampMs": 22520,
   "confidence": null
  },
  {
   "text": "sigues",
-  "startMs": 28250,
-  "endMs": 28600,
-  "timestampMs": 28425,
+  "startMs": 22720,
+  "endMs": 22960,
+  "timestampMs": 22840,
   "confidence": null
  },
  {
   "text": "aquí.",
-  "startMs": 28640,
-  "endMs": 28965,
-  "timestampMs": 28802,
+  "startMs": 23040,
+  "endMs": 23360,
+  "timestampMs": 23200,
   "confidence": null
  },
  {
   "text": "Hacer",
-  "startMs": 29575,
-  "endMs": 29900,
-  "timestampMs": 29737,
+  "startMs": 23760,
+  "endMs": 24000,
+  "timestampMs": 23880,
   "confidence": null
  },
  {
   "text": "esto",
-  "startMs": 29940,
-  "endMs": 30240,
-  "timestampMs": 30090,
+  "startMs": 24120,
+  "endMs": 24240,
+  "timestampMs": 24180,
   "confidence": null
  },
  {
   "text": "en",
-  "startMs": 30280,
-  "endMs": 30530,
-  "timestampMs": 30405,
+  "startMs": 24320,
+  "endMs": 24400,
+  "timestampMs": 24360,
   "confidence": null
  },
  {
   "text": "cada",
-  "startMs": 30570,
-  "endMs": 30870,
-  "timestampMs": 30720,
+  "startMs": 24480,
+  "endMs": 24640,
+  "timestampMs": 24560,
   "confidence": null
  },
  {
   "text": "video",
-  "startMs": 30910,
-  "endMs": 31235,
-  "timestampMs": 31072,
+  "startMs": 24720,
+  "endMs": 25040,
+  "timestampMs": 24880,
   "confidence": null
  },
  {
   "text": "te",
-  "startMs": 31275,
-  "endMs": 31525,
-  "timestampMs": 31400,
+  "startMs": 25120,
+  "endMs": 25200,
+  "timestampMs": 25160,
   "confidence": null
  },
  {
   "text": "come",
-  "startMs": 31565,
-  "endMs": 31865,
-  "timestampMs": 31715,
+  "startMs": 25280,
+  "endMs": 25520,
+  "timestampMs": 25400,
   "confidence": null
  },
  {
   "text": "horas.",
-  "startMs": 31905,
-  "endMs": 32255,
-  "timestampMs": 32080,
+  "startMs": 25600,
+  "endMs": 26200,
+  "timestampMs": 25900,
   "confidence": null
  },
  {
   "text": "Así",
-  "startMs": 32865,
-  "endMs": 33140,
-  "timestampMs": 33002,
+  "startMs": 26400,
+  "endMs": 26600,
+  "timestampMs": 26500,
   "confidence": null
  },
  {
   "text": "que",
-  "startMs": 33180,
-  "endMs": 33455,
-  "timestampMs": 33317,
+  "startMs": 26640,
+  "endMs": 26720,
+  "timestampMs": 26680,
   "confidence": null
  },
  {
   "text": "tu",
-  "startMs": 33495,
-  "endMs": 33745,
-  "timestampMs": 33620,
+  "startMs": 26800,
+  "endMs": 26880,
+  "timestampMs": 26840,
   "confidence": null
  },
  {
   "text": "pulgar",
-  "startMs": 33785,
-  "endMs": 34135,
-  "timestampMs": 33960,
+  "startMs": 26933,
+  "endMs": 27280,
+  "timestampMs": 27106,
   "confidence": null
  },
  {
   "text": "no",
-  "startMs": 34175,
-  "endMs": 34425,
-  "timestampMs": 34300,
+  "startMs": 27360,
+  "endMs": 27440,
+  "timestampMs": 27400,
   "confidence": null
  },
  {
   "text": "se",
-  "startMs": 34465,
-  "endMs": 34715,
-  "timestampMs": 34590,
+  "startMs": 27520,
+  "endMs": 27600,
+  "timestampMs": 27560,
   "confidence": null
  },
  {
   "text": "detuvo",
-  "startMs": 34755,
-  "endMs": 35105,
-  "timestampMs": 34930,
+  "startMs": 27720,
+  "endMs": 28000,
+  "timestampMs": 27860,
   "confidence": null
  },
  {
   "text": "por",
-  "startMs": 35145,
-  "endMs": 35420,
-  "timestampMs": 35282,
+  "startMs": 28080,
+  "endMs": 28160,
+  "timestampMs": 28120,
   "confidence": null
  },
  {
   "text": "suerte:",
-  "startMs": 35460,
-  "endMs": 35835,
-  "timestampMs": 35647,
+  "startMs": 28240,
+  "endMs": 29040,
+  "timestampMs": 28640,
   "confidence": null
  },
  {
   "text": "este",
-  "startMs": 36155,
-  "endMs": 36455,
-  "timestampMs": 36305,
+  "startMs": 29160,
+  "endMs": 29280,
+  "timestampMs": 29220,
   "confidence": null
  },
  {
   "text": "video",
-  "startMs": 36495,
-  "endMs": 36820,
-  "timestampMs": 36657,
+  "startMs": 29360,
+  "endMs": 29680,
+  "timestampMs": 29520,
   "confidence": null
  },
  {
   "text": "está",
-  "startMs": 36860,
-  "endMs": 37160,
-  "timestampMs": 37010,
+  "startMs": 29760,
+  "endMs": 29920,
+  "timestampMs": 29840,
   "confidence": null
  },
  {
   "text": "editado",
-  "startMs": 37200,
-  "endMs": 37575,
-  "timestampMs": 37387,
+  "startMs": 30080,
+  "endMs": 30480,
+  "timestampMs": 30280,
   "confidence": null
  },
  {
   "text": "para",
-  "startMs": 37615,
-  "endMs": 37915,
-  "timestampMs": 37765,
+  "startMs": 30560,
+  "endMs": 30720,
+  "timestampMs": 30640,
   "confidence": null
  },
  {
   "text": "eso.",
-  "startMs": 37955,
-  "endMs": 38255,
-  "timestampMs": 38105,
+  "startMs": 30880,
+  "endMs": 31360,
+  "timestampMs": 31120,
   "confidence": null
  },
  {
   "text": "Y",
-  "startMs": 38865,
-  "endMs": 39090,
-  "timestampMs": 38977,
+  "startMs": 31440,
+  "endMs": 31480,
+  "timestampMs": 31460,
   "confidence": null
  },
  {
   "text": "en",
-  "startMs": 39130,
-  "endMs": 39380,
-  "timestampMs": 39255,
+  "startMs": 31520,
+  "endMs": 31600,
+  "timestampMs": 31560,
   "confidence": null
  },
  {
   "text": "Hook",
-  "startMs": 39420,
-  "endMs": 39720,
-  "timestampMs": 39570,
+  "startMs": 31680,
+  "endMs": 31840,
+  "timestampMs": 31760,
   "confidence": null
  },
  {
   "text": "House",
-  "startMs": 39760,
-  "endMs": 40085,
-  "timestampMs": 39922,
+  "startMs": 31920,
+  "endMs": 32240,
+  "timestampMs": 32080,
   "confidence": null
  },
  {
   "text": "lo",
-  "startMs": 40125,
-  "endMs": 40375,
-  "timestampMs": 40250,
+  "startMs": 32320,
+  "endMs": 32400,
+  "timestampMs": 32360,
   "confidence": null
  },
  {
   "text": "hacemos",
-  "startMs": 40415,
-  "endMs": 40790,
-  "timestampMs": 40602,
+  "startMs": 32453,
+  "endMs": 32800,
+  "timestampMs": 32626,
   "confidence": null
  },
  {
   "text": "con",
-  "startMs": 40830,
-  "endMs": 41105,
-  "timestampMs": 40967,
+  "startMs": 32840,
+  "endMs": 32880,
+  "timestampMs": 32860,
   "confidence": null
  },
  {
   "text": "los",
-  "startMs": 41145,
-  "endMs": 41420,
-  "timestampMs": 41282,
+  "startMs": 32960,
+  "endMs": 33040,
+  "timestampMs": 33000,
   "confidence": null
  },
  {
   "text": "tuyos.",
-  "startMs": 41460,
-  "endMs": 41810,
-  "timestampMs": 41635,
+  "startMs": 33120,
+  "endMs": 33920,
+  "timestampMs": 33520,
   "confidence": null
  },
  {
   "text": "Escríbeme",
-  "startMs": 42270,
-  "endMs": 42695,
-  "timestampMs": 42482,
+  "startMs": 33960,
+  "endMs": 34480,
+  "timestampMs": 34220,
   "confidence": null
  },
  {
   "text": "HOOK",
-  "startMs": 42735,
-  "endMs": 43035,
-  "timestampMs": 42885,
+  "startMs": 34560,
+  "endMs": 34880,
+  "timestampMs": 34720,
   "confidence": null
  },
  {
   "text": "por",
-  "startMs": 43075,
-  "endMs": 43350,
-  "timestampMs": 43212,
+  "startMs": 34960,
+  "endMs": 35040,
+  "timestampMs": 35000,
   "confidence": null
  },
  {
   "text": "DM.",
-  "startMs": 43390,
-  "endMs": 43665,
-  "timestampMs": 43527,
+  "startMs": 35120,
+  "endMs": 35920,
+  "timestampMs": 35520,
   "confidence": null
  }
 ]
