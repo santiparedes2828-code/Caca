@@ -12,6 +12,7 @@ import { AnimeIntro, animeIntroDuration } from "./AnimeIntro/AnimeIntro";
 import { AnimeTeaser, animeTeaserDuration } from "./AnimeTeaser/AnimeTeaser";
 import { Zeigarnik, zeigarnikDuration } from "./Zeigarnik/Zeigarnik";
 import { Serial, serialDuration } from "./Serial/Serial";
+import { Restorff, restorffDuration } from "./Restorff/Restorff";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -44,6 +45,14 @@ export const RemotionRoot: React.FC = () => {
           }}
         />
       </Folder>
+      <Composition
+        id="Restorff"
+        component={Restorff}
+        durationInFrames={restorffDuration(30)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="Serial"
         component={Serial}
