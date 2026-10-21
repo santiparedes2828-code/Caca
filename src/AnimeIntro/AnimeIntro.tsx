@@ -3,6 +3,7 @@ import React from "react";
 import { AbsoluteFill, Easing, Img, Sequence, interpolate, random, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { MONO } from "../HookHouse/brand";
 import { opt } from "../HookHouse/text";
+import { CharizardCard } from "./Charizard";
 import capas from "../../public/anime/logo/capas.json";
 
 // Intro para Anime Industry: el reverso de la carta Pokémon emerge de la oscuridad, gira (rápido y luego lento)
@@ -72,6 +73,10 @@ const Card: React.FC = () => {
   const sweep = interpolate(frame, [10, 90], [-60, 160], opt);
   const holo = interpolate(frame, [T.flip + 4, T.flip + 40], [-40, 140], { ...opt, easing: Easing.out(Easing.quad) });
   const shine = interpolate(frame, [T.flip, T.flip + 8, T.flip + 30], [0, 1, 0.35], opt);
+  // Charizard: aletea desde que se ve el frente y echa fuego medio segundo después del giro
+  const ct = Math.max(0, frame - T.reveal) / 30;
+  const flapAng = frame >= T.reveal ? 0.2 * Math.sin(ct * Math.PI * 2 * 1.3) : 0;
+  const fireAmt = interpolate(frame, [T.flip + 16, T.flip + 26, T.exit - 4, T.exit + 4], [0, 1, 1, 0.6], opt) * (0.88 + 0.12 * Math.sin(ct * 17));
   const face: React.CSSProperties = { position: "absolute", inset: 0, backfaceVisibility: "hidden", borderRadius: 26, overflow: "hidden" };
   return (
     <AbsoluteFill style={{ perspective: 1500, alignItems: "center", justifyContent: "center", opacity: 1 - leave }}>
@@ -92,7 +97,11 @@ const Card: React.FC = () => {
         </div>
         {/* Frente */}
         <div style={{ ...face, transform: "rotateY(180deg)", boxShadow: `0 0 ${40 + 80 * shine}px rgba(150,215,255,${0.35 + 0.5 * shine})`, filter: `brightness(${1 + 0.35 * shine})` }}>
-          <Img src={staticFile("anime/carta_frente.png")} style={{ width: "100%", height: "100%" }} />
+          {frame >= T.flip - 2 ? (
+            <CharizardCard time={ct} flap={flapAng} fire={fireAmt} />
+          ) : (
+            <Img src={staticFile("anime/carta_charizard.png")} style={{ width: "100%", height: "100%" }} />
+          )}
           {/* Brillo holográfico que cruza la carta */}
           <div
             style={{
