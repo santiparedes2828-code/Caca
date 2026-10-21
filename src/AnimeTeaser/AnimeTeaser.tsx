@@ -86,13 +86,56 @@ const oneLine = (l: Layer, k: number): Layer => {
   };
 };
 
+// Rayos rojos redibujados desde la nueva silueta (centro de la línea "ANIME INDUSTRY"), con las medidas de los
+// originales: 9 rayos de 10º cada 22,8º, simétricos respecto a la vertical, rojo rgb(220,56,49) y puntas desvanecidas
+const RaysOneLine: React.FC<{ left: number; top: number; r: number }> = ({ left, top, r }) => {
+  const cx = r;
+  const cy = r + (ONE_LINE.baseline - 55 - L.circle.cy); // centro vertical de la línea de texto
+  const wedge = (deg: number) => {
+    const a0 = ((deg - 5) * Math.PI) / 180;
+    const a1 = ((deg + 5) * Math.PI) / 180;
+    const R = 2 * r;
+    return `M ${cx} ${cy} L ${cx + R * Math.cos(a0)} ${cy + R * Math.sin(a0)} L ${cx + R * Math.cos(a1)} ${cy + R * Math.sin(a1)} Z`;
+  };
+  const angles = [-4, -3, -2, -1, 0, 1, 2, 3, 4].map((k) => 270 + k * 22.8);
+  // Semiejes del halo: ancho de la línea de texto + margen, alto de la línea + margen
+  const textW = ONE_LINE.words[0].x1 - ONE_LINE.words[0].x0 + ONE_LINE.gap + ONE_LINE.words[1].x1 - ONE_LINE.words[1].x0;
+  const halo = { rx: (textW * ONE_LINE.scale) / 2 + 70, ry: 150 };
+  return (
+    <svg width={2 * r} height={2 * r} style={{ position: "absolute", left, top }}>
+      <defs>
+        <clipPath id="circuloLogo">
+          <circle cx={r} cy={r} r={r} />
+        </clipPath>
+        <radialGradient id="halo">
+          <stop offset="0%" stopColor="#fff" />
+          <stop offset="82%" stopColor="#fff" />
+          <stop offset="100%" stopColor="#fff" stopOpacity={0} />
+        </radialGradient>
+        <radialGradient id="rayoFade" cx={r} cy={r} r={r} gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="rgb(220,56,49)" />
+          <stop offset="74%" stopColor="rgb(220,56,49)" />
+          <stop offset="97%" stopColor="rgb(220,56,49)" stopOpacity={0} />
+        </radialGradient>
+      </defs>
+      <g clipPath="url(#circuloLogo)">
+        {angles.map((a) => (
+          <path key={a} d={wedge(a)} fill="url(#rayoFade)" />
+        ))}
+        {/* Halo blanco con la forma de la línea de texto: los rayos terminan antes de las letras, como en el original */}
+        <ellipse cx={cx} cy={cy} rx={halo.rx} ry={halo.ry} fill="url(#halo)" />
+      </g>
+    </svg>
+  );
+};
+
 const LogoStatic: React.FC<{ scale: number }> = ({ scale }) => {
   const r = L.circle.r;
   const at = (l: Layer) => ({ position: "absolute" as const, left: 540 + (l.x - L.circle.cx), top: 860 + (l.y - L.circle.cy), width: l.w, height: l.h });
   return (
     <AbsoluteFill style={{ scale: `${scale}`, transformOrigin: "540px 860px" }}>
       <div style={{ position: "absolute", left: 540 - r, top: 860 - r, width: 2 * r, height: 2 * r, borderRadius: "50%", background: "#fff" }} />
-      <Img src={staticFile("anime/logo/rayos_llenos.png")} style={at({ name: "rayos", x: 0, y: 0, w: 1206, h: 788 })} />
+      <RaysOneLine left={540 - r} top={860 - r} r={r} />
       {L.letters.map((l, k) => (
         <Img key={l.name} src={staticFile(`anime/logo/${l.name}.png`)} style={at(oneLine(l, k))} />
       ))}
