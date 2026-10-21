@@ -7,6 +7,7 @@ import { Clip, clipDuration } from "./Clip/Clip";
 import { HookHouse, hookHouseDuration } from "./HookHouse/HookHouse";
 import { Viral, viralDuration } from "./Viral/Viral";
 import { Pulgar, pulgarDuration } from "./Pulgar/Pulgar";
+import { Reflejo, reflejoDuration } from "./Reflejo/Reflejo";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -39,6 +40,14 @@ export const RemotionRoot: React.FC = () => {
           }}
         />
       </Folder>
+      <Composition
+        id="Reflejo"
+        component={Reflejo}
+        durationInFrames={reflejoDuration(30)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="Pulgar"
         component={Pulgar}
