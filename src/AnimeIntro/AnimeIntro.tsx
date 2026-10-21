@@ -3,7 +3,7 @@ import React from "react";
 import { AbsoluteFill, Easing, Img, Sequence, interpolate, random, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { MONO } from "../HookHouse/brand";
 import { opt } from "../HookHouse/text";
-import { CharizardCard } from "./Charizard";
+import { CharizardPop, POP, POP_TOTAL, PortalGlow } from "./CharizardPop";
 import capas from "../../public/anime/logo/capas.json";
 
 // Intro para Anime Industry: el reverso de la carta Pokémon emerge de la oscuridad, gira (rápido y luego lento)
@@ -21,9 +21,14 @@ export const T = {
   get reveal() {
     return this.flip + 7; // con ease-out el frente ya queda de cara hacia el frame 7
   },
-  exit: 172, // la carta se va
-  circle: 180,
-  letters: 192,
+  get pop() {
+    return this.flip + 22; // Charizard empieza a salir de la carta
+  },
+  get exit() {
+    return this.pop + POP_TOTAL; // la carta se va cuando Charizard ya salió volando
+  },
+  circle: 208,
+  letters: 220,
   stagger: 5,
   fall: 8, // frames de caída de cada letra
   get rays() {
@@ -73,10 +78,8 @@ const Card: React.FC = () => {
   const sweep = interpolate(frame, [10, 90], [-60, 160], opt);
   const holo = interpolate(frame, [T.flip + 4, T.flip + 40], [-40, 140], { ...opt, easing: Easing.out(Easing.quad) });
   const shine = interpolate(frame, [T.flip, T.flip + 8, T.flip + 30], [0, 1, 0.35], opt);
-  // Charizard: aletea desde que se ve el frente y echa fuego medio segundo después del giro
-  const ct = Math.max(0, frame - T.reveal) / 30;
-  const flapAng = frame >= T.reveal ? 0.2 * Math.sin(ct * Math.PI * 2 * 1.3) : 0;
-  const fireAmt = interpolate(frame, [T.flip + 16, T.flip + 26, T.exit - 4, T.exit + 4], [0, 1, 1, 0.6], opt) * (0.88 + 0.12 * Math.sin(ct * 17));
+  // Charizard sale de la carta (CharizardPop): fotogramas desde que empieza a salir
+  const pd = frame - T.pop;
   const face: React.CSSProperties = { position: "absolute", inset: 0, backfaceVisibility: "hidden", borderRadius: 26, overflow: "hidden" };
   return (
     <AbsoluteFill style={{ perspective: 1500, alignItems: "center", justifyContent: "center", opacity: 1 - leave }}>
@@ -97,11 +100,8 @@ const Card: React.FC = () => {
         </div>
         {/* Frente */}
         <div style={{ ...face, transform: "rotateY(180deg)", boxShadow: `0 0 ${40 + 80 * shine}px rgba(150,215,255,${0.35 + 0.5 * shine})`, filter: `brightness(${1 + 0.35 * shine})` }}>
-          {frame >= T.flip - 2 ? (
-            <CharizardCard time={ct} flap={flapAng} fire={fireAmt} />
-          ) : (
-            <Img src={staticFile("anime/carta_charizard.png")} style={{ width: "100%", height: "100%" }} />
-          )}
+          <Img src={staticFile(pd >= 0 ? "anime/charizard/carta_vacia.png" : "anime/carta_charizard.png")} style={{ width: "100%", height: "100%" }} />
+          {pd >= -2 ? <PortalGlow d={pd} /> : null}
           {/* Brillo holográfico que cruza la carta */}
           <div
             style={{
@@ -112,6 +112,7 @@ const Card: React.FC = () => {
             }}
           />
         </div>
+        <CharizardPop d={pd} fps={30} />
       </div>
     </AbsoluteFill>
   );
@@ -290,6 +291,20 @@ export const AnimeIntro: React.FC = () => {
 
       <Audio src={staticFile("sfx/riser.wav")} volume={0.7} />
       <Sequence name="Whoosh giro" from={T.flip} durationInFrames={14}>
+        <Audio src={staticFile("sfx/whoosh.wav")} volume={0.55} />
+      </Sequence>
+      <Sequence name="Charizard sale" from={T.pop - 2} durationInFrames={20}>
+        <Audio src={staticFile("sfx/whoosh.wav")} volume={0.6} />
+      </Sequence>
+      <Sequence name="Llamarada" from={T.pop + POP.fireStart} durationInFrames={50}>
+        <Audio src={staticFile("sfx/fuego.wav")} volume={0.8} />
+      </Sequence>
+      {[0, 10, 20, 30, 40, 52, 58, 64, 70, 76].map((f) => (
+        <Sequence key={`a${f}`} name="Aleteo" from={T.pop + f} durationInFrames={12}>
+          <Audio src={staticFile("sfx/aleteo.wav")} volume={0.35} />
+        </Sequence>
+      ))}
+      <Sequence name="Charizard vuela" from={T.pop + POP.flyStart - 2} durationInFrames={20}>
         <Audio src={staticFile("sfx/whoosh.wav")} volume={0.55} />
       </Sequence>
       <Sequence name="Whoosh salida" from={T.exit - 2} durationInFrames={14}>
