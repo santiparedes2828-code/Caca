@@ -9,6 +9,7 @@ import { Viral, viralDuration } from "./Viral/Viral";
 import { Pulgar, pulgarDuration } from "./Pulgar/Pulgar";
 import { Reflejo, reflejoDuration } from "./Reflejo/Reflejo";
 import { Cosquillas, cosquillasDuration } from "./Cosquillas/Cosquillas";
+import { Puerta, puertaDuration } from "./Puerta/Puerta";
 import { AnimeIntro, animeIntroDuration } from "./AnimeIntro/AnimeIntro";
 import { AnimeTeaser, animeTeaserDuration } from "./AnimeTeaser/AnimeTeaser";
 import { Zeigarnik, zeigarnikDuration } from "./Zeigarnik/Zeigarnik";
@@ -98,6 +99,14 @@ export const RemotionRoot: React.FC = () => {
         id="Cosquillas"
         component={Cosquillas}
         durationInFrames={cosquillasDuration(30)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Puerta"
+        component={Puerta}
+        durationInFrames={puertaDuration(30)}
         fps={30}
         width={1080}
         height={1920}
