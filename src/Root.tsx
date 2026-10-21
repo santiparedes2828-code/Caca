@@ -8,6 +8,7 @@ import { HookHouse, hookHouseDuration } from "./HookHouse/HookHouse";
 import { Viral, viralDuration } from "./Viral/Viral";
 import { Pulgar, pulgarDuration } from "./Pulgar/Pulgar";
 import { Reflejo, reflejoDuration } from "./Reflejo/Reflejo";
+import { Cosquillas, cosquillasDuration } from "./Cosquillas/Cosquillas";
 import { AnimeIntro, animeIntroDuration } from "./AnimeIntro/AnimeIntro";
 import { AnimeTeaser, animeTeaserDuration } from "./AnimeTeaser/AnimeTeaser";
 import { Zeigarnik, zeigarnikDuration } from "./Zeigarnik/Zeigarnik";
@@ -89,6 +90,14 @@ export const RemotionRoot: React.FC = () => {
         id="Reflejo"
         component={Reflejo}
         durationInFrames={reflejoDuration(30)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Cosquillas"
+        component={Cosquillas}
+        durationInFrames={cosquillasDuration(30)}
         fps={30}
         width={1080}
         height={1920}
