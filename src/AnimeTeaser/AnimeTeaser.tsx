@@ -91,6 +91,9 @@ const Grain: React.FC = () => {
   );
 };
 
+// Cierre como pregunta: "COMENTA ¿QUÉ CREES QUE ES?"
+const ASK: Record<number, string> = { [caps.length - 4]: "¿qué", [caps.length - 1]: "es?" };
+
 const Captions: React.FC<{ t: number; frame: number; fps: number }> = ({ t, frame, fps }) => {
   let cur = -1;
   for (let i = 0; i < caps.length; i++) if (t >= caps[i].startMs / 1000) cur = i;
@@ -127,7 +130,7 @@ const Captions: React.FC<{ t: number; frame: number; fps: number }> = ({ t, fram
               textShadow: "0 6px 0 rgba(0,0,0,0.55), 0 0 30px rgba(0,0,0,0.6)",
             }}
           >
-            {caps[i].text.replace(/[.,…]/g, "")}{" "}
+            {ASK[i] ?? caps[i].text.replace(/[.,…]/g, "")}{" "}
           </span>
         );
       })}
