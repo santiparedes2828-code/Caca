@@ -1,0 +1,569 @@
+[
+{
+"text": "Te",
+"startMs": 80,
+"endMs": 160,
+"timestampMs": 120,
+"confidence": null
+},
+{
+"text": "dijeron",
+"startMs": 240,
+"endMs": 640,
+"timestampMs": 440,
+"confidence": null
+},
+{
+"text": "que",
+"startMs": 680,
+"endMs": 720,
+"timestampMs": 700,
+"confidence": null
+},
+{
+"text": "tienes",
+"startMs": 800,
+"endMs": 1040,
+"timestampMs": 920,
+"confidence": null
+},
+{
+"text": "la",
+"startMs": 1120,
+"endMs": 1160,
+"timestampMs": 1140,
+"confidence": null
+},
+{
+"text": "atención",
+"startMs": 1200,
+"endMs": 1680,
+"timestampMs": 1440,
+"confidence": null
+},
+{
+"text": "de",
+"startMs": 1720,
+"endMs": 1760,
+"timestampMs": 1740,
+"confidence": null
+},
+{
+"text": "un",
+"startMs": 1840,
+"endMs": 1920,
+"timestampMs": 1880,
+"confidence": null
+},
+{
+"text": "pez",
+"startMs": 2000,
+"endMs": 2160,
+"timestampMs": 2080,
+"confidence": null
+},
+{
+"text": "dorado…",
+"startMs": 2240,
+"endMs": 3200,
+"timestampMs": 2720,
+"confidence": null
+},
+{
+"text": "y",
+"startMs": 3240,
+"endMs": 3280,
+"timestampMs": 3260,
+"confidence": null
+},
+{
+"text": "es",
+"startMs": 3360,
+"endMs": 3520,
+"timestampMs": 3440,
+"confidence": null
+},
+{
+"text": "mentira.",
+"startMs": 3680,
+"endMs": 4560,
+"timestampMs": 4120,
+"confidence": null
+},
+{
+"text": "Ese",
+"startMs": 4600,
+"endMs": 4800,
+"timestampMs": 4700,
+"confidence": null
+},
+{
+"text": "dato",
+"startMs": 4920,
+"endMs": 5040,
+"timestampMs": 4980,
+"confidence": null
+},
+{
+"text": "de",
+"startMs": 5080,
+"endMs": 5120,
+"timestampMs": 5100,
+"confidence": null
+},
+{
+"text": "los",
+"startMs": 5200,
+"endMs": 5280,
+"timestampMs": 5240,
+"confidence": null
+},
+{
+"text": "ocho",
+"startMs": 5360,
+"endMs": 5520,
+"timestampMs": 5440,
+"confidence": null
+},
+{
+"text": "segundos",
+"startMs": 5600,
+"endMs": 6080,
+"timestampMs": 5840,
+"confidence": null
+},
+{
+"text": "no",
+"startMs": 6160,
+"endMs": 6240,
+"timestampMs": 6200,
+"confidence": null
+},
+{
+"text": "sale",
+"startMs": 6320,
+"endMs": 6560,
+"timestampMs": 6440,
+"confidence": null
+},
+{
+"text": "de",
+"startMs": 6640,
+"endMs": 6720,
+"timestampMs": 6680,
+"confidence": null
+},
+{
+"text": "ningún",
+"startMs": 6840,
+"endMs": 7120,
+"timestampMs": 6980,
+"confidence": null
+},
+{
+"text": "estudio",
+"startMs": 7240,
+"endMs": 7520,
+"timestampMs": 7380,
+"confidence": null
+},
+{
+"text": "serio.",
+"startMs": 7600,
+"endMs": 8400,
+"timestampMs": 8000,
+"confidence": null
+},
+{
+"text": "Nadie",
+"startMs": 8480,
+"endMs": 8800,
+"timestampMs": 8640,
+"confidence": null
+},
+{
+"text": "pudo",
+"startMs": 8880,
+"endMs": 9040,
+"timestampMs": 8960,
+"confidence": null
+},
+{
+"text": "encontrar",
+"startMs": 9120,
+"endMs": 9520,
+"timestampMs": 9320,
+"confidence": null
+},
+{
+"text": "de",
+"startMs": 9600,
+"endMs": 9760,
+"timestampMs": 9680,
+"confidence": null
+},
+{
+"text": "dónde",
+"startMs": 9800,
+"endMs": 10080,
+"timestampMs": 9940,
+"confidence": null
+},
+{
+"text": "salió.",
+"startMs": 10120,
+"endMs": 10880,
+"timestampMs": 10500,
+"confidence": null
+},
+{
+"text": "Y",
+"startMs": 10920,
+"endMs": 10960,
+"timestampMs": 10940,
+"confidence": null
+},
+{
+"text": "la",
+"startMs": 11040,
+"endMs": 11080,
+"timestampMs": 11060,
+"confidence": null
+},
+{
+"text": "prueba",
+"startMs": 11120,
+"endMs": 11360,
+"timestampMs": 11240,
+"confidence": null
+},
+{
+"text": "la",
+"startMs": 11440,
+"endMs": 11520,
+"timestampMs": 11480,
+"confidence": null
+},
+{
+"text": "tienes",
+"startMs": 11560,
+"endMs": 11840,
+"timestampMs": 11700,
+"confidence": null
+},
+{
+"text": "en",
+"startMs": 11880,
+"endMs": 11920,
+"timestampMs": 11900,
+"confidence": null
+},
+{
+"text": "el",
+"startMs": 11960,
+"endMs": 12000,
+"timestampMs": 11980,
+"confidence": null
+},
+{
+"text": "bolsillo:",
+"startMs": 12080,
+"endMs": 12960,
+"timestampMs": 12520,
+"confidence": null
+},
+{
+"text": "ves",
+"startMs": 13080,
+"endMs": 13200,
+"timestampMs": 13140,
+"confidence": null
+},
+{
+"text": "series",
+"startMs": 13400,
+"endMs": 13600,
+"timestampMs": 13500,
+"confidence": null
+},
+{
+"text": "enteras",
+"startMs": 13800,
+"endMs": 14160,
+"timestampMs": 13980,
+"confidence": null
+},
+{
+"text": "de",
+"startMs": 14240,
+"endMs": 14320,
+"timestampMs": 14280,
+"confidence": null
+},
+{
+"text": "una",
+"startMs": 14400,
+"endMs": 14480,
+"timestampMs": 14440,
+"confidence": null
+},
+{
+"text": "sentada.",
+"startMs": 14560,
+"endMs": 15440,
+"timestampMs": 15000,
+"confidence": null
+},
+{
+"text": "Tu",
+"startMs": 15480,
+"endMs": 15520,
+"timestampMs": 15500,
+"confidence": null
+},
+{
+"text": "atención",
+"startMs": 15600,
+"endMs": 16000,
+"timestampMs": 15800,
+"confidence": null
+},
+{
+"text": "no",
+"startMs": 16080,
+"endMs": 16160,
+"timestampMs": 16120,
+"confidence": null
+},
+{
+"text": "es",
+"startMs": 16240,
+"endMs": 16320,
+"timestampMs": 16280,
+"confidence": null
+},
+{
+"text": "corta.",
+"startMs": 16400,
+"endMs": 17120,
+"timestampMs": 16760,
+"confidence": null
+},
+{
+"text": "Es",
+"startMs": 17200,
+"endMs": 17280,
+"timestampMs": 17240,
+"confidence": null
+},
+{
+"text": "exigente.",
+"startMs": 17400,
+"endMs": 18560,
+"timestampMs": 17980,
+"confidence": null
+},
+{
+"text": "No",
+"startMs": 18600,
+"endMs": 18640,
+"timestampMs": 18620,
+"confidence": null
+},
+{
+"text": "te",
+"startMs": 18720,
+"endMs": 18800,
+"timestampMs": 18760,
+"confidence": null
+},
+{
+"text": "vas",
+"startMs": 18880,
+"endMs": 19040,
+"timestampMs": 18960,
+"confidence": null
+},
+{
+"text": "porque",
+"startMs": 19120,
+"endMs": 19280,
+"timestampMs": 19200,
+"confidence": null
+},
+{
+"text": "el",
+"startMs": 19320,
+"endMs": 19360,
+"timestampMs": 19340,
+"confidence": null
+},
+{
+"text": "video",
+"startMs": 19520,
+"endMs": 19680,
+"timestampMs": 19600,
+"confidence": null
+},
+{
+"text": "sea",
+"startMs": 19800,
+"endMs": 19920,
+"timestampMs": 19860,
+"confidence": null
+},
+{
+"text": "largo:",
+"startMs": 20027,
+"endMs": 20560,
+"timestampMs": 20293,
+"confidence": null
+},
+{
+"text": "te",
+"startMs": 20600,
+"endMs": 20640,
+"timestampMs": 20620,
+"confidence": null
+},
+{
+"text": "vas",
+"startMs": 20720,
+"endMs": 21040,
+"timestampMs": 20880,
+"confidence": null
+},
+{
+"text": "porque",
+"startMs": 21120,
+"endMs": 21440,
+"timestampMs": 21280,
+"confidence": null
+},
+{
+"text": "es",
+"startMs": 21520,
+"endMs": 21600,
+"timestampMs": 21560,
+"confidence": null
+},
+{
+"text": "aburrido.",
+"startMs": 21680,
+"endMs": 22720,
+"timestampMs": 22200,
+"confidence": null
+},
+{
+"text": "En",
+"startMs": 22800,
+"endMs": 22880,
+"timestampMs": 22840,
+"confidence": null
+},
+{
+"text": "Hook",
+"startMs": 22960,
+"endMs": 23040,
+"timestampMs": 23000,
+"confidence": null
+},
+{
+"text": "House",
+"startMs": 23120,
+"endMs": 23440,
+"timestampMs": 23280,
+"confidence": null
+},
+{
+"text": "editamos",
+"startMs": 23520,
+"endMs": 24000,
+"timestampMs": 23760,
+"confidence": null
+},
+{
+"text": "para",
+"startMs": 24080,
+"endMs": 24160,
+"timestampMs": 24120,
+"confidence": null
+},
+{
+"text": "que",
+"startMs": 24240,
+"endMs": 24280,
+"timestampMs": 24260,
+"confidence": null
+},
+{
+"text": "tu",
+"startMs": 24320,
+"endMs": 24480,
+"timestampMs": 24400,
+"confidence": null
+},
+{
+"text": "video",
+"startMs": 24640,
+"endMs": 24800,
+"timestampMs": 24720,
+"confidence": null
+},
+{
+"text": "se",
+"startMs": 24880,
+"endMs": 24960,
+"timestampMs": 24920,
+"confidence": null
+},
+{
+"text": "gane",
+"startMs": 25040,
+"endMs": 25360,
+"timestampMs": 25200,
+"confidence": null
+},
+{
+"text": "cada",
+"startMs": 25440,
+"endMs": 25680,
+"timestampMs": 25560,
+"confidence": null
+},
+{
+"text": "segundo.",
+"startMs": 25760,
+"endMs": 26640,
+"timestampMs": 26200,
+"confidence": null
+},
+{
+"text": "Escríbeme",
+"startMs": 26680,
+"endMs": 27280,
+"timestampMs": 26980,
+"confidence": null
+},
+{
+"text": "HOOK",
+"startMs": 27360,
+"endMs": 27680,
+"timestampMs": 27520,
+"confidence": null
+},
+{
+"text": "por",
+"startMs": 27760,
+"endMs": 27840,
+"timestampMs": 27800,
+"confidence": null
+},
+{
+"text": "DM.",
+"startMs": 27920,
+"endMs": 28640,
+"timestampMs": 28280,
+"confidence": null
+}
+]

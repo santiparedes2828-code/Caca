@@ -10,6 +10,8 @@ import { Pulgar, pulgarDuration } from "./Pulgar/Pulgar";
 import { Reflejo, reflejoDuration } from "./Reflejo/Reflejo";
 import { Cosquillas, cosquillasDuration } from "./Cosquillas/Cosquillas";
 import { Puerta, puertaDuration } from "./Puerta/Puerta";
+import { DIORAMAS } from "./Diorama/reels";
+import { ReelView, reelDuration } from "./Diorama/Engine";
 import { AnimeIntro, animeIntroDuration } from "./AnimeIntro/AnimeIntro";
 import { AnimeTeaser, animeTeaserDuration } from "./AnimeTeaser/AnimeTeaser";
 import { Zeigarnik, zeigarnikDuration } from "./Zeigarnik/Zeigarnik";
@@ -111,6 +113,9 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      {DIORAMAS.map((r) => (
+        <Composition key={r.id} id={r.id} component={ReelView} defaultProps={{ reel: r }} durationInFrames={reelDuration(r, 30)} fps={30} width={1080} height={1920} />
+      ))}
       <Composition
         id="Pulgar"
         component={Pulgar}
