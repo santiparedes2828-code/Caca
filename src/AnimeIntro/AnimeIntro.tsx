@@ -29,10 +29,10 @@ export const T = {
   },
   circle: 208,
   letters: 220,
-  stagger: 5,
-  fall: 8, // frames de caída de cada letra
+  wordGap: 22, // frames entre la caída de ANIME y la de INDUSTRY
+  fall: 9, // frames de caída de cada palabra
   get rays() {
-    return this.letters + L.letters.length * this.stagger + this.fall + 10;
+    return this.letters + this.wordGap + this.fall + 14;
   },
   get slogan() {
     return this.rays + 12;
@@ -45,7 +45,10 @@ export const T = {
   },
 };
 export const animeIntroDuration = () => T.cut + 36;
-const impactOf = (k: number) => T.letters + k * T.stagger + T.fall;
+// Las letras caen por palabras: ANIME (5 piezas) y luego INDUSTRY
+const wordOf = (k: number) => (k < 5 ? 0 : 1);
+const fallOf = (k: number) => T.letters + wordOf(k) * T.wordGap;
+const impactOf = (k: number) => fallOf(k) + T.fall;
 
 const CENTER = { x: 540, y: 900 };
 const at = (l: Layer) => ({ left: CENTER.x + (l.x - L.circle.cx), top: CENTER.y + (l.y - L.circle.cy), width: l.w, height: l.h });
@@ -53,7 +56,7 @@ const at = (l: Layer) => ({ left: CENTER.x + (l.x - L.circle.cx), top: CENTER.y 
 // Sacudida de cámara: suma de golpes que decaen
 const useShake = () => {
   const frame = useCurrentFrame();
-  const hits: { at: number; amp: number }[] = [...L.letters.map((_, k) => ({ at: impactOf(k), amp: 14 })), { at: T.desde, amp: 10 }, { at: T.cut, amp: 30 }];
+  const hits: { at: number; amp: number }[] = [{ at: impactOf(0), amp: 24 }, { at: impactOf(5), amp: 28 }, { at: T.desde, amp: 10 }, { at: T.cut, amp: 30 }];
   let x = 0;
   let y = 0;
   for (const h of hits) {
@@ -180,7 +183,7 @@ const Dust: React.FC<{ x: number; y: number; start: number; seed: string }> = ({
 const Letter: React.FC<{ l: Layer; k: number }> = ({ l, k }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const start = T.letters + k * T.stagger;
+  const start = fallOf(k);
   const hit = impactOf(k);
   if (frame < start) return null;
   const pos = at(l);
@@ -315,13 +318,13 @@ export const AnimeIntro: React.FC = () => {
       <Sequence name="Whoosh salida" from={T.exit - 2} durationInFrames={14}>
         <Audio src={staticFile("sfx/whoosh.wav")} volume={0.45} />
       </Sequence>
-      {L.letters.map((l, k) => (
-        <React.Fragment key={l.name}>
-          <Sequence name={`Caída ${l.name}`} from={T.letters + k * T.stagger} durationInFrames={10}>
-            <Audio src={staticFile("sfx/whoosh.wav")} volume={0.12} />
+      {[0, 5].map((k) => (
+        <React.Fragment key={`palabra${k}`}>
+          <Sequence name={k ? "Caída INDUSTRY" : "Caída ANIME"} from={fallOf(k)} durationInFrames={12}>
+            <Audio src={staticFile("sfx/whoosh.wav")} volume={0.35} />
           </Sequence>
-          <Sequence name={`Golpe ${l.name}`} from={impactOf(k)} durationInFrames={24}>
-            <Audio src={staticFile("sfx/slam.wav")} volume={0.42} />
+          <Sequence name={k ? "Golpe INDUSTRY" : "Golpe ANIME"} from={impactOf(k)} durationInFrames={24}>
+            <Audio src={staticFile("sfx/slam.wav")} volume={0.75} />
           </Sequence>
         </React.Fragment>
       ))}
