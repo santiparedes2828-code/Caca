@@ -4,6 +4,7 @@ import React from "react";
 import { AbsoluteFill, Easing, Img, Sequence, interpolate, random, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import captionsJson from "../data/captions-teaser.json";
 import capas from "../../public/anime/logo/capas.json";
+import siluetas from "../../public/anime/logo/siluetas.json";
 import { AnimeIntro, T, type Layer } from "../AnimeIntro/AnimeIntro";
 import { POP_TOTAL } from "../AnimeIntro/CharizardPop";
 import { SANS } from "../HookHouse/brand";
@@ -71,7 +72,9 @@ const ONE_LINE = (() => {
   const gap = 40;
   const total = words[0].x1 - words[0].x0 + gap + words[1].x1 - words[1].x0;
   const scale = 0.66;
-  return { words, gap, scale, left: L.circle.cx - (total * scale) / 2, baseline: 405 };
+  // Base de la línea: pegada a la franja azul con el mismo solape que en el logo original (las letras la pisan)
+  const overlap = words[1].bottom - L.slogan.y;
+  return { words, gap, scale, left: L.circle.cx - (total * scale) / 2, baseline: L.slogan.y + overlap * scale };
 })();
 const oneLine = (l: Layer, k: number): Layer => {
   const { words, gap, scale, left, baseline } = ONE_LINE;
@@ -88,6 +91,45 @@ const oneLine = (l: Layer, k: number): Layer => {
 
 // Rayos rojos redibujados desde la nueva silueta (centro de la línea "ANIME INDUSTRY"), con las medidas de los
 // originales: 9 rayos de 10º cada 22,8º, simétricos respecto a la vertical, rojo rgb(220,56,49) y puntas desvanecidas
+// Contorno superior de "ANIME INDUSTRY" en una línea, ensanchado MARGIN px, como polígono en coordenadas del círculo
+const SIL = siluetas as Record<string, { step: number; tops: number[] }>;
+const MARGIN = 14;
+const useSilhouette = (r: number) => {
+  const ox = r - L.circle.cx;
+  const oy = r - L.circle.cy;
+  const pts: { x: number; y: number }[] = [];
+  L.letters.forEach((l, k) => {
+    const p = oneLine(l, k);
+    const s = SIL[l.name];
+    s.tops.forEach((top, i) => {
+      if (top >= 0) pts.push({ x: p.x + i * s.step * ONE_LINE.scale + ox, y: p.y + top * ONE_LINE.scale + oy });
+    });
+  });
+  const x0 = Math.min(...pts.map((p) => p.x)) - MARGIN;
+  const x1 = Math.max(...pts.map((p) => p.x)) + MARGIN;
+  const env: { x: number; y: number }[] = [];
+  for (let x = x0; x <= x1; x += 2) {
+    let y = Infinity;
+    for (const p of pts) if (Math.abs(p.x - x) <= MARGIN) y = Math.min(y, p.y - Math.sqrt(MARGIN * MARGIN - (p.x - x) ** 2));
+    env.push({ x, y });
+  }
+  // Huecos sin letra (entre palabras): se unen con la recta entre los bordes vecinos
+  for (let i = 0; i < env.length; i++) {
+    if (env[i].y !== Infinity) continue;
+    let a = i;
+    while (a >= 0 && env[a].y === Infinity) a--;
+    let b = i;
+    while (b < env.length && env[b].y === Infinity) b++;
+    const ya = a >= 0 ? env[a].y : env[b].y;
+    const yb = b < env.length ? env[b].y : ya;
+    const xa = a >= 0 ? env[a].x : env[i].x;
+    const xb = b < env.length ? env[b].x : env[i].x;
+    env[i].y = ya + ((yb - ya) * (env[i].x - xa)) / Math.max(1, xb - xa);
+  }
+  const bottom = 2 * r;
+  return [`${x0},${bottom}`, ...env.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`), `${x1},${bottom}`].join(" ");
+};
+
 const RaysOneLine: React.FC<{ left: number; top: number; r: number }> = ({ left, top, r }) => {
   const cx = r;
   const cy = r + (ONE_LINE.baseline - 55 - L.circle.cy); // centro vertical de la línea de texto
@@ -98,20 +140,18 @@ const RaysOneLine: React.FC<{ left: number; top: number; r: number }> = ({ left,
     return `M ${cx} ${cy} L ${cx + R * Math.cos(a0)} ${cy + R * Math.sin(a0)} L ${cx + R * Math.cos(a1)} ${cy + R * Math.sin(a1)} Z`;
   };
   const angles = [-4, -3, -2, -1, 0, 1, 2, 3, 4].map((k) => 270 + k * 22.8);
-  // Semiejes del halo: ancho de la línea de texto + margen, alto de la línea + margen
-  const textW = ONE_LINE.words[0].x1 - ONE_LINE.words[0].x0 + ONE_LINE.gap + ONE_LINE.words[1].x1 - ONE_LINE.words[1].x0;
-  const halo = { rx: (textW * ONE_LINE.scale) / 2 + 70, ry: 150 };
+  const silhouette = useSilhouette(r);
   return (
     <svg width={2 * r} height={2 * r} style={{ position: "absolute", left, top }}>
       <defs>
         <clipPath id="circuloLogo">
           <circle cx={r} cy={r} r={r} />
         </clipPath>
-        <radialGradient id="halo">
-          <stop offset="0%" stopColor="#fff" />
-          <stop offset="82%" stopColor="#fff" />
-          <stop offset="100%" stopColor="#fff" stopOpacity={0} />
-        </radialGradient>
+        {/* Los rayos se ven solo por encima de la silueta de las letras (con un margen blanco) */}
+        <mask id="siluetaRayos" maskUnits="userSpaceOnUse" x={0} y={0} width={2 * r} height={2 * r}>
+          <rect width={2 * r} height={2 * r} fill="#fff" />
+          <polygon points={silhouette} fill="#000" />
+        </mask>
         <radialGradient id="rayoFade" cx={r} cy={r} r={r} gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="rgb(220,56,49)" />
           <stop offset="74%" stopColor="rgb(220,56,49)" />
@@ -119,11 +159,11 @@ const RaysOneLine: React.FC<{ left: number; top: number; r: number }> = ({ left,
         </radialGradient>
       </defs>
       <g clipPath="url(#circuloLogo)">
-        {angles.map((a) => (
-          <path key={a} d={wedge(a)} fill="url(#rayoFade)" />
-        ))}
-        {/* Halo blanco con la forma de la línea de texto: los rayos terminan antes de las letras, como en el original */}
-        <ellipse cx={cx} cy={cy} rx={halo.rx} ry={halo.ry} fill="url(#halo)" />
+        <g mask="url(#siluetaRayos)">
+          {angles.map((a) => (
+            <path key={a} d={wedge(a)} fill="url(#rayoFade)" />
+          ))}
+        </g>
       </g>
     </svg>
   );
@@ -136,10 +176,10 @@ const LogoStatic: React.FC<{ scale: number }> = ({ scale }) => {
     <AbsoluteFill style={{ scale: `${scale}`, transformOrigin: "540px 860px" }}>
       <div style={{ position: "absolute", left: 540 - r, top: 860 - r, width: 2 * r, height: 2 * r, borderRadius: "50%", background: "#fff" }} />
       <RaysOneLine left={540 - r} top={860 - r} r={r} />
+      <Img src={staticFile("anime/logo/eslogan.png")} style={at(L.slogan)} />
       {L.letters.map((l, k) => (
         <Img key={l.name} src={staticFile(`anime/logo/${l.name}.png`)} style={at(oneLine(l, k))} />
       ))}
-      <Img src={staticFile("anime/logo/eslogan.png")} style={at(L.slogan)} />
       <Img src={staticFile("anime/logo/desde.png")} style={at(L.desde)} />
     </AbsoluteFill>
   );
