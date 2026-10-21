@@ -5,6 +5,7 @@ import { AbsoluteFill, Easing, Img, Sequence, interpolate, random, spring, stati
 import captionsJson from "../data/captions-teaser.json";
 import capas from "../../public/anime/logo/capas.json";
 import { AnimeIntro, T, type Layer } from "../AnimeIntro/AnimeIntro";
+import { POP_TOTAL } from "../AnimeIntro/CharizardPop";
 import { SANS } from "../HookHouse/brand";
 import { opt } from "../HookHouse/text";
 
@@ -223,7 +224,7 @@ export const AnimeTeaser: React.FC = () => {
   const end = animeTeaserDuration(fps);
   // Música: plena en la intro, debajo de la voz, sube al final
   const music = (f: number) =>
-    f < VOICE ? 0.75 : interpolate(f, [VOICE, VOICE + 8, end - END_HOLD + 10, end - 20, end], [0.75, 0.32, 0.32, 0.6, 0], opt);
+    f < VOICE ? interpolate(f, [T.pop - 10, T.pop - 2, T.pop + POP_TOTAL, T.pop + POP_TOTAL + 10], [0.75, 0.42, 0.42, 0.75], opt) : interpolate(f, [VOICE, VOICE + 8, end - END_HOLD + 10, end - 20, end], [0.75, 0.32, 0.32, 0.6, 0], opt);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <AnimeIntro />

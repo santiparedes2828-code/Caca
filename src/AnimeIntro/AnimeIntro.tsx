@@ -293,19 +293,24 @@ export const AnimeIntro: React.FC = () => {
       <Sequence name="Whoosh giro" from={T.flip} durationInFrames={14}>
         <Audio src={staticFile("sfx/whoosh.wav")} volume={0.55} />
       </Sequence>
-      <Sequence name="Charizard sale" from={T.pop - 2} durationInFrames={20}>
-        <Audio src={staticFile("sfx/whoosh.wav")} volume={0.6} />
+      {/* Charizard: efectos de sonido generados con ElevenLabs (public/sfx/charizard) */}
+      <Sequence name="Charizard estallido" from={T.pop - 3} durationInFrames={40}>
+        <Audio src={staticFile("sfx/charizard/estallido.wav")} volume={0.9} />
       </Sequence>
-      <Sequence name="Llamarada" from={T.pop + POP.fireStart} durationInFrames={50}>
-        <Audio src={staticFile("sfx/fuego.wav")} volume={0.8} />
+      <Sequence name="Charizard rugido" from={T.pop + 2} durationInFrames={70}>
+        <Audio src={staticFile("sfx/charizard/rugido.wav")} volume={1} />
       </Sequence>
-      {[0, 10, 20, 30, 40, 52, 58, 64, 70, 76].map((f) => (
-        <Sequence key={`a${f}`} name="Aleteo" from={T.pop + f} durationInFrames={12}>
-          <Audio src={staticFile("sfx/aleteo.wav")} volume={0.35} />
+      <Sequence name="Charizard fuego" from={T.pop + POP.fireStart} durationInFrames={56}>
+        <Audio src={staticFile("sfx/charizard/fuego.wav")} volume={(f) => interpolate(f, [0, 40, 54], [1, 1, 0], opt)} />
+      </Sequence>
+      {/* Un aleteo en cada bajada de alas: lento mientras echa fuego, rápido al volar */}
+      {[4, 23, 42, 52, 61, 70, 79].map((f, k) => (
+        <Sequence key={`a${f}`} name="Charizard aleteo" from={T.pop + f} durationInFrames={22}>
+          <Audio src={staticFile(k % 2 ? "sfx/charizard/aleteo2.wav" : "sfx/charizard/aleteo1.wav")} volume={f < POP.flyStart ? 0.6 : 0.85} />
         </Sequence>
       ))}
-      <Sequence name="Charizard vuela" from={T.pop + POP.flyStart - 2} durationInFrames={20}>
-        <Audio src={staticFile("sfx/whoosh.wav")} volume={0.55} />
+      <Sequence name="Charizard vuela" from={T.pop + POP.flyStart - 2} durationInFrames={50}>
+        <Audio src={staticFile("sfx/charizard/vuelo.wav")} volume={1} />
       </Sequence>
       <Sequence name="Whoosh salida" from={T.exit - 2} durationInFrames={14}>
         <Audio src={staticFile("sfx/whoosh.wav")} volume={0.45} />
