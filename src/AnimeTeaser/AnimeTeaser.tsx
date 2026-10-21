@@ -127,7 +127,7 @@ const Captions: React.FC<{ t: number; frame: number; fps: number }> = ({ t, fram
               textShadow: "0 6px 0 rgba(0,0,0,0.55), 0 0 30px rgba(0,0,0,0.6)",
             }}
           >
-            {caps[i].text}{" "}
+            {caps[i].text.replace(/[.…]+$/, "")}{" "}
           </span>
         );
       })}
