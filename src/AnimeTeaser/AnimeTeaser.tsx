@@ -98,7 +98,7 @@ const Captions: React.FC<{ t: number; frame: number; fps: number }> = ({ t, fram
   let start = 0;
   let n = 0;
   for (let i = 0; i <= cur; i++) {
-    if (i > 0 && (/[.,…?]$/.test(caps[i - 1].text) || n >= 5)) {
+    if (i > 0 && (/[.,…?]$/.test(caps[i - 1].text) || n >= 5 || caps[i].text === "Anime")) {
       start = i;
       n = 0;
     }
@@ -106,10 +106,10 @@ const Captions: React.FC<{ t: number; frame: number; fps: number }> = ({ t, fram
   }
   // El bloque desaparece si la voz calla un rato
   if (t > caps[cur].endMs / 1000 + 0.6 && cur < caps.length - 1) return null;
-  const oneLine = caps[start].text.toLowerCase() === "en" && caps[start + 1]?.text === "Anime";
+  const oneLine = caps[start].text === "Anime";
   return (
-    // "EN ANIME INDUSTRY." va en una sola línea: el nombre del club no se parte
-    <div style={{ position: "absolute", top: 1360, left: oneLine ? 40 : 70, right: oneLine ? 40 : 70, textAlign: "center", whiteSpace: oneLine ? "nowrap" : undefined, fontFamily: SANS, fontWeight: 800, fontSize: oneLine ? 80 : 92, lineHeight: 1.05, letterSpacing: "-0.02em", textTransform: "uppercase" }}>
+    // "EN" sale solo; luego "ANIME INDUSTRY." en una sola línea: el nombre del club no se parte
+    <div style={{ position: "absolute", top: 1360, left: oneLine ? 40 : 70, right: oneLine ? 40 : 70, textAlign: "center", whiteSpace: oneLine ? "nowrap" : undefined, fontFamily: SANS, fontWeight: 800, fontSize: oneLine ? 86 : 92, lineHeight: 1.05, letterSpacing: "-0.02em", textTransform: "uppercase" }}>
       {Array.from({ length: cur - start + 1 }, (_, k) => start + k).map((i) => {
         const local = frame - Math.round((caps[i].startMs / 1000) * fps);
         const s = spring({ frame: local, fps, config: { damping: 11, stiffness: 260 } });
