@@ -61,15 +61,40 @@ const Photo: React.FC<{ s: Shot; start: number; end: number }> = ({ s, start, en
 };
 
 // Logo completo (capas originales), para el cierre
+// "ANIME INDUSTRY" en una sola línea: las mismas piezas, a escala y alineadas por abajo encima del eslogan
+const ONE_LINE = (() => {
+  const words = [L.letters.slice(0, 5), L.letters.slice(5)].map((ls) => ({
+    x0: Math.min(...ls.map((l) => l.x)),
+    x1: Math.max(...ls.map((l) => l.x + l.w)),
+    bottom: Math.max(...ls.map((l) => l.y + l.h)),
+  }));
+  const gap = 40;
+  const total = words[0].x1 - words[0].x0 + gap + words[1].x1 - words[1].x0;
+  const scale = 0.66;
+  return { words, gap, scale, left: L.circle.cx - (total * scale) / 2, baseline: 405 };
+})();
+const oneLine = (l: Layer, k: number): Layer => {
+  const { words, gap, scale, left, baseline } = ONE_LINE;
+  const w = k < 5 ? 0 : 1;
+  const offset = w === 0 ? 0 : words[0].x1 - words[0].x0 + gap;
+  return {
+    name: l.name,
+    x: left + (offset + l.x - words[w].x0) * scale,
+    y: baseline - (words[w].bottom - l.y) * scale,
+    w: l.w * scale,
+    h: l.h * scale,
+  };
+};
+
 const LogoStatic: React.FC<{ scale: number }> = ({ scale }) => {
   const r = L.circle.r;
   const at = (l: Layer) => ({ position: "absolute" as const, left: 540 + (l.x - L.circle.cx), top: 860 + (l.y - L.circle.cy), width: l.w, height: l.h });
   return (
     <AbsoluteFill style={{ scale: `${scale}`, transformOrigin: "540px 860px" }}>
       <div style={{ position: "absolute", left: 540 - r, top: 860 - r, width: 2 * r, height: 2 * r, borderRadius: "50%", background: "#fff" }} />
-      <Img src={staticFile("anime/logo/rayos.png")} style={at({ name: "rayos", x: 0, y: 0, w: 1206, h: 788 })} />
-      {L.letters.map((l) => (
-        <Img key={l.name} src={staticFile(`anime/logo/${l.name}.png`)} style={at(l)} />
+      <Img src={staticFile("anime/logo/rayos_llenos.png")} style={at({ name: "rayos", x: 0, y: 0, w: 1206, h: 788 })} />
+      {L.letters.map((l, k) => (
+        <Img key={l.name} src={staticFile(`anime/logo/${l.name}.png`)} style={at(oneLine(l, k))} />
       ))}
       <Img src={staticFile("anime/logo/eslogan.png")} style={at(L.slogan)} />
       <Img src={staticFile("anime/logo/desde.png")} style={at(L.desde)} />

@@ -94,6 +94,20 @@ edge = np.clip(yy / 140, 0, 1) * np.clip((H - 1 - yy) / 140, 0, 1)
 a = (red * edge * circle * ~used * 255).astype(np.uint8)
 Image.fromarray(np.dstack([im, a]).astype(np.uint8)).save(f"{out}/rayos.png")
 layers["rays"] = {"name": "rayos", "x": 0, "y": 0, "w": W, "h": H}
+
+# 3) Rayos sin huecos (para colocar las letras en otra posición): se rellena lo que tapaban las letras
+import cv2  # noqa: E402
+
+letters_mask = np.zeros((H, W), np.uint8)
+for _, m in LETTERS:
+    letters_mask |= nd.binary_dilation(m, iterations=4).astype(np.uint8)
+bgr = cv2.cvtColor(im.astype(np.uint8), cv2.COLOR_RGB2BGR)
+filled = cv2.cvtColor(cv2.inpaint(bgr, letters_mask * 255, 7, cv2.INPAINT_TELEA), cv2.COLOR_BGR2RGB).astype(int)
+fr, fg_, fb = filled[..., 0], filled[..., 1], filled[..., 2]
+red2 = np.clip((fr - (fg_ + fb) / 2 - 10) / 80, 0, 1)
+slog = nd.binary_dilation(SLOGAN | DESDE, iterations=2)
+a2 = (red2 * edge * circle * ~slog * 255).astype(np.uint8)
+Image.fromarray(np.dstack([filled, a2]).astype(np.uint8)).save(f"{out}/rayos_llenos.png")
 layers["circle"] = {"cx": CX, "cy": CY, "r": 506}
 json.dump(layers, open(f"{out}/capas.json", "w"), indent=1)
 print(json.dumps(layers["letters"]))
