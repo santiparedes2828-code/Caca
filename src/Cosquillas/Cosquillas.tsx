@@ -59,6 +59,7 @@ const TITLES: { at: number; title: string; sub: string }[] = [
   { at: 73, title: "hook house", sub: "edición que no se ve venir" },
 ];
 
+// Momentos con "click" (antes llevaban etiqueta de texto; se quitó para no repetir los subtítulos)
 const LABELS: { from: number; to: number; text: string; color: string }[] = [
   { from: 5, to: 9, text: "COSQUILLAS", color: E.red },
   { from: 10, to: 11, text: "NADA", color: E.gold },
@@ -99,7 +100,7 @@ const Captions: React.FC<{ t: number; frame: number; fps: number }> = ({ t, fram
   }
   const words = Array.from({ length: cur - start + 1 }, (_, k) => start + k);
   return (
-    <div style={{ position: "absolute", top: 1236, left: 80, right: 180, textAlign: "center", fontFamily: SANS, fontSize: 64, lineHeight: 1.25, letterSpacing: "-0.01em" }}>
+    <div style={{ position: "absolute", top: 1236, left: 80, right: 180, textAlign: "center", fontFamily: SANS, fontSize: 74, lineHeight: 1.2, letterSpacing: "-0.01em" }}>
       {words.map((i) => {
         const local = frame - Math.round(sec(i) * fps);
         const p = interpolate(local, [0, 4], [0, 1], opt);
@@ -243,8 +244,6 @@ export const Cosquillas: React.FC = () => {
 
   const ti = pick(TITLES, t);
   const titleIn = interpolate(frame, [w(TITLES[ti].at), w(TITLES[ti].at) + 6], [0, 1], opt);
-  const label = LABELS.find((l) => between(l.from, l.to));
-  const labelIn = label ? spring({ frame: frame - w(label.from), fps, config: { damping: 12, stiffness: 240 } }) : 0;
 
   return (
     <AbsoluteFill style={{ background: E.bg }}>
@@ -297,28 +296,6 @@ export const Cosquillas: React.FC = () => {
       </div>
       <Clock frame={frame} />
 
-      {/* Etiqueta de acción */}
-      {label ? (
-        <div
-          style={{
-            position: "absolute",
-            top: 390,
-            left: 40,
-            right: 120,
-            textAlign: "center",
-            fontFamily: SANS,
-            fontWeight: 800,
-            fontSize: 58,
-            letterSpacing: "0.1em",
-            color: label.color,
-            scale: `${1.15 - 0.15 * labelIn}`,
-            opacity: labelIn,
-            textShadow: "0 4px 18px rgba(0,0,0,0.6)",
-          }}
-        >
-          {label.text}
-        </div>
-      ) : null}
 
       {bubble > 0 ? <Prediction s={bubble} t={t} /> : null}
       {vol > 0 ? <Volume s={vol} level={level} /> : null}
