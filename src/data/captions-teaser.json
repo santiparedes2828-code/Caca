@@ -1,0 +1,275 @@
+[
+ {
+  "text": "Algo",
+  "startMs": 80,
+  "endMs": 480,
+  "timestampMs": 280,
+  "confidence": null
+ },
+ {
+  "text": "se",
+  "startMs": 560,
+  "endMs": 640,
+  "timestampMs": 600,
+  "confidence": null
+ },
+ {
+  "text": "acerca…",
+  "startMs": 840,
+  "endMs": 1560,
+  "timestampMs": 1200,
+  "confidence": null
+ },
+ {
+  "text": "Llegó",
+  "startMs": 1840,
+  "endMs": 2240,
+  "timestampMs": 2040,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 2320,
+  "endMs": 2400,
+  "timestampMs": 2360,
+  "confidence": null
+ },
+ {
+  "text": "camión.",
+  "startMs": 2520,
+  "endMs": 3200,
+  "timestampMs": 2860,
+  "confidence": null
+ },
+ {
+  "text": "Pesada.",
+  "startMs": 3440,
+  "endMs": 4320,
+  "timestampMs": 3880,
+  "confidence": null
+ },
+ {
+  "text": "Misteriosa.",
+  "startMs": 4560,
+  "endMs": 5720,
+  "timestampMs": 5140,
+  "confidence": null
+ },
+ {
+  "text": "La",
+  "startMs": 6000,
+  "endMs": 6080,
+  "timestampMs": 6040,
+  "confidence": null
+ },
+ {
+  "text": "bajamos",
+  "startMs": 6133,
+  "endMs": 6480,
+  "timestampMs": 6306,
+  "confidence": null
+ },
+ {
+  "text": "con",
+  "startMs": 6560,
+  "endMs": 6640,
+  "timestampMs": 6600,
+  "confidence": null
+ },
+ {
+  "text": "cuidado…",
+  "startMs": 6720,
+  "endMs": 7440,
+  "timestampMs": 7080,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 7680,
+  "endMs": 7760,
+  "timestampMs": 7720,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 7840,
+  "endMs": 7920,
+  "timestampMs": 7880,
+  "confidence": null
+ },
+ {
+  "text": "abrimos.",
+  "startMs": 8000,
+  "endMs": 8840,
+  "timestampMs": 8420,
+  "confidence": null
+ },
+ {
+  "text": "Espiral",
+  "startMs": 9040,
+  "endMs": 9520,
+  "timestampMs": 9280,
+  "confidence": null
+ },
+ {
+  "text": "por",
+  "startMs": 9600,
+  "endMs": 9680,
+  "timestampMs": 9640,
+  "confidence": null
+ },
+ {
+  "text": "espiral,",
+  "startMs": 9760,
+  "endMs": 10480,
+  "timestampMs": 10120,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 10520,
+  "endMs": 10560,
+  "timestampMs": 10540,
+  "confidence": null
+ },
+ {
+  "text": "estamos",
+  "startMs": 10640,
+  "endMs": 11120,
+  "timestampMs": 10880,
+  "confidence": null
+ },
+ {
+  "text": "preparando.",
+  "startMs": 11200,
+  "endMs": 11840,
+  "timestampMs": 11520,
+  "confidence": null
+ },
+ {
+  "text": "¿Qué",
+  "startMs": 12240,
+  "endMs": 12320,
+  "timestampMs": 12280,
+  "confidence": null
+ },
+ {
+  "text": "crees",
+  "startMs": 12400,
+  "endMs": 12640,
+  "timestampMs": 12520,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 12720,
+  "endMs": 12800,
+  "timestampMs": 12760,
+  "confidence": null
+ },
+ {
+  "text": "va",
+  "startMs": 12840,
+  "endMs": 12880,
+  "timestampMs": 12860,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 12960,
+  "endMs": 13000,
+  "timestampMs": 12980,
+  "confidence": null
+ },
+ {
+  "text": "salir",
+  "startMs": 13040,
+  "endMs": 13360,
+  "timestampMs": 13200,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 13400,
+  "endMs": 13440,
+  "timestampMs": 13420,
+  "confidence": null
+ },
+ {
+  "text": "aquí?",
+  "startMs": 13560,
+  "endMs": 14040,
+  "timestampMs": 13800,
+  "confidence": null
+ },
+ {
+  "text": "Muy",
+  "startMs": 14320,
+  "endMs": 14480,
+  "timestampMs": 14400,
+  "confidence": null
+ },
+ {
+  "text": "pronto…",
+  "startMs": 14560,
+  "endMs": 15360,
+  "timestampMs": 14960,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 15480,
+  "endMs": 15600,
+  "timestampMs": 15540,
+  "confidence": null
+ },
+ {
+  "text": "Anime",
+  "startMs": 15680,
+  "endMs": 16000,
+  "timestampMs": 15840,
+  "confidence": null
+ },
+ {
+  "text": "Industry.",
+  "startMs": 16160,
+  "endMs": 17120,
+  "timestampMs": 16640,
+  "confidence": null
+ },
+ {
+  "text": "Comenta",
+  "startMs": 17200,
+  "endMs": 17520,
+  "timestampMs": 17360,
+  "confidence": null
+ },
+ {
+  "text": "qué",
+  "startMs": 17680,
+  "endMs": 17760,
+  "timestampMs": 17720,
+  "confidence": null
+ },
+ {
+  "text": "crees",
+  "startMs": 17840,
+  "endMs": 18080,
+  "timestampMs": 17960,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 18160,
+  "endMs": 18240,
+  "timestampMs": 18200,
+  "confidence": null
+ },
+ {
+  "text": "es.",
+  "startMs": 18320,
+  "endMs": 18880,
+  "timestampMs": 18600,
+  "confidence": null
+ }
+]

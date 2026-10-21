@@ -10,11 +10,11 @@ import capas from "../../public/anime/logo/capas.json";
 // caen del cielo y se estrellan contra el concreto, se revelan rayos, eslogan y "DESDE 1990",
 // y un corte con impacto da paso a los clips.
 
-type Layer = { name: string; x: number; y: number; w: number; h: number };
+export type Layer = { name: string; x: number; y: number; w: number; h: number };
 const L = capas as { letters: Layer[]; slogan: Layer; desde: Layer; rays: Layer; circle: { cx: number; cy: number; r: number } };
 
 // Línea de tiempo (frames a 30 fps)
-const T = {
+export const T = {
   flip: 96, // la carta empieza a girar (la aparición 0–96 no cambia)
   flipDur: 32,
   get reveal() {

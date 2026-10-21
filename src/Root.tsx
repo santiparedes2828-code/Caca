@@ -9,6 +9,7 @@ import { Viral, viralDuration } from "./Viral/Viral";
 import { Pulgar, pulgarDuration } from "./Pulgar/Pulgar";
 import { Reflejo, reflejoDuration } from "./Reflejo/Reflejo";
 import { AnimeIntro, animeIntroDuration } from "./AnimeIntro/AnimeIntro";
+import { AnimeTeaser, animeTeaserDuration } from "./AnimeTeaser/AnimeTeaser";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -41,6 +42,14 @@ export const RemotionRoot: React.FC = () => {
           }}
         />
       </Folder>
+      <Composition
+        id="AnimeTeaser"
+        component={AnimeTeaser}
+        durationInFrames={animeTeaserDuration(30)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="AnimeIntro"
         component={AnimeIntro}
