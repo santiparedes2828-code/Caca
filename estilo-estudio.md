@@ -73,3 +73,5 @@
 
 ## Correcciones aprendidas
 _(Se añaden aquí, numeradas y con fecha, cuando el usuario corrija algo y le guste el resultado. Prevalecen sobre lo anterior.)_
+
+- **Material de demo (2026-10-22, TikTok bajó el antes/después):** nunca usar clips de personas que TikTok/Instagram consideren de odio o peligrosas (p. ej. Andrew Tate) ni, en general, clips de creadores ajenos. Las demos se hacen con material propio, de clientes con permiso o de bancos con licencia comercial. El clip `public/portfolio/podcast_raw.mp4` queda retirado para cualquier pieza publicable.

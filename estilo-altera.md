@@ -88,6 +88,8 @@ Repertorio, elegir según la idea y **no repetir la misma secuencia** de un reel
 ---
 
 ## Correcciones aprendidas
+
+- **Material de demo (2026-10-22, TikTok bajó el antes/después):** nunca usar clips de personas que TikTok/Instagram consideren de odio o peligrosas (p. ej. Andrew Tate) ni, en general, clips de creadores ajenos. Las demos se hacen con material propio, de clientes con permiso o de bancos con licencia comercial. El clip `public/portfolio/podcast_raw.mp4` queda retirado para cualquier pieza publicable.
 _(Las correcciones aprobadas por el usuario se añaden aquí con fecha y prevalecen sobre lo anterior.)_
 1. **No usar material de Anime Industry** en el contenido de Hookhouse (2026-10-22).
 2. **El estilo de los reels es animación ilustrada con personaje propio** (como los explicativos anteriores), no solo tipografía: el personaje es Gancho (`personaje-gancho.md`) (2026-10-22).
