@@ -1,0 +1,7 @@
+[Parsed_volumedetect_0 @ 0x55f47c4a9b80] mean_volume: -18.5 dB
+[Parsed_volumedetect_0 @ 0x55f47c4a9b80] max_volume: 0.0 dB
+    I:         -17.0 LUFS
+    LRA:         5.8 LU
+    Peak:        2.1 dBFS
+Silencios (> 0,25 s, -35 dB):
+silence_start: 32.0872	silence_end: 35.0389
