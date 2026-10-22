@@ -158,3 +158,78 @@ export const Ticket: React.FC<{ x: number; y: number; lines?: string[]; lift?: n
     ))}
   </Box>
 );
+
+// Cronómetro gigante: muestra los segundos que quedan (value) y un anillo naranja que se vacía (ring 0..1).
+// `chunk` (0..1) arranca un trozo del anillo que cae (el segundo que "ya gastaste").
+export const Stopwatch: React.FC<{ x: number; y: number; value: string; ring: number; scale?: number; squash?: number; lift?: number; rotate?: number; chunk?: number; t: number }> = ({ x, y, value, ring, scale = 1, squash = 0, lift = 0, rotate = 0, chunk = 0, t }) => {
+  const w = 420 * scale;
+  const h = 500 * scale;
+  const R = 160;
+  const cx = 210;
+  const cy = 290;
+  const arc = (a0: number, a1: number, r: number) => {
+    const p = (a: number) => `${cx + r * Math.sin(a)} ${cy - r * Math.cos(a)}`;
+    const large = a1 - a0 > Math.PI ? 1 : 0;
+    return `M${p(a0)} A${r} ${r} 0 ${large} 1 ${p(a1)}`;
+  };
+  const end = Math.max(0.0001, ring) * Math.PI * 2;
+  return (
+    <>
+      <Box x={x} y={y} w={w} h={h} squash={squash} lift={lift} rotate={rotate}>
+        <g transform={`scale(${scale})`}>
+          <rect x={180} y={44} width={60} height={50} rx={10} fill={A.orange} stroke={INK} strokeWidth={SW} />
+          <rect x={150} y={20} width={120} height={36} rx={14} fill={INK} />
+          <rect x={318} y={110} width={46} height={30} rx={10} fill={INK} transform={`rotate(40 341 125)`} />
+          <circle cx={cx} cy={cy} r={196} fill={PAPER} stroke={INK} strokeWidth={SW + 2} />
+          <circle cx={cx} cy={cy} r={R} fill="none" stroke="#E6DFD2" strokeWidth={34} />
+          <path d={arc(0, end, R)} fill="none" stroke={A.orange} strokeWidth={34} strokeLinecap="round" />
+          <text x={cx} y={cy + 52} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={150} letterSpacing="-6" fill={INK}>
+            {value}
+          </text>
+          <text x={cx} y={cy + 104} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={40} fill={A.orange} opacity={0.9 + 0.1 * Math.sin(t * 20)}>
+            SEG
+          </text>
+        </g>
+      </Box>
+      {chunk > 0 && chunk < 1 ? (
+        <div style={{ position: "absolute", left: x - w / 2, top: y - h - lift, width: w, height: h, transformOrigin: `${(cx + 120) * scale}px ${(cy - 120) * scale}px`, transform: `translate(${chunk * 160 * scale}px, ${chunk * chunk * 900 * scale}px) rotate(${chunk * 220}deg)`, opacity: 1 - chunk * 0.6 }}>
+          <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} style={{ overflow: "visible" }}>
+            <g transform={`scale(${scale})`}>
+              <path d={`${arc(Math.PI * 0.62, Math.PI * 1.05, 196)} L${cx} ${cy} Z`} fill={PAPER} stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
+              <path d={arc(Math.PI * 0.66, Math.PI * 1.0, R)} fill="none" stroke={A.orange} strokeWidth={34} />
+            </g>
+          </svg>
+        </div>
+      ) : null}
+    </>
+  );
+};
+
+// Móvil con un feed que pasa a toda velocidad (o quieto si speed = 0); cards = colores de las tarjetas
+export const PhoneFeed: React.FC<{ x: number; y: number; scroll: number; scale?: number; lift?: number; squash?: number; opacity?: number; children?: React.ReactNode }> = ({ x, y, scroll, scale = 1, lift = 0, squash = 0, opacity = 1, children }) => {
+  const w = 300 * scale;
+  const h = 560 * scale;
+  const cols = ["#D9D3C7", "#BFB7A8", "#E6DFD2", "#CFC6B6"];
+  const H = 170;
+  return (
+    <Box x={x} y={y} w={w} h={h} lift={lift} squash={squash} opacity={opacity}>
+      <g transform={`scale(${scale})`}>
+        <rect x={4} y={4} width={292} height={552} rx={40} fill={INK} />
+        <defs>
+          <clipPath id="feedclip">
+            <rect x={18} y={18} width={264} height={524} rx={28} />
+          </clipPath>
+        </defs>
+        <rect x={18} y={18} width={264} height={524} rx={28} fill="#2A2724" />
+        <g clipPath="url(#feedclip)">
+          {Array.from({ length: 5 }, (_, k) => {
+            const yy = ((((k * H - scroll) % (4 * H)) + 4 * H) % (4 * H)) - H + 30;
+            return <rect key={k} x={30} y={yy} width={240} height={H - 16} rx={18} fill={cols[k % 4]} />;
+          })}
+        </g>
+        <rect x={115} y={26} width={70} height={12} rx={6} fill="#000" />
+      </g>
+      {children}
+    </Box>
+  );
+};

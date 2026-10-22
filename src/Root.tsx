@@ -14,6 +14,7 @@ import { DIORAMAS } from "./Diorama/reels";
 import { MANIFIESTO_FRAMES, Manifiesto } from "./Altera/reels/Manifiesto";
 import { GanchoSheet } from "./Altera/GanchoSheet";
 import { PODCAST_FRAMES, Podcast } from "./Clips/Podcast";
+import { SEGUNDOS_FRAMES, Segundos } from "./Altera/reels/Segundos";
 import { ELEFANTE_FRAMES, Elefante } from "./Altera/reels/Elefante";
 import { ReelView, reelDuration } from "./Diorama/Engine";
 import { AnimeIntro, animeIntroDuration } from "./AnimeIntro/AnimeIntro";
@@ -117,6 +118,7 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      <Composition id="Segundos" component={Segundos} durationInFrames={SEGUNDOS_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Podcast" component={Podcast} durationInFrames={PODCAST_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="GanchoSheet" component={GanchoSheet} durationInFrames={60} fps={30} width={1920} height={1080} />
       <Composition id="Elefante" component={Elefante} durationInFrames={ELEFANTE_FRAMES} fps={30} width={1080} height={1920} />

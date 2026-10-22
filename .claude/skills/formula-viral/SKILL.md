@@ -76,3 +76,12 @@ Recursos de escritura que usa:
 ## Correcciones aprendidas
 
 _(Cuando el usuario corrija algo de la fórmula y le guste el resultado, se añade aquí numerado y con fecha. Prevalece sobre lo anterior.)_
+
+1. **Retención en los primeros 3 s (2026-10-22, "los videos tienen poca retención"):**
+   - Texto legible en el **frame 0** (el subtítulo ya está, o hay un número/objeto que se entiende sin audio).
+   - Algo **pasa antes de 0,5 s** (cae, se rompe, cuenta atrás en tiempo real); nunca un plano quieto más de 0,7 s en los primeros 5 s.
+   - La pregunta-gancho dura **≤ 2,5 s**; el giro con el dato llega antes de los 4 s.
+   - Un contador o algo que **corre en tiempo real** convierte el gancho en un reto ("tienes 1,7 s").
+   - **Comprimir pausas** de la voz: ningún silencio > 0,4 s (se recortan a ~0,2 s).
+   - Un remate que **demuestre** la promesa con el propio vídeo ("¿Ves? Sigues aquí" + segundos que lleva viendo).
+   - Duración objetivo para piezas de marca: **25–35 s** (por debajo de lo de arriba).

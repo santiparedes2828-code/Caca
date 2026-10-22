@@ -336,7 +336,7 @@ export const Captions: React.FC<{ words: { text: string; at: number }[]; f: numb
               transform: `translateY(${(1 - d) * -26}px) scale(${1 + 0.06 * land}, ${1 - 0.1 * land})`,
             }}
           >
-            {words[i].text.replace(/[.,:…]/g, "")}{" "}
+            {words[i].text.replace(/[.,:…]+$/, "")}{" "}
           </span>
         );
       })}
