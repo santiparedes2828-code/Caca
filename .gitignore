@@ -19,3 +19,5 @@ analisis*/voz.mp3
 # ...excepto el audio que usa el render
 !public/audio/*.wav
 !public/sfx/*.wav
+public/portfolio/podcast_raw.mp4
+analisis14/
