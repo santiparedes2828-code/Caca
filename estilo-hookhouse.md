@@ -1,6 +1,6 @@
 # estilo-hookhouse.md — Estilo principal de la marca **Hook House**
 
-> **Estilo por defecto de la marca.** Todo vídeo nuevo de Hook House usa esta guía salvo que se pida otra.
+> ⚠️ **Sustituida (2026-10-22) por `estilo-altera.md` («HOOKHOUSE ALTERA LA REALIDAD»).** De esta guía siguen vigentes la voz de marca, Inter y el CTA "HOOK"; la identidad verde y el resto quedan como histórico.
 
 Fuente del estilo: `analisis3/referencia.mp4` (37,19 s · 576x1024 · 30 fps · AAC estéreo; de 33,2 s en adelante es la cortinilla de TikTok y no cuenta).
 Motion graphic **editorial minimalista**: tipografía grande alineada a la izquierda, iconos de línea, etiquetas monoespaciadas y pestañas de progreso.
