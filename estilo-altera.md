@@ -91,3 +91,5 @@ _(Las correcciones aprobadas por el usuario se añaden aquí con fecha y prevale
 1. **No usar material de Anime Industry** en el contenido de Hookhouse (2026-10-22).
 2. **El estilo de los reels es animación ilustrada con personaje propio** (como los explicativos anteriores), no solo tipografía: el personaje es Gancho (`personaje-gancho.md`) (2026-10-22).
 3. **Sin texto doble**: si una palabra ya está en escena como objeto, el subtítulo no la repite (2026-10-22).
+4. **El CTA siempre dice qué recibe la persona**: «Escríbeme HOOK por DM… y te edito una muestra gratis» (oferta del perfil). En pantalla: "Escríbeme" + caja HOOK + ticket "TE EDITO UNA MUESTRA GRATIS" (`Ticket` en `props.tsx`) (2026-10-22).
+5. **Arranque con impacto físico en el frame 0**: algo grande ya está cayendo y aterriza antes de los 0,3 s (golpe, onda de choque en el suelo, el escenario acusa el impacto) (2026-10-22).

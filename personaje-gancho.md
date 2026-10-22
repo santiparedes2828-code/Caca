@@ -46,7 +46,8 @@
 - **Sin texto doble:** cuando la palabra ya está en escena como objeto (un título que cae, el CTA), el subtítulo calla.
 - Utilería plana de `props.tsx` (sábana, cajón, tarjetas, letras sueltas, globos). Un color fuera de paleta solo si el guion lo nombra (el elefante **rosa**).
 - Material real del portafolio dentro de una tarjeta (`OffthreadVideo`) con `Tag` "REEL DE HOOKHOUSE".
-- Cierre: HOOK y HOUSE caen con peso, Gancho salta encima, CTA "Escríbeme HOOK" y Gancho engancha la caja naranja. Loop: el último plano vuelve al primero.
+- Arranque: en el frame 0 algo enorme ya está cayendo; al aterrizar (antes de 0,3 s) el golpe lanza a Gancho por los aires, aterriza y lanza el anzuelo.
+- Cierre: HOOK y HOUSE caen con peso, Gancho salta encima, CTA "Escríbeme HOOK por DM… y te edito una muestra gratis": Gancho engancha la caja naranja, corta con las tijeras y cae el ticket del beneficio. Loop: el último plano vuelve al primero.
 
 ## 7. Checklist del personaje
 - [ ] Gancho hace la acción principal de cada tramo · [ ] tensión antes de cada tirón y consecuencia después · [ ] boca sincronizada con la voz

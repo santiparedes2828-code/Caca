@@ -48,10 +48,10 @@ export const Elephant: React.FC<{ x: number; y: number; scale?: number; pink?: n
 };
 
 // Sábana que tapa algo (con la silueta insinuada y un "?" naranja). Gancho la arrastra con su anzuelo.
-export const Cover: React.FC<{ x: number; y: number; w?: number; h?: number; rotate?: number; lift?: number; opacity?: number; t: number }> = ({ x, y, w = 470, h = 400, rotate = 0, lift = 0, opacity = 1, t }) => {
+export const Cover: React.FC<{ x: number; y: number; w?: number; h?: number; rotate?: number; lift?: number; opacity?: number; squash?: number; t: number }> = ({ x, y, w = 470, h = 400, rotate = 0, lift = 0, opacity = 1, squash = 0, t }) => {
   const wob = 6 * Math.sin(t * 7);
   return (
-    <Box x={x} y={y} w={w} h={h} rotate={rotate} lift={lift} opacity={opacity}>
+    <Box x={x} y={y} w={w} h={h} rotate={rotate} lift={lift} opacity={opacity} squash={squash}>
       <path d={`M14 ${h} C10 ${h * 0.55} 40 ${h * 0.32} 110 ${h * 0.3} C150 ${h * 0.05 + wob} 330 ${h * 0.02} 380 ${h * 0.18} C440 ${h * 0.3} 460 ${h * 0.6} ${w - 10} ${h} Z`} fill={PAPER} stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
       {[0.3, 0.5, 0.7].map((k) => (
         <path key={k} d={`M${w * k} ${h * 0.25} Q${w * k + 20} ${h * 0.6} ${w * k - 10} ${h}`} stroke="#D9D3C7" strokeWidth={6} fill="none" />
@@ -145,3 +145,16 @@ export const Thought: React.FC<{ x: number; y: number; s: number; children?: Rea
     </div>
   );
 };
+
+// Ticket del beneficio del CTA (lo que recibe quien escribe)
+export const Ticket: React.FC<{ x: number; y: number; lines?: string[]; lift?: number; squash?: number; opacity?: number }> = ({ x, y, lines = ["TE EDITO UNA", "MUESTRA GRATIS"], lift = 0, squash = 0, opacity = 1 }) => (
+  <Box x={x} y={y} w={500} h={190} lift={lift} squash={squash} opacity={opacity}>
+    <path d="M14 10 H486 Q496 10 496 20 V71 A24 24 0 0 0 496 119 V170 Q496 180 486 180 H14 Q4 180 4 170 V119 A24 24 0 0 0 4 71 V20 Q4 10 14 10 Z" fill={PAPER} stroke={INK} strokeWidth={SW} />
+    <line x1={70} y1={24} x2={70} y2={166} stroke={A.orange} strokeWidth={6} strokeDasharray="10 9" />
+    {lines.map((l, i) => (
+      <text key={i} x={284} y={84 + i * 56} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={42} fill={i === 1 ? A.orange : INK} letterSpacing="-1.5">
+        {l}
+      </text>
+    ))}
+  </Box>
+);

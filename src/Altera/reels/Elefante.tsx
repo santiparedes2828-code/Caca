@@ -1,9 +1,9 @@
 import type { Caption } from "@remotion/captions";
 import React from "react";
 import { AbsoluteFill, Audio, OffthreadVideo, Sequence, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
-import captionsJson from "../../data/captions-imagen.json";
+import captionsJson from "../../data/captions-imagen-cta.json";
 import { Gancho, antennaWorld, type Expr, type GanchoPose } from "../Gancho";
-import { Card, Cover, Elephant, Letters, MemoryBox, Speech, Thought } from "../props";
+import { Card, Cover, Elephant, Letters, MemoryBox, Speech, Thought, Ticket } from "../props";
 import { A, Captions, FONT, Paper, Rope, SOUND, Slab, Tag, fall, impact, lin, yank } from "../system";
 
 // "El elefante rosa" — primer reel narrado por GANCHO (personaje-gancho.md · estilo-altera.md · formula-viral).
@@ -13,8 +13,8 @@ import { A, Captions, FONT, Paper, Rope, SOUND, Slab, Tag, fall, impact, lin, ya
 const caps = captionsJson as Caption[];
 const W = (i: number) => Math.round((caps[i].startMs / 1000) * 30);
 const E = (i: number) => Math.round((caps[i].endMs / 1000) * 30);
-export const ELEFANTE_FRAMES = 1020;
-const LOOP = 996;
+export const ELEFANTE_FRAMES = 1100;
+const LOOP = 1074;
 const FLOOR = 1150;
 // El escenario se dibuja en coordenadas de "maqueta" y se escala 1,25× con el suelo en y = 1330 (los subtítulos van arriba)
 const S = 1.25;
@@ -31,7 +31,7 @@ const talkAt = (f: number) => {
   return 0;
 };
 
-const ORIGIN = { cover: 320, gancho: 720 }; // plano inicial (y final del loop)
+const ORIGIN = { cover: 370, gancho: 720 }; // plano inicial (y final del loop)
 
 export const Elefante: React.FC = () => {
   const f = useCurrentFrame();
@@ -44,17 +44,45 @@ export const Elefante: React.FC = () => {
   let g: GanchoPose = { x: ORIGIN.gancho, y: FLOOR, scale: 0.62, t, talk, expr: "normal" as Expr };
   let rope: { bx: number; by: number; slack: number; buzz: number; screen?: boolean } | null = null;
 
-  // B1 · arrastra la sábana (0 → "esto")
+  // B1 · frame 0: algo gigante tapado cae del cielo; el golpe lanza a Gancho por los aires; aterriza,
+  // lanza el anzuelo, lo engancha y empieza el tira y afloja (0 → "esto")
+  const LAND = 6;
   const tYank = W(12);
-  const jerkPhase = f / 26;
+  const coverLift = f < LAND ? 1300 * (1 - (f + 3) / (LAND + 3)) ** 2 : 0;
+  const coverSquash = f >= LAND ? 0.45 * impact(f - LAND) : 0;
+  const tCast = 34;
+  const tCatch = 44;
+  const tTug = 50;
+  const jerkPhase = Math.max(0, f - tTug) / 22;
   const jerk = Math.floor(jerkPhase) + Math.min(1, (jerkPhase % 1) * 3) ** 2;
-  const coverX = ORIGIN.cover + 34 * Math.min(jerk, 4.6);
-  const coverHook = { x: coverX + 150, y: FLOOR - 330 };
+  const coverX = ORIGIN.cover + 34 * Math.min(jerk, 3.6);
+  const coverHook = { x: coverX + 150, y: FLOOR - 385 };
   const yk = f >= tYank ? yank(f - tYank, 9) : 0;
-  if (f < tYank + 10) {
-    const pulse = (jerkPhase % 1) < 0.3 ? 1 : 0;
-    g = { ...g, expr: "focused", lean: 12 + 5 * pulse, armL: 105, armR: 70, bendL: -0.4, bendR: 0.5, hookOut: true, squash: 0.08 * pulse };
-    rope = { bx: coverHook.x + yk * 700, by: coverHook.y - yk * 300, slack: 0, buzz: pulse };
+  if (f < tCast) {
+    const k = f - LAND;
+    const air = k >= 0 && k < 20 ? Math.sin((Math.PI * k) / 20) : 0;
+    g = {
+      ...g,
+      expr: f < LAND ? "surprised" : k < 20 ? "surprised" : "smug",
+      look: f < LAND ? { x: -0.6, y: -1 } : { x: -0.8, y: 0 },
+      y: FLOOR - 320 * air,
+      lean: k >= 0 && k < 20 ? -28 * Math.sin((Math.PI * k) / 10) : 0,
+      armL: k >= 0 && k < 20 ? 160 : 30,
+      armR: k >= 0 && k < 20 ? 160 : 30,
+      squash: f < LAND ? 0.15 : k >= 20 ? 0.45 * impact(k - 20) : -0.15,
+    };
+  } else if (f < tYank + 10) {
+    // Lanza el anzuelo (vuela en arco), engancha y tira a tirones
+    const cast = lin(f, tCast, tCatch, 0, 1, (x) => 1 - (1 - x) ** 2);
+    const pulse = f >= tTug && jerkPhase % 1 < 0.3 ? 1 : 0;
+    g = { ...g, expr: f < tCatch ? "focused" : "strain", lean: f < tCatch ? -6 + 10 * cast : 12 + 5 * pulse, armL: f < tCatch ? 40 : 105, armR: f < tCatch ? 160 - 100 * cast : 70, bendL: -0.4, bendR: 0.5, hookOut: true, squash: 0.08 * pulse };
+    const a0 = antennaWorld(g);
+    rope = {
+      bx: f < tCatch ? a0.x + (coverHook.x - a0.x) * cast : coverHook.x + yk * 700,
+      by: f < tCatch ? a0.y + (coverHook.y - a0.y) * cast - 260 * Math.sin(Math.PI * cast) : coverHook.y - yk * 300,
+      slack: f < tCatch ? 0.5 : f < tTug ? 0.3 : 0,
+      buzz: pulse,
+    };
     if (f >= tYank) g = { ...g, lean: 12 + 18 * yk, expr: "surprised" };
   }
   // Se cae sentado por el tirón y se levanta
@@ -132,15 +160,16 @@ export const Elefante: React.FC = () => {
     const hop = lin(f, W(79) + 8, W(79) + 18);
     g = { ...g, x: 660, y: FLOOR - 186 * hop - 90 * Math.sin(Math.PI * hop), scale: 0.5, expr: f >= W(85) ? "happy" : "smug", armL: 30, armR: 40, squash: f >= W(79) + 18 ? 0.3 * impact(f - W(79) - 18) : 0 };
     if (f >= tBox + 4) {
-      g = { ...g, hookOut: true, expr: "focused", lean: 6 };
+      g = { ...g, hookOut: true, expr: f >= W(95) ? "happy" : "focused", lean: 6, item: between(W(92) - 2, W(94) + 6) ? "scissors" : "none", armR: between(W(92) - 2, W(94) + 6) ? 80 : 40 };
       rope = { screen: true, bx: 712, by: 476, slack: interpolate(f, [tBox + 4, tBox + 14], [0.8, 0.1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }), buzz: f >= tBox + 14 ? 0.4 : 0 };
     }
   }
   // Loop: vuelve la sábana y Gancho la engancha como en el frame 0
   const loopP = lin(f, LOOP, ELEFANTE_FRAMES - 4, 0, 1, (x) => 1 - (1 - x) ** 2);
   if (f >= LOOP) {
-    g = { x: ORIGIN.gancho, y: FLOOR, scale: 0.62, t, expr: "focused", lean: 12 * loopP, armL: 105, armR: 70, bendL: -0.4, bendR: 0.5, hookOut: loopP > 0.4 };
-    rope = loopP > 0.4 ? { bx: ORIGIN.cover + 150, by: FLOOR - 330, slack: 0.6 * (1 - loopP), buzz: 0 } : null;
+    // vuelve al plano inicial: Gancho mira arriba, sorprendido, justo antes de que caiga la sábana
+    g = { x: ORIGIN.gancho, y: FLOOR, scale: 0.62, t, expr: "surprised", look: { x: -0.6, y: -1 * loopP }, armL: 30, armR: 30, squash: 0.15 * loopP };
+    rope = null;
   }
 
   const ant = antennaWorld(g);
@@ -148,15 +177,21 @@ export const Elefante: React.FC = () => {
 
   return (
     <Paper>
-      <AbsoluteFill style={{ transformOrigin: `540px ${FLOOR}px`, transform: `translateY(${FLOOR_SCREEN - FLOOR}px) scale(${S})` }}>
+      <AbsoluteFill style={{ transformOrigin: `540px ${FLOOR}px`, transform: `translateY(${FLOOR_SCREEN - FLOOR + 34 * impact(f - LAND)}px) scale(${S * (1 + 0.05 * impact(f - LAND))})` }}>
       {/* Suelo: línea de apoyo muy sutil */}
       <div style={{ position: "absolute", left: 0, right: 0, top: FLOOR + 6, height: 2, background: "rgba(14,13,11,0.10)" }} />
 
+      {/* Onda de choque en el suelo cuando aterriza la sábana (frame 6) */}
+      {f >= LAND && f < LAND + 14 ? (
+        <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible" }}>
+          <ellipse cx={ORIGIN.cover} cy={FLOOR} rx={240 + 380 * lin(f, LAND, LAND + 14, 0, 1, (x) => 1 - (1 - x) ** 2)} ry={(240 + 380 * lin(f, LAND, LAND + 14, 0, 1, (x) => 1 - (1 - x) ** 2)) * 0.1} fill="none" stroke={A.ink} strokeWidth={10 * (1 - lin(f, LAND, LAND + 14))} opacity={1 - lin(f, LAND + 4, LAND + 14)} />
+        </svg>
+      ) : null}
       {/* B1–B2 */}
       {f < W(27) + 6 ? (
         <>
           {f >= tYank - 1 ? <Elephant x={eleX} y={FLOOR} scale={0.8} pink={pinkP} squash={eleSquash} t={t} trunk={between(W(14), W(15) + 10) ? 1 : 0} /> : null}
-          {yk < 1 ? <Cover x={coverX + yk * 700} y={FLOOR} lift={yk * 500} rotate={yk * 30} opacity={1 - yk * 0.3} t={t} /> : null}
+          {yk < 1 ? <Cover x={coverX + yk * 700} y={FLOOR} w={520} h={460} lift={coverLift + yk * 500} rotate={yk * 30} opacity={1 - yk * 0.3} t={t} squash={coverSquash} /> : null}
         </>
       ) : null}
       {thoughtS > 0 ? (
@@ -226,7 +261,7 @@ export const Elefante: React.FC = () => {
       ) : null}
 
       {/* Loop: la sábana vuelve a caer en su sitio */}
-      {f >= LOOP ? <Cover x={ORIGIN.cover} y={FLOOR} lift={(1 - fall(f - LOOP, fps)) * 1100} t={t} /> : null}
+      {f >= LOOP + 4 ? <Cover x={ORIGIN.cover} y={FLOOR} w={520} h={460} lift={2600 - 2000 * lin(f, LOOP + 4, ELEFANTE_FRAMES - 1) ** 2} t={t} /> : null}
 
       <Gancho {...g} />
       </AbsoluteFill>
@@ -257,10 +292,15 @@ export const Elefante: React.FC = () => {
       {/* Sin texto doble: cuando la palabra ya es un objeto en escena (el nombre del efecto, el CTA), el subtítulo calla */}
       {between(W(39), W(45)) || f >= W(86) ? null : <Captions words={words} f={f} fps={fps} top={250} size={74} keys={[2, 12, 15, 26, 31, 44, 51, 59, 72, 76, 85, 87]} />}
 
+      {/* Beneficio del CTA: el ticket cae y aterriza sobre HOOKHOUSE */}
+      {f >= W(94) - 6 && f < LOOP + 8 ? <Ticket x={330} y={1062} lift={(1 - fall(f - (W(94) - 6), fps)) * 1200} squash={0.4 * impact(f - W(94) - 1)} opacity={1 - lin(f, LOOP, LOOP + 8)} /> : null}
+
       {/* Sonido */}
-      <Audio src={staticFile("audio/voz_imagen.wav")} />
-      <Snd at={4} src={SOUND.tension} vol={0.6} />
-      <Snd at={56} src={SOUND.tension} vol={0.45} />
+      <Audio src={staticFile("audio/voz_imagen_cta.wav")} />
+      <Snd at={LAND - 1} src={SOUND.impacto} vol={1} />
+      <Snd at={LAND + 19} src={SOUND.impacto} vol={0.5} />
+      <Snd at={tCatch - 2} src={SOUND.tension} vol={0.6} />
+      <Snd at={tTug + 22} src={SOUND.tension} vol={0.45} />
       <Snd at={tYank} src={SOUND.tiron} vol={0.7} />
       <Snd at={fallT} src={SOUND.impacto} vol={0.6} />
       <Snd at={W(15)} src={SOUND.impacto} vol={0.8} />
@@ -276,6 +316,7 @@ export const Elefante: React.FC = () => {
       <Snd at={tHook + 6} src={SOUND.impacto} vol={0.8} />
       <Snd at={tHouse + 6} src={SOUND.impacto} vol={0.8} />
       <Snd at={tBox} src={SOUND.impacto} vol={0.5} />
+      <Snd at={W(94) + 1} src={SOUND.impacto} vol={0.8} />
       <Snd at={LOOP + 8} src={SOUND.impacto} vol={0.6} />
     </Paper>
   );
