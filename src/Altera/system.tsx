@@ -34,7 +34,8 @@ export const lin = (f: number, a: number, b: number, from = 0, to = 1, easing?: 
 
 // ---------- Física ----------
 // Caída con peso: 0 → 1 con un único rebote corto (no gomoso)
-export const fall = (local: number, fps: number) => spring({ frame: local, fps, config: { damping: 14, stiffness: 260, mass: 1.4 } });
+// (se corta en 1: el objeto no atraviesa el suelo; el rebote lo da impact() al aterrizar)
+export const fall = (local: number, fps: number) => Math.min(1, spring({ frame: local, fps, config: { damping: 14, stiffness: 260, mass: 1.4 } }));
 // Respuesta a un impacto: 1 en el golpe y oscilación amortiguada (para aplastar/estirar)
 export const impact = (local: number) => (local < 0 ? 0 : Math.exp(-local / 5) * Math.cos(local * 0.75));
 // Tirón: arranca lento (tensión) y sale disparado
@@ -294,6 +295,48 @@ export const Headline: React.FC<{
           <span key={i} style={{ display: "inline-block", whiteSpace: "pre", opacity: p, transform: `translateY(${(1 - p) * 14}px)`, color: w.key ? A.orange : A.ink }}>
             {w.text}
             {i < words.length - 1 ? " " : ""}
+          </span>
+        );
+      })}
+    </div>
+  );
+};
+
+// ---------- Subtítulos con peso (para reels narrados) ----------
+// Bloques de hasta 5 palabras (o hasta un signo); la palabra que suena "aterriza" con un pequeño golpe.
+// Sin puntos ni comas; como mucho una palabra clave naranja por bloque.
+export const Captions: React.FC<{ words: { text: string; at: number }[]; f: number; fps: number; keys?: number[]; top?: number; size?: number }> = ({ words, f, fps, keys = [], top = 1236, size = 66 }) => {
+  let cur = -1;
+  for (let i = 0; i < words.length; i++) if (f >= words[i].at) cur = i;
+  if (cur < 0) return null;
+  let start = 0;
+  let n = 0;
+  for (let i = 0; i <= cur; i++) {
+    if (i > 0 && (/[.,:…?!]$/.test(words[i - 1].text) || n >= 5)) {
+      start = i;
+      n = 0;
+    }
+    n++;
+  }
+  return (
+    <div style={{ position: "absolute", top, left: SAFE.left, width: SAFE.right - SAFE.left, textAlign: "center", fontFamily: FONT, fontWeight: 800, fontSize: size, lineHeight: 1.1, letterSpacing: "-0.04em" }}>
+      {Array.from({ length: cur - start + 1 }, (_, k) => start + k).map((i) => {
+        const local = f - words[i].at;
+        const d = spring({ frame: local, fps, config: { damping: 13, stiffness: 320 } });
+        const land = impact(local - 3);
+        return (
+          <span
+            key={i}
+            style={{
+              display: "inline-block",
+              whiteSpace: "pre",
+              color: keys.includes(i) ? A.orange : i === cur ? A.ink : "#3A3732",
+              opacity: Math.min(1, d * 1.6),
+              transformOrigin: "50% 100%",
+              transform: `translateY(${(1 - d) * -26}px) scale(${1 + 0.06 * land}, ${1 - 0.1 * land})`,
+            }}
+          >
+            {words[i].text.replace(/[.,:…]/g, "")}{" "}
           </span>
         );
       })}

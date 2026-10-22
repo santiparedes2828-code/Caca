@@ -2,7 +2,8 @@
 
 > **Sistema visual vigente para TODO el contenido de Hookhouse** (desde 2026-10-22). Sustituye la identidad verde de `estilo-hookhouse.md`; de esa guía se mantienen la voz de marca, la tipografía Inter y el CTA "HOOK".
 > El contenido (qué se dice y cuándo) lo sigue decidiendo la skill `formula-viral`. Este archivo decide cómo se ve, cómo se mueve y cómo suena.
-> Código: `src/Altera/system.tsx` (piezas reutilizables) · primer reel: `src/Altera/reels/Manifiesto.tsx` (id `Manifiesto`).
+> Código: `src/Altera/system.tsx` (piezas reutilizables) · reels: `src/Altera/reels/Manifiesto.tsx` (id `Manifiesto`, pieza tipográfica) y `src/Altera/reels/Elefante.tsx` (id `Elefante`, explicativo animado con Gancho).
+> **Personaje de marca: GANCHO** → `personaje-gancho.md`. Los reels explicativos (dato curioso + fórmula viral) se hacen con él.
 
 ## 1. Idea
 La edición tiene **fuerza física**: las palabras pesan, aplastan y empujan; la **línea naranja** engancha, se tensa y arrastra; los cortes **abren espacio**; los clips se transforman **dentro del plano**. Cada efecto comunica una idea; si un efecto no dice nada, no va.
@@ -88,3 +89,5 @@ Repertorio, elegir según la idea y **no repetir la misma secuencia** de un reel
 ## Correcciones aprendidas
 _(Las correcciones aprobadas por el usuario se añaden aquí con fecha y prevalecen sobre lo anterior.)_
 1. **No usar material de Anime Industry** en el contenido de Hookhouse (2026-10-22).
+2. **El estilo de los reels es animación ilustrada con personaje propio** (como los explicativos anteriores), no solo tipografía: el personaje es Gancho (`personaje-gancho.md`) (2026-10-22).
+3. **Sin texto doble**: si una palabra ya está en escena como objeto, el subtítulo no la repite (2026-10-22).

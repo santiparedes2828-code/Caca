@@ -5,7 +5,7 @@ description: Sistema visual obligatorio de Hookhouse «ALTERA LA REALIDAD» (mar
 
 # Hookhouse · ALTERA LA REALIDAD
 
-1. Lee `estilo-altera.md` (reglas completas: identidad, tipografía, firma, sonidos, ritmo, transiciones, honestidad, zona segura, checklist). Prevalece su sección "Correcciones aprendidas".
+1. Lee `estilo-altera.md` y `personaje-gancho.md` (Gancho, el personaje de la marca, protagoniza y narra los reels explicativos animados) (reglas completas: identidad, tipografía, firma, sonidos, ritmo, transiciones, honestidad, zona segura, checklist). Prevalece su sección "Correcciones aprendidas".
 2. El contenido (gancho, orden, sincronía voz-imagen, respuesta al final, CTA) lo decide la skill `formula-viral`.
 3. Construye con las piezas de `src/Altera/system.tsx`; no reinventes:
    - `A`, `SAFE`, `FLOOR`, `SOUND`, `FONT`, `LABEL`: identidad, zona segura y sonidos.
@@ -14,7 +14,7 @@ description: Sistema visual obligatorio de Hookhouse «ALTERA LA REALIDAD» (mar
    - `Rope`: la línea-firma (`slack`, `buzz`, gancho) · `ClipCard`: clip real con recorte (`focus`), giro (`tilt`) y aplastado.
    - `FrameMarks`: encuadre · `Tag`: rótulo honesto del material.
    - Física: `fall`, `impact`, `yank`, `settle`, `lin`.
-4. Usa `src/Altera/reels/Manifiesto.tsx` como referencia de estructura: locución partida por frases (`PHRASES`) para colocar cada frase cuando lo pide la imagen, una escena por tramo y los sonidos con `Snd`.
+4. Para un reel explicativo animado usa `src/Altera/Gancho.tsx` (rig: expresiones, brazos, paso, `talk`, `hookOut` + `antennaWorld` para lanzar el anzuelo), `src/Altera/props.tsx` (utilería) y `Captions`; referencia: `src/Altera/reels/Elefante.tsx` (escenario en coordenadas de maqueta escalado 1,25×, subtítulos arriba, sin texto doble). Para una pieza tipográfica usa `src/Altera/reels/Manifiesto.tsx` como referencia de estructura: locución partida por frases (`PHRASES`) para colocar cada frase cuando lo pide la imagen, una escena por tramo y los sonidos con `Snd`.
 5. Varía: no repitas la secuencia del Manifiesto. Elige 3–4 transiciones del repertorio (§7) según la idea, como máximo 2 tirones de la línea, y composiciones distintas.
 6. Material: solo real del portafolio (`public/portfolio/`), rotulado con `Tag`. Nada de métricas inventadas. No usar material de Anime Industry.
 7. Renderiza, revisa una hoja de contactos a 5 fps (lectura, ritmo, transiciones, cierre/loop), corrige y entrega a −14 LUFS (loudnorm en dos pasadas).
