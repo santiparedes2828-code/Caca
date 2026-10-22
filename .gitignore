@@ -21,3 +21,7 @@ analisis*/voz.mp3
 !public/sfx/*.wav
 public/portfolio/podcast_raw.mp4
 analisis14/
+analisis*/ocr/
+analisis*/*.png
+analisis*/*.mp3
+analisis*/broll_dl/
