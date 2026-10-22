@@ -132,7 +132,7 @@ export const Slab: React.FC<{
 // ---------- Línea-firma naranja ----------
 // Va de un ancla (normalmente fuera de cuadro) a un gancho. slack = comba (0 tensa, 1 floja);
 // buzz = vibración de cuerda tensa; hook = dibuja el gancho en el extremo.
-export const Rope: React.FC<{ ax: number; ay: number; bx: number; by: number; slack?: number; buzz?: number; t: number; hook?: boolean; width?: number; opacity?: number }> = ({
+export const Rope: React.FC<{ ax: number; ay: number; bx: number; by: number; slack?: number; buzz?: number; t: number; hook?: boolean; width?: number; opacity?: number; color?: string }> = ({
   ax,
   ay,
   bx,
@@ -143,6 +143,7 @@ export const Rope: React.FC<{ ax: number; ay: number; bx: number; by: number; sl
   hook = true,
   width = 11,
   opacity = 1,
+  color = A.orange,
 }) => {
   const dx = bx - ax;
   const dy = by - ay;
@@ -161,11 +162,11 @@ export const Rope: React.FC<{ ax: number; ay: number; bx: number; by: number; sl
   return (
     <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible", opacity, pointerEvents: "none" }}>
       <path d={d} stroke="rgba(14,13,11,0.18)" strokeWidth={width} fill="none" strokeLinecap="round" transform="translate(6 14)" />
-      <path d={d} stroke={A.orange} strokeWidth={width} fill="none" strokeLinecap="round" />
+      <path d={d} stroke={color} strokeWidth={width} fill="none" strokeLinecap="round" />
       {hook ? (
         <g transform={`translate(${bx} ${by}) rotate(${ang - 90})`}>
-          <path d="M0 -6 L0 26 C0 52 -38 52 -38 26 L-38 16" stroke={A.orange} strokeWidth={width} fill="none" strokeLinecap="round" />
-          <circle r={width * 0.9} fill={A.orangeDeep} />
+          <path d="M0 -6 L0 26 C0 52 -38 52 -38 26 L-38 16" stroke={color} strokeWidth={width} fill="none" strokeLinecap="round" />
+          <circle r={width * 0.9} fill={color === A.orange ? A.orangeDeep : color} />
         </g>
       ) : null}
     </svg>
