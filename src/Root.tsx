@@ -19,6 +19,7 @@ import { LogoSquare, LogoWide } from "./Altera/Logo";
 import { PODCAST_CUT_FRAMES, PodcastCut } from "./Cut/PodcastCut";
 import { PODCAST_STUDIO_FRAMES, PodcastStudio } from "./Studio/PodcastStudio";
 import { ANTES_DESPUES_FRAMES, AntesDespues } from "./Altera/reels/AntesDespues";
+import { ANTES_DESPUES_BEAST_FRAMES, AntesDespuesBeast } from "./Altera/reels/AntesDespuesBeast";
 import { PODCAST_FRAMES, Podcast } from "./Clips/Podcast";
 import { SEGUNDOS_FRAMES, Segundos } from "./Altera/reels/Segundos";
 import { SONIDO_FRAMES, Sonido } from "./Altera/reels/Sonido";
@@ -139,6 +140,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="PodcastCut" component={PodcastCut} durationInFrames={PODCAST_CUT_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="PodcastStudio" component={PodcastStudio} durationInFrames={PODCAST_STUDIO_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="AntesDespues" component={AntesDespues} durationInFrames={ANTES_DESPUES_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="AntesDespuesBeast" component={AntesDespuesBeast} durationInFrames={ANTES_DESPUES_BEAST_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="GanchoSheet" component={GanchoSheet} durationInFrames={60} fps={30} width={1920} height={1080} />
       <Composition id="Elefante" component={Elefante} durationInFrames={ELEFANTE_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Manifiesto" component={Manifiesto} durationInFrames={MANIFIESTO_FRAMES} fps={30} width={1080} height={1920} />
