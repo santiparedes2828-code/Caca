@@ -1,5 +1,7 @@
 # estilo-corte.md — CORTE HOOKHOUSE (estilo de edición para clientes)
 
+> ⛔ **Descartado (2026-10-22).** El usuario no quiere los efectos de la marca en la edición de clientes. Lo vigente es `estilo-estudio.md` (skill `estudio-hookhouse`).
+
 > Cómo edita Hookhouse los vídeos de sus clientes (cabeza parlante, podcast, entrevista, coach a cámara).
 > Es la versión «de servicio» de `estilo-altera.md`: misma identidad (marfil, tinta, naranja, Inter 800, 3 sonidos),
 > pero **el protagonista es el cliente**. La marca se nota en tres firmas y nada más.

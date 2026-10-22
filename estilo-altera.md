@@ -3,6 +3,7 @@
 > **Sistema visual vigente para TODO el contenido de Hookhouse** (desde 2026-10-22). Sustituye la identidad verde de `estilo-hookhouse.md`; de esa guía se mantienen la voz de marca, la tipografía Inter y el CTA "HOOK".
 > El contenido (qué se dice y cuándo) lo sigue decidiendo la skill `formula-viral`. Este archivo decide cómo se ve, cómo se mueve y cómo suena.
 > Código: `src/Altera/system.tsx` (piezas reutilizables) · reels: `src/Altera/reels/Manifiesto.tsx` (id `Manifiesto`, pieza tipográfica) y `src/Altera/reels/Elefante.tsx` (id `Elefante`, explicativo animado con Gancho).
+> **Separación (2026-10-22, pedida por el usuario):** este sistema y Hookie/Gancho son SOLO para el contenido propio de Hookhouse. Lo que se entrega a los clientes usa `estilo-estudio.md` (skill `estudio-hookhouse`), sin ningún efecto de aquí.
 > **Personaje de marca: GANCHO** → `personaje-gancho.md`. Los reels explicativos (dato curioso + fórmula viral) se hacen con él.
 
 ## 1. Idea
