@@ -96,3 +96,4 @@ _(Las correcciones aprobadas por el usuario se añaden aquí con fecha y prevale
 3. **Sin texto doble**: si una palabra ya está en escena como objeto, el subtítulo no la repite (2026-10-22).
 4. **El CTA siempre dice qué recibe la persona**: «Escríbeme HOOK por DM… y te edito una muestra gratis» (oferta del perfil). En pantalla: "Escríbeme" + caja HOOK + ticket "TE EDITO UNA MUESTRA GRATIS" (`Ticket` en `props.tsx`) (2026-10-22).
 5. **Arranque con impacto físico en el frame 0**: algo grande ya está cayendo y aterriza antes de los 0,3 s (golpe, onda de choque en el suelo, el escenario acusa el impacto) (2026-10-22).
+6. **Antes/después: el frame 0 es la comparación** (las dos versiones lado a lado, en el momento más visual del después), no el bruto. Hookie arranca el ANTES y el DESPUÉS crece a pantalla completa. Datos: abrir con el bruto dejó un 38 % a los 3 s (2026-10-23, `metricas.md`).

@@ -85,3 +85,10 @@ _(Cuando el usuario corrija algo de la fórmula y le guste el resultado, se aña
    - **Comprimir pausas** de la voz: ningún silencio > 0,4 s (se recortan a ~0,2 s).
    - Un remate que **demuestre** la promesa con el propio vídeo ("¿Ves? Sigues aquí" + segundos que lleva viendo).
    - Duración objetivo para piezas de marca: **25–35 s** (por debajo de lo de arriba).
+
+2. **Datos reales de TikTok (2026-10-23, Windsor.ai — ver `metricas.md`):**
+   - Lo que mejor retiene a los 3 s es **un reto en tiempo real** (contador, puerta que se abre en el segundo exacto): 73 %.
+   - La gente se va **entre el segundo 3 y el 10**: después del gancho no puede haber explicación lenta. Piezas de marca de **15–22 s** (sustituye a los 25–35 s de la corrección 1): dato → un solo arreglo enseñado → CTA.
+   - **Nunca abrir con la parte aburrida** aunque sea "el antes": el frame 0 enseña el resultado o la comparación; lo aburrido va después y corto (≤ 1,5 s).
+   - Publicar **1 vídeo al día**, no varios seguidos.
+
