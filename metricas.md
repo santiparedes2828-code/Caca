@@ -41,3 +41,8 @@
 - Reels de Gancho del 22: ya no crecen (Sonido 851, Elefante 797, Tres 647, Segundos 583): su reparto terminó a las ~24 h.
 - Totales diarios de cuenta del 22 y 23 todavía sin entregar por TikTok (salen a 0).
 - **Decisión:** el antes/después no sirve para alcance (peor que cualquier reel de Gancho en todos los puntos). Se queda **fijado en el perfil como prueba para quien ya llegó**, no como vídeo para crecer. El alcance se busca con reels de Gancho de 12–18 s con reto en tiempo real.
+
+## 2026-10-23 · Nuevo reel «Cortes» (aplica el plan)
+- 17,7 s · reto en tiempo real (contar los cortes) · exactamente 16 cortes duros (comprobado con detección de escena) · clic en cada corte · cierre "¿Seguro que eran 16? Vuelve a contar" (bucle).
+- Dato en pantalla: curva media real de los 4 reels del 22-10 (64 % a los 3 s → 35 % a los 10 s = se va casi la mitad de los que quedaban).
+- Publicar a las 19:00 UTC. Medir: retención 3 s / 10 s, completo, comentarios (el reto pide comentar el número) y repeticiones.
