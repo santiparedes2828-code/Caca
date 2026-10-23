@@ -22,3 +22,10 @@
 3. **El antes/después murió en el segundo 2** porque abría con el bruto (lo aburrido) → abrir con la comparación/resultado y enseñar el bruto después (rehecho el 2026-10-23).
 4. 5 vídeos el mismo día compiten entre sí → **1 al día, a la misma hora**.
 5. Casi nadie visita el perfil (0–3 seguidores por vídeo) → bio con CTA: «Edito reels que retienen 🎬 Hooks · subtítulos · ritmo / 👇 Escríbeme HOOK por DM → muestra gratis».
+
+## Plan hacia 10 000 vistas de media (2026-10-23)
+- Base: ~720 vistas/vídeo (4 reels de Gancho). Objetivo: ×14.
+- Palancas medidas en las curvas de retención: a los 15 s queda un 16–28 % de la audiencia (hoy terminan los vídeos un 5–9 %) → vídeos de 12–18 s; final que enlaza con el principio (bucle).
+- Gancho tipo reto en tiempo real (73 % a los 3 s); compartidos y guardados ≈ 0 → cada vídeo con un motivo para enviarlo o guardarlo.
+- Audiencia conectada (UTC, últimos 7 días): pico 20:00–01:00, mínimo 06:00–09:00 → publicar ~19:00 UTC, 1 al día.
+- Revisión cada 3 días: el formato que pase de 40 % a los 10 s se repite; el que no, se cambia.
