@@ -29,3 +29,9 @@
 - Gancho tipo reto en tiempo real (73 % a los 3 s); compartidos y guardados ≈ 0 → cada vídeo con un motivo para enviarlo o guardarlo.
 - Audiencia conectada (UTC, últimos 7 días): pico 20:00–01:00, mínimo 06:00–09:00 → publicar ~19:00 UTC, 1 al día.
 - Revisión cada 3 días: el formato que pase de 40 % a los 10 s se repite; el que no, se cambia.
+
+## 2026-10-23 · Antes/después v2 (abre con la comparación) — primeras horas
+- 36 vistas (subido 11:37 UTC, datos aún parciales), 1 like, medio 4,9 / 25,6 s, completo 0 %.
+- Retención: 1 s 72 % · **3 s 59 %** (v1: 38 %) · 4 s 48 % · **5 s 31 %** · 10 s 14 % (v1: 10 %).
+- Lectura: la apertura nueva funciona (+21 puntos a los 3 s). La gente se va en el segundo 4–5, justo cuando el DESPUÉS vuelve al principio del clip ("we work on videos…"): después de enseñar el resultado, volver atrás es un bajón.
+- Siguiente versión: ~13 s → comparación (3,7 s) + el tramo más visual del después (lista de fases) + CTA corto; publicar a las 19:00 UTC.
