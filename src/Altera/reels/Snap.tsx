@@ -26,10 +26,42 @@ const camAt = (s: number, x: number, y: number) => {
 };
 
 // Barra de texto de Snapchat
-const SnapBar: React.FC<{ text: string; opacity: number }> = ({ text, opacity }) => (
+const SnapBar: React.FC<{ text: string; opacity: number; emoji?: boolean }> = ({ text, opacity, emoji }) => (
   <div style={{ position: "absolute", left: 0, right: 0, top: 700, padding: "18px 40px", background: "rgba(0,0,0,0.55)", textAlign: "center", opacity }}>
-    <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 500, fontSize: 50, color: "#FFFFFF", letterSpacing: "-0.01em" }}>{text}</span>
+    <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 500, fontSize: 50, color: "#FFFFFF", letterSpacing: "-0.01em", verticalAlign: "middle" }}>{text}</span>
+    {emoji ? <ThinkingEmoji size={60} /> : null}
   </div>
+);
+
+// 🤔 dibujado en vectorial al estilo del emoji de Apple (la fuente de Apple no está disponible en el render)
+const ThinkingEmoji: React.FC<{ size: number }> = ({ size }) => (
+  <svg width={size} height={size} viewBox="0 0 128 128" style={{ display: "inline-block", verticalAlign: "middle", marginLeft: 10, marginTop: -6 }}>
+    <defs>
+      <radialGradient id="tf-face" cx="45%" cy="35%" r="70%">
+        <stop offset="0%" stopColor="#FFE873" />
+        <stop offset="55%" stopColor="#FFCC33" />
+        <stop offset="100%" stopColor="#F5A300" />
+      </radialGradient>
+      <linearGradient id="tf-hand" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#FFD54A" />
+        <stop offset="100%" stopColor="#F2A100" />
+      </linearGradient>
+    </defs>
+    <circle cx={62} cy={58} r={52} fill="url(#tf-face)" />
+    <ellipse cx={48} cy={24} rx={22} ry={9} fill="#FFFFFF" opacity={0.35} />
+    {/* cejas: una levantada, otra recta */}
+    <path d="M30 34 Q42 22 54 32" stroke="#6B3A1E" strokeWidth={6} fill="none" strokeLinecap="round" />
+    <path d="M70 36 L92 33" stroke="#6B3A1E" strokeWidth={6} fill="none" strokeLinecap="round" />
+    {/* ojos */}
+    <ellipse cx={43} cy={50} rx={6.5} ry={9} fill="#5A3417" />
+    <ellipse cx={81} cy={50} rx={6.5} ry={9} fill="#5A3417" />
+    {/* boca torcida */}
+    <path d="M50 82 Q64 76 80 79" stroke="#5A3417" strokeWidth={6} fill="none" strokeLinecap="round" />
+    {/* mano en la barbilla con el índice */}
+    <path d="M34 96 C34 84 44 80 54 84 L76 92 C82 94 82 102 76 103 L60 102 C66 106 66 116 58 118 L42 118 C34 118 32 110 34 96 Z" fill="url(#tf-hand)" stroke="#D98A00" strokeWidth={3} />
+    <path d="M54 84 C58 74 66 68 72 70 C76 72 74 78 70 82 L62 92" fill="url(#tf-hand)" stroke="#D98A00" strokeWidth={3} strokeLinejoin="round" />
+    <path d="M44 104 L58 105 M44 111 L56 112" stroke="#D98A00" strokeWidth={3} strokeLinecap="round" />
+  </svg>
 );
 
 // Tarjetas-icono (sin texto: el subtítulo ya dice la palabra)
@@ -154,7 +186,7 @@ export const Snap: React.FC = () => {
         </>
       ) : null}
 
-      <SnapBar text="qué hace este tío" opacity={1 - lin(f, WALK + 4, WALK + 12)} />
+      <SnapBar text="qué hace este tío???" emoji opacity={1 - lin(f, WALK + 4, WALK + 12)} />
       <ScreenRope from={antennaWorld(g)} rope={rope} t={t} />
       <Cta f={f} fps={fps} tEscr={W(iEscr)} tHook={W(iHook)} tMuestra={W(iPres)} until={SNAP_FRAMES + 10} verb="Escríbenos" lines={["TE PASAMOS", "PRESUPUESTO"]} />
       <TopCaptions words={T.words} f={f} fps={fps} keys={[iUltima, iPara, iBruto, iPres]} hide={f < W(0) - 2 || f >= W(iEscr)} />
