@@ -46,3 +46,12 @@
 - 17,7 s · reto en tiempo real (contar los cortes) · exactamente 16 cortes duros (comprobado con detección de escena) · clic en cada corte · cierre "¿Seguro que eran 16? Vuelve a contar" (bucle).
 - Dato en pantalla: curva media real de los 4 reels del 22-10 (64 % a los 3 s → 35 % a los 10 s = se va casi la mitad de los que quedaban).
 - Publicar a las 19:00 UTC. Medir: retención 3 s / 10 s, completo, comentarios (el reto pide comentar el número) y repeticiones.
+
+## 2026-10-24 · Cortes y Snap (primeras ~24 h; TikTok aún puede completar datos)
+| Vídeo | Vistas | Likes | Coment. | 1 s | 3 s | 5 s | 10 s | Completo | Medio |
+|---|---|---|---|---|---|---|---|---|---|
+| Cortes (reto 16 cortes, 17,7 s, 17:54 UTC) | 643 | 28 | **7** | 88 % | 68 % | 55 % | 32 % | 9,4 % | 8,7 s |
+| Snap «qué hace este tío» (16 s, 00:42 UTC) | 173 | 5 | 1 | **92 %** | 58 % | **32 %** | 13 % | 6,7 % | 5,1 s |
+- Snap: el mejor 1 s de la cuenta (92 %), pero se vacía entre el 2 y el 5 → el misterio se resuelve en 0,9 s (se gira y ya se ve qué hace) y lo que sigue (se congela, camina) no aporta nada nuevo. Subido fuera de hora.
+- Cortes: récord de comentarios (7) — el reto pide comentar el número; retención ≈ media de la cuenta.
+- Regla: **el misterio del gancho no se resuelve antes del segundo 3–4**; nada de "transiciones" sin información (congelarse, caminar) en los primeros 5 s.
