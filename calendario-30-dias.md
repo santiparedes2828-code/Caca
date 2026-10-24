@@ -1,6 +1,6 @@
 # calendario-30-dias.md — Hook House · calendario provisional + 7 videos desarrollados
 
-> Estado: **plan, sin renderizar**. Todo lo que dice «hipótesis» está pendiente de validar con datos de la cuenta.
+> Estado: **plan experimental**. Todo lo que dice «hipótesis» está pendiente de validar con datos de la cuenta y **no forma parte de las reglas de marca** hasta que se confirme (ver `notas-experimentales.md`). El video 1 ya está producido en `out/error1/`.
 > Respeta `estilo-altera.md` (marfil `#F2EDE3`, tinta `#0E0D0B`, naranja `#FF5A1F` solo en línea-firma / una palabra / caja del CTA, Inter 800, línea naranja, Gancho como personaje, sonidos propios `tensión · tirón · impacto`, zona segura x 72–930 / y 210–1480, 1080×1920 a 30 fps).
 > Reglas de contenido de esta etapa (corrigen los ejemplos anteriores):
 > - Las cantidades que se dicen coinciden con las que se muestran (se fijan en el diseño de la escena, no «a ojo»).
@@ -14,7 +14,7 @@
 
 ---
 
-## Calendario de 30 días (1 video por día, 19:00 UTC)
+## Calendario de 30 días (1 video por día; el horario de 19:00 UTC es una propuesta pendiente de validar con las estadísticas de la cuenta)
 
 Pilares: **D** desafío visual · **T** transformación · **M** demostración («mirá cómo se hace») · **H** humor con Gancho.
 Mezcla pensada para que no todo sea publicidad ni dirigido solo a editores: cada pieza se entiende sin saber de edición.
