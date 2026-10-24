@@ -297,3 +297,18 @@ export const Capas: React.FC = () => {
     </Paper>
   );
 };
+
+// ---------- portada (1080 × 1920): el clip completo a mitad del tirón, sin revelar el bruto ----------
+export const CapasPortada: React.FC = () => (
+  <Paper>
+    <div style={{ position: "absolute", left: 72, top: 250, fontFamily: FONT, fontWeight: 800, fontSize: 190, lineHeight: 1, letterSpacing: "-0.05em", color: A.ink }}>
+      <span style={{ color: A.orange }}>4</span> CAPAS
+    </div>
+    <div style={{ position: "absolute", left: CARD.x, top: 500, width: CW * K, height: CH * K, borderRadius: 30, overflow: "hidden", border: `6px solid ${A.ink}`, boxSizing: "border-box", boxShadow: "0 30px 50px rgba(14,13,11,0.25)" }}>
+      <div style={{ position: "absolute", left: 0, top: 0, width: CW, height: CH, transformOrigin: "0 0", transform: `scale(${K})` }}>
+        <Clip c={80} L={ALL} textAt={-30} />
+      </div>
+    </div>
+    <Tag text="Un clip · se desarma capa por capa" y={1390} />
+  </Paper>
+);

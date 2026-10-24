@@ -80,7 +80,7 @@ No aprobar con recursos ausentes, identidad alterada, texto ilegible, audio roto
 
 ## 8. Entrega
 
-Entregar MP4 y elementos pedidos (portada, descripción, fuentes). Reporte máximo cinco puntos salvo necesidad: estado, controles/evidencia, arreglos, limitaciones y siguiente prueba. No repetir guion/calendario ya entregados.
+Entregar MP4 y elementos pedidos (portada, descripción, fuentes). **Portada siempre** (pedido del usuario, 2026-10-25): PNG 1080×1920 como composición `<Id>Portada`, con el gancho legible también en el recorte 3:4 de la cuadrícula del perfil (y 240–1680), dentro de la zona segura, sin revelar el desenlace ni prometer algo que el video no cumple; revisarla a tamaño miniatura antes de entregar. Reporte máximo cinco puntos salvo necesidad: estado, controles/evidencia, arreglos, limitaciones y siguiente prueba. No repetir guion/calendario ya entregados.
 Estados: listo para probar / pendiente de revisión / rendimiento observado. No afirmar instalación, reproducción, render, conexión o publicación sin evidencia; no convertir una nota editorial en probabilidad de viralidad.
 
 ## 9. Aprendizaje
