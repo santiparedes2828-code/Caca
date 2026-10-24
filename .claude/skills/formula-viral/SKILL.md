@@ -98,3 +98,12 @@ _(Cuando el usuario corrija algo de la fórmula y le guste el resultado, se aña
    - Descripción y comentario fijado también empujan al DM, no a comentar.
    - El misterio del gancho no se resuelve antes de que empiece a hablar (≥ 2 s) y nunca hay "transiciones vacías" (caminar, congelarse) en los primeros 5 s: corte seco.
 
+
+4. **Claridad antes que misterio (2026-10-25, usuario):**
+   - No hay duración mínima de misterio: se prioriza que el frame 0 se entienda y que cada tramo aporte algo nuevo (sustituye la regla de «≥ 2 s» de la corrección 3).
+   - Las cantidades dichas (capas, cortes, palabras, cajas) coinciden con las mostradas y se fijan en el diseño.
+   - Distinguir versión completa de fragmento (rotular «FRAGMENTO») y hacer que los tiempos sumen.
+   - Comparaciones secuenciales a pantalla completa, legibles en móvil.
+   - No afirmar retención, repeticiones o viralidad sin datos; no decir que «nadie» ve algo sin datos.
+   - El cierre varía según el contenido; el CTA a DM no va en todos los videos.
+   - Demostraciones con material propio o «ejemplo creado para la pieza», rotulado.
