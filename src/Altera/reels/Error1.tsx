@@ -45,7 +45,7 @@ const Num: React.FC<{ x: number; y: number; n: number; at: number; f: number; ho
   );
 };
 
-const Title: React.FC<{ lines: { text: string; hot?: boolean }[]; size?: number; top?: number; opacity?: number }> = ({ lines, size = 112, top = 250, opacity = 1 }) => (
+export const Title: React.FC<{ lines: { text: string; hot?: boolean }[]; size?: number; top?: number; opacity?: number }> = ({ lines, size = 112, top = 250, opacity = 1 }) => (
   <div style={{ position: "absolute", left: 72, top, width: 858, fontFamily: FONT, fontWeight: 800, fontSize: size, lineHeight: 1.0, letterSpacing: "-0.045em", color: A.ink, opacity }}>
     {lines.map((l, i) => (
       <div key={i} style={{ color: l.hot ? A.orange : A.ink }}>
@@ -55,7 +55,7 @@ const Title: React.FC<{ lines: { text: string; hot?: boolean }[]; size?: number;
   </div>
 );
 
-const Tag: React.FC<{ text: string; x?: number; y: number; opacity?: number; align?: "left" | "center" }> = ({ text, x = 72, y, opacity = 1, align = "left" }) => (
+export const Tag: React.FC<{ text: string; x?: number; y: number; opacity?: number; align?: "left" | "center" }> = ({ text, x = 72, y, opacity = 1, align = "left" }) => (
   <div style={{ position: "absolute", top: y, left: align === "center" ? 0 : x, right: align === "center" ? 0 : undefined, textAlign: align, maxWidth: 858, opacity, fontFamily: LABEL, fontSize: 28, letterSpacing: "0.04em", color: A.ink, textTransform: "uppercase" }}>
     <span style={{ display: "inline-block", width: 14, height: 14, borderRadius: 7, background: A.orange, marginRight: 14, verticalAlign: "middle" }} />
     <span style={{ verticalAlign: "middle" }}>{text}</span>

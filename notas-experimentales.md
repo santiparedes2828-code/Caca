@@ -10,3 +10,8 @@
 - **H3.** El cambio de 3 a 4 cajas es detectable en celular sin ser obvio al principio. Métrica indirecta: comentarios con el número de cajas o con «lo vi» / «no lo vi» (señal secundaria, no objetivo).
 - **Métricas a mirar a las 24 y 48 h:** vistas, retención 1/3/5/10 s, % que lo ve entero, compartidos + guardados, visitas al perfil, seguidores nuevos, DMs (conteo manual).
 - **Pendiente de validar:** el horario de publicación (19:00 UTC era una propuesta), la voz (se conservó la de marca tras comprobar que transcribe «encontrás» y «fijate»; el acento rioplatense no se ha podido verificar a oído por parte de Claude).
+
+### Video 2 · «Un clip, cuatro capas» (producido en `out/capas/`)
+- **Función (ventas.md):** confianza — muestra proceso y criterio, sin CTA.
+- **H1.** Enseñar el proceso en secuencia, sin texto técnico, genera más guardados y compartidos por 1000 vistas que los reels explicativos. Comparar con la mediana de piezas comparables de la cuenta cuando haya 5 o más.
+- **Métricas a 24 y 72 h:** compartidos + guardados por 1000 vistas, retención a 5 y 10 s, % que lo ve entero.
