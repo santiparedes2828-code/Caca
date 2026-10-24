@@ -26,6 +26,8 @@ export type GanchoPose = {
   item?: Item; // objeto en la mano derecha
   flip?: boolean; // mira a la izquierda
   talk?: number; // 0..1 apertura de la boca al hablar (Gancho narra)
+  back?: boolean; // de espaldas: sin cara, brazos por detrás del cuerpo
+  turn?: number; // 0..1 estrechamiento horizontal para el giro (truco de dibujo animado)
   t: number;
 };
 
@@ -192,7 +194,7 @@ export const Gancho: React.FC<GanchoPose> = (p) => {
   const bob = w === undefined ? 0 : Math.abs(Math.cos(w)) * 8;
   const idle = w === undefined ? Math.sin(p.t * 2.4) * 0.012 : 0; // respira
   const sy = (1 - 0.3 * sq) * (1 + idle);
-  const sx = 1 + 0.2 * sq - idle * 0.5;
+  const sx = (1 + 0.2 * sq - idle * 0.5) * (1 - 0.85 * (p.turn ?? 0));
   const handR = hand(1, p.armR ?? 20);
   return (
     <div
@@ -232,14 +234,26 @@ export const Gancho: React.FC<GanchoPose> = (p) => {
             <circle cx={200} cy={ANTENNA.y + 24} r={11} fill={A.orangeDeep} />
           )}
           {/* Cuerpo: frijol de tinta */}
-          <path d="M200 168 C292 168 318 240 316 312 C314 392 270 440 200 440 C130 440 86 392 84 312 C82 240 108 168 200 168 Z" fill={INK} />
-          <path d="M128 222 C140 196 164 184 186 182" stroke="rgba(251,248,242,0.16)" strokeWidth={10} fill="none" strokeLinecap="round" />
-          <Eyes expr={expr} look={look} blink={blink} />
-          <Mouth expr={expr} t={p.t} talk={p.talk ?? 0} />
-          {/* Brazos */}
-          <Arm side={-1} angle={p.armL ?? 20} bend={p.bendL ?? 0.4} />
-          <Arm side={1} angle={p.armR ?? 20} bend={p.bendR ?? 0.4} />
-          <ItemInHand item={p.item ?? "none"} at={handR} t={p.t} />
+          {p.back ? (
+            <>
+              {/* De espaldas: brazos por detrás, cuerpo sin cara */}
+              <Arm side={-1} angle={p.armL ?? 20} bend={p.bendL ?? 0.4} />
+              <Arm side={1} angle={p.armR ?? 20} bend={p.bendR ?? 0.4} />
+              <path d="M200 168 C292 168 318 240 316 312 C314 392 270 440 200 440 C130 440 86 392 84 312 C82 240 108 168 200 168 Z" fill={INK} />
+              <path d="M272 222 C260 196 236 184 214 182" stroke="rgba(251,248,242,0.12)" strokeWidth={10} fill="none" strokeLinecap="round" />
+            </>
+          ) : (
+            <>
+              <path d="M200 168 C292 168 318 240 316 312 C314 392 270 440 200 440 C130 440 86 392 84 312 C82 240 108 168 200 168 Z" fill={INK} />
+              <path d="M128 222 C140 196 164 184 186 182" stroke="rgba(251,248,242,0.16)" strokeWidth={10} fill="none" strokeLinecap="round" />
+              <Eyes expr={expr} look={look} blink={blink} />
+              <Mouth expr={expr} t={p.t} talk={p.talk ?? 0} />
+              {/* Brazos */}
+              <Arm side={-1} angle={p.armL ?? 20} bend={p.bendL ?? 0.4} />
+              <Arm side={1} angle={p.armR ?? 20} bend={p.bendR ?? 0.4} />
+              <ItemInHand item={p.item ?? "none"} at={handR} t={p.t} />
+            </>
+          )}
         </g>
       </svg>
     </div>

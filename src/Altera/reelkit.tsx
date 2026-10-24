@@ -51,19 +51,19 @@ export const ScreenRope: React.FC<{ from: { x: number; y: number }; rope: RopeSp
 };
 
 // CTA: "Escríbeme" + caja HOOK (Gancho la engancha en (712, 476) de pantalla) + ticket que cae
-export const Cta: React.FC<{ f: number; fps: number; tEscr: number; tHook: number; tMuestra: number; until: number; ticketY?: number }> = ({ f, fps, tEscr, tHook, tMuestra, until, ticketY = 1062 }) => {
+export const Cta: React.FC<{ f: number; fps: number; tEscr: number; tHook: number; tMuestra: number; until: number; ticketY?: number; verb?: string; lines?: string[] }> = ({ f, fps, tEscr, tHook, tMuestra, until, ticketY = 1062, verb = "Escríbeme", lines }) => {
   if (f < tEscr || f >= until + 6) return null;
   return (
     <AbsoluteFill style={{ opacity: 1 - lin(f, until, until + 6) }}>
       <div style={{ position: "absolute", left: 72, width: 858, top: 470, display: "flex", alignItems: "center", gap: 24, fontFamily: FONT, fontWeight: 800, fontSize: 92, letterSpacing: "-0.045em", color: A.ink }}>
-        <span style={{ opacity: lin(f, tEscr, tEscr + 6) }}>Escríbeme</span>
+        <span style={{ opacity: lin(f, tEscr, tEscr + 6) }}>{verb}</span>
         <span style={{ background: A.orange, color: A.ivory, padding: "2px 24px 8px", borderRadius: 18, transformOrigin: "50% 100%", transform: `scale(${1 + 0.25 * impact(f - tHook)}, ${f < tHook ? 0 : 1 - 0.3 * impact(f - tHook)})`, boxShadow: "0 18px 30px rgba(14,13,11,0.25)" }}>HOOK</span>
       </div>
-      {f >= tMuestra - 6 && f < until ? <Ticket x={540} y={ticketY} lift={(1 - fall(f - (tMuestra - 6), fps)) * 1200} squash={0.4 * impact(f - tMuestra - 1)} /> : null}
+      {f >= tMuestra - 6 && f < until ? <Ticket x={540} y={ticketY} lines={lines} lift={(1 - fall(f - (tMuestra - 6), fps)) * 1200} squash={0.4 * impact(f - tMuestra - 1)} /> : null}
     </AbsoluteFill>
   );
 };
-export const ctaRope = (f: number, tHook: number): RopeSpec => (f >= tHook + 4 ? { screen: true, bx: 712, by: 476, slack: interpolate(f, [tHook + 4, tHook + 14], [0.8, 0.1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }), buzz: f >= tHook + 14 ? 0.4 : 0 } : null);
+export const ctaRope = (f: number, tHook: number, bx = 712): RopeSpec => (f >= tHook + 4 ? { screen: true, bx, by: 476, slack: interpolate(f, [tHook + 4, tHook + 14], [0.8, 0.1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }), buzz: f >= tHook + 14 ? 0.4 : 0 } : null);
 
 export const TopCaptions: React.FC<{ words: { text: string; at: number }[]; f: number; fps: number; keys: number[]; hide?: boolean }> = ({ words, f, fps, keys, hide }) =>
   hide ? null : <Captions words={words} f={f} fps={fps} top={250} size={82} keys={keys} />;
