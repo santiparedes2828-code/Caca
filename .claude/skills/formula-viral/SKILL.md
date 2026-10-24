@@ -5,6 +5,8 @@ description: Fórmula obligatoria para que cualquier vídeo corto (Reel, TikTok,
 
 # Fórmula viral (para TODOS los vídeos)
 
+> **Integrada con `hookhouse-hookie-video`** (2026-10-25). Para videos con Hookie/Gancho de la marca, esa skill incluye estas 3 reglas y manda en caso de conflicto (duración 15–35 s orientativa, sin mínimo de misterio, CTA opcional y máximo uno, hipótesis como notas experimentales). Esta skill sigue siendo la base de contenido para cualquier otro video, incluidos los de clientes (`estudio-hookhouse`). Los números antiguos de duración y las correcciones 1–3 quedan superados por la tabla de precedencia de `hookhouse-hookie-video`.
+
 Esta skill no trata del aspecto visual (colores, tipografías, transiciones: eso lo pone el estilo de marca o `copiar-estilo`).
 Trata de **qué decimos, en qué orden y qué se ve en cada momento**, para que la gente se quede hasta el final.
 Fuente: un reel viral que explica su propia fórmula y la cumple mientras la explica. Notas completas en [referencia/video-original.md](referencia/video-original.md).
