@@ -27,7 +27,7 @@ const camAt = (s: number, x: number, y: number) => {
 };
 
 // Barra de texto de Snapchat
-const SnapBar: React.FC<{ text: string; opacity: number; emoji?: boolean }> = ({ text, opacity, emoji }) => (
+export const SnapBar: React.FC<{ text: string; opacity: number; emoji?: boolean }> = ({ text, opacity, emoji }) => (
   <div style={{ position: "absolute", left: 0, right: 0, top: 700, padding: "18px 40px", background: "rgba(0,0,0,0.55)", textAlign: "center", opacity }}>
     <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 500, fontSize: 50, color: "#FFFFFF", letterSpacing: "-0.01em", verticalAlign: "middle" }}>{text}</span>
     {emoji ? <ThinkingEmoji size={60} /> : null}
@@ -35,7 +35,7 @@ const SnapBar: React.FC<{ text: string; opacity: number; emoji?: boolean }> = ({
 );
 
 // 🤔 dibujado en vectorial al estilo del emoji de Apple (la fuente de Apple no está disponible en el render)
-const ThinkingEmoji: React.FC<{ size: number }> = ({ size }) => (
+export const ThinkingEmoji: React.FC<{ size: number }> = ({ size }) => (
   <svg width={size} height={size} viewBox="0 0 128 128" style={{ display: "inline-block", verticalAlign: "middle", marginLeft: 10, marginTop: -6 }}>
     <defs>
       <radialGradient id="tf-face" cx="45%" cy="35%" r="70%">
@@ -66,7 +66,7 @@ const ThinkingEmoji: React.FC<{ size: number }> = ({ size }) => (
 );
 
 // Tarjetas-icono (sin texto: el subtítulo ya dice la palabra)
-const IconCard: React.FC<{ x: number; y: number; p: number; kind: "hook" | "subs" | "beat"; t: number }> = ({ x, y, p, kind, t }) => (
+export const IconCard: React.FC<{ x: number; y: number; p: number; kind: "hook" | "subs" | "beat" | "hit"; t: number }> = ({ x, y, p, kind, t }) => (
   <div style={{ position: "absolute", left: x - 110, top: y - 110 - (1 - p) * 80, width: 220, height: 220, borderRadius: 34, background: "#FBF8F2", border: `8px solid ${A.ink}`, boxShadow: "0 24px 36px rgba(14,13,11,0.3)", opacity: Math.min(1, p * 2), transform: `scale(${0.8 + 0.2 * p}) rotate(${(1 - p) * -8}deg)` }}>
     <svg width={204} height={204} viewBox="0 0 204 204">
       {kind === "hook" ? <path d="M102 30 V120 C102 168 46 168 46 120 V104" stroke={A.orange} strokeWidth={18} fill="none" strokeLinecap="round" /> : null}
@@ -82,6 +82,19 @@ const IconCard: React.FC<{ x: number; y: number; p: number; kind: "hook" | "subs
             return <rect key={k} x={34 + k * 30} y={102 - h / 2} width={18} height={h} rx={9} fill={k === 2 ? A.orange : A.ink} />;
           })
         : null}
+      {kind === "hit" ? (
+        <polygon
+          points={Array.from({ length: 16 }, (_, k) => {
+            const r = k % 2 ? 34 : 78;
+            const a = (k / 16) * Math.PI * 2 - Math.PI / 2;
+            return `${102 + Math.cos(a) * r},${102 + Math.sin(a) * r}`;
+          }).join(" ")}
+          fill={A.orange}
+          stroke={A.ink}
+          strokeWidth={8}
+          strokeLinejoin="round"
+        />
+      ) : null}
     </svg>
   </div>
 );

@@ -23,6 +23,7 @@ import { ANTES_DESPUES_BEAST_FRAMES, AntesDespuesBeast } from "./Altera/reels/An
 import { CORTES_FRAMES, Cortes } from "./Altera/reels/Cortes";
 import { SNAP_FRAMES, Snap } from "./Altera/reels/Snap";
 import { CRISTAL_FRAMES, Cristal } from "./Altera/reels/Cristal";
+import { PIEDRA_FRAMES, Piedra } from "./Altera/reels/Piedra";
 import { PODCAST_FRAMES, Podcast } from "./Clips/Podcast";
 import { SEGUNDOS_FRAMES, Segundos } from "./Altera/reels/Segundos";
 import { SONIDO_FRAMES, Sonido } from "./Altera/reels/Sonido";
@@ -147,6 +148,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Cortes" component={Cortes} durationInFrames={CORTES_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Snap" component={Snap} durationInFrames={SNAP_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Cristal" component={Cristal} durationInFrames={CRISTAL_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="Piedra" component={Piedra} durationInFrames={PIEDRA_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="GanchoSheet" component={GanchoSheet} durationInFrames={60} fps={30} width={1920} height={1080} />
       <Composition id="Elefante" component={Elefante} durationInFrames={ELEFANTE_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Manifiesto" component={Manifiesto} durationInFrames={MANIFIESTO_FRAMES} fps={30} width={1080} height={1920} />

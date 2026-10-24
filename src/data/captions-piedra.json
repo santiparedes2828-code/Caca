@@ -1,0 +1,303 @@
+[
+{
+"text": "Espera…",
+"startMs": 3060,
+"endMs": 3670,
+"timestampMs": 3365,
+"confidence": null
+},
+{
+"text": "Esto",
+"startMs": 4030,
+"endMs": 4230,
+"timestampMs": 4130,
+"confidence": null
+},
+{
+"text": "es",
+"startMs": 4270,
+"endMs": 4350,
+"timestampMs": 4310,
+"confidence": null
+},
+{
+"text": "tu",
+"startMs": 4390,
+"endMs": 4430,
+"timestampMs": 4410,
+"confidence": null
+},
+{
+"text": "video.",
+"startMs": 4510,
+"endMs": 4920,
+"timestampMs": 4715,
+"confidence": null
+},
+{
+"text": "La",
+"startMs": 5200,
+"endMs": 5280,
+"timestampMs": 5240,
+"confidence": null
+},
+{
+"text": "gente",
+"startMs": 5360,
+"endMs": 5600,
+"timestampMs": 5480,
+"confidence": null
+},
+{
+"text": "se",
+"startMs": 5680,
+"endMs": 5760,
+"timestampMs": 5720,
+"confidence": null
+},
+{
+"text": "va",
+"startMs": 5840,
+"endMs": 5920,
+"timestampMs": 5880,
+"confidence": null
+},
+{
+"text": "justo",
+"startMs": 6000,
+"endMs": 6400,
+"timestampMs": 6200,
+"confidence": null
+},
+{
+"text": "antes",
+"startMs": 6480,
+"endMs": 6720,
+"timestampMs": 6600,
+"confidence": null
+},
+{
+"text": "de",
+"startMs": 6760,
+"endMs": 6800,
+"timestampMs": 6780,
+"confidence": null
+},
+{
+"text": "lo",
+"startMs": 6840,
+"endMs": 6880,
+"timestampMs": 6860,
+"confidence": null
+},
+{
+"text": "mejor.",
+"startMs": 6960,
+"endMs": 7560,
+"timestampMs": 7260,
+"confidence": null
+},
+{
+"text": "Nosotros",
+"startMs": 7760,
+"endMs": 8240,
+"timestampMs": 8000,
+"confidence": null
+},
+{
+"text": "lo",
+"startMs": 8280,
+"endMs": 8320,
+"timestampMs": 8300,
+"confidence": null
+},
+{
+"text": "editamos",
+"startMs": 8480,
+"endMs": 8880,
+"timestampMs": 8680,
+"confidence": null
+},
+{
+"text": "para",
+"startMs": 8960,
+"endMs": 9040,
+"timestampMs": 9000,
+"confidence": null
+},
+{
+"text": "que",
+"startMs": 9120,
+"endMs": 9200,
+"timestampMs": 9160,
+"confidence": null
+},
+{
+"text": "lleguen",
+"startMs": 9240,
+"endMs": 9520,
+"timestampMs": 9380,
+"confidence": null
+},
+{
+"text": "al",
+"startMs": 9560,
+"endMs": 9600,
+"timestampMs": 9580,
+"confidence": null
+},
+{
+"text": "final:",
+"startMs": 9680,
+"endMs": 10400,
+"timestampMs": 10040,
+"confidence": null
+},
+{
+"text": "gancho,",
+"startMs": 10480,
+"endMs": 11120,
+"timestampMs": 10800,
+"confidence": null
+},
+{
+"text": "ritmo",
+"startMs": 11200,
+"endMs": 11600,
+"timestampMs": 11400,
+"confidence": null
+},
+{
+"text": "y",
+"startMs": 11680,
+"endMs": 11760,
+"timestampMs": 11720,
+"confidence": null
+},
+{
+"text": "el",
+"startMs": 11840,
+"endMs": 11920,
+"timestampMs": 11880,
+"confidence": null
+},
+{
+"text": "golpe",
+"startMs": 12000,
+"endMs": 12320,
+"timestampMs": 12160,
+"confidence": null
+},
+{
+"text": "en",
+"startMs": 12360,
+"endMs": 12400,
+"timestampMs": 12380,
+"confidence": null
+},
+{
+"text": "el",
+"startMs": 12480,
+"endMs": 12560,
+"timestampMs": 12520,
+"confidence": null
+},
+{
+"text": "momento",
+"startMs": 12640,
+"endMs": 13120,
+"timestampMs": 12880,
+"confidence": null
+},
+{
+"text": "justo.",
+"startMs": 13200,
+"endMs": 13920,
+"timestampMs": 13560,
+"confidence": null
+},
+{
+"text": "Escríbenos",
+"startMs": 13960,
+"endMs": 14480,
+"timestampMs": 14220,
+"confidence": null
+},
+{
+"text": "HOOK",
+"startMs": 14560,
+"endMs": 14720,
+"timestampMs": 14640,
+"confidence": null
+},
+{
+"text": "al",
+"startMs": 14800,
+"endMs": 14880,
+"timestampMs": 14840,
+"confidence": null
+},
+{
+"text": "DM",
+"startMs": 14920,
+"endMs": 15360,
+"timestampMs": 15140,
+"confidence": null
+},
+{
+"text": "y",
+"startMs": 15400,
+"endMs": 15440,
+"timestampMs": 15420,
+"confidence": null
+},
+{
+"text": "te",
+"startMs": 15520,
+"endMs": 15600,
+"timestampMs": 15560,
+"confidence": null
+},
+{
+"text": "pasamos",
+"startMs": 15680,
+"endMs": 16080,
+"timestampMs": 15880,
+"confidence": null
+},
+{
+"text": "presupuesto.",
+"startMs": 16160,
+"endMs": 16880,
+"timestampMs": 16520,
+"confidence": null
+},
+{
+"text": "¿Y",
+"startMs": 17110,
+"endMs": 17160,
+"timestampMs": 17135,
+"confidence": null
+},
+{
+"text": "la",
+"startMs": 17200,
+"endMs": 17280,
+"timestampMs": 17240,
+"confidence": null
+},
+{
+"text": "piedra?",
+"startMs": 17360,
+"endMs": 17960,
+"timestampMs": 17660,
+"confidence": null
+},
+{
+"text": "Mira.",
+"startMs": 18160,
+"endMs": 18800,
+"timestampMs": 18480,
+"confidence": null
+}
+]
