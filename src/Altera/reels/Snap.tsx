@@ -16,9 +16,10 @@ import { A, FONT, Paper, SOUND, fall, impact, lin } from "../system";
 const caps = captionsJson as Caption[];
 const T = timing(caps);
 export const SNAP_FRAMES = T.frames;
-const TURN = 26; // de espaldas hasta aquí; se gira en 6 frames y se ve lo que hace
-const FREEZE = 50; // se congela: ha visto la cámara
-const WALK = 60; // empieza a acercarse
+// v2 (2026-10-24, metricas.md): el misterio no se resuelve hasta que habla (2,1 s) y sin caminar: corte directo.
+const TURN = 64; // de espaldas hasta aquí; se gira en 6 frames justo antes de hablar
+const FREEZE = 70; // pillado: mira a cámara con la tira en la boca y habla
+const WALK = T.W(T.idx("para")) - 2; // corte seco a primer plano (sin paseo)
 
 const camAt = (s: number, x: number, y: number) => {
   const p = M(x, y);
@@ -106,11 +107,11 @@ export const Snap: React.FC = () => {
   const iPres = idx("presupuesto");
 
   // ---------- Hookie ----------
-  const night = 1 - lin(f, WALK, WALK + 16);
-  const approach = lin(f, WALK, WALK + 22, 0, 1, (x) => 1 - (1 - x) ** 3);
+  const night = f >= WALK ? 0 : 1;
+  const approach = f >= WALK ? 1 : 0;
   let g: GanchoPose = { x: 540, y: FLOOR, scale: 0.78 + 0.22 * approach, t, talk: T.talkAt(f), expr: "strain" };
   let rope: RopeSpec = null;
-  let cam = camAt(1 + 0.25 * approach, 540, FLOOR - 250);
+  let cam = camAt(f >= FREEZE && f < WALK ? 1.35 : 1 + 0.25 * approach, 540, FLOOR - 250);
   if (f < FREEZE) {
     // sorbe la tira de película, temblando
     const tw = lin(f, TURN, TURN + 3) - lin(f, TURN + 3, TURN + 6);
@@ -118,7 +119,7 @@ export const Snap: React.FC = () => {
   } else if (f < WALK) {
     g = { ...g, expr: "surprised", look: { x: 0, y: 0 }, armL: 120, armR: 110 };
   } else if (f < W(iPara)) {
-    g = { ...g, expr: "surprised", walk: f < WALK + 22 ? t * 20 : undefined, look: { x: 0, y: 0 }, armL: 40, armR: 40 };
+    g = { ...g, expr: f < FREEZE + 10 ? "surprised" : "normal", look: { x: 0, y: 0 }, armL: 120, armR: 110, lean: 4 * Math.sin(f * 0.4) };
   } else if (f < W(iManda)) {
     const stop = f < W(iNota);
     g = { ...g, x: f < W(iNota) ? 540 : 760, scale: f < W(iNota) ? 0.95 : 0.6, expr: stop ? "focused" : "smug", armR: stop ? 170 : 100, bendR: stop ? 0.3 : 0, squash: 0.25 * impact(f - W(iPara)), look: stop ? { x: 0, y: 0 } : { x: -1, y: 0 } };
@@ -146,21 +147,24 @@ export const Snap: React.FC = () => {
   const slurp = f < WALK ? (f * 14) % 60 : 0;
 
   const strand = f < W(iPara) ? (
-    <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible", opacity: 1 - lin(f, WALK + 10, WALK + 18) }}>
+    <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible", opacity: f < WALK ? 1 : 0 }}>
             <path d={`M${pile.x} ${pile.y} C ${pile.x + 40} ${pile.y - 300}, ${mouth.x + 260} ${mouth.y - 120}, ${mouth.x} ${mouth.y}`} stroke={A.ink} strokeWidth={46} fill="none" strokeLinecap="round" />
             <path d={`M${pile.x} ${pile.y} C ${pile.x + 40} ${pile.y - 300}, ${mouth.x + 260} ${mouth.y - 120}, ${mouth.x} ${mouth.y}`} stroke="#D9D3C7" strokeWidth={22} fill="none" strokeDasharray="26 34" strokeDashoffset={-slurp} />
           </svg>
   ) : null;
 
   return (
-    <Paper tone={f < WALK + 16 ? A.ivoryDeep : A.ivory}>
+    <Paper tone={f < WALK ? A.ivoryDeep : A.ivory}>
       <AbsoluteFill style={{ transformOrigin: `${cam.ox}px ${cam.oy}px`, transform: `scale(${cam.s})` }}>
         {f < TURN + 3 ? strand : null}
         <Stage>
-          {f < WALK + 18 ? (
+          {f < WALK ? (
             <>
               <FilmStrip x={800} y={FLOOR} scale={0.55} n={4} t={t} rotate={-12} />
               <FilmStrip x={830} y={FLOOR - 30} scale={0.5} n={4} t={t} rotate={18} />
+              {/* el montón crece mientras sorbe (algo pasa cada ~0,7 s) */}
+              {f >= 12 ? <FilmStrip x={770} y={FLOOR - 50} scale={0.5} n={4} t={t} rotate={-28} lift={(1 - fall(f - 12, fps)) * 900} squash={0.3 * impact(f - 18)} /> : null}
+              {f >= 34 ? <FilmStrip x={850} y={FLOOR - 70} scale={0.48} n={4} t={t} rotate={30} lift={(1 - fall(f - 34, fps)) * 900} squash={0.3 * impact(f - 40)} /> : null}
             </>
           ) : null}
           {f >= W(iManda) - 4 && f < W(iGancho) ? <FilmStrip x={360} y={FLOOR - 40} scale={1.0} n={5} t={t} cut={lin(f, W(iEditamos) + 4, W(iEditamos) + 18)} lift={(1 - fall(f - W(iManda) + 4, fps)) * 900} /> : null}
@@ -173,7 +177,7 @@ export const Snap: React.FC = () => {
       {/* noche: luz baja hasta que se acerca */}
       <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 55%, rgba(14,13,11,0) 30%, rgba(14,13,11,0.55) 100%)", opacity: night }} />
       {/* sorpresa al verte */}
-      {f >= FREEZE && f < WALK + 6 ? <div style={{ position: "absolute", left: 660, top: 900, fontFamily: FONT, fontWeight: 800, fontSize: 150, color: A.orange, transform: `scale(${0.6 + 0.4 * Math.min(1, (f - FREEZE) / 4)})` }}>!</div> : null}
+      {f >= FREEZE && f < FREEZE + 12 ? <div style={{ position: "absolute", left: 660, top: 900, fontFamily: FONT, fontWeight: 800, fontSize: 150, color: A.orange, transform: `scale(${0.6 + 0.4 * Math.min(1, (f - FREEZE) / 4)})` }}>!</div> : null}
 
       {/* "se nota": el pulgar pasa tu vídeo */}
       {f >= W(iVideo) && f < W(iManda) ? <Thumb x={300} y={1180 - lin(f, W(iVideo), W(iVideo) + 10) * 260} rot={-20 + lin(f, W(iVideo) + 6, W(iVideo) + 14) * 25} /> : null}
@@ -186,7 +190,7 @@ export const Snap: React.FC = () => {
         </>
       ) : null}
 
-      <SnapBar text="qué hace este tío???" emoji opacity={1 - lin(f, WALK + 4, WALK + 12)} />
+      <SnapBar text="qué hace este tío???" emoji opacity={f < WALK ? 1 : 0} />
       <ScreenRope from={antennaWorld(g)} rope={rope} t={t} />
       <Cta f={f} fps={fps} tEscr={W(iEscr)} tHook={W(iHook)} tMuestra={W(iPres)} until={SNAP_FRAMES + 10} verb="Escríbenos" lines={["TE PASAMOS", "PRESUPUESTO"]} />
       <TopCaptions words={T.words} f={f} fps={fps} keys={[iUltima, iPara, iBruto, iPres]} hide={f < W(0) - 2 || f >= W(iEscr)} />
@@ -197,7 +201,9 @@ export const Snap: React.FC = () => {
         <Snd key={a} at={a} src="sfx/click.wav" vol={0.35} />
       ))}
       <Snd at={FREEZE} src="sfx/rebobinar.wav" vol={0.6} />
-      <Snd at={WALK} src={SOUND.tension} vol={0.4} />
+      <Snd at={18} src={SOUND.impacto} vol={0.5} />
+      <Snd at={40} src={SOUND.impacto} vol={0.6} />
+      <Snd at={TURN} src={SOUND.tiron} vol={0.6} />
       <Snd at={W(iPara)} src={SOUND.impacto} vol={0.8} />
       <Snd at={W(iVideo)} src={SOUND.tiron} vol={0.5} />
       <Snd at={W(iManda)} src={SOUND.impacto} vol={0.5} />

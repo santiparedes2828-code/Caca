@@ -55,3 +55,6 @@
 - Snap: el mejor 1 s de la cuenta (92 %), pero se vacía entre el 2 y el 5 → el misterio se resuelve en 0,9 s (se gira y ya se ve qué hace) y lo que sigue (se congela, camina) no aporta nada nuevo. Subido fuera de hora.
 - Cortes: récord de comentarios (7) — el reto pide comentar el número; retención ≈ media de la cuenta.
 - Regla: **el misterio del gancho no se resuelve antes del segundo 3–4**; nada de "transiciones" sin información (congelarse, caminar) en los primeros 5 s.
+- **Objetivo (usuario, 2026-10-24): vender edición.** KPI principal = DMs con HOOK / presupuestos; secundarios = visitas al perfil y retención. Los comentarios no cuentan como éxito.
+- Snap v2 (para resubir): sigue de espaldas hasta los 2,1 s (el montón de película crece a 0,4 y 1,1 s), se gira justo al hablar, primer plano, y corte seco al "Para" (sin paseo).
+

@@ -92,3 +92,9 @@ _(Cuando el usuario corrija algo de la fórmula y le guste el resultado, se aña
    - **Nunca abrir con la parte aburrida** aunque sea "el antes": el frame 0 enseña el resultado o la comparación; lo aburrido va después y corto (≤ 1,5 s).
    - Publicar **1 vídeo al día**, no varios seguidos.
 
+3. **El objetivo es vender edición, no comentarios (2026-10-24, usuario):**
+   - La métrica que manda son los **DMs con HOOK / presupuestos pedidos** (y visitas al perfil); la retención es el medio. Los comentarios no son objetivo.
+   - Cada vídeo de marca: problema del creador → cómo lo resuelve Hookhouse → **CTA a DM ("Escríbenos HOOK al DM y te pasamos presupuesto")**. Nada de pedir que comenten.
+   - Descripción y comentario fijado también empujan al DM, no a comentar.
+   - El misterio del gancho no se resuelve antes de que empiece a hablar (≥ 2 s) y nunca hay "transiciones vacías" (caminar, congelarse) en los primeros 5 s: corte seco.
+
