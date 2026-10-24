@@ -58,3 +58,10 @@
 - **Objetivo (usuario, 2026-10-24): vender edición.** KPI principal = DMs con HOOK / presupuestos; secundarios = visitas al perfil y retención. Los comentarios no cuentan como éxito.
 - Snap v2 (para resubir): sigue de espaldas hasta los 2,1 s (el montón de película crece a 0,4 y 1,1 s), se gira justo al hablar, primer plano, y corte seco al "Para" (sin paseo).
 
+
+## 2026-10-25 · Piedra (≈24 h) y comparativa de los 6 vídeos que Windsor devuelve
+- Windsor solo lista 6 vídeos (22–24 oct). Snap, Cristal y los antes/después no aparecen. El del 24-oct 15:51 UTC sin descripción dura 19,8 s, igual que Piedra (se asume que es Piedra).
+- **Piedra: 2621 vistas** (≈3× el mejor anterior), 208 likes (7,9 %, la más alta), 1 comentario, 0 compartidos, 3 seguidores nuevos, 15 % lo ve entero (mejor de la cuenta), medio 8,2 / 19,8 s. 98,7 % «Para ti».
+- Retención Piedra: 1 s 87 % · 3 s 72 % · 5 s 52 % · 10 s 28 % · 15 s 19 % · 19 s 11 %. Mayor caída: 3→5 s (−20 pts), justo cuando se congela el vídeo y entra Hookie (3,0 s).
+- Seguidores de cuenta 47 (22-oct) → 52 (24-oct). Visitas al perfil por día: 20, 28, 14, 3 (los datos de los últimos días aún incompletos). DMs: Windsor no los mide.
+- Compartidos totales de los 6 vídeos: 2.
