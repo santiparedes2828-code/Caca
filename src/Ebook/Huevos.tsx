@@ -11,17 +11,17 @@ import { AbsoluteFill, staticFile } from "remotion";
 loadFont({ family: "Poppins", url: staticFile("fonts/poppins-latin-800-normal.woff2"), weight: "800" });
 loadFont({ family: "Poppins", url: staticFile("fonts/poppins-latin-600-normal.woff2"), weight: "600" });
 
-const C = { cream: "#FFF6EA", ink: "#2B2118", tomato: "#E4572E", basil: "#3C8D5A", mustard: "#F2B134", skin: "#F1C7A1", hair: "#4A2E1F" };
-const FONT = "Poppins";
+export const C = { cream: "#FFF6EA", ink: "#2B2118", tomato: "#E4572E", basil: "#3C8D5A", mustard: "#F2B134", skin: "#F1C7A1", hair: "#4A2E1F" };
+export const FONT = "Poppins";
 
 // pseudoaleatorio fijo, para que cada render dé lo mismo
-const rnd = (seed: number) => {
+export const rnd = (seed: number) => {
   const x = Math.sin(seed * 127.1 + 311.7) * 43758.5453;
   return x - Math.floor(x);
 };
 
 // contorno orgánico (claras, salsa): radio que ondula, cerrado con curvas suaves
-const blob = (cx: number, cy: number, rx: number, ry: number, seed: number, wob = 0.12, n = 14) => {
+export const blob = (cx: number, cy: number, rx: number, ry: number, seed: number, wob = 0.12, n = 14) => {
   const pts = Array.from({ length: n }, (_, i) => {
     const a = (i / n) * Math.PI * 2;
     const k = 1 + wob * (Math.sin(a * 3 + seed) * 0.6 + Math.sin(a * 5 + seed * 2.3) * 0.4) + (rnd(seed + i) - 0.5) * wob * 0.6;
@@ -37,7 +37,7 @@ const blob = (cx: number, cy: number, rx: number, ry: number, seed: number, wob 
 };
 
 // ---------- definiciones compartidas ----------
-const Defs: React.FC = () => (
+export const Defs: React.FC = () => (
   <defs>
     <filter id="sombra" x="-30%" y="-30%" width="160%" height="160%">
       <feDropShadow dx="0" dy="18" stdDeviation="16" floodColor="#3A1E0E" floodOpacity="0.35" />
@@ -156,7 +156,7 @@ const Sombra: React.FC<{ cx: number; cy: number; rx: number; ry?: number; o?: nu
   <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="#4A2408" opacity={o} filter="url(#vapor)" />
 );
 
-const Tomate: React.FC<{ cx: number; cy: number; r: number; rot?: number }> = ({ cx, cy, r, rot = 0 }) => (
+export const Tomate: React.FC<{ cx: number; cy: number; r: number; rot?: number }> = ({ cx, cy, r, rot = 0 }) => (
   <g transform={`rotate(${rot} ${cx} ${cy})`}>
     <Sombra cx={cx} cy={cy + r * 0.85} rx={r * 0.95} />
     <path d={blob(cx, cy, r * 1.06, r * 0.92, rot + 3, 0.05, 10)} fill="url(#tomate)" />
@@ -175,7 +175,7 @@ const Tomate: React.FC<{ cx: number; cy: number; r: number; rot?: number }> = ({
   </g>
 );
 
-const Cebolla: React.FC<{ cx: number; cy: number; r: number }> = ({ cx, cy, r }) => (
+export const Cebolla: React.FC<{ cx: number; cy: number; r: number }> = ({ cx, cy, r }) => (
   <g>
     <Sombra cx={cx} cy={cy + r * 0.85} rx={r * 0.9} />
     <path d={`M ${cx} ${cy - r * 1.35} C ${cx + r * 0.25} ${cy - r * 0.95} ${cx + r * 1.05} ${cy - r * 0.75} ${cx + r * 1.0} ${cy + r * 0.1} C ${cx + r * 0.95} ${cy + r * 0.85} ${cx + r * 0.4} ${cy + r * 0.95} ${cx} ${cy + r * 0.95} C ${cx - r * 0.4} ${cy + r * 0.95} ${cx - r * 0.95} ${cy + r * 0.85} ${cx - r * 1.0} ${cy + r * 0.1} C ${cx - r * 1.05} ${cy - r * 0.75} ${cx - r * 0.25} ${cy - r * 0.95} ${cx} ${cy - r * 1.35} Z`} fill="url(#cebolla)" />
@@ -190,7 +190,7 @@ const Cebolla: React.FC<{ cx: number; cy: number; r: number }> = ({ cx, cy, r })
   </g>
 );
 
-const Ajo: React.FC<{ cx: number; cy: number; r: number }> = ({ cx, cy, r }) => (
+export const Ajo: React.FC<{ cx: number; cy: number; r: number }> = ({ cx, cy, r }) => (
   <g>
     <Sombra cx={cx} cy={cy + r * 0.8} rx={r * 0.95} />
     {[-0.55, 0.55, -0.2, 0.2].map((k, i) => (
@@ -207,7 +207,7 @@ const Ajo: React.FC<{ cx: number; cy: number; r: number }> = ({ cx, cy, r }) => 
   </g>
 );
 
-const Huevo: React.FC<{ cx: number; cy: number; r: number; rot?: number }> = ({ cx, cy, r, rot = 0 }) => (
+export const Huevo: React.FC<{ cx: number; cy: number; r: number; rot?: number }> = ({ cx, cy, r, rot = 0 }) => (
   <g transform={`rotate(${rot} ${cx} ${cy})`}>
     <Sombra cx={cx} cy={cy + r * 1.1} rx={r * 0.85} />
     <path d={`M ${cx} ${cy - r * 1.3} C ${cx + r * 0.75} ${cy - r * 1.3} ${cx + r} ${cy + r * 0.1} ${cx + r * 0.95} ${cy + r * 0.45} C ${cx + r * 0.85} ${cy + r * 1.15} ${cx - r * 0.85} ${cy + r * 1.15} ${cx - r * 0.95} ${cy + r * 0.45} C ${cx - r} ${cy + r * 0.1} ${cx - r * 0.75} ${cy - r * 1.3} ${cx} ${cy - r * 1.3} Z`} fill="url(#huevo)" />
@@ -215,7 +215,7 @@ const Huevo: React.FC<{ cx: number; cy: number; r: number; rot?: number }> = ({ 
   </g>
 );
 
-const Pimenton: React.FC<{ x: number; y: number; w: number; h: number }> = ({ x, y, w, h }) => (
+export const Pimenton: React.FC<{ x: number; y: number; w: number; h: number }> = ({ x, y, w, h }) => (
   <g filter="url(#sombra)">
     <rect x={x} y={y} width={w} height={h} fill="url(#lata)" />
     <ellipse cx={x + w / 2} cy={y + h} rx={w / 2} ry={w * 0.14} fill="#7A180C" />
@@ -230,7 +230,7 @@ const Pimenton: React.FC<{ x: number; y: number; w: number; h: number }> = ({ x,
   </g>
 );
 
-const Perejil: React.FC<{ x: number; y: number; s: number; rot?: number }> = ({ x, y, s, rot = 0 }) => {
+export const Perejil: React.FC<{ x: number; y: number; s: number; rot?: number }> = ({ x, y, s, rot = 0 }) => {
   const hoja = (hx: number, hy: number, k: number, a: number) => (
     <g transform={`translate(${hx} ${hy}) rotate(${a}) scale(${k})`}>
       <path d="M 0 0 C -18 -10 -30 -34 -14 -46 C -10 -60 10 -60 14 -46 C 30 -34 18 -10 0 0 Z" fill="#3C8D5A" />
@@ -262,7 +262,7 @@ const Aceite: React.FC<{ x: number; y: number; s: number }> = ({ x, y, s }) => (
 );
 
 // ---------- cocinera (primer plano, duda) ----------
-const Cocinera: React.FC<{ cx: number; cy: number; s: number }> = ({ cx, cy, s }) => (
+export const Cocinera: React.FC<{ cx: number; cy: number; s: number }> = ({ cx, cy, s }) => (
   <g transform={`translate(${cx} ${cy}) scale(${s})`}>
     {/* torso y delantal */}
     <path d="M -230 420 Q -220 230 -90 200 L 90 200 Q 220 230 230 420 Z" fill="#F4EDE3" />
@@ -315,7 +315,7 @@ const Cocinera: React.FC<{ cx: number; cy: number; s: number }> = ({ cx, cy, s }
 
 // ---------- textos ----------
 type Parte = { t: string; marca?: boolean };
-const Titulo: React.FC<{ lineas: Parte[][]; y: number; size: number; derecha?: number }> = ({ lineas, y, size, derecha = 150 }) => (
+export const Titulo: React.FC<{ lineas: Parte[][]; y: number; size: number; derecha?: number }> = ({ lineas, y, size, derecha = 150 }) => (
   <div style={{ position: "absolute", left: 72, right: derecha, top: y, display: "flex", flexDirection: "column", alignItems: "center", gap: size * 0.08 }}>
     {lineas.map((l, i) => (
       <div key={i} style={{ display: "flex", gap: size * 0.25, fontFamily: FONT, fontWeight: 800, fontSize: size, lineHeight: 1.05, color: C.ink, letterSpacing: -1, whiteSpace: "nowrap" }}>
@@ -350,7 +350,7 @@ const Fondo: React.FC = () => (
 );
 
 // ---------- escena 1: ingredientes ----------
-const Ingredientes: React.FC = () => (
+export const Ingredientes: React.FC = () => (
   <AbsoluteFill style={{ background: C.cream }}>
     <svg width={1080} height={1920} viewBox="0 0 1080 1920" style={{ position: "absolute" }}>
       <Defs />
@@ -389,7 +389,7 @@ const Ingredientes: React.FC = () => (
 );
 
 // ---------- escena 2: preparación ----------
-const Burbujas: React.FC<{ cx: number; cy: number; rx: number; ry: number; n: number; seed: number }> = ({ cx, cy, rx, ry, n, seed }) => (
+export const Burbujas: React.FC<{ cx: number; cy: number; rx: number; ry: number; n: number; seed: number }> = ({ cx, cy, rx, ry, n, seed }) => (
   <>
     {Array.from({ length: n }, (_, i) => {
       const a = rnd(seed + i) * Math.PI * 2;
@@ -408,7 +408,7 @@ const Burbujas: React.FC<{ cx: number; cy: number; rx: number; ry: number; n: nu
   </>
 );
 
-const Picado: React.FC<{ cx: number; cy: number; rx: number; ry: number; n: number; seed: number }> = ({ cx, cy, rx, ry, n, seed }) => (
+export const Picado: React.FC<{ cx: number; cy: number; rx: number; ry: number; n: number; seed: number }> = ({ cx, cy, rx, ry, n, seed }) => (
   <>
     {Array.from({ length: n }, (_, i) => {
       const a = rnd(seed + i) * Math.PI * 2;
@@ -424,14 +424,14 @@ const Picado: React.FC<{ cx: number; cy: number; rx: number; ry: number; n: numb
   </>
 );
 
-const Vapor: React.FC<{ x: number; y: number; h: number; o?: number }> = ({ x, y, h, o = 0.55 }) => (
+export const Vapor: React.FC<{ x: number; y: number; h: number; o?: number }> = ({ x, y, h, o = 0.55 }) => (
   <g opacity={o} filter="url(#vapor)">
     <path d={`M ${x} ${y} c -70 ${-h * 0.18} 70 ${-h * 0.36} 0 ${-h * 0.55} c -60 ${-h * 0.16} 50 ${-h * 0.3} 20 ${-h * 0.45}`} stroke="#FFFFFF" strokeWidth={44} strokeLinecap="round" fill="none" />
     <path d={`M ${x + 40} ${y - 20} c 50 ${-h * 0.15} -50 ${-h * 0.3} 10 ${-h * 0.5}`} stroke="#FFFFFF" strokeWidth={26} strokeLinecap="round" fill="none" opacity={0.7} />
   </g>
 );
 
-const Sarten: React.FC<{ cx: number; cy: number; rx: number; ry: number; mango?: "izq" | "der"; children?: React.ReactNode }> = ({ cx, cy, rx, ry, mango = "der", children }) => (
+export const Sarten: React.FC<{ cx: number; cy: number; rx: number; ry: number; mango?: "izq" | "der"; children?: React.ReactNode }> = ({ cx, cy, rx, ry, mango = "der", children }) => (
   <g>
     <ellipse cx={cx + 10} cy={cy + ry * 0.2} rx={rx * 1.05} ry={ry * 1.02} fill="#3A1E0E" opacity={0.4} filter="url(#desenfoque)" />
     {mango === "der" ? (
@@ -447,7 +447,7 @@ const Sarten: React.FC<{ cx: number; cy: number; rx: number; ry: number; mango?:
   </g>
 );
 
-const Salsa: React.FC<{ cx: number; cy: number; rx: number; ry: number; seed: number }> = ({ cx, cy, rx, ry, seed }) => (
+export const Salsa: React.FC<{ cx: number; cy: number; rx: number; ry: number; seed: number }> = ({ cx, cy, rx, ry, seed }) => (
   <>
     <path d={blob(cx, cy, rx, ry, seed, 0.03, 18)} fill="url(#salsa)" />
     <path d={blob(cx, cy, rx, ry, seed, 0.03, 18)} fill="#fff" filter="url(#textura)" opacity={0.6} />
@@ -539,7 +539,7 @@ const Preparacion: React.FC = () => {
 };
 
 // ---------- escena 3: plato revelado ----------
-const HuevoCocido: React.FC<{ cx: number; cy: number; r: number; seed: number }> = ({ cx, cy, r, seed }) => (
+export const HuevoCocido: React.FC<{ cx: number; cy: number; r: number; seed: number }> = ({ cx, cy, r, seed }) => (
   <g>
     <path d={blob(cx + 6, cy + 10, r * 1.15, r * 0.95, seed, 0.16)} fill="#5E1208" opacity={0.45} filter="url(#sombraSuave)" />
     <path d={blob(cx, cy, r * 1.1, r * 0.9, seed, 0.16)} fill="url(#clara)" />
@@ -553,7 +553,7 @@ const HuevoCocido: React.FC<{ cx: number; cy: number; r: number; seed: number }>
   </g>
 );
 
-const Hojitas: React.FC<{ cx: number; cy: number; rx: number; ry: number; n: number; seed: number }> = ({ cx, cy, rx, ry, n, seed }) => (
+export const Hojitas: React.FC<{ cx: number; cy: number; rx: number; ry: number; n: number; seed: number }> = ({ cx, cy, rx, ry, n, seed }) => (
   <>
     {Array.from({ length: n }, (_, i) => {
       const a = rnd(seed + i) * Math.PI * 2;
@@ -571,7 +571,7 @@ const Hojitas: React.FC<{ cx: number; cy: number; rx: number; ry: number; n: num
   </>
 );
 
-const Revelacion: React.FC = () => {
+export const Revelacion: React.FC = () => {
   const P = { cx: 540, cy: 1040, rx: 505, ry: 400 };
   const S = { cx: P.cx, cy: P.cy + 8, rx: P.rx * 0.9, ry: P.ry * 0.86 };
   return (
