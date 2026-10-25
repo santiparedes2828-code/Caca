@@ -313,29 +313,53 @@ export const Cocinera: React.FC<{ cx: number; cy: number; s: number }> = ({ cx, 
   </g>
 );
 
+// ---------- movimiento (t en segundos; por defecto 99 = todo quieto, para los fotogramas fijos) ----------
+// algo que cae desde arriba y rebota al apoyarse: desplazamiento vertical en px
+const caida = (t: number, desde: number, alto = 1300) => {
+  const u = t - desde;
+  if (u < 0) return -alto;
+  if (u < 0.22) return -alto * (1 - u / 0.22) ** 2;
+  return -Math.exp(-(u - 0.22) * 9) * Math.abs(Math.sin((u - 0.22) * 16)) * 60;
+};
+// escala de algo que aparece de golpe y se asienta
+export const pop = (t: number, desde: number) => {
+  const u = t - desde;
+  if (u <= 0) return 0;
+  const k = Math.min(1, u / 0.09);
+  return k + Math.exp(-u * 8) * Math.sin(u * 20) * 0.25 * k;
+};
+const Cae: React.FC<{ t: number; desde: number; children: React.ReactNode }> = ({ t, desde, children }) => (
+  <g transform={`translate(0 ${caida(t, desde)})`}>{children}</g>
+);
+
 // ---------- textos ----------
 type Parte = { t: string; marca?: boolean };
-export const Titulo: React.FC<{ lineas: Parte[][]; y: number; size: number; derecha?: number }> = ({ lineas, y, size, derecha = 150 }) => (
+export const Titulo: React.FC<{ lineas: Parte[][]; y: number; size: number; derecha?: number; t?: number; apar?: number[] }> = ({ lineas, y, size, derecha = 150, t = 99, apar = [] }) => {
+  let n = 0;
+  return (
   <div style={{ position: "absolute", left: 72, right: derecha, top: y, display: "flex", flexDirection: "column", alignItems: "center", gap: size * 0.08 }}>
     {lineas.map((l, i) => (
       <div key={i} style={{ display: "flex", gap: size * 0.25, fontFamily: FONT, fontWeight: 800, fontSize: size, lineHeight: 1.05, color: C.ink, letterSpacing: -1, whiteSpace: "nowrap" }}>
-        {l.map((p, j) => (
-          <span
-            key={j}
-           
-            style={
-              p.marca
-                ? { background: C.tomato, color: "#FFF", padding: `0 ${size * 0.16}px`, borderRadius: size * 0.16, transform: "rotate(-2deg)", boxShadow: "0 10px 0 #A8240F" }
-                : { textShadow: "0 4px 0 rgba(255,255,255,0.7)" }
-            }
-          >
-            {p.t}
-          </span>
-        ))}
+        {l.map((p, j) => {
+          const k = pop(t, apar[n++] ?? -1);
+          return (
+            <span
+              key={j}
+              style={
+                p.marca
+                  ? { display: "inline-block", background: C.tomato, color: "#FFF", padding: `0 ${size * 0.16}px`, borderRadius: size * 0.16, transform: `rotate(${-2 - (1 - Math.min(1, k)) * 12}deg) scale(${k})`, boxShadow: "0 10px 0 #A8240F" }
+                  : { display: "inline-block", textShadow: "0 4px 0 rgba(255,255,255,0.7)", transform: `scale(${k})`, opacity: Math.min(1, k * 3) }
+              }
+            >
+              {p.t}
+            </span>
+          );
+        })}
       </div>
     ))}
   </div>
-);
+  );
+};
 
 const Fondo: React.FC = () => (
   <>
@@ -350,17 +374,19 @@ const Fondo: React.FC = () => (
 );
 
 // ---------- escena 1: ingredientes ----------
-export const Ingredientes: React.FC = () => (
+export const Ingredientes: React.FC<{ t?: number }> = ({ t = 99 }) => (
   <AbsoluteFill style={{ background: C.cream }}>
     <svg width={1080} height={1920} viewBox="0 0 1080 1920" style={{ position: "absolute" }}>
       <Defs />
       <Fondo />
-      <Cocinera cx={790} cy={720} s={1.05} />
+      <g transform={`translate(0 ${(1 - Math.min(1, pop(t, 0.05))) * 420}) rotate(${Math.sin(t * 5) * 3 * Math.exp(-Math.max(0, t - 99))} 790 1000)`}>
+        <Cocinera cx={790} cy={720} s={1.05} />
+      </g>
       {/* mesada */}
       <rect x={0} y={1040} width={1080} height={880} fill="url(#mesada)" />
       <rect x={0} y={1040} width={1080} height={880} fill="#fff" filter="url(#textura)" opacity={0.25} />
       <rect x={0} y={1030} width={1080} height={22} fill="#F7EBDD" />
-      <Aceite x={150} y={1150} s={0.9} />
+      <Cae t={t} desde={0.05}><Aceite x={150} y={1150} s={0.9} /></Cae>
       {/* tabla de madera en perspectiva */}
       <g filter="url(#sombra)">
         <path d="M 40 1230 L 1040 1210 L 1080 1640 L 0 1660 Z" fill="url(#maderaCanto)" />
@@ -369,22 +395,22 @@ export const Ingredientes: React.FC = () => (
       <path d="M 40 1200 L 1040 1180 L 1080 1610 L 0 1630 Z" fill="#fff" filter="url(#grano)" />
       <path d="M 40 1200 L 1040 1180" stroke="#F3C891" strokeWidth={5} />
       {/* ingredientes grandes, en primer plano */}
-      <Cebolla cx={250} cy={1310} r={125} />
-      <Pimenton x={760} y={1090} w={170} h={230} />
-      <Ajo cx={560} cy={1290} r={80} />
-      <Tomate cx={190} cy={1500} r={135} rot={-8} />
-      <Tomate cx={455} cy={1490} r={120} rot={12} />
-      <Tomate cx={340} cy={1600} r={95} rot={4} />
-      <Huevo cx={700} cy={1455} r={72} rot={-10} />
-      <Huevo cx={855} cy={1460} r={70} rot={14} />
-      <Huevo cx={780} cy={1575} r={68} rot={-70} />
-      <Perejil x={890} y={1640} s={1.2} rot={-40} />
+      <Cae t={t} desde={0.0}><Cebolla cx={250} cy={1310} r={125} /></Cae>
+      <Cae t={t} desde={0.26}><Pimenton x={760} y={1090} w={170} h={230} /></Cae>
+      <Cae t={t} desde={0.14}><Ajo cx={560} cy={1290} r={80} /></Cae>
+      <Cae t={t} desde={0.08}><Tomate cx={190} cy={1500} r={135} rot={-8} /></Cae>
+      <Cae t={t} desde={0.2}><Tomate cx={455} cy={1490} r={120} rot={12} /></Cae>
+      <Cae t={t} desde={0.38}><Tomate cx={340} cy={1600} r={95} rot={4} /></Cae>
+      <Cae t={t} desde={0.32}><Huevo cx={700} cy={1455} r={72} rot={-10} /></Cae>
+      <Cae t={t} desde={0.44}><Huevo cx={855} cy={1460} r={70} rot={14} /></Cae>
+      <Cae t={t} desde={0.5}><Huevo cx={780} cy={1575} r={68} rot={-70} /></Cae>
+      <Cae t={t} desde={0.56}><Perejil x={890} y={1640} s={1.2} rot={-40} /></Cae>
       {/* sal en grano */}
-      {Array.from({ length: 18 }, (_, i) => (
+      <g opacity={Math.min(1, Math.max(0, (t - 0.6) * 5))}>{Array.from({ length: 18 }, (_, i) => (
         <rect key={i} x={590 + rnd(i) * 120} y={1590 + rnd(i + 40) * 40} width={7} height={7} fill="#FFFFFF" opacity={0.9} transform={`rotate(${rnd(i + 7) * 90} ${594 + rnd(i) * 120} ${1594 + rnd(i + 40) * 40})`} />
-      ))}
+      ))}</g>
     </svg>
-    <Titulo lineas={[[{ t: "¿QUÉ HARÍAS" }], [{ t: "CON" }, { t: "ESTO?", marca: true }]]} y={250} size={112} />
+    <Titulo lineas={[[{ t: "¿QUÉ HARÍAS" }], [{ t: "CON" }, { t: "ESTO?", marca: true }]]} y={250} size={112} t={t} apar={[0.1, 0.75, 1.0]} />
   </AbsoluteFill>
 );
 
@@ -571,7 +597,8 @@ export const Hojitas: React.FC<{ cx: number; cy: number; rx: number; ry: number;
   </>
 );
 
-export const Revelacion: React.FC = () => {
+export const Revelacion: React.FC<{ t?: number }> = ({ t = 99 }) => {
+  const plop = (d: number) => { const u = Math.max(0, t - d); return 1 + 0.14 * Math.exp(-u * 7) * Math.cos(u * 18); };
   const P = { cx: 540, cy: 1040, rx: 505, ry: 400 };
   const S = { cx: P.cx, cy: P.cy + 8, rx: P.rx * 0.9, ry: P.ry * 0.86 };
   return (
@@ -597,11 +624,13 @@ export const Revelacion: React.FC = () => {
           <Picado {...S} n={110} seed={23} />
           {/* reducción oscura junto al borde */}
           <path d={blob(S.cx, S.cy, S.rx, S.ry, 7, 0.03, 18)} fill="none" stroke="#5E1208" strokeWidth={22} opacity={0.5} />
-          <HuevoCocido cx={P.cx - 200} cy={P.cy - 120} r={130} seed={1} />
-          <HuevoCocido cx={P.cx + 195} cy={P.cy - 100} r={125} seed={4} />
-          <HuevoCocido cx={P.cx - 150} cy={P.cy + 175} r={128} seed={8} />
-          <HuevoCocido cx={P.cx + 220} cy={P.cy + 170} r={122} seed={12} />
-          <Hojitas {...S} n={46} seed={41} />
+          <g transform={`translate(${P.cx - 200} ${P.cy - 120}) scale(${plop(0.0)}) translate(${-(P.cx - 200)} ${-(P.cy - 120)})`}><HuevoCocido cx={P.cx - 200} cy={P.cy - 120} r={130} seed={1} /></g>
+          <g transform={`translate(${P.cx + 195} ${P.cy - 100}) scale(${plop(0.07)}) translate(${-(P.cx + 195)} ${-(P.cy - 100)})`}><HuevoCocido cx={P.cx + 195} cy={P.cy - 100} r={125} seed={4} /></g>
+          <g transform={`translate(${P.cx - 150} ${P.cy + 175}) scale(${plop(0.14)}) translate(${-(P.cx - 150)} ${-(P.cy + 175)})`}><HuevoCocido cx={P.cx - 150} cy={P.cy + 175} r={128} seed={8} /></g>
+          <g transform={`translate(${P.cx + 220} ${P.cy + 170}) scale(${plop(0.21)}) translate(${-(P.cx + 220)} ${-(P.cy + 170)})`}><HuevoCocido cx={P.cx + 220} cy={P.cy + 170} r={122} seed={12} /></g>
+          <g transform={`translate(0 ${-(1 - Math.min(1, Math.max(0, (t - 0.25) / 0.5))) * 140})`} opacity={Math.min(1, Math.max(0, (t - 0.25) / 0.3))}>
+            <Hojitas {...S} n={46} seed={41} />
+          </g>
           {/* pimienta y pimentón por encima */}
           {Array.from({ length: 60 }, (_, i) => {
             const a = rnd(i + 300) * Math.PI * 2;
@@ -618,15 +647,15 @@ export const Revelacion: React.FC = () => {
           {Array.from({ length: 12 }, (_, i) => <circle key={i} cx={90 + rnd(i + 60) * 150} cy={1460 + rnd(i + 70) * 90} r={3 + rnd(i) * 4} fill="#D9B97E" />)}
         </g>
       </svg>
-      <Titulo lineas={[[{ t: "HUEVOS EN SALSA" }], [{ t: "DE" }, { t: "TOMATE", marca: true }]]} y={250} size={88} derecha={72} />
+      <Titulo lineas={[[{ t: "HUEVOS EN SALSA" }], [{ t: "DE" }, { t: "TOMATE", marca: true }]]} y={250} size={88} derecha={72} t={t} apar={[0.2, 0.85, 1.2]} />
       <div style={{ position: "absolute", left: 72, right: 72, top: 1500, display: "flex", gap: 16, justifyContent: "center" }}>
-        {["Para 2", "≈ 25 min", "8 ingredientes"].map((p) => (
-          <div key={p} style={{ fontFamily: FONT, fontWeight: 800, fontSize: 40, color: C.ink, background: C.cream, padding: "12px 26px", borderRadius: 40, boxShadow: "0 8px 0 rgba(43,33,24,0.25)" }}>
+        {["Para 2", "≈ 25 min", "8 ingredientes"].map((p, i) => (
+          <div key={p} style={{ transform: `scale(${pop(t, 1.5 + i * 0.1)})`, fontFamily: FONT, fontWeight: 800, fontSize: 40, color: C.ink, background: C.cream, padding: "12px 26px", borderRadius: 40, boxShadow: "0 8px 0 rgba(43,33,24,0.25)" }}>
             {p}
           </div>
         ))}
       </div>
-      <div style={{ position: "absolute", left: 72, right: 72, top: 1610, display: "flex", justifyContent: "center" }}>
+      <div style={{ position: "absolute", left: 72, right: 72, top: 1610, display: "flex", justifyContent: "center", opacity: Math.min(1, Math.max(0, (t - 1.8) * 4)) }}>
         <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 28, color: "#FFF6EA", background: "rgba(43,33,24,0.78)", padding: "8px 22px", borderRadius: 30 }}>
         Receta de ejemplo · ilustración
         </div>

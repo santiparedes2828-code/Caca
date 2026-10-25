@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, Audio, Easing, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
-import { Burbujas, C, Defs, FONT, HuevoCocido, Ingredientes, Picado, Revelacion, Salsa, Sarten, Vapor, blob, rnd } from "./Huevos";
+import { pop, Burbujas, C, Defs, FONT, HuevoCocido, Ingredientes, Picado, Revelacion, Salsa, Sarten, Vapor, blob, rnd } from "./Huevos";
 
 // Video del recetario (27 s): apertura de 5,8 s (ingredientes → preparación → plato, con la muestra de sonido suave)
 // + la receta en 4 pasos + el ebook + CTA «Escribime por DM». La receta es un EJEMPLO inventado: la voz no dice
@@ -294,28 +294,34 @@ export const RecetaVideo: React.FC = () => {
   const kListo = spring({ frame: frame - T.listo * fps, fps, config: { damping: 13, stiffness: 120 } });
   const flash = (s >= T.reveal && s < T.reveal + 0.15 ? lin(s, T.reveal, T.reveal + 0.15, 0.9, 0) : 0) + (s >= T.listo && s < T.listo + 0.12 ? lin(s, T.listo, T.listo + 0.12, 0.6, 0) : 0);
 
+  const temblor = s >= T.prep && s < T.reveal ? lin(s, T.prep, T.reveal, 2, 16, Easing.in(Easing.quad)) : 0;
+  const tx = (rnd(frame) - 0.5) * 2 * temblor;
+  const ty = (rnd(frame + 77) - 0.5) * 2 * temblor;
+  const giro = s >= T.prep && s < T.reveal ? lin(s, T.prep, T.reveal, -3, 3) : 0;
+  const latigazo = s > T.prep - 0.12 && s < T.prep + 0.22 ? Math.sin(Math.PI * lin(s, T.prep - 0.12, T.prep + 0.22)) * 18 : 0;
+  const kPlato = s < T.paso1 ? kReveal : kListo;
   const enSarten = (s >= T.prep && s < T.reveal) || (s >= T.paso1 && s < T.listo);
   const enPlato = (s >= T.reveal && s < T.paso1) || (s >= T.listo && s < T.libro);
 
   return (
-    <AbsoluteFill style={{ background: C.cream, overflow: "hidden" }}>
+    <AbsoluteFill style={{ background: C.cream, overflow: "hidden", filter: latigazo > 0.5 ? `blur(${latigazo}px)` : undefined }}>
       <Audio src={staticFile("ebook/receta_mezcla.wav")} />
 
       {/* 0–1,5 s: ingredientes; la cámara empuja y al final todo se desliza hacia la sartén */}
       {s < T.prep + 0.2 && (
         <AbsoluteFill style={{ transform: `scale(${lin(s, 0, T.prep, 1.0, 1.08)}) translateY(${lin(s, T.prep - 0.1, T.prep + 0.2, 0, -1920, Easing.in(Easing.quad))}px)` }}>
-          <Ingredientes />
+          <Ingredientes t={s} />
         </AbsoluteFill>
       )}
 
       {enSarten && (
         <AbsoluteFill style={{ transform: `translateY(${s < T.reveal ? lin(s, T.prep - 0.1, T.prep + 0.2, 1920, 0, Easing.out(Easing.quad)) : 0}px)` }}>
-          <AbsoluteFill style={{ transform: `scale(${zoomSarten})`, transformOrigin: "50% 58%" }}>
+          <AbsoluteFill style={{ transform: `translate(${tx}px, ${ty}px) rotate(${giro}deg) scale(${zoomSarten})`, transformOrigin: "50% 58%" }}>
             <Sartén e={e} />
           </AbsoluteFill>
           {s < T.reveal && (
-            <div style={{ position: "absolute", left: 72, top: 250, display: "flex", alignItems: "center", gap: 26 }}>
-              <Reloj t={lin(s, T.prep, T.reveal) * 3} size={150} />
+            <div style={{ position: "absolute", left: 72, top: 250, display: "flex", alignItems: "center", gap: 26, transform: `scale(${pop(s, T.prep + 0.1)})`, transformOrigin: "0 50%" }}>
+              <div style={{ transform: `scale(${1 + Math.abs(Math.sin(s * 9)) * 0.12})` }}><Reloj t={lin(s, T.prep, T.reveal) * 3} size={150} /></div>
               <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 112, lineHeight: 0.98, color: "#FFF6EA", textShadow: "0 6px 0 rgba(0,0,0,0.35)" }}>
                 +{Math.round(lin(s, T.prep + 0.1, T.reveal - 0.1, 0, 22))} MIN
               </div>
@@ -331,8 +337,8 @@ export const RecetaVideo: React.FC = () => {
       )}
 
       {enPlato && (
-        <AbsoluteFill style={{ transform: `scale(${1.14 - 0.14 * (s < T.paso1 ? kReveal : kListo)})` }}>
-          <Revelacion />
+        <AbsoluteFill style={{ transform: `scale(${1.3 - 0.3 * kPlato + lin(s, T.reveal + 0.6, T.paso1, 0, 0.05) * (s < T.paso1 ? 1 : 0)}) rotate(${(1 - kPlato) * -6}deg)` }}>
+          <Revelacion t={s < T.paso1 ? s - T.reveal : s - T.listo} />
           <AbsoluteFill style={{ transform: `translateY(${-((s * 40) % 60)}px)`, opacity: 0.5 }}>
             <svg width={1080} height={1920} viewBox="0 0 1080 1920">
               <Defs />
