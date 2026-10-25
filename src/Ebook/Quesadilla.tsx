@@ -197,7 +197,7 @@ const Mitad: React.FC<{ cx: number; cy: number; r: number; lado: "izq" | "der"; 
   );
 };
 
-const EscenaEstirado: React.FC<{ s: number; desde: number }> = ({ s, desde }) => {
+export const EscenaEstirado: React.FC<{ s: number; desde: number }> = ({ s, desde }) => {
   const u = s - desde;
   const sep = 40 + Math.min(1, u / 1.6) ** 0.8 * 300 + Math.sin(u * 3) * 8;
   const cx = 540;
@@ -222,7 +222,7 @@ const EscenaEstirado: React.FC<{ s: number; desde: number }> = ({ s, desde }) =>
 
 // ---------- textos ----------
 type Pal = { txt: string; t: number; marca?: boolean };
-const Frase: React.FC<{ s: number; palabras: Pal[]; top?: number; size?: number; color?: string }> = ({ s, palabras, top = 250, size = 104, color = C.ink }) => (
+export const Frase: React.FC<{ s: number; palabras: Pal[]; top?: number; size?: number; color?: string }> = ({ s, palabras, top = 250, size = 104, color = C.ink }) => (
   <div style={{ position: "absolute", left: 72, right: 72, top, display: "flex", flexWrap: "wrap", justifyContent: "center", gap: `${size * 0.1}px ${size * 0.24}px`, fontFamily: FONT, fontWeight: 800, fontSize: size, lineHeight: 1.05 }}>
     {palabras.map((p, i) => {
       const k = pop(s, p.t);

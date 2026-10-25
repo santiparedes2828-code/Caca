@@ -404,7 +404,7 @@ const Fondo: React.FC = () => (
 );
 
 // ---------- escena 1: ingredientes ----------
-export const Ingredientes: React.FC<{ t?: number }> = ({ t = 99 }) => (
+export const Ingredientes: React.FC<{ t?: number; sinTitulo?: boolean }> = ({ t = 99, sinTitulo = false }) => (
   <AbsoluteFill style={{ background: C.cream }}>
     <svg width={1080} height={1920} viewBox="0 0 1080 1920" style={{ position: "absolute" }}>
       <Defs />
@@ -440,7 +440,7 @@ export const Ingredientes: React.FC<{ t?: number }> = ({ t = 99 }) => (
         <rect key={i} x={590 + rnd(i) * 120} y={1590 + rnd(i + 40) * 40} width={7} height={7} fill="#FFFFFF" opacity={0.9} transform={`rotate(${rnd(i + 7) * 90} ${594 + rnd(i) * 120} ${1594 + rnd(i + 40) * 40})`} />
       ))}</g>
     </svg>
-    <Titulo lineas={[[{ t: "¿QUÉ HARÍAS" }], [{ t: "CON" }, { t: "ESTO?", marca: true }]]} y={250} size={112} t={t} apar={[0.1, 0.75, 1.0]} />
+    {!sinTitulo && <Titulo lineas={[[{ t: "¿QUÉ HARÍAS" }], [{ t: "CON" }, { t: "ESTO?", marca: true }]]} y={250} size={112} t={t} apar={[0.1, 0.75, 1.0]} />}
   </AbsoluteFill>
 );
 
