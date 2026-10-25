@@ -15,3 +15,8 @@
 - **Función (ventas.md):** confianza — muestra proceso y criterio, sin CTA.
 - **H1.** Enseñar el proceso en secuencia, sin texto técnico, genera más guardados y compartidos por 1000 vistas que los reels explicativos. Comparar con la mediana de piezas comparables de la cuenta cuando haya 5 o más.
 - **Métricas a 24 y 72 h:** compartidos + guardados por 1000 vistas, retención a 5 y 10 s, % que lo ve entero.
+
+### «Cuatro tomas, una frase» (mecanismo adaptado de @altumapp; producido en `out/tomas/`)
+- **Función:** alcance con el servicio dentro de la historia (edición a cámara).
+- **H1.** Una situación de grabación reconocible + subida de tensión que termina en corte a silencio y revelación da más compartidos y guardados por 1000 vistas que nuestros reels explicativos.
+- **Métricas:** compartidos + guardados / 1000 vistas, retención a 3 y 10 s, visitas al perfil atribuidas al video, DMs (conteo manual).
