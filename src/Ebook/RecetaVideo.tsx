@@ -201,7 +201,7 @@ const Sartén: React.FC<{ e: Estado }> = ({ e }) => {
 };
 
 // ---------- piezas de interfaz ----------
-const Reloj: React.FC<{ t: number; size: number }> = ({ t, size }) => {
+export const Reloj: React.FC<{ t: number; size: number }> = ({ t, size }) => {
   const ang = t * 360;
   return (
     <svg width={size} height={size} viewBox="0 0 150 150">
@@ -234,12 +234,12 @@ const Paso: React.FC<{ s: number; desde: number; n: number; texto: React.ReactNo
   );
 };
 
-const Marca: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+export const Marca: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <span style={{ background: C.tomato, color: "#FFF", padding: "0 16px", borderRadius: 16, display: "inline-block", transform: "rotate(-2deg)", boxShadow: "0 8px 0 #A8240F", textShadow: "none" }}>{children}</span>
 );
 
 // Tapa provisoria del ebook (no tenemos la real): título descriptivo y una ilustración del plato.
-const Libro: React.FC<{ w: number }> = ({ w }) => {
+export const Libro: React.FC<{ w: number }> = ({ w }) => {
   const h = w * 1.38;
   return (
     <div style={{ position: "relative", width: w, height: h }}>
