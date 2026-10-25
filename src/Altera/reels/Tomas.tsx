@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Audio, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Audio, Sequence, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { Gancho, antennaWorld, type GanchoPose } from "../Gancho";
 import { FLOOR, ScreenRope, Snd, Stage, type RopeSpec } from "../reelkit";
 import { A, Captions, FONT, LABEL, Paper, SOUND, fall, impact, lin } from "../system";
@@ -12,25 +12,27 @@ import { Tag } from "./Error1";
 // trozos (public/audio/tomas/limpia.wav, receta en produccion/tomas/armar_frase.sh). EJEMPLO CREADO PARA ESTE VIDEO.
 
 const F = (s: number) => Math.round(s * 30);
-export const TOMAS_FRAMES = F(23.2);
+export const TOMAS_FRAMES = F(15.4);
 
 // ---------- tiempos (s) ----------
-const TAKES = [
-  { clap: 0.1, at: 0.15, src: "t1", end: 2.77, words: [["Hola.", 0], ["Les", 0.64], ["pre…", 0.88], ["(se ríe)", 1.44], ["¡perdón!", 1.76]] },
-  { clap: 2.95, at: 3.05, src: "t2", end: 5.72, words: [["les", 0.1], ["presento", 0.3], ["mi", 0.7], ["nue…", 0.86], ["mi", 1.62], ["nue…", 1.74], ["¡ay!", 2.33]] },
-  { clap: 5.9, at: 6.0, src: "t3", end: 7.72, words: [["les", 0.03], ["presento", 0.23], ["mi", 0.48], ["nuevo…", 0.56], ["(tos)", 1.4]] },
-  { clap: 7.9, at: 8.0, src: "t4", end: 10.28, words: [["mi", 0.02], ["nuevo…", 0.18], ["(achís)", 0.9], ["…podcast.", 1.54]] },
-] as const;
-const SNEEZE = 8.9;
-const N2 = { at: 10.55, words: [["Pero", 0], ["tienen", 0.24], ["todo", 0.64], ["lo", 0.96], ["que", 1.08], ["necesito.", 1.2]] as const, end: 12.4 };
-const HOOK_LINE = 10.9; // lanza la línea
-const CHIP_AT = [11.4, 11.9, 12.4, 12.9]; // un trozo de cada toma cae en la tira
-const RISE = { from: 10.9, to: 14.1 }; // subida (tensión propia) → corte seco a silencio
-const CLEAN = { at: 14.35, dur: 2.515, cuts: [0.57, 1.2, 1.805] }; // frase montada: 4 trozos, 3 cortes
+// Apertura (v2, 2026-10-25): las tomas 1–3 ya fallaron; en el fotograma 0 Hookie estornuda en la toma 4 y tira el celular.
+// Frase de situación → la línea saca un trozo de cada toma mientras sube el riser → corte seco a silencio → frase limpia.
+const TAKE_ERRORS = ["(se ríe)", "mi nue… mi nue…", "(tos)", "(achís)"]; // cómo falló cada toma (grabadas en voz_full.wav)
+const SNEEZE = 0.05;
+const N0 = { at: 0.45, words: [["Grabaste", 0.02], ["cuatro", 0.66], ["tomas", 1.06], ["y", 1.66], ["no", 1.86], ["salió", 2.1], ["ninguna.", 2.58]] as const, end: 3.57 };
+const N2 = { at: 3.65, words: [["Pero", 0], ["tienen", 0.24], ["todo", 0.64], ["lo", 0.96], ["que", 1.08], ["necesito.", 1.2]] as const, end: 5.58 };
+const HOOK_LINE = 3.75; // lanza la línea
+const CHIP_AT = [4.15, 4.55, 4.95, 5.35]; // un trozo de cada toma cae en la tira
+const RISE = { from: 0.45, to: 6.4 }; // riser_hh.wav (5,95 s): sube bajo la voz y termina seco en el corte
+const CLEAN = { at: 6.6, dur: 2.515, cuts: [0.57, 1.2, 1.805] }; // revelación: frase montada con 4 trozos, 3 cortes
 const CLEAN_WORDS = [["Hola.", 0], ["Les", 0.57], ["presento", 0.8], ["mi", 1.2], ["nuevo", 1.33], ["podcast.", 1.805]] as const;
-const REVEAL = { at: 17.2, tomas: 17.24, cortes: 18.36, frase: 19.48, end: 20.3 };
-const N4 = { at: 20.5, words: [["La", 0.04], ["próxima,", 0.2], ["grabá", 1.08], ["tranquilo.", 1.48]] as const, end: 22.8 };
+const REVEAL = { at: 9.4, tomas: 9.44, cortes: 10.56, frase: 11.68, end: 12.5 };
+const N4 = { at: 12.7, words: [["La", 0.04], ["próxima,", 0.2], ["grabá", 1.08], ["tranquilo.", 1.48]] as const, end: 15.0 };
 const PIECES = ["Hola.", "les presento", "mi nuevo", "podcast."];
+const VOICE: [number, number][] = [
+  [N0.at, N0.end],
+  [N2.at, N2.end],
+];
 
 // ---------- utilería ----------
 const Clapper: React.FC<{ x: number; y: number; n: number; open: number; drop: number }> = ({ x, y, n, open, drop }) => (
@@ -101,7 +103,7 @@ const Chip: React.FC<{ text: string; x: number; y: number; hot?: boolean; buzz?:
 
 // habla de Hookie a partir de los tiempos de cada palabra
 const SPEECH: [number, number][] = [
-  ...TAKES.map((tk) => [tk.at, tk.end] as [number, number]),
+  [N0.at, N0.end],
   [N2.at, N2.end],
   [CLEAN.at, CLEAN.at + CLEAN.dur],
   [REVEAL.at, REVEAL.end],
@@ -114,108 +116,105 @@ export const Tomas: React.FC = () => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = f / fps;
-
-  const takeIdx = TAKES.findIndex((tk, i) => t >= tk.clap - 0.25 && (i === TAKES.length - 1 ? t < N2.at : t < TAKES[i + 1].clap - 0.25));
   const inScene = t < RISE.to || t >= N4.at - 0.2;
 
   // ---------- Hookie ----------
-  let g: GanchoPose = { x: 330, y: FLOOR, scale: 0.9, t, talk: talkAt(t), expr: "focused", armL: 30, armR: 40, look: { x: 1, y: 0 } };
+  let g: GanchoPose = { x: 330, y: FLOOR, scale: 0.9, t, talk: 0, expr: "squashed", armL: 30, armR: 150, look: { x: 1, y: 0 }, squash: 0.55 * impact(f - F(SNEEZE) - 2) };
   let rope: RopeSpec = null;
-  if (takeIdx >= 0 && t < N2.at) {
-    const tk = TAKES[takeIdx];
-    const flub = t >= tk.at + tk.words[tk.words.length - 1][1];
-    g = { ...g, expr: flub ? (takeIdx === 0 ? "happy" : "squashed") : "normal", armR: flub ? 150 : 60, squash: takeIdx === 3 ? 0.5 * impact(F(t) - F(SNEEZE)) : flub ? 0.25 * impact(F(t) - F(tk.at + tk.words[tk.words.length - 1][1])) : 0 };
-  }
+  if (t >= N0.at - 0.1) g = { ...g, expr: "squashed", armR: 40, armL: 30, look: { x: -0.3, y: 0.4 }, squash: 0 }; // avergonzado, mira a cámara
   if (t >= N2.at - 0.15 && t < RISE.to) {
     g = { ...g, expr: t < HOOK_LINE ? "surprised" : t < CHIP_AT[3] + 0.3 ? "smug" : "strain", look: { x: 0.4, y: -1 }, armR: 120, armL: 50, lean: t >= CHIP_AT[3] + 0.3 ? -14 : 0 };
     if (t >= HOOK_LINE) {
       g = { ...g, hookOut: true };
       const k = CHIP_AT.findIndex((c) => t < c + 0.05);
       if (k >= 0) {
-        // engancha la toma k
         rope = { screen: true, bx: CARD_X[k], by: CARD_Y + 60, slack: lin(t, k === 0 ? HOOK_LINE : CHIP_AT[k - 1], CHIP_AT[k], 0.5, 0.05), buzz: 0.3 };
       } else {
-        // tira de la tira montada: la tensión sube hasta el corte
         const kk = lin(t, CHIP_AT[3] + 0.05, RISE.to, 0, 1);
-        rope = { screen: true, bx: slotX[3] + chipW(PIECES[3]) / 2 - 10, by: STRIP_Y - 20, slack: 0.04, buzz: 0.3 + 1.2 * kk };
+        rope = { screen: true, bx: slotX[3] + chipW(PIECES[3]) / 2 - 10, by: STRIP_Y - 20, slack: 0.04, buzz: 0.3 + 1.4 * kk };
       }
     }
   }
-  if (t >= N4.at - 0.2) g = { ...g, expr: "happy", armL: 150, armR: 40 + 30 * Math.sin(t * 6), look: { x: 1, y: -0.2 } };
+  if (t >= N4.at - 0.2) g = { ...g, expr: "happy", armL: 150, armR: 40 + 30 * Math.sin(t * 6), look: { x: 1, y: -0.2 }, hookOut: false, lean: 0, squash: 0 };
+  g = { ...g, talk: talkAt(t) };
 
   const hookedCard = t >= HOOK_LINE && t < RISE.to ? CHIP_AT.findIndex((c) => t < c + 0.05) : -1;
-  const strainBuzz = t >= CHIP_AT[3] && t < RISE.to ? Math.sin(t * 90) * 4 * lin(t, CHIP_AT[3], RISE.to) : 0;
-
-  // ---------- tramos ----------
+  const strainBuzz = t >= CHIP_AT[3] && t < RISE.to ? Math.sin(t * 90) * 5 * lin(t, CHIP_AT[3], RISE.to) : 0;
   const cleanOn = t >= RISE.to && t < REVEAL.at;
   const revealOn = t >= REVEAL.at && t < N4.at - 0.2;
+  const question = t >= N2.at - 0.1;
 
   return (
     <Paper>
       {inScene ? (
         <>
-          {/* título del gancho: la situación */}
+          {/* situación → incógnita */}
           {t < RISE.to ? (
-            <div style={{ position: "absolute", left: 72, top: 230 }}>
-              <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 96, lineHeight: 1, letterSpacing: "-0.045em", color: A.ink }}>
-                <span style={{ color: A.orange }}>4</span> TOMAS
-              </div>
+            <div style={{ position: "absolute", left: 72, top: 230, fontFamily: FONT, fontWeight: 800, fontSize: question ? 80 : 96, lineHeight: 1, letterSpacing: "-0.045em", color: A.ink, transform: `scale(${1 + 0.08 * impact(f - F(N2.at - 0.1))})`, transformOrigin: "0 50%" }}>
+              {question ? (
+                <>
+                  ¿4 TOMAS → <span style={{ color: A.orange }}>1 FRASE</span>?
+                </>
+              ) : (
+                <>
+                  <span style={{ color: A.orange }}>4</span> TOMAS
+                </>
+              )}
             </div>
           ) : null}
-          {t < RISE.to ? <Tag text="Ninguna salió bien" y={336} /> : null}
-          {/* tomas fallidas */}
           {t < RISE.to
-            ? TAKES.map((tk, i) => (t >= tk.end ? <TakeCard key={i} x={CARD_X[i]} y={CARD_Y} n={i + 1} p={fall(f - F(tk.end), fps)} hooked={hookedCard === i} t={t} /> : null))
+            ? [0, 1, 2, 3].map((i) =>
+                i < 3 || t >= SNEEZE + 0.4 ? <TakeCard key={i} x={CARD_X[i]} y={CARD_Y} n={i + 1} p={i < 3 ? 1 : fall(f - F(SNEEZE + 0.4), fps)} hooked={hookedCard === i} t={t} /> : null,
+              )
             : null}
+          {t < N0.at ? <div style={{ position: "absolute", left: 0, right: 0, top: 640, textAlign: "center", fontFamily: FONT, fontWeight: 800, fontSize: 64, letterSpacing: "-0.04em", color: A.ink }}>{TAKE_ERRORS[3]}</div> : null}
           <AbsoluteFill>
             <Stage>
-              <Tripod tilt={t >= SNEEZE && t < N2.at ? -14 * Math.min(1, (t - SNEEZE) * 6) : 0} rec={Math.floor(t * 2) % 2 === 0} />
+              <Tripod tilt={t >= SNEEZE && t < RISE.to ? -18 * Math.min(1, (t - SNEEZE) * 6) : 0} rec={Math.floor(t * 2) % 2 === 0} />
               <Gancho {...g} />
             </Stage>
             <ScreenRope from={antennaWorld(g)} rope={rope} t={t} />
           </AbsoluteFill>
-          {/* claqueta de cada toma */}
-          {takeIdx >= 0 && t < N2.at
-            ? (() => {
-                const tk = TAKES[takeIdx];
-                const open = t < tk.clap ? 1 : 0;
-                const drop = lin(t, tk.clap + 0.3, tk.clap + 0.6, 0, 1, (x) => x * x);
-                const enter = lin(t, tk.clap - 0.25, tk.clap - 0.05, 1, 0);
-                return <Clapper x={640} y={860 - enter * 600} n={takeIdx + 1} open={open} drop={drop} />;
-              })()
-            : null}
-          {/* trozos que saca la línea, uno por toma */}
+          {t < 0.7 ? <Clapper x={640} y={860} n={4} open={0} drop={lin(t, 0.25, 0.65, 0, 1, (x) => x * x)} /> : null}
           {t < RISE.to
             ? PIECES.map((p, i) => {
                 if (t < CHIP_AT[i] - 0.25) return null;
                 const k = lin(t, CHIP_AT[i] - 0.25, CHIP_AT[i], 0, 1, (x) => x * x);
-                const x = CARD_X[i] + (slotX[i] - CARD_X[i]) * k;
-                const y = CARD_Y + (STRIP_Y - CARD_Y) * k;
-                return <Chip key={i} text={p} x={x} y={y} hot={false} buzz={strainBuzz} />;
+                return <Chip key={i} text={p} x={CARD_X[i] + (slotX[i] - CARD_X[i]) * k} y={CARD_Y + (STRIP_Y - CARD_Y) * k} buzz={strainBuzz} />;
               })
             : null}
-          {/* subtítulos de las tomas y de la voz */}
-          {t < RISE.to ? (
-            <Captions words={t >= N2.at - 0.1 ? wordsFrom(N2.at, N2.words) : takeIdx >= 0 ? wordsFrom(TAKES[takeIdx].at, TAKES[takeIdx].words) : []} f={f} fps={fps} top={640} size={64} keys={[]} />
-          ) : null}
+          {t >= N0.at - 0.05 && t < RISE.to ? <Captions words={t >= N2.at - 0.05 ? wordsFrom(N2.at, N2.words) : wordsFrom(N0.at, N0.words)} f={f} fps={fps} top={640} size={64} keys={[]} /> : null}
           {t >= N4.at - 0.2 ? <Captions words={wordsFrom(N4.at, N4.words)} f={f} fps={fps} top={640} size={64} keys={[]} /> : null}
         </>
       ) : null}
 
-      {/* la frase montada, como se publicaría */}
       {cleanOn ? <CleanView t={t} /> : null}
-
-      {/* cómo se hizo: 4 tomas → 3 cortes → 1 frase */}
       {revealOn ? <Reveal t={t} f={f} /> : null}
 
       {/* audio */}
-      {TAKES.map((tk) => (
-        <Sequence key={tk.src} from={F(tk.at)}>
-          <Audio src={staticFile(`audio/tomas/${tk.src}.wav`)} />
-        </Sequence>
-      ))}
+      <Sequence from={F(SNEEZE)}>
+        <Audio src={staticFile("audio/tomas/achis.wav")} />
+      </Sequence>
+      <Snd at={0} src={SOUND.impacto} vol={0.35} />
+      <Sequence from={F(N0.at)}>
+        <Audio src={staticFile("audio/tomas/n0.wav")} />
+      </Sequence>
       <Sequence from={F(N2.at)}>
         <Audio src={staticFile("audio/tomas/n2.wav")} />
+      </Sequence>
+      {/* riser propio: bajo la voz se agacha; sin voz sube entero; termina seco en el corte */}
+      <Sequence from={F(RISE.from)} durationInFrames={F(RISE.to) - F(RISE.from)}>
+        <Audio
+          src={staticFile("sfx/hh/riser_hh.wav")}
+          volume={(fr) => {
+            const tt = RISE.from + fr / 30;
+            // distancia a la voz más cercana: 0,45 bajo la voz, sube a 1 en 0,15 s fuera de ella
+            const d = Math.min(...VOICE.map(([a, b]) => (tt < a ? a - tt : tt > b ? tt - b : 0)));
+            // bajo la voz el riser queda ~6–8 dB por debajo de ella (su propio nivel crece, así que se baja más con el tiempo)
+            const under = interpolate(tt, [0.45, 2.0, 3.0, 4.15, 5.05], [1, 0.8, 0.57, 0.4, 0.21], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+            return under + (1 - under) * Math.min(1, d / 0.15);
+          }}
+        />
       </Sequence>
       <Sequence from={F(CLEAN.at)}>
         <Audio src={staticFile("audio/tomas/limpia.wav")} />
@@ -226,18 +225,6 @@ export const Tomas: React.FC = () => {
       <Sequence from={F(N4.at)}>
         <Audio src={staticFile("audio/tomas/n4.wav")} />
       </Sequence>
-      {TAKES.map((tk) => (
-        <Snd key={`c${tk.src}`} at={F(tk.clap)} src={SOUND.impacto} vol={0.55} />
-      ))}
-      {TAKES.map((tk) => (
-        <Snd key={`d${tk.src}`} at={F(tk.end) + 6} src={SOUND.impacto} vol={0.25} />
-      ))}
-      <Sequence from={F(RISE.from)} durationInFrames={F(RISE.to) - F(RISE.from)}>
-        <Audio src={staticFile("sfx/hh/tension_subida.wav")} volume={(fr) => (fr < F(N2.end) - F(RISE.from) ? 0.6 : 0.6 + 0.4 * lin(fr, F(N2.end) - F(RISE.from), F(N2.end) - F(RISE.from) + 15))} />
-      </Sequence>
-      {CHIP_AT.map((c) => (
-        <Snd key={c} at={F(c)} src={SOUND.impacto} vol={0.3} />
-      ))}
       {[REVEAL.cortes, REVEAL.cortes + 0.25, REVEAL.cortes + 0.5].map((c) => (
         <Snd key={c} at={F(c)} src={SOUND.impacto} vol={0.3} />
       ))}
