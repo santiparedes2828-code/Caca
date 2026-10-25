@@ -28,7 +28,7 @@ import { ERROR1_FRAMES, Error1, Error1Portada } from "./Altera/reels/Error1";
 import { CAPAS_FRAMES, Capas, CapasPortada } from "./Altera/reels/Capas";
 import { TOMAS_FRAMES, Tomas, TomasPortada } from "./Altera/reels/Tomas";
 import { APERTURA_FRAMES, EbookApertura } from "./Ebook/Heladera";
-import { HuevosClave } from "./Ebook/Huevos";
+import { HuevosClave, Logo as LogoRecetas } from "./Ebook/Huevos";
 import { RECETA_FRAMES, RecetaVideo } from "./Ebook/RecetaVideo";
 import { PODCAST_FRAMES, Podcast } from "./Clips/Podcast";
 import { SEGUNDOS_FRAMES, Segundos } from "./Altera/reels/Segundos";
@@ -159,6 +159,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Capas" component={Capas} durationInFrames={CAPAS_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="EbookApertura" component={EbookApertura} durationInFrames={APERTURA_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="RecetaVideo" component={RecetaVideo} durationInFrames={RECETA_FRAMES} fps={30} width={1080} height={1920} />
+      <Still id="LogoTikTok" component={LogoRecetas} width={1080} height={1080} />
       {([1, 2, 3] as const).map((e) => <Still key={e} id={`HuevosClave${e}`} component={HuevosClave} defaultProps={{ escena: e }} width={1080} height={1920} />)}
       <Composition id="Tomas" component={Tomas} durationInFrames={TOMAS_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="TomasPortada" component={TomasPortada} durationInFrames={1} fps={30} width={1080} height={1920} />

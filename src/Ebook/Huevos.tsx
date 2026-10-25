@@ -262,7 +262,7 @@ const Aceite: React.FC<{ x: number; y: number; s: number }> = ({ x, y, s }) => (
 );
 
 // ---------- cocinera (primer plano, duda) ----------
-export const Cocinera: React.FC<{ cx: number; cy: number; s: number }> = ({ cx, cy, s }) => (
+export const Cocinera: React.FC<{ cx: number; cy: number; s: number; feliz?: boolean }> = ({ cx, cy, s, feliz = false }) => (
   <g transform={`translate(${cx} ${cy}) scale(${s})`}>
     {/* torso y delantal */}
     <path d="M -230 420 Q -220 230 -90 200 L 90 200 Q 220 230 230 420 Z" fill="#F4EDE3" />
@@ -282,6 +282,23 @@ export const Cocinera: React.FC<{ cx: number; cy: number; s: number }> = ({ cx, 
     {/* flequillo */}
     <path d="M -150 -30 Q -140 -150 0 -158 Q 140 -150 150 -30 Q 110 -110 30 -100 Q -40 -130 -150 -30 Z" fill={C.hair} />
     <path d="M -60 -120 Q 0 -150 80 -118" stroke="#6A4430" strokeWidth={8} fill="none" opacity={0.6} strokeLinecap="round" />
+{feliz ? (
+  <>
+    {/* cejas arriba, mirada al frente */}
+    <path d="M -96 -62 Q -62 -86 -28 -66" stroke={C.hair} strokeWidth={13} strokeLinecap="round" fill="none" />
+    <path d="M 28 -66 Q 62 -86 96 -62" stroke={C.hair} strokeWidth={13} strokeLinecap="round" fill="none" />
+    {[-60, 60].map((ex) => (
+      <g key={ex}>
+        <ellipse cx={ex} cy={-12} rx={26} ry={30} fill="#FFFFFF" />
+        <circle cx={ex} cy={-10} r={17} fill="#3B2416" />
+        <circle cx={ex - 6} cy={-17} r={6} fill="#FFFFFF" />
+        <circle cx={ex + 6} cy={-3} r={2.5} fill="#FFFFFF" />
+        <path d={`M ${ex - 28} -38 Q ${ex} -50 ${ex + 28} -38`} stroke="#3B2416" strokeWidth={5} fill="none" strokeLinecap="round" />
+      </g>
+    ))}
+  </>
+) : (
+  <>
     {/* cejas: una alta (duda), otra baja */}
     <path d="M -95 -55 Q -62 -88 -28 -66" stroke={C.hair} strokeWidth={13} strokeLinecap="round" fill="none" />
     <path d="M 30 -45 Q 64 -52 96 -40" stroke={C.hair} strokeWidth={13} strokeLinecap="round" fill="none" />
@@ -294,10 +311,21 @@ export const Cocinera: React.FC<{ cx: number; cy: number; s: number }> = ({ cx, 
         <path d={`M ${ex - 28} ${ex < 0 ? -40 : -30} Q ${ex} ${ex < 0 ? -50 : -38} ${ex + 28} ${ex < 0 ? -40 : -30}`} stroke="#3B2416" strokeWidth={5} fill="none" strokeLinecap="round" />
       </g>
     ))}
+  </>
+)}
     {/* mejillas y nariz */}
     <ellipse cx={-88} cy={50} rx={26} ry={14} fill="#F08A7A" opacity={0.35} />
     <ellipse cx={90} cy={50} rx={26} ry={14} fill="#F08A7A" opacity={0.35} />
     <path d="M 4 10 Q -10 45 6 52" stroke="#C78A62" strokeWidth={6} fill="none" strokeLinecap="round" />
+{feliz ? (
+      <g>
+        {/* sonrisa abierta */}
+        <path d="M -52 78 Q 0 92 52 78 Q 44 132 0 134 Q -44 132 -52 78 Z" fill="#8E3B2A" />
+        <path d="M -40 82 Q 0 92 40 82 L 38 94 Q 0 102 -38 94 Z" fill="#FFFFFF" />
+        <path d="M -24 120 Q 0 108 24 120 Q 12 130 0 130 Q -12 130 -24 120 Z" fill="#E86A5A" />
+      </g>
+    ) : (
+      <>
     {/* boca torcida */}
     <path d="M -38 98 Q -5 88 22 96 Q 36 100 44 90" stroke="#8E3B2A" strokeWidth={8} fill="none" strokeLinecap="round" />
     {/* mano en el mentón */}
@@ -310,6 +338,8 @@ export const Cocinera: React.FC<{ cx: number; cy: number; s: number }> = ({ cx, 
     {/* signos de duda */}
     <text x={175} y={-150} fontFamily={FONT} fontWeight={800} fontSize={110} fill={C.tomato} transform="rotate(14 175 -150)">?</text>
     <text x={-235} y={-120} fontFamily={FONT} fontWeight={800} fontSize={70} fill={C.ink} opacity={0.8} transform="rotate(-12 -235 -120)">?</text>
+      </>
+    )}
   </g>
 );
 
@@ -663,6 +693,36 @@ export const Revelacion: React.FC<{ t?: number }> = ({ t = 99 }) => {
     </AbsoluteFill>
   );
 };
+
+// ---------- logo para el perfil (TikTok lo recorta en círculo) ----------
+export const Logo: React.FC = () => (
+  <AbsoluteFill style={{ background: C.cream }}>
+    <svg width={1080} height={1080} viewBox="0 0 1080 1080">
+      <Defs />
+      <radialGradient id="fondoLogo" cx="0.5" cy="0.42" r="0.6">
+        <stop offset="0" stopColor="#F27A55" />
+        <stop offset="0.7" stopColor={C.tomato} />
+        <stop offset="1" stopColor="#B83218" />
+      </radialGradient>
+      <rect width={1080} height={1080} fill="url(#fondoLogo)" />
+      {/* rayos suaves detrás */}
+      {Array.from({ length: 16 }, (_, i) => (
+        <path key={i} d="M 540 470 L 520 -200 L 560 -200 Z" fill="#FFF6EA" opacity={0.08} transform={`rotate(${i * 22.5} 540 470)`} />
+      ))}
+      <circle cx={540} cy={470} r={330} fill="#FFF6EA" opacity={0.95} />
+      <Cocinera cx={540} cy={540} s={1.75} feliz />
+      {/* sartén chiquita con huevos, abajo a la derecha */}
+      <g transform="translate(760 820) rotate(-14) scale(0.36) translate(-540 -1040)" filter="url(#sombra)">
+        <Sarten cx={540} cy={1040} rx={440} ry={350} mango="der">
+          <Salsa cx={540} cy={1048} rx={396} ry={300} seed={7} />
+          <HuevoCocido cx={380} cy={950} r={120} seed={1} />
+          <HuevoCocido cx={700} cy={960} r={118} seed={4} />
+          <HuevoCocido cx={540} cy={1170} r={120} seed={8} />
+        </Sarten>
+      </g>
+    </svg>
+  </AbsoluteFill>
+);
 
 export const HuevosClave: React.FC<{ escena: 1 | 2 | 3 }> = ({ escena }) =>
   escena === 1 ? <Ingredientes /> : escena === 2 ? <Preparacion /> : <Revelacion />;
