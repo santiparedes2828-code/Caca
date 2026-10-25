@@ -27,6 +27,7 @@ import { PIEDRA_FRAMES, Piedra } from "./Altera/reels/Piedra";
 import { ERROR1_FRAMES, Error1, Error1Portada } from "./Altera/reels/Error1";
 import { CAPAS_FRAMES, Capas, CapasPortada } from "./Altera/reels/Capas";
 import { TOMAS_FRAMES, Tomas, TomasPortada } from "./Altera/reels/Tomas";
+import { APERTURA_FRAMES, EbookApertura } from "./Ebook/Heladera";
 import { PODCAST_FRAMES, Podcast } from "./Clips/Podcast";
 import { SEGUNDOS_FRAMES, Segundos } from "./Altera/reels/Segundos";
 import { SONIDO_FRAMES, Sonido } from "./Altera/reels/Sonido";
@@ -154,6 +155,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Error1A" component={Error1} defaultProps={{ variant: "A" as const }} durationInFrames={ERROR1_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Error1B" component={Error1} defaultProps={{ variant: "B" as const }} durationInFrames={ERROR1_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Capas" component={Capas} durationInFrames={CAPAS_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="EbookApertura" component={EbookApertura} durationInFrames={APERTURA_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Tomas" component={Tomas} durationInFrames={TOMAS_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="TomasPortada" component={TomasPortada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="CapasPortada" component={CapasPortada} durationInFrames={1} fps={30} width={1080} height={1920} />

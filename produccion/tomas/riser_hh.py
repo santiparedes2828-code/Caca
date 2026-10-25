@@ -25,10 +25,10 @@ mix = (0.55 * tone / np.max(np.abs(tone)) + 0.6 * nz) * trem
 # capa de identidad: tensión.wav al inicio y una octava y media más aguda a mitad
 raw = subprocess.run(["ffmpeg", "-v", "error", "-i", "public/sfx/hh/tension.wav", "-ac", "1", "-ar", str(sr), "-f", "f32le", "-"], capture_output=True).stdout
 tens = np.frombuffer(raw, dtype=np.float32).astype(float)
-mix[: len(tens)] += 0.5 * tens[: n]
+if "--sin-tension" not in sys.argv: mix[: len(tens)] += 0.5 * tens[: n]
 raw2 = subprocess.run(["ffmpeg", "-v", "error", "-i", "public/sfx/hh/tension.wav", "-af", f"asetrate={int(sr*1.5)},aresample={sr}", "-ac", "1", "-f", "f32le", "-"], capture_output=True).stdout
 t2 = np.frombuffer(raw2, dtype=np.float32).astype(float); a = int(n * 0.55)
-mix[a:a + len(t2)] += 0.6 * t2[: max(0, n - a)]
+if "--sin-tension" not in sys.argv: mix[a:a + len(t2)] += 0.6 * t2[: max(0, n - a)]
 mix *= 10 ** (-3 / 20) / np.max(np.abs(mix))
 fade = int(0.008 * sr); mix[-fade:] *= np.linspace(1, 0, fade)
 st = np.stack([mix, mix], axis=1)
