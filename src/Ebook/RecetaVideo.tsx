@@ -33,7 +33,7 @@ const T = {
 };
 
 // ---------- sartén paramétrica ----------
-type Estado = {
+export type Estado = {
   cebolla: number; // 0–1 cantidad; dorado con `dorado`
   dorado: number;
   ajo: number;
@@ -55,7 +55,7 @@ const POS = [
   [205, 155],
 ];
 
-const Sartén: React.FC<{ e: Estado }> = ({ e }) => {
+export const Sartén: React.FC<{ e: Estado }> = ({ e }) => {
   const S = { cx: P.cx, cy: P.cy + 8, rx: P.rx * 0.9, ry: P.ry * 0.86 };
   const pour = { x: P.cx + 120, y: P.cy - 60 };
   const rSalsa = e.salsa * 1.25 * S.rx;

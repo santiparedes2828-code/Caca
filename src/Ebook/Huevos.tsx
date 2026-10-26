@@ -627,7 +627,7 @@ export const Hojitas: React.FC<{ cx: number; cy: number; rx: number; ry: number;
   </>
 );
 
-export const Revelacion: React.FC<{ t?: number }> = ({ t = 99 }) => {
+export const Revelacion: React.FC<{ t?: number; limpio?: boolean }> = ({ t = 99, limpio = false }) => {
   const plop = (d: number) => { const u = Math.max(0, t - d); return 1 + 0.14 * Math.exp(-u * 7) * Math.cos(u * 18); };
   const P = { cx: 540, cy: 1040, rx: 505, ry: 400 };
   const S = { cx: P.cx, cy: P.cy + 8, rx: P.rx * 0.9, ry: P.ry * 0.86 };
@@ -677,6 +677,8 @@ export const Revelacion: React.FC<{ t?: number }> = ({ t = 99 }) => {
           {Array.from({ length: 12 }, (_, i) => <circle key={i} cx={90 + rnd(i + 60) * 150} cy={1460 + rnd(i + 70) * 90} r={3 + rnd(i) * 4} fill="#D9B97E" />)}
         </g>
       </svg>
+      {!limpio && (
+        <>
       <Titulo lineas={[[{ t: "HUEVOS EN SALSA" }], [{ t: "DE" }, { t: "TOMATE", marca: true }]]} y={250} size={88} derecha={72} t={t} apar={[0.2, 0.85, 1.2]} />
       <div style={{ position: "absolute", left: 72, right: 72, top: 1500, display: "flex", gap: 16, justifyContent: "center" }}>
         {["Para 2", "≈ 25 min", "8 ingredientes"].map((p, i) => (
@@ -690,6 +692,8 @@ export const Revelacion: React.FC<{ t?: number }> = ({ t = 99 }) => {
         Receta de ejemplo · ilustración
         </div>
       </div>
+        </>
+      )}
     </AbsoluteFill>
   );
 };
