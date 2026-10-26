@@ -7,7 +7,8 @@ import { Frase } from "./Quesadilla";
 // burbujas se forman alrededor de partículas microscópicas de heno que caen en la leche; con el ordeñe cerrado
 // (más limpio) los quesos empezaron a tener menos agujeros. Agroscope y Empa (Suiza), 2015; ver swissinfo.ch y
 // popsci.com. Arranca en escala microscópica (pedido del usuario) y se aleja hasta el agujero del queso.
-// Audio: public/ebook/queso_mezcla.wav (voz +0,05 s; riser 12,39–14,05; golpe 14,05).
+// Audio: public/ebook/queso_mezcla_musica.wav = queso_mezcla.wav (voz +0,05 s; riser 12,39–14,05; golpe 14,05)
+// + música propia por secciones (produccion/ebook/musica_queso.py), con compresión por la voz.
 
 export const QUESO_FRAMES = Math.round(20.6 * 30);
 const fps = 30;
@@ -156,7 +157,7 @@ export const DatoQueso: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ background: "#151010", overflow: "hidden" }}>
-      <Audio src={staticFile("ebook/queso_mezcla.wav")} />
+      <Audio src={staticFile("ebook/queso_mezcla_musica.wav")} />
 
       {/* 0–14 s · dentro del queso: microscopio, con un acercamiento rápido al arrancar */}
       {s < T.queso && (
