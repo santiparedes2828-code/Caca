@@ -29,7 +29,7 @@ const T = {
 };
 
 // ---------- dibujos ----------
-const QDefs: React.FC = () => (
+export const QDefs: React.FC = () => (
   <defs>
     <radialGradient id="tortilla" cx="0.45" cy="0.4" r="0.65">
       <stop offset="0" stopColor="#FBEBC8" />
@@ -57,7 +57,7 @@ const QDefs: React.FC = () => (
   </defs>
 );
 
-const Mesa: React.FC = () => (
+export const Mesa: React.FC = () => (
   <>
     <rect width={1080} height={1920} fill="url(#madera)" />
     <rect width={1080} height={1920} fill="#fff" filter="url(#grano)" />
@@ -70,7 +70,7 @@ const Mesa: React.FC = () => (
   </>
 );
 
-const Tablita: React.FC<{ cx: number; cy: number; r: number }> = ({ cx, cy, r }) => (
+export const Tablita: React.FC<{ cx: number; cy: number; r: number }> = ({ cx, cy, r }) => (
   <g filter="url(#sombra)">
     <ellipse cx={cx} cy={cy + 22} rx={r} ry={r * 0.86} fill="url(#maderaCanto)" />
     <ellipse cx={cx} cy={cy} rx={r} ry={r * 0.86} fill="#E9B97C" />
@@ -89,7 +89,7 @@ const Manchitas: React.FC<{ cx: number; cy: number; rx: number; ry: number; n: n
   </g>
 );
 
-const Tortilla: React.FC<{ cx: number; cy: number; r: number }> = ({ cx, cy, r }) => (
+export const Tortilla: React.FC<{ cx: number; cy: number; r: number }> = ({ cx, cy, r }) => (
   <g>
     <ellipse cx={cx + 8} cy={cy + 14} rx={r} ry={r * 0.86} fill="#4A2408" opacity={0.25} filter="url(#vapor)" />
     <ellipse cx={cx} cy={cy} rx={r} ry={r * 0.86} fill="url(#tortilla)" />
@@ -121,14 +121,14 @@ const Rallado: React.FC<{ cx: number; cy: number; rx: number; ry: number; n: num
 );
 
 // media luna dorada (quesadilla doblada), vista desde arriba; el lado recto abajo
-const MediaLuna: React.FC<{ cx: number; cy: number; r: number; tostado: number; derrame?: number }> = ({ cx, cy, r, tostado, derrame = 1 }) => {
+export const MediaLuna: React.FC<{ cx: number; cy: number; r: number; tostado: number; derrame?: number; sinQueso?: boolean }> = ({ cx, cy, r, tostado, derrame = 1, sinQueso = false }) => {
   const d = `M ${cx - r} ${cy} A ${r} ${r * 0.86} 0 0 1 ${cx + r} ${cy} Z`;
   return (
     <g>
       <path d={d} fill="#4A2408" opacity={0.3} transform="translate(8 16)" filter="url(#vapor)" />
       {/* queso que asoma por el borde recto */}
-      <path d={`M ${cx - r * 0.85} ${cy} q ${r * 0.1} ${30 * derrame} ${r * 0.25} ${10 * derrame} q ${r * 0.15} ${42 * derrame} ${r * 0.3} ${8 * derrame} q ${r * 0.2} ${36 * derrame} ${r * 0.35} ${4 * derrame} q ${r * 0.25} ${48 * derrame} ${r * 0.4} ${0} q ${r * 0.2} ${30 * derrame} ${r * 0.4} ${-2 * derrame} Z`} fill="url(#quesoDerretido)" />
-      <path d={`M ${cx - r * 0.6} ${cy - 2} L ${cx + r * 0.2} ${cy - 2}`} stroke="#F29A98" strokeWidth={10} strokeLinecap="round" />
+      {!sinQueso && <path d={`M ${cx - r * 0.85} ${cy} q ${r * 0.1} ${30 * derrame} ${r * 0.25} ${10 * derrame} q ${r * 0.15} ${42 * derrame} ${r * 0.3} ${8 * derrame} q ${r * 0.2} ${36 * derrame} ${r * 0.35} ${4 * derrame} q ${r * 0.25} ${48 * derrame} ${r * 0.4} ${0} q ${r * 0.2} ${30 * derrame} ${r * 0.4} ${-2 * derrame} Z`} fill="url(#quesoDerretido)" />}
+      {!sinQueso && <path d={`M ${cx - r * 0.6} ${cy - 2} L ${cx + r * 0.2} ${cy - 2}`} stroke="#F29A98" strokeWidth={10} strokeLinecap="round" />}
       <path d={d} fill="url(#tortilla)" />
       <path d={d} fill="url(#dorada)" opacity={tostado} />
       <clipPath id={`ml${Math.round(cx)}${Math.round(cy)}`}>
@@ -171,7 +171,7 @@ const Hilos: React.FC<{ x1: number; x2: number; yBase: number; alto: number; t: 
 };
 
 // mitad de la quesadilla (media luna cortada al medio), con la cara del corte a la vista
-const Mitad: React.FC<{ cx: number; cy: number; r: number; lado: "izq" | "der"; dx: number; rot: number }> = ({ cx, cy, r, lado, dx, rot }) => {
+const Mitad: React.FC<{ cx: number; cy: number; r: number; lado: "izq" | "der"; dx: number; rot: number; sinQueso?: boolean }> = ({ cx, cy, r, lado, dx, rot, sinQueso = false }) => {
   const s = lado === "izq" ? -1 : 1;
   const ry = r * 0.86;
   const id = `mitad${lado}`;
@@ -181,15 +181,16 @@ const Mitad: React.FC<{ cx: number; cy: number; r: number; lado: "izq" | "der"; 
         <rect x={lado === "izq" ? cx - r - 60 : cx} y={cy - ry - 60} width={r + 60} height={ry + 200} />
       </clipPath>
       <g clipPath={`url(#${id})`}>
-        <MediaLuna cx={cx} cy={cy} r={r} tostado={1} />
+        <MediaLuna cx={cx} cy={cy} r={r} tostado={1} sinQueso={sinQueso} />
       </g>
       {/* cara del corte: tortilla / queso / jamón / queso / tortilla */}
       <g transform={`translate(${cx} ${cy})`}>
         <path d={`M 0 0 L 0 ${-ry} L ${-s * 16} ${-ry + 10} L ${-s * 16} 8 Z`} fill="#E8C688" />
-        <rect x={lado === "izq" ? -14 : 2} y={-ry + 14} width={12} height={ry - 14} fill="#FFC93C" />
-        <rect x={lado === "izq" ? -9 : 5} y={-ry * 0.8} width={5} height={ry * 0.7} fill="#F29A98" />
+        <rect x={lado === "izq" ? -14 : 2} y={-ry + 14} width={12} height={ry - 14} fill={sinQueso ? "#E3C27E" : "#FFC93C"} />
+        {sinQueso && [0.25, 0.45, 0.65, 0.85].map((k, i) => <rect key={i} x={lado === "izq" ? -16 : 0} y={-ry * k} width={16} height={14} rx={4} fill={i % 2 ? "#D9B266" : "#F0D9A0"} />)}
+        {!sinQueso && <rect x={lado === "izq" ? -9 : 5} y={-ry * 0.8} width={5} height={ry * 0.7} fill="#F29A98" />}
         {/* queso que chorrea por la cara del corte */}
-        {[0.2, 0.45, 0.7].map((k, i) => (
+        {!sinQueso && [0.2, 0.45, 0.7].map((k, i) => (
           <path key={i} d={`M ${-s * 4} ${-ry * k} q ${s * 18} 10 ${s * 10} ${30 + i * 12} q ${-s * 4} 10 ${-s * 10} 0 Z`} fill="#FFC93C" />
         ))}
       </g>
@@ -197,7 +198,7 @@ const Mitad: React.FC<{ cx: number; cy: number; r: number; lado: "izq" | "der"; 
   );
 };
 
-export const EscenaEstirado: React.FC<{ s: number; desde: number }> = ({ s, desde }) => {
+export const EscenaEstirado: React.FC<{ s: number; desde: number; sinQueso?: boolean }> = ({ s, desde, sinQueso = false }) => {
   const u = s - desde;
   const sep = 40 + Math.min(1, u / 1.6) ** 0.8 * 300 + Math.sin(u * 3) * 8;
   const cx = 540;
@@ -209,9 +210,9 @@ export const EscenaEstirado: React.FC<{ s: number; desde: number }> = ({ s, desd
       <QDefs />
       <Mesa />
       <Tablita cx={540} cy={1140} r={490} />
-      <Mitad cx={cx} cy={cy} r={r} lado="izq" dx={-sep / 2} rot={-3 - Math.min(1, u) * 3} />
-      <Mitad cx={cx} cy={cy} r={r} lado="der" dx={sep / 2} rot={3 + Math.min(1, u) * 3} />
-      <Hilos x1={cx - sep / 2 - 6} x2={cx + sep / 2 + 6} yBase={cy} alto={r * 0.7} t={u} />
+      <Mitad cx={cx} cy={cy} r={r} lado="izq" dx={-sep / 2} rot={-3 - Math.min(1, u) * 3} sinQueso={sinQueso} />
+      <Mitad cx={cx} cy={cy} r={r} lado="der" dx={sep / 2} rot={3 + Math.min(1, u) * 3} sinQueso={sinQueso} />
+      {!sinQueso && <Hilos x1={cx - sep / 2 - 6} x2={cx + sep / 2 + 6} yBase={cy} alto={r * 0.7} t={u} />}
       <g transform={`translate(0 ${-((u * 50) % 60)})`}>
         <Vapor x={380} y={880} h={260} o={0.45} />
         <Vapor x={700} y={860} h={240} o={0.4} />

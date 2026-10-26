@@ -32,6 +32,8 @@ import { HuevosClave, Logo as LogoRecetas } from "./Ebook/Huevos";
 import { RECETA_FRAMES, RecetaVideo } from "./Ebook/RecetaVideo";
 import { QUESADILLA_FRAMES, Quesadilla } from "./Ebook/Quesadilla";
 import { HAMBRE_FRAMES, Hambre } from "./Ebook/Hambre";
+import { DATO_FRAMES, DatoQuesadilla } from "./Ebook/DatoQuesadilla";
+import { QUESO_FRAMES, DatoQueso } from "./Ebook/DatoQueso";
 import { GanchoHuevos, GanchoQuesa, framesHuevos, framesQuesa } from "./Ebook/Ganchos";
 import { PODCAST_FRAMES, Podcast } from "./Clips/Podcast";
 import { SEGUNDOS_FRAMES, Segundos } from "./Altera/reels/Segundos";
@@ -164,6 +166,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="RecetaVideo" component={RecetaVideo} durationInFrames={RECETA_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Quesadilla" component={Quesadilla} durationInFrames={QUESADILLA_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Hambre" component={Hambre} durationInFrames={HAMBRE_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="DatoQuesadilla" component={DatoQuesadilla} durationInFrames={DATO_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="DatoQueso" component={DatoQueso} durationInFrames={QUESO_FRAMES} fps={30} width={1080} height={1920} />
       {([1, 2, 3] as const).map((n) => <Composition key={`h${n}`} id={`GanchoHuevos${n}`} component={GanchoHuevos} defaultProps={{ n }} durationInFrames={framesHuevos(n)} fps={30} width={1080} height={1920} />)}
       {([1, 2, 3] as const).map((n) => <Composition key={`q${n}`} id={`GanchoQuesa${n}`} component={GanchoQuesa} defaultProps={{ n }} durationInFrames={framesQuesa(n)} fps={30} width={1080} height={1920} />)}
       <Still id="LogoTikTok" component={LogoRecetas} width={1080} height={1080} />
