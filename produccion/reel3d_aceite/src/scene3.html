@@ -1,0 +1,329 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style></head>
+<body>
+<canvas id="g" width="432" height="768" style="display:none"></canvas>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="shader.js"></script>
+<script>
+const W = 1080, H = 1920, GW = 432, GH = 768, SC = W / GW;
+const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+const gc = document.getElementById('g'), gl = gc.getContext('webgl2', { preserveDrawingBuffer: true });
+const GOLD = '#F2B544', RED = '#E5484D', WHITE = '#FFFFFF', GRAY = 'rgba(255,255,255,.45)';
+const FONT = 'Inter';
+let WORDS = [], GROUPS = [];
+const TOTAL = 35.0;
+
+// ---------- helpers ----------
+const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const easeOut = x => 1 - Math.pow(1 - x, 3);
+const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const easeBack = x => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const lerp = (a, b, k) => a + (b - a) * k;
+const pulse = (t, a, b) => { const k = prog(t, a, b); return k > 0 && k < 1 ? Math.sin(k * Math.PI) : 0; };
+const v3 = (x, y, z) => [x, y, z];
+const vl = (a, b, k) => [lerp(a[0], b[0], k), lerp(a[1], b[1], k), lerp(a[2], b[2], k)];
+const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+const norm = a => { const l = Math.hypot(...a); return [a[0] / l, a[1] / l, a[2] / l]; };
+const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+function rr(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+function font(w, s) { ctx.font = `${w} ${s}px ${FONT}`; }
+const pop = (t, t0, d = .35) => easeBack(prog(t, t0, t0 + d));
+
+// ---------- camera ----------
+const KEYS = [
+  [0.0, v3(0, 2.7, 4.3), v3(0, 0.45, -0.3)],
+  [2.6, v3(0, 2.25, 3.5), v3(0, 0.45, -0.3)],
+  [5.2, v3(0, 2.25, 3.5), v3(0, 0.45, -0.3)],
+  [7.3, v3(0.0, 1.7, 2.95), v3(0, 0.5, -0.4)],
+  [11.8, v3(0.25, 1.65, 2.85), v3(0, 0.5, -0.4)],
+  [12.6, v3(0.15, 1.35, 2.7), v3(0, 0.4, -0.4)],
+  [18.9, v3(-0.2, 1.3, 2.6), v3(0, 0.38, -0.4)],
+  [23.6, v3(0, 2.5, 4.0), v3(0, 0.5, -0.3)],
+  [29.5, v3(0.35, 2.3, 3.6), v3(0, 0.5, -0.3)],
+  [35.0, v3(0.5, 2.3, 3.5), v3(0, 0.5, -0.3)],
+];
+function camAt(t) {
+  if (t >= 18.96 && t < 23.6) { // close-up strand
+    const k = ease(prog(t, 18.96, 23.6));
+    return { pos: vl(v3(-0.4, 0.9, 3.8), v3(0.5, 0.65, 3.0), k), tgt: v3(0, 0.05, 0) };
+  }
+  let i = 0; while (i < KEYS.length - 2 && t > KEYS[i + 1][0]) i++;
+  const [t0, p0, g0] = KEYS[i], [t1, p1, g1] = KEYS[i + 1];
+  const k = ease(prog(t, t0, t1));
+  return { pos: vl(p0, p1, k), tgt: vl(g0, g1, k) };
+}
+function params(t) {
+  const P = {};
+  P.mode = (t >= 18.96 && t < 23.6) ? 1 : 0;
+  P.level = 0.85 + 0.15 * ease(prog(t, 25.04, 25.9));
+  P.oil = t < 0.5 ? -1 : t < 2.4 ? lerp(-1, 0, ease(prog(t, 0.5, 2.4))) : t < 8.3 ? 0 : lerp(0, 1, ease(prog(t, 8.3, 10.9)));
+  P.oilVis = 1 - prog(t, 23.6, 24.3);
+  let spread = 0.4;
+  spread = lerp(spread, 0.05, ease(prog(t, 3.6, 4.6)));
+  spread = lerp(spread, 0.3, ease(prog(t, 5.2, 6.0)));
+  spread = lerp(spread, 0.0, ease(prog(t, 17.0, 18.4)));
+  spread = lerp(spread, 1.0, ease(prog(t, 27.3, 28.8)));
+  P.spread = spread;
+  P.starch = ease(prog(t, 16.36, 17.2)) * (1 - prog(t, 23.6, 24.2));
+  P.boil = ease(prog(t, 26.32, 26.9));
+  P.spoon = ease(prog(t, 27.12, 27.6));
+  P.pasta = 1;
+  P.coat = ease(prog(t, 20.8, 21.4));
+  P.sauce = prog(t, 22.16, 23.5);
+  P.glow = Math.max(pulse(t, 7.7, 8.8), pulse(t, 10.6, 11.7), pulse(t, 20.8, 21.9));
+  P.hiPasta = Math.max(pulse(t, 3.6, 4.8), pulse(t, 12.2, 13.4), pulse(t, 15.5, 16.4));
+  return P;
+}
+
+// ---------- GL ----------
+let prog_, U = {};
+function initGL() {
+  const vs = `#version 300 es\nin vec2 a;void main(){gl_Position=vec4(a,0,1);}`;
+  const sh = (ty, s) => { const o = gl.createShader(ty); gl.shaderSource(o, s); gl.compileShader(o); if (!gl.getShaderParameter(o, gl.COMPILE_STATUS)) throw gl.getShaderInfoLog(o); return o; };
+  prog_ = gl.createProgram(); gl.attachShader(prog_, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(prog_, sh(gl.FRAGMENT_SHADER, window.FRAG)); gl.linkProgram(prog_); gl.useProgram(prog_);
+  const bf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, bf); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+  ['uRes', 'uT', 'uCamPos', 'uCamTgt', 'uMode', 'uOil', 'uOilVis', 'uSpread', 'uStarch', 'uBoil', 'uSpoon', 'uLevel', 'uPasta', 'uCoat', 'uSauce', 'uGlow', 'uHiPasta'].forEach(n => U[n] = gl.getUniformLocation(prog_, n));
+  gl.uniform2f(U.uRes, GW, GH);
+}
+let CAM = null;
+function render3D(t) {
+  const P = params(t); CAM = camAt(t);
+  gl.uniform1f(U.uT, t); gl.uniform3f(U.uCamPos, ...CAM.pos); gl.uniform3f(U.uCamTgt, ...CAM.tgt);
+  gl.uniform1f(U.uMode, P.mode); gl.uniform1f(U.uOil, P.oil); gl.uniform1f(U.uOilVis, P.oilVis); gl.uniform1f(U.uSpread, P.spread);
+  gl.uniform1f(U.uStarch, P.starch); gl.uniform1f(U.uBoil, P.boil); gl.uniform1f(U.uSpoon, P.spoon); gl.uniform1f(U.uLevel, P.level);
+  gl.uniform1f(U.uPasta, P.pasta); gl.uniform1f(U.uCoat, P.coat); gl.uniform1f(U.uSauce, P.sauce); gl.uniform1f(U.uGlow, P.glow); gl.uniform1f(U.uHiPasta, P.hiPasta);
+  gl.drawArrays(gl.TRIANGLES, 0, 3);
+  return P;
+}
+// project world point to 1080x1920 screen (matches shader camera)
+function project(p) {
+  const ro = CAM.pos, fw = norm(sub(CAM.tgt, ro)), rt = norm(cross(fw, [0, 1, 0])), up = cross(rt, fw);
+  const d = sub(p, ro); const z = dot(d, fw); const x = dot(d, rt) / z * 2.1, y = dot(d, up) / z * 2.1;
+  const fx = (x * GH + GW) / 2, fy = (y * GH + GH) / 2;
+  return [fx * SC, (GH - fy) * SC];
+}
+
+// ---------- captions (reference style: current word white bold, rest gray) ----------
+function buildGroups(words) {
+  const groups = []; let cur = [];
+  words.forEach((w, i) => { cur.push(i); const punct = /[.,?:!…]$/.test(w.w); if (cur.length >= 3 || punct) { groups.push(cur); cur = []; } });
+  if (cur.length) groups.push(cur); return groups;
+}
+function groupAt(t) {
+  for (let g = 0; g < GROUPS.length; g++) {
+    const first = WORDS[GROUPS[g][0]], last = WORDS[GROUPS[g][GROUPS[g].length - 1]];
+    const next = GROUPS[g + 1] ? WORDS[GROUPS[g + 1][0]].s : 1e9;
+    if (t >= first.s - 0.12 && t < Math.min(next, last.e + 0.5)) return GROUPS[g];
+  }
+  return null;
+}
+function drawCaption(t, cx, cy, size) {
+  const g = groupAt(t); if (!g) return;
+  const vis = g.filter(i => WORDS[i].s - 0.12 <= t); if (!vis.length) return;
+  const curIdx = vis[vis.length - 1];
+  const space = size * 0.28;
+  const widths = g.map(i => { font(i === curIdx ? 800 : 500, size); return ctx.measureText(WORDS[i].w).width; });
+  const total = widths.reduce((a, b) => a + b, 0) + space * (g.length - 1);
+  const scale = Math.min(1, 960 / total);
+  ctx.save(); ctx.translate(cx, cy); ctx.scale(scale, scale);
+  let x = -total / 2;
+  ctx.shadowColor = 'rgba(0,0,0,.6)'; ctx.shadowBlur = 18;
+  g.forEach((i, k) => {
+    const w = WORDS[i];
+    if (w.s - 0.12 <= t) {
+      const isCur = i === curIdx;
+      const a = prog(t, w.s - 0.12, w.s);
+      font(isCur ? 800 : 500, size); ctx.fillStyle = isCur ? `rgba(255,255,255,${a})` : GRAY;
+      ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+      ctx.fillText(w.w, x, (1 - a) * 12);
+    }
+    x += widths[k] + space;
+  });
+  ctx.restore();
+}
+
+// ---------- overlay elements ----------
+function leader(text, p3, dx, dy, a, color = WHITE) {
+  if (a <= 0) return;
+  const [px, py] = project(p3);
+  const lx = px + dx, ly = py + dy;
+  ctx.save(); ctx.globalAlpha = a;
+  ctx.strokeStyle = color; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(px, py, 9, 0, Math.PI * 2); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(px + Math.sign(dx) * 9 * (dx ? 1 : 0), py + (dx ? 0 : Math.sign(dy) * 9)); ctx.lineTo(lx, ly); ctx.stroke();
+  font(800, 34); ctx.fillStyle = color; ctx.textBaseline = 'middle';
+  ctx.textAlign = dx >= 0 ? 'left' : 'right';
+  const txt = text.split('').join(String.fromCharCode(8202));
+  ctx.shadowColor = 'rgba(0,0,0,.7)'; ctx.shadowBlur = 12;
+  ctx.fillText(txt, lx + (dx >= 0 ? 12 : -12), ly);
+  ctx.restore();
+}
+function badgeX(x, y, s) {
+  if (s <= 0) return;
+  ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+  ctx.fillStyle = RED; ctx.beginPath(); ctx.arc(0, 0, 54, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = '#fff'; ctx.lineWidth = 12; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(-18, -18); ctx.lineTo(18, 18); ctx.moveTo(18, -18); ctx.lineTo(-18, 18); ctx.stroke(); ctx.restore();
+}
+function checkIcon(x, y, s, col = GOLD) {
+  ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+  ctx.fillStyle = col; ctx.beginPath(); ctx.arc(0, 0, 30, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = '#1a1206'; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(-12, 1); ctx.lineTo(-3, 11); ctx.lineTo(14, -10); ctx.stroke(); ctx.restore();
+}
+function chip(text, x, y, a, bg = 'rgba(20,18,16,.85)', fg = WHITE, size = 36) {
+  if (a <= 0) return;
+  ctx.save(); ctx.globalAlpha = a; font(800, size); const w = ctx.measureText(text).width;
+  ctx.fillStyle = bg; rr(x - w / 2 - 26, y - size * .85, w + 52, size * 1.7, size * .85); ctx.fill();
+  ctx.strokeStyle = 'rgba(242,181,68,.6)'; ctx.lineWidth = 2; ctx.stroke();
+  ctx.fillStyle = fg; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(text, x, y + 2); ctx.restore();
+}
+
+function overlays(t, P) {
+  // "No, no evita que se pegue"
+  if (t > 2.85 && t < 5.0) {
+    const a = prog(t, 2.85, 3.1) * (1 - prog(t, 4.8, 5.0));
+    badgeX(540, 700, pop(t, 2.88, .35) * a);
+    leader('SE PEGA IGUAL', [0.05, 0.22, -0.42], -40, 300, prog(t, 3.7, 4.0) * a, RED);
+  }
+  // inside the pot
+  if (t > 5.9 && t < 7.6) {
+    const a = prog(t, 5.9, 6.2) * (1 - prog(t, 7.4, 7.6));
+    leader('AGUA', [0.25, 0.5, -0.15], 110, 60, a);
+    leader('OLLA', [-0.98, 0.95, 0.0], 40, -150, prog(t, 6.6, 6.9) * a);
+  }
+  // oil
+  if (t > 7.7 && t < 12.0) {
+    const a = prog(t, 7.7, 8.0) * (1 - prog(t, 11.8, 12.0));
+    const y = lerp(0.45, P.level, ease(prog(t, 8.3, 10.9)));
+    leader('ACEITE', [0.0, y, -0.45], 150, -190, a, GOLD);
+    if (t > 10.7) chip('flota arriba', 540, 1540, prog(t, 10.7, 10.95) * a);
+  }
+  // pasta below, doesn't touch
+  if (t > 12.2 && t < 14.9) {
+    const a = prog(t, 12.2, 12.5) * (1 - prog(t, 14.7, 14.9));
+    leader('PASTA', [-0.15, 0.2, -0.42], -200, 160, a);
+    if (t > 13.9) {
+      const [x1, y1] = project([0.55, P.level - 0.03, -0.3]), [x2, y2] = project([0.55, 0.3, -0.3]);
+      const k = easeOut(prog(t, 13.9, 14.3));
+      ctx.save(); ctx.globalAlpha = a; ctx.strokeStyle = GOLD; ctx.lineWidth = 5; ctx.setLineDash([14, 10]);
+      ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x1 + (x2 - x1) * k, y1 + (y2 - y1) * k); ctx.stroke(); ctx.restore();
+      chip('no se tocan', 540, 1540, prog(t, 14.1, 14.35) * a);
+    }
+  }
+  // starch
+  if (t > 16.3 && t < 18.95) {
+    const a = prog(t, 16.3, 16.6) * (1 - prog(t, 18.7, 18.95));
+    leader('ALMIDÓN', [0.15, 0.42, -0.35], 140, -180, a);
+    if (t > 17.6) chip('primeros 2 minutos', 540, 1540, prog(t, 17.6, 17.9) * a);
+  }
+  // close-up strand
+  if (P.mode === 1) {
+    leader('ACEITE', [0.9, 0.36, 0.12], 120, -220, prog(t, 20.9, 21.2), GOLD);
+    leader('SALSA', [-0.8, 0.45, 0.25], -110, -260, prog(t, 22.2, 22.5) * (1 - prog(t, 23.3, 23.55)), RED);
+    if (t > 22.7) chip('se resbala', 540, 1540, prog(t, 22.7, 22.95) * (1 - prog(t, 23.4, 23.6)));
+  }
+  // solution checklist
+  if (t > 24.9 && t < 29.7) {
+    const items = [['Mucha agua', 25.04], ['Bien hirviendo', 26.32], ['Revolver 2 minutos', 27.12]];
+    const a = 1 - prog(t, 29.4, 29.7);
+    items.forEach(([txt, st], i) => {
+      const q = pop(t, st, .35); if (q <= 0) return;
+      const y = 1420 + i * 100;
+      ctx.save(); ctx.globalAlpha = a * clamp(q);
+      ctx.fillStyle = 'rgba(20,18,16,.85)'; rr(250, y - 42, 580, 84, 42); ctx.fill();
+      ctx.strokeStyle = 'rgba(242,181,68,.5)'; ctx.lineWidth = 2; ctx.stroke();
+      checkIcon(300, y, q);
+      font(800, 38); ctx.fillStyle = WHITE; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(txt, 350, y + 2);
+      ctx.restore();
+    });
+  }
+}
+
+const CONTACTS = [['Mamá', '#C9846A'], ['Tío Raúl', '#6C8EBF'], ['Ana', '#7FB77E'], ['Fede', '#B38BC9']];
+function sceneDM(t) {
+  if (t < 29.5 || t > 33.2) return;
+  const dim = prog(t, 29.5, 29.9);
+  ctx.fillStyle = `rgba(0,0,0,${0.45 * dim})`; ctx.fillRect(0, 0, W, H);
+  const k = easeOut(prog(t, 29.6, 30.05));
+  const top = lerp(H, 1080, k);
+  ctx.fillStyle = '#1E1B18'; rr(40, top, W - 80, 560, 44); ctx.fill();
+  ctx.strokeStyle = 'rgba(242,181,68,.35)'; ctx.lineWidth = 2; ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,.25)'; rr(W / 2 - 50, top + 20, 100, 10, 5); ctx.fill();
+  font(800, 40); ctx.fillStyle = WHITE; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('Enviar a', W / 2, top + 80);
+  const tapT = 30.56, sentT = 32.1;
+  CONTACTS.forEach(([n, col], i) => {
+    const x = 180 + i * 240, y = top + 220;
+    if (i === 1 && t > tapT) { ctx.strokeStyle = GOLD; ctx.lineWidth = 10; ctx.beginPath(); ctx.arc(x, y, 84, 0, Math.PI * 2); ctx.stroke(); }
+    ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x, y, 70, 0, Math.PI * 2); ctx.fill();
+    font(800, 54); ctx.fillStyle = '#fff'; ctx.fillText(n[0], x, y + 4);
+    font(600, 32); ctx.fillStyle = WHITE; ctx.fillText(n, x, y + 120);
+    if (i === 1 && t > tapT) checkIcon(x + 55, y + 50, 0.8 * pop(t, tapT, .3));
+  });
+  const sent = t >= sentT;
+  ctx.fillStyle = sent ? GOLD : '#F4ECDF'; rr(100, top + 420, W - 200, 96, 48); ctx.fill();
+  font(800, 40); ctx.fillStyle = '#1a1206'; ctx.fillText(sent ? 'Enviado ✓' : 'Enviar', W / 2, top + 470);
+  if (t > 30.0 && t < 32.9) {
+    let fx, fy, pr = 0;
+    if (t < tapT) { const q = ease(prog(t, 30.0, tapT)); fx = lerp(900, 420, q); fy = lerp(1850, top + 230, q); }
+    else if (t < sentT) { const q = ease(prog(t, 31.5, sentT)); fx = lerp(420, 830, q); fy = lerp(top + 230, top + 470, q); pr = 1 - prog(t, tapT, tapT + 0.25); }
+    else { fx = 830; fy = top + 470; pr = 1 - prog(t, sentT, sentT + 0.3); }
+    ctx.save(); ctx.translate(fx, fy); ctx.scale(0.85, 0.85);
+    ctx.fillStyle = '#E3B08F'; rr(-40, 0, 80, 260, 40); ctx.fill(); ctx.fillStyle = '#F2D2BD'; rr(-26, 12, 52, 56, 22); ctx.fill(); ctx.restore();
+    if (pr > 0) { ctx.strokeStyle = `rgba(242,181,68,${pr})`; ctx.lineWidth = 6; ctx.beginPath(); ctx.arc(fx, fy + 10, 40 + 40 * (1 - pr), 0, Math.PI * 2); ctx.stroke(); }
+  }
+}
+
+function sceneEnd(t) {
+  const a = prog(t, 32.9, 33.3); if (a <= 0) return;
+  ctx.save(); ctx.globalAlpha = a;
+  const g = ctx.createRadialGradient(540, 900, 50, 540, 900, 900);
+  g.addColorStop(0, '#3a240c'); g.addColorStop(1, '#050403');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  // book mockup with perspective
+  const q = 0.85 + 0.15 * easeOut(prog(t, 32.9, 33.6));
+  const sway = Math.sin(t * 1.2) * 0.04;
+  ctx.translate(540, 880); ctx.scale(q, q);
+  ctx.transform(1, -0.06 + sway * 0.3, 0, 1, 0, 0);
+  ctx.shadowColor = 'rgba(242,181,68,.45)'; ctx.shadowBlur = 80;
+  ctx.fillStyle = '#d9cbb3'; rr(-250 + 22, -340 + 10, 500, 680, 18); ctx.fill(); // pages
+  ctx.shadowBlur = 0;
+  const cg = ctx.createLinearGradient(-250, -340, 250, 340); cg.addColorStop(0, '#2A2118'); cg.addColorStop(1, '#120e0a');
+  ctx.fillStyle = cg; rr(-250, -340, 500, 680, 18); ctx.fill();
+  ctx.fillStyle = 'rgba(255,255,255,.08)'; ctx.fillRect(-250, -340, 26, 680);
+  ctx.strokeStyle = GOLD; ctx.lineWidth = 3; rr(-215, -305, 430, 610, 10); ctx.stroke();
+  font(900, 150); ctx.fillStyle = GOLD; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('35', 0, -150);
+  font(800, 62); ctx.fillStyle = WHITE; ctx.fillText('RECETAS', 0, -40);
+  font(600, 40); ctx.fillStyle = 'rgba(255,255,255,.85)'; ctx.fillText('Fáciles y', 0, 40); ctx.fillText('Nutritivas', 0, 92);
+  // small bowl icon
+  ctx.strokeStyle = GOLD; ctx.lineWidth = 6; ctx.beginPath(); ctx.arc(0, 200, 60, 0, Math.PI); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(-75, 200); ctx.lineTo(75, 200); ctx.stroke();
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.globalAlpha = a * prog(t, 33.3, 33.7);
+  font(800, 54); ctx.fillStyle = WHITE; ctx.textAlign = 'center'; ctx.fillText('Más trucos así, en el ebook', 540, 1400);
+  font(500, 38); ctx.fillStyle = 'rgba(255,255,255,.65)'; ctx.fillText('35 recetas fáciles y nutritivas', 540, 1470);
+  ctx.restore();
+}
+
+function draw(t) {
+  const P = render3D(t);
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(gc, 0, 0, W, H);
+  overlays(t, P);
+  sceneDM(t);
+  if (t < 32.9) drawCaption(t, W / 2, 330, 58);
+  sceneEnd(t);
+}
+
+window.setup = async (words) => {
+  WORDS = words; GROUPS = buildGroups(WORDS); initGL();
+  for (const w of [500, 600, 800, 900]) await document.fonts.load(`${w} 40px ${FONT}`);
+  return GROUPS.length;
+};
+window.frame = (t) => { draw(t); return cv.toDataURL('image/jpeg', 0.92); };
+</script>
+</body></html>
