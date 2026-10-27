@@ -250,7 +250,7 @@ export const Perejil: React.FC<{ x: number; y: number; s: number; rot?: number }
   );
 };
 
-const Aceite: React.FC<{ x: number; y: number; s: number }> = ({ x, y, s }) => (
+export const Aceite: React.FC<{ x: number; y: number; s: number }> = ({ x, y, s }) => (
   <g transform={`translate(${x} ${y}) scale(${s})`} filter="url(#sombra)">
     <path d="M -60 0 L -60 -260 Q -60 -300 -26 -330 L -22 -400 L 22 -400 L 26 -330 Q 60 -300 60 -260 L 60 0 Z" fill="url(#aceite)" />
     <rect x={-26} y={-440} width={52} height={44} rx={6} fill="#2E2A26" />
