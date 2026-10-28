@@ -1,0 +1,6 @@
+# «HookHouse_primer_segundo_SIN_VOZ.mp4» — guion leído de los subtítulos (51,2 s)
+Pendiente de voz: ElevenLabs sin créditos (2026-10-28). Voz prevista: Rodrigo Zabú (`1p905cdbJ1e1JQxhFTGJ`, eleven_v4).
+
+Tu primer segundo decide si alguien mira tu video… o sigue deslizando. Y muchos lo gastan diciendo «hola». Mira: «Hola, ¿cómo están? Hoy les voy a hablar de cómo organizar su semana». No está mal… pero no da ninguna razón para quedarse. Ahora, el mismo tema: «Tu semana no se desordena el lunes. Se desordena el domingo a la noche». ¿Qué cambió? Uno: sin saludo. Dos: choca con lo que esperas. Tres: deja una pregunta abierta. Pero hay un cuarto detalle… y pasa antes de hablar. Lo que se ve: si tu primer plano está quieto, el texto llega tarde. Ojo: un gancho no garantiza un viral. Pero sin él, mucha gente no llega a lo bueno. Escribe en comentarios cómo empieza tu último video y te digo cómo lo convertiría en gancho. Porque tu primer segundo…
+
+Tiempos aproximados en pantalla (s): 0 «Tu primer segundo» · 5.0 «Y muchos lo gastan» · 7.2 «Mira:» · 12.4 «No está mal…» · 14.2 «Ahora, el mismo tema» · 23.0 «¿Qué cambió?» · 23.5 «Uno:» · 24.8 «Dos:» · 27.2 «Tres:» · 29.4 «Pero hay un cuarto detalle» · 33.2 «Lo que se ve:» · 37.8 «Ojo:» · 41.4 «Pero sin él» · 43.6 «Escribe en comentarios» · 49.4 «Porque tu primer segundo…»
