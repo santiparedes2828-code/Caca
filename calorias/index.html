@@ -1,0 +1,656 @@
+<title>Plato y Medida</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: cuaderno de cocina de dos columnas — a la izquierda el día (apuntar + lo comido), a la derecha el cuerpo (IMC + calorías por actividad). En móvil, una columna. */
+:root {
+  --bg: #eef2ec;
+  --surface: #fbfcfa;
+  --ink: #17201a;
+  --muted: #5a675d;
+  --line: #d6ddd3;
+  --accent: #2c6a3c;
+  --accent-ink: #ffffff;
+  --pop: #d99512;
+  --pop-soft: #f6e7c4;
+  --ok: #2f8a4c;
+  --warn: #c07f0c;
+  --bad: #c0412c;
+  --track: #e1e7de;
+  --f-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Instrument Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --f-num: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111612; --surface: #19201b; --ink: #e6ece4; --muted: #98a69b; --line: #2a352d;
+    --accent: #72c084; --accent-ink: #0d140f; --pop: #efb53c; --pop-soft: #3a2f16;
+    --ok: #6cc486; --warn: #e5aa3a; --bad: #ef7a64; --track: #263028; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111612; --surface: #19201b; --ink: #e6ece4; --muted: #98a69b; --line: #2a352d;
+  --accent: #72c084; --accent-ink: #0d140f; --pop: #efb53c; --pop-soft: #3a2f16;
+  --ok: #6cc486; --warn: #e5aa3a; --bad: #ef7a64; --track: #263028; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font: 15px/1.5 var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 48px;
+}
+.wrap { max-width: 1120px; margin: 0 auto; display: grid; gap: 20px; }
+header.top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px; }
+h1 { font: 800 clamp(28px, 5vw, 40px)/1 var(--f-display); letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+h1 span { color: var(--accent); }
+.sub { color: var(--muted); margin: 6px 0 0; max-width: 60ch; }
+.status { font: 500 12px var(--f-num); color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.status i { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); display: inline-block; }
+.status.cloud i { background: var(--ok); }
+.cols { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 860px) { .cols { grid-template-columns: minmax(0, 1fr); } }
+.col { display: grid; gap: 20px; min-width: 0; }
+section.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: grid; gap: 14px; min-width: 0; }
+h2 { font: 700 20px/1.2 var(--f-display); margin: 0; letter-spacing: -0.01em; }
+.eyebrow { font: 600 11px var(--f-body); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.between { justify-content: space-between; }
+label.f { display: grid; gap: 4px; font-size: 13px; color: var(--muted); min-width: 0; }
+input, select, textarea, button { font: inherit; color: inherit; }
+input[type="number"], input[type="text"], select, textarea {
+  background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 9px 11px; color: var(--ink); width: 100%; min-width: 0;
+}
+textarea { resize: vertical; min-height: 76px; }
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, .seg label:focus-within {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+button { cursor: pointer; border: 1px solid var(--line); background: var(--surface); border-radius: 9px; padding: 9px 14px; font-weight: 600; }
+button:hover { border-color: var(--muted); }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+button.primary:hover { filter: brightness(1.07); }
+button:disabled { opacity: .55; cursor: default; }
+button.ghost { border-color: transparent; background: transparent; color: var(--muted); padding: 6px 8px; }
+button.ghost:hover { color: var(--ink); }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.grid4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 520px) { .grid4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Segment control */
+.seg { display: inline-flex; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 3px; gap: 2px; flex-wrap: wrap; }
+.seg label { position: relative; }
+.seg input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.seg span { display: block; padding: 6px 12px; border-radius: 7px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.seg input:checked + span { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgb(0 0 0 / .12); }
+
+/* Apuntar comida */
+.drop { border: 1.5px dashed var(--line); border-radius: 12px; padding: 14px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.drop.over { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.drop .thumb { width: 84px; height: 84px; border-radius: 10px; object-fit: cover; background: var(--track); flex: none; }
+.drop .txt { flex: 1 1 180px; min-width: 0; font-size: 13px; color: var(--muted); }
+.drop .txt b { color: var(--ink); display: block; font-size: 14px; }
+.filebtn { position: relative; overflow: hidden; display: inline-block; }
+.filebtn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.thinking { display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: 14px; }
+.dots i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--pop); margin-right: 3px; animation: b 1s infinite ease-in-out; }
+.dots i:nth-child(2) { animation-delay: .15s; } .dots i:nth-child(3) { animation-delay: .3s; }
+@keyframes b { 0%,80%,100% { opacity: .25; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
+@media (prefers-reduced-motion: reduce) { .dots i { animation: none; opacity: .8; } }
+.result { border: 1px solid var(--pop); background: color-mix(in srgb, var(--pop-soft) 60%, var(--surface)); border-radius: 12px; padding: 14px; display: grid; gap: 10px; }
+.result h3 { margin: 0; font: 700 17px var(--f-display); }
+.items { display: grid; gap: 6px; }
+.item { display: grid; grid-template-columns: minmax(0, 1fr) 96px auto; gap: 8px; align-items: center; }
+.item .n { min-width: 0; }
+.item .n b { display: block; font-weight: 600; overflow-wrap: anywhere; }
+.item .n small { color: var(--muted); font: 12px var(--f-num); }
+.item input { text-align: right; font-family: var(--f-num); padding: 6px 8px; }
+.note { font-size: 13px; color: var(--muted); margin: 0; }
+.err { color: var(--bad); font-size: 13px; margin: 0; }
+details.manual summary { cursor: pointer; font-weight: 600; font-size: 14px; color: var(--muted); }
+details.manual[open] summary { margin-bottom: 10px; }
+
+/* Día */
+.daynav { display: flex; align-items: center; gap: 6px; }
+.daynav b { font: 600 14px var(--f-body); min-width: 9ch; text-align: center; }
+.today { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 18px; align-items: center; }
+@media (max-width: 460px) { .today { grid-template-columns: minmax(0, 1fr); justify-items: center; } }
+.ring { position: relative; width: 150px; height: 150px; }
+.ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring .c { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.ring .c b { font: 700 28px/1 var(--f-num); font-variant-numeric: tabular-nums; }
+.ring .c small { color: var(--muted); font-size: 12px; }
+.macros { display: grid; gap: 10px; width: 100%; min-width: 0; }
+.mac { display: grid; gap: 4px; }
+.mac .l { display: flex; justify-content: space-between; font-size: 13px; }
+.mac .l span:last-child { font-family: var(--f-num); color: var(--muted); font-variant-numeric: tabular-nums; }
+.bar { height: 7px; background: var(--track); border-radius: 4px; overflow: hidden; }
+.bar i { display: block; height: 100%; border-radius: 4px; }
+.left-line { font-size: 14px; }
+.left-line b { font-family: var(--f-num); }
+.meals { display: grid; gap: 14px; }
+.meal h4 { margin: 0 0 6px; display: flex; justify-content: space-between; font: 600 12px var(--f-body); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.meal h4 span { font-family: var(--f-num); letter-spacing: 0; }
+.entry { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: center; padding: 8px 0; border-top: 1px solid var(--line); }
+.entry .n { min-width: 0; }
+.entry .n b { font-weight: 500; overflow-wrap: anywhere; }
+.entry .n small { display: block; color: var(--muted); font: 12px var(--f-num); }
+.entry .k { font: 500 14px var(--f-num); font-variant-numeric: tabular-nums; }
+.empty { border: 1px dashed var(--line); border-radius: 12px; padding: 18px; color: var(--muted); font-size: 14px; text-align: center; }
+
+/* Cuerpo */
+.example { background: var(--pop-soft); color: var(--ink); border-radius: 9px; padding: 8px 12px; font-size: 13px; }
+.bmi-big { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.bmi-big b { font: 700 44px/1 var(--f-num); font-variant-numeric: tabular-nums; }
+.pill { display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 13px; font-weight: 600; color: #fff; }
+.scale { position: relative; padding-top: 14px; }
+.scale .bands { display: flex; height: 10px; border-radius: 5px; overflow: hidden; }
+.scale .bands i { display: block; height: 100%; }
+.scale .mark { position: absolute; top: 0; width: 2px; height: 26px; background: var(--ink); transform: translateX(-1px); transition: left .3s; }
+.scale .mark::before { content: ""; position: absolute; top: -2px; left: -4px; border: 5px solid transparent; border-top-color: var(--ink); }
+.ticks { position: relative; height: 18px; font: 11px var(--f-num); color: var(--muted); }
+.ticks span { position: absolute; transform: translateX(-50%); top: 2px; }
+.kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.kpi { background: var(--bg); border-radius: 10px; padding: 10px 12px; }
+.kpi small { color: var(--muted); font-size: 12px; display: block; }
+.kpi b { font: 600 20px var(--f-num); font-variant-numeric: tabular-nums; }
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { text-align: left; font: 600 11px var(--f-body); text-transform: uppercase; letter-spacing: .07em; color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--line); }
+th.r, td.r { text-align: right; }
+td { padding: 9px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+td.r { font-family: var(--f-num); font-variant-numeric: tabular-nums; white-space: nowrap; }
+td small { display: block; color: var(--muted); font-size: 12px; }
+tr.sel td { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+tr.sel td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+tr { cursor: pointer; }
+.fine { font-size: 12px; color: var(--muted); margin: 0; max-width: 70ch; }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Plato <span>y</span> Medida</h1>
+      <p class="sub">Apunta lo que comes con una foto o una frase, mira cuánto te queda para hoy y calcula tu IMC y tus calorías según tu actividad.</p>
+    </div>
+    <div class="status" id="status"><i></i><span>Guardado en este navegador</span></div>
+  </header>
+
+  <div class="cols">
+    <div class="col">
+      <section class="card" aria-labelledby="h-add">
+        <div class="row between">
+          <h2 id="h-add">Apuntar comida</h2>
+          <select id="meal" aria-label="Comida del día" style="width:auto">
+            <option value="desayuno">Desayuno</option>
+            <option value="almuerzo">Almuerzo</option>
+            <option value="merienda">Merienda</option>
+            <option value="cena">Cena</option>
+            <option value="snack">Picoteo</option>
+          </select>
+        </div>
+        <label class="f">Describe lo que comiste
+          <textarea id="desc" placeholder="Ej.: dos huevos fritos, una tostada con aceite y un café con leche"></textarea>
+        </label>
+        <div class="drop" id="drop">
+          <img class="thumb" id="thumb" alt="" hidden>
+          <div class="txt" id="droptxt"><b>Añade una foto del plato</b>Hazla desde arriba y con algo de referencia (un tenedor, la mano) para que la porción salga mejor.</div>
+          <div class="row">
+            <span class="filebtn"><button type="button" tabindex="-1">Elegir foto</button><input type="file" id="photo" accept="image/jpeg,image/png,image/webp,image/gif" aria-label="Elegir foto del plato"></span>
+            <button type="button" class="ghost" id="clearphoto" hidden>Quitar</button>
+          </div>
+        </div>
+        <div class="row">
+          <button class="primary" id="analyze">Calcular calorías</button>
+          <button id="stop" hidden>Parar</button>
+        </div>
+        <div id="aistate" hidden></div>
+        <p class="err" id="aierr" hidden></p>
+        <div class="result" id="result" hidden></div>
+        <details class="manual" id="manual">
+          <summary>Añadir a mano (si ya sabes las calorías)</summary>
+          <div class="grid4">
+            <label class="f" style="grid-column: span 2">Alimento<input type="text" id="m-name" placeholder="Yogur natural"></label>
+            <label class="f">kcal<input type="number" id="m-kcal" min="0" inputmode="numeric" placeholder="120"></label>
+            <label class="f">Proteína g<input type="number" id="m-p" min="0" step="0.1" inputmode="decimal" placeholder="opcional"></label>
+          </div>
+          <div class="row" style="margin-top:10px"><button id="m-add">Añadir</button></div>
+        </details>
+      </section>
+
+      <section class="card" aria-labelledby="h-day">
+        <div class="row between">
+          <h2 id="h-day">Lo comido</h2>
+          <div class="daynav">
+            <button class="ghost" id="prev" aria-label="Día anterior">‹</button>
+            <b id="daylabel">Hoy</b>
+            <button class="ghost" id="next" aria-label="Día siguiente">›</button>
+          </div>
+        </div>
+        <div class="today">
+          <div class="ring" aria-hidden="true">
+            <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--track)" stroke-width="11"/><circle id="ringarc" cx="60" cy="60" r="52" fill="none" stroke="var(--accent)" stroke-width="11" stroke-linecap="round" stroke-dasharray="0 400"/></svg>
+            <div class="c"><b id="eaten">0</b><small id="ofgoal">de 0 kcal</small></div>
+          </div>
+          <div class="macros">
+            <p class="left-line" id="leftline"></p>
+            <div class="mac"><div class="l"><span>Proteína</span><span id="mp">0 g</span></div><div class="bar"><i id="bp" style="background:var(--accent)"></i></div></div>
+            <div class="mac"><div class="l"><span>Carbohidratos</span><span id="mc">0 g</span></div><div class="bar"><i id="bc" style="background:var(--pop)"></i></div></div>
+            <div class="mac"><div class="l"><span>Grasa</span><span id="mg">0 g</span></div><div class="bar"><i id="bg" style="background:var(--muted)"></i></div></div>
+          </div>
+        </div>
+        <div class="meals" id="meals"></div>
+      </section>
+    </div>
+
+    <div class="col">
+      <section class="card" aria-labelledby="h-body">
+        <h2 id="h-body">Tu cuerpo</h2>
+        <p class="example" id="examplenote">Son datos de ejemplo. Cámbialos por los tuyos y se guardarán.</p>
+        <div class="row">
+          <div class="seg" role="radiogroup" aria-label="Sexo">
+            <label><input type="radio" name="sexo" value="h" id="sx-h"><span>Hombre</span></label>
+            <label><input type="radio" name="sexo" value="m" id="sx-m"><span>Mujer</span></label>
+          </div>
+        </div>
+        <div class="grid4" style="grid-template-columns: repeat(3, minmax(0,1fr))">
+          <label class="f">Edad (años)<input type="number" id="edad" min="14" max="100" inputmode="numeric"></label>
+          <label class="f">Peso (kg)<input type="number" id="peso" min="30" max="300" step="0.1" inputmode="decimal"></label>
+          <label class="f">Altura (cm)<input type="number" id="altura" min="120" max="230" inputmode="numeric"></label>
+        </div>
+
+        <div>
+          <div class="eyebrow">Índice de masa corporal</div>
+          <div class="bmi-big"><b id="bmi">–</b><span class="pill" id="bmicat"></span></div>
+          <div class="scale" aria-hidden="true">
+            <div class="bands" id="bands"></div>
+            <div class="mark" id="bmimark"></div>
+          </div>
+          <div class="ticks" id="ticks" aria-hidden="true"></div>
+          <p class="fine" id="bmirange"></p>
+        </div>
+
+        <div class="kpis">
+          <div class="kpi"><small>Metabolismo basal (en reposo)</small><b id="tmb">–</b></div>
+          <div class="kpi"><small>Tu objetivo diario</small><b id="goalkpi">–</b></div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="h-act">
+        <div class="row between">
+          <h2 id="h-act">Calorías según actividad</h2>
+          <div class="seg" role="radiogroup" aria-label="Objetivo">
+            <label><input type="radio" name="obj" value="perder" id="ob-p"><span>Perder</span></label>
+            <label><input type="radio" name="obj" value="mant" id="ob-m"><span>Mantener</span></label>
+            <label><input type="radio" name="obj" value="ganar" id="ob-g"><span>Ganar</span></label>
+          </div>
+        </div>
+        <p class="fine">Toca tu nivel de actividad. Esa fila marca tu objetivo del día.</p>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th>Actividad</th><th class="r">Mínimo</th><th class="r">Mantener</th><th class="r">Ganar</th></tr></thead>
+            <tbody id="acttable"></tbody>
+          </table>
+        </div>
+        <p class="fine"><b>Mínimo</b> es lo menos que conviene comer para bajar de peso sin riesgo: tu mantenimiento menos 500 kcal (unos 0,5 kg por semana), nunca por debajo de 1.500 kcal en hombres o 1.200 en mujeres. <b>Ganar</b> suma 300 kcal. Cálculo con la fórmula de Mifflin‑St Jeor; es una estimación, no sustituye a un profesional de la salud.</p>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const fmt = (n, d = 0) => Number(n || 0).toLocaleString("es-ES", { maximumFractionDigits: d, minimumFractionDigits: d });
+  const el = (tag, props = {}, ...kids) => {
+    const e = document.createElement(tag);
+    for (const [k, v] of Object.entries(props)) {
+      if (k === "class") e.className = v;
+      else if (k === "text") e.textContent = v;
+      else if (k.startsWith("on")) e.addEventListener(k.slice(2), v);
+      else e.setAttribute(k, v);
+    }
+    for (const k of kids) if (k != null) e.append(k);
+    return e;
+  };
+
+  const ACT = [
+    { id: "sed", name: "Sedentario", desc: "Trabajo sentado, casi sin ejercicio", f: 1.2 },
+    { id: "lig", name: "Ligero", desc: "Ejercicio suave 1–3 días/semana", f: 1.375 },
+    { id: "mod", name: "Moderado", desc: "Ejercicio 3–5 días/semana", f: 1.55 },
+    { id: "alt", name: "Activo", desc: "Ejercicio intenso 6–7 días/semana", f: 1.725 },
+    { id: "muy", name: "Muy activo", desc: "Trabajo físico o doble entreno", f: 1.9 },
+  ];
+  const MEALS = { desayuno: "Desayuno", almuerzo: "Almuerzo", merienda: "Merienda", cena: "Cena", snack: "Picoteo" };
+  const BMI_CATS = [
+    { max: 18.5, name: "Bajo peso", color: "#4a90c2" },
+    { max: 25, name: "Peso normal", color: "#2f8a4c" },
+    { max: 30, name: "Sobrepeso", color: "#c99a12" },
+    { max: 35, name: "Obesidad I", color: "#d9702a" },
+    { max: 40, name: "Obesidad II", color: "#c0412c" },
+    { max: 99, name: "Obesidad III", color: "#8f2a1c" },
+  ];
+  const DEFAULT_PROFILE = { sexo: "h", edad: 30, peso: 72, altura: 175, act: "mod", obj: "mant", ejemplo: true };
+
+  // ---------- almacenamiento: cuenta (db) si está disponible, si no el navegador ----------
+  let db = null, uid = null;
+  const local = {
+    get(k) { try { return JSON.parse(localStorage.getItem("pym:" + k)); } catch { return null; } },
+    set(k, v) { try { localStorage.setItem("pym:" + k, JSON.stringify(v)); } catch {} },
+  };
+  const queues = {};
+  function write(key, value) {
+    local.set(key, value);
+    if (!db || !uid) return;
+    const run = () => db.doc(`data/users/${uid}/${key}`).set(value);
+    queues[key] = (queues[key] || Promise.resolve()).then(run).catch(() => setStatus("error"));
+  }
+  async function readCloud(key) {
+    try { const s = await db.doc(`data/users/${uid}/${key}`).get(); return s.exists ? s.data() : null; } catch { return null; }
+  }
+  function setStatus(mode) {
+    const s = $("#status");
+    s.classList.toggle("cloud", mode === "cloud");
+    s.querySelector("span").textContent =
+      mode === "cloud" ? "Guardado en tu cuenta" : mode === "error" ? "No se pudo guardar en tu cuenta" : "Guardado en este navegador";
+  }
+
+  // ---------- estado ----------
+  let profile = { ...DEFAULT_PROFILE, ...(local.get("perfil") || {}) };
+  let day = new Date(); day.setHours(12, 0, 0, 0);
+  let entries = [];
+  const pad = (n) => String(n).padStart(2, "0");
+  const dkey = (d) => `dia-${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+
+  async function loadDay() {
+    const k = dkey(day);
+    let data = local.get(k);
+    if (db && uid) data = (await readCloud(k)) || data;
+    if (k !== dkey(day)) return; // el usuario cambió de día mientras cargaba
+    entries = Array.isArray(data?.entries) ? data.entries : [];
+    renderDay();
+  }
+  function saveDay() { write(dkey(day), { entries }); }
+
+  let profTimer = null;
+  function saveProfile() {
+    clearTimeout(profTimer);
+    profTimer = setTimeout(() => write("perfil", profile), 600);
+  }
+
+  // ---------- cálculos ----------
+  function calc() {
+    const { sexo, edad, peso, altura } = profile;
+    const ok = edad > 0 && peso > 0 && altura > 0;
+    const m = altura / 100;
+    const bmi = ok ? peso / (m * m) : null;
+    const tmb = ok ? 10 * peso + 6.25 * altura - 5 * edad + (sexo === "h" ? 5 : -161) : null;
+    const floor = sexo === "h" ? 1500 : 1200;
+    const rows = ACT.map((a) => {
+      const mant = tmb ? tmb * a.f : null;
+      return { ...a, mant, min: mant ? Math.max(mant - 500, floor) : null, ganar: mant ? mant + 300 : null };
+    });
+    const sel = rows.find((r) => r.id === profile.act) || rows[2];
+    const goal = sel.mant ? (profile.obj === "perder" ? sel.min : profile.obj === "ganar" ? sel.ganar : sel.mant) : 2000;
+    const healthy = ok ? [18.5 * m * m, 24.9 * m * m] : null;
+    return { bmi, tmb, rows, goal: Math.round(goal / 10) * 10, healthy };
+  }
+
+  // ---------- render: cuerpo ----------
+  const SCALE_MIN = 15, SCALE_MAX = 40;
+  const pct = (v) => ((Math.min(Math.max(v, SCALE_MIN), SCALE_MAX) - SCALE_MIN) / (SCALE_MAX - SCALE_MIN)) * 100;
+  (function buildScale() {
+    let prev = SCALE_MIN;
+    for (const c of BMI_CATS) {
+      const hi = Math.min(c.max, SCALE_MAX);
+      if (hi <= prev) continue;
+      $("#bands").append(el("i", { style: `width:${pct(hi) - pct(prev)}%;background:${c.color}`, title: c.name }));
+      prev = hi;
+    }
+    for (const t of [18.5, 25, 30, 35]) $("#ticks").append(el("span", { style: `left:${pct(t)}%`, text: fmt(t, t % 1 ? 1 : 0) }));
+  })();
+
+  function renderBody() {
+    const c = calc();
+    $("#examplenote").hidden = !profile.ejemplo;
+    $("#sx-" + profile.sexo).checked = true;
+    $("#ob-" + { perder: "p", mant: "m", ganar: "g" }[profile.obj]).checked = true;
+    for (const k of ["edad", "peso", "altura"]) if (document.activeElement !== $("#" + k)) $("#" + k).value = profile[k] ?? "";
+
+    if (c.bmi) {
+      const cat = BMI_CATS.find((x) => c.bmi < x.max);
+      $("#bmi").textContent = fmt(c.bmi, 1);
+      $("#bmicat").textContent = cat.name;
+      $("#bmicat").style.background = cat.color;
+      $("#bmicat").hidden = false;
+      $("#bmimark").style.left = pct(c.bmi) + "%";
+      $("#bmimark").hidden = false;
+      $("#bmirange").textContent = `Para tu altura, el peso normal va de ${fmt(c.healthy[0], 1)} a ${fmt(c.healthy[1], 1)} kg (IMC 18,5–24,9, criterio OMS).`;
+      $("#tmb").textContent = fmt(c.tmb) + " kcal";
+    } else {
+      $("#bmi").textContent = "–"; $("#bmicat").hidden = true; $("#bmimark").hidden = true;
+      $("#bmirange").textContent = "Rellena edad, peso y altura."; $("#tmb").textContent = "–";
+    }
+    $("#goalkpi").textContent = fmt(c.goal) + " kcal";
+
+    const tb = $("#acttable"); tb.replaceChildren();
+    for (const r of c.rows) {
+      const tr = el("tr", { class: r.id === profile.act ? "sel" : "", tabindex: "0", "aria-selected": String(r.id === profile.act),
+        onclick: () => { profile.act = r.id; profile.ejemplo = false; saveProfile(); renderAll(); },
+        onkeydown: (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); tr.click(); } } },
+        el("td", {}, el("b", { text: r.name }), el("small", { text: r.desc })),
+        el("td", { class: "r", text: r.min ? fmt(r.min) : "–" }),
+        el("td", { class: "r", text: r.mant ? fmt(r.mant) : "–" }),
+        el("td", { class: "r", text: r.ganar ? fmt(r.ganar) : "–" }));
+      tb.append(tr);
+    }
+  }
+
+  // ---------- render: día ----------
+  function renderDay() {
+    const { goal } = calc();
+    const sum = entries.reduce((a, e) => ({ k: a.k + (+e.kcal || 0), p: a.p + (+e.p || 0), c: a.c + (+e.c || 0), g: a.g + (+e.g || 0) }), { k: 0, p: 0, c: 0, g: 0 });
+    const ratio = goal ? sum.k / goal : 0;
+    const circ = 2 * Math.PI * 52;
+    $("#ringarc").setAttribute("stroke-dasharray", `${Math.min(ratio, 1) * circ} ${circ}`);
+    $("#ringarc").setAttribute("stroke", ratio > 1.05 ? "var(--bad)" : ratio > 0.9 ? "var(--warn)" : "var(--accent)");
+    $("#eaten").textContent = fmt(sum.k);
+    $("#ofgoal").textContent = `de ${fmt(goal)} kcal`;
+    const left = goal - sum.k;
+    $("#leftline").replaceChildren(left >= 0
+      ? document.createTextNode("Te quedan ") : document.createTextNode("Te has pasado "),
+      el("b", { text: fmt(Math.abs(left)) + " kcal" }), document.createTextNode(left >= 0 ? " para hoy." : " del objetivo."));
+    // objetivos de macros orientativos: 25 % proteína, 50 % carbohidratos, 25 % grasa
+    const tg = { p: (goal * 0.25) / 4, c: (goal * 0.5) / 4, g: (goal * 0.25) / 9 };
+    for (const m of ["p", "c", "g"]) {
+      $("#m" + m).textContent = `${fmt(sum[m])} / ${fmt(tg[m])} g`;
+      $("#b" + m).style.width = Math.min(100, (sum[m] / tg[m]) * 100) + "%";
+    }
+
+    const today = new Date(); today.setHours(12, 0, 0, 0);
+    const diff = Math.round((day - today) / 864e5);
+    $("#daylabel").textContent = diff === 0 ? "Hoy" : diff === -1 ? "Ayer" : day.toLocaleDateString("es-ES", { weekday: "short", day: "numeric", month: "short" });
+    $("#next").disabled = diff >= 0;
+
+    const box = $("#meals"); box.replaceChildren();
+    if (!entries.length) {
+      box.append(el("div", { class: "empty", text: diff === 0
+        ? "Aún no has apuntado nada hoy. Describe lo que comiste o sube una foto arriba."
+        : "No apuntaste nada este día." }));
+      return;
+    }
+    for (const [key, label] of Object.entries(MEALS)) {
+      const list = entries.filter((e) => e.comida === key);
+      if (!list.length) continue;
+      const tot = list.reduce((a, e) => a + (+e.kcal || 0), 0);
+      const sec = el("div", { class: "meal" }, el("h4", {}, document.createTextNode(label), el("span", { text: fmt(tot) + " kcal" })));
+      for (const e of list) {
+        const meta = [e.porcion, e.p ? `P ${fmt(e.p)} g` : "", e.c ? `C ${fmt(e.c)} g` : "", e.g ? `G ${fmt(e.g)} g` : ""].filter(Boolean).join(" · ");
+        sec.append(el("div", { class: "entry" },
+          el("div", { class: "n" }, el("b", { text: e.nombre }), meta ? el("small", { text: meta }) : null),
+          el("span", { class: "k", text: fmt(e.kcal) }),
+          el("button", { class: "ghost", "aria-label": "Borrar " + e.nombre, text: "✕",
+            onclick: () => { entries = entries.filter((x) => x.id !== e.id); saveDay(); renderDay(); } })));
+      }
+      box.append(sec);
+    }
+  }
+  function renderAll() { renderBody(); renderDay(); }
+
+  // ---------- perfil: eventos ----------
+  for (const k of ["edad", "peso", "altura"]) {
+    $("#" + k).addEventListener("input", (e) => {
+      const v = parseFloat(e.target.value);
+      profile[k] = Number.isFinite(v) ? v : null; profile.ejemplo = false; saveProfile(); renderAll();
+    });
+  }
+  document.querySelectorAll('input[name="sexo"]').forEach((r) => r.addEventListener("change", () => { profile.sexo = r.value; profile.ejemplo = false; saveProfile(); renderAll(); }));
+  document.querySelectorAll('input[name="obj"]').forEach((r) => r.addEventListener("change", () => { profile.obj = r.value; profile.ejemplo = false; saveProfile(); renderAll(); }));
+
+  $("#prev").onclick = () => { day = new Date(day.getTime() - 864e5); entries = []; renderDay(); loadDay(); };
+  $("#next").onclick = () => { day = new Date(day.getTime() + 864e5); entries = []; renderDay(); loadDay(); };
+
+  // comida por defecto según la hora
+  const h = new Date().getHours();
+  $("#meal").value = h < 11 ? "desayuno" : h < 16 ? "almuerzo" : h < 19 ? "merienda" : "cena";
+
+  const uidGen = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+  function addEntries(items) {
+    const comida = $("#meal").value;
+    for (const it of items) entries.push({ id: uidGen(), comida, t: Date.now(), ...it });
+    saveDay(); renderDay();
+  }
+
+  // ---------- añadir a mano ----------
+  $("#m-add").onclick = () => {
+    const nombre = $("#m-name").value.trim(), kcal = parseFloat($("#m-kcal").value);
+    if (!nombre || !Number.isFinite(kcal)) { $("#m-name").focus(); return; }
+    const p = parseFloat($("#m-p").value);
+    addEntries([{ nombre, kcal: Math.round(kcal), p: Number.isFinite(p) ? p : 0, c: 0, g: 0, porcion: "" }]);
+    $("#m-name").value = ""; $("#m-kcal").value = ""; $("#m-p").value = "";
+  };
+
+  // ---------- foto ----------
+  let photo = null;
+  function setPhoto(f) {
+    photo = f;
+    const t = $("#thumb");
+    if (t.src) URL.revokeObjectURL(t.src);
+    if (f) { t.src = URL.createObjectURL(f); t.hidden = false; $("#droptxt").replaceChildren(el("b", { text: f.name || "Foto" }), document.createTextNode("Lista para analizar.")); }
+    else { t.removeAttribute("src"); t.hidden = true; $("#droptxt").replaceChildren(el("b", { text: "Añade una foto del plato" }), document.createTextNode("Hazla desde arriba y con algo de referencia (un tenedor, la mano) para que la porción salga mejor.")); }
+    $("#clearphoto").hidden = !f;
+  }
+  $("#photo").addEventListener("change", (e) => { setPhoto(e.target.files[0] || null); e.target.value = ""; });
+  $("#clearphoto").onclick = () => setPhoto(null);
+  const drop = $("#drop");
+  drop.addEventListener("dragover", (e) => { e.preventDefault(); drop.classList.add("over"); });
+  drop.addEventListener("dragleave", () => drop.classList.remove("over"));
+  drop.addEventListener("drop", (e) => { e.preventDefault(); drop.classList.remove("over"); const f = [...e.dataTransfer.files].find((x) => x.type.startsWith("image/")); if (f) setPhoto(f); });
+  document.addEventListener("paste", (e) => { const f = [...(e.clipboardData?.files || [])].find((x) => x.type.startsWith("image/")); if (f) setPhoto(f); });
+
+  // ---------- análisis con Claude ----------
+  let sample = null, canImages = false, ctl = null;
+  const ERR = {
+    not_granted: "No se dio permiso para usar Claude. Puedes añadir las calorías a mano.",
+    sampling_disabled: "Claude no está disponible en esta cuenta. Puedes añadir las calorías a mano.",
+    rate_limited: "Demasiadas consultas seguidas. Espera un poco y vuelve a intentarlo.",
+    image_rejected: "No se pudo leer esa foto. Prueba con otra en JPG o PNG.",
+    images_unavailable: "Aquí no se pueden enviar fotos. Describe la comida con palabras.",
+    refused: "No se pudo analizar esa entrada. Prueba a describirla de otra forma.",
+    invalid_json: "La respuesta llegó incompleta. Vuelve a intentarlo.",
+    session_expired: "Tu sesión ha caducado. Vuelve a iniciar sesión.",
+  };
+  function setBusy(b) {
+    $("#analyze").disabled = b; $("#stop").hidden = !b; $("#aistate").hidden = !b;
+    if (b) $("#aistate").replaceChildren(el("div", { class: "thinking" }, el("span", { class: "dots" }, el("i"), el("i"), el("i")), document.createTextNode("Mirando el plato y calculando…")));
+  }
+  $("#stop").onclick = () => ctl?.abort();
+
+  $("#analyze").onclick = async () => {
+    const text = $("#desc").value.trim();
+    $("#aierr").hidden = true; $("#result").hidden = true;
+    if (!text && !photo) { $("#aierr").textContent = "Escribe qué comiste o añade una foto."; $("#aierr").hidden = false; return; }
+    if (!sample) { $("#aierr").textContent = "El cálculo automático no está disponible aquí. Usa «Añadir a mano»."; $("#aierr").hidden = false; $("#manual").open = true; return; }
+    const usePhoto = photo && canImages;
+    const prompt = [
+      "Eres un nutricionista. Estima las calorías y macronutrientes de esta comida, en español.",
+      `Descripción del usuario: ${text ? JSON.stringify(text) : "(sin descripción; usa solo la foto)"}`,
+      usePhoto ? "Se adjunta una foto del plato: identifica cada alimento visible y estima la porción por su tamaño aparente (platos, cubiertos o manos sirven de referencia)." : "",
+      "Si el usuario indica cantidades, respétalas. Si no, usa porciones habituales en España. Cuenta aceites, salsas y bebidas si se mencionan o se ven.",
+      'Responde solo con JSON con esta forma exacta: {"plato":"nombre corto","items":[{"nombre":"arroz blanco cocido","porcion":"150 g","kcal":195,"proteina":4,"carbohidratos":42,"grasa":0.5}],"nota":"una frase sobre los supuestos o la precisión"}',
+      "Si no hay comida reconocible, devuelve items vacío y explícalo en nota.",
+    ].filter(Boolean).join("\n");
+    ctl = new AbortController();
+    setBusy(true);
+    try {
+      const opts = { signal: ctl.signal };
+      if (usePhoto) opts.images = [photo];
+      const r = await sample.json(prompt, opts);
+      showResult(r);
+    } catch (e) {
+      if (e?.code !== "cancelled") {
+        $("#aierr").textContent = ERR[e?.code] || "Algo falló al calcular. Vuelve a intentarlo.";
+        $("#aierr").hidden = false;
+        if (e?.code === "not_granted" || e?.code === "sampling_disabled") $("#manual").open = true;
+      }
+    } finally { setBusy(false); }
+  };
+
+  function showResult(r) {
+    const items = (Array.isArray(r?.items) ? r.items : []).map((i) => ({
+      nombre: String(i.nombre || "Alimento"), porcion: String(i.porcion || ""),
+      kcal: Math.round(+i.kcal || 0), p: +i.proteina || 0, c: +i.carbohidratos || 0, g: +i.grasa || 0,
+    }));
+    const box = $("#result"); box.replaceChildren(); box.hidden = false;
+    if (!items.length) {
+      box.append(el("p", { class: "note", text: r?.nota || "No reconocí comida en eso. Prueba con otra foto o descríbelo." }));
+      return;
+    }
+    const total = el("b");
+    const upd = () => { total.textContent = fmt(items.reduce((a, i) => a + i.kcal, 0)) + " kcal"; };
+    const list = el("div", { class: "items" });
+    items.forEach((it, idx) => {
+      const inp = el("input", { type: "number", min: "0", inputmode: "numeric", "aria-label": "kcal de " + it.nombre, value: String(it.kcal) });
+      inp.addEventListener("input", () => { it.kcal = Math.round(+inp.value || 0); upd(); });
+      const row = el("div", { class: "item" },
+        el("div", { class: "n" }, el("b", { text: it.nombre }), el("small", { text: [it.porcion, `P ${fmt(it.p)} · C ${fmt(it.c)} · G ${fmt(it.g)} g`].filter(Boolean).join(" · ") })),
+        inp,
+        el("button", { class: "ghost", "aria-label": "Quitar " + it.nombre, text: "✕", onclick: () => { items.splice(items.indexOf(it), 1); row.remove(); upd(); if (!items.length) box.hidden = true; } }));
+      list.append(row);
+    });
+    upd();
+    box.append(
+      el("div", { class: "row between" }, el("h3", { text: r.plato || "Tu comida" }), total),
+      list,
+      r.nota ? el("p", { class: "note", text: r.nota }) : null,
+      el("p", { class: "note", text: "Puedes corregir las calorías de cada alimento antes de guardarlo." }),
+      el("div", { class: "row" },
+        el("button", { class: "primary", text: "Añadir a " + MEALS[$("#meal").value].toLowerCase(), onclick: () => {
+          addEntries(items); box.hidden = true; $("#desc").value = ""; setPhoto(null);
+        } }),
+        el("button", { text: "Descartar", onclick: () => { box.hidden = true; } })));
+  }
+
+  // ---------- arranque ----------
+  renderAll();
+  loadDay();
+
+  const use = (n) => (window.claude?.use ? window.claude.use(n).catch(() => null) : Promise.resolve(null));
+  use("sample").then(async (s) => {
+    sample = s;
+    if (s) { const lim = await s.limits().catch(() => null); canImages = !!lim?.images; }
+    if (!canImages) { $("#drop").hidden = true; }
+  });
+  Promise.all([use("db"), use("user")]).then(async ([d, u]) => {
+    const id = u ? await u.id().catch(() => null) : null;
+    if (!d || !id) return;
+    db = d; uid = id; setStatus("cloud");
+    const cloud = await readCloud("perfil");
+    if (cloud) { profile = { ...DEFAULT_PROFILE, ...cloud }; }
+    else if (!profile.ejemplo) { write("perfil", profile); }
+    renderAll();
+    loadDay();
+  });
+})();
+</script>
