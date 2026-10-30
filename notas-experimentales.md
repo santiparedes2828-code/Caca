@@ -20,3 +20,9 @@
 - **Función:** alcance con el servicio dentro de la historia (edición a cámara).
 - **H1.** Una situación de grabación reconocible + subida de tensión que termina en corte a silencio y revelación da más compartidos y guardados por 1000 vistas que nuestros reels explicativos.
 - **Métricas:** compartidos + guardados / 1000 vistas, retención a 3 y 10 s, visitas al perfil atribuidas al video, DMs (conteo manual).
+
+## Escalera del gancho (2026-10-30, referencia @plantandofloress)
+- **Origen:** reel de otra cuenta que muestra 6 versiones de la misma apertura con vistas de 1.940 a 2,7 M (cifras suyas, no verificables). Análisis en `.claude/skills/formula-viral/referencia/escalera-gancho.md`. Se suma a la fórmula por pedido del usuario (corrección 5 de `formula-viral`).
+- **H1.** Un gancho con nicho + acción + temporalidad + historia + meta retiene más a los 3 s que nuestros ganchos actuales sin esas piezas. Métrica: retención a 1, 3 y 5 s frente a la mediana de los reels de Gancho (≈ 64 % a 3 s en TikTok).
+- **H2.** El formato escalera (la misma pieza mejorada paso a paso con un indicador medible) tiene más % de visualización completa que un antes/después directo (que en la cuenta murió a los 2 s). Métrica: % que lo ve entero y retención a 10 s.
+- **Ojo con la duración:** su gancho completo dura ~9 s de voz y nuestros datos dicen que la gente se va entre el segundo 3 y el 10. Probar la escalera completa en el texto del fotograma 0 + voz corta, y medir.

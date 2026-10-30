@@ -57,7 +57,7 @@ Conservar diseño; revisar poses legibles, anticipación, contacto, apoyos, tray
 
 ## 4. Guion
 
-Comparar tres aperturas breves con mecanismos distintos y elegir una; conservar una aprobada salvo defecto justificado. Primer fotograma con sujeto y acción/pregunta entendible, sin presentación corporativa previa.
+Comparar tres aperturas breves con mecanismos distintos y elegir una; conservar una aprobada salvo defecto justificado. Cada apertura pasa la **escalera del gancho** (`formula-viral`, corrección 5): nicho + acción + temporalidad + historia + experiencia real + meta que el video cumple; lo que no entra en ~3 s de voz va al texto del fotograma 0. Primer fotograma con sujeto y acción/pregunta entendible, sin presentación corporativa previa.
 Usar voz aprobada y español rioplatense natural; probar voseo y nombres. Tabla de escenas: inicio/fin, función, voz/texto, acción de Hookie, cámara, sonido y recurso. Ajustar tiempos a voz y lectura reales; 15–35 s orienta, no obliga.
 Quitar preámbulos, redundancias y espera artificial sin sacrificar comprensión. Entregar la recompensa prometida; comprobar números, objetos, capas, palabras, tiempos y afirmaciones. Diferenciar versiones completas y fragmentos cuando importe. Máximo un CTA pertinente, opcional; loop natural sin esconder el desenlace. No generar variantes completas salvo pedido o prueba justificada.
 

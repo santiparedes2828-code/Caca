@@ -65,6 +65,7 @@ Recursos de escritura que usa:
 
 - [ ] ¿El frame 0 enseña algo raro y en movimiento, sin título, saludo ni logo?
 - [ ] ¿La primera frase es una pregunta que el espectador no puede responder solo?
+- [ ] ¿El gancho pasó la escalera (nicho + acción + temporalidad + historia + experiencia real + meta que el video cumple)?
 - [ ] ¿Hay un giro inesperado en los primeros ~8 s?
 - [ ] ¿Se promete una estructura con número ("tres partes", "dos errores")?
 - [ ] ¿Cada sustantivo o cifra importante tiene su imagen **en el mismo instante** en que se dice?
@@ -109,3 +110,10 @@ _(Cuando el usuario corrija algo de la fórmula y le guste el resultado, se aña
    - No afirmar retención, repeticiones o viralidad sin datos; no decir que «nadie» ve algo sin datos.
    - El cierre varía según el contenido; el CTA a DM no va en todos los videos.
    - Demostraciones con material propio o «ejemplo creado para la pieza», rotulado.
+
+5. **Gancho en escalera (2026-10-30, usuario; fuente: [referencia/escalera-gancho.md](referencia/escalera-gancho.md)):**
+   - La primera frase nunca es genérica. Se arma sumando piezas hasta que sea específica: **nicho** (para quién / qué negocio) + **acción** (qué está pasando) + **temporalidad** (plazo o momento) + **historia** (pregunta con conflicto + «te muestro cómo») + **experiencia** (por qué escucharnos, solo con datos reales) + **meta** (resultado concreto y medible que el video cumple).
+   - Antes de escribir el guion, escribir la escalera completa (de «básico» a «todas las piezas») y quedarse con la versión más específica que entre en ~3 s de voz; lo que no entra en la voz va al texto del fotograma 0.
+   - Experiencia de Hook House que se puede usar (dato del usuario): editamos Reels, anuncios y motion graphics para negocios y creadores; con estructuras de videos virales, varios de nuestros videos pasaron de menos de 100 a más de 1.000 vistas. Nada de años, clientes ni cifras que no estén confirmados.
+   - La meta tiene que ser algo que el propio video muestre (p. ej. «que el producto se vea en el primer segundo»), nunca vistas o ventas garantizadas.
+   - Formato derivado: **la escalera como video** — la misma pieza mejorada paso a paso con un indicador que sube o baja en pantalla. El indicador es medible en el ejemplo (segundos hasta ver el producto, cortes, palabras de relleno) o son vistas reales de la cuenta; nunca vistas inventadas.
