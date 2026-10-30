@@ -15,7 +15,7 @@ La edición tiene **fuerza física**: las palabras pesan, aplastan y empujan; la
 | Marfil | `#F2EDE3` | Fondo de todo. Evoluciona el blanco roto `#F7F7F2` |
 | Marfil profundo | `#E6DFD2` | Suelos y planos traseros |
 | Tinta | `#0E0D0B` | Texto, bordes, tapas |
-| **Naranja eléctrico** | `#FF5A1F` (sombra `#C9400F`) | **Solo**: la línea-firma, una palabra clave por plano, la caja del CTA |
+| **Naranja eléctrico** | `#FF5A1F` (sombra `#C9400F`) | **Solo**: la línea-firma, una palabra clave por plano, la caja del CTA y la píldora de la palabra que suena en los subtítulos (corrección 8) |
 | Gris | `#8A847A` | Texto secundario |
 - El verde `#12A150` deja de usarse.
 - Textura: grano de papel (`public/altera/papel.png`, 9 %, multiplicar) + luz suave arriba. Sin viñeta fuerte.
@@ -98,3 +98,4 @@ _(Las correcciones aprobadas por el usuario se añaden aquí con fecha y prevale
 5. **Arranque con impacto físico en el frame 0**: algo grande ya está cayendo y aterriza antes de los 0,3 s (golpe, onda de choque en el suelo, el escenario acusa el impacto) (2026-10-22).
 6. **Antes/después: el frame 0 es la comparación** (las dos versiones lado a lado, en el momento más visual del después), no el bruto. Hookie arranca el ANTES y el DESPUÉS crece a pantalla completa. Datos: abrir con el bruto dejó un 38 % a los 3 s (2026-10-23, `metricas.md`).
 7. **Guion en rioplatense y cierres variados (2026-10-25):** los guiones usan voseo («escribinos», «mirá»); la voz hay que probarla en rioplatense antes de producir. No todos los cierres piden presupuesto: ver `calendario-30-dias.md` y la corrección 4 de `formula-viral`.
+8. **Subtítulos con píldora (2026-10-30, aprobado por el usuario tras la prueba de efectos de «La medialuna» v2):** la palabra que suena va en una **píldora naranja** con texto marfil (`<Captions pill />` en `system.tsx`); las demás palabras del bloque en tinta suave y, como máximo, una palabra clave en naranja. Bloques de hasta 4–5 palabras arriba (y ≈ 250, 80 px). Motivo: en la prueba la píldora marcó mejor por dónde va la lectura a tamaño celular, sobre todo sin sonido (`produccion/medialuna_v2/pruebas.md`). Es una excepción aprobada a «naranja solo en una palabra por plano».

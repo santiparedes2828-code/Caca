@@ -114,5 +114,5 @@ mejorada por escalones), y cierra con la meta de la escalera del gancho («se ve
 
 ## Pendiente (decisiones del usuario)
 - **Voz:** escuchar `vozA_rodrigo.mp3`, `vozB_mateo.mp3` y `vozC_estrella.mp3`. Si la B suena mejor, se regenera la v2 con Mateo (≈380 créditos).
-- **Píldora naranja en los subtítulos:** ganó en legibilidad, pero usa más naranja del que permite `estilo-altera.md`. Si se aprueba, pasa a «Correcciones aprendidas».
+- ~~**Píldora naranja en los subtítulos**~~ → **aprobada por el usuario (2026-10-30)**: `estilo-altera.md` corrección 8 y `<Captions pill />`.
 - **Validación real:** publicar v1 y v2 en días distintos a la misma hora y comparar retención a 3 s, % completo, guardados, compartidos y DMs «VIDEO» (ver `notas-experimentales.md`).

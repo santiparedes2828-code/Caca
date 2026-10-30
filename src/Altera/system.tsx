@@ -306,7 +306,8 @@ export const Headline: React.FC<{
 // ---------- Subtítulos con peso (para reels narrados) ----------
 // Bloques de hasta 5 palabras (o hasta un signo); la palabra que suena "aterriza" con un pequeño golpe.
 // Sin puntos ni comas; como mucho una palabra clave naranja por bloque.
-export const Captions: React.FC<{ words: { text: string; at: number }[]; f: number; fps: number; keys?: number[]; top?: number; size?: number }> = ({ words, f, fps, keys = [], top = 1236, size = 66 }) => {
+// pill: la palabra que suena va en una píldora naranja (estándar desde 2026-10-30, estilo-altera.md corrección 8).
+export const Captions: React.FC<{ words: { text: string; at: number }[]; f: number; fps: number; keys?: number[]; top?: number; size?: number; pill?: boolean }> = ({ words, f, fps, keys = [], top = 1236, size = 66, pill = false }) => {
   let cur = -1;
   for (let i = 0; i < words.length; i++) if (f >= words[i].at) cur = i;
   if (cur < 0) return null;
@@ -325,13 +326,21 @@ export const Captions: React.FC<{ words: { text: string; at: number }[]; f: numb
         const local = f - words[i].at;
         const d = spring({ frame: local, fps, config: { damping: 13, stiffness: 320 } });
         const land = impact(local - 3);
+        const now = i === cur;
+        if (pill) {
+          return (
+            <span key={i} style={{ display: "inline-block", whiteSpace: "pre", margin: "0 6px", opacity: Math.min(1, d * 1.6), transformOrigin: "50% 100%", transform: `translateY(${(1 - d) * -26}px) scale(${1 + 0.06 * land}, ${1 - 0.1 * land})` }}>
+              <span style={{ display: "inline-block", padding: "0 14px 6px", borderRadius: 16, background: now ? A.orange : "transparent", color: now ? A.ivory : keys.includes(i) ? A.orange : "#3A3732" }}>{words[i].text.replace(/[.,:…]+$/, "").replace(/"/g, "")}</span>
+            </span>
+          );
+        }
         return (
           <span
             key={i}
             style={{
               display: "inline-block",
               whiteSpace: "pre",
-              color: keys.includes(i) ? A.orange : i === cur ? A.ink : "#3A3732",
+              color: keys.includes(i) ? A.orange : now ? A.ink : "#3A3732",
               opacity: Math.min(1, d * 1.6),
               transformOrigin: "50% 100%",
               transform: `translateY(${(1 - d) * -26}px) scale(${1 + 0.06 * land}, ${1 - 0.1 * land})`,

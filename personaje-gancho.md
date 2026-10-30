@@ -42,7 +42,7 @@
 
 ## 6. Formato del reel explicativo con Gancho
 - Escenario: suelo marfil, sin fondo dibujado (el mundo es la utilería). Se compone en coordenadas de maqueta (suelo y = 1150) y se escala 1,25× con el suelo en y = 1330 de pantalla.
-- **Subtítulos arriba** (`Captions`, y = 250, 74 px, Inter 800): palabra que "aterriza", una palabra clave naranja por bloque, sin puntos ni comas.
+- **Subtítulos arriba** (`Captions` con `pill`, y = 250, 74–80 px, Inter 800): palabra que "aterriza" dentro de una **píldora naranja** (desde 2026-10-30, `estilo-altera.md` corrección 8), una palabra clave naranja por bloque, sin puntos ni comas.
 - **Sin texto doble:** cuando la palabra ya está en escena como objeto (un título que cae, el CTA), el subtítulo calla.
 - Utilería plana de `props.tsx` (sábana, cajón, tarjetas, letras sueltas, globos). Un color fuera de paleta solo si el guion lo nombra (el elefante **rosa**).
 - Material real del portafolio dentro de una tarjeta (`OffthreadVideo`) con `Tag` "REEL DE HOOKHOUSE".
