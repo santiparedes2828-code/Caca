@@ -1,6 +1,6 @@
 """Tiempos por palabra sin transcriptor: el texto es conocido y la toma se parte en frases por sus silencios.
 
-Uso: python3 -I alinear.py <audio> <salida_words.json>
+Uso: python3 -I alinear.py <audio> <salida_words.json> [<texto.txt>]  (frases separadas por «|»)
 Cada frase del guion (separada por la puntuación que la voz respeta) se asigna, en orden, a un tramo de voz entre
 silencios (silencedetect −35 dB, ≥ 0,15 s). Dentro del tramo, cada palabra dura en proporción a sus sílabas
 (grupos de vocales) + una base fija. Si el número de tramos no coincide con el de frases, se aborta.
@@ -21,6 +21,8 @@ TEXT = (
 )
 
 audio, out = sys.argv[1], sys.argv[2]
+if len(sys.argv) > 3:
+    TEXT = open(sys.argv[3], encoding="utf-8").read()
 total = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", audio],
                              capture_output=True, text=True).stdout)
 log = subprocess.run(["ffmpeg", "-i", audio, "-af", "silencedetect=n=-35dB:d=0.15", "-f", "null", "-"],
@@ -43,6 +45,8 @@ if len(spans) != len(phrases):
 
 
 def weight(w):
+    if "M&M" in w:
+        return 0.6 + 3  # se dice «emendems»
     return 0.6 + len(re.findall(r"[aeiouáéíóúü]+", w.lower()))
 
 
