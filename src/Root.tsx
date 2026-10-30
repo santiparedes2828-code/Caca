@@ -8,6 +8,7 @@ import { HookHouse, hookHouseDuration } from "./HookHouse/HookHouse";
 import { Viral, viralDuration } from "./Viral/Viral";
 import { Pulgar, pulgarDuration } from "./Pulgar/Pulgar";
 import { Reflejo, reflejoDuration } from "./Reflejo/Reflejo";
+import { Salto, SaltoPortada, saltoDuration } from "./Salto/Salto";
 import { Cosquillas, cosquillasDuration } from "./Cosquillas/Cosquillas";
 import { Puerta, puertaDuration } from "./Puerta/Puerta";
 import { DIORAMAS } from "./Diorama/reels";
@@ -178,6 +179,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Tomas" component={Tomas} durationInFrames={TOMAS_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="TomasPortada" component={TomasPortada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="CapasPortada" component={CapasPortada} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Salto" component={Salto} durationInFrames={saltoDuration(30)} fps={30} width={1080} height={1920} />
+      <Composition id="SaltoPortada" component={SaltoPortada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Falso15" component={Falso15} durationInFrames={FALSO15_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Falso15Portada" component={Falso15Portada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Error1Portada" component={Error1Portada} durationInFrames={1} fps={30} width={1080} height={1920} />

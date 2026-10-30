@@ -1,0 +1,534 @@
+[
+ {
+  "text": "Ese",
+  "startMs": 30,
+  "endMs": 366,
+  "timestampMs": 198,
+  "confidence": null
+ },
+ {
+  "text": "salto",
+  "startMs": 386,
+  "endMs": 722,
+  "timestampMs": 554,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 742,
+  "endMs": 941,
+  "timestampMs": 841,
+  "confidence": null
+ },
+ {
+  "text": "das",
+  "startMs": 961,
+  "endMs": 1160,
+  "timestampMs": 1060,
+  "confidence": null
+ },
+ {
+  "text": "justo",
+  "startMs": 1180,
+  "endMs": 1516,
+  "timestampMs": 1348,
+  "confidence": null
+ },
+ {
+  "text": "cuando",
+  "startMs": 1536,
+  "endMs": 1872,
+  "timestampMs": 1704,
+  "confidence": null
+ },
+ {
+  "text": "te",
+  "startMs": 1892,
+  "endMs": 2091,
+  "timestampMs": 1992,
+  "confidence": null
+ },
+ {
+  "text": "estás",
+  "startMs": 2111,
+  "endMs": 2447,
+  "timestampMs": 2279,
+  "confidence": null
+ },
+ {
+  "text": "durmiendo…",
+  "startMs": 2467,
+  "endMs": 2940,
+  "timestampMs": 2704,
+  "confidence": null
+ },
+ {
+  "text": "es",
+  "startMs": 3251,
+  "endMs": 3445,
+  "timestampMs": 3348,
+  "confidence": null
+ },
+ {
+  "text": "tu",
+  "startMs": 3465,
+  "endMs": 3658,
+  "timestampMs": 3561,
+  "confidence": null
+ },
+ {
+  "text": "cerebro",
+  "startMs": 3678,
+  "endMs": 4138,
+  "timestampMs": 3908,
+  "confidence": null
+ },
+ {
+  "text": "intentando",
+  "startMs": 4158,
+  "endMs": 4752,
+  "timestampMs": 4455,
+  "confidence": null
+ },
+ {
+  "text": "salvarte.",
+  "startMs": 4772,
+  "endMs": 5232,
+  "timestampMs": 5002,
+  "confidence": null
+ },
+ {
+  "text": "Y",
+  "startMs": 5534,
+  "endMs": 5600,
+  "timestampMs": 5567,
+  "confidence": null
+ },
+ {
+  "text": "no,",
+  "startMs": 5620,
+  "endMs": 5829,
+  "timestampMs": 5725,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 6186,
+  "endMs": 6360,
+  "timestampMs": 6273,
+  "confidence": null
+ },
+ {
+  "text": "es",
+  "startMs": 6380,
+  "endMs": 6553,
+  "timestampMs": 6467,
+  "confidence": null
+ },
+ {
+  "text": "una",
+  "startMs": 6573,
+  "endMs": 6868,
+  "timestampMs": 6721,
+  "confidence": null
+ },
+ {
+  "text": "pesadilla:",
+  "startMs": 6888,
+  "endMs": 7425,
+  "timestampMs": 7157,
+  "confidence": null
+ },
+ {
+  "text": "se",
+  "startMs": 7717,
+  "endMs": 7996,
+  "timestampMs": 7857,
+  "confidence": null
+ },
+ {
+  "text": "llama",
+  "startMs": 8016,
+  "endMs": 8483,
+  "timestampMs": 8250,
+  "confidence": null
+ },
+ {
+  "text": "mioclonía",
+  "startMs": 8503,
+  "endMs": 9156,
+  "timestampMs": 8830,
+  "confidence": null
+ },
+ {
+  "text": "hípnica.",
+  "startMs": 9176,
+  "endMs": 9830,
+  "timestampMs": 9503,
+  "confidence": null
+ },
+ {
+  "text": "Al",
+  "startMs": 10112,
+  "endMs": 10302,
+  "timestampMs": 10207,
+  "confidence": null
+ },
+ {
+  "text": "dormirte,",
+  "startMs": 10322,
+  "endMs": 10774,
+  "timestampMs": 10548,
+  "confidence": null
+ },
+ {
+  "text": "tus",
+  "startMs": 10794,
+  "endMs": 10985,
+  "timestampMs": 10890,
+  "confidence": null
+ },
+ {
+  "text": "músculos",
+  "startMs": 11005,
+  "endMs": 11457,
+  "timestampMs": 11231,
+  "confidence": null
+ },
+ {
+  "text": "se",
+  "startMs": 11477,
+  "endMs": 11667,
+  "timestampMs": 11572,
+  "confidence": null
+ },
+ {
+  "text": "aflojan",
+  "startMs": 11687,
+  "endMs": 12140,
+  "timestampMs": 11914,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 12160,
+  "endMs": 12350,
+  "timestampMs": 12255,
+  "confidence": null
+ },
+ {
+  "text": "golpe.",
+  "startMs": 12370,
+  "endMs": 12692,
+  "timestampMs": 12531,
+  "confidence": null
+ },
+ {
+  "text": "Pero",
+  "startMs": 12985,
+  "endMs": 13273,
+  "timestampMs": 13129,
+  "confidence": null
+ },
+ {
+  "text": "tu",
+  "startMs": 13293,
+  "endMs": 13464,
+  "timestampMs": 13378,
+  "confidence": null
+ },
+ {
+  "text": "cerebro",
+  "startMs": 13484,
+  "endMs": 13891,
+  "timestampMs": 13687,
+  "confidence": null
+ },
+ {
+  "text": "sigue",
+  "startMs": 13911,
+  "endMs": 14200,
+  "timestampMs": 14055,
+  "confidence": null
+ },
+ {
+  "text": "medio",
+  "startMs": 14220,
+  "endMs": 14509,
+  "timestampMs": 14364,
+  "confidence": null
+ },
+ {
+  "text": "despierto,",
+  "startMs": 14529,
+  "endMs": 14936,
+  "timestampMs": 14732,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 15171,
+  "endMs": 15230,
+  "timestampMs": 15200,
+  "confidence": null
+ },
+ {
+  "text": "lee",
+  "startMs": 15250,
+  "endMs": 15441,
+  "timestampMs": 15345,
+  "confidence": null
+ },
+ {
+  "text": "esa",
+  "startMs": 15461,
+  "endMs": 15785,
+  "timestampMs": 15623,
+  "confidence": null
+ },
+ {
+  "text": "flojera",
+  "startMs": 15805,
+  "endMs": 16260,
+  "timestampMs": 16032,
+  "confidence": null
+ },
+ {
+  "text": "como",
+  "startMs": 16280,
+  "endMs": 16603,
+  "timestampMs": 16441,
+  "confidence": null
+ },
+ {
+  "text": "una",
+  "startMs": 16623,
+  "endMs": 16946,
+  "timestampMs": 16784,
+  "confidence": null
+ },
+ {
+  "text": "caída.",
+  "startMs": 16966,
+  "endMs": 17289,
+  "timestampMs": 17127,
+  "confidence": null
+ },
+ {
+  "text": "Así",
+  "startMs": 17584,
+  "endMs": 17880,
+  "timestampMs": 17732,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 17900,
+  "endMs": 18074,
+  "timestampMs": 17987,
+  "confidence": null
+ },
+ {
+  "text": "tensa",
+  "startMs": 18094,
+  "endMs": 18390,
+  "timestampMs": 18242,
+  "confidence": null
+ },
+ {
+  "text": "todo",
+  "startMs": 18410,
+  "endMs": 18706,
+  "timestampMs": 18558,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 18726,
+  "endMs": 18900,
+  "timestampMs": 18813,
+  "confidence": null
+ },
+ {
+  "text": "cuerpo",
+  "startMs": 18920,
+  "endMs": 19216,
+  "timestampMs": 19068,
+  "confidence": null
+ },
+ {
+  "text": "para",
+  "startMs": 19236,
+  "endMs": 19532,
+  "timestampMs": 19384,
+  "confidence": null
+ },
+ {
+  "text": "agarrarte,",
+  "startMs": 19552,
+  "endMs": 20091,
+  "timestampMs": 19821,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 20319,
+  "endMs": 20359,
+  "timestampMs": 20339,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 20379,
+  "endMs": 20519,
+  "timestampMs": 20449,
+  "confidence": null
+ },
+ {
+  "text": "corazón",
+  "startMs": 20539,
+  "endMs": 20880,
+  "timestampMs": 20709,
+  "confidence": null
+ },
+ {
+  "text": "se",
+  "startMs": 20900,
+  "endMs": 21040,
+  "timestampMs": 20970,
+  "confidence": null
+ },
+ {
+  "text": "te",
+  "startMs": 21060,
+  "endMs": 21201,
+  "timestampMs": 21130,
+  "confidence": null
+ },
+ {
+  "text": "acelera.",
+  "startMs": 21221,
+  "endMs": 21662,
+  "timestampMs": 21441,
+  "confidence": null
+ },
+ {
+  "text": "Es",
+  "startMs": 21972,
+  "endMs": 22153,
+  "timestampMs": 22062,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 22173,
+  "endMs": 22353,
+  "timestampMs": 22263,
+  "confidence": null
+ },
+ {
+  "text": "explicación",
+  "startMs": 22373,
+  "endMs": 22928,
+  "timestampMs": 22650,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 22948,
+  "endMs": 23129,
+  "timestampMs": 23038,
+  "confidence": null
+ },
+ {
+  "text": "conocida…",
+  "startMs": 23149,
+  "endMs": 23704,
+  "timestampMs": 23426,
+  "confidence": null
+ },
+ {
+  "text": "aunque",
+  "startMs": 23988,
+  "endMs": 24328,
+  "timestampMs": 24158,
+  "confidence": null
+ },
+ {
+  "text": "todavía",
+  "startMs": 24348,
+  "endMs": 24827,
+  "timestampMs": 24588,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 24847,
+  "endMs": 25048,
+  "timestampMs": 24948,
+  "confidence": null
+ },
+ {
+  "text": "está",
+  "startMs": 25068,
+  "endMs": 25409,
+  "timestampMs": 25239,
+  "confidence": null
+ },
+ {
+  "text": "probada.",
+  "startMs": 25429,
+  "endMs": 25907,
+  "timestampMs": 25668,
+  "confidence": null
+ },
+ {
+  "text": "Pero",
+  "startMs": 26174,
+  "endMs": 26438,
+  "timestampMs": 26306,
+  "confidence": null
+ },
+ {
+  "text": "esta",
+  "startMs": 26458,
+  "endMs": 26723,
+  "timestampMs": 26591,
+  "confidence": null
+ },
+ {
+  "text": "noche,",
+  "startMs": 26743,
+  "endMs": 27008,
+  "timestampMs": 26876,
+  "confidence": null
+ },
+ {
+  "text": "lo",
+  "startMs": 27233,
+  "endMs": 27441,
+  "timestampMs": 27337,
+  "confidence": null
+ },
+ {
+  "text": "vas",
+  "startMs": 27461,
+  "endMs": 27669,
+  "timestampMs": 27565,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 27689,
+  "endMs": 27897,
+  "timestampMs": 27793,
+  "confidence": null
+ },
+ {
+  "text": "notar.",
+  "startMs": 27917,
+  "endMs": 28268,
+  "timestampMs": 28093,
+  "confidence": null
+ }
+]
