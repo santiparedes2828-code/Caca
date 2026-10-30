@@ -1,0 +1,52 @@
+{
+ "words": [
+  {
+   "text": "Mismo",
+   "start": 0.03,
+   "end": 0.454,
+   "type": "word"
+  },
+  {
+   "text": "video,",
+   "start": 0.474,
+   "end": 0.897,
+   "type": "word"
+  },
+  {
+   "text": "misma",
+   "start": 1.304,
+   "end": 1.649,
+   "type": "word"
+  },
+  {
+   "text": "cámara.",
+   "start": 1.669,
+   "end": 2.154,
+   "type": "word"
+  },
+  {
+   "text": "Solo",
+   "start": 2.58,
+   "end": 2.91,
+   "type": "word"
+  },
+  {
+   "text": "cambió",
+   "start": 2.93,
+   "end": 3.26,
+   "type": "word"
+  },
+  {
+   "text": "la",
+   "start": 3.28,
+   "end": 3.475,
+   "type": "word"
+  },
+  {
+   "text": "edición.",
+   "start": 3.495,
+   "end": 3.96,
+   "type": "word"
+  }
+ ]
+}

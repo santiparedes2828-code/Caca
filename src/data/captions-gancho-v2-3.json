@@ -1,0 +1,86 @@
+[
+ {
+  "text": "Tres",
+  "startMs": 30,
+  "endMs": 229,
+  "timestampMs": 130,
+  "confidence": null
+ },
+ {
+  "text": "cambios",
+  "startMs": 249,
+  "endMs": 584,
+  "timestampMs": 416,
+  "confidence": null
+ },
+ {
+  "text": "para",
+  "startMs": 604,
+  "endMs": 939,
+  "timestampMs": 772,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 959,
+  "endMs": 1157,
+  "timestampMs": 1058,
+  "confidence": null
+ },
+ {
+  "text": "tu",
+  "startMs": 1177,
+  "endMs": 1376,
+  "timestampMs": 1276,
+  "confidence": null
+ },
+ {
+  "text": "producto",
+  "startMs": 1396,
+  "endMs": 1868,
+  "timestampMs": 1632,
+  "confidence": null
+ },
+ {
+  "text": "se",
+  "startMs": 1888,
+  "endMs": 2086,
+  "timestampMs": 1987,
+  "confidence": null
+ },
+ {
+  "text": "vea",
+  "startMs": 2106,
+  "endMs": 2305,
+  "timestampMs": 2206,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 2325,
+  "endMs": 2523,
+  "timestampMs": 2424,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 2543,
+  "endMs": 2742,
+  "timestampMs": 2642,
+  "confidence": null
+ },
+ {
+  "text": "primer",
+  "startMs": 2762,
+  "endMs": 3097,
+  "timestampMs": 2930,
+  "confidence": null
+ },
+ {
+  "text": "segundo.",
+  "startMs": 3117,
+  "endMs": 3589,
+  "timestampMs": 3353,
+  "confidence": null
+ }
+]

@@ -1,0 +1,76 @@
+{
+ "words": [
+  {
+   "text": "Tres",
+   "start": 0.03,
+   "end": 0.229,
+   "type": "word"
+  },
+  {
+   "text": "cambios",
+   "start": 0.249,
+   "end": 0.584,
+   "type": "word"
+  },
+  {
+   "text": "para",
+   "start": 0.604,
+   "end": 0.939,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 0.959,
+   "end": 1.157,
+   "type": "word"
+  },
+  {
+   "text": "tu",
+   "start": 1.177,
+   "end": 1.376,
+   "type": "word"
+  },
+  {
+   "text": "producto",
+   "start": 1.396,
+   "end": 1.868,
+   "type": "word"
+  },
+  {
+   "text": "se",
+   "start": 1.888,
+   "end": 2.086,
+   "type": "word"
+  },
+  {
+   "text": "vea",
+   "start": 2.106,
+   "end": 2.305,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 2.325,
+   "end": 2.523,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 2.543,
+   "end": 2.742,
+   "type": "word"
+  },
+  {
+   "text": "primer",
+   "start": 2.762,
+   "end": 3.097,
+   "type": "word"
+  },
+  {
+   "text": "segundo.",
+   "start": 3.117,
+   "end": 3.589,
+   "type": "word"
+  }
+ ]
+}

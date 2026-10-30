@@ -1,0 +1,86 @@
+[
+ {
+  "text": "¿Se",
+  "startMs": 30,
+  "endMs": 218,
+  "timestampMs": 124,
+  "confidence": null
+ },
+ {
+  "text": "puede",
+  "startMs": 238,
+  "endMs": 557,
+  "timestampMs": 398,
+  "confidence": null
+ },
+ {
+  "text": "mejorar",
+  "startMs": 577,
+  "endMs": 1025,
+  "timestampMs": 801,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 1045,
+  "endMs": 1233,
+  "timestampMs": 1139,
+  "confidence": null
+ },
+ {
+  "text": "video",
+  "startMs": 1253,
+  "endMs": 1572,
+  "timestampMs": 1412,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 1592,
+  "endMs": 1780,
+  "timestampMs": 1686,
+  "confidence": null
+ },
+ {
+  "text": "una",
+  "startMs": 1800,
+  "endMs": 2118,
+  "timestampMs": 1959,
+  "confidence": null
+ },
+ {
+  "text": "panadería…",
+  "startMs": 2138,
+  "endMs": 2717,
+  "timestampMs": 2428,
+  "confidence": null
+ },
+ {
+  "text": "sin",
+  "startMs": 2937,
+  "endMs": 3134,
+  "timestampMs": 3035,
+  "confidence": null
+ },
+ {
+  "text": "comprar",
+  "startMs": 3154,
+  "endMs": 3485,
+  "timestampMs": 3319,
+  "confidence": null
+ },
+ {
+  "text": "una",
+  "startMs": 3505,
+  "endMs": 3836,
+  "timestampMs": 3670,
+  "confidence": null
+ },
+ {
+  "text": "cámara?",
+  "startMs": 3856,
+  "endMs": 4322,
+  "timestampMs": 4089,
+  "confidence": null
+ }
+]

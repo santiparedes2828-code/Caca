@@ -29,6 +29,8 @@ import { ERROR1_FRAMES, Error1, Error1Portada } from "./Altera/reels/Error1";
 import { FALSO15_FRAMES, Falso15, Falso15Portada } from "./Altera/reels/Falso15";
 import { MARRON_FRAMES, Marron, MarronPortada } from "./Altera/reels/Marron";
 import { MEDIALUNA_FRAMES, MedialunaPortada, MedialunaReel } from "./Altera/reels/Medialuna";
+import { MedialunaGancho, ganchoFrames } from "./Altera/reels/MedialunaGanchos";
+import { MEDIALUNA_V2_FRAMES, MedialunaV2, MedialunaV2Portada } from "./Altera/reels/MedialunaV2";
 import { CAPAS_FRAMES, Capas, CapasPortada } from "./Altera/reels/Capas";
 import { TOMAS_FRAMES, Tomas, TomasPortada } from "./Altera/reels/Tomas";
 import { APERTURA_FRAMES, EbookApertura } from "./Ebook/Heladera";
@@ -189,6 +191,15 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Falso15Portada" component={Falso15Portada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Medialuna" component={MedialunaReel} durationInFrames={MEDIALUNA_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="MedialunaPortada" component={MedialunaPortada} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="MedialunaGancho1" component={MedialunaGancho} defaultProps={{ v: 1 }} durationInFrames={ganchoFrames(1)} fps={30} width={1080} height={1920} />
+      <Composition id="MedialunaGancho2" component={MedialunaGancho} defaultProps={{ v: 2 }} durationInFrames={ganchoFrames(2)} fps={30} width={1080} height={1920} />
+      <Composition id="MedialunaGancho3" component={MedialunaGancho} defaultProps={{ v: 3 }} durationInFrames={ganchoFrames(3)} fps={30} width={1080} height={1920} />
+      <Composition id="MedialunaGancho4" component={MedialunaGancho} defaultProps={{ v: 4 }} durationInFrames={ganchoFrames(4)} fps={30} width={1080} height={1920} />
+      <Composition id="MedialunaGancho5" component={MedialunaGancho} defaultProps={{ v: 5 }} durationInFrames={ganchoFrames(5)} fps={30} width={1080} height={1920} />
+      <Composition id="MedialunaV2" component={MedialunaV2} defaultProps={{ pill: true, music: 0.22 }} durationInFrames={MEDIALUNA_V2_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="MedialunaV2SinPildora" component={MedialunaV2} defaultProps={{ pill: false, music: 0.22 }} durationInFrames={MEDIALUNA_V2_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="MedialunaV2MusicaBaja" component={MedialunaV2} defaultProps={{ pill: true, music: 0.12 }} durationInFrames={MEDIALUNA_V2_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="MedialunaV2Portada" component={MedialunaV2Portada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Error1Portada" component={Error1Portada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Piedra" component={Piedra} durationInFrames={PIEDRA_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="GanchoSheet" component={GanchoSheet} durationInFrames={60} fps={30} width={1920} height={1080} />

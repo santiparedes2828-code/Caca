@@ -1,0 +1,100 @@
+[
+ {
+  "text": "Si",
+  "startMs": 30,
+  "endMs": 479,
+  "timestampMs": 254,
+  "confidence": null
+ },
+ {
+  "text": "tenés",
+  "startMs": 499,
+  "endMs": 1241,
+  "timestampMs": 870,
+  "confidence": null
+ },
+ {
+  "text": "una",
+  "startMs": 1261,
+  "endMs": 2003,
+  "timestampMs": 1632,
+  "confidence": null
+ },
+ {
+  "text": "panadería,",
+  "startMs": 2023,
+  "endMs": 3351,
+  "timestampMs": 2687,
+  "confidence": null
+ },
+ {
+  "text": "tu",
+  "startMs": 3575,
+  "endMs": 3652,
+  "timestampMs": 3613,
+  "confidence": null
+ },
+ {
+  "text": "medialuna",
+  "startMs": 3672,
+  "endMs": 3931,
+  "timestampMs": 3801,
+  "confidence": null
+ },
+ {
+  "text": "está",
+  "startMs": 3951,
+  "endMs": 4089,
+  "timestampMs": 4020,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 4109,
+  "endMs": 4186,
+  "timestampMs": 4147,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 4206,
+  "endMs": 4283,
+  "timestampMs": 4244,
+  "confidence": null
+ },
+ {
+  "text": "video…",
+  "startMs": 4303,
+  "endMs": 4440,
+  "timestampMs": 4371,
+  "confidence": null
+ },
+ {
+  "text": "pero",
+  "startMs": 4663,
+  "endMs": 4661,
+  "timestampMs": 4662,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 4681,
+  "endMs": 4672,
+  "timestampMs": 4676,
+  "confidence": null
+ },
+ {
+  "text": "se",
+  "startMs": 4692,
+  "endMs": 4683,
+  "timestampMs": 4687,
+  "confidence": null
+ },
+ {
+  "text": "ve.",
+  "startMs": 4703,
+  "endMs": 4694,
+  "timestampMs": 4698,
+  "confidence": null
+ }
+]

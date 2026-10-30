@@ -1,0 +1,65 @@
+[
+ {
+  "text": "Encontrá",
+  "startMs": 30,
+  "endMs": 494,
+  "timestampMs": 262,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 514,
+  "endMs": 709,
+  "timestampMs": 611,
+  "confidence": null
+ },
+ {
+  "text": "medialuna",
+  "startMs": 729,
+  "endMs": 1327,
+  "timestampMs": 1028,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 1347,
+  "endMs": 1542,
+  "timestampMs": 1445,
+  "confidence": null
+ },
+ {
+  "text": "este",
+  "startMs": 1562,
+  "endMs": 1892,
+  "timestampMs": 1727,
+  "confidence": null
+ },
+ {
+  "text": "video.",
+  "startMs": 1912,
+  "endMs": 2241,
+  "timestampMs": 2077,
+  "confidence": null
+ },
+ {
+  "text": "Tenés",
+  "startMs": 2512,
+  "endMs": 2916,
+  "timestampMs": 2714,
+  "confidence": null
+ },
+ {
+  "text": "dos",
+  "startMs": 2936,
+  "endMs": 3178,
+  "timestampMs": 3057,
+  "confidence": null
+ },
+ {
+  "text": "segundos.",
+  "startMs": 3198,
+  "endMs": 3766,
+  "timestampMs": 3482,
+  "confidence": null
+ }
+]

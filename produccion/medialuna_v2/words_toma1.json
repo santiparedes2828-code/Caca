@@ -1,0 +1,412 @@
+{
+ "words": [
+  {
+   "text": "Encontrá",
+   "start": 0.03,
+   "end": 0.463,
+   "type": "word"
+  },
+  {
+   "text": "la",
+   "start": 0.483,
+   "end": 0.664,
+   "type": "word"
+  },
+  {
+   "text": "medialuna",
+   "start": 0.684,
+   "end": 1.243,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 1.263,
+   "end": 1.444,
+   "type": "word"
+  },
+  {
+   "text": "este",
+   "start": 1.464,
+   "end": 1.771,
+   "type": "word"
+  },
+  {
+   "text": "video.",
+   "start": 1.791,
+   "end": 2.098,
+   "type": "word"
+  },
+  {
+   "text": "Tenés",
+   "start": 2.494,
+   "end": 2.888,
+   "type": "word"
+  },
+  {
+   "text": "dos",
+   "start": 2.908,
+   "end": 3.143,
+   "type": "word"
+  },
+  {
+   "text": "segundos.",
+   "start": 3.163,
+   "end": 3.717,
+   "type": "word"
+  },
+  {
+   "text": "Está",
+   "start": 4.169,
+   "end": 4.447,
+   "type": "word"
+  },
+  {
+   "text": "acá,",
+   "start": 4.467,
+   "end": 4.744,
+   "type": "word"
+  },
+  {
+   "text": "al",
+   "start": 4.998,
+   "end": 5.182,
+   "type": "word"
+  },
+  {
+   "text": "fondo.",
+   "start": 5.202,
+   "end": 5.513,
+   "type": "word"
+  },
+  {
+   "text": "Y",
+   "start": 5.946,
+   "end": 6.002,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 6.022,
+   "end": 6.202,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 6.222,
+   "end": 6.402,
+   "type": "word"
+  },
+  {
+   "text": "primer",
+   "start": 6.422,
+   "end": 6.727,
+   "type": "word"
+  },
+  {
+   "text": "segundo,",
+   "start": 6.747,
+   "end": 7.178,
+   "type": "word"
+  },
+  {
+   "text": "tu",
+   "start": 7.363,
+   "end": 7.608,
+   "type": "word"
+  },
+  {
+   "text": "cliente",
+   "start": 7.628,
+   "end": 8.04,
+   "type": "word"
+  },
+  {
+   "text": "ve…",
+   "start": 8.06,
+   "end": 8.306,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 8.756,
+   "end": 8.946,
+   "type": "word"
+  },
+  {
+   "text": "logo.",
+   "start": 8.966,
+   "end": 9.286,
+   "type": "word"
+  },
+  {
+   "text": "Uno:",
+   "start": 9.829,
+   "end": 10.126,
+   "type": "word"
+  },
+  {
+   "text": "corto",
+   "start": 10.575,
+   "end": 10.867,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 10.887,
+   "end": 11.058,
+   "type": "word"
+  },
+  {
+   "text": "logo.",
+   "start": 11.078,
+   "end": 11.37,
+   "type": "word"
+  },
+  {
+   "text": "Dos:",
+   "start": 11.779,
+   "end": 12.248,
+   "type": "word"
+  },
+  {
+   "text": "acerco",
+   "start": 12.567,
+   "end": 12.982,
+   "type": "word"
+  },
+  {
+   "text": "la",
+   "start": 13.002,
+   "end": 13.176,
+   "type": "word"
+  },
+  {
+   "text": "medialuna",
+   "start": 13.196,
+   "end": 13.732,
+   "type": "word"
+  },
+  {
+   "text": "hasta",
+   "start": 13.752,
+   "end": 14.046,
+   "type": "word"
+  },
+  {
+   "text": "llenar",
+   "start": 14.066,
+   "end": 14.36,
+   "type": "word"
+  },
+  {
+   "text": "la",
+   "start": 14.38,
+   "end": 14.553,
+   "type": "word"
+  },
+  {
+   "text": "pantalla.",
+   "start": 14.573,
+   "end": 14.989,
+   "type": "word"
+  },
+  {
+   "text": "Tres:",
+   "start": 15.375,
+   "end": 15.791,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 16.098,
+   "end": 16.313,
+   "type": "word"
+  },
+  {
+   "text": "texto",
+   "start": 16.333,
+   "end": 16.695,
+   "type": "word"
+  },
+  {
+   "text": "dice",
+   "start": 16.715,
+   "end": 17.076,
+   "type": "word"
+  },
+  {
+   "text": "por",
+   "start": 17.096,
+   "end": 17.311,
+   "type": "word"
+  },
+  {
+   "text": "qué",
+   "start": 17.331,
+   "end": 17.546,
+   "type": "word"
+  },
+  {
+   "text": "comprarla.",
+   "start": 17.566,
+   "end": 18.074,
+   "type": "word"
+  },
+  {
+   "text": "Mismo",
+   "start": 18.592,
+   "end": 19.018,
+   "type": "word"
+  },
+  {
+   "text": "video,",
+   "start": 19.038,
+   "end": 19.464,
+   "type": "word"
+  },
+  {
+   "text": "misma",
+   "start": 19.484,
+   "end": 19.91,
+   "type": "word"
+  },
+  {
+   "text": "cámara:",
+   "start": 19.93,
+   "end": 20.528,
+   "type": "word"
+  },
+  {
+   "text": "ahora",
+   "start": 20.903,
+   "end": 21.352,
+   "type": "word"
+  },
+  {
+   "text": "se",
+   "start": 21.372,
+   "end": 21.56,
+   "type": "word"
+  },
+  {
+   "text": "ve",
+   "start": 21.58,
+   "end": 21.769,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 21.789,
+   "end": 21.977,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 21.997,
+   "end": 22.186,
+   "type": "word"
+  },
+  {
+   "text": "primer",
+   "start": 22.206,
+   "end": 22.524,
+   "type": "word"
+  },
+  {
+   "text": "segundo.",
+   "start": 22.544,
+   "end": 22.993,
+   "type": "word"
+  },
+  {
+   "text": "Si",
+   "start": 23.435,
+   "end": 23.658,
+   "type": "word"
+  },
+  {
+   "text": "tenés",
+   "start": 23.678,
+   "end": 24.053,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 24.073,
+   "end": 24.296,
+   "type": "word"
+  },
+  {
+   "text": "negocio,",
+   "start": 24.316,
+   "end": 24.843,
+   "type": "word"
+  },
+  {
+   "text": "mandame",
+   "start": 24.863,
+   "end": 25.39,
+   "type": "word"
+  },
+  {
+   "text": "\"VIDEO\",",
+   "start": 25.41,
+   "end": 25.785,
+   "type": "word"
+  },
+  {
+   "text": "y",
+   "start": 26.046,
+   "end": 26.105,
+   "type": "word"
+  },
+  {
+   "text": "te",
+   "start": 26.125,
+   "end": 26.317,
+   "type": "word"
+  },
+  {
+   "text": "muestro",
+   "start": 26.337,
+   "end": 26.66,
+   "type": "word"
+  },
+  {
+   "text": "cómo",
+   "start": 26.68,
+   "end": 27.004,
+   "type": "word"
+  },
+  {
+   "text": "mejoraría",
+   "start": 27.024,
+   "end": 27.612,
+   "type": "word"
+  },
+  {
+   "text": "uno",
+   "start": 27.632,
+   "end": 27.955,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 27.975,
+   "end": 28.167,
+   "type": "word"
+  },
+  {
+   "text": "tus",
+   "start": 28.187,
+   "end": 28.378,
+   "type": "word"
+  },
+  {
+   "text": "clips.",
+   "start": 28.398,
+   "end": 28.59,
+   "type": "word"
+  }
+ ]
+}

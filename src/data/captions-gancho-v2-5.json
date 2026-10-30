@@ -1,0 +1,58 @@
+[
+ {
+  "text": "Mismo",
+  "startMs": 30,
+  "endMs": 454,
+  "timestampMs": 242,
+  "confidence": null
+ },
+ {
+  "text": "video,",
+  "startMs": 474,
+  "endMs": 897,
+  "timestampMs": 686,
+  "confidence": null
+ },
+ {
+  "text": "misma",
+  "startMs": 1121,
+  "endMs": 1466,
+  "timestampMs": 1294,
+  "confidence": null
+ },
+ {
+  "text": "cámara.",
+  "startMs": 1486,
+  "endMs": 1971,
+  "timestampMs": 1729,
+  "confidence": null
+ },
+ {
+  "text": "Solo",
+  "startMs": 2192,
+  "endMs": 2522,
+  "timestampMs": 2357,
+  "confidence": null
+ },
+ {
+  "text": "cambió",
+  "startMs": 2542,
+  "endMs": 2872,
+  "timestampMs": 2707,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 2892,
+  "endMs": 3087,
+  "timestampMs": 2989,
+  "confidence": null
+ },
+ {
+  "text": "edición.",
+  "startMs": 3107,
+  "endMs": 3572,
+  "timestampMs": 3339,
+  "confidence": null
+ }
+]

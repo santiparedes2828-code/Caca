@@ -26,3 +26,8 @@
 - **H1.** Un gancho con nicho + acción + temporalidad + historia + meta retiene más a los 3 s que nuestros ganchos actuales sin esas piezas. Métrica: retención a 1, 3 y 5 s frente a la mediana de los reels de Gancho (≈ 64 % a 3 s en TikTok).
 - **H2.** El formato escalera (la misma pieza mejorada paso a paso con un indicador medible) tiene más % de visualización completa que un antes/después directo (que en la cuenta murió a los 2 s). Métrica: % que lo ve entero y retención a 10 s.
 - **Ojo con la duración:** su gancho completo dura ~9 s de voz y nuestros datos dicen que la gente se va entre el segundo 3 y el 10. Probar la escalera completa en el texto del fotograma 0 + voz corta, y medir.
+
+## «La medialuna» v1 vs v2 (2026-10-30)
+- **v1** (`out/hookhouse/medialuna.mp4`): gancho «Si en tu video el producto se ve así…» + mito → falso → 3 cambios. **v2** (`out/medialuna_v2/medialuna_v2.mp4`): gancho reto en tiempo real + guion escalera «EN EL SEGUNDO 1 SE VE». Misma voz, misma demo, mismo CTA «VIDEO».
+- **H1.** La v2 retiene más a los 3 s (panel simulado: 5/5 contra 3/5). **H2.** La v2 tiene más guardados por 1000 vistas (la escalera es útil para guardar).
+- Publicar en días distintos a la misma hora; medir retención 1/3/10 s, % completo, guardados, compartidos y DMs «VIDEO». Pruebas y panel en `produccion/medialuna_v2/pruebas.md`.

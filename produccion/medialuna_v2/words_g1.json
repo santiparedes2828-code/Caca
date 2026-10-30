@@ -1,0 +1,76 @@
+{
+ "words": [
+  {
+   "text": "¿Se",
+   "start": 0.03,
+   "end": 0.218,
+   "type": "word"
+  },
+  {
+   "text": "puede",
+   "start": 0.238,
+   "end": 0.557,
+   "type": "word"
+  },
+  {
+   "text": "mejorar",
+   "start": 0.577,
+   "end": 1.025,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 1.045,
+   "end": 1.233,
+   "type": "word"
+  },
+  {
+   "text": "video",
+   "start": 1.253,
+   "end": 1.572,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 1.592,
+   "end": 1.78,
+   "type": "word"
+  },
+  {
+   "text": "una",
+   "start": 1.8,
+   "end": 2.118,
+   "type": "word"
+  },
+  {
+   "text": "panadería…",
+   "start": 2.138,
+   "end": 2.717,
+   "type": "word"
+  },
+  {
+   "text": "sin",
+   "start": 3.026,
+   "end": 3.223,
+   "type": "word"
+  },
+  {
+   "text": "comprar",
+   "start": 3.243,
+   "end": 3.574,
+   "type": "word"
+  },
+  {
+   "text": "una",
+   "start": 3.594,
+   "end": 3.925,
+   "type": "word"
+  },
+  {
+   "text": "cámara?",
+   "start": 3.945,
+   "end": 4.411,
+   "type": "word"
+  }
+ ]
+}

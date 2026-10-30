@@ -1,0 +1,58 @@
+{
+ "words": [
+  {
+   "text": "Encontrá",
+   "start": 0.03,
+   "end": 0.494,
+   "type": "word"
+  },
+  {
+   "text": "la",
+   "start": 0.514,
+   "end": 0.709,
+   "type": "word"
+  },
+  {
+   "text": "medialuna",
+   "start": 0.729,
+   "end": 1.327,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 1.347,
+   "end": 1.542,
+   "type": "word"
+  },
+  {
+   "text": "este",
+   "start": 1.562,
+   "end": 1.892,
+   "type": "word"
+  },
+  {
+   "text": "video.",
+   "start": 1.912,
+   "end": 2.241,
+   "type": "word"
+  },
+  {
+   "text": "Tenés",
+   "start": 2.691,
+   "end": 3.095,
+   "type": "word"
+  },
+  {
+   "text": "dos",
+   "start": 3.115,
+   "end": 3.357,
+   "type": "word"
+  },
+  {
+   "text": "segundos.",
+   "start": 3.377,
+   "end": 3.945,
+   "type": "word"
+  }
+ ]
+}

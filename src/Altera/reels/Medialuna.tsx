@@ -68,18 +68,18 @@ const END = T.frames;
 
 const KEYS = [iProducto, iCara, iEditado, iTres, iLogo, iPantalla, iComprarla, iVideo1, iBuscarla, iNegocio];
 const FLOOR = 1470;
-const ease = (x: number) => 1 - (1 - x) ** 3;
-const easeIO = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - (-2 * x + 2) ** 3 / 2);
+export const ease = (x: number) => 1 - (1 - x) ** 3;
+export const easeIO = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - (-2 * x + 2) ** 3 / 2);
 
 // ---------- el celular (el video del negocio) ----------
 // Pantalla en coordenadas locales de 452 × 826; el teléfono mide 480 × 854 y se coloca por su centro.
-const SCR = { w: 452, h: 826 };
-type PhoneState = { x: number; y: number; s: number; rot?: number; lift?: number };
-const LAYOUT: PhoneState = { x: 610, y: 1015, s: 1 };
-const toScreen = (p: PhoneState, lx: number, ly: number) => ({ x: p.x + (lx - SCR.w / 2) * p.s, y: p.y + (ly - SCR.h / 2) * p.s });
-const mixP = (a: PhoneState, b: PhoneState, k: number): PhoneState => ({ x: a.x + (b.x - a.x) * k, y: a.y + (b.y - a.y) * k, s: a.s + (b.s - a.s) * k, rot: (a.rot ?? 0) + ((b.rot ?? 0) - (a.rot ?? 0)) * k, lift: (a.lift ?? 0) + ((b.lift ?? 0) - (a.lift ?? 0)) * k });
+export const SCR = { w: 452, h: 826 };
+export type PhoneState = { x: number; y: number; s: number; rot?: number; lift?: number };
+export const LAYOUT: PhoneState = { x: 610, y: 1015, s: 1 };
+export const toScreen = (p: PhoneState, lx: number, ly: number) => ({ x: p.x + (lx - SCR.w / 2) * p.s, y: p.y + (ly - SCR.h / 2) * p.s });
+export const mixP = (a: PhoneState, b: PhoneState, k: number): PhoneState => ({ x: a.x + (b.x - a.x) * k, y: a.y + (b.y - a.y) * k, s: a.s + (b.s - a.s) * k, rot: (a.rot ?? 0) + ((b.rot ?? 0) - (a.rot ?? 0)) * k, lift: (a.lift ?? 0) + ((b.lift ?? 0) - (a.lift ?? 0)) * k });
 
-const Phone: React.FC<{ p: PhoneState; play: number; children: React.ReactNode; overlay?: React.ReactNode; squash?: number }> = ({ p, play, children, overlay, squash = 0 }) => (
+export const Phone: React.FC<{ p: PhoneState; play: number; children: React.ReactNode; overlay?: React.ReactNode; squash?: number }> = ({ p, play, children, overlay, squash = 0 }) => (
   <>
     <ContactShadow x={p.x} y={p.y + 427 * p.s + 10} w={420 * p.s} h={p.lift ?? 0} opacity={0.8} />
     <div
@@ -108,7 +108,7 @@ const Phone: React.FC<{ p: PhoneState; play: number; children: React.ReactNode; 
 
 // ---------- la medialuna ----------
 // Gajos en arco (puntas abajo), dibujados de las puntas al centro; dorada con brillo.
-const Medialuna: React.FC<{ cx: number; cy: number; s: number; rot?: number; id: string }> = ({ cx, cy, s, rot = 0, id }) => {
+export const Medialuna: React.FC<{ cx: number; cy: number; s: number; rot?: number; id: string }> = ({ cx, cy, s, rot = 0, id }) => {
   const L = 7;
   const R = 112;
   const lobes = Array.from({ length: L }, (_, k) => {
@@ -147,7 +147,7 @@ const tilt = (x: number, y: number) => {
   return { x: SCR.w / 2 + dx * Math.cos(a) - dy * Math.sin(a), y: SCR.h / 2 + dx * Math.sin(a) + dy * Math.cos(a) };
 };
 const ML_RAW = { x: 372, y: 344 };
-const ML = tilt(ML_RAW.x, ML_RAW.y); // dónde queda la medialuna en la pantalla del celular
+export const ML = tilt(ML_RAW.x, ML_RAW.y); // dónde queda la medialuna en la pantalla del celular
 
 const Bread: React.FC<{ x: number; y: number; w?: number }> = ({ x, y, w = 46 }) => (
   <g>
@@ -162,7 +162,7 @@ const Jar: React.FC<{ x: number; y: number; h?: number }> = ({ x, y, h = 52 }) =
   </g>
 );
 
-const Shop: React.FC<{ t: number }> = ({ t }) => (
+export const Shop: React.FC<{ t: number }> = ({ t }) => (
   <svg width={SCR.w} height={SCR.h} viewBox={`0 0 ${SCR.w} ${SCR.h}`} style={{ position: "absolute", inset: 0 }}>
     <g transform={`rotate(${TILT} ${SCR.w / 2} ${SCR.h / 2})`}>
       <rect x={-80} y={-80} width={SCR.w + 160} height={SCR.h + 160} fill="#D8D1C2" />
@@ -221,7 +221,7 @@ const Shop: React.FC<{ t: number }> = ({ t }) => (
 );
 
 // Texto genérico del video original: el nombre del local
-const OldText: React.FC<{ squash?: number; dx?: number; dy?: number; rot?: number; outline?: number; opacity?: number }> = ({ squash = 0, dx = 0, dy = 0, rot = 0, outline = 0, opacity = 1 }) => (
+export const OldText: React.FC<{ squash?: number; dx?: number; dy?: number; rot?: number; outline?: number; opacity?: number }> = ({ squash = 0, dx = 0, dy = 0, rot = 0, outline = 0, opacity = 1 }) => (
   <div style={{ position: "absolute", left: 0, width: SCR.w, top: 52, textAlign: "center", opacity, transformOrigin: "50% 100%", transform: `translate(${dx}px, ${dy}px) rotate(${rot}deg) scaleY(${1 - 0.82 * squash})` }}>
     <div style={{ display: "inline-block", padding: "6px 14px", border: outline > 0 ? `4px dashed rgba(255,255,255,${0.85 * outline})` : "4px solid transparent", borderRadius: 12 }}>
       <div style={{ fontFamily: "Poppins", fontWeight: 600, fontSize: 28, lineHeight: 1.25, color: "#FFFFFF", textShadow: "0 2px 6px rgba(0,0,0,0.55)" }}>
@@ -254,7 +254,7 @@ const Crumbs: React.FC<{ t: number }> = ({ t }) => (
     })}
   </>
 );
-const Hero: React.FC<{ t: number; f: number; from: number }> = ({ t, f, from }) => {
+export const Hero: React.FC<{ t: number; f: number; from: number }> = ({ t, f, from }) => {
   const k = f - from;
   const push = 1 + 0.06 * Math.min(1, Math.max(0, k) / 240);
   return (
@@ -272,7 +272,7 @@ const Hero: React.FC<{ t: number; f: number; from: number }> = ({ t, f, from }) 
 };
 
 // Texto nuevo: por qué comprarla (cae con peso sobre el viejo)
-const NewText: React.FC<{ f: number; fps: number; at: number }> = ({ f, fps, at }) => {
+export const NewText: React.FC<{ f: number; fps: number; at: number }> = ({ f, fps, at }) => {
   if (f < at - 8) return null;
   const words = [
     { text: "RECIÉN", y: 128, d: 0, c: "#FBF8F2" },
@@ -294,7 +294,7 @@ const NewText: React.FC<{ f: number; fps: number; at: number }> = ({ f, fps, at 
 };
 
 // Intro con logo del video original (lo que se corta en el cambio 1)
-const LogoCard: React.FC = () => (
+export const LogoCard: React.FC = () => (
   <div style={{ position: "absolute", inset: 0, background: "#2E2925" }}>
     <svg width={SCR.w} height={SCR.h} viewBox={`0 0 ${SCR.w} ${SCR.h}`}>
       <circle cx={226} cy={400} r={122} fill="none" stroke="#D9CFBE" strokeWidth={6} />
@@ -309,7 +309,7 @@ const LogoCard: React.FC = () => (
 );
 
 // ---------- piezas del plano ----------
-const Badge: React.FC<{ n: number; x: number; y: number; f: number; drop: number; active: number; done: number; out: number }> = ({ n, x, y, f, drop, active, done, out }) => {
+export const Badge: React.FC<{ n: number; x: number; y: number; f: number; drop: number; active: number; done: number; out: number }> = ({ n, x, y, f, drop, active, done, out }) => {
   if (f < drop - 8) return null;
   const p = fall(f - (drop - 8), 30);
   const isActive = f >= active && f < done;
@@ -333,7 +333,7 @@ const Badge: React.FC<{ n: number; x: number; y: number; f: number; drop: number
   );
 };
 
-const Stamp: React.FC<{ kind: "x" | "ok"; x: number; y: number; f: number; at: number; out: number }> = ({ kind, x, y, f, at, out }) => {
+export const Stamp: React.FC<{ kind: "x" | "ok"; x: number; y: number; f: number; at: number; out: number }> = ({ kind, x, y, f, at, out }) => {
   if (f < at) return null;
   const p = spring({ frame: f - at, fps: 30, config: { damping: 11, stiffness: 320 } });
   const c = kind === "x" ? A.ink : A.orange;
@@ -345,12 +345,12 @@ const Stamp: React.FC<{ kind: "x" | "ok"; x: number; y: number; f: number; at: n
   );
 };
 
-const Chip: React.FC<{ text: string; x: number; y: number; align: "left" | "right"; opacity: number }> = ({ text, x, y, align, opacity }) => (
+export const Chip: React.FC<{ text: string; x: number; y: number; align: "left" | "right"; opacity: number }> = ({ text, x, y, align, opacity }) => (
   <div style={{ position: "absolute", top: y, left: align === "left" ? x : undefined, right: align === "right" ? SCR.w - x : undefined, fontFamily: LABEL, fontSize: 24, letterSpacing: "0.08em", color: "#FBF8F2", background: A.ink, padding: "4px 12px", borderRadius: 8, opacity }}>{text}</div>
 );
 
 // Cámara cara (lo que el mito dice que falta), con etiqueta de precio que se balancea
-const ProCamera: React.FC<{ t: number; tag: number }> = ({ t, tag }) => (
+export const ProCamera: React.FC<{ t: number; tag: number }> = ({ t, tag }) => (
   <svg width={210} height={170} viewBox="0 0 210 170" style={{ overflow: "visible" }}>
     <rect x={56} y={4} width={62} height={30} rx={6} fill={A.ink} />
     <rect x={6} y={26} width={170} height={104} rx={16} fill={A.ink} />
@@ -372,7 +372,7 @@ const ProCamera: React.FC<{ t: number; tag: number }> = ({ t, tag }) => (
   </svg>
 );
 
-const Arrow: React.FC<{ x: number; y: number; bob: number; opacity: number }> = ({ x, y, bob, opacity }) => (
+export const Arrow: React.FC<{ x: number; y: number; bob: number; opacity: number }> = ({ x, y, bob, opacity }) => (
   <svg width={120} height={120} viewBox="0 0 120 120" style={{ position: "absolute", left: x - 112 - bob, top: y + 8 + bob * 0.4, width: 120, height: 120, overflow: "visible", opacity }}>
     <path d="M14 106 L92 28" stroke="#FBF8F2" strokeWidth={22} strokeLinecap="round" />
     <path d="M100 20 L100 74 M100 20 L46 20" stroke="#FBF8F2" strokeWidth={22} strokeLinecap="round" strokeLinejoin="round" />
@@ -382,7 +382,7 @@ const Arrow: React.FC<{ x: number; y: number; bob: number; opacity: number }> = 
 );
 
 // Esquinas de encuadre que se cierran de la pantalla entera a la medialuna
-const Marks: React.FC<{ x: number; y: number; w: number; h: number; opacity: number }> = ({ x, y, w, h, opacity }) => {
+export const Marks: React.FC<{ x: number; y: number; w: number; h: number; opacity: number }> = ({ x, y, w, h, opacity }) => {
   const L = Math.min(56, w * 0.3);
   const c = [
     [x - w / 2, y - h / 2, 1, 1],
@@ -400,7 +400,7 @@ const Marks: React.FC<{ x: number; y: number; w: number; h: number; opacity: num
 };
 
 // Ticket del CTA: lo que recibe quien escribe (más ancho que el de props para que entre la frase)
-const BigTicket: React.FC<{ x: number; y: number; lift: number; squash: number }> = ({ x, y, lift, squash }) => {
+export const BigTicket: React.FC<{ x: number; y: number; lift: number; squash: number }> = ({ x, y, lift, squash }) => {
   const w = 700;
   const h = 210;
   return (
@@ -422,12 +422,12 @@ const BigTicket: React.FC<{ x: number; y: number; lift: number; squash: number }
   );
 };
 
-type Cam = { z: number; cx: number; cy: number };
-const Camera: React.FC<{ cam: Cam; children: React.ReactNode }> = ({ cam, children }) => (
+export type Cam = { z: number; cx: number; cy: number };
+export const Camera: React.FC<{ cam: Cam; children: React.ReactNode }> = ({ cam, children }) => (
   <AbsoluteFill style={{ transformOrigin: "0 0", transform: `translate(${540 - cam.cx * cam.z}px, ${980 - cam.cy * cam.z}px) scale(${cam.z})` }}>{children}</AbsoluteFill>
 );
 // Empuje lento de cámara dentro de cada tramo: la imagen nunca queda quieta
-const Push: React.FC<{ f: number; a: number; b: number; children: React.ReactNode }> = ({ f, a, b, children }) => (
+export const Push: React.FC<{ f: number; a: number; b: number; children: React.ReactNode }> = ({ f, a, b, children }) => (
   <AbsoluteFill style={{ transformOrigin: "540px 1020px", transform: `scale(${1 + 0.03 * lin(f, a, b)})` }}>{children}</AbsoluteFill>
 );
 

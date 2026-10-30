@@ -5,7 +5,7 @@
 - 5,75–21,4 s (los tres cambios): marimba en Do mayor a 104 ppm con shaker y bombo suave.
 - 21,4–23,6 s («Mismo video. Misma cámara.»): solo colchón que crece (la tensión antes del resultado).
 - 23,6 s– (resultado y CTA): vuelve la marimba con melodía; acorde final de Do.
-Uso: python3 musica.py salida.wav <duración_s>
+Uso: python3 musica.py salida.wav <duración_s> [golpe vuelta pausa pago]  (la v2 usa 4.33 6.03 17.23 19.4)
 """
 import sys
 import wave
@@ -16,7 +16,8 @@ SR = 48000
 DUR = float(sys.argv[2])
 BPM = 104
 BEAT = 60 / BPM
-FALSO, VUELTA, PAUSA, PAGO, FINAL = 4.9, 5.75, 21.4, 23.6, DUR - 1.4
+FALSO, VUELTA, PAUSA, PAGO = (float(x) for x in sys.argv[3:7]) if len(sys.argv) >= 7 else (4.9, 5.75, 21.4, 23.6)
+FINAL = DUR - 1.4
 
 N = int(DUR * SR)
 mus = np.zeros(N)
