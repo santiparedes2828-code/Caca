@@ -101,7 +101,7 @@ const Contract: React.FC<{ f: number; fps: number; drop: number; open: number }>
         <div style={{ position: "absolute", left: 0, top: -64, width: 456, height: 56, background: "#FBF8F2", border: `5px solid ${A.ink}`, borderRadius: 6, fontFamily: LABEL, fontSize: 26, color: A.ink, display: "flex", alignItems: "center", justifyContent: "center" }}>CONTRATO DE GIRA</div>
       </div>
       {open > 0 ? (
-        <div style={{ position: "absolute", left: x - 230 + 540 * open - 290, top: base - 470 - 120 * open, width: 520, height: 330, background: "#FBF8F2", border: `6px solid ${A.ink}`, borderRadius: 10, boxShadow: "0 18px 30px rgba(14,13,11,0.25)", transform: `rotate(${-6 + 4 * open}deg)`, opacity: Math.min(1, open * 3), padding: 26, boxSizing: "border-box" }}>
+        <div style={{ position: "absolute", left: x - 230 + 380 * open - 290, top: base - 470 - 120 * open, width: 520, height: 330, background: "#FBF8F2", border: `6px solid ${A.ink}`, borderRadius: 10, boxShadow: "0 18px 30px rgba(14,13,11,0.25)", transform: `rotate(${-6 + 4 * open}deg)`, opacity: Math.min(1, open * 3), padding: 26, boxSizing: "border-box" }}>
           <div style={{ fontFamily: LABEL, fontSize: 26, color: A.grey }}>ARTÍCULO 126</div>
           {[0, 1, 2].map((k) => (
             <div key={k} style={{ height: 12, width: `${80 - k * 12}%`, background: "#E6DFD2", borderRadius: 6, marginTop: 14 }} />
@@ -191,6 +191,196 @@ const Meter: React.FC<{ f: number; level: number }> = ({ level }) => (
     </div>
     <div style={{ marginTop: 10, fontFamily: FONT, fontWeight: 800, fontSize: 64, letterSpacing: "-0.04em", color: A.ink }}>{Math.round(level * 100)} %</div>
   </div>
+);
+
+
+// ---------- capa gráfica extra (más elementos en cada escena) ----------
+// Caramelos que flotan de fondo, muy suaves
+const BgCandies: React.FC<{ f: number }> = ({ f }) => (
+  <div style={{ position: "absolute", inset: 0, opacity: 0.22 }}>
+    {Array.from({ length: 14 }, (_, k) => {
+      const x = 40 + ((k * 211) % 1000);
+      const y = 1950 - ((f * (1.2 + (k % 3) * 0.6) + k * 173) % 2100);
+      return <Candy key={k} x={x} y={y} r={20 + (k % 3) * 8} tone={k % 4} rot={f * (k % 2 ? 1 : -1) + k * 40} />;
+    })}
+  </div>
+);
+
+// Estallido de líneas alrededor de un golpe
+const Burst: React.FC<{ x: number; y: number; f: number; at: number; r?: number; color?: string }> = ({ x, y, f, at, r = 160, color = A.ink }) => {
+  const k = f - at;
+  if (k < 0 || k > 12) return null;
+  const p = k / 12;
+  return (
+    <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible", opacity: 1 - p }}>
+      {Array.from({ length: 10 }, (_, i) => {
+        const a = (i / 10) * Math.PI * 2 + 0.3;
+        const r1 = r * (0.7 + 0.6 * p);
+        const r2 = r1 + 50 * (1 - p) + 10;
+        return <line key={i} x1={x + Math.cos(a) * r1} y1={y + Math.sin(a) * r1} x2={x + Math.cos(a) * r2} y2={y + Math.sin(a) * r2} stroke={color} strokeWidth={9} strokeLinecap="round" />;
+      })}
+    </svg>
+  );
+};
+
+// Destellos (cuando algo queda bien)
+const Sparkles: React.FC<{ f: number; at: number; pts: { x: number; y: number }[] }> = ({ f, at, pts }) => {
+  const k = f - at;
+  if (k < 0 || k > 30) return null;
+  return (
+    <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible" }}>
+      {pts.map((p, i) => {
+        const s = Math.sin(Math.min(1, Math.max(0, (k - i * 2) / 18)) * Math.PI) * 26;
+        return <path key={i} d={`M${p.x} ${p.y - s} L${p.x + s * 0.25} ${p.y - s * 0.25} L${p.x + s} ${p.y} L${p.x + s * 0.25} ${p.y + s * 0.25} L${p.x} ${p.y + s} L${p.x - s * 0.25} ${p.y + s * 0.25} L${p.x - s} ${p.y} L${p.x - s * 0.25} ${p.y - s * 0.25} Z`} fill={A.orange} />;
+      })}
+    </svg>
+  );
+};
+
+// Barra de capítulos arriba: EL DATO → TU VIDEO → HOOK HOUSE
+const Chapters: React.FC<{ f: number }> = ({ f }) => {
+  const cur = f < S6 ? 0 : f < S8 ? 1 : 2;
+  const prog = f < S6 ? f / S6 : f < S8 ? (f - S6) / (S8 - S6) : (f - S8) / (MARRON_FRAMES - S8);
+  return (
+    <div style={{ position: "absolute", left: 72, right: 150, top: 168, display: "flex", gap: 12 }}>
+      {["EL DATO", "TU VIDEO", "HOOK HOUSE"].map((t, i) => (
+        <div key={t} style={{ flex: 1 }}>
+          <div style={{ height: 8, borderRadius: 4, background: "#D9D2C4", overflow: "hidden" }}>
+            <div style={{ height: "100%", width: `${i < cur ? 100 : i === cur ? Math.min(100, prog * 100) : 0}%`, background: i === cur ? A.orange : A.ink }} />
+          </div>
+          <div style={{ marginTop: 6, fontFamily: LABEL, fontSize: 20, color: i === cur ? A.ink : A.grey }}>{t}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// Lista del contrato (rider) que se va tachando hasta llegar al bol
+const Rider: React.FC<{ f: number; fps: number }> = ({ f, fps }) => {
+  const items = ["Toallas blancas ×12", "Agua sin gas", "Fruta fresca", "Bol de M&M's"];
+  const p = spring({ frame: f - 6, fps, config: { damping: 14 } });
+  return (
+    <div style={{ position: "absolute", left: 60, top: 560, width: 360, padding: "22px 26px", background: "#FBF8F2", border: `5px solid ${A.ink}`, borderRadius: 14, transform: `rotate(-4deg) translateX(${(1 - p) * -500}px)`, boxShadow: "0 14px 24px rgba(14,13,11,0.18)" }}>
+      <div style={{ fontFamily: LABEL, fontSize: 22, color: A.grey, marginBottom: 10 }}>RIDER · CAMARÍN</div>
+      {items.map((it, i) => {
+        const done = f >= 14 + i * 14;
+        const last = i === items.length - 1;
+        return (
+          <div key={it} style={{ fontFamily: FONT, fontWeight: 800, fontSize: 30, letterSpacing: "-0.03em", color: last && f >= W(9) ? BROWN : A.ink, margin: "6px 0", display: "flex", gap: 10, alignItems: "center" }}>
+            <span style={{ width: 26, height: 26, border: `4px solid ${A.ink}`, borderRadius: 6, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>{done ? "✓" : ""}</span>
+            {it}
+            {last && f >= W(9) ? <span style={{ fontSize: 22 }}> (sin marrones)</span> : null}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+// Billetes que caen en «cobrarlo entero»
+const Bills: React.FC<{ f: number; at: number }> = ({ f, at }) => {
+  if (f < at) return null;
+  const k = f - at;
+  return (
+    <>
+      {Array.from({ length: 9 }, (_, i) => {
+        const x = 120 + ((i * 113) % 840);
+        const y = 420 + k * (14 + (i % 3) * 4) - i * 60;
+        if (y < 420) return null;
+        if (y > 2000 || y < -200) return null;
+        return (
+          <div key={i} style={{ position: "absolute", left: x, top: y, width: 150, height: 74, background: "#FBF8F2", border: `5px solid ${A.ink}`, borderRadius: 8, transform: `rotate(${Math.sin(k * 0.2 + i) * 25}deg)`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: FONT, fontWeight: 800, fontSize: 40, color: A.orange }}>$</div>
+        );
+      })}
+    </>
+  );
+};
+
+// Contador de páginas del contrato
+const Pages: React.FC<{ f: number; at: number }> = ({ f, at }) => {
+  if (f < at) return null;
+  const n = Math.round(lin(f, at, at + 30, 1, 53));
+  return (
+    <div style={{ position: "absolute", right: 170, top: 560, textAlign: "right", fontFamily: FONT, fontWeight: 800, letterSpacing: "-0.04em", color: A.ink }}>
+      <div style={{ fontSize: 120, lineHeight: 1 }}>{n}</div>
+      <div style={{ fontFamily: LABEL, fontWeight: 400, fontSize: 24, color: A.grey }}>PÁGINAS</div>
+    </div>
+  );
+};
+
+// Checklist del escenario que se va marcando mientras Hookie revisa
+const StageChecks: React.FC<{ f: number; scan: number }> = ({ scan }) => (
+  <div style={{ position: "absolute", left: 72, top: 470, fontFamily: FONT, fontWeight: 800, fontSize: 40, letterSpacing: "-0.03em", color: A.ink }}>
+    {["Luces", "Peso del equipo", "Electricidad", "Escenario"].map((it, i) => (
+      <div key={it} style={{ display: "flex", gap: 14, alignItems: "center", margin: "6px 0", opacity: scan > i * 0.2 ? 1 : 0.3 }}>
+        <span style={{ width: 36, height: 36, borderRadius: 8, border: `5px solid ${A.ink}`, background: scan > i * 0.2 + 0.15 ? A.ink : "transparent", color: "#FBF8F2", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 26 }}>{scan > i * 0.2 + 0.15 ? "✓" : ""}</span>
+        {it}
+      </div>
+    ))}
+  </div>
+);
+
+// Interfaz alrededor del móvil: likes que suben, barra de progreso y línea de tiempo con cortes
+const PhoneUI: React.FC<{ f: number; bad: boolean }> = ({ f, bad }) => (
+  <>
+    <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible" }}>
+      {Array.from({ length: 5 }, (_, i) => {
+        const k = (f + i * 17) % 85;
+        const y = 1250 - k * 8;
+        const x = 860 + Math.sin(k * 0.15 + i) * 24;
+        return <path key={i} transform={`translate(${x} ${y}) scale(${1.2 - k / 120})`} opacity={(bad ? 0.35 : 1) * (1 - k / 85)} d="M0 22 C-34 -2 -26 -30 -10 -30 C-2 -30 0 -22 0 -18 C0 -22 2 -30 10 -30 C26 -30 34 -2 0 22 Z" fill={bad ? A.grey : A.orange} />;
+      })}
+    </svg>
+    <div style={{ position: "absolute", left: 120, right: 120, top: 1420 }}>
+      <div style={{ fontFamily: LABEL, fontSize: 22, color: A.grey, marginBottom: 8 }}>LÍNEA DE TIEMPO</div>
+      <div style={{ position: "relative", height: 56, borderRadius: 10, background: A.ink }}>
+        {[0.18, 0.37, 0.55, 0.78].map((c) => (
+          <div key={c} style={{ position: "absolute", left: `${c * 100}%`, top: -6, width: 6, height: 68, background: "#FBF8F2" }} />
+        ))}
+        <div style={{ position: "absolute", left: `${((f % 120) / 120) * 100}%`, top: -14, width: 6, height: 84, background: A.orange, borderRadius: 3 }} />
+      </div>
+    </div>
+  </>
+);
+
+// El cliente: una cara con un globo que duda
+const Client: React.FC<{ f: number; fps: number; doubt: number }> = ({ f, fps, doubt }) => {
+  const p = spring({ frame: f - S7, fps, config: { damping: 13 } });
+  return (
+    <div style={{ position: "absolute", left: 700, top: 1000, transform: `scale(${p})` }}>
+      <svg width={220} height={220} viewBox="-110 -110 220 220">
+        <circle r={90} fill="#FBF8F2" stroke={A.ink} strokeWidth={8} />
+        <circle cx={-30} cy={-15} r={9} fill={A.ink} />
+        <circle cx={30} cy={-15} r={9} fill={A.ink} />
+        <path d={doubt > 0.5 ? "M-35 40 Q0 20 35 40" : "M-35 30 Q0 55 35 30"} stroke={A.ink} strokeWidth={8} fill="none" strokeLinecap="round" />
+        {doubt > 0.5 ? <line x1={-48} y1={-45} x2={-12} y2={-38} stroke={A.ink} strokeWidth={7} strokeLinecap="round" /> : null}
+      </svg>
+      <div style={{ position: "absolute", left: 120, top: -90, padding: "10px 24px", background: "#FBF8F2", border: `6px solid ${A.ink}`, borderRadius: 26, fontFamily: FONT, fontWeight: 800, fontSize: 44, opacity: doubt > 0.5 ? 1 : 0 }}>mmm…</div>
+      <div style={{ position: "absolute", left: 30, top: 230, fontFamily: LABEL, fontSize: 24, color: A.grey }}>TU CLIENTE</div>
+    </div>
+  );
+};
+
+const Extras: React.FC<{ f: number; fps: number }> = ({ f, fps }) => (
+  <>
+    {f < S2 ? <Rider f={f} fps={fps} /> : null}
+    <Burst x={BOWL.x + 40} y={BOWL.y - 160} f={f} at={W(12) - 6} color={BROWN} />
+    <Burst x={600} y={830} f={f} at={W(17)} />
+    {f >= S2 && f < S3 ? <Bills f={f} at={W(21)} /> : null}
+    <Burst x={540} y={920} f={f} at={W(31) + 2} color={A.orange} r={240} />
+    {f >= S4 && f < W(45) ? <Pages f={f} at={W(35) - 6} /> : null}
+    <Burst x={600} y={1100} f={f} at={W(35)} r={260} />
+    <Burst x={540} y={1050} f={f} at={W(52)} r={220} />
+    {f >= W(57) && f < S6 ? <StageChecks f={f} scan={lin(f, W(58), W(62) - 4)} /> : null}
+    {f >= S6 && f < S7 ? <PhoneUI f={f} bad={f >= W(69)} /> : null}
+    {[W(69), W(73), W(77)].map((a, i) => (
+      <Burst key={a} x={[710, 370, 710][i]} y={[1140, 710, 1290][i]} f={f} at={a} r={70} color={BROWN} />
+    ))}
+    {f >= S7 && f < S8 ? <Client f={f} fps={fps} doubt={lin(f, W(86), W(86) + 4)} /> : null}
+    {f >= S8 && f < S9 ? <PhoneUI f={f} bad={f < W(94) + 9} /> : null}
+    <Sparkles f={f} at={W(94) + 9} pts={[{ x: 330, y: 640 }, { x: 760, y: 600 }, { x: 800, y: 1200 }, { x: 290, y: 1150 }, { x: 540, y: 520 }]} />
+    <Sparkles f={f} at={W(101)} pts={[{ x: 880, y: 470 }, { x: 960, y: 560 }, { x: 640, y: 440 }]} />
+  </>
 );
 
 export const Marron: React.FC = () => {
@@ -312,7 +502,7 @@ export const Marron: React.FC = () => {
       <>
         <Phone f={f} typo={1} jump={0} clip={1} marks={fixed ? [0, 0, 0] : [1, 1, 1]} out={yk} fixed={fixed} />
         {f >= hookAt && !fixed ? <Rope ax={ant.x} ay={ant.y} bx={PH.x - 170 - 900 * yk} by={PH.y - 250 - 600 * yk} slack={lin(f, hookAt, hookAt + 8, 0.8, 0.05)} buzz={f >= hookAt + 8 ? 0.5 : 0} t={t} /> : null}
-        <Stamp text="SIN MARRONES" x={540} y={1450} f={f} at={W(97)} color={A.orange} size={70} rot={-4} />
+        <Stamp text="SIN MARRONES" x={540} y={1580} f={f} at={W(97)} color={A.orange} size={70} rot={-4} />
         <ContactShadow x={170} y={FLOOR} w={200} />
         <Gancho {...g} />
       </>
@@ -331,7 +521,10 @@ export const Marron: React.FC = () => {
 
   return (
     <Paper>
+      <BgCandies f={f} />
       {scene}
+      <Extras f={f} fps={fps} />
+      <Chapters f={f} />
       {hide ? null : <Captions words={T.words} f={f} fps={fps} keys={KEYS} top={250} size={78} />}
       <Audio src={staticFile("audio/voz_marron.wav")} />
 
