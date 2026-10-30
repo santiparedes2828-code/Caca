@@ -383,6 +383,31 @@ const Extras: React.FC<{ f: number; fps: number }> = ({ f, fps }) => (
   </>
 );
 
+
+// Arranque (0–1,5 s): un M&M marrón gigante cae, rebota con un estallido y vuela al bol
+const INTRO_END = 45;
+const Intro: React.FC<{ f: number; fps: number }> = ({ f, fps }) => {
+  if (f >= INTRO_END) return null;
+  const land = 7;
+  const p = fall(f, fps);
+  const fly = lin(f, 26, INTRO_END, 0, 1, (x) => x * x);
+  const x = 540 + (BOWL.x + 40 - 540) * fly;
+  const y = 900 - (1 - p) * 1100 + (BOWL.y - 170 - 900) * fly;
+  const sq = impact(f - land);
+  const r = 150 * (1 - 0.75 * fly);
+  return (
+    <>
+      <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible", opacity: 1 - fly }}>
+        <circle cx={540} cy={900} r={190 + 40 * lin(f, land, land + 10)} fill="none" stroke={A.orange} strokeWidth={12} opacity={f >= land ? 1 : 0} />
+      </svg>
+      <Burst x={540} y={900} f={f} at={land} r={230} color={BROWN} />
+      <div style={{ position: "absolute", left: 0, top: 0, width: 1080, height: 1920, transformOrigin: `${x}px ${y + r}px`, transform: `scale(${1 + 0.2 * sq}, ${1 - 0.25 * sq})` }}>
+        <Candy x={x} y={y} r={r} brown rot={-12 + 30 * fly} />
+      </div>
+    </>
+  );
+};
+
 export const Marron: React.FC = () => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -396,16 +421,19 @@ export const Marron: React.FC = () => {
     const hookAt = W(12) - 4;
     const yankAt = W(12) + 10;
     const yk = yank(f - yankAt, 8);
-    const g: GanchoPose = { x: 250, y: FLOOR, scale: 0.85, t, expr: f >= W(12) ? "focused" : "happy", armL: 30, armR: f >= hookAt ? 110 : 40, lean: f >= hookAt ? -6 - 6 * lin(f, hookAt, yankAt) : 0, hookOut: f >= hookAt, look: { x: 1, y: -0.3 }, talk };
+    const startle = f < INTRO_END ? impact(f - 7) : 0;
+    const g: GanchoPose = { x: 250, y: FLOOR, scale: 0.85, t, squash: 0.35 * startle, expr: f < 24 ? "surprised" : f >= W(12) ? "focused" : "happy", armL: 30, armR: f >= hookAt ? 110 : 40, lean: f >= hookAt ? -6 - 6 * lin(f, hookAt, yankAt) : 0, hookOut: f >= hookAt, look: { x: 1, y: -0.3 }, talk };
     const ant = antennaWorld(g);
+    const z = lin(f, 0, 24, 1.18, 1, (x) => 1 - (1 - x) ** 3);
     scene = (
-      <>
+      <div style={{ position: "absolute", inset: 0, transformOrigin: "540px 1100px", transform: `scale(${z})` }}>
         <div style={{ position: "absolute", left: 72, top: 470, fontFamily: LABEL, fontSize: 30, color: A.ink, opacity: lin(f, 0, 6) }}>VAN HALEN · CONTRATO DE GIRA</div>
         <Bowl f={f} fps={fps} brownAt={W(12) - 6} brownOut={yk} />
         {f >= hookAt && yk < 1 ? <Rope ax={ant.x} ay={ant.y} bx={BOWL.x + 40 - 700 * yk - 40} by={BOWL.y - 160 - 500 * yk} slack={lin(f, hookAt, hookAt + 8, 0.8, 0.05)} buzz={f >= hookAt + 8 ? 0.5 : 0} t={t} /> : null}
         <ContactShadow x={250} y={FLOOR} w={230} />
         <Gancho {...g} />
-      </>
+        <Intro f={f} fps={fps} />
+      </div>
     );
   } else if (f < S3) {
     // 2 · «cancelar el concierto y cobrarlo entero»
@@ -529,7 +557,8 @@ export const Marron: React.FC = () => {
       <Audio src={staticFile("audio/voz_marron.wav")} />
 
       {/* sonido propio: tensión · tirón · impacto */}
-      <Snd at={8} src={SOUND.impacto} vol={0.35} />
+      <Snd at={7} src={SOUND.impacto} vol={0.9} />
+      <Snd at={26} src={SOUND.tiron} vol={0.4} />
       <Snd at={W(12) - 4} src={SOUND.tension} vol={0.35} />
       <Snd at={W(12) + 10} src={SOUND.tiron} vol={0.6} />
       <Snd at={S2 + 6} src={SOUND.impacto} vol={0.6} />
