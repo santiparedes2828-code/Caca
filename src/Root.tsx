@@ -28,6 +28,7 @@ import { PIEDRA_FRAMES, Piedra } from "./Altera/reels/Piedra";
 import { ERROR1_FRAMES, Error1, Error1Portada } from "./Altera/reels/Error1";
 import { FALSO15_FRAMES, Falso15, Falso15Portada } from "./Altera/reels/Falso15";
 import { MARRON_FRAMES, Marron, MarronPortada } from "./Altera/reels/Marron";
+import { MEDIALUNA_FRAMES, MedialunaPortada, MedialunaReel } from "./Altera/reels/Medialuna";
 import { CAPAS_FRAMES, Capas, CapasPortada } from "./Altera/reels/Capas";
 import { TOMAS_FRAMES, Tomas, TomasPortada } from "./Altera/reels/Tomas";
 import { APERTURA_FRAMES, EbookApertura } from "./Ebook/Heladera";
@@ -186,6 +187,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="MarronPortada" component={MarronPortada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Falso15" component={Falso15} durationInFrames={FALSO15_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Falso15Portada" component={Falso15Portada} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Medialuna" component={MedialunaReel} durationInFrames={MEDIALUNA_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="MedialunaPortada" component={MedialunaPortada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Error1Portada" component={Error1Portada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Piedra" component={Piedra} durationInFrames={PIEDRA_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="GanchoSheet" component={GanchoSheet} durationInFrames={60} fps={30} width={1920} height={1080} />

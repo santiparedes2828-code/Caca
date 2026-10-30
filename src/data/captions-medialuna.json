@@ -1,0 +1,590 @@
+[
+ {
+  "text": "Si",
+  "startMs": 30,
+  "endMs": 204,
+  "timestampMs": 117,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 224,
+  "endMs": 397,
+  "timestampMs": 310,
+  "confidence": null
+ },
+ {
+  "text": "tu",
+  "startMs": 417,
+  "endMs": 591,
+  "timestampMs": 504,
+  "confidence": null
+ },
+ {
+  "text": "video",
+  "startMs": 611,
+  "endMs": 905,
+  "timestampMs": 758,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 925,
+  "endMs": 1099,
+  "timestampMs": 1012,
+  "confidence": null
+ },
+ {
+  "text": "producto",
+  "startMs": 1119,
+  "endMs": 1534,
+  "timestampMs": 1326,
+  "confidence": null
+ },
+ {
+  "text": "se",
+  "startMs": 1554,
+  "endMs": 1728,
+  "timestampMs": 1641,
+  "confidence": null
+ },
+ {
+  "text": "ve",
+  "startMs": 1748,
+  "endMs": 1921,
+  "timestampMs": 1834,
+  "confidence": null
+ },
+ {
+  "text": "así…",
+  "startMs": 1941,
+  "endMs": 2236,
+  "timestampMs": 2089,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 2499,
+  "endMs": 2553,
+  "timestampMs": 2526,
+  "confidence": null
+ },
+ {
+  "text": "pensás",
+  "startMs": 2573,
+  "endMs": 2872,
+  "timestampMs": 2722,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 2892,
+  "endMs": 3068,
+  "timestampMs": 2980,
+  "confidence": null
+ },
+ {
+  "text": "te",
+  "startMs": 3088,
+  "endMs": 3264,
+  "timestampMs": 3176,
+  "confidence": null
+ },
+ {
+  "text": "falta",
+  "startMs": 3284,
+  "endMs": 3583,
+  "timestampMs": 3433,
+  "confidence": null
+ },
+ {
+  "text": "una",
+  "startMs": 3603,
+  "endMs": 3902,
+  "timestampMs": 3752,
+  "confidence": null
+ },
+ {
+  "text": "cámara",
+  "startMs": 3922,
+  "endMs": 4343,
+  "timestampMs": 4132,
+  "confidence": null
+ },
+ {
+  "text": "cara…",
+  "startMs": 4363,
+  "endMs": 4662,
+  "timestampMs": 4512,
+  "confidence": null
+ },
+ {
+  "text": "falso.",
+  "startMs": 4901,
+  "endMs": 5505,
+  "timestampMs": 5203,
+  "confidence": null
+ },
+ {
+  "text": "El",
+  "startMs": 5754,
+  "endMs": 5927,
+  "timestampMs": 5840,
+  "confidence": null
+ },
+ {
+  "text": "problema",
+  "startMs": 5947,
+  "endMs": 6362,
+  "timestampMs": 6154,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 6382,
+  "endMs": 6555,
+  "timestampMs": 6468,
+  "confidence": null
+ },
+ {
+  "text": "es",
+  "startMs": 6575,
+  "endMs": 6748,
+  "timestampMs": 6661,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 6768,
+  "endMs": 6941,
+  "timestampMs": 6854,
+  "confidence": null
+ },
+ {
+  "text": "cámara:",
+  "startMs": 6961,
+  "endMs": 7376,
+  "timestampMs": 7168,
+  "confidence": null
+ },
+ {
+  "text": "es",
+  "startMs": 7609,
+  "endMs": 7792,
+  "timestampMs": 7700,
+  "confidence": null
+ },
+ {
+  "text": "cómo",
+  "startMs": 7812,
+  "endMs": 8123,
+  "timestampMs": 7967,
+  "confidence": null
+ },
+ {
+  "text": "está",
+  "startMs": 8143,
+  "endMs": 8455,
+  "timestampMs": 8299,
+  "confidence": null
+ },
+ {
+  "text": "editado.",
+  "startMs": 8475,
+  "endMs": 9040,
+  "timestampMs": 8757,
+  "confidence": null
+ },
+ {
+  "text": "Te",
+  "startMs": 9280,
+  "endMs": 9529,
+  "timestampMs": 9404,
+  "confidence": null
+ },
+ {
+  "text": "muestro",
+  "startMs": 9549,
+  "endMs": 9965,
+  "timestampMs": 9757,
+  "confidence": null
+ },
+ {
+  "text": "tres",
+  "startMs": 9985,
+  "endMs": 10234,
+  "timestampMs": 10109,
+  "confidence": null
+ },
+ {
+  "text": "cambios.",
+  "startMs": 10254,
+  "endMs": 10671,
+  "timestampMs": 10462,
+  "confidence": null
+ },
+ {
+  "text": "Uno:",
+  "startMs": 10904,
+  "endMs": 11202,
+  "timestampMs": 11053,
+  "confidence": null
+ },
+ {
+  "text": "corto",
+  "startMs": 11462,
+  "endMs": 11758,
+  "timestampMs": 11610,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 11778,
+  "endMs": 11953,
+  "timestampMs": 11865,
+  "confidence": null
+ },
+ {
+  "text": "logo",
+  "startMs": 11973,
+  "endMs": 12270,
+  "timestampMs": 12121,
+  "confidence": null
+ },
+ {
+  "text": "del",
+  "startMs": 12290,
+  "endMs": 12465,
+  "timestampMs": 12377,
+  "confidence": null
+ },
+ {
+  "text": "arranque.",
+  "startMs": 12485,
+  "endMs": 12904,
+  "timestampMs": 12694,
+  "confidence": null
+ },
+ {
+  "text": "Dos:",
+  "startMs": 13139,
+  "endMs": 13591,
+  "timestampMs": 13365,
+  "confidence": null
+ },
+ {
+  "text": "acerco",
+  "startMs": 13836,
+  "endMs": 14253,
+  "timestampMs": 14045,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 14273,
+  "endMs": 14447,
+  "timestampMs": 14360,
+  "confidence": null
+ },
+ {
+  "text": "medialuna",
+  "startMs": 14467,
+  "endMs": 15006,
+  "timestampMs": 14737,
+  "confidence": null
+ },
+ {
+  "text": "hasta",
+  "startMs": 15026,
+  "endMs": 15322,
+  "timestampMs": 15174,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 15342,
+  "endMs": 15516,
+  "timestampMs": 15429,
+  "confidence": null
+ },
+ {
+  "text": "llene",
+  "startMs": 15536,
+  "endMs": 15832,
+  "timestampMs": 15684,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 15852,
+  "endMs": 16026,
+  "timestampMs": 15939,
+  "confidence": null
+ },
+ {
+  "text": "pantalla.",
+  "startMs": 16046,
+  "endMs": 16463,
+  "timestampMs": 16255,
+  "confidence": null
+ },
+ {
+  "text": "Tres:",
+  "startMs": 16707,
+  "endMs": 17122,
+  "timestampMs": 16914,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 17356,
+  "endMs": 17580,
+  "timestampMs": 17468,
+  "confidence": null
+ },
+ {
+  "text": "texto",
+  "startMs": 17600,
+  "endMs": 17978,
+  "timestampMs": 17789,
+  "confidence": null
+ },
+ {
+  "text": "dice",
+  "startMs": 17998,
+  "endMs": 18375,
+  "timestampMs": 18187,
+  "confidence": null
+ },
+ {
+  "text": "por",
+  "startMs": 18395,
+  "endMs": 18620,
+  "timestampMs": 18508,
+  "confidence": null
+ },
+ {
+  "text": "qué",
+  "startMs": 18640,
+  "endMs": 18864,
+  "timestampMs": 18752,
+  "confidence": null
+ },
+ {
+  "text": "comprarla,",
+  "startMs": 18884,
+  "endMs": 19414,
+  "timestampMs": 19149,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 19695,
+  "endMs": 19858,
+  "timestampMs": 19777,
+  "confidence": null
+ },
+ {
+  "text": "cómo",
+  "startMs": 19878,
+  "endMs": 20156,
+  "timestampMs": 20017,
+  "confidence": null
+ },
+ {
+  "text": "se",
+  "startMs": 20176,
+  "endMs": 20339,
+  "timestampMs": 20258,
+  "confidence": null
+ },
+ {
+  "text": "llama",
+  "startMs": 20359,
+  "endMs": 20636,
+  "timestampMs": 20498,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 20656,
+  "endMs": 20819,
+  "timestampMs": 20738,
+  "confidence": null
+ },
+ {
+  "text": "local.",
+  "startMs": 20839,
+  "endMs": 21116,
+  "timestampMs": 20978,
+  "confidence": null
+ },
+ {
+  "text": "Mismo",
+  "startMs": 21431,
+  "endMs": 21850,
+  "timestampMs": 21640,
+  "confidence": null
+ },
+ {
+  "text": "video.",
+  "startMs": 21870,
+  "endMs": 22289,
+  "timestampMs": 22079,
+  "confidence": null
+ },
+ {
+  "text": "Misma",
+  "startMs": 22532,
+  "endMs": 22881,
+  "timestampMs": 22706,
+  "confidence": null
+ },
+ {
+  "text": "cámara.",
+  "startMs": 22901,
+  "endMs": 23392,
+  "timestampMs": 23146,
+  "confidence": null
+ },
+ {
+  "text": "Ahora",
+  "startMs": 23629,
+  "endMs": 24028,
+  "timestampMs": 23829,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 24048,
+  "endMs": 24215,
+  "timestampMs": 24132,
+  "confidence": null
+ },
+ {
+  "text": "hace",
+  "startMs": 24235,
+  "endMs": 24518,
+  "timestampMs": 24377,
+  "confidence": null
+ },
+ {
+  "text": "falta",
+  "startMs": 24538,
+  "endMs": 24821,
+  "timestampMs": 24680,
+  "confidence": null
+ },
+ {
+  "text": "buscarla.",
+  "startMs": 24841,
+  "endMs": 25240,
+  "timestampMs": 25041,
+  "confidence": null
+ },
+ {
+  "text": "Si",
+  "startMs": 25472,
+  "endMs": 25688,
+  "timestampMs": 25580,
+  "confidence": null
+ },
+ {
+  "text": "tenés",
+  "startMs": 25708,
+  "endMs": 26071,
+  "timestampMs": 25889,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 26091,
+  "endMs": 26308,
+  "timestampMs": 26199,
+  "confidence": null
+ },
+ {
+  "text": "negocio,",
+  "startMs": 26328,
+  "endMs": 26839,
+  "timestampMs": 26583,
+  "confidence": null
+ },
+ {
+  "text": "mandame",
+  "startMs": 26859,
+  "endMs": 27370,
+  "timestampMs": 27114,
+  "confidence": null
+ },
+ {
+  "text": "\"VIDEO\",",
+  "startMs": 27390,
+  "endMs": 27753,
+  "timestampMs": 27571,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 28008,
+  "endMs": 28064,
+  "timestampMs": 28036,
+  "confidence": null
+ },
+ {
+  "text": "te",
+  "startMs": 28084,
+  "endMs": 28268,
+  "timestampMs": 28176,
+  "confidence": null
+ },
+ {
+  "text": "muestro",
+  "startMs": 28288,
+  "endMs": 28598,
+  "timestampMs": 28443,
+  "confidence": null
+ },
+ {
+  "text": "cómo",
+  "startMs": 28618,
+  "endMs": 28929,
+  "timestampMs": 28773,
+  "confidence": null
+ },
+ {
+  "text": "mejoraría",
+  "startMs": 28949,
+  "endMs": 29514,
+  "timestampMs": 29231,
+  "confidence": null
+ },
+ {
+  "text": "uno",
+  "startMs": 29534,
+  "endMs": 29844,
+  "timestampMs": 29689,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 29864,
+  "endMs": 30048,
+  "timestampMs": 29956,
+  "confidence": null
+ },
+ {
+  "text": "tus",
+  "startMs": 30068,
+  "endMs": 30251,
+  "timestampMs": 30159,
+  "confidence": null
+ },
+ {
+  "text": "clips.",
+  "startMs": 30271,
+  "endMs": 30455,
+  "timestampMs": 30363,
+  "confidence": null
+ }
+]

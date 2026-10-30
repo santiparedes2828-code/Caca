@@ -1,0 +1,508 @@
+{
+ "words": [
+  {
+   "text": "Si",
+   "start": 0.03,
+   "end": 0.204,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 0.224,
+   "end": 0.397,
+   "type": "word"
+  },
+  {
+   "text": "tu",
+   "start": 0.417,
+   "end": 0.591,
+   "type": "word"
+  },
+  {
+   "text": "video",
+   "start": 0.611,
+   "end": 0.905,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 0.925,
+   "end": 1.099,
+   "type": "word"
+  },
+  {
+   "text": "producto",
+   "start": 1.119,
+   "end": 1.534,
+   "type": "word"
+  },
+  {
+   "text": "se",
+   "start": 1.554,
+   "end": 1.728,
+   "type": "word"
+  },
+  {
+   "text": "ve",
+   "start": 1.748,
+   "end": 1.921,
+   "type": "word"
+  },
+  {
+   "text": "así…",
+   "start": 1.941,
+   "end": 2.236,
+   "type": "word"
+  },
+  {
+   "text": "y",
+   "start": 2.708,
+   "end": 2.762,
+   "type": "word"
+  },
+  {
+   "text": "pensás",
+   "start": 2.782,
+   "end": 3.081,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 3.101,
+   "end": 3.277,
+   "type": "word"
+  },
+  {
+   "text": "te",
+   "start": 3.297,
+   "end": 3.473,
+   "type": "word"
+  },
+  {
+   "text": "falta",
+   "start": 3.493,
+   "end": 3.792,
+   "type": "word"
+  },
+  {
+   "text": "una",
+   "start": 3.812,
+   "end": 4.111,
+   "type": "word"
+  },
+  {
+   "text": "cámara",
+   "start": 4.131,
+   "end": 4.552,
+   "type": "word"
+  },
+  {
+   "text": "cara…",
+   "start": 4.572,
+   "end": 4.871,
+   "type": "word"
+  },
+  {
+   "text": "falso.",
+   "start": 5.313,
+   "end": 5.917,
+   "type": "word"
+  },
+  {
+   "text": "El",
+   "start": 6.332,
+   "end": 6.505,
+   "type": "word"
+  },
+  {
+   "text": "problema",
+   "start": 6.525,
+   "end": 6.94,
+   "type": "word"
+  },
+  {
+   "text": "no",
+   "start": 6.96,
+   "end": 7.133,
+   "type": "word"
+  },
+  {
+   "text": "es",
+   "start": 7.153,
+   "end": 7.326,
+   "type": "word"
+  },
+  {
+   "text": "la",
+   "start": 7.346,
+   "end": 7.519,
+   "type": "word"
+  },
+  {
+   "text": "cámara:",
+   "start": 7.539,
+   "end": 7.954,
+   "type": "word"
+  },
+  {
+   "text": "es",
+   "start": 8.279,
+   "end": 8.462,
+   "type": "word"
+  },
+  {
+   "text": "cómo",
+   "start": 8.482,
+   "end": 8.793,
+   "type": "word"
+  },
+  {
+   "text": "está",
+   "start": 8.813,
+   "end": 9.125,
+   "type": "word"
+  },
+  {
+   "text": "editado.",
+   "start": 9.145,
+   "end": 9.71,
+   "type": "word"
+  },
+  {
+   "text": "Te",
+   "start": 10.181,
+   "end": 10.43,
+   "type": "word"
+  },
+  {
+   "text": "muestro",
+   "start": 10.45,
+   "end": 10.866,
+   "type": "word"
+  },
+  {
+   "text": "tres",
+   "start": 10.886,
+   "end": 11.135,
+   "type": "word"
+  },
+  {
+   "text": "cambios.",
+   "start": 11.155,
+   "end": 11.572,
+   "type": "word"
+  },
+  {
+   "text": "Uno:",
+   "start": 12.021,
+   "end": 12.319,
+   "type": "word"
+  },
+  {
+   "text": "corto",
+   "start": 12.793,
+   "end": 13.089,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 13.109,
+   "end": 13.284,
+   "type": "word"
+  },
+  {
+   "text": "logo",
+   "start": 13.304,
+   "end": 13.601,
+   "type": "word"
+  },
+  {
+   "text": "del",
+   "start": 13.621,
+   "end": 13.796,
+   "type": "word"
+  },
+  {
+   "text": "arranque.",
+   "start": 13.816,
+   "end": 14.235,
+   "type": "word"
+  },
+  {
+   "text": "Dos:",
+   "start": 14.661,
+   "end": 15.113,
+   "type": "word"
+  },
+  {
+   "text": "acerco",
+   "start": 15.519,
+   "end": 15.936,
+   "type": "word"
+  },
+  {
+   "text": "la",
+   "start": 15.956,
+   "end": 16.13,
+   "type": "word"
+  },
+  {
+   "text": "medialuna",
+   "start": 16.15,
+   "end": 16.689,
+   "type": "word"
+  },
+  {
+   "text": "hasta",
+   "start": 16.709,
+   "end": 17.005,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 17.025,
+   "end": 17.199,
+   "type": "word"
+  },
+  {
+   "text": "llene",
+   "start": 17.219,
+   "end": 17.515,
+   "type": "word"
+  },
+  {
+   "text": "la",
+   "start": 17.535,
+   "end": 17.709,
+   "type": "word"
+  },
+  {
+   "text": "pantalla.",
+   "start": 17.729,
+   "end": 18.146,
+   "type": "word"
+  },
+  {
+   "text": "Tres:",
+   "start": 18.571,
+   "end": 18.986,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 19.374,
+   "end": 19.598,
+   "type": "word"
+  },
+  {
+   "text": "texto",
+   "start": 19.618,
+   "end": 19.996,
+   "type": "word"
+  },
+  {
+   "text": "dice",
+   "start": 20.016,
+   "end": 20.393,
+   "type": "word"
+  },
+  {
+   "text": "por",
+   "start": 20.413,
+   "end": 20.638,
+   "type": "word"
+  },
+  {
+   "text": "qué",
+   "start": 20.658,
+   "end": 20.882,
+   "type": "word"
+  },
+  {
+   "text": "comprarla,",
+   "start": 20.902,
+   "end": 21.432,
+   "type": "word"
+  },
+  {
+   "text": "no",
+   "start": 21.713,
+   "end": 21.876,
+   "type": "word"
+  },
+  {
+   "text": "cómo",
+   "start": 21.896,
+   "end": 22.174,
+   "type": "word"
+  },
+  {
+   "text": "se",
+   "start": 22.194,
+   "end": 22.357,
+   "type": "word"
+  },
+  {
+   "text": "llama",
+   "start": 22.377,
+   "end": 22.654,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 22.674,
+   "end": 22.837,
+   "type": "word"
+  },
+  {
+   "text": "local.",
+   "start": 22.857,
+   "end": 23.134,
+   "type": "word"
+  },
+  {
+   "text": "Mismo",
+   "start": 23.689,
+   "end": 24.108,
+   "type": "word"
+  },
+  {
+   "text": "video.",
+   "start": 24.128,
+   "end": 24.547,
+   "type": "word"
+  },
+  {
+   "text": "Misma",
+   "start": 24.899,
+   "end": 25.248,
+   "type": "word"
+  },
+  {
+   "text": "cámara.",
+   "start": 25.268,
+   "end": 25.759,
+   "type": "word"
+  },
+  {
+   "text": "Ahora",
+   "start": 26.174,
+   "end": 26.573,
+   "type": "word"
+  },
+  {
+   "text": "no",
+   "start": 26.593,
+   "end": 26.76,
+   "type": "word"
+  },
+  {
+   "text": "hace",
+   "start": 26.78,
+   "end": 27.063,
+   "type": "word"
+  },
+  {
+   "text": "falta",
+   "start": 27.083,
+   "end": 27.366,
+   "type": "word"
+  },
+  {
+   "text": "buscarla.",
+   "start": 27.386,
+   "end": 27.785,
+   "type": "word"
+  },
+  {
+   "text": "Si",
+   "start": 28.225,
+   "end": 28.441,
+   "type": "word"
+  },
+  {
+   "text": "tenés",
+   "start": 28.461,
+   "end": 28.824,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 28.844,
+   "end": 29.061,
+   "type": "word"
+  },
+  {
+   "text": "negocio,",
+   "start": 29.081,
+   "end": 29.592,
+   "type": "word"
+  },
+  {
+   "text": "mandame",
+   "start": 29.612,
+   "end": 30.123,
+   "type": "word"
+  },
+  {
+   "text": "\"VIDEO\",",
+   "start": 30.143,
+   "end": 30.506,
+   "type": "word"
+  },
+  {
+   "text": "y",
+   "start": 30.761,
+   "end": 30.817,
+   "type": "word"
+  },
+  {
+   "text": "te",
+   "start": 30.837,
+   "end": 31.021,
+   "type": "word"
+  },
+  {
+   "text": "muestro",
+   "start": 31.041,
+   "end": 31.351,
+   "type": "word"
+  },
+  {
+   "text": "cómo",
+   "start": 31.371,
+   "end": 31.682,
+   "type": "word"
+  },
+  {
+   "text": "mejoraría",
+   "start": 31.702,
+   "end": 32.267,
+   "type": "word"
+  },
+  {
+   "text": "uno",
+   "start": 32.287,
+   "end": 32.597,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 32.617,
+   "end": 32.801,
+   "type": "word"
+  },
+  {
+   "text": "tus",
+   "start": 32.821,
+   "end": 33.004,
+   "type": "word"
+  },
+  {
+   "text": "clips.",
+   "start": 33.024,
+   "end": 33.208,
+   "type": "word"
+  }
+ ]
+}

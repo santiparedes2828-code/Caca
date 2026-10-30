@@ -14,8 +14,10 @@ Config.setChromiumOpenGlRenderer("angle");
 
 // En el entorno cloud de Claude Code no se puede descargar Chrome Headless Shell:
 // se usa el Chromium preinstalado si existe. En local no hace nada.
-const cloudChromium =
-  "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell";
-if (existsSync(cloudChromium)) {
+const cloudChromium = [
+  "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+  "/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell",
+].find((p) => existsSync(p));
+if (cloudChromium) {
   Config.setBrowserExecutable(cloudChromium);
 }
