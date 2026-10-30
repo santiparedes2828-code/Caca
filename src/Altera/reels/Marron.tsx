@@ -559,12 +559,21 @@ export const Marron: React.FC = () => {
 // ---------- portada (1080 × 1920) ----------
 export const MarronPortada: React.FC = () => (
   <Paper>
+    <BgCandies f={300} />
     <div style={{ position: "absolute", left: 72, top: 300, width: 900, fontFamily: FONT, fontWeight: 800, fontSize: 104, lineHeight: 1.0, letterSpacing: "-0.045em", color: A.ink }}>
       Tu video tiene
       <br />
       un M&M <span style={{ color: BROWN }}>marrón</span>
     </div>
     <Bowl f={200} fps={30} brownAt={0} />
+    <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible" }}>
+      <circle cx={BOWL.x + 40} cy={BOWL.y - 170} r={78} fill="none" stroke={A.orange} strokeWidth={10} />
+      {Array.from({ length: 10 }, (_, i) => {
+        const a = (i / 10) * Math.PI * 2 + 0.3;
+        return <line key={i} x1={BOWL.x + 40 + Math.cos(a) * 100} y1={BOWL.y - 170 + Math.sin(a) * 100} x2={BOWL.x + 40 + Math.cos(a) * 150} y2={BOWL.y - 170 + Math.sin(a) * 150} stroke={BROWN} strokeWidth={9} strokeLinecap="round" />;
+      })}
+    </svg>
+    <div style={{ position: "absolute", left: 72, top: 560, fontFamily: LABEL, fontSize: 30, color: A.grey }}>EL TRUCO DE VAN HALEN</div>
     <ContactShadow x={250} y={FLOOR} w={230} />
     <Gancho x={250} y={FLOOR} scale={0.85} t={1} expr="surprised" armL={30} armR={110} look={{ x: 1, y: -0.3 }} />
   </Paper>
