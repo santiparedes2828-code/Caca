@@ -1,0 +1,442 @@
+{
+ "words": [
+  {
+   "text": "La",
+   "start": 0.03,
+   "end": 0.228,
+   "type": "word"
+  },
+  {
+   "text": "Gran",
+   "start": 0.248,
+   "end": 0.445,
+   "type": "word"
+  },
+  {
+   "text": "Pirámide",
+   "start": 0.465,
+   "end": 1.071,
+   "type": "word"
+  },
+  {
+   "text": "se",
+   "start": 1.091,
+   "end": 1.288,
+   "type": "word"
+  },
+  {
+   "text": "construyó",
+   "start": 1.308,
+   "end": 1.777,
+   "type": "word"
+  },
+  {
+   "text": "hace",
+   "start": 1.797,
+   "end": 2.131,
+   "type": "word"
+  },
+  {
+   "text": "unos",
+   "start": 2.151,
+   "end": 2.484,
+   "type": "word"
+  },
+  {
+   "text": "cuatro",
+   "start": 2.504,
+   "end": 2.838,
+   "type": "word"
+  },
+  {
+   "text": "mil",
+   "start": 2.858,
+   "end": 3.056,
+   "type": "word"
+  },
+  {
+   "text": "quinientos",
+   "start": 3.076,
+   "end": 3.545,
+   "type": "word"
+  },
+  {
+   "text": "años.",
+   "start": 3.565,
+   "end": 3.898,
+   "type": "word"
+  },
+  {
+   "text": "Cleopatra",
+   "start": 4.451,
+   "end": 4.98,
+   "type": "word"
+  },
+  {
+   "text": "nació",
+   "start": 5.0,
+   "end": 5.376,
+   "type": "word"
+  },
+  {
+   "text": "casi",
+   "start": 5.396,
+   "end": 5.772,
+   "type": "word"
+  },
+  {
+   "text": "dos",
+   "start": 5.792,
+   "end": 6.015,
+   "type": "word"
+  },
+  {
+   "text": "mil",
+   "start": 6.035,
+   "end": 6.259,
+   "type": "word"
+  },
+  {
+   "text": "quinientos",
+   "start": 6.279,
+   "end": 6.808,
+   "type": "word"
+  },
+  {
+   "text": "años",
+   "start": 6.828,
+   "end": 7.204,
+   "type": "word"
+  },
+  {
+   "text": "después.",
+   "start": 7.224,
+   "end": 7.6,
+   "type": "word"
+  },
+  {
+   "text": "Para",
+   "start": 8.102,
+   "end": 8.394,
+   "type": "word"
+  },
+  {
+   "text": "ella,",
+   "start": 8.414,
+   "end": 8.706,
+   "type": "word"
+  },
+  {
+   "text": "las",
+   "start": 8.92,
+   "end": 9.129,
+   "type": "word"
+  },
+  {
+   "text": "pirámides",
+   "start": 9.149,
+   "end": 9.788,
+   "type": "word"
+  },
+  {
+   "text": "eran",
+   "start": 9.808,
+   "end": 10.161,
+   "type": "word"
+  },
+  {
+   "text": "más",
+   "start": 10.181,
+   "end": 10.39,
+   "type": "word"
+  },
+  {
+   "text": "antiguas…",
+   "start": 10.41,
+   "end": 10.906,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 11.32,
+   "end": 11.523,
+   "type": "word"
+  },
+  {
+   "text": "Julio",
+   "start": 11.543,
+   "end": 11.886,
+   "type": "word"
+  },
+  {
+   "text": "César",
+   "start": 11.906,
+   "end": 12.249,
+   "type": "word"
+  },
+  {
+   "text": "para",
+   "start": 12.269,
+   "end": 12.611,
+   "type": "word"
+  },
+  {
+   "text": "nosotros.",
+   "start": 12.631,
+   "end": 13.113,
+   "type": "word"
+  },
+  {
+   "text": "Y",
+   "start": 13.691,
+   "end": 13.844,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 13.864,
+   "end": 14.018,
+   "type": "word"
+  },
+  {
+   "text": "mil",
+   "start": 14.038,
+   "end": 14.191,
+   "type": "word"
+  },
+  {
+   "text": "novecientos",
+   "start": 14.211,
+   "end": 14.69,
+   "type": "word"
+  },
+  {
+   "text": "sesenta",
+   "start": 14.71,
+   "end": 15.08,
+   "type": "word"
+  },
+  {
+   "text": "y",
+   "start": 15.1,
+   "end": 15.254,
+   "type": "word"
+  },
+  {
+   "text": "nueve,",
+   "start": 15.274,
+   "end": 15.536,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 15.782,
+   "end": 15.936,
+   "type": "word"
+  },
+  {
+   "text": "hombre",
+   "start": 15.956,
+   "end": 16.219,
+   "type": "word"
+  },
+  {
+   "text": "llegó",
+   "start": 16.239,
+   "end": 16.502,
+   "type": "word"
+  },
+  {
+   "text": "a",
+   "start": 16.522,
+   "end": 16.675,
+   "type": "word"
+  },
+  {
+   "text": "la",
+   "start": 16.695,
+   "end": 16.849,
+   "type": "word"
+  },
+  {
+   "text": "Luna:",
+   "start": 16.869,
+   "end": 17.132,
+   "type": "word"
+  },
+  {
+   "text": "unos",
+   "start": 17.552,
+   "end": 17.902,
+   "type": "word"
+  },
+  {
+   "text": "dos",
+   "start": 17.922,
+   "end": 18.129,
+   "type": "word"
+  },
+  {
+   "text": "mil",
+   "start": 18.149,
+   "end": 18.357,
+   "type": "word"
+  },
+  {
+   "text": "años",
+   "start": 18.377,
+   "end": 18.727,
+   "type": "word"
+  },
+  {
+   "text": "después",
+   "start": 18.747,
+   "end": 19.097,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 19.117,
+   "end": 19.325,
+   "type": "word"
+  },
+  {
+   "text": "Cleopatra.",
+   "start": 19.345,
+   "end": 19.837,
+   "type": "word"
+  },
+  {
+   "text": "O",
+   "start": 20.226,
+   "end": 20.429,
+   "type": "word"
+  },
+  {
+   "text": "sea:",
+   "start": 20.449,
+   "end": 20.652,
+   "type": "word"
+  },
+  {
+   "text": "Cleopatra",
+   "start": 21.046,
+   "end": 21.532,
+   "type": "word"
+  },
+  {
+   "text": "vivió",
+   "start": 21.552,
+   "end": 21.897,
+   "type": "word"
+  },
+  {
+   "text": "más",
+   "start": 21.917,
+   "end": 22.122,
+   "type": "word"
+  },
+  {
+   "text": "cerca",
+   "start": 22.142,
+   "end": 22.487,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 22.507,
+   "end": 22.712,
+   "type": "word"
+  },
+  {
+   "text": "este",
+   "start": 22.732,
+   "end": 23.078,
+   "type": "word"
+  },
+  {
+   "text": "video…",
+   "start": 23.098,
+   "end": 23.443,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 23.799,
+   "end": 23.975,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 23.995,
+   "end": 24.172,
+   "type": "word"
+  },
+  {
+   "text": "las",
+   "start": 24.192,
+   "end": 24.368,
+   "type": "word"
+  },
+  {
+   "text": "pirámides.",
+   "start": 24.388,
+   "end": 24.933,
+   "type": "word"
+  },
+  {
+   "text": "Seguime",
+   "start": 25.452,
+   "end": 25.926,
+   "type": "word"
+  },
+  {
+   "text": "para",
+   "start": 25.946,
+   "end": 26.283,
+   "type": "word"
+  },
+  {
+   "text": "más",
+   "start": 26.303,
+   "end": 26.503,
+   "type": "word"
+  },
+  {
+   "text": "datos",
+   "start": 26.523,
+   "end": 26.86,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 26.88,
+   "end": 27.08,
+   "type": "word"
+  },
+  {
+   "text": "te",
+   "start": 27.1,
+   "end": 27.299,
+   "type": "word"
+  },
+  {
+   "text": "rompen",
+   "start": 27.319,
+   "end": 27.656,
+   "type": "word"
+  },
+  {
+   "text": "la",
+   "start": 27.676,
+   "end": 27.876,
+   "type": "word"
+  },
+  {
+   "text": "cabeza.",
+   "start": 27.896,
+   "end": 28.37,
+   "type": "word"
+  }
+ ]
+}

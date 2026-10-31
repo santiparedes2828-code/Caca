@@ -1,0 +1,400 @@
+{
+ "words": [
+  {
+   "text": "Este",
+   "start": 0.03,
+   "end": 0.376,
+   "type": "word"
+  },
+  {
+   "text": "papel",
+   "start": 0.396,
+   "end": 0.741,
+   "type": "word"
+  },
+  {
+   "text": "se",
+   "start": 0.761,
+   "end": 0.967,
+   "type": "word"
+  },
+  {
+   "text": "subastó",
+   "start": 0.987,
+   "end": 1.473,
+   "type": "word"
+  },
+  {
+   "text": "por",
+   "start": 1.493,
+   "end": 1.698,
+   "type": "word"
+  },
+  {
+   "text": "más",
+   "start": 1.718,
+   "end": 1.923,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 1.943,
+   "end": 2.148,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 2.168,
+   "end": 2.373,
+   "type": "word"
+  },
+  {
+   "text": "millón",
+   "start": 2.393,
+   "end": 2.739,
+   "type": "word"
+  },
+  {
+   "text": "y",
+   "start": 2.759,
+   "end": 2.964,
+   "type": "word"
+  },
+  {
+   "text": "medio",
+   "start": 2.984,
+   "end": 3.33,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 3.35,
+   "end": 3.555,
+   "type": "word"
+  },
+  {
+   "text": "dólares.",
+   "start": 3.575,
+   "end": 4.061,
+   "type": "word"
+  },
+  {
+   "text": "¿Por",
+   "start": 4.529,
+   "end": 4.714,
+   "type": "word"
+  },
+  {
+   "text": "qué?",
+   "start": 4.734,
+   "end": 4.919,
+   "type": "word"
+  },
+  {
+   "text": "¿Cuánto",
+   "start": 5.488,
+   "end": 5.78,
+   "type": "word"
+  },
+  {
+   "text": "creés",
+   "start": 5.8,
+   "end": 5.972,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 5.992,
+   "end": 6.164,
+   "type": "word"
+  },
+  {
+   "text": "vale",
+   "start": 6.184,
+   "end": 6.476,
+   "type": "word"
+  },
+  {
+   "text": "este",
+   "start": 6.496,
+   "end": 6.788,
+   "type": "word"
+  },
+  {
+   "text": "papel?",
+   "start": 6.808,
+   "end": 7.1,
+   "type": "word"
+  },
+  {
+   "text": "Tenés",
+   "start": 7.617,
+   "end": 8.002,
+   "type": "word"
+  },
+  {
+   "text": "dos",
+   "start": 8.022,
+   "end": 8.251,
+   "type": "word"
+  },
+  {
+   "text": "segundos.",
+   "start": 8.271,
+   "end": 8.813,
+   "type": "word"
+  },
+  {
+   "text": "Este",
+   "start": 9.813,
+   "end": 10.147,
+   "type": "word"
+  },
+  {
+   "text": "hombre",
+   "start": 10.167,
+   "end": 10.501,
+   "type": "word"
+  },
+  {
+   "text": "tenía",
+   "start": 10.521,
+   "end": 10.855,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 10.875,
+   "end": 11.073,
+   "type": "word"
+  },
+  {
+   "text": "diez",
+   "start": 11.093,
+   "end": 11.291,
+   "type": "word"
+  },
+  {
+   "text": "por",
+   "start": 11.311,
+   "end": 11.509,
+   "type": "word"
+  },
+  {
+   "text": "ciento",
+   "start": 11.529,
+   "end": 11.863,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 11.883,
+   "end": 12.08,
+   "type": "word"
+  },
+  {
+   "text": "Apple…",
+   "start": 12.1,
+   "end": 12.434,
+   "type": "word"
+  },
+  {
+   "text": "y",
+   "start": 12.933,
+   "end": 13.164,
+   "type": "word"
+  },
+  {
+   "text": "lo",
+   "start": 13.184,
+   "end": 13.416,
+   "type": "word"
+  },
+  {
+   "text": "vendió",
+   "start": 13.436,
+   "end": 13.825,
+   "type": "word"
+  },
+  {
+   "text": "por",
+   "start": 13.845,
+   "end": 14.077,
+   "type": "word"
+  },
+  {
+   "text": "ochocientos",
+   "start": 14.097,
+   "end": 14.8,
+   "type": "word"
+  },
+  {
+   "text": "dólares.",
+   "start": 14.82,
+   "end": 15.367,
+   "type": "word"
+  },
+  {
+   "text": "Fue",
+   "start": 15.806,
+   "end": 16.011,
+   "type": "word"
+  },
+  {
+   "text": "dueño",
+   "start": 16.031,
+   "end": 16.377,
+   "type": "word"
+  },
+  {
+   "text": "del",
+   "start": 16.397,
+   "end": 16.603,
+   "type": "word"
+  },
+  {
+   "text": "diez",
+   "start": 16.623,
+   "end": 16.828,
+   "type": "word"
+  },
+  {
+   "text": "por",
+   "start": 16.848,
+   "end": 17.053,
+   "type": "word"
+  },
+  {
+   "text": "ciento",
+   "start": 17.073,
+   "end": 17.419,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 17.439,
+   "end": 17.644,
+   "type": "word"
+  },
+  {
+   "text": "una",
+   "start": 17.664,
+   "end": 18.01,
+   "type": "word"
+  },
+  {
+   "text": "empresa",
+   "start": 18.03,
+   "end": 18.517,
+   "type": "word"
+  },
+  {
+   "text": "gigante…",
+   "start": 18.537,
+   "end": 19.024,
+   "type": "word"
+  },
+  {
+   "text": "durante",
+   "start": 19.549,
+   "end": 20.22,
+   "type": "word"
+  },
+  {
+   "text": "doce",
+   "start": 20.24,
+   "end": 20.72,
+   "type": "word"
+  },
+  {
+   "text": "días.",
+   "start": 20.74,
+   "end": 21.027,
+   "type": "word"
+  },
+  {
+   "text": "Si",
+   "start": 21.679,
+   "end": 21.863,
+   "type": "word"
+  },
+  {
+   "text": "dejaste",
+   "start": 21.883,
+   "end": 22.322,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 22.342,
+   "end": 22.526,
+   "type": "word"
+  },
+  {
+   "text": "subir",
+   "start": 22.546,
+   "end": 22.858,
+   "type": "word"
+  },
+  {
+   "text": "videos",
+   "start": 22.878,
+   "end": 23.19,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 23.21,
+   "end": 23.394,
+   "type": "word"
+  },
+  {
+   "text": "tu",
+   "start": 23.414,
+   "end": 23.598,
+   "type": "word"
+  },
+  {
+   "text": "negocio",
+   "start": 23.618,
+   "end": 24.057,
+   "type": "word"
+  },
+  {
+   "text": "porque",
+   "start": 24.077,
+   "end": 24.389,
+   "type": "word"
+  },
+  {
+   "text": "no",
+   "start": 24.409,
+   "end": 24.593,
+   "type": "word"
+  },
+  {
+   "text": "funcionaban…",
+   "start": 24.613,
+   "end": 25.18,
+   "type": "word"
+  },
+  {
+   "text": "mirá",
+   "start": 25.663,
+   "end": 26.004,
+   "type": "word"
+  },
+  {
+   "text": "este",
+   "start": 26.024,
+   "end": 26.365,
+   "type": "word"
+  },
+  {
+   "text": "papel.",
+   "start": 26.385,
+   "end": 26.727,
+   "type": "word"
+  }
+ ]
+}

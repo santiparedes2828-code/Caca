@@ -1,0 +1,765 @@
+[
+ {
+  "text": "Si",
+  "startMs": 45,
+  "endMs": 213,
+  "timestampMs": 129,
+  "confidence": null
+ },
+ {
+  "text": "dejaste",
+  "startMs": 231,
+  "endMs": 630,
+  "timestampMs": 431,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 648,
+  "endMs": 815,
+  "timestampMs": 732,
+  "confidence": null
+ },
+ {
+  "text": "subir",
+  "startMs": 834,
+  "endMs": 1117,
+  "timestampMs": 975,
+  "confidence": null
+ },
+ {
+  "text": "videos",
+  "startMs": 1135,
+  "endMs": 1419,
+  "timestampMs": 1277,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 1437,
+  "endMs": 1605,
+  "timestampMs": 1521,
+  "confidence": null
+ },
+ {
+  "text": "tu",
+  "startMs": 1623,
+  "endMs": 1790,
+  "timestampMs": 1706,
+  "confidence": null
+ },
+ {
+  "text": "negocio",
+  "startMs": 1808,
+  "endMs": 2207,
+  "timestampMs": 2008,
+  "confidence": null
+ },
+ {
+  "text": "porque",
+  "startMs": 2225,
+  "endMs": 2509,
+  "timestampMs": 2367,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 2527,
+  "endMs": 2695,
+  "timestampMs": 2611,
+  "confidence": null
+ },
+ {
+  "text": "funcionaban…",
+  "startMs": 2713,
+  "endMs": 3228,
+  "timestampMs": 2971,
+  "confidence": null
+ },
+ {
+  "text": "mirá",
+  "startMs": 3460,
+  "endMs": 3770,
+  "timestampMs": 3615,
+  "confidence": null
+ },
+ {
+  "text": "este",
+  "startMs": 3788,
+  "endMs": 4098,
+  "timestampMs": 3943,
+  "confidence": null
+ },
+ {
+  "text": "papel.",
+  "startMs": 4116,
+  "endMs": 4427,
+  "timestampMs": 4272,
+  "confidence": null
+ },
+ {
+  "text": "En",
+  "startMs": 4782,
+  "endMs": 4945,
+  "timestampMs": 4864,
+  "confidence": null
+ },
+ {
+  "text": "1976,",
+  "startMs": 4963,
+  "endMs": 6412,
+  "timestampMs": 5044,
+  "confidence": null
+ },
+ {
+  "text": "tres",
+  "startMs": 6677,
+  "endMs": 6861,
+  "timestampMs": 6769,
+  "confidence": null
+ },
+ {
+  "text": "socios",
+  "startMs": 6879,
+  "endMs": 7188,
+  "timestampMs": 7034,
+  "confidence": null
+ },
+ {
+  "text": "firmaron",
+  "startMs": 7206,
+  "endMs": 7643,
+  "timestampMs": 7425,
+  "confidence": null
+ },
+ {
+  "text": "este",
+  "startMs": 7661,
+  "endMs": 7970,
+  "timestampMs": 7815,
+  "confidence": null
+ },
+ {
+  "text": "contrato.",
+  "startMs": 7988,
+  "endMs": 8425,
+  "timestampMs": 8206,
+  "confidence": null
+ },
+ {
+  "text": "Ronald",
+  "startMs": 8651,
+  "endMs": 8973,
+  "timestampMs": 8812,
+  "confidence": null
+ },
+ {
+  "text": "Wayne",
+  "startMs": 8991,
+  "endMs": 9313,
+  "timestampMs": 9152,
+  "confidence": null
+ },
+ {
+  "text": "tenía",
+  "startMs": 9331,
+  "endMs": 9653,
+  "timestampMs": 9492,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 9671,
+  "endMs": 9862,
+  "timestampMs": 9766,
+  "confidence": null
+ },
+ {
+  "text": "10 %.",
+  "startMs": 9880,
+  "endMs": 10621,
+  "timestampMs": 9975,
+  "confidence": null
+ },
+ {
+  "text": "12",
+  "startMs": 10838,
+  "endMs": 11222,
+  "timestampMs": 11030,
+  "confidence": null
+ },
+ {
+  "text": "días",
+  "startMs": 11240,
+  "endMs": 11469,
+  "timestampMs": 11355,
+  "confidence": null
+ },
+ {
+  "text": "después,",
+  "startMs": 11487,
+  "endMs": 11871,
+  "timestampMs": 11679,
+  "confidence": null
+ },
+ {
+  "text": "por",
+  "startMs": 12125,
+  "endMs": 12263,
+  "timestampMs": 12195,
+  "confidence": null
+ },
+ {
+  "text": "miedo",
+  "startMs": 12281,
+  "endMs": 12515,
+  "timestampMs": 12398,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 12534,
+  "endMs": 12671,
+  "timestampMs": 12603,
+  "confidence": null
+ },
+ {
+  "text": "las",
+  "startMs": 12689,
+  "endMs": 12826,
+  "timestampMs": 12758,
+  "confidence": null
+ },
+ {
+  "text": "deudas,",
+  "startMs": 12845,
+  "endMs": 13079,
+  "timestampMs": 12962,
+  "confidence": null
+ },
+ {
+  "text": "vendió",
+  "startMs": 13315,
+  "endMs": 13626,
+  "timestampMs": 13471,
+  "confidence": null
+ },
+ {
+  "text": "su",
+  "startMs": 13645,
+  "endMs": 13830,
+  "timestampMs": 13737,
+  "confidence": null
+ },
+ {
+  "text": "parte",
+  "startMs": 13848,
+  "endMs": 14160,
+  "timestampMs": 14005,
+  "confidence": null
+ },
+ {
+  "text": "por",
+  "startMs": 14178,
+  "endMs": 14364,
+  "timestampMs": 14271,
+  "confidence": null
+ },
+ {
+  "text": "800",
+  "startMs": 14382,
+  "endMs": 14948,
+  "timestampMs": 14665,
+  "confidence": null
+ },
+ {
+  "text": "dólares.",
+  "startMs": 14966,
+  "endMs": 15405,
+  "timestampMs": 15186,
+  "confidence": null
+ },
+ {
+  "text": "Años",
+  "startMs": 15627,
+  "endMs": 15915,
+  "timestampMs": 15771,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 15933,
+  "endMs": 16103,
+  "timestampMs": 16017,
+  "confidence": null
+ },
+ {
+  "text": "tarde",
+  "startMs": 16121,
+  "endMs": 16408,
+  "timestampMs": 16265,
+  "confidence": null
+ },
+ {
+  "text": "vendió",
+  "startMs": 16426,
+  "endMs": 16715,
+  "timestampMs": 16570,
+  "confidence": null
+ },
+ {
+  "text": "hasta",
+  "startMs": 16733,
+  "endMs": 17020,
+  "timestampMs": 16876,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 17038,
+  "endMs": 17208,
+  "timestampMs": 17123,
+  "confidence": null
+ },
+ {
+  "text": "papel,",
+  "startMs": 17226,
+  "endMs": 17514,
+  "timestampMs": 17370,
+  "confidence": null
+ },
+ {
+  "text": "por",
+  "startMs": 17739,
+  "endMs": 17966,
+  "timestampMs": 17853,
+  "confidence": null
+ },
+ {
+  "text": "500.",
+  "startMs": 17985,
+  "endMs": 18518,
+  "timestampMs": 18251,
+  "confidence": null
+ },
+ {
+  "text": "¿Los",
+  "startMs": 18728,
+  "endMs": 18900,
+  "timestampMs": 18815,
+  "confidence": null
+ },
+ {
+  "text": "otros",
+  "startMs": 18918,
+  "endMs": 19209,
+  "timestampMs": 19064,
+  "confidence": null
+ },
+ {
+  "text": "dos",
+  "startMs": 19227,
+  "endMs": 19399,
+  "timestampMs": 19314,
+  "confidence": null
+ },
+ {
+  "text": "socios?",
+  "startMs": 19417,
+  "endMs": 19708,
+  "timestampMs": 19563,
+  "confidence": null
+ },
+ {
+  "text": "Steve",
+  "startMs": 19925,
+  "endMs": 20330,
+  "timestampMs": 20127,
+  "confidence": null
+ },
+ {
+  "text": "Jobs",
+  "startMs": 20348,
+  "endMs": 20592,
+  "timestampMs": 20470,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 20610,
+  "endMs": 20853,
+  "timestampMs": 20731,
+  "confidence": null
+ },
+ {
+  "text": "Steve",
+  "startMs": 20871,
+  "endMs": 21277,
+  "timestampMs": 21074,
+  "confidence": null
+ },
+ {
+  "text": "Wozniak.",
+  "startMs": 21295,
+  "endMs": 21702,
+  "timestampMs": 21498,
+  "confidence": null
+ },
+ {
+  "text": "Era",
+  "startMs": 21915,
+  "endMs": 22181,
+  "timestampMs": 22048,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 22199,
+  "endMs": 22357,
+  "timestampMs": 22278,
+  "confidence": null
+ },
+ {
+  "text": "contrato",
+  "startMs": 22375,
+  "endMs": 22752,
+  "timestampMs": 22564,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 22770,
+  "endMs": 22927,
+  "timestampMs": 22849,
+  "confidence": null
+ },
+ {
+  "text": "fundó",
+  "startMs": 22945,
+  "endMs": 23213,
+  "timestampMs": 23079,
+  "confidence": null
+ },
+ {
+  "text": "Apple.",
+  "startMs": 23231,
+  "endMs": 23498,
+  "timestampMs": 23365,
+  "confidence": null
+ },
+ {
+  "text": "En",
+  "startMs": 23760,
+  "endMs": 23923,
+  "timestampMs": 23841,
+  "confidence": null
+ },
+ {
+  "text": "2011",
+  "startMs": 23941,
+  "endMs": 24582,
+  "timestampMs": 24023,
+  "confidence": null
+ },
+ {
+  "text": "se",
+  "startMs": 24600,
+  "endMs": 24764,
+  "timestampMs": 24682,
+  "confidence": null
+ },
+ {
+  "text": "subastó",
+  "startMs": 24782,
+  "endMs": 25173,
+  "timestampMs": 24977,
+  "confidence": null
+ },
+ {
+  "text": "por",
+  "startMs": 25191,
+  "endMs": 25355,
+  "timestampMs": 25273,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 25373,
+  "endMs": 25536,
+  "timestampMs": 25455,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 25555,
+  "endMs": 25718,
+  "timestampMs": 25636,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 25736,
+  "endMs": 25900,
+  "timestampMs": 25818,
+  "confidence": null
+ },
+ {
+  "text": "millón",
+  "startMs": 25918,
+  "endMs": 26195,
+  "timestampMs": 26056,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 26214,
+  "endMs": 26377,
+  "timestampMs": 26295,
+  "confidence": null
+ },
+ {
+  "text": "medio",
+  "startMs": 26395,
+  "endMs": 26673,
+  "timestampMs": 26534,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 26691,
+  "endMs": 26855,
+  "timestampMs": 26773,
+  "confidence": null
+ },
+ {
+  "text": "dólares.",
+  "startMs": 26873,
+  "endMs": 27264,
+  "timestampMs": 27068,
+  "confidence": null
+ },
+ {
+  "text": "Wayne",
+  "startMs": 27474,
+  "endMs": 27817,
+  "timestampMs": 27645,
+  "confidence": null
+ },
+ {
+  "text": "se",
+  "startMs": 27835,
+  "endMs": 28041,
+  "timestampMs": 27938,
+  "confidence": null
+ },
+ {
+  "text": "fue",
+  "startMs": 28059,
+  "endMs": 28264,
+  "timestampMs": 28162,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 28282,
+  "endMs": 28486,
+  "timestampMs": 28385,
+  "confidence": null
+ },
+ {
+  "text": "los",
+  "startMs": 28505,
+  "endMs": 28709,
+  "timestampMs": 28607,
+  "confidence": null
+ },
+ {
+  "text": "12",
+  "startMs": 28727,
+  "endMs": 29072,
+  "timestampMs": 28900,
+  "confidence": null
+ },
+ {
+  "text": "días…",
+  "startMs": 29090,
+  "endMs": 29295,
+  "timestampMs": 29193,
+  "confidence": null
+ },
+ {
+  "text": "antes",
+  "startMs": 29515,
+  "endMs": 29804,
+  "timestampMs": 29659,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 29822,
+  "endMs": 29993,
+  "timestampMs": 29907,
+  "confidence": null
+ },
+ {
+  "text": "ver",
+  "startMs": 30011,
+  "endMs": 30182,
+  "timestampMs": 30096,
+  "confidence": null
+ },
+ {
+  "text": "lo",
+  "startMs": 30200,
+  "endMs": 30371,
+  "timestampMs": 30285,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 30389,
+  "endMs": 30560,
+  "timestampMs": 30475,
+  "confidence": null
+ },
+ {
+  "text": "venía.",
+  "startMs": 30578,
+  "endMs": 30867,
+  "timestampMs": 30723,
+  "confidence": null
+ },
+ {
+  "text": "Con",
+  "startMs": 31078,
+  "endMs": 31242,
+  "timestampMs": 31160,
+  "confidence": null
+ },
+ {
+  "text": "los",
+  "startMs": 31260,
+  "endMs": 31425,
+  "timestampMs": 31343,
+  "confidence": null
+ },
+ {
+  "text": "videos",
+  "startMs": 31443,
+  "endMs": 31721,
+  "timestampMs": 31582,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 31739,
+  "endMs": 31903,
+  "timestampMs": 31821,
+  "confidence": null
+ },
+ {
+  "text": "tu",
+  "startMs": 31921,
+  "endMs": 32085,
+  "timestampMs": 32004,
+  "confidence": null
+ },
+ {
+  "text": "negocio,",
+  "startMs": 32104,
+  "endMs": 32495,
+  "timestampMs": 32300,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 32514,
+  "endMs": 32677,
+  "timestampMs": 32595,
+  "confidence": null
+ },
+ {
+  "text": "te",
+  "startMs": 32695,
+  "endMs": 32860,
+  "timestampMs": 32778,
+  "confidence": null
+ },
+ {
+  "text": "vayas",
+  "startMs": 32878,
+  "endMs": 33156,
+  "timestampMs": 33017,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 33175,
+  "endMs": 33338,
+  "timestampMs": 33256,
+  "confidence": null
+ },
+ {
+  "text": "los",
+  "startMs": 33356,
+  "endMs": 33521,
+  "timestampMs": 33439,
+  "confidence": null
+ },
+ {
+  "text": "12",
+  "startMs": 33539,
+  "endMs": 33817,
+  "timestampMs": 33678,
+  "confidence": null
+ },
+ {
+  "text": "días.",
+  "startMs": 33835,
+  "endMs": 33999,
+  "timestampMs": 33917,
+  "confidence": null
+ },
+ {
+  "text": "Seguime",
+  "startMs": 34208,
+  "endMs": 34616,
+  "timestampMs": 34413,
+  "confidence": null
+ },
+ {
+  "text": "para",
+  "startMs": 34635,
+  "endMs": 34925,
+  "timestampMs": 34780,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 34943,
+  "endMs": 35115,
+  "timestampMs": 35029,
+  "confidence": null
+ },
+ {
+  "text": "historias",
+  "startMs": 35133,
+  "endMs": 35541,
+  "timestampMs": 35337,
+  "confidence": null
+ },
+ {
+  "text": "como",
+  "startMs": 35559,
+  "endMs": 35849,
+  "timestampMs": 35705,
+  "confidence": null
+ },
+ {
+  "text": "esta.",
+  "startMs": 35867,
+  "endMs": 36156,
+  "timestampMs": 36012,
+  "confidence": null
+ }
+]

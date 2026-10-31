@@ -35,6 +35,8 @@ import { Caras, CarasPortada, carasFrames } from "./Altera/reels/Caras";
 import { Servilleta, ServilletaPortada, servilletaFrames } from "./Altera/reels/Servilleta";
 import { TODOS_FRAMES, TodosIgual, TodosIgualPortada } from "./Altera/reels/TodosIgual";
 import { ESCALON_FRAMES, Escalon, EscalonPortada } from "./Altera/reels/Escalon";
+import { Contrato, ContratoPortada, contratoFrames } from "./Altera/reels/Contrato";
+import { Cleopatra, CleopatraPortada, cleopatraFrames } from "./Altera/reels/Cleopatra";
 import { CAPAS_FRAMES, Capas, CapasPortada } from "./Altera/reels/Capas";
 import { TOMAS_FRAMES, Tomas, TomasPortada } from "./Altera/reels/Tomas";
 import { APERTURA_FRAMES, EbookApertura } from "./Ebook/Heladera";
@@ -220,6 +222,26 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="TodosIgualPortada" component={TodosIgualPortada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Escalon" component={Escalon} durationInFrames={ESCALON_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="EscalonPortada" component={EscalonPortada} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Contrato1" component={Contrato} defaultProps={{ v: 1 }} durationInFrames={contratoFrames(1)} fps={30} width={1080} height={1920} />
+      <Composition id="ContratoPortada1" component={ContratoPortada} defaultProps={{ v: 1 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Contrato2" component={Contrato} defaultProps={{ v: 2 }} durationInFrames={contratoFrames(2)} fps={30} width={1080} height={1920} />
+      <Composition id="ContratoPortada2" component={ContratoPortada} defaultProps={{ v: 2 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Contrato3" component={Contrato} defaultProps={{ v: 3 }} durationInFrames={contratoFrames(3)} fps={30} width={1080} height={1920} />
+      <Composition id="ContratoPortada3" component={ContratoPortada} defaultProps={{ v: 3 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Contrato4" component={Contrato} defaultProps={{ v: 4 }} durationInFrames={contratoFrames(4)} fps={30} width={1080} height={1920} />
+      <Composition id="ContratoPortada4" component={ContratoPortada} defaultProps={{ v: 4 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Contrato5" component={Contrato} defaultProps={{ v: 5 }} durationInFrames={contratoFrames(5)} fps={30} width={1080} height={1920} />
+      <Composition id="ContratoPortada5" component={ContratoPortada} defaultProps={{ v: 5 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Cleopatra1" component={Cleopatra} defaultProps={{ v: 1 }} durationInFrames={cleopatraFrames(1)} fps={30} width={1080} height={1920} />
+      <Composition id="CleopatraPortada1" component={CleopatraPortada} defaultProps={{ v: 1 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Cleopatra2" component={Cleopatra} defaultProps={{ v: 2 }} durationInFrames={cleopatraFrames(2)} fps={30} width={1080} height={1920} />
+      <Composition id="CleopatraPortada2" component={CleopatraPortada} defaultProps={{ v: 2 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Cleopatra3" component={Cleopatra} defaultProps={{ v: 3 }} durationInFrames={cleopatraFrames(3)} fps={30} width={1080} height={1920} />
+      <Composition id="CleopatraPortada3" component={CleopatraPortada} defaultProps={{ v: 3 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Cleopatra4" component={Cleopatra} defaultProps={{ v: 4 }} durationInFrames={cleopatraFrames(4)} fps={30} width={1080} height={1920} />
+      <Composition id="CleopatraPortada4" component={CleopatraPortada} defaultProps={{ v: 4 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Cleopatra5" component={Cleopatra} defaultProps={{ v: 5 }} durationInFrames={cleopatraFrames(5)} fps={30} width={1080} height={1920} />
+      <Composition id="CleopatraPortada5" component={CleopatraPortada} defaultProps={{ v: 5 }} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Error1Portada" component={Error1Portada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Piedra" component={Piedra} durationInFrames={PIEDRA_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="GanchoSheet" component={GanchoSheet} durationInFrames={60} fps={30} width={1920} height={1080} />

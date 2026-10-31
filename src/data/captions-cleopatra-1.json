@@ -1,0 +1,562 @@
+[
+ {
+  "text": "¿Cleopatra",
+  "startMs": 28,
+  "endMs": 495,
+  "timestampMs": 262,
+  "confidence": null
+ },
+ {
+  "text": "vivió",
+  "startMs": 514,
+  "endMs": 847,
+  "timestampMs": 681,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 866,
+  "endMs": 1063,
+  "timestampMs": 965,
+  "confidence": null
+ },
+ {
+  "text": "cerca",
+  "startMs": 1081,
+  "endMs": 1415,
+  "timestampMs": 1248,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 1433,
+  "endMs": 1631,
+  "timestampMs": 1531,
+  "confidence": null
+ },
+ {
+  "text": "las",
+  "startMs": 1649,
+  "endMs": 1847,
+  "timestampMs": 1748,
+  "confidence": null
+ },
+ {
+  "text": "pirámides…",
+  "startMs": 1866,
+  "endMs": 2469,
+  "timestampMs": 2167,
+  "confidence": null
+ },
+ {
+  "text": "o",
+  "startMs": 2674,
+  "endMs": 2803,
+  "timestampMs": 2738,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 2821,
+  "endMs": 2951,
+  "timestampMs": 2886,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 2969,
+  "endMs": 3099,
+  "timestampMs": 3034,
+  "confidence": null
+ },
+ {
+  "text": "llegada",
+  "startMs": 3118,
+  "endMs": 3431,
+  "timestampMs": 3274,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 3450,
+  "endMs": 3580,
+  "timestampMs": 3515,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 3598,
+  "endMs": 3728,
+  "timestampMs": 3663,
+  "confidence": null
+ },
+ {
+  "text": "Luna?",
+  "startMs": 3746,
+  "endMs": 3968,
+  "timestampMs": 3856,
+  "confidence": null
+ },
+ {
+  "text": "Tenés",
+  "startMs": 4177,
+  "endMs": 4578,
+  "timestampMs": 4377,
+  "confidence": null
+ },
+ {
+  "text": "2 segundos.",
+  "startMs": 4596,
+  "endMs": 5417,
+  "timestampMs": 4716,
+  "confidence": null
+ },
+ {
+  "text": "La",
+  "startMs": 7777,
+  "endMs": 7960,
+  "timestampMs": 7869,
+  "confidence": null
+ },
+ {
+  "text": "Gran",
+  "startMs": 7979,
+  "endMs": 8161,
+  "timestampMs": 8070,
+  "confidence": null
+ },
+ {
+  "text": "Pirámide",
+  "startMs": 8180,
+  "endMs": 8741,
+  "timestampMs": 8460,
+  "confidence": null
+ },
+ {
+  "text": "se",
+  "startMs": 8759,
+  "endMs": 8942,
+  "timestampMs": 8851,
+  "confidence": null
+ },
+ {
+  "text": "construyó",
+  "startMs": 8960,
+  "endMs": 9394,
+  "timestampMs": 9177,
+  "confidence": null
+ },
+ {
+  "text": "hace",
+  "startMs": 9413,
+  "endMs": 9722,
+  "timestampMs": 9568,
+  "confidence": null
+ },
+ {
+  "text": "unos",
+  "startMs": 9741,
+  "endMs": 10049,
+  "timestampMs": 9895,
+  "confidence": null
+ },
+ {
+  "text": "4.500",
+  "startMs": 10068,
+  "endMs": 11031,
+  "timestampMs": 10222,
+  "confidence": null
+ },
+ {
+  "text": "años.",
+  "startMs": 11050,
+  "endMs": 11358,
+  "timestampMs": 11205,
+  "confidence": null
+ },
+ {
+  "text": "Cleopatra",
+  "startMs": 11587,
+  "endMs": 12077,
+  "timestampMs": 11831,
+  "confidence": null
+ },
+ {
+  "text": "nació",
+  "startMs": 12095,
+  "endMs": 12444,
+  "timestampMs": 12269,
+  "confidence": null
+ },
+ {
+  "text": "casi",
+  "startMs": 12462,
+  "endMs": 12810,
+  "timestampMs": 12636,
+  "confidence": null
+ },
+ {
+  "text": "2.500",
+  "startMs": 12829,
+  "endMs": 13769,
+  "timestampMs": 12931,
+  "confidence": null
+ },
+ {
+  "text": "años",
+  "startMs": 13788,
+  "endMs": 14136,
+  "timestampMs": 13962,
+  "confidence": null
+ },
+ {
+  "text": "después.",
+  "startMs": 14155,
+  "endMs": 14503,
+  "timestampMs": 14329,
+  "confidence": null
+ },
+ {
+  "text": "Para",
+  "startMs": 14722,
+  "endMs": 14993,
+  "timestampMs": 14857,
+  "confidence": null
+ },
+ {
+  "text": "ella,",
+  "startMs": 15011,
+  "endMs": 15281,
+  "timestampMs": 15146,
+  "confidence": null
+ },
+ {
+  "text": "las",
+  "startMs": 15480,
+  "endMs": 15673,
+  "timestampMs": 15577,
+  "confidence": null
+ },
+ {
+  "text": "pirámides",
+  "startMs": 15692,
+  "endMs": 16283,
+  "timestampMs": 15988,
+  "confidence": null
+ },
+ {
+  "text": "eran",
+  "startMs": 16302,
+  "endMs": 16629,
+  "timestampMs": 16466,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 16647,
+  "endMs": 16841,
+  "timestampMs": 16744,
+  "confidence": null
+ },
+ {
+  "text": "antiguas…",
+  "startMs": 16859,
+  "endMs": 17319,
+  "timestampMs": 17089,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 17536,
+  "endMs": 17724,
+  "timestampMs": 17630,
+  "confidence": null
+ },
+ {
+  "text": "Julio",
+  "startMs": 17743,
+  "endMs": 18060,
+  "timestampMs": 17901,
+  "confidence": null
+ },
+ {
+  "text": "César",
+  "startMs": 18079,
+  "endMs": 18396,
+  "timestampMs": 18237,
+  "confidence": null
+ },
+ {
+  "text": "para",
+  "startMs": 18415,
+  "endMs": 18731,
+  "timestampMs": 18573,
+  "confidence": null
+ },
+ {
+  "text": "nosotros.",
+  "startMs": 18750,
+  "endMs": 19196,
+  "timestampMs": 18973,
+  "confidence": null
+ },
+ {
+  "text": "Y",
+  "startMs": 19407,
+  "endMs": 19549,
+  "timestampMs": 19478,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 19568,
+  "endMs": 19710,
+  "timestampMs": 19639,
+  "confidence": null
+ },
+ {
+  "text": "1969,",
+  "startMs": 19729,
+  "endMs": 21116,
+  "timestampMs": 19799,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 21344,
+  "endMs": 21486,
+  "timestampMs": 21415,
+  "confidence": null
+ },
+ {
+  "text": "hombre",
+  "startMs": 21505,
+  "endMs": 21748,
+  "timestampMs": 21626,
+  "confidence": null
+ },
+ {
+  "text": "llegó",
+  "startMs": 21767,
+  "endMs": 22010,
+  "timestampMs": 21888,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 22029,
+  "endMs": 22170,
+  "timestampMs": 22099,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 22189,
+  "endMs": 22331,
+  "timestampMs": 22260,
+  "confidence": null
+ },
+ {
+  "text": "Luna:",
+  "startMs": 22350,
+  "endMs": 22594,
+  "timestampMs": 22471,
+  "confidence": null
+ },
+ {
+  "text": "unos",
+  "startMs": 22819,
+  "endMs": 23143,
+  "timestampMs": 22981,
+  "confidence": null
+ },
+ {
+  "text": "2.000",
+  "startMs": 23161,
+  "endMs": 23564,
+  "timestampMs": 23256,
+  "confidence": null
+ },
+ {
+  "text": "años",
+  "startMs": 23582,
+  "endMs": 23906,
+  "timestampMs": 23744,
+  "confidence": null
+ },
+ {
+  "text": "después",
+  "startMs": 23925,
+  "endMs": 24249,
+  "timestampMs": 24087,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 24268,
+  "endMs": 24460,
+  "timestampMs": 24364,
+  "confidence": null
+ },
+ {
+  "text": "Cleopatra.",
+  "startMs": 24479,
+  "endMs": 24934,
+  "timestampMs": 24706,
+  "confidence": null
+ },
+ {
+  "text": "O",
+  "startMs": 25159,
+  "endMs": 25347,
+  "timestampMs": 25253,
+  "confidence": null
+ },
+ {
+  "text": "sea:",
+  "startMs": 25366,
+  "endMs": 25554,
+  "timestampMs": 25459,
+  "confidence": null
+ },
+ {
+  "text": "Cleopatra",
+  "startMs": 25769,
+  "endMs": 26219,
+  "timestampMs": 25994,
+  "confidence": null
+ },
+ {
+  "text": "vivió",
+  "startMs": 26238,
+  "endMs": 26557,
+  "timestampMs": 26397,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 26576,
+  "endMs": 26766,
+  "timestampMs": 26670,
+  "confidence": null
+ },
+ {
+  "text": "cerca",
+  "startMs": 26784,
+  "endMs": 27104,
+  "timestampMs": 26944,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 27122,
+  "endMs": 27312,
+  "timestampMs": 27217,
+  "confidence": null
+ },
+ {
+  "text": "este",
+  "startMs": 27331,
+  "endMs": 27651,
+  "timestampMs": 27491,
+  "confidence": null
+ },
+ {
+  "text": "video…",
+  "startMs": 27669,
+  "endMs": 27989,
+  "timestampMs": 27829,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 28199,
+  "endMs": 28362,
+  "timestampMs": 28281,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 28381,
+  "endMs": 28544,
+  "timestampMs": 28463,
+  "confidence": null
+ },
+ {
+  "text": "las",
+  "startMs": 28563,
+  "endMs": 28726,
+  "timestampMs": 28644,
+  "confidence": null
+ },
+ {
+  "text": "pirámides.",
+  "startMs": 28744,
+  "endMs": 29249,
+  "timestampMs": 28997,
+  "confidence": null
+ },
+ {
+  "text": "Seguime",
+  "startMs": 29456,
+  "endMs": 29895,
+  "timestampMs": 29676,
+  "confidence": null
+ },
+ {
+  "text": "para",
+  "startMs": 29914,
+  "endMs": 30226,
+  "timestampMs": 30069,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 30244,
+  "endMs": 30430,
+  "timestampMs": 30337,
+  "confidence": null
+ },
+ {
+  "text": "datos",
+  "startMs": 30448,
+  "endMs": 30760,
+  "timestampMs": 30604,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 30779,
+  "endMs": 30964,
+  "timestampMs": 30871,
+  "confidence": null
+ },
+ {
+  "text": "te",
+  "startMs": 30982,
+  "endMs": 31167,
+  "timestampMs": 31074,
+  "confidence": null
+ },
+ {
+  "text": "rompen",
+  "startMs": 31185,
+  "endMs": 31497,
+  "timestampMs": 31341,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 31516,
+  "endMs": 31701,
+  "timestampMs": 31608,
+  "confidence": null
+ },
+ {
+  "text": "cabeza.",
+  "startMs": 31719,
+  "endMs": 32158,
+  "timestampMs": 31939,
+  "confidence": null
+ }
+]

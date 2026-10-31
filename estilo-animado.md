@@ -36,6 +36,14 @@
 - **Sonido**: barrido en cada transición, pop en cada pastilla, golpe en los impactos, clic en el botón + los sonidos
   de la marca (impacto, tensión, tirón) y música original por secciones.
 
+## Temas y comparaciones (correcciones del usuario, 2026-10-31)
+- **Mismo estilo, tema distinto**: no repetir el mismo tipo de historia (después de «La servilleta», otro «papel que
+  vale millones» se siente igual). Cada dato nuevo cambia de mundo (deporte → historia → espacio → naturaleza…).
+- **Comparaciones en vertical**: en 9:16 las líneas de tiempo y las distancias van de arriba hacia abajo (íconos de
+  ~160 px, llaves con pastilla de ~50 px). Las horizontales quedaban chicas en el celular. Pieza: `Cleopatra.tsx`.
+- **Ganchos probados**: 5 ganchos con el mismo cuerpo, aperturas renderizadas y panel; el reto en tiempo real
+  (2 s con reloj) viene ganando (dato real de la cuenta: 73 % a los 3 s).
+
 ## Honestidad
 - Si se recrea un objeto real (un documento, una servilleta), rotular «RECREACIÓN ILUSTRADA».
 - Datos con fuente verificada y cifras exactas; nada inventado.

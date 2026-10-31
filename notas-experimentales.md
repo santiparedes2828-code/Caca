@@ -44,3 +44,9 @@
 - Hipótesis: el time-lapse con contador (DÍA 1 → 365) mantiene la retención en el tramo medio (3–10 s) mejor que una explicación hablada.
 - CTA de comentario («DÍA 1») en vez de «Seguime»: medir comentarios por cada 1.000 views contra «La servilleta».
 - Qué mirar: retención a 3 s, % que lo ve completo, compartidos y guardados, seguidores ganados en las 48 h siguientes.
+
+## «Cleopatra y la Luna» (2026-10-31) — mismo estilo animado, tema de historia
+- Hipótesis: el reto en tiempo real de 2 s con pantalla dividida (pirámides / Luna) retiene a los 3 s igual o mejor que el precio de «La servilleta».
+- Hipótesis: la línea de tiempo vertical hace que el dato se entienda sin sonido (mirar retención de quienes ven sin audio, si la plataforma lo da).
+- Qué mirar: retención a 3 s, % que llega al giro (~27 s), comentarios con apuestas («pirámides» / «Luna»), compartidos y seguidores en 48 h. Segunda candidata para publicar después: gancho 4 «Ni cerca».
+- Descartado: «El contrato de 800 dólares» (Ronald Wayne, Apple). El usuario lo sintió igual a la servilleta; queda en `Contrato.tsx` sin publicar.

@@ -24,7 +24,7 @@ loadFont({ family: "Poppins", url: staticFile("fonts/poppins-latin-600-normal.wo
 const PF = "Poppins";
 
 const CAPS: Caption[][] = [c1, c2, c3];
-const C = {
+export const C = {
   ink: "#15111C",
   white: "#FFFFFF",
   cream: "#FBF5EA",
@@ -49,14 +49,14 @@ const keyColor = (w: string) => {
 };
 
 // ---------- utilidades ----------
-const ln = (f: number, a: number, b: number, from = 0, to = 1, ease?: (x: number) => number) => (b <= a ? (f >= b ? to : from) : interpolate(f, [a, b], [from, to], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease }));
-const eo = Easing.out(Easing.cubic);
-const eio = Easing.inOut(Easing.cubic);
-const pop = (f: number, at: number, fps: number) => spring({ frame: f - at, fps, config: { damping: 10, stiffness: 240 } });
-const drop = (f: number, at: number, fps: number) => Math.min(1, spring({ frame: f - at, fps, config: { damping: 14, stiffness: 240, mass: 1.2 } }));
-const bump = (f: number, at: number) => (f < at ? 0 : Math.exp(-(f - at) / 5) * Math.cos((f - at) * 0.75));
-const decay = (f: number, at: number, k = 4) => (f < at ? 0 : Math.exp(-(f - at) / k));
-const rnd = (n: number) => {
+export const ln = (f: number, a: number, b: number, from = 0, to = 1, ease?: (x: number) => number) => (b <= a ? (f >= b ? to : from) : interpolate(f, [a, b], [from, to], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease }));
+export const eo = Easing.out(Easing.cubic);
+export const eio = Easing.inOut(Easing.cubic);
+export const pop = (f: number, at: number, fps: number) => spring({ frame: f - at, fps, config: { damping: 10, stiffness: 240 } });
+export const drop = (f: number, at: number, fps: number) => Math.min(1, spring({ frame: f - at, fps, config: { damping: 14, stiffness: 240, mass: 1.2 } }));
+export const bump = (f: number, at: number) => (f < at ? 0 : Math.exp(-(f - at) / 5) * Math.cos((f - at) * 0.75));
+export const decay = (f: number, at: number, k = 4) => (f < at ? 0 : Math.exp(-(f - at) / k));
+export const rnd = (n: number) => {
   const x = Math.sin(n * 127.1) * 43758.5453;
   return x - Math.floor(x);
 };
@@ -82,7 +82,7 @@ const makeTimes = (v: number) => {
 export const servilletaFrames = (v: number) => makeTimes(v).frames;
 
 // ---------- textura, luz y partículas ----------
-const Grain: React.FC<{ f: number }> = ({ f }) => (
+export const Grain: React.FC<{ f: number }> = ({ f }) => (
   <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, mixBlendMode: "overlay", opacity: 0.2, pointerEvents: "none" }}>
     <filter id="grain">
       <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves={2} seed={f % 6} stitchTiles="stitch" />
@@ -91,8 +91,8 @@ const Grain: React.FC<{ f: number }> = ({ f }) => (
     <rect width={1080} height={1920} filter="url(#grain)" />
   </svg>
 );
-const Vignette: React.FC = () => <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.6) 100%)", pointerEvents: "none" }} />;
-const Bokeh: React.FC<{ f: number; color: string; n?: number; seed?: number; top?: number; h?: number }> = ({ f, color, n = 14, seed = 1, top = 0, h = 1300 }) => (
+export const Vignette: React.FC = () => <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.6) 100%)", pointerEvents: "none" }} />;
+export const Bokeh: React.FC<{ f: number; color: string; n?: number; seed?: number; top?: number; h?: number }> = ({ f, color, n = 14, seed = 1, top = 0, h = 1300 }) => (
   <>
     {Array.from({ length: n }, (_, k) => {
       const r = 30 + ((k * 37 + seed * 11) % 70);
@@ -104,7 +104,7 @@ const Bokeh: React.FC<{ f: number; color: string; n?: number; seed?: number; top
   </>
 );
 // Polvo que flota en la luz
-const Dust: React.FC<{ f: number; x0?: number; x1?: number; y0?: number; y1?: number; n?: number; color?: string }> = ({ f, x0 = 120, x1 = 960, y0 = 600, y1 = 1500, n = 40, color = "#FFE7C0" }) => (
+export const Dust: React.FC<{ f: number; x0?: number; x1?: number; y0?: number; y1?: number; n?: number; color?: string }> = ({ f, x0 = 120, x1 = 960, y0 = 600, y1 = 1500, n = 40, color = "#FFE7C0" }) => (
   <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
     {Array.from({ length: n }, (_, k) => {
       const sp = 0.6 + rnd(k) * 1.6;
@@ -115,7 +115,7 @@ const Dust: React.FC<{ f: number; x0?: number; x1?: number; y0?: number; y1?: nu
     })}
   </svg>
 );
-const Stars: React.FC<{ f: number; n?: number; h?: number; shoot?: boolean }> = ({ f, n = 80, h = 1150, shoot = true }) => {
+export const Stars: React.FC<{ f: number; n?: number; h?: number; shoot?: boolean }> = ({ f, n = 80, h = 1150, shoot = true }) => {
   const sh = (f % 45) / 45;
   return (
     <svg width={1080} height={1920} style={{ position: "absolute", inset: 0 }}>
@@ -130,7 +130,7 @@ const Stars: React.FC<{ f: number; n?: number; h?: number; shoot?: boolean }> = 
   );
 };
 // Chispas que salen de un punto (impactos, tinta, corte)
-const Sparks: React.FC<{ f: number; at: number; x: number; y: number; n?: number; color?: string; spread?: number; dur?: number }> = ({ f, at, x, y, n = 16, color = C.gold, spread = 260, dur = 22 }) => {
+export const Sparks: React.FC<{ f: number; at: number; x: number; y: number; n?: number; color?: string; spread?: number; dur?: number }> = ({ f, at, x, y, n = 16, color = C.gold, spread = 260, dur = 22 }) => {
   const k = f - at;
   if (k < 0 || k > dur) return null;
   const p = k / dur;
@@ -145,7 +145,7 @@ const Sparks: React.FC<{ f: number; at: number; x: number; y: number; n?: number
   );
 };
 // Lluvia de monedas al cerrar la subasta
-const Coins: React.FC<{ f: number; at: number; x: number; y: number }> = ({ f, at, x, y }) => {
+export const Coins: React.FC<{ f: number; at: number; x: number; y: number }> = ({ f, at, x, y }) => {
   const k = f - at;
   if (k < 0 || k > 45) return null;
   return (
@@ -170,12 +170,12 @@ const Coins: React.FC<{ f: number; at: number; x: number; y: number }> = ({ f, a
 };
 
 // ---------- piezas de texto ----------
-const Pill: React.FC<{ x: number; y: number; text: string; s?: number; size?: number; dark?: boolean; rot?: number }> = ({ x, y, text, s = 1, size = 76, dark = false, rot = 0 }) => (
+export const Pill: React.FC<{ x: number; y: number; text: string; s?: number; size?: number; dark?: boolean; rot?: number }> = ({ x, y, text, s = 1, size = 76, dark = false, rot = 0 }) => (
   <div style={{ position: "absolute", left: x, top: y, transform: `translate(-50%, -50%) scale(${s}) rotate(${rot}deg)`, whiteSpace: "nowrap" }}>
     <div style={{ padding: `${size * 0.16}px ${size * 0.5}px ${size * 0.22}px`, borderRadius: 999, background: dark ? C.ink : C.cream, color: dark ? C.white : C.ink, fontFamily: PF, fontWeight: 800, fontSize: size, letterSpacing: "-0.01em", boxShadow: `0 ${size * 0.12}px 0 rgba(0,0,0,0.45), 0 ${size * 0.3}px ${size * 0.6}px rgba(0,0,0,0.35)` }}>{text}</div>
   </div>
 );
-const PriceCard: React.FC<{ x: number; y: number; label: string; value: string; s?: number; shake?: number; note?: string; glow?: number; rot?: number; money?: boolean }> = ({ x, y, label, value, s = 1, shake = 0, note, glow = 0, rot = 0, money = true }) => (
+export const PriceCard: React.FC<{ x: number; y: number; label: string; value: string; s?: number; shake?: number; note?: string; glow?: number; rot?: number; money?: boolean }> = ({ x, y, label, value, s = 1, shake = 0, note, glow = 0, rot = 0, money = true }) => (
   <div style={{ position: "absolute", left: x, top: y, transform: `translate(-50%, -50%) scale(${s}) translateX(${shake}px) rotate(${rot}deg)`, width: 860 }}>
     <div style={{ borderRadius: 30, background: "rgba(16,13,20,0.92)", borderLeft: `8px solid ${money ? C.green : C.gold}`, boxShadow: `0 30px 60px rgba(0,0,0,0.5), 0 0 ${60 * glow}px ${money ? `rgba(74,222,128,${0.6 * glow})` : `rgba(247,185,85,${0.6 * glow})`}`, padding: "26px 0 30px", textAlign: "center", overflow: "hidden", position: "relative" }}>
       <div style={{ fontFamily: PF, fontWeight: 600, fontSize: 30, letterSpacing: "0.22em", color: "rgba(255,255,255,0.6)" }}>{label}</div>
@@ -184,11 +184,11 @@ const PriceCard: React.FC<{ x: number; y: number; label: string; value: string; 
     </div>
   </div>
 );
-const Label: React.FC<{ text: string; x?: number; y?: number }> = ({ text, x = 72, y = 1500 }) => (
+export const Label: React.FC<{ text: string; x?: number; y?: number }> = ({ text, x = 72, y = 1500 }) => (
   <div style={{ position: "absolute", left: x, top: y, fontFamily: PF, fontWeight: 600, fontSize: 24, letterSpacing: "0.1em", color: "rgba(255,255,255,0.55)" }}>{text}</div>
 );
 // Texto grande que entra letra por letra con barrido de luz
-const BigName: React.FC<{ text: string; f: number; at: number; fps: number; y: number; size?: number }> = ({ text, f, at, fps, y, size = 140 }) => {
+export const BigName: React.FC<{ text: string; f: number; at: number; fps: number; y: number; size?: number }> = ({ text, f, at, fps, y, size = 140 }) => {
   if (f < at) return null;
   const sweep = ((f - at) % 50) / 50;
   return (
@@ -431,7 +431,7 @@ const Field: React.FC<{ f: number; k: number }> = ({ f, k }) => {
 };
 
 // Sala de subastas: el foco se mueve, la gente levanta la paleta
-const Auction: React.FC<{ f: number; from: number }> = ({ f, from }) => (
+export const Auction: React.FC<{ f: number; from: number }> = ({ f, from }) => (
   <>
     <AbsoluteFill style={{ background: "linear-gradient(180deg, #120E18 0%, #241A2C 60%, #120E14 100%)" }} />
     <svg width={1080} height={1920} style={{ position: "absolute", inset: 0 }}>
@@ -466,7 +466,7 @@ const Auction: React.FC<{ f: number; from: number }> = ({ f, from }) => (
 );
 
 // Fondo oscuro con bokeh (lección y CTA)
-const Studio: React.FC<{ f: number; tint?: string }> = ({ f, tint = "#2D1E3A" }) => (
+export const Studio: React.FC<{ f: number; tint?: string }> = ({ f, tint = "#2D1E3A" }) => (
   <>
     <AbsoluteFill style={{ background: `linear-gradient(180deg, #120E1A 0%, ${tint} 60%, #120E16 100%)` }} />
     <Bokeh f={f} color="#B98CFF" seed={7} n={12} />
@@ -558,7 +558,7 @@ const ProCam: React.FC<{ x: number; y: number; s?: number; f: number; crossed?: 
 );
 
 // Celular oscuro con contenido de 452 × 826; entra inclinado en 3D
-const DarkPhone: React.FC<{ x: number; y: number; s: number; children: React.ReactNode; lift?: number; f?: number; ry?: number }> = ({ x, y, s, children, lift = 0, f = 0, ry = 0 }) => (
+export const DarkPhone: React.FC<{ x: number; y: number; s: number; children: React.ReactNode; lift?: number; f?: number; ry?: number }> = ({ x, y, s, children, lift = 0, f = 0, ry = 0 }) => (
   <div style={{ position: "absolute", left: x - 250, top: y - 500 - lift, width: 500, height: 1000, perspective: 1600 }}>
     <div style={{ width: 500, height: 1000, transform: `scale(${s}) rotateY(${ry + 6 * Math.sin(f * 0.06)}deg) rotateZ(${2 * Math.sin(f * 0.09)}deg) translateY(${10 * Math.sin(f * 0.1)}px)`, borderRadius: 70, background: "linear-gradient(160deg, #3A3646, #1A1722)", padding: 14, boxSizing: "border-box", boxShadow: "0 40px 80px rgba(0,0,0,0.6), inset 0 0 0 3px #4A4558" }}>
       <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: 58, overflow: "hidden", background: "#0E0C12" }}>
@@ -571,7 +571,7 @@ const DarkPhone: React.FC<{ x: number; y: number; s: number; children: React.Rea
 );
 
 // Mano que toca el botón «Seguir»
-const Tap: React.FC<{ x: number; y: number; f: number; from: number }> = ({ x, y, f, from }) => {
+export const Tap: React.FC<{ x: number; y: number; f: number; from: number }> = ({ x, y, f, from }) => {
   if (f < from) return null;
   const ph = ((f - from) % 24) / 24;
   const press = ph < 0.2 ? ph / 0.2 : ph < 0.4 ? 1 - (ph - 0.2) / 0.2 : 0;
