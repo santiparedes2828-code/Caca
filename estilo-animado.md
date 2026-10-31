@@ -17,8 +17,13 @@
 - **Celulares oscuros** (marco grafito, isla, hora) cuando hay que mostrar un video o una app.
 
 ## Cómo se mueve (corrección del usuario, 2026-10-31: «que se mueva todo, animaciones y efectos en prácticamente todo»)
-- **Cámara viva siempre**: flota (x/y/rotación con senos), empuja en cada escena (hasta +10 %), **golpea en cada palabra**
-  (+1,5 % y sube 6 px al empezar cada palabra) y **tiembla** en los impactos (cifras, sellos, cortes).
+- **Cámara viva siempre**: flota (x/y/rotación con senos), empuja en cada escena (hasta +10 %) y **tiembla** en los
+  impactos (cifras, sellos, cortes). **Sin zoom en cada palabra** (corrección del usuario, 2026-10-31: se sentía brusco).
+- **Colores en las palabras clave** de los subtítulos (pedido del usuario): plata y lo que sí importa en **verde**
+  (#4ADE80: «millón», «dólares», «mostrás»…), protagonistas en **dorado** («servilleta», «Messi»), lo negativo en
+  **rojo** («nada», «cámara»). Los precios, en verde con brillo verde.
+- **Siluetas de personas: revisar la anatomía** (corrección del usuario: el chico parecía tener tres piernas). Una pierna
+  por lado; si patea, la pierna gira desde la cadera.
 - **Transiciones** entre escenas alternando **barrido** lateral con desenfoque, **zoom** a través y **destello**.
 - **Partículas en todas las escenas**: polvo en la luz, bokeh que se desplaza, estrellas que titilan y fugaces,
   chispas en cada aparición, monedas en el precio, rayos que giran, pájaros, pasto que se mueve.

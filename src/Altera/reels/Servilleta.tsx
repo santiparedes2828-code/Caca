@@ -32,6 +32,20 @@ const C = {
   orange: "#FF6A2B",
   red: "#E5484D",
   grey: "rgba(214,206,226,0.55)",
+  green: "#4ADE80",
+};
+
+// Palabras clave con color (pedido del usuario: «verde en el millón de dólares o así»):
+// plata y lo que sí importa en verde · protagonistas en dorado · lo negativo en rojo
+const KEYCOLOR: [RegExp, string][] = [
+  [/^(millón|dólares|vendió|subastó|mostrás|editás)$/i, C.green],
+  [/^(servilleta|lionel|messi|escrito|acuerdo)$/i, C.gold],
+  [/^(nada|cámara|contrato)$/i, C.red],
+];
+const keyColor = (w: string) => {
+  const clean = w.toLowerCase().replace(/[¿?¡!.,:…"]/g, "");
+  for (const [re, col] of KEYCOLOR) if (re.test(clean)) return col;
+  return null;
 };
 
 // ---------- utilidades ----------
@@ -161,11 +175,11 @@ const Pill: React.FC<{ x: number; y: number; text: string; s?: number; size?: nu
     <div style={{ padding: `${size * 0.16}px ${size * 0.5}px ${size * 0.22}px`, borderRadius: 999, background: dark ? C.ink : C.cream, color: dark ? C.white : C.ink, fontFamily: PF, fontWeight: 800, fontSize: size, letterSpacing: "-0.01em", boxShadow: `0 ${size * 0.12}px 0 rgba(0,0,0,0.45), 0 ${size * 0.3}px ${size * 0.6}px rgba(0,0,0,0.35)` }}>{text}</div>
   </div>
 );
-const PriceCard: React.FC<{ x: number; y: number; label: string; value: string; s?: number; shake?: number; note?: string; glow?: number; rot?: number }> = ({ x, y, label, value, s = 1, shake = 0, note, glow = 0, rot = 0 }) => (
+const PriceCard: React.FC<{ x: number; y: number; label: string; value: string; s?: number; shake?: number; note?: string; glow?: number; rot?: number; money?: boolean }> = ({ x, y, label, value, s = 1, shake = 0, note, glow = 0, rot = 0, money = true }) => (
   <div style={{ position: "absolute", left: x, top: y, transform: `translate(-50%, -50%) scale(${s}) translateX(${shake}px) rotate(${rot}deg)`, width: 860 }}>
-    <div style={{ borderRadius: 30, background: "rgba(16,13,20,0.92)", borderLeft: `8px solid ${C.gold}`, boxShadow: `0 30px 60px rgba(0,0,0,0.5), 0 0 ${60 * glow}px rgba(247,185,85,${0.6 * glow})`, padding: "26px 0 30px", textAlign: "center", overflow: "hidden", position: "relative" }}>
+    <div style={{ borderRadius: 30, background: "rgba(16,13,20,0.92)", borderLeft: `8px solid ${money ? C.green : C.gold}`, boxShadow: `0 30px 60px rgba(0,0,0,0.5), 0 0 ${60 * glow}px ${money ? `rgba(74,222,128,${0.6 * glow})` : `rgba(247,185,85,${0.6 * glow})`}`, padding: "26px 0 30px", textAlign: "center", overflow: "hidden", position: "relative" }}>
       <div style={{ fontFamily: PF, fontWeight: 600, fontSize: 30, letterSpacing: "0.22em", color: "rgba(255,255,255,0.6)" }}>{label}</div>
-      <div style={{ fontFamily: PF, fontWeight: 800, fontSize: 118, letterSpacing: "-0.02em", color: C.white, fontVariantNumeric: "tabular-nums", lineHeight: 1.08 }}>{value}</div>
+      <div style={{ fontFamily: PF, fontWeight: 800, fontSize: 118, letterSpacing: "-0.02em", color: money ? C.green : C.white, textShadow: money ? "0 0 30px rgba(74,222,128,0.55)" : undefined, fontVariantNumeric: "tabular-nums", lineHeight: 1.08 }}>{value}</div>
       {note ? <div style={{ fontFamily: PF, fontWeight: 600, fontSize: 24, letterSpacing: "0.12em", color: "rgba(255,255,255,0.45)" }}>{note}</div> : null}
     </div>
   </div>
@@ -218,6 +232,8 @@ const Subs: React.FC<{ words: { text: string; at: number }[]; f: number; fps: nu
           <span key={i} style={{ display: "inline-block", whiteSpace: "pre", margin: "0 9px", opacity: Math.min(1, d * 1.5), transform: `translateY(${(1 - d) * 40}px) scale(${(0.7 + 0.3 * d) * wob}) rotate(${(1 - d) * (i % 2 ? 8 : -8)}deg)` }}>
             {num && now ? (
               <span style={{ display: "inline-block", padding: "0 22px 6px", borderRadius: 999, background: C.cream, color: C.ink, boxShadow: "0 8px 0 rgba(0,0,0,0.45)" }}>{txt}</span>
+            ) : keyColor(txt) ? (
+              <span style={{ color: keyColor(txt) ?? C.white, opacity: now ? 1 : 0.85, textShadow: now ? `0 0 30px ${keyColor(txt)}, 0 4px 14px rgba(0,0,0,0.6)` : "0 4px 14px rgba(0,0,0,0.5)" }}>{txt}</span>
             ) : (
               <span style={{ color: now ? C.white : C.grey, textShadow: now ? "0 0 26px rgba(255,255,255,0.45), 0 4px 14px rgba(0,0,0,0.6)" : "0 4px 14px rgba(0,0,0,0.5)" }}>{txt}</span>
             )}
@@ -364,7 +380,8 @@ const City: React.FC<{ f: number; k: number }> = ({ f, k }) => (
 const Field: React.FC<{ f: number; k: number }> = ({ f, k }) => {
   const ph = (f % 20) / 20;
   const ballY = 4 * ph * (1 - ph);
-  const knee = ph < 0.15 ? 1 - ph / 0.15 : 0;
+  // patada: sube justo antes de que baje la pelota y vuelve después del toque
+  const kick = ph < 0.15 ? 1 - ph / 0.15 : ph > 0.85 ? (ph - 0.85) / 0.15 : 0;
   return (
     <>
       <AbsoluteFill style={{ background: "linear-gradient(180deg, #3E2140 0%, #A8473F 38%, #F09A55 60%, #F7C27A 72%, #6E3A35 73%, #3A1E28 100%)" }} />
@@ -388,15 +405,19 @@ const Field: React.FC<{ f: number; k: number }> = ({ f, k }) => {
         <path d="M800 1268 L800 1200 L960 1200 L960 1268" stroke="#2A1420" strokeWidth={8} fill="none" />
         <g transform="translate(470 1385) scale(1.55)">
           <ellipse cx={0} cy={6} rx={90} ry={12} fill="#000" opacity={0.35} />
-          <path d="M-22 -150 L-30 -10 L-8 -10 L-2 -120 L6 -120 L16 -10 L36 -10 L26 -150 Z" fill="#1A0D14" />
-          <g transform={`rotate(${-35 * knee} 18 -120)`}>
-            <path d="M10 -125 L60 -60 L70 -70 L24 -130 Z" fill="#1A0D14" />
+          {/* pierna de apoyo */}
+          <path d="M-30 -152 L-36 -14 L-12 -14 L-4 -152 Z" fill="#1A0D14" />
+          <ellipse cx={-26} cy={-10} rx={22} ry={9} fill="#1A0D14" />
+          {/* pierna que patea: gira desde la cadera */}
+          <g transform={`rotate(${-55 * kick} 14 -150)`}>
+            <path d="M2 -152 L10 -14 L34 -14 L28 -152 Z" fill="#1A0D14" />
+            <ellipse cx={30} cy={-10} rx={22} ry={9} fill="#1A0D14" />
           </g>
           <path d="M-36 -290 Q0 -310 36 -290 L40 -150 L-40 -150 Z" fill="#1A0D14" />
           <path d={`M-36 -280 L${-70 - 8 * Math.sin(f * 0.6)} -200 L-60 -194 L-30 -260 Z`} fill="#1A0D14" />
           <path d={`M36 -280 L${74 + 8 * Math.sin(f * 0.6 + 1)} -210 L64 -204 L30 -260 Z`} fill="#1A0D14" />
           <circle cx={0} cy={-330 + 4 * Math.sin(f * 0.3)} r={38} fill="#1A0D14" />
-          <circle cx={58} cy={-74 - ballY * 260} r={24} fill="#1A0D14" />
+          <circle cx={128} cy={-104 - ballY * 260} r={24} fill="#1A0D14" />
         </g>
         {Array.from({ length: 40 }, (_, i) => {
           const x = i * 28 + 4;
@@ -881,7 +902,7 @@ export const Servilleta: React.FC<{ v: number }> = ({ v }) => {
   // ---- cámara viva: flota siempre, empuja en cada escena, golpea en cada palabra y tiembla en los impactos ----
   let lastWord = -999;
   for (const w of words) if (f >= w.at) lastWord = w.at;
-  const kick = decay(f, lastWord, 4);
+  const kick = 0 * decay(f, lastWord, 4); // sin zoom en cada palabra (pedido del usuario); el resto del movimiento sigue
   const impacts = [slam1, land2000, S_DIR + 2, W(iContrato), W(i13), v === 1 ? W(iName1) : slam1, tGlow, tCam + 2, tMos, tEd + 2, tBtn];
   const shake = impacts.reduce((a, at) => a + decay(f, at, 3), 0);
   const prog = ln(f, sceneStart, sceneEnd, 0, 1, eio);
