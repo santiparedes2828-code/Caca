@@ -38,3 +38,9 @@
 - **H2.** El reto (V2) tiene más comentarios y compartidos por 1000 vistas.
 - **H3.** El nicho (V3) tiene menos vistas pero más seguidores nuevos que sean negocios (revisar perfiles de los nuevos).
 - Publicar en días distintos a la misma hora; medir retención 1/3/10 s, % completo, compartidos, guardados y seguidores.
+
+## «Escalón» (2026-10-31) — stickmans sin voz, tema general
+- Hipótesis: una metáfora física sin voz (stickman que se estrella contra un muro a los 0,8 s) retiene mejor en los primeros 3 s que los reels narrados de Hook House, porque se entiende sin sonido y sin conocer el nicho.
+- Hipótesis: el time-lapse con contador (DÍA 1 → 365) mantiene la retención en el tramo medio (3–10 s) mejor que una explicación hablada.
+- CTA de comentario («DÍA 1») en vez de «Seguime»: medir comentarios por cada 1.000 views contra «La servilleta».
+- Qué mirar: retención a 3 s, % que lo ve completo, compartidos y guardados, seguidores ganados en las 48 h siguientes.

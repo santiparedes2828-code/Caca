@@ -33,6 +33,8 @@ import { MedialunaGancho, ganchoFrames } from "./Altera/reels/MedialunaGanchos";
 import { MEDIALUNA_V2_FRAMES, MedialunaV2, MedialunaV2Portada } from "./Altera/reels/MedialunaV2";
 import { Caras, CarasPortada, carasFrames } from "./Altera/reels/Caras";
 import { Servilleta, ServilletaPortada, servilletaFrames } from "./Altera/reels/Servilleta";
+import { TODOS_FRAMES, TodosIgual, TodosIgualPortada } from "./Altera/reels/TodosIgual";
+import { ESCALON_FRAMES, Escalon, EscalonPortada } from "./Altera/reels/Escalon";
 import { CAPAS_FRAMES, Capas, CapasPortada } from "./Altera/reels/Capas";
 import { TOMAS_FRAMES, Tomas, TomasPortada } from "./Altera/reels/Tomas";
 import { APERTURA_FRAMES, EbookApertura } from "./Ebook/Heladera";
@@ -214,6 +216,10 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="ServilletaPortada2" component={ServilletaPortada} defaultProps={{ v: 2 }} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Servilleta3" component={Servilleta} defaultProps={{ v: 3 }} durationInFrames={servilletaFrames(3)} fps={30} width={1080} height={1920} />
       <Composition id="ServilletaPortada3" component={ServilletaPortada} defaultProps={{ v: 3 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="TodosIgual" component={TodosIgual} durationInFrames={TODOS_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="TodosIgualPortada" component={TodosIgualPortada} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Escalon" component={Escalon} durationInFrames={ESCALON_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="EscalonPortada" component={EscalonPortada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Error1Portada" component={Error1Portada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Piedra" component={Piedra} durationInFrames={PIEDRA_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="GanchoSheet" component={GanchoSheet} durationInFrames={60} fps={30} width={1920} height={1080} />
