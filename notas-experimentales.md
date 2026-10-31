@@ -31,3 +31,10 @@
 - **v1** (`out/hookhouse/medialuna.mp4`): gancho «Si en tu video el producto se ve así…» + mito → falso → 3 cambios. **v2** (`out/medialuna_v2/medialuna_v2.mp4`): gancho reto en tiempo real + guion escalera «EN EL SEGUNDO 1 SE VE». Misma voz, misma demo, mismo CTA «VIDEO».
 - **H1.** La v2 retiene más a los 3 s (panel simulado: 5/5 contra 3/5). **H2.** La v2 tiene más guardados por 1000 vistas (la escalera es útil para guardar).
 - Publicar en días distintos a la misma hora; medir retención 1/3/10 s, % completo, guardados, compartidos y DMs «VIDEO». Pruebas y panel en `produccion/medialuna_v2/pruebas.md`.
+
+## «La servilleta de Messi» — 3 variantes (2026-10-31)
+- Primera pieza en el estilo de `estilo-animado.md` (sin Hookie). Variantes y panel en `produccion/servilleta/pruebas.md`.
+- **H1.** El gancho de precio (V1) retiene más a los 3 s que el reto (V2) y que el nicho (V3).
+- **H2.** El reto (V2) tiene más comentarios y compartidos por 1000 vistas.
+- **H3.** El nicho (V3) tiene menos vistas pero más seguidores nuevos que sean negocios (revisar perfiles de los nuevos).
+- Publicar en días distintos a la misma hora; medir retención 1/3/10 s, % completo, compartidos, guardados y seguidores.

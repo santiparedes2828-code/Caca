@@ -1,0 +1,466 @@
+{
+ "words": [
+  {
+   "text": "Las",
+   "start": 0.03,
+   "end": 0.23,
+   "type": "word"
+  },
+  {
+   "text": "fotos",
+   "start": 0.25,
+   "end": 0.588,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 0.608,
+   "end": 0.808,
+   "type": "word"
+  },
+  {
+   "text": "Instagram",
+   "start": 0.828,
+   "end": 1.303,
+   "type": "word"
+  },
+  {
+   "text": "con",
+   "start": 1.323,
+   "end": 1.523,
+   "type": "word"
+  },
+  {
+   "text": "esto…",
+   "start": 1.543,
+   "end": 1.881,
+   "type": "word"
+  },
+  {
+   "text": "tienen",
+   "start": 2.278,
+   "end": 2.61,
+   "type": "word"
+  },
+  {
+   "text": "38 %",
+   "start": 2.63,
+   "end": 3.965,
+   "type": "word"
+  },
+  {
+   "text": "más",
+   "start": 3.985,
+   "end": 4.182,
+   "type": "word"
+  },
+  {
+   "text": "chances",
+   "start": 4.202,
+   "end": 4.534,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 4.554,
+   "end": 4.751,
+   "type": "word"
+  },
+  {
+   "text": "recibir",
+   "start": 4.771,
+   "end": 5.239,
+   "type": "word"
+  },
+  {
+   "text": "me",
+   "start": 5.259,
+   "end": 5.455,
+   "type": "word"
+  },
+  {
+   "text": "gusta.",
+   "start": 5.475,
+   "end": 5.808,
+   "type": "word"
+  },
+  {
+   "text": "Lo",
+   "start": 6.215,
+   "end": 6.428,
+   "type": "word"
+  },
+  {
+   "text": "midieron",
+   "start": 6.448,
+   "end": 6.952,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 6.972,
+   "end": 7.184,
+   "type": "word"
+  },
+  {
+   "text": "1,1 millones",
+   "start": 7.204,
+   "end": 8.261,
+   "type": "word"
+  },
+  {
+   "text": "fotos.",
+   "start": 8.281,
+   "end": 8.639,
+   "type": "word"
+  },
+  {
+   "text": "El",
+   "start": 9.125,
+   "end": 9.293,
+   "type": "word"
+  },
+  {
+   "text": "estudio",
+   "start": 9.313,
+   "end": 9.716,
+   "type": "word"
+  },
+  {
+   "text": "no",
+   "start": 9.736,
+   "end": 9.904,
+   "type": "word"
+  },
+  {
+   "text": "dice",
+   "start": 9.924,
+   "end": 10.21,
+   "type": "word"
+  },
+  {
+   "text": "por",
+   "start": 10.23,
+   "end": 10.398,
+   "type": "word"
+  },
+  {
+   "text": "qué…",
+   "start": 10.418,
+   "end": 10.586,
+   "type": "word"
+  },
+  {
+   "text": "pero",
+   "start": 11.04,
+   "end": 11.292,
+   "type": "word"
+  },
+  {
+   "text": "tu",
+   "start": 11.312,
+   "end": 11.459,
+   "type": "word"
+  },
+  {
+   "text": "cerebro",
+   "start": 11.479,
+   "end": 11.836,
+   "type": "word"
+  },
+  {
+   "text": "tiene",
+   "start": 11.856,
+   "end": 12.108,
+   "type": "word"
+  },
+  {
+   "text": "una",
+   "start": 12.128,
+   "end": 12.38,
+   "type": "word"
+  },
+  {
+   "text": "zona",
+   "start": 12.4,
+   "end": 12.651,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 12.671,
+   "end": 12.819,
+   "type": "word"
+  },
+  {
+   "text": "se",
+   "start": 12.839,
+   "end": 12.986,
+   "type": "word"
+  },
+  {
+   "text": "dedica",
+   "start": 13.006,
+   "end": 13.363,
+   "type": "word"
+  },
+  {
+   "text": "solo",
+   "start": 13.383,
+   "end": 13.634,
+   "type": "word"
+  },
+  {
+   "text": "a",
+   "start": 13.654,
+   "end": 13.802,
+   "type": "word"
+  },
+  {
+   "text": "esto:",
+   "start": 13.822,
+   "end": 14.074,
+   "type": "word"
+  },
+  {
+   "text": "caras.",
+   "start": 14.602,
+   "end": 15.092,
+   "type": "word"
+  },
+  {
+   "text": "Así",
+   "start": 15.569,
+   "end": 15.869,
+   "type": "word"
+  },
+  {
+   "text": "que,",
+   "start": 15.889,
+   "end": 16.066,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 16.086,
+   "end": 16.263,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 16.283,
+   "end": 16.461,
+   "type": "word"
+  },
+  {
+   "text": "video",
+   "start": 16.481,
+   "end": 16.781,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 16.801,
+   "end": 16.978,
+   "type": "word"
+  },
+  {
+   "text": "tu",
+   "start": 16.998,
+   "end": 17.175,
+   "type": "word"
+  },
+  {
+   "text": "negocio,",
+   "start": 17.195,
+   "end": 17.619,
+   "type": "word"
+  },
+  {
+   "text": "no",
+   "start": 17.901,
+   "end": 18.085,
+   "type": "word"
+  },
+  {
+   "text": "muestres",
+   "start": 18.105,
+   "end": 18.416,
+   "type": "word"
+  },
+  {
+   "text": "solo",
+   "start": 18.436,
+   "end": 18.748,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 18.768,
+   "end": 18.952,
+   "type": "word"
+  },
+  {
+   "text": "producto:",
+   "start": 18.972,
+   "end": 19.411,
+   "type": "word"
+  },
+  {
+   "text": "mostrá",
+   "start": 19.772,
+   "end": 20.176,
+   "type": "word"
+  },
+  {
+   "text": "quién",
+   "start": 20.196,
+   "end": 20.436,
+   "type": "word"
+  },
+  {
+   "text": "lo",
+   "start": 20.456,
+   "end": 20.697,
+   "type": "word"
+  },
+  {
+   "text": "hace.",
+   "start": 20.717,
+   "end": 21.12,
+   "type": "word"
+  },
+  {
+   "text": "¿Ves?",
+   "start": 21.594,
+   "end": 21.916,
+   "type": "word"
+  },
+  {
+   "text": "Por",
+   "start": 22.343,
+   "end": 22.486,
+   "type": "word"
+  },
+  {
+   "text": "eso",
+   "start": 22.506,
+   "end": 22.752,
+   "type": "word"
+  },
+  {
+   "text": "este",
+   "start": 22.772,
+   "end": 23.018,
+   "type": "word"
+  },
+  {
+   "text": "video",
+   "start": 23.038,
+   "end": 23.283,
+   "type": "word"
+  },
+  {
+   "text": "tiene",
+   "start": 23.303,
+   "end": 23.549,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 23.569,
+   "end": 23.713,
+   "type": "word"
+  },
+  {
+   "text": "personaje",
+   "start": 23.733,
+   "end": 24.183,
+   "type": "word"
+  },
+  {
+   "text": "con",
+   "start": 24.203,
+   "end": 24.346,
+   "type": "word"
+  },
+  {
+   "text": "cara.",
+   "start": 24.366,
+   "end": 24.612,
+   "type": "word"
+  },
+  {
+   "text": "Seguime:",
+   "start": 25.066,
+   "end": 25.534,
+   "type": "word"
+  },
+  {
+   "text": "voy",
+   "start": 25.931,
+   "end": 26.075,
+   "type": "word"
+  },
+  {
+   "text": "a",
+   "start": 26.095,
+   "end": 26.239,
+   "type": "word"
+  },
+  {
+   "text": "mejorar",
+   "start": 26.259,
+   "end": 26.608,
+   "type": "word"
+  },
+  {
+   "text": "otro",
+   "start": 26.628,
+   "end": 26.875,
+   "type": "word"
+  },
+  {
+   "text": "video",
+   "start": 26.895,
+   "end": 27.141,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 27.161,
+   "end": 27.305,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 27.325,
+   "end": 27.469,
+   "type": "word"
+  },
+  {
+   "text": "negocio",
+   "start": 27.489,
+   "end": 27.838,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 27.858,
+   "end": 28.002,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 28.022,
+   "end": 28.166,
+   "type": "word"
+  },
+  {
+   "text": "próximo.",
+   "start": 28.186,
+   "end": 28.536,
+   "type": "word"
+  }
+ ]
+}

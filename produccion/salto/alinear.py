@@ -36,7 +36,7 @@ for s, e in zip(starts, ends):
     if s > t + 0.05:
         spans.append((t, s))
     t = e
-if t < total - 0.05:
+if t < total - 0.1:  # una cola de menos de 0,1 s no es un tramo de voz
     spans.append((t, total))
 
 phrases = [p.strip().split() for p in TEXT.split("|")]

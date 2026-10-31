@@ -1,0 +1,744 @@
+[
+ {
+  "text": "Adiviná",
+  "startMs": 30,
+  "endMs": 491,
+  "timestampMs": 260,
+  "confidence": null
+ },
+ {
+  "text": "qué",
+  "startMs": 665,
+  "endMs": 845,
+  "timestampMs": 755,
+  "confidence": null
+ },
+ {
+  "text": "jugador",
+  "startMs": 865,
+  "endMs": 1296,
+  "timestampMs": 1080,
+  "confidence": null
+ },
+ {
+  "text": "fichó",
+  "startMs": 1316,
+  "endMs": 1622,
+  "timestampMs": 1469,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 1642,
+  "endMs": 1822,
+  "timestampMs": 1732,
+  "confidence": null
+ },
+ {
+  "text": "Barcelona",
+  "startMs": 1842,
+  "endMs": 2398,
+  "timestampMs": 2120,
+  "confidence": null
+ },
+ {
+  "text": "con",
+  "startMs": 2418,
+  "endMs": 2599,
+  "timestampMs": 2508,
+  "confidence": null
+ },
+ {
+  "text": "esta",
+  "startMs": 2619,
+  "endMs": 2925,
+  "timestampMs": 2772,
+  "confidence": null
+ },
+ {
+  "text": "servilleta.",
+  "startMs": 2945,
+  "endMs": 3501,
+  "timestampMs": 3223,
+  "confidence": null
+ },
+ {
+  "text": "Tenés",
+  "startMs": 3744,
+  "endMs": 4124,
+  "timestampMs": 3934,
+  "confidence": null
+ },
+ {
+  "text": "dos",
+  "startMs": 4144,
+  "endMs": 4370,
+  "timestampMs": 4257,
+  "confidence": null
+ },
+ {
+  "text": "segundos.",
+  "startMs": 4390,
+  "endMs": 4924,
+  "timestampMs": 4657,
+  "confidence": null
+ },
+ {
+  "text": "Lionel",
+  "startMs": 5161,
+  "endMs": 5616,
+  "timestampMs": 5388,
+  "confidence": null
+ },
+ {
+  "text": "Messi.",
+  "startMs": 5636,
+  "endMs": 6091,
+  "timestampMs": 5863,
+  "confidence": null
+ },
+ {
+  "text": "Pero",
+  "startMs": 6323,
+  "endMs": 6698,
+  "timestampMs": 6511,
+  "confidence": null
+ },
+ {
+  "text": "lo",
+  "startMs": 6718,
+  "endMs": 6941,
+  "timestampMs": 6830,
+  "confidence": null
+ },
+ {
+  "text": "increíble",
+  "startMs": 6961,
+  "endMs": 7488,
+  "timestampMs": 7225,
+  "confidence": null
+ },
+ {
+  "text": "es",
+  "startMs": 7508,
+  "endMs": 7731,
+  "timestampMs": 7620,
+  "confidence": null
+ },
+ {
+  "text": "cuánto",
+  "startMs": 7751,
+  "endMs": 8127,
+  "timestampMs": 7939,
+  "confidence": null
+ },
+ {
+  "text": "vale",
+  "startMs": 8147,
+  "endMs": 8522,
+  "timestampMs": 8335,
+  "confidence": null
+ },
+ {
+  "text": "hoy",
+  "startMs": 8542,
+  "endMs": 8765,
+  "timestampMs": 8654,
+  "confidence": null
+ },
+ {
+  "text": "esta",
+  "startMs": 8785,
+  "endMs": 9160,
+  "timestampMs": 8973,
+  "confidence": null
+ },
+ {
+  "text": "servilleta.",
+  "startMs": 9180,
+  "endMs": 9859,
+  "timestampMs": 9520,
+  "confidence": null
+ },
+ {
+  "text": "El",
+  "startMs": 10080,
+  "endMs": 10258,
+  "timestampMs": 10169,
+  "confidence": null
+ },
+ {
+  "text": "14",
+  "startMs": 10278,
+  "endMs": 10701,
+  "timestampMs": 10489,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 10721,
+  "endMs": 10899,
+  "timestampMs": 10810,
+  "confidence": null
+ },
+ {
+  "text": "diciembre",
+  "startMs": 10919,
+  "endMs": 11342,
+  "timestampMs": 11130,
+  "confidence": null
+ },
+ {
+  "text": "del",
+  "startMs": 11362,
+  "endMs": 11539,
+  "timestampMs": 11450,
+  "confidence": null
+ },
+ {
+  "text": "2000,",
+  "startMs": 11559,
+  "endMs": 11934,
+  "timestampMs": 11746,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 12223,
+  "endMs": 12402,
+  "timestampMs": 12312,
+  "confidence": null
+ },
+ {
+  "text": "director",
+  "startMs": 12422,
+  "endMs": 12850,
+  "timestampMs": 12636,
+  "confidence": null
+ },
+ {
+  "text": "deportivo",
+  "startMs": 12870,
+  "endMs": 13423,
+  "timestampMs": 13146,
+  "confidence": null
+ },
+ {
+  "text": "del",
+  "startMs": 13443,
+  "endMs": 13622,
+  "timestampMs": 13532,
+  "confidence": null
+ },
+ {
+  "text": "club",
+  "startMs": 13642,
+  "endMs": 13821,
+  "timestampMs": 13731,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 13841,
+  "endMs": 14020,
+  "timestampMs": 13930,
+  "confidence": null
+ },
+ {
+  "text": "tenía",
+  "startMs": 14040,
+  "endMs": 14344,
+  "timestampMs": 14192,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 14364,
+  "endMs": 14543,
+  "timestampMs": 14453,
+  "confidence": null
+ },
+ {
+  "text": "contrato",
+  "startMs": 14563,
+  "endMs": 14991,
+  "timestampMs": 14777,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 15011,
+  "endMs": 15190,
+  "timestampMs": 15100,
+  "confidence": null
+ },
+ {
+  "text": "mano…",
+  "startMs": 15210,
+  "endMs": 15514,
+  "timestampMs": 15362,
+  "confidence": null
+ },
+ {
+  "text": "así",
+  "startMs": 15759,
+  "endMs": 16031,
+  "timestampMs": 15895,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 16051,
+  "endMs": 16210,
+  "timestampMs": 16131,
+  "confidence": null
+ },
+ {
+  "text": "escribió",
+  "startMs": 16230,
+  "endMs": 16614,
+  "timestampMs": 16422,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 16634,
+  "endMs": 16793,
+  "timestampMs": 16714,
+  "confidence": null
+ },
+ {
+  "text": "acuerdo",
+  "startMs": 16813,
+  "endMs": 17197,
+  "timestampMs": 17005,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 17217,
+  "endMs": 17377,
+  "timestampMs": 17297,
+  "confidence": null
+ },
+ {
+  "text": "una",
+  "startMs": 17397,
+  "endMs": 17668,
+  "timestampMs": 17533,
+  "confidence": null
+ },
+ {
+  "text": "servilleta.",
+  "startMs": 17688,
+  "endMs": 18184,
+  "timestampMs": 17936,
+  "confidence": null
+ },
+ {
+  "text": "Messi",
+  "startMs": 18435,
+  "endMs": 18875,
+  "timestampMs": 18655,
+  "confidence": null
+ },
+ {
+  "text": "tenía",
+  "startMs": 18895,
+  "endMs": 19336,
+  "timestampMs": 19115,
+  "confidence": null
+ },
+ {
+  "text": "13",
+  "startMs": 19356,
+  "endMs": 19797,
+  "timestampMs": 19576,
+  "confidence": null
+ },
+ {
+  "text": "años.",
+  "startMs": 19817,
+  "endMs": 20257,
+  "timestampMs": 20037,
+  "confidence": null
+ },
+ {
+  "text": "En",
+  "startMs": 20483,
+  "endMs": 20670,
+  "timestampMs": 20576,
+  "confidence": null
+ },
+ {
+  "text": "2024,",
+  "startMs": 20690,
+  "endMs": 21679,
+  "timestampMs": 21184,
+  "confidence": null
+ },
+ {
+  "text": "esa",
+  "startMs": 21906,
+  "endMs": 22261,
+  "timestampMs": 22083,
+  "confidence": null
+ },
+ {
+  "text": "servilleta",
+  "startMs": 22281,
+  "endMs": 22924,
+  "timestampMs": 22602,
+  "confidence": null
+ },
+ {
+  "text": "se",
+  "startMs": 22944,
+  "endMs": 23155,
+  "timestampMs": 23049,
+  "confidence": null
+ },
+ {
+  "text": "subastó",
+  "startMs": 23175,
+  "endMs": 23674,
+  "timestampMs": 23424,
+  "confidence": null
+ },
+ {
+  "text": "por",
+  "startMs": 23694,
+  "endMs": 23905,
+  "timestampMs": 23799,
+  "confidence": null
+ },
+ {
+  "text": "casi",
+  "startMs": 24091,
+  "endMs": 24377,
+  "timestampMs": 24234,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 24397,
+  "endMs": 24565,
+  "timestampMs": 24481,
+  "confidence": null
+ },
+ {
+  "text": "millón",
+  "startMs": 24585,
+  "endMs": 24871,
+  "timestampMs": 24728,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 24891,
+  "endMs": 25059,
+  "timestampMs": 24975,
+  "confidence": null
+ },
+ {
+  "text": "dólares.",
+  "startMs": 25079,
+  "endMs": 25483,
+  "timestampMs": 25281,
+  "confidence": null
+ },
+ {
+  "text": "El",
+  "startMs": 25705,
+  "endMs": 25900,
+  "timestampMs": 25803,
+  "confidence": null
+ },
+ {
+  "text": "papel",
+  "startMs": 25920,
+  "endMs": 26250,
+  "timestampMs": 26085,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 26270,
+  "endMs": 26465,
+  "timestampMs": 26368,
+  "confidence": null
+ },
+ {
+  "text": "valía",
+  "startMs": 26485,
+  "endMs": 26815,
+  "timestampMs": 26650,
+  "confidence": null
+ },
+ {
+  "text": "nada:",
+  "startMs": 26835,
+  "endMs": 27165,
+  "timestampMs": 27000,
+  "confidence": null
+ },
+ {
+  "text": "valía",
+  "startMs": 27400,
+  "endMs": 27788,
+  "timestampMs": 27594,
+  "confidence": null
+ },
+ {
+  "text": "lo",
+  "startMs": 27808,
+  "endMs": 28039,
+  "timestampMs": 27923,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 28059,
+  "endMs": 28291,
+  "timestampMs": 28175,
+  "confidence": null
+ },
+ {
+  "text": "tenía",
+  "startMs": 28311,
+  "endMs": 28699,
+  "timestampMs": 28505,
+  "confidence": null
+ },
+ {
+  "text": "escrito.",
+  "startMs": 28719,
+  "endMs": 29265,
+  "timestampMs": 28992,
+  "confidence": null
+ },
+ {
+  "text": "Con",
+  "startMs": 29521,
+  "endMs": 29671,
+  "timestampMs": 29596,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 29691,
+  "endMs": 29841,
+  "timestampMs": 29766,
+  "confidence": null
+ },
+ {
+  "text": "video",
+  "startMs": 29861,
+  "endMs": 30117,
+  "timestampMs": 29989,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 30137,
+  "endMs": 30287,
+  "timestampMs": 30212,
+  "confidence": null
+ },
+ {
+  "text": "tu",
+  "startMs": 30307,
+  "endMs": 30457,
+  "timestampMs": 30382,
+  "confidence": null
+ },
+ {
+  "text": "negocio",
+  "startMs": 30477,
+  "endMs": 30839,
+  "timestampMs": 30658,
+  "confidence": null
+ },
+ {
+  "text": "pasa",
+  "startMs": 30859,
+  "endMs": 31115,
+  "timestampMs": 30987,
+  "confidence": null
+ },
+ {
+  "text": "lo",
+  "startMs": 31135,
+  "endMs": 31285,
+  "timestampMs": 31210,
+  "confidence": null
+ },
+ {
+  "text": "mismo:",
+  "startMs": 31305,
+  "endMs": 31561,
+  "timestampMs": 31433,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 31842,
+  "endMs": 32004,
+  "timestampMs": 31923,
+  "confidence": null
+ },
+ {
+  "text": "importa",
+  "startMs": 32024,
+  "endMs": 32411,
+  "timestampMs": 32217,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 32431,
+  "endMs": 32593,
+  "timestampMs": 32512,
+  "confidence": null
+ },
+ {
+  "text": "cámara,",
+  "startMs": 32613,
+  "endMs": 33000,
+  "timestampMs": 32806,
+  "confidence": null
+ },
+ {
+  "text": "importa",
+  "startMs": 33234,
+  "endMs": 33780,
+  "timestampMs": 33507,
+  "confidence": null
+ },
+ {
+  "text": "qué",
+  "startMs": 33800,
+  "endMs": 34032,
+  "timestampMs": 33916,
+  "confidence": null
+ },
+ {
+  "text": "mostrás",
+  "startMs": 34052,
+  "endMs": 34440,
+  "timestampMs": 34246,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 34460,
+  "endMs": 34692,
+  "timestampMs": 34576,
+  "confidence": null
+ },
+ {
+  "text": "cómo",
+  "startMs": 34712,
+  "endMs": 35101,
+  "timestampMs": 34907,
+  "confidence": null
+ },
+ {
+  "text": "lo",
+  "startMs": 35121,
+  "endMs": 35352,
+  "timestampMs": 35237,
+  "confidence": null
+ },
+ {
+  "text": "editás.",
+  "startMs": 35372,
+  "endMs": 35918,
+  "timestampMs": 35645,
+  "confidence": null
+ },
+ {
+  "text": "Seguime:",
+  "startMs": 36159,
+  "endMs": 36577,
+  "timestampMs": 36368,
+  "confidence": null
+ },
+ {
+  "text": "voy",
+  "startMs": 36843,
+  "endMs": 36991,
+  "timestampMs": 36917,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 37011,
+  "endMs": 37159,
+  "timestampMs": 37085,
+  "confidence": null
+ },
+ {
+  "text": "mejorar",
+  "startMs": 37179,
+  "endMs": 37537,
+  "timestampMs": 37358,
+  "confidence": null
+ },
+ {
+  "text": "otro",
+  "startMs": 37557,
+  "endMs": 37809,
+  "timestampMs": 37683,
+  "confidence": null
+ },
+ {
+  "text": "video",
+  "startMs": 37829,
+  "endMs": 38082,
+  "timestampMs": 37956,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 38102,
+  "endMs": 38250,
+  "timestampMs": 38176,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 38270,
+  "endMs": 38418,
+  "timestampMs": 38344,
+  "confidence": null
+ },
+ {
+  "text": "negocio",
+  "startMs": 38438,
+  "endMs": 38796,
+  "timestampMs": 38617,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 38816,
+  "endMs": 38963,
+  "timestampMs": 38890,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 38983,
+  "endMs": 39131,
+  "timestampMs": 39057,
+  "confidence": null
+ },
+ {
+  "text": "próximo.",
+  "startMs": 39151,
+  "endMs": 39509,
+  "timestampMs": 39330,
+  "confidence": null
+ }
+]

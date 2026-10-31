@@ -1,0 +1,618 @@
+[
+ {
+  "text": "Mirá",
+  "startMs": 30,
+  "endMs": 327,
+  "timestampMs": 178,
+  "confidence": null
+ },
+ {
+  "text": "este",
+  "startMs": 347,
+  "endMs": 644,
+  "timestampMs": 496,
+  "confidence": null
+ },
+ {
+  "text": "feed.",
+  "startMs": 664,
+  "endMs": 839,
+  "timestampMs": 752,
+  "confidence": null
+ },
+ {
+  "text": "Tenés",
+  "startMs": 1060,
+  "endMs": 1303,
+  "timestampMs": 1181,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 1323,
+  "endMs": 1466,
+  "timestampMs": 1394,
+  "confidence": null
+ },
+ {
+  "text": "segundo.",
+  "startMs": 1486,
+  "endMs": 1831,
+  "timestampMs": 1658,
+  "confidence": null
+ },
+ {
+  "text": "¿Qué",
+  "startMs": 2090,
+  "endMs": 2238,
+  "timestampMs": 2164,
+  "confidence": null
+ },
+ {
+  "text": "miraste",
+  "startMs": 2258,
+  "endMs": 2616,
+  "timestampMs": 2437,
+  "confidence": null
+ },
+ {
+  "text": "primero?",
+  "startMs": 2636,
+  "endMs": 2995,
+  "timestampMs": 2815,
+  "confidence": null
+ },
+ {
+  "text": "¿Fue",
+  "startMs": 3254,
+  "endMs": 3394,
+  "timestampMs": 3324,
+  "confidence": null
+ },
+ {
+  "text": "esta?",
+  "startMs": 3414,
+  "endMs": 3655,
+  "timestampMs": 3534,
+  "confidence": null
+ },
+ {
+  "text": "Las",
+  "startMs": 3902,
+  "endMs": 4099,
+  "timestampMs": 4001,
+  "confidence": null
+ },
+ {
+  "text": "fotos",
+  "startMs": 4119,
+  "endMs": 4452,
+  "timestampMs": 4286,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 4472,
+  "endMs": 4669,
+  "timestampMs": 4571,
+  "confidence": null
+ },
+ {
+  "text": "Instagram",
+  "startMs": 4689,
+  "endMs": 5158,
+  "timestampMs": 4924,
+  "confidence": null
+ },
+ {
+  "text": "con",
+  "startMs": 5178,
+  "endMs": 5375,
+  "timestampMs": 5277,
+  "confidence": null
+ },
+ {
+  "text": "caras",
+  "startMs": 5395,
+  "endMs": 5728,
+  "timestampMs": 5562,
+  "confidence": null
+ },
+ {
+  "text": "tienen",
+  "startMs": 5748,
+  "endMs": 6081,
+  "timestampMs": 5915,
+  "confidence": null
+ },
+ {
+  "text": "38 %",
+  "startMs": 6101,
+  "endMs": 7438,
+  "timestampMs": 6770,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 7458,
+  "endMs": 7656,
+  "timestampMs": 7557,
+  "confidence": null
+ },
+ {
+  "text": "chances",
+  "startMs": 7676,
+  "endMs": 8009,
+  "timestampMs": 7843,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 8029,
+  "endMs": 8226,
+  "timestampMs": 8128,
+  "confidence": null
+ },
+ {
+  "text": "recibir",
+  "startMs": 8246,
+  "endMs": 8715,
+  "timestampMs": 8481,
+  "confidence": null
+ },
+ {
+  "text": "me",
+  "startMs": 8735,
+  "endMs": 8932,
+  "timestampMs": 8834,
+  "confidence": null
+ },
+ {
+  "text": "gusta.",
+  "startMs": 8952,
+  "endMs": 9285,
+  "timestampMs": 9119,
+  "confidence": null
+ },
+ {
+  "text": "Lo",
+  "startMs": 9507,
+  "endMs": 9726,
+  "timestampMs": 9617,
+  "confidence": null
+ },
+ {
+  "text": "midieron",
+  "startMs": 9746,
+  "endMs": 10262,
+  "timestampMs": 10004,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 10282,
+  "endMs": 10501,
+  "timestampMs": 10392,
+  "confidence": null
+ },
+ {
+  "text": "1,1 millones",
+  "startMs": 10521,
+  "endMs": 11603,
+  "timestampMs": 11062,
+  "confidence": null
+ },
+ {
+  "text": "fotos.",
+  "startMs": 11623,
+  "endMs": 11991,
+  "timestampMs": 11807,
+  "confidence": null
+ },
+ {
+  "text": "El",
+  "startMs": 12250,
+  "endMs": 12420,
+  "timestampMs": 12335,
+  "confidence": null
+ },
+ {
+  "text": "estudio",
+  "startMs": 12440,
+  "endMs": 12849,
+  "timestampMs": 12644,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 12869,
+  "endMs": 13039,
+  "timestampMs": 12954,
+  "confidence": null
+ },
+ {
+  "text": "dice",
+  "startMs": 13059,
+  "endMs": 13349,
+  "timestampMs": 13204,
+  "confidence": null
+ },
+ {
+  "text": "por",
+  "startMs": 13369,
+  "endMs": 13539,
+  "timestampMs": 13454,
+  "confidence": null
+ },
+ {
+  "text": "qué…",
+  "startMs": 13559,
+  "endMs": 13730,
+  "timestampMs": 13644,
+  "confidence": null
+ },
+ {
+  "text": "pero",
+  "startMs": 13965,
+  "endMs": 14229,
+  "timestampMs": 14097,
+  "confidence": null
+ },
+ {
+  "text": "tu",
+  "startMs": 14249,
+  "endMs": 14405,
+  "timestampMs": 14327,
+  "confidence": null
+ },
+ {
+  "text": "cerebro",
+  "startMs": 14425,
+  "endMs": 14799,
+  "timestampMs": 14612,
+  "confidence": null
+ },
+ {
+  "text": "tiene",
+  "startMs": 14819,
+  "endMs": 15083,
+  "timestampMs": 14951,
+  "confidence": null
+ },
+ {
+  "text": "una",
+  "startMs": 15103,
+  "endMs": 15368,
+  "timestampMs": 15235,
+  "confidence": null
+ },
+ {
+  "text": "zona",
+  "startMs": 15388,
+  "endMs": 15652,
+  "timestampMs": 15520,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 15672,
+  "endMs": 15828,
+  "timestampMs": 15750,
+  "confidence": null
+ },
+ {
+  "text": "se",
+  "startMs": 15848,
+  "endMs": 16003,
+  "timestampMs": 15925,
+  "confidence": null
+ },
+ {
+  "text": "dedica",
+  "startMs": 16023,
+  "endMs": 16397,
+  "timestampMs": 16210,
+  "confidence": null
+ },
+ {
+  "text": "solo",
+  "startMs": 16417,
+  "endMs": 16681,
+  "timestampMs": 16549,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 16701,
+  "endMs": 16857,
+  "timestampMs": 16779,
+  "confidence": null
+ },
+ {
+  "text": "las",
+  "startMs": 16877,
+  "endMs": 17032,
+  "timestampMs": 16954,
+  "confidence": null
+ },
+ {
+  "text": "caras.",
+  "startMs": 17052,
+  "endMs": 17316,
+  "timestampMs": 17184,
+  "confidence": null
+ },
+ {
+  "text": "Así",
+  "startMs": 17569,
+  "endMs": 17889,
+  "timestampMs": 17729,
+  "confidence": null
+ },
+ {
+  "text": "que,",
+  "startMs": 17909,
+  "endMs": 18099,
+  "timestampMs": 18004,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 18119,
+  "endMs": 18308,
+  "timestampMs": 18214,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 18328,
+  "endMs": 18517,
+  "timestampMs": 18423,
+  "confidence": null
+ },
+ {
+  "text": "video",
+  "startMs": 18537,
+  "endMs": 18858,
+  "timestampMs": 18698,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 18878,
+  "endMs": 19067,
+  "timestampMs": 18973,
+  "confidence": null
+ },
+ {
+  "text": "tu",
+  "startMs": 19087,
+  "endMs": 19276,
+  "timestampMs": 19182,
+  "confidence": null
+ },
+ {
+  "text": "negocio,",
+  "startMs": 19296,
+  "endMs": 19748,
+  "timestampMs": 19522,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 19768,
+  "endMs": 19957,
+  "timestampMs": 19863,
+  "confidence": null
+ },
+ {
+  "text": "muestres",
+  "startMs": 19977,
+  "endMs": 20297,
+  "timestampMs": 20137,
+  "confidence": null
+ },
+ {
+  "text": "solo",
+  "startMs": 20317,
+  "endMs": 20637,
+  "timestampMs": 20477,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 20657,
+  "endMs": 20847,
+  "timestampMs": 20752,
+  "confidence": null
+ },
+ {
+  "text": "producto:",
+  "startMs": 20867,
+  "endMs": 21318,
+  "timestampMs": 21093,
+  "confidence": null
+ },
+ {
+  "text": "mostrá",
+  "startMs": 21593,
+  "endMs": 21984,
+  "timestampMs": 21788,
+  "confidence": null
+ },
+ {
+  "text": "quién",
+  "startMs": 22004,
+  "endMs": 22237,
+  "timestampMs": 22120,
+  "confidence": null
+ },
+ {
+  "text": "lo",
+  "startMs": 22257,
+  "endMs": 22489,
+  "timestampMs": 22373,
+  "confidence": null
+ },
+ {
+  "text": "hace.",
+  "startMs": 22509,
+  "endMs": 22900,
+  "timestampMs": 22704,
+  "confidence": null
+ },
+ {
+  "text": "¿Ves?",
+  "startMs": 23172,
+  "endMs": 23459,
+  "timestampMs": 23315,
+  "confidence": null
+ },
+ {
+  "text": "Por",
+  "startMs": 23693,
+  "endMs": 23842,
+  "timestampMs": 23767,
+  "confidence": null
+ },
+ {
+  "text": "eso",
+  "startMs": 23862,
+  "endMs": 24117,
+  "timestampMs": 23989,
+  "confidence": null
+ },
+ {
+  "text": "este",
+  "startMs": 24137,
+  "endMs": 24391,
+  "timestampMs": 24264,
+  "confidence": null
+ },
+ {
+  "text": "video",
+  "startMs": 24411,
+  "endMs": 24666,
+  "timestampMs": 24538,
+  "confidence": null
+ },
+ {
+  "text": "tiene",
+  "startMs": 24686,
+  "endMs": 24941,
+  "timestampMs": 24813,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 24961,
+  "endMs": 25110,
+  "timestampMs": 25035,
+  "confidence": null
+ },
+ {
+  "text": "personaje",
+  "startMs": 25130,
+  "endMs": 25596,
+  "timestampMs": 25363,
+  "confidence": null
+ },
+ {
+  "text": "con",
+  "startMs": 25616,
+  "endMs": 25765,
+  "timestampMs": 25690,
+  "confidence": null
+ },
+ {
+  "text": "cara.",
+  "startMs": 25785,
+  "endMs": 26040,
+  "timestampMs": 25912,
+  "confidence": null
+ },
+ {
+  "text": "Seguime:",
+  "startMs": 26284,
+  "endMs": 26704,
+  "timestampMs": 26494,
+  "confidence": null
+ },
+ {
+  "text": "voy",
+  "startMs": 26936,
+  "endMs": 27082,
+  "timestampMs": 27009,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 27102,
+  "endMs": 27248,
+  "timestampMs": 27175,
+  "confidence": null
+ },
+ {
+  "text": "mejorar",
+  "startMs": 27268,
+  "endMs": 27620,
+  "timestampMs": 27444,
+  "confidence": null
+ },
+ {
+  "text": "otro",
+  "startMs": 27640,
+  "endMs": 27889,
+  "timestampMs": 27765,
+  "confidence": null
+ },
+ {
+  "text": "video",
+  "startMs": 27909,
+  "endMs": 28159,
+  "timestampMs": 28034,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 28179,
+  "endMs": 28324,
+  "timestampMs": 28252,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 28344,
+  "endMs": 28490,
+  "timestampMs": 28417,
+  "confidence": null
+ },
+ {
+  "text": "negocio",
+  "startMs": 28510,
+  "endMs": 28862,
+  "timestampMs": 28686,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 28882,
+  "endMs": 29028,
+  "timestampMs": 28955,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 29048,
+  "endMs": 29194,
+  "timestampMs": 29121,
+  "confidence": null
+ },
+ {
+  "text": "próximo.",
+  "startMs": 29214,
+  "endMs": 29566,
+  "timestampMs": 29390,
+  "confidence": null
+ }
+]

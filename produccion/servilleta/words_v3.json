@@ -1,0 +1,634 @@
+{
+ "words": [
+  {
+   "text": "Si",
+   "start": 0.03,
+   "end": 0.214,
+   "type": "word"
+  },
+  {
+   "text": "tenés",
+   "start": 0.234,
+   "end": 0.545,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 0.565,
+   "end": 0.749,
+   "type": "word"
+  },
+  {
+   "text": "negocio",
+   "start": 0.769,
+   "end": 1.207,
+   "type": "word"
+  },
+  {
+   "text": "y",
+   "start": 1.227,
+   "end": 1.411,
+   "type": "word"
+  },
+  {
+   "text": "no",
+   "start": 1.431,
+   "end": 1.614,
+   "type": "word"
+  },
+  {
+   "text": "subís",
+   "start": 1.634,
+   "end": 1.945,
+   "type": "word"
+  },
+  {
+   "text": "videos",
+   "start": 1.965,
+   "end": 2.276,
+   "type": "word"
+  },
+  {
+   "text": "porque",
+   "start": 2.296,
+   "end": 2.607,
+   "type": "word"
+  },
+  {
+   "text": "no",
+   "start": 2.627,
+   "end": 2.811,
+   "type": "word"
+  },
+  {
+   "text": "tenés",
+   "start": 2.831,
+   "end": 3.142,
+   "type": "word"
+  },
+  {
+   "text": "buena",
+   "start": 3.162,
+   "end": 3.473,
+   "type": "word"
+  },
+  {
+   "text": "cámara…",
+   "start": 3.493,
+   "end": 3.932,
+   "type": "word"
+  },
+  {
+   "text": "mirá",
+   "start": 4.497,
+   "end": 4.774,
+   "type": "word"
+  },
+  {
+   "text": "esta",
+   "start": 4.794,
+   "end": 5.071,
+   "type": "word"
+  },
+  {
+   "text": "servilleta.",
+   "start": 5.091,
+   "end": 5.597,
+   "type": "word"
+  },
+  {
+   "text": "Es",
+   "start": 6.117,
+   "end": 6.289,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 6.309,
+   "end": 6.481,
+   "type": "word"
+  },
+  {
+   "text": "primer",
+   "start": 6.501,
+   "end": 6.792,
+   "type": "word"
+  },
+  {
+   "text": "acuerdo",
+   "start": 6.812,
+   "end": 7.224,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 7.244,
+   "end": 7.416,
+   "type": "word"
+  },
+  {
+   "text": "Lionel",
+   "start": 7.436,
+   "end": 7.728,
+   "type": "word"
+  },
+  {
+   "text": "Messi",
+   "start": 7.748,
+   "end": 8.039,
+   "type": "word"
+  },
+  {
+   "text": "con",
+   "start": 8.059,
+   "end": 8.231,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 8.251,
+   "end": 8.423,
+   "type": "word"
+  },
+  {
+   "text": "Barcelona.",
+   "start": 8.443,
+   "end": 8.975,
+   "type": "word"
+  },
+  {
+   "text": "El",
+   "start": 9.585,
+   "end": 9.764,
+   "type": "word"
+  },
+  {
+   "text": "14",
+   "start": 9.784,
+   "end": 10.211,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 10.231,
+   "end": 10.41,
+   "type": "word"
+  },
+  {
+   "text": "diciembre",
+   "start": 10.43,
+   "end": 10.856,
+   "type": "word"
+  },
+  {
+   "text": "del",
+   "start": 10.876,
+   "end": 11.055,
+   "type": "word"
+  },
+  {
+   "text": "2000,",
+   "start": 11.075,
+   "end": 11.452,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 11.73,
+   "end": 11.896,
+   "type": "word"
+  },
+  {
+   "text": "director",
+   "start": 11.916,
+   "end": 12.315,
+   "type": "word"
+  },
+  {
+   "text": "deportivo",
+   "start": 12.335,
+   "end": 12.851,
+   "type": "word"
+  },
+  {
+   "text": "del",
+   "start": 12.871,
+   "end": 13.037,
+   "type": "word"
+  },
+  {
+   "text": "club",
+   "start": 13.057,
+   "end": 13.223,
+   "type": "word"
+  },
+  {
+   "text": "no",
+   "start": 13.243,
+   "end": 13.409,
+   "type": "word"
+  },
+  {
+   "text": "tenía",
+   "start": 13.429,
+   "end": 13.712,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 13.732,
+   "end": 13.898,
+   "type": "word"
+  },
+  {
+   "text": "contrato",
+   "start": 13.918,
+   "end": 14.317,
+   "type": "word"
+  },
+  {
+   "text": "a",
+   "start": 14.337,
+   "end": 14.503,
+   "type": "word"
+  },
+  {
+   "text": "mano…",
+   "start": 14.523,
+   "end": 14.806,
+   "type": "word"
+  },
+  {
+   "text": "así",
+   "start": 15.345,
+   "end": 15.61,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 15.63,
+   "end": 15.785,
+   "type": "word"
+  },
+  {
+   "text": "lo",
+   "start": 15.805,
+   "end": 15.96,
+   "type": "word"
+  },
+  {
+   "text": "escribió",
+   "start": 15.98,
+   "end": 16.355,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 16.375,
+   "end": 16.53,
+   "type": "word"
+  },
+  {
+   "text": "una",
+   "start": 16.55,
+   "end": 16.815,
+   "type": "word"
+  },
+  {
+   "text": "servilleta.",
+   "start": 16.835,
+   "end": 17.319,
+   "type": "word"
+  },
+  {
+   "text": "Messi",
+   "start": 17.836,
+   "end": 18.296,
+   "type": "word"
+  },
+  {
+   "text": "tenía",
+   "start": 18.316,
+   "end": 18.776,
+   "type": "word"
+  },
+  {
+   "text": "13",
+   "start": 18.796,
+   "end": 19.257,
+   "type": "word"
+  },
+  {
+   "text": "años.",
+   "start": 19.277,
+   "end": 19.737,
+   "type": "word"
+  },
+  {
+   "text": "En",
+   "start": 20.258,
+   "end": 20.43,
+   "type": "word"
+  },
+  {
+   "text": "2024,",
+   "start": 20.45,
+   "end": 21.365,
+   "type": "word"
+  },
+  {
+   "text": "esa",
+   "start": 21.631,
+   "end": 21.97,
+   "type": "word"
+  },
+  {
+   "text": "servilleta",
+   "start": 21.99,
+   "end": 22.606,
+   "type": "word"
+  },
+  {
+   "text": "se",
+   "start": 22.626,
+   "end": 22.827,
+   "type": "word"
+  },
+  {
+   "text": "subastó",
+   "start": 22.847,
+   "end": 23.325,
+   "type": "word"
+  },
+  {
+   "text": "por",
+   "start": 23.345,
+   "end": 23.546,
+   "type": "word"
+  },
+  {
+   "text": "casi",
+   "start": 23.729,
+   "end": 24.016,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 24.036,
+   "end": 24.205,
+   "type": "word"
+  },
+  {
+   "text": "millón",
+   "start": 24.225,
+   "end": 24.513,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 24.533,
+   "end": 24.702,
+   "type": "word"
+  },
+  {
+   "text": "dólares.",
+   "start": 24.722,
+   "end": 25.128,
+   "type": "word"
+  },
+  {
+   "text": "El",
+   "start": 25.655,
+   "end": 25.829,
+   "type": "word"
+  },
+  {
+   "text": "papel",
+   "start": 25.849,
+   "end": 26.145,
+   "type": "word"
+  },
+  {
+   "text": "no",
+   "start": 26.165,
+   "end": 26.34,
+   "type": "word"
+  },
+  {
+   "text": "valía",
+   "start": 26.36,
+   "end": 26.656,
+   "type": "word"
+  },
+  {
+   "text": "nada:",
+   "start": 26.676,
+   "end": 26.972,
+   "type": "word"
+  },
+  {
+   "text": "valía",
+   "start": 27.466,
+   "end": 27.792,
+   "type": "word"
+  },
+  {
+   "text": "lo",
+   "start": 27.812,
+   "end": 28.006,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 28.206,
+   "end": 28.446,
+   "type": "word"
+  },
+  {
+   "text": "tenía",
+   "start": 28.466,
+   "end": 28.869,
+   "type": "word"
+  },
+  {
+   "text": "escrito.",
+   "start": 28.889,
+   "end": 29.454,
+   "type": "word"
+  },
+  {
+   "text": "Con",
+   "start": 30.01,
+   "end": 30.163,
+   "type": "word"
+  },
+  {
+   "text": "tu",
+   "start": 30.183,
+   "end": 30.336,
+   "type": "word"
+  },
+  {
+   "text": "video",
+   "start": 30.356,
+   "end": 30.616,
+   "type": "word"
+  },
+  {
+   "text": "pasa",
+   "start": 30.636,
+   "end": 30.897,
+   "type": "word"
+  },
+  {
+   "text": "lo",
+   "start": 30.917,
+   "end": 31.07,
+   "type": "word"
+  },
+  {
+   "text": "mismo:",
+   "start": 31.09,
+   "end": 31.35,
+   "type": "word"
+  },
+  {
+   "text": "no",
+   "start": 31.795,
+   "end": 31.948,
+   "type": "word"
+  },
+  {
+   "text": "importa",
+   "start": 31.968,
+   "end": 32.338,
+   "type": "word"
+  },
+  {
+   "text": "la",
+   "start": 32.358,
+   "end": 32.511,
+   "type": "word"
+  },
+  {
+   "text": "cámara,",
+   "start": 32.531,
+   "end": 32.901,
+   "type": "word"
+  },
+  {
+   "text": "importa",
+   "start": 33.291,
+   "end": 33.788,
+   "type": "word"
+  },
+  {
+   "text": "qué",
+   "start": 33.808,
+   "end": 34.018,
+   "type": "word"
+  },
+  {
+   "text": "mostrás",
+   "start": 34.038,
+   "end": 34.392,
+   "type": "word"
+  },
+  {
+   "text": "y",
+   "start": 34.412,
+   "end": 34.622,
+   "type": "word"
+  },
+  {
+   "text": "cómo",
+   "start": 34.87,
+   "end": 35.253,
+   "type": "word"
+  },
+  {
+   "text": "lo",
+   "start": 35.273,
+   "end": 35.501,
+   "type": "word"
+  },
+  {
+   "text": "editás.",
+   "start": 35.521,
+   "end": 36.06,
+   "type": "word"
+  },
+  {
+   "text": "Seguime:",
+   "start": 36.521,
+   "end": 36.954,
+   "type": "word"
+  },
+  {
+   "text": "voy",
+   "start": 37.367,
+   "end": 37.513,
+   "type": "word"
+  },
+  {
+   "text": "a",
+   "start": 37.533,
+   "end": 37.678,
+   "type": "word"
+  },
+  {
+   "text": "mejorar",
+   "start": 37.698,
+   "end": 38.051,
+   "type": "word"
+  },
+  {
+   "text": "otro",
+   "start": 38.071,
+   "end": 38.32,
+   "type": "word"
+  },
+  {
+   "text": "video",
+   "start": 38.34,
+   "end": 38.589,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 38.609,
+   "end": 38.755,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 38.775,
+   "end": 38.921,
+   "type": "word"
+  },
+  {
+   "text": "negocio",
+   "start": 38.941,
+   "end": 39.293,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 39.313,
+   "end": 39.459,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 39.479,
+   "end": 39.625,
+   "type": "word"
+  },
+  {
+   "text": "próximo.",
+   "start": 39.645,
+   "end": 39.997,
+   "type": "word"
+  }
+ ]
+}

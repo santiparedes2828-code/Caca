@@ -31,6 +31,8 @@ import { MARRON_FRAMES, Marron, MarronPortada } from "./Altera/reels/Marron";
 import { MEDIALUNA_FRAMES, MedialunaPortada, MedialunaReel } from "./Altera/reels/Medialuna";
 import { MedialunaGancho, ganchoFrames } from "./Altera/reels/MedialunaGanchos";
 import { MEDIALUNA_V2_FRAMES, MedialunaV2, MedialunaV2Portada } from "./Altera/reels/MedialunaV2";
+import { Caras, CarasPortada, carasFrames } from "./Altera/reels/Caras";
+import { Servilleta, ServilletaPortada, servilletaFrames } from "./Altera/reels/Servilleta";
 import { CAPAS_FRAMES, Capas, CapasPortada } from "./Altera/reels/Capas";
 import { TOMAS_FRAMES, Tomas, TomasPortada } from "./Altera/reels/Tomas";
 import { APERTURA_FRAMES, EbookApertura } from "./Ebook/Heladera";
@@ -200,6 +202,18 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="MedialunaV2SinPildora" component={MedialunaV2} defaultProps={{ pill: false, music: 0.22 }} durationInFrames={MEDIALUNA_V2_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="MedialunaV2MusicaBaja" component={MedialunaV2} defaultProps={{ pill: true, music: 0.12 }} durationInFrames={MEDIALUNA_V2_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="MedialunaV2Portada" component={MedialunaV2Portada} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Caras1" component={Caras} defaultProps={{ v: 1 }} durationInFrames={carasFrames(1)} fps={30} width={1080} height={1920} />
+      <Composition id="Caras2" component={Caras} defaultProps={{ v: 2 }} durationInFrames={carasFrames(2)} fps={30} width={1080} height={1920} />
+      <Composition id="Caras3" component={Caras} defaultProps={{ v: 3 }} durationInFrames={carasFrames(3)} fps={30} width={1080} height={1920} />
+      <Composition id="CarasPortada1" component={CarasPortada} defaultProps={{ v: 1 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="CarasPortada2" component={CarasPortada} defaultProps={{ v: 2 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="CarasPortada3" component={CarasPortada} defaultProps={{ v: 3 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Servilleta1" component={Servilleta} defaultProps={{ v: 1 }} durationInFrames={servilletaFrames(1)} fps={30} width={1080} height={1920} />
+      <Composition id="ServilletaPortada1" component={ServilletaPortada} defaultProps={{ v: 1 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Servilleta2" component={Servilleta} defaultProps={{ v: 2 }} durationInFrames={servilletaFrames(2)} fps={30} width={1080} height={1920} />
+      <Composition id="ServilletaPortada2" component={ServilletaPortada} defaultProps={{ v: 2 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Servilleta3" component={Servilleta} defaultProps={{ v: 3 }} durationInFrames={servilletaFrames(3)} fps={30} width={1080} height={1920} />
+      <Composition id="ServilletaPortada3" component={ServilletaPortada} defaultProps={{ v: 3 }} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Error1Portada" component={Error1Portada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Piedra" component={Piedra} durationInFrames={PIEDRA_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="GanchoSheet" component={GanchoSheet} durationInFrames={60} fps={30} width={1920} height={1080} />
