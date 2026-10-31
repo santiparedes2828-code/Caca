@@ -16,11 +16,20 @@
 - **Tarjetas oscuras** con etiqueta en versalitas espaciadas y número grande (contadores de precio, «EN EL PRÓXIMO VIDEO»).
 - **Celulares oscuros** (marco grafito, isla, hora) cuando hay que mostrar un video o una app.
 
-## Cómo se mueve
-- La cámara siempre avanza (empuje lento por escena) y cada escena entra con un fundido corto con escala.
-- Cada sustantivo o cifra importante aparece cuando se dice (fórmula viral); nunca queda quieto más de 0,3 s
-  (comprobar con `freezedetect=n=-60dB:d=0.3`).
-- Sonidos: los propios de Hook House (impacto, tensión, tirón) + música original por secciones.
+## Cómo se mueve (corrección del usuario, 2026-10-31: «que se mueva todo, animaciones y efectos en prácticamente todo»)
+- **Cámara viva siempre**: flota (x/y/rotación con senos), empuja en cada escena (hasta +10 %), **golpea en cada palabra**
+  (+1,5 % y sube 6 px al empezar cada palabra) y **tiembla** en los impactos (cifras, sellos, cortes).
+- **Transiciones** entre escenas alternando **barrido** lateral con desenfoque, **zoom** a través y **destello**.
+- **Partículas en todas las escenas**: polvo en la luz, bokeh que se desplaza, estrellas que titilan y fugaces,
+  chispas en cada aparición, monedas en el precio, rayos que giran, pájaros, pasto que se mueve.
+- **Cada objeto tiene su animación**: la luz se balancea, el papel flota en 3D con un reflejo que lo recorre, los
+  personajes parpadean y mueven la cabeza, las pastillas se mecen, los nombres entran letra por letra con brillo,
+  el botón late y una mano lo toca.
+- **Subtítulos** con golpe: cada palabra entra con rebote y giro; la que suena late.
+- **Control**: `python3 -I produccion/servilleta/movimiento.py video.mp4` compara cada cuadro con el de 0,3 s después;
+  ningún tramo puede quedar por debajo de 1,5 (en «La servilleta» v2 de movimiento: mínimo 3,1, mediana 8,7).
+- **Sonido**: barrido en cada transición, pop en cada pastilla, golpe en los impactos, clic en el botón + los sonidos
+  de la marca (impacto, tensión, tirón) y música original por secciones.
 
 ## Honestidad
 - Si se recrea un objeto real (un documento, una servilleta), rotular «RECREACIÓN ILUSTRADA».
