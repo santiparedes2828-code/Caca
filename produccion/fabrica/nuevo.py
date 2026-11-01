@@ -26,5 +26,5 @@ h = "produccion/fabrica/historial.csv"
 if not os.path.exists(h):
     shutil.copy(f"{P}/../historial.csv", h)
 with open(h, "a", encoding="utf-8") as f:
-    f.write(f"{hoy},{slug},,,,,,,,,\n")
+    f.write(f"{hoy},{slug}" + "," * 10 + "\n")  # 12 columnas, como el encabezado
 print(f"listo: {D}/ (seguí el paso 1 de la skill fabrica-viral: investigacion.md)")
