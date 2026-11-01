@@ -37,6 +37,7 @@ import { TODOS_FRAMES, TodosIgual, TodosIgualPortada } from "./Altera/reels/Todo
 import { ESCALON_FRAMES, Escalon, EscalonPortada } from "./Altera/reels/Escalon";
 import { Contrato, ContratoPortada, contratoFrames } from "./Altera/reels/Contrato";
 import { Cleopatra, CleopatraPortada, cleopatraFrames } from "./Altera/reels/Cleopatra";
+import { VenusPortada, VenusReel, venusFrames } from "./Altera/reels/Venus";
 import { CAPAS_FRAMES, Capas, CapasPortada } from "./Altera/reels/Capas";
 import { TOMAS_FRAMES, Tomas, TomasPortada } from "./Altera/reels/Tomas";
 import { APERTURA_FRAMES, EbookApertura } from "./Ebook/Heladera";
@@ -242,6 +243,16 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="CleopatraPortada4" component={CleopatraPortada} defaultProps={{ v: 4 }} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Cleopatra5" component={Cleopatra} defaultProps={{ v: 5 }} durationInFrames={cleopatraFrames(5)} fps={30} width={1080} height={1920} />
       <Composition id="CleopatraPortada5" component={CleopatraPortada} defaultProps={{ v: 5 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Venus1" component={VenusReel} defaultProps={{ v: 1 }} durationInFrames={venusFrames(1)} fps={30} width={1080} height={1920} />
+      <Composition id="VenusPortada1" component={VenusPortada} defaultProps={{ v: 1 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Venus2" component={VenusReel} defaultProps={{ v: 2 }} durationInFrames={venusFrames(2)} fps={30} width={1080} height={1920} />
+      <Composition id="VenusPortada2" component={VenusPortada} defaultProps={{ v: 2 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Venus3" component={VenusReel} defaultProps={{ v: 3 }} durationInFrames={venusFrames(3)} fps={30} width={1080} height={1920} />
+      <Composition id="VenusPortada3" component={VenusPortada} defaultProps={{ v: 3 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Venus4" component={VenusReel} defaultProps={{ v: 4 }} durationInFrames={venusFrames(4)} fps={30} width={1080} height={1920} />
+      <Composition id="VenusPortada4" component={VenusPortada} defaultProps={{ v: 4 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Venus5" component={VenusReel} defaultProps={{ v: 5 }} durationInFrames={venusFrames(5)} fps={30} width={1080} height={1920} />
+      <Composition id="VenusPortada5" component={VenusPortada} defaultProps={{ v: 5 }} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Error1Portada" component={Error1Portada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Piedra" component={Piedra} durationInFrames={PIEDRA_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="GanchoSheet" component={GanchoSheet} durationInFrames={60} fps={30} width={1920} height={1080} />

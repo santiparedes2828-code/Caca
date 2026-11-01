@@ -1,0 +1,436 @@
+{
+ "words": [
+  {
+   "text": "Venus",
+   "start": 0.03,
+   "end": 0.359,
+   "type": "word"
+  },
+  {
+   "text": "tarda",
+   "start": 0.379,
+   "end": 0.709,
+   "type": "word"
+  },
+  {
+   "text": "doscientos",
+   "start": 0.729,
+   "end": 1.192,
+   "type": "word"
+  },
+  {
+   "text": "cuarenta",
+   "start": 1.212,
+   "end": 1.676,
+   "type": "word"
+  },
+  {
+   "text": "y",
+   "start": 1.696,
+   "end": 1.891,
+   "type": "word"
+  },
+  {
+   "text": "tres",
+   "start": 1.911,
+   "end": 2.106,
+   "type": "word"
+  },
+  {
+   "text": "días",
+   "start": 2.126,
+   "end": 2.321,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 2.341,
+   "end": 2.536,
+   "type": "word"
+  },
+  {
+   "text": "dar",
+   "start": 2.556,
+   "end": 2.751,
+   "type": "word"
+  },
+  {
+   "text": "una",
+   "start": 2.771,
+   "end": 3.1,
+   "type": "word"
+  },
+  {
+   "text": "vuelta",
+   "start": 3.12,
+   "end": 3.449,
+   "type": "word"
+  },
+  {
+   "text": "sobre",
+   "start": 3.469,
+   "end": 3.799,
+   "type": "word"
+  },
+  {
+   "text": "sí",
+   "start": 3.819,
+   "end": 4.013,
+   "type": "word"
+  },
+  {
+   "text": "misma.",
+   "start": 4.033,
+   "end": 4.363,
+   "type": "word"
+  },
+  {
+   "text": "Pero",
+   "start": 4.867,
+   "end": 5.192,
+   "type": "word"
+  },
+  {
+   "text": "da",
+   "start": 5.212,
+   "end": 5.405,
+   "type": "word"
+  },
+  {
+   "text": "la",
+   "start": 5.425,
+   "end": 5.618,
+   "type": "word"
+  },
+  {
+   "text": "vuelta",
+   "start": 5.638,
+   "end": 5.963,
+   "type": "word"
+  },
+  {
+   "text": "al",
+   "start": 5.983,
+   "end": 6.176,
+   "type": "word"
+  },
+  {
+   "text": "Sol",
+   "start": 6.196,
+   "end": 6.389,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 6.409,
+   "end": 6.602,
+   "type": "word"
+  },
+  {
+   "text": "doscientos",
+   "start": 6.622,
+   "end": 7.08,
+   "type": "word"
+  },
+  {
+   "text": "veinticinco.",
+   "start": 7.1,
+   "end": 7.692,
+   "type": "word"
+  },
+  {
+   "text": "O",
+   "start": 8.105,
+   "end": 8.292,
+   "type": "word"
+  },
+  {
+   "text": "sea:",
+   "start": 8.312,
+   "end": 8.5,
+   "type": "word"
+  },
+  {
+   "text": "su",
+   "start": 8.814,
+   "end": 9.054,
+   "type": "word"
+  },
+  {
+   "text": "día",
+   "start": 9.074,
+   "end": 9.315,
+   "type": "word"
+  },
+  {
+   "text": "dura",
+   "start": 9.335,
+   "end": 9.738,
+   "type": "word"
+  },
+  {
+   "text": "más",
+   "start": 9.758,
+   "end": 9.998,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 10.018,
+   "end": 10.259,
+   "type": "word"
+  },
+  {
+   "text": "su",
+   "start": 10.279,
+   "end": 10.519,
+   "type": "word"
+  },
+  {
+   "text": "año.",
+   "start": 10.539,
+   "end": 10.943,
+   "type": "word"
+  },
+  {
+   "text": "Y",
+   "start": 11.371,
+   "end": 11.55,
+   "type": "word"
+  },
+  {
+   "text": "gira",
+   "start": 11.57,
+   "end": 11.873,
+   "type": "word"
+  },
+  {
+   "text": "al",
+   "start": 11.893,
+   "end": 12.072,
+   "type": "word"
+  },
+  {
+   "text": "revés:",
+   "start": 12.092,
+   "end": 12.395,
+   "type": "word"
+  },
+  {
+   "text": "allá",
+   "start": 12.745,
+   "end": 13.159,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 13.343,
+   "end": 13.545,
+   "type": "word"
+  },
+  {
+   "text": "Sol",
+   "start": 13.565,
+   "end": 13.767,
+   "type": "word"
+  },
+  {
+   "text": "sale",
+   "start": 13.787,
+   "end": 14.128,
+   "type": "word"
+  },
+  {
+   "text": "por",
+   "start": 14.148,
+   "end": 14.35,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 14.37,
+   "end": 14.572,
+   "type": "word"
+  },
+  {
+   "text": "oeste.",
+   "start": 14.592,
+   "end": 14.932,
+   "type": "word"
+  },
+  {
+   "text": "Encima,",
+   "start": 15.529,
+   "end": 16.071,
+   "type": "word"
+  },
+  {
+   "text": "aunque",
+   "start": 16.282,
+   "end": 16.611,
+   "type": "word"
+  },
+  {
+   "text": "Mercurio",
+   "start": 16.631,
+   "end": 17.094,
+   "type": "word"
+  },
+  {
+   "text": "está",
+   "start": 17.114,
+   "end": 17.443,
+   "type": "word"
+  },
+  {
+   "text": "más",
+   "start": 17.463,
+   "end": 17.658,
+   "type": "word"
+  },
+  {
+   "text": "cerca",
+   "start": 17.678,
+   "end": 18.007,
+   "type": "word"
+  },
+  {
+   "text": "del",
+   "start": 18.027,
+   "end": 18.222,
+   "type": "word"
+  },
+  {
+   "text": "Sol,",
+   "start": 18.242,
+   "end": 18.437,
+   "type": "word"
+  },
+  {
+   "text": "Venus",
+   "start": 18.75,
+   "end": 19.13,
+   "type": "word"
+  },
+  {
+   "text": "es",
+   "start": 19.15,
+   "end": 19.376,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 19.396,
+   "end": 19.622,
+   "type": "word"
+  },
+  {
+   "text": "planeta",
+   "start": 19.642,
+   "end": 20.175,
+   "type": "word"
+  },
+  {
+   "text": "más",
+   "start": 20.195,
+   "end": 20.421,
+   "type": "word"
+  },
+  {
+   "text": "caliente:",
+   "start": 20.441,
+   "end": 20.974,
+   "type": "word"
+  },
+  {
+   "text": "más",
+   "start": 21.367,
+   "end": 21.625,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 21.645,
+   "end": 21.903,
+   "type": "word"
+  },
+  {
+   "text": "cuatrocientos",
+   "start": 21.923,
+   "end": 22.702,
+   "type": "word"
+  },
+  {
+   "text": "cincuenta",
+   "start": 22.722,
+   "end": 23.327,
+   "type": "word"
+  },
+  {
+   "text": "grados.",
+   "start": 23.347,
+   "end": 23.778,
+   "type": "word"
+  },
+  {
+   "text": "Alcanza",
+   "start": 24.166,
+   "end": 24.672,
+   "type": "word"
+  },
+  {
+   "text": "para",
+   "start": 24.692,
+   "end": 25.052,
+   "type": "word"
+  },
+  {
+   "text": "derretir",
+   "start": 25.072,
+   "end": 25.578,
+   "type": "word"
+  },
+  {
+   "text": "plomo.",
+   "start": 25.598,
+   "end": 25.958,
+   "type": "word"
+  },
+  {
+   "text": "Comentá",
+   "start": 26.491,
+   "end": 27.037,
+   "type": "word"
+  },
+  {
+   "text": "«Venus»",
+   "start": 27.057,
+   "end": 27.447,
+   "type": "word"
+  },
+  {
+   "text": "si",
+   "start": 27.467,
+   "end": 27.698,
+   "type": "word"
+  },
+  {
+   "text": "no",
+   "start": 27.869,
+   "end": 28.141,
+   "type": "word"
+  },
+  {
+   "text": "lo",
+   "start": 28.161,
+   "end": 28.434,
+   "type": "word"
+  },
+  {
+   "text": "sabías.",
+   "start": 28.454,
+   "end": 28.91,
+   "type": "word"
+  }
+ ]
+}

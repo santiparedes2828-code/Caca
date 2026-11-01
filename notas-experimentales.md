@@ -50,3 +50,9 @@
 - Hipótesis: la línea de tiempo vertical hace que el dato se entienda sin sonido (mirar retención de quienes ven sin audio, si la plataforma lo da).
 - Qué mirar: retención a 3 s, % que llega al giro (~27 s), comentarios con apuestas («pirámides» / «Luna»), compartidos y seguidores en 48 h. Segunda candidata para publicar después: gancho 4 «Ni cerca».
 - Descartado: «El contrato de 800 dólares» (Ronald Wayne, Apple). El usuario lo sintió igual a la servilleta; queda en `Contrato.tsx` sin publicar.
+
+## «Un día en Venus» (2026-11-01) — espacio, cierre de comentario
+- Hipótesis: un gancho absurdo y cotidiano (torta de cumpleaños en Venus) retiene a los 3 s tanto como el reto de 2 s, sin repetir formato.
+- Hipótesis: encadenar 3 datos que suben la apuesta (día > año → Sol por el oeste → derrite plomo) mejora la retención después del segundo 10, que es donde se iba la gente.
+- CTA «Comentá Venus»: comparar comentarios cada 1.000 views con Cleopatra («Seguime»).
+- Guardado para otro día: gancho 1 (reto «¿un día o un año?») y gancho 4 (caracol).
