@@ -1,0 +1,555 @@
+[
+ {
+  "text": "¿Qué",
+  "startMs": 28,
+  "endMs": 224,
+  "timestampMs": 126,
+  "confidence": null
+ },
+ {
+  "text": "dura",
+  "startMs": 243,
+  "endMs": 572,
+  "timestampMs": 407,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 591,
+  "endMs": 787,
+  "timestampMs": 689,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 806,
+  "endMs": 1002,
+  "timestampMs": 904,
+  "confidence": null
+ },
+ {
+  "text": "Venus:",
+  "startMs": 1020,
+  "endMs": 1350,
+  "timestampMs": 1185,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 1561,
+  "endMs": 1820,
+  "timestampMs": 1691,
+  "confidence": null
+ },
+ {
+  "text": "día…",
+  "startMs": 1839,
+  "endMs": 2098,
+  "timestampMs": 1969,
+  "confidence": null
+ },
+ {
+  "text": "o",
+  "startMs": 2313,
+  "endMs": 2461,
+  "timestampMs": 2387,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 2480,
+  "endMs": 2627,
+  "timestampMs": 2554,
+  "confidence": null
+ },
+ {
+  "text": "año?",
+  "startMs": 2645,
+  "endMs": 2897,
+  "timestampMs": 2771,
+  "confidence": null
+ },
+ {
+  "text": "Tenés",
+  "startMs": 3138,
+  "endMs": 3512,
+  "timestampMs": 3325,
+  "confidence": null
+ },
+ {
+  "text": "2 segundos.",
+  "startMs": 3531,
+  "endMs": 4298,
+  "timestampMs": 3643,
+  "confidence": null
+ },
+ {
+  "text": "Venus",
+  "startMs": 6659,
+  "endMs": 6964,
+  "timestampMs": 6811,
+  "confidence": null
+ },
+ {
+  "text": "tarda",
+  "startMs": 6982,
+  "endMs": 7288,
+  "timestampMs": 7135,
+  "confidence": null
+ },
+ {
+  "text": "243",
+  "startMs": 7307,
+  "endMs": 8582,
+  "timestampMs": 7520,
+  "confidence": null
+ },
+ {
+  "text": "días",
+  "startMs": 8600,
+  "endMs": 8781,
+  "timestampMs": 8691,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 8799,
+  "endMs": 8980,
+  "timestampMs": 8890,
+  "confidence": null
+ },
+ {
+  "text": "dar",
+  "startMs": 8998,
+  "endMs": 9179,
+  "timestampMs": 9089,
+  "confidence": null
+ },
+ {
+  "text": "una",
+  "startMs": 9197,
+  "endMs": 9502,
+  "timestampMs": 9350,
+  "confidence": null
+ },
+ {
+  "text": "vuelta",
+  "startMs": 9520,
+  "endMs": 9825,
+  "timestampMs": 9672,
+  "confidence": null
+ },
+ {
+  "text": "sobre",
+  "startMs": 9844,
+  "endMs": 10149,
+  "timestampMs": 9996,
+  "confidence": null
+ },
+ {
+  "text": "sí",
+  "startMs": 10168,
+  "endMs": 10347,
+  "timestampMs": 10257,
+  "confidence": null
+ },
+ {
+  "text": "misma.",
+  "startMs": 10366,
+  "endMs": 10671,
+  "timestampMs": 10519,
+  "confidence": null
+ },
+ {
+  "text": "Pero",
+  "startMs": 10901,
+  "endMs": 11202,
+  "timestampMs": 11051,
+  "confidence": null
+ },
+ {
+  "text": "da",
+  "startMs": 11220,
+  "endMs": 11399,
+  "timestampMs": 11309,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 11418,
+  "endMs": 11596,
+  "timestampMs": 11507,
+  "confidence": null
+ },
+ {
+  "text": "vuelta",
+  "startMs": 11615,
+  "endMs": 11916,
+  "timestampMs": 11765,
+  "confidence": null
+ },
+ {
+  "text": "al",
+  "startMs": 11934,
+  "endMs": 12113,
+  "timestampMs": 12023,
+  "confidence": null
+ },
+ {
+  "text": "Sol",
+  "startMs": 12132,
+  "endMs": 12310,
+  "timestampMs": 12220,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 12329,
+  "endMs": 12507,
+  "timestampMs": 12418,
+  "confidence": null
+ },
+ {
+  "text": "225.",
+  "startMs": 12526,
+  "endMs": 13517,
+  "timestampMs": 12738,
+  "confidence": null
+ },
+ {
+  "text": "O",
+  "startMs": 13732,
+  "endMs": 13906,
+  "timestampMs": 13819,
+  "confidence": null
+ },
+ {
+  "text": "sea:",
+  "startMs": 13924,
+  "endMs": 14098,
+  "timestampMs": 14011,
+  "confidence": null
+ },
+ {
+  "text": "su",
+  "startMs": 14316,
+  "endMs": 14538,
+  "timestampMs": 14427,
+  "confidence": null
+ },
+ {
+  "text": "día",
+  "startMs": 14557,
+  "endMs": 14780,
+  "timestampMs": 14668,
+  "confidence": null
+ },
+ {
+  "text": "dura",
+  "startMs": 14798,
+  "endMs": 15171,
+  "timestampMs": 14984,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 15190,
+  "endMs": 15412,
+  "timestampMs": 15301,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 15431,
+  "endMs": 15654,
+  "timestampMs": 15542,
+  "confidence": null
+ },
+ {
+  "text": "su",
+  "startMs": 15672,
+  "endMs": 15894,
+  "timestampMs": 15783,
+  "confidence": null
+ },
+ {
+  "text": "año.",
+  "startMs": 15913,
+  "endMs": 16287,
+  "timestampMs": 16100,
+  "confidence": null
+ },
+ {
+  "text": "Y",
+  "startMs": 16518,
+  "endMs": 16683,
+  "timestampMs": 16601,
+  "confidence": null
+ },
+ {
+  "text": "gira",
+  "startMs": 16702,
+  "endMs": 16982,
+  "timestampMs": 16843,
+  "confidence": null
+ },
+ {
+  "text": "al",
+  "startMs": 17001,
+  "endMs": 17167,
+  "timestampMs": 17084,
+  "confidence": null
+ },
+ {
+  "text": "revés:",
+  "startMs": 17185,
+  "endMs": 17466,
+  "timestampMs": 17326,
+  "confidence": null
+ },
+ {
+  "text": "allá",
+  "startMs": 17682,
+  "endMs": 18065,
+  "timestampMs": 17873,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 18235,
+  "endMs": 18422,
+  "timestampMs": 18329,
+  "confidence": null
+ },
+ {
+  "text": "Sol",
+  "startMs": 18441,
+  "endMs": 18628,
+  "timestampMs": 18534,
+  "confidence": null
+ },
+ {
+  "text": "sale",
+  "startMs": 18646,
+  "endMs": 18962,
+  "timestampMs": 18804,
+  "confidence": null
+ },
+ {
+  "text": "por",
+  "startMs": 18981,
+  "endMs": 19168,
+  "timestampMs": 19074,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 19186,
+  "endMs": 19373,
+  "timestampMs": 19280,
+  "confidence": null
+ },
+ {
+  "text": "oeste.",
+  "startMs": 19392,
+  "endMs": 19707,
+  "timestampMs": 19549,
+  "confidence": null
+ },
+ {
+  "text": "Encima,",
+  "startMs": 19947,
+  "endMs": 20449,
+  "timestampMs": 20198,
+  "confidence": null
+ },
+ {
+  "text": "aunque",
+  "startMs": 20644,
+  "endMs": 20949,
+  "timestampMs": 20796,
+  "confidence": null
+ },
+ {
+  "text": "Mercurio",
+  "startMs": 20968,
+  "endMs": 21396,
+  "timestampMs": 21182,
+  "confidence": null
+ },
+ {
+  "text": "está",
+  "startMs": 21415,
+  "endMs": 21719,
+  "timestampMs": 21567,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 21738,
+  "endMs": 21919,
+  "timestampMs": 21828,
+  "confidence": null
+ },
+ {
+  "text": "cerca",
+  "startMs": 21937,
+  "endMs": 22242,
+  "timestampMs": 22089,
+  "confidence": null
+ },
+ {
+  "text": "del",
+  "startMs": 22260,
+  "endMs": 22441,
+  "timestampMs": 22350,
+  "confidence": null
+ },
+ {
+  "text": "Sol,",
+  "startMs": 22459,
+  "endMs": 22640,
+  "timestampMs": 22549,
+  "confidence": null
+ },
+ {
+  "text": "Venus",
+  "startMs": 22930,
+  "endMs": 23282,
+  "timestampMs": 23106,
+  "confidence": null
+ },
+ {
+  "text": "es",
+  "startMs": 23300,
+  "endMs": 23509,
+  "timestampMs": 23405,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 23528,
+  "endMs": 23737,
+  "timestampMs": 23632,
+  "confidence": null
+ },
+ {
+  "text": "planeta",
+  "startMs": 23756,
+  "endMs": 24249,
+  "timestampMs": 24002,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 24268,
+  "endMs": 24477,
+  "timestampMs": 24372,
+  "confidence": null
+ },
+ {
+  "text": "caliente:",
+  "startMs": 24495,
+  "endMs": 24989,
+  "timestampMs": 24742,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 25219,
+  "endMs": 25458,
+  "timestampMs": 25339,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 25477,
+  "endMs": 25716,
+  "timestampMs": 25596,
+  "confidence": null
+ },
+ {
+  "text": "450",
+  "startMs": 25734,
+  "endMs": 27034,
+  "timestampMs": 26094,
+  "confidence": null
+ },
+ {
+  "text": "grados.",
+  "startMs": 27053,
+  "endMs": 27452,
+  "timestampMs": 27252,
+  "confidence": null
+ },
+ {
+  "text": "Alcanza",
+  "startMs": 27677,
+  "endMs": 28145,
+  "timestampMs": 27911,
+  "confidence": null
+ },
+ {
+  "text": "para",
+  "startMs": 28164,
+  "endMs": 28497,
+  "timestampMs": 28331,
+  "confidence": null
+ },
+ {
+  "text": "derretir",
+  "startMs": 28516,
+  "endMs": 28984,
+  "timestampMs": 28750,
+  "confidence": null
+ },
+ {
+  "text": "plomo.",
+  "startMs": 29003,
+  "endMs": 29336,
+  "timestampMs": 29169,
+  "confidence": null
+ },
+ {
+  "text": "Comentá",
+  "startMs": 29549,
+  "endMs": 30055,
+  "timestampMs": 29802,
+  "confidence": null
+ },
+ {
+  "text": "«Venus»",
+  "startMs": 30073,
+  "endMs": 30434,
+  "timestampMs": 30254,
+  "confidence": null
+ },
+ {
+  "text": "si",
+  "startMs": 30453,
+  "endMs": 30667,
+  "timestampMs": 30560,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 30825,
+  "endMs": 31077,
+  "timestampMs": 30951,
+  "confidence": null
+ },
+ {
+  "text": "lo",
+  "startMs": 31095,
+  "endMs": 31348,
+  "timestampMs": 31222,
+  "confidence": null
+ },
+ {
+  "text": "sabías.",
+  "startMs": 31367,
+  "endMs": 31789,
+  "timestampMs": 31578,
+  "confidence": null
+ }
+]

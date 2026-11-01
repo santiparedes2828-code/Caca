@@ -80,7 +80,7 @@ const Subs: React.FC<{ words: { text: string; at: number }[]; f: number; fps: nu
 
 // ---------- piezas ilustradas ----------
 // Pirámide (cara iluminada + cara en sombra + hiladas); build < 1 = en construcción (sube de a capas)
-const Pyramid: React.FC<{ x: number; y: number; w: number; build?: number; old?: number; glow?: number }> = ({ x, y, w, build = 1, old = 0, glow = 0 }) => {
+export const Pyramid: React.FC<{ x: number; y: number; w: number; build?: number; old?: number; glow?: number }> = ({ x, y, w, build = 1, old = 0, glow = 0 }) => {
   const h = w * 0.64;
   const rows = 14;
   const shown = Math.max(0, Math.min(rows, build * rows));
@@ -113,7 +113,7 @@ const Pyramid: React.FC<{ x: number; y: number; w: number; build?: number; old?:
 };
 
 // Desierto al atardecer: sol con rayos que giran, dunas en capas, arena que vuela, pájaros, calor que ondula
-const Desert: React.FC<{ f: number; k?: number; build?: number; old?: number; night?: number; glow?: number; pyr?: { x: number; y: number; w: number } }> = ({ f, k = 0, build = 1, old = 0, night = 0, glow = 0, pyr = { x: 560, y: 1330, w: 720 } }) => (
+export const Desert: React.FC<{ f: number; k?: number; build?: number; old?: number; night?: number; glow?: number; pyr?: { x: number; y: number; w: number } }> = ({ f, k = 0, build = 1, old = 0, night = 0, glow = 0, pyr = { x: 560, y: 1330, w: 720 } }) => (
   <>
     <AbsoluteFill style={{ background: night > 0.5 ? "linear-gradient(180deg, #0B1030 0%, #1E2350 55%, #3A2C4A 100%)" : "linear-gradient(180deg, #2B1B3A 0%, #8E3E3C 35%, #E07A44 58%, #F6B866 72%)" }} />
     {night > 0.5 ? <Stars f={f} n={70} h={1000} /> : null}
@@ -154,7 +154,7 @@ const Desert: React.FC<{ f: number; k?: number; build?: number; old?: number; ni
 );
 
 // Busto de reina egipcia (silueta de perfil, sin cara): tocado, cobra en la frente y collar dorado
-const CleoBust: React.FC<{ x: number; y: number; s?: number; f: number; lit?: number; flip?: boolean }> = ({ x, y, s = 1, f, lit = 0, flip = false }) => (
+export const CleoBust: React.FC<{ x: number; y: number; s?: number; f: number; lit?: number; flip?: boolean }> = ({ x, y, s = 1, f, lit = 0, flip = false }) => (
   <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible", pointerEvents: "none" }}>
     <g transform={`translate(${x} ${y + 5 * Math.sin(f * 0.11)}) scale(${(flip ? -1 : 1) * s} ${s})`} style={{ filter: `drop-shadow(0 0 ${14 + 26 * lit}px rgba(247,185,85,${0.35 + 0.55 * lit}))` }}>
       <path d="M-150 220 Q-150 80 -20 64 Q110 70 130 220 Z" fill="#120C14" />
@@ -175,7 +175,7 @@ const CleoBust: React.FC<{ x: number; y: number; s?: number; f: number; lit?: nu
 );
 
 // Busto romano (silueta de perfil) con corona de laurel
-const CaesarBust: React.FC<{ x: number; y: number; s?: number; f: number }> = ({ x, y, s = 1, f }) => (
+export const CaesarBust: React.FC<{ x: number; y: number; s?: number; f: number }> = ({ x, y, s = 1, f }) => (
   <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible", pointerEvents: "none" }}>
     <g transform={`translate(${x} ${y + 5 * Math.sin(f * 0.1 + 2)}) scale(${s} ${s})`}>
       <path d="M-150 220 Q-150 80 -20 64 Q110 70 130 220 Z" fill="#14121A" />
@@ -192,7 +192,7 @@ const CaesarBust: React.FC<{ x: number; y: number; s?: number; f: number }> = ({
 );
 
 // Cohete genérico con llama que titila y humo; launch 0..1 lo hace subir
-const Rocket: React.FC<{ x: number; y: number; s?: number; f: number; launch?: number; smoke?: number }> = ({ x, y, s = 1, f, launch = 0, smoke = 0 }) => {
+export const Rocket: React.FC<{ x: number; y: number; s?: number; f: number; launch?: number; smoke?: number }> = ({ x, y, s = 1, f, launch = 0, smoke = 0 }) => {
   const up = 1400 * Easing.in(Easing.quad)(launch);
   const fl = 0.8 + 0.25 * Math.sin(f * 2.1) + 0.15 * Math.sin(f * 3.7);
   return (
@@ -220,7 +220,7 @@ const Rocket: React.FC<{ x: number; y: number; s?: number; f: number; launch?: n
 };
 
 // Luna: superficie con cráteres, la Tierra en el cielo y un astronauta (dos piernas) que clava la bandera
-const MoonScene: React.FC<{ f: number; plant: number; astro?: boolean }> = ({ f, plant, astro = true }) => {
+export const MoonScene: React.FC<{ f: number; plant: number; astro?: boolean }> = ({ f, plant, astro = true }) => {
   const step = Math.sin(f * 0.25);
   return (
     <>
@@ -372,7 +372,7 @@ const Timeline: React.FC<{ f: number; marks: Mark[]; show: number[]; braces: { a
 };
 
 // Escena «cerca / lejos»: la reina, algo cerca (la Luna, el cohete, vos) y la pirámide lejos
-const NearFar: React.FC<{ f: number; near: "luna" | "cohete" | "vos"; tNear: number; tFar: number; tQueen: number; fps: number; labels?: boolean }> = ({ f, near, tNear, tFar, tQueen, fps, labels = false }) => {
+export const NearFar: React.FC<{ f: number; near: "luna" | "cohete" | "vos"; tNear: number; tFar: number; tQueen: number; fps: number; labels?: boolean }> = ({ f, near, tNear, tFar, tQueen, fps, labels = false }) => {
   const far = ln(f, tFar - 2, tFar + 16, 0, 1, eo);
   const q = f >= tQueen ? pop(f, tQueen, fps) : 0;
   const n = f >= tNear ? pop(f, tNear, fps) : 0;

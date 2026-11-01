@@ -80,7 +80,7 @@ const Subs: React.FC<{ words: { text: string; at: number }[]; f: number; fps: nu
 };
 
 // ---------- piezas ----------
-const Space: React.FC<{ f: number; tint?: string }> = ({ f, tint = "#1A1030" }) => (
+export const Space: React.FC<{ f: number; tint?: string }> = ({ f, tint = "#1A1030" }) => (
   <>
     <AbsoluteFill style={{ background: `radial-gradient(ellipse at 50% 55%, ${tint} 0%, #07060E 75%)` }} />
     <Stars f={f} n={110} h={1920} />
@@ -90,7 +90,7 @@ const Space: React.FC<{ f: number; tint?: string }> = ({ f, tint = "#1A1030" }) 
 
 // Venus: nubes en bandas que se desplazan según el giro (rot crece = gira); marcador en la superficie
 let venusId = 0;
-const Venus: React.FC<{ x: number; y: number; r: number; rot: number; f: number; marker?: boolean; heat?: number; arrow?: number; dir?: number }> = ({ x, y, r, rot, f, marker = false, heat = 0, arrow = 0, dir = -1 }) => {
+export const Venus: React.FC<{ x: number; y: number; r: number; rot: number; f: number; marker?: boolean; heat?: number; arrow?: number; dir?: number }> = ({ x, y, r, rot, f, marker = false, heat = 0, arrow = 0, dir = -1 }) => {
   const id = `vn${venusId++ % 50}`;
   const bands = 7;
   const mx = Math.sin(rot) * r * 0.8;
@@ -141,7 +141,7 @@ const Venus: React.FC<{ x: number; y: number; r: number; rot: number; f: number;
   );
 };
 
-const Sun: React.FC<{ x: number; y: number; r: number; f: number }> = ({ x, y, r, f }) => (
+export const Sun: React.FC<{ x: number; y: number; r: number; f: number }> = ({ x, y, r, f }) => (
   <>
     <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible", pointerEvents: "none" }}>
       <g transform={`translate(${x} ${y}) rotate(${f * 0.6})`} opacity={0.35}>
@@ -155,7 +155,7 @@ const Sun: React.FC<{ x: number; y: number; r: number; f: number }> = ({ x, y, r
 );
 
 // Superficie de Venus: cielo naranja con bruma, volcanes, rocas; el Sol puede salir por la izquierda (oeste)
-const Surface: React.FC<{ f: number; sunrise?: number; heat?: number }> = ({ f, sunrise = 0, heat = 0 }) => (
+export const Surface: React.FC<{ f: number; sunrise?: number; heat?: number }> = ({ f, sunrise = 0, heat = 0 }) => (
   <>
     <AbsoluteFill style={{ background: `linear-gradient(180deg, ${heat > 0 ? "#5A1408" : "#5A2A12"} 0%, ${heat > 0 ? "#C2401E" : "#C27A2E"} 45%, ${heat > 0 ? "#FF8A3D" : "#F2C070"} 70%)` }} />
     {sunrise > 0 ? (
@@ -184,7 +184,7 @@ const Surface: React.FC<{ f: number; sunrise?: number; heat?: number }> = ({ f, 
   </>
 );
 
-const Thermo: React.FC<{ x: number; y: number; p: number; f: number }> = ({ x, y, p, f }) => {
+export const Thermo: React.FC<{ x: number; y: number; p: number; f: number }> = ({ x, y, p, f }) => {
   const h = 760;
   const fill = h * p;
   return (
@@ -202,7 +202,7 @@ const Thermo: React.FC<{ x: number; y: number; p: number; f: number }> = ({ x, y
 };
 
 // Lingote de plomo que se derrite (melt 0..1)
-const Ingot: React.FC<{ x: number; y: number; melt: number; f: number }> = ({ x, y, melt, f }) => {
+export const Ingot: React.FC<{ x: number; y: number; melt: number; f: number }> = ({ x, y, melt, f }) => {
   const hh = 150 * (1 - 0.85 * melt);
   const sag = 30 * melt;
   return (
@@ -225,7 +225,7 @@ const Ingot: React.FC<{ x: number; y: number; melt: number; f: number }> = ({ x,
 };
 
 // Torta de cumpleaños con velas que titilan
-const Cake: React.FC<{ x: number; y: number; s: number; f: number }> = ({ x, y, s, f }) => (
+export const Cake: React.FC<{ x: number; y: number; s: number; f: number }> = ({ x, y, s, f }) => (
   <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible", pointerEvents: "none" }}>
     <g transform={`translate(${x} ${y}) scale(${s})`}>
       <rect x={-170} y={-120} width={340} height={120} rx={20} fill="#F7C6D8" />
@@ -243,7 +243,7 @@ const Cake: React.FC<{ x: number; y: number; s: number; f: number }> = ({ x, y, 
 );
 
 // Caracol (para «gira tan lento»)
-const Snail: React.FC<{ x: number; y: number; s: number; f: number }> = ({ x, y, s, f }) => (
+export const Snail: React.FC<{ x: number; y: number; s: number; f: number }> = ({ x, y, s, f }) => (
   <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible", pointerEvents: "none" }}>
     <g transform={`translate(${x} ${y}) scale(${s})`}>
       <path d={`M-90 0 Q-100 -30 -60 -34 L60 -34 Q100 -34 110 -70 L118 -${96 + 4 * Math.sin(f * 0.3)} M100 -60 L96 -${92 + 4 * Math.cos(f * 0.3)}`} stroke="#E8E2F2" strokeWidth={10} fill="none" strokeLinecap="round" />

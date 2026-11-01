@@ -1,0 +1,21 @@
+{
+  "slug": "{{slug}}",
+  "toma": "a",
+  "tempo": 1.08,
+  "pausa": 0.24,
+  "reloj": { "variante": 0, "segundos": 2.0 },
+  "numeros": [
+    [["dos", "segundos"], "2 segundos"]
+  ],
+  "musica": {
+    "bpm": 104,
+    "secciones": [
+      { "desde": "inicio", "modo": "misterio", "escala": "menor", "tonica": 57 },
+      { "desde": "<primera palabra del cuerpo>", "modo": "groove", "escala": "menor", "tonica": 57 },
+      { "desde": "<palabra antes del dato fuerte>", "modo": "tension", "tonica": 57 },
+      { "desde": "<palabra del dato fuerte>", "modo": "pesado", "tonica": 57 },
+      { "desde": "<primera palabra del CTA>", "modo": "cierre", "tonica": 60 }
+    ],
+    "golpes": []
+  }
+}

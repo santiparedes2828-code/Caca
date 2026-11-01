@@ -1,3 +1,4 @@
+import React from "react";
 import { Composition, Folder, Still } from "remotion";
 import { HelloWorld } from "./HelloWorld";
 import { Logo } from "./HelloWorld/Logo";
@@ -38,6 +39,9 @@ import { ESCALON_FRAMES, Escalon, EscalonPortada } from "./Altera/reels/Escalon"
 import { Contrato, ContratoPortada, contratoFrames } from "./Altera/reels/Contrato";
 import { Cleopatra, CleopatraPortada, cleopatraFrames } from "./Altera/reels/Cleopatra";
 import { VenusPortada, VenusReel, venusFrames } from "./Altera/reels/Venus";
+import { duracion } from "./Fabrica/Motor";
+import { FabricaPortada, FabricaVideo } from "./Fabrica/Composicion";
+import { VIDEOS } from "./Fabrica/registro";
 import { CAPAS_FRAMES, Capas, CapasPortada } from "./Altera/reels/Capas";
 import { TOMAS_FRAMES, Tomas, TomasPortada } from "./Altera/reels/Tomas";
 import { APERTURA_FRAMES, EbookApertura } from "./Ebook/Heladera";
@@ -253,6 +257,14 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="VenusPortada4" component={VenusPortada} defaultProps={{ v: 4 }} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Venus5" component={VenusReel} defaultProps={{ v: 5 }} durationInFrames={venusFrames(5)} fps={30} width={1080} height={1920} />
       <Composition id="VenusPortada5" component={VenusPortada} defaultProps={{ v: 5 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+      {VIDEOS.flatMap((video) =>
+        video.captions.map((_, k) => (
+          <React.Fragment key={`${video.slug}-${k}`}>
+            <Composition id={`Fabrica-${video.slug}-${k + 1}`} component={FabricaVideo} defaultProps={{ slug: video.slug, v: k + 1 }} durationInFrames={duracion(video, k + 1)} fps={30} width={1080} height={1920} />
+            <Composition id={`Fabrica-${video.slug}-portada-${k + 1}`} component={FabricaPortada} defaultProps={{ slug: video.slug, v: k + 1 }} durationInFrames={1} fps={30} width={1080} height={1920} />
+          </React.Fragment>
+        )),
+      )}
       <Composition id="Error1Portada" component={Error1Portada} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Piedra" component={Piedra} durationInFrames={PIEDRA_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="GanchoSheet" component={GanchoSheet} durationInFrames={60} fps={30} width={1920} height={1080} />

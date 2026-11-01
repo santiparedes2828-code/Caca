@@ -1,0 +1,24 @@
+{
+  "slug": "venusf",
+  "toma": "a",
+  "tempo": 1.08,
+  "pausa": 0.24,
+  "reloj": { "variante": 1, "segundos": 2.0 },
+  "numeros": [
+    [["doscientos", "cuarenta", "y", "tres"], "243"],
+    [["doscientos", "veinticinco"], "225"],
+    [["cuatrocientos", "cincuenta"], "450"],
+    [["dos", "segundos"], "2 segundos"]
+  ],
+  "musica": {
+    "bpm": 104,
+    "secciones": [
+      { "desde": "inicio", "modo": "misterio", "escala": "lidio", "tonica": 53 },
+      { "desde": "tarda", "modo": "groove", "escala": "lidio", "tonica": 53 },
+      { "desde": "encima", "modo": "tension", "tonica": 50 },
+      { "desde": "caliente", "modo": "pesado", "tonica": 50 },
+      { "desde": "comentá", "modo": "cierre", "tonica": 53 }
+    ],
+    "golpes": ["o@225"]
+  }
+}
