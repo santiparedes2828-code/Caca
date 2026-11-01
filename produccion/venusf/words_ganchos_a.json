@@ -1,0 +1,334 @@
+{
+ "words": [
+  {
+   "text": "¿Qué",
+   "start": 0.03,
+   "end": 0.242,
+   "type": "word"
+  },
+  {
+   "text": "dura",
+   "start": 0.262,
+   "end": 0.618,
+   "type": "word"
+  },
+  {
+   "text": "más",
+   "start": 0.638,
+   "end": 0.85,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 0.87,
+   "end": 1.082,
+   "type": "word"
+  },
+  {
+   "text": "Venus:",
+   "start": 1.102,
+   "end": 1.458,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 1.864,
+   "end": 2.144,
+   "type": "word"
+  },
+  {
+   "text": "día…",
+   "start": 2.164,
+   "end": 2.444,
+   "type": "word"
+  },
+  {
+   "text": "o",
+   "start": 2.997,
+   "end": 3.157,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 3.177,
+   "end": 3.336,
+   "type": "word"
+  },
+  {
+   "text": "año?",
+   "start": 3.356,
+   "end": 3.628,
+   "type": "word"
+  },
+  {
+   "text": "Tenés",
+   "start": 4.273,
+   "end": 4.677,
+   "type": "word"
+  },
+  {
+   "text": "dos",
+   "start": 4.697,
+   "end": 4.938,
+   "type": "word"
+  },
+  {
+   "text": "segundos.",
+   "start": 4.958,
+   "end": 5.526,
+   "type": "word"
+  },
+  {
+   "text": "En",
+   "start": 6.408,
+   "end": 6.641,
+   "type": "word"
+  },
+  {
+   "text": "Venus,",
+   "start": 6.661,
+   "end": 7.052,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 7.232,
+   "end": 7.424,
+   "type": "word"
+  },
+  {
+   "text": "día",
+   "start": 7.444,
+   "end": 7.635,
+   "type": "word"
+  },
+  {
+   "text": "dura",
+   "start": 7.655,
+   "end": 7.979,
+   "type": "word"
+  },
+  {
+   "text": "más",
+   "start": 7.999,
+   "end": 8.19,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 8.21,
+   "end": 8.402,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 8.422,
+   "end": 8.613,
+   "type": "word"
+  },
+  {
+   "text": "año.",
+   "start": 8.633,
+   "end": 8.957,
+   "type": "word"
+  },
+  {
+   "text": "En",
+   "start": 9.513,
+   "end": 9.751,
+   "type": "word"
+  },
+  {
+   "text": "Venus",
+   "start": 9.771,
+   "end": 10.17,
+   "type": "word"
+  },
+  {
+   "text": "cumplirías",
+   "start": 10.19,
+   "end": 10.75,
+   "type": "word"
+  },
+  {
+   "text": "años…",
+   "start": 10.77,
+   "end": 11.169,
+   "type": "word"
+  },
+  {
+   "text": "antes",
+   "start": 11.466,
+   "end": 11.755,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 11.775,
+   "end": 11.944,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 11.964,
+   "end": 12.134,
+   "type": "word"
+  },
+  {
+   "text": "termine",
+   "start": 12.154,
+   "end": 12.561,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 12.581,
+   "end": 12.751,
+   "type": "word"
+  },
+  {
+   "text": "día.",
+   "start": 12.771,
+   "end": 12.941,
+   "type": "word"
+  },
+  {
+   "text": "Este",
+   "start": 13.531,
+   "end": 13.956,
+   "type": "word"
+  },
+  {
+   "text": "planeta",
+   "start": 13.976,
+   "end": 14.571,
+   "type": "word"
+  },
+  {
+   "text": "gira",
+   "start": 14.767,
+   "end": 15.046,
+   "type": "word"
+  },
+  {
+   "text": "tan",
+   "start": 15.066,
+   "end": 15.23,
+   "type": "word"
+  },
+  {
+   "text": "lento…",
+   "start": 15.25,
+   "end": 15.529,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 15.885,
+   "end": 16.075,
+   "type": "word"
+  },
+  {
+   "text": "su",
+   "start": 16.095,
+   "end": 16.286,
+   "type": "word"
+  },
+  {
+   "text": "día",
+   "start": 16.306,
+   "end": 16.496,
+   "type": "word"
+  },
+  {
+   "text": "dura",
+   "start": 16.516,
+   "end": 16.838,
+   "type": "word"
+  },
+  {
+   "text": "más",
+   "start": 16.858,
+   "end": 17.049,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 17.069,
+   "end": 17.259,
+   "type": "word"
+  },
+  {
+   "text": "su",
+   "start": 17.279,
+   "end": 17.47,
+   "type": "word"
+  },
+  {
+   "text": "año.",
+   "start": 17.49,
+   "end": 17.812,
+   "type": "word"
+  },
+  {
+   "text": "Hay",
+   "start": 18.501,
+   "end": 18.689,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 18.709,
+   "end": 18.897,
+   "type": "word"
+  },
+  {
+   "text": "planeta",
+   "start": 18.917,
+   "end": 19.364,
+   "type": "word"
+  },
+  {
+   "text": "donde",
+   "start": 19.384,
+   "end": 19.702,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 19.722,
+   "end": 19.91,
+   "type": "word"
+  },
+  {
+   "text": "Sol",
+   "start": 19.93,
+   "end": 20.118,
+   "type": "word"
+  },
+  {
+   "text": "sale",
+   "start": 20.138,
+   "end": 20.455,
+   "type": "word"
+  },
+  {
+   "text": "por",
+   "start": 20.475,
+   "end": 20.663,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 20.683,
+   "end": 20.871,
+   "type": "word"
+  },
+  {
+   "text": "oeste.",
+   "start": 20.891,
+   "end": 21.209,
+   "type": "word"
+  }
+ ]
+}
