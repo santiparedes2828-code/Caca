@@ -1,7 +1,7 @@
 # huevo — entrega (2026-11-01)
 
-**Video:** `out/huevo/huevo.mp4` (1080×1920, 34,8 s, −13,9 LUFS) · **Portada:** `out/huevo/portada.png` — «¿Qué vino primero? ¿Huevo o gallina?»
-**Estructura y público:** reto de 2 s con pantalla dividida → «depende de qué huevo» → escala (300 millones de años vs 3.500)
+**Video:** `out/huevo/huevo.mp4` (1080×1920, 31,3 s, −14 LUFS) · **Portada:** `out/huevo/portada.png` — «¿Qué vino primero? ¿Huevo o gallina?»
+**Estructura y público:** pregunta + pantalla dividida «HUEVO VS GALLINA» → «depende de qué huevo» → escala (300 millones de años vs 3.500)
 → el día entero (la gallina llega en el último segundo) → giro: el primer huevo de gallina → «ganó el huevo» → Seguime. Público general.
 
 ## Dato verificado
@@ -18,10 +18,11 @@ Saturado: TED-Ed/AsapSCIENCE 23,6 M (página de TED-Ed), TikTok 2,3 M · 2 M · 
 150 K – 2,3 M), confianza **baja**. Ángulo nuevo: «depende de qué huevo» + el reloj de 24 h + el primer huevo de gallina.
 
 ## Los 3 ganchos y el elegido
-Ver `ganchos.md`: gana V1 (reto 2 s + pantalla dividida); 2.ª V2 (cifra de 300 millones de años), guardada.
+Ver `ganchos.md`: gana V1 (pantalla dividida); 2.ª V2 (cifra de 300 millones de años), guardada.
+**Corrección del usuario (2026-11-01):** sacar «Tenés dos segundos» → se recortó del audio (sin regenerar la voz) y el reloj se cambió por un «VS» en el centro.
 
 ## Descripción (lista para pegar)
-¿Qué vino primero: el huevo o la gallina? 🥚🐔 Tenías 2 segundos.
+¿Qué vino primero: el huevo o la gallina? 🥚🐔
 
 Si la historia del huevo fuera un día entero, la gallina llega en el último segundo. Y el primer huevo de gallina lo puso un ave que todavía no era gallina.
 
@@ -38,11 +39,11 @@ Seguime para más preguntas imposibles.
 ## Control de calidad (qa.py + revisión a ojo)
 | Punto | Resultado |
 |---|---|
-| Fotograma 0 raro, en movimiento y con texto | Sí: pantalla dividida huevo prehistórico / gallina en el arrozal, «¿Qué» ya escrito |
-| Pregunta que no se responde sola | Sí, con reloj real de 2 s; «ganó el huevo» recién a los ~28 s |
+| Fotograma 0 raro, en movimiento y con texto | Sí: pantalla dividida huevo prehistórico / gallina en el arrozal, «VS» en el centro, «¿Qué» ya escrito |
+| Pregunta que no se responde sola | Sí; «ganó el huevo» recién a los ~25 s |
 | Cada frase se ve cuando se oye | Sí: 3 huevos en «qué huevo», nido en «300 millones», dinosaurio en «dinosaurios», gallina en «gallinas», reloj que llega a 23:59:59 en «último segundo», el pollito sale en «salió», «CASI GALLINA» en «ave», el ADN cambia en «cambio», podio y sello en «ganó» |
-| Movimiento | mín 1,54 · mediana 6,15 (ninguna ventana < 1,5), 0 congelados |
-| Audio | −13,9 LUFS, pico −1,1 dBTP, tramos entre −15,8 y −20,7 dB |
+| Movimiento | mín 2,00 · mediana 6,45 (ninguna ventana < 1,5), 0 congelados |
+| Audio | −14 LUFS, pico −2,2 dBTP, tramos entre −15,3 y −17,7 dB |
 | CTA único al final (rotación) | «Seguime» (Venus cerró con «Comentá») |
 
 ## Costos

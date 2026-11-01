@@ -6,7 +6,7 @@ import c3 from "../../data/captions-huevo-3.json";
 import { SOUND } from "../../Altera/system";
 import type { Ctx, Video } from "../Motor";
 import { PF } from "../Motor";
-import { Bokeh, C, CTASeguir, Dividida, Dust, Estampa, Label, Pill, PortadaTexto, PriceCard, Reto, Sparks, Stars, Studio, bump, decay, eio, eo, ln, pop, rnd } from "../kit";
+import { Bokeh, C, CTASeguir, Dividida, Dust, Estampa, Label, Pill, PortadaTexto, PriceCard, Sparks, Stars, Studio, bump, decay, eio, eo, ln, pop, rnd } from "../kit";
 
 // «¿Qué vino primero, el huevo o la gallina?» — Fábrica viral (2026-11-01). Investigación y fuentes:
 // produccion/huevo/investigacion.md (Live Science, PopSci, Curious/Australian Academy of Science, PNAS 2022).
@@ -327,7 +327,6 @@ export const huevo: Video = {
   gancho: (c) => {
     const { f, fps, v } = c;
     if (v === 1) {
-      const seg = c.i("2");
       return (
         <>
           <Dividida
@@ -348,7 +347,8 @@ export const huevo: Video = {
           />
           {f >= c.w("huevo") ? <Pill x={280} y={760} text="HUEVO" s={pop(f, c.w("huevo"), fps)} size={66} rot={-3} /> : null}
           {f >= c.w("gallina") ? <Pill x={800} y={760} text="GALLINA" s={pop(f, c.w("gallina"), fps)} size={66} rot={3} dark /> : null}
-          <Reto f={f} fps={fps} aparece={c.W(seg)} desde={c.E(seg) + 2} y={1560} />
+          {/* «VS» en el centro: el duelo, sin reloj (pedido del usuario: sin «Tenés dos segundos») */}
+          <div style={{ position: "absolute", left: 540 - 95, top: 1000 - 95, width: 190, height: 190, borderRadius: "50%", background: "rgba(16,13,20,0.85)", border: `8px solid ${C.gold}`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: PF, fontWeight: 800, fontSize: 84, color: C.white, transform: `scale(${pop(f, 3, fps) * (1 + 0.06 * Math.sin(f * 0.4) + 0.15 * bump(f, c.w("gallina")))}) rotate(${4 * Math.sin(f * 0.2)}deg)`, boxShadow: "0 0 40px rgba(247,185,85,0.6)" }}>VS</div>
           <Label text="ILUSTRACIÓN" x={72} y={1780} />
         </>
       );
@@ -479,9 +479,22 @@ export const huevo: Video = {
           <>
             <Studio f={c.f} tint="#1E2238" />
             <Stars f={c.f} n={50} h={1900} />
-            <Reloj24 f={c.f} prog={prog} galloAt={c.w("segundo", ib(c))} fps={c.fps} />
-            {c.f >= c.w("segundo", ib(c)) ? <Pill x={540} y={1600} text="la gallina: el último segundo" s={pop(c.f, c.w("segundo", ib(c)), c.fps)} size={50} /> : null}
+            {/* remate: rayos que giran detrás y el reloj que late (el momento no puede quedar quieto) */}
+            {c.f >= c.w("segundo", ib(c)) ? (
+              <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, opacity: ln(c.f, c.w("segundo", ib(c)), c.w("segundo", ib(c)) + 8) }}>
+                <g transform={`translate(540 1120) rotate(${c.f * 1.6})`}>
+                  {Array.from({ length: 16 }, (_, i) => (
+                    <path key={i} d="M0 0 L60 -1000 L-60 -1000 Z" fill={SKY} opacity={0.12} transform={`rotate(${i * 22.5})`} />
+                  ))}
+                </g>
+              </svg>
+            ) : null}
+            <div style={{ position: "absolute", inset: 0, transformOrigin: "540px 1120px", transform: `scale(${c.f >= c.w("segundo", ib(c)) ? 1 + 0.045 * Math.sin((c.f - c.w("segundo", ib(c))) * 0.55) : 1})` }}>
+              <Reloj24 f={c.f} prog={prog} galloAt={c.w("segundo", ib(c))} fps={c.fps} />
+            </div>
+            {c.f >= c.w("segundo", ib(c)) ? <Pill x={540} y={1600} text="la gallina: el último segundo" s={pop(c.f, c.w("segundo", ib(c)), c.fps) * (1 + 0.04 * Math.sin(c.f * 0.5))} size={50} rot={2 * Math.sin(c.f * 0.3)} /> : null}
             <Sparks f={c.f} at={c.w("segundo", ib(c))} x={390} y={740} n={22} color={C.orange} spread={300} />
+            <Sparks f={c.f} at={c.w("segundo", ib(c)) + 12} x={540} y={1120} n={18} color={SKY} spread={420} />
           </>
         );
       },
@@ -495,18 +508,23 @@ export const huevo: Video = {
         const tAve = c.w("ave", iPrim);
         const crack = ln(c.f, tSalio - 10, tSalio, 0, 1);
         const open = ln(c.f, tSalio, tSalio + 10, 0, 1, eo);
+        // acercamiento de cámara hacia el huevo mientras se sacude (dirige la mirada y mantiene el movimiento)
+        const dolly = ln(c.f, c.inicio, tSalio + 6, 0, 1, eio);
         return (
-          <>
+          <div style={{ position: "absolute", inset: 0, transformOrigin: "640px 1300px", transform: `scale(${1 + 0.22 * dolly}) translateX(${-30 * dolly}px)` }}>
             <Arrozal f={c.f} />
             <div style={{ position: "absolute", inset: 0, background: "rgba(20,10,20,0.25)" }} />
-            <Gallina x={300} y={1460} s={1.5} f={c.f} proto lit={ln(c.f, tAve, tAve + 8)} peck={0.3} />
-            <Huevo x={720} y={1380} s={1.3} f={c.f} wob={c.f < tSalio ? 1 : 0} crack={crack} open={open} />
+            <Dust f={c.f} x0={80} x1={1000} y0={900} y1={1600} n={30} color="#FFF0C0" />
+            <Gallina x={300} y={1460} s={1.5} f={c.f} proto lit={ln(c.f, tAve, tAve + 8)} peck={0.8} />
+            {/* el huevo se sacude cada vez más fuerte hasta romperse */}
+            <Huevo x={720 + (c.f < tSalio ? 6 * ln(c.f, c.inicio, tSalio) * Math.sin(c.f * 2.1) : 0)} y={1380} s={1.3 * (1 + 0.03 * Math.sin(c.f * 0.9))} f={c.f} wob={c.f < tSalio ? 1.2 + 2.2 * ln(c.f, c.inicio, tSalio) : 0} crack={crack} open={open} />
+            {c.f < tSalio ? <div style={{ position: "absolute", left: 640, width: 160, top: 1010 + 18 * Math.abs(Math.sin(c.f * 0.35)), textAlign: "center", fontFamily: PF, fontWeight: 800, fontSize: 130, color: C.gold, textShadow: "0 0 26px rgba(247,185,85,0.7)", transform: `scale(${pop(c.f, c.inicio + 2, c.fps)}) rotate(${8 * Math.sin(c.f * 0.3)}deg)` }}>?</div> : null}
             {open > 0.3 ? <Pollito x={720} y={1440 - 60 * open} s={1.2 * open} f={c.f} /> : null}
             {c.f >= tAve ? <Pill x={300} y={1060} text="CASI GALLINA" s={pop(c.f, tAve, c.fps)} size={56} rot={-3} /> : null}
             {c.f >= tSalio ? <Pill x={760} y={1060} text="1.ª GALLINA" s={pop(c.f, tSalio, c.fps)} size={56} rot={3} dark /> : null}
             <Sparks f={c.f} at={tSalio} x={720} y={1300} n={20} color="#FFD84A" spread={300} />
             <Label text="ILUSTRACIÓN" x={72} y={1780} />
-          </>
+          </div>
         );
       },
     },
@@ -564,13 +582,13 @@ export const huevo: Video = {
 
   impactos: (c) => {
     const b = ib(c);
-    const g = c.v === 1 ? c.E(c.i("2")) + 62 : c.v === 2 ? c.w("300") + 4 : c.w("pero") + 4;
+    const g = c.v === 1 ? c.w("gallina") : c.v === 2 ? c.w("300") + 4 : c.w("pero") + 4;
     return [g, c.w("300", b) + 4, c.w("3500", b) + 4, c.w("segundo", b), c.w("salió", b), c.w("cambio", b) + 2, c.w("ganó", b) + 4];
   },
   pops: (c) => {
     const b = ib(c);
     const out = [c.W(b) + 2, c.W(b) + 8, c.W(b) + 14, c.w("300", b) - 2, c.w("dinosaurios", b), c.w("3500", b) - 2, c.w("ave", b), c.w("cambio", b)];
-    if (c.v === 1) out.push(c.w("huevo"), c.w("gallina"), c.W(c.i("2")));
+    if (c.v === 1) out.push(c.w("huevo"), c.w("gallina"));
     return out;
   },
   sfx: (c) => {
@@ -589,8 +607,7 @@ export const huevo: Video = {
       ...[0, 1, 2, 3].map((k) => ({ at: c.w("seguime") + 16 + k * 24, src: "sfx/click.wav", vol: 0.3 })),
     ];
     if (c.v === 1) {
-      const t0 = c.E(c.i("2")) + 2;
-      out.push(...[0, 15, 30, 45].map((k) => ({ at: t0 + k, src: "sfx/click.wav", vol: 0.45 })), { at: t0 + 60, src: SOUND.impacto, vol: 0.6 });
+      out.push({ at: 3, src: "sfx/hit.wav", vol: 0.4 }, { at: c.w("gallina"), src: SOUND.impacto, vol: 0.6 });
     } else if (c.v === 2) {
       out.push({ at: c.w("300") + 4, src: SOUND.impacto, vol: 0.6 });
     } else {

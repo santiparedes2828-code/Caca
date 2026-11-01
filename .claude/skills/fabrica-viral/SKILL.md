@@ -20,6 +20,8 @@ permanentes del usuario (abajo). Todo lo que se produce queda en `produccion/<sl
 - **CTA único al final y alternado**: Seguime → Comentá «palabra» → (Mandame VIDEO si el objetivo es clientes).
 - **Comparaciones en vertical** (9:16): barras y líneas de tiempo de arriba hacia abajo.
 - **Original**: de las referencias se toman principios, nunca frases, personajes ni escenas.
+- **Sin «Tenés dos segundos» por defecto** (corrección del usuario, 2026-11-01, video del huevo): la pregunta va sola,
+  con pantalla dividida y un «VS» en el centro. El reto con reloj solo si el usuario lo pide.
 
 ## Pipeline (en orden; cada paso deja un archivo)
 
@@ -58,7 +60,8 @@ público, CTA), preguntá **máximo 3 cosas juntas** con AskUserQuestion; si no,
 | Tipo | Ejemplo | Resultado |
 |---|---|---|
 | Cifra/precio en el cuadro 0 + «¿Por qué?» | «Esta servilleta se vendió por casi un millón de dólares. ¿Por qué?» | Servilleta V1: 5/5 pasan 3 s; elegido por el usuario |
-| Reto en tiempo real (2 s con reloj) | «¿…más cerca de las pirámides o de la Luna? Tenés dos segundos.» | Cleopatra: ganador; dato real de la cuenta: 73 % a los 3 s (`metricas.md`) |
+| Reto en tiempo real (2 s con reloj) | «¿…más cerca de las pirámides o de la Luna? Tenés dos segundos.» | Cleopatra: ganador; dato real de la cuenta: 73 % a los 3 s (`metricas.md`). **El usuario pidió sacarlo en el huevo: no usar por defecto** |
+| Pregunta + pantalla dividida «VS» | «¿Qué vino primero: el huevo o la gallina?» | Huevo: elegido (versión del usuario, sin reloj) |
 | Absurdo cotidiano | «En Venus cumplirías años antes de que termine el día.» | Venus: ganador (5/5 a 3 s, 4/5 al final) |
 | Mito + sello | «¿Cleopatra vio construir las pirámides? Ni cerca.» | Cleopatra: 2.º |
 | Pantalla dividida A vs B | desierto / espacio en el mismo cuadro | gran fotograma 0; combina con el reto |
@@ -95,7 +98,8 @@ Estructura del **dato curioso** (25–33 s en total, 65–85 palabras en el cuer
   for v in 1 2 3; do python3 -I produccion/fabrica/musica.py <slug> $v; done
   ```
   Si el error de alineación pasa de ~1,5, revisá que `ganchos.txt`/`cuerpo.txt` digan exactamente lo mismo que el audio.
-- `config.json`: `tempo` (1,08 por defecto), `reloj` (variante con reto y segundos), `numeros`, y `musica.secciones`
+- `config.json`: `tempo` (1,08 por defecto), `reloj` (variante con reto y segundos), `numeros`, `quitar_final`
+  (`{"1": 3}` = sacar las últimas 3 palabras del gancho 1 sin regenerar la voz), y `musica.secciones`
   ancladas a palabras (modos: misterio, groove, tension, pesado, espacial, brillo, cierre; escalas: menor, mayor,
   lidio, dorico, frigio_dom). La música acompaña la historia: misterio en el gancho, groove en la explicación,
   tensión antes del dato más fuerte, golpe/pesado en el dato fuerte, cierre en el CTA. Sin riser de ruido.

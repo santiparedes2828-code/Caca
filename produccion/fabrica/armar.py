@@ -63,9 +63,12 @@ def fusionar(caps):
 gw = json.load(open(f"{D}/words_ganchos_{TOMA}.json"))["words"]
 k = 0
 hooks = []
+QUITAR = {int(v): int(n) for v, n in CFG.get("quitar_final", {}).items()}  # {"1": 3} = sacar 3 palabras del final del gancho 1
 for h, palabras in enumerate(GANCHOS):
     ws = gw[k : k + len(palabras)]
     k += len(palabras)
+    if QUITAR.get(h + 1):
+        ws = ws[: -QUITAR[h + 1]]  # se recorta sin regenerar la voz
     t0 = max(0, ws[0]["start"] - 0.05)
     t1 = ws[-1]["end"] + 0.12
     sh("ffmpeg", "-y", "-loglevel", "error", "-i", f"{D}/ganchos_{TOMA}.mp3", "-ss", f"{t0:.3f}", "-to", f"{t1:.3f}", "-ac", "1", "-ar", "44100", f"{D}/tmp_g{h + 1}_src.wav")

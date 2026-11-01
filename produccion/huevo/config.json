@@ -4,7 +4,7 @@
   "tempo": 1.08,
   "pausa": 0.24,
   "reloj": {
-    "variante": 1,
+    "variante": 0,
     "segundos": 2.0
   },
   "numeros": [
@@ -65,5 +65,8 @@
     "golpes": [
       "último"
     ]
+  },
+  "quitar_final": {
+    "1": 3
   }
 }

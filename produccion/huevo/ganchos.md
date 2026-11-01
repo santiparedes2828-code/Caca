@@ -42,3 +42,7 @@ No se usó: la red de la sesión bloquea `upload.higgsfield.ai` y la cuenta tien
   pantalla dividida (huevo prehistórico / gallina en el arrozal) en el fotograma 0. Invita a comentar la apuesta.
   No repite el tipo del último video (Venus: absurdo cotidiano).
 - **Segundo (guardado)**: V2 «Esta pregunta tiene una respuesta de trescientos millones de años».
+
+
+### Corrección del usuario (2026-11-01)
+«Quitá el tenés 2 segundos» → el gancho final es «¿Qué vino primero: el huevo o la gallina?» con pantalla dividida y un «VS» en el centro (sin reloj). Recortado con `quitar_final` en config.json, sin regenerar la voz.
