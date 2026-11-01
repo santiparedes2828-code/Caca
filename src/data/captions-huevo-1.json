@@ -1,0 +1,618 @@
+[
+ {
+  "text": "¿Qué",
+  "startMs": 28,
+  "endMs": 192,
+  "timestampMs": 109,
+  "confidence": null
+ },
+ {
+  "text": "vino",
+  "startMs": 210,
+  "endMs": 488,
+  "timestampMs": 349,
+  "confidence": null
+ },
+ {
+  "text": "primero:",
+  "startMs": 506,
+  "endMs": 898,
+  "timestampMs": 702,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 1144,
+  "endMs": 1331,
+  "timestampMs": 1237,
+  "confidence": null
+ },
+ {
+  "text": "huevo",
+  "startMs": 1349,
+  "endMs": 1663,
+  "timestampMs": 1506,
+  "confidence": null
+ },
+ {
+  "text": "o",
+  "startMs": 1869,
+  "endMs": 2009,
+  "timestampMs": 1939,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 2028,
+  "endMs": 2168,
+  "timestampMs": 2097,
+  "confidence": null
+ },
+ {
+  "text": "gallina?",
+  "startMs": 2186,
+  "endMs": 2524,
+  "timestampMs": 2355,
+  "confidence": null
+ },
+ {
+  "text": "Tenés",
+  "startMs": 2751,
+  "endMs": 3139,
+  "timestampMs": 2944,
+  "confidence": null
+ },
+ {
+  "text": "2 segundos.",
+  "startMs": 3157,
+  "endMs": 3952,
+  "timestampMs": 3273,
+  "confidence": null
+ },
+ {
+  "text": "Depende",
+  "startMs": 6313,
+  "endMs": 6774,
+  "timestampMs": 6544,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 6793,
+  "endMs": 6988,
+  "timestampMs": 6891,
+  "confidence": null
+ },
+ {
+  "text": "qué",
+  "startMs": 7006,
+  "endMs": 7201,
+  "timestampMs": 7104,
+  "confidence": null
+ },
+ {
+  "text": "huevo.",
+  "startMs": 7219,
+  "endMs": 7548,
+  "timestampMs": 7383,
+  "confidence": null
+ },
+ {
+  "text": "Hace",
+  "startMs": 7782,
+  "endMs": 8114,
+  "timestampMs": 7948,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 8132,
+  "endMs": 8330,
+  "timestampMs": 8231,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 8348,
+  "endMs": 8545,
+  "timestampMs": 8447,
+  "confidence": null
+ },
+ {
+  "text": "300 millones",
+  "startMs": 8564,
+  "endMs": 9516,
+  "timestampMs": 8797,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 9534,
+  "endMs": 9731,
+  "timestampMs": 9633,
+  "confidence": null
+ },
+ {
+  "text": "años",
+  "startMs": 9750,
+  "endMs": 10082,
+  "timestampMs": 9917,
+  "confidence": null
+ },
+ {
+  "text": "ya",
+  "startMs": 10101,
+  "endMs": 10298,
+  "timestampMs": 10200,
+  "confidence": null
+ },
+ {
+  "text": "había",
+  "startMs": 10317,
+  "endMs": 10648,
+  "timestampMs": 10482,
+  "confidence": null
+ },
+ {
+  "text": "huevos.",
+  "startMs": 10667,
+  "endMs": 10998,
+  "timestampMs": 10832,
+  "confidence": null
+ },
+ {
+  "text": "Los",
+  "startMs": 11216,
+  "endMs": 11419,
+  "timestampMs": 11318,
+  "confidence": null
+ },
+ {
+  "text": "dinosaurios",
+  "startMs": 11438,
+  "endMs": 12060,
+  "timestampMs": 11749,
+  "confidence": null
+ },
+ {
+  "text": "ponían",
+  "startMs": 12079,
+  "endMs": 12421,
+  "timestampMs": 12250,
+  "confidence": null
+ },
+ {
+  "text": "huevos.",
+  "startMs": 12440,
+  "endMs": 12783,
+  "timestampMs": 12612,
+  "confidence": null
+ },
+ {
+  "text": "Las",
+  "startMs": 13018,
+  "endMs": 13205,
+  "timestampMs": 13111,
+  "confidence": null
+ },
+ {
+  "text": "gallinas",
+  "startMs": 13223,
+  "endMs": 13667,
+  "timestampMs": 13444,
+  "confidence": null
+ },
+ {
+  "text": "domésticas",
+  "startMs": 13685,
+  "endMs": 14256,
+  "timestampMs": 13970,
+  "confidence": null
+ },
+ {
+  "text": "aparecen",
+  "startMs": 14275,
+  "endMs": 14847,
+  "timestampMs": 14561,
+  "confidence": null
+ },
+ {
+  "text": "hace",
+  "startMs": 14866,
+  "endMs": 15181,
+  "timestampMs": 15023,
+  "confidence": null
+ },
+ {
+  "text": "unos",
+  "startMs": 15199,
+  "endMs": 15515,
+  "timestampMs": 15356,
+  "confidence": null
+ },
+ {
+  "text": "3.500",
+  "startMs": 15533,
+  "endMs": 16387,
+  "timestampMs": 15626,
+  "confidence": null
+ },
+ {
+  "text": "años.",
+  "startMs": 16406,
+  "endMs": 16721,
+  "timestampMs": 16563,
+  "confidence": null
+ },
+ {
+  "text": "Si",
+  "startMs": 16937,
+  "endMs": 17100,
+  "timestampMs": 17019,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 17119,
+  "endMs": 17281,
+  "timestampMs": 17199,
+  "confidence": null
+ },
+ {
+  "text": "historia",
+  "startMs": 17299,
+  "endMs": 17688,
+  "timestampMs": 17494,
+  "confidence": null
+ },
+ {
+  "text": "del",
+  "startMs": 17706,
+  "endMs": 17869,
+  "timestampMs": 17787,
+  "confidence": null
+ },
+ {
+  "text": "huevo",
+  "startMs": 17887,
+  "endMs": 18162,
+  "timestampMs": 18024,
+  "confidence": null
+ },
+ {
+  "text": "fuera",
+  "startMs": 18181,
+  "endMs": 18456,
+  "timestampMs": 18319,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 18475,
+  "endMs": 18637,
+  "timestampMs": 18556,
+  "confidence": null
+ },
+ {
+  "text": "día",
+  "startMs": 18656,
+  "endMs": 18818,
+  "timestampMs": 18736,
+  "confidence": null
+ },
+ {
+  "text": "entero…",
+  "startMs": 18836,
+  "endMs": 19225,
+  "timestampMs": 19031,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 19462,
+  "endMs": 19631,
+  "timestampMs": 19547,
+  "confidence": null
+ },
+ {
+  "text": "gallina",
+  "startMs": 19650,
+  "endMs": 20055,
+  "timestampMs": 19853,
+  "confidence": null
+ },
+ {
+  "text": "llega",
+  "startMs": 20073,
+  "endMs": 20360,
+  "timestampMs": 20217,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 20379,
+  "endMs": 20548,
+  "timestampMs": 20464,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 20567,
+  "endMs": 20736,
+  "timestampMs": 20652,
+  "confidence": null
+ },
+ {
+  "text": "último",
+  "startMs": 20755,
+  "endMs": 21159,
+  "timestampMs": 20957,
+  "confidence": null
+ },
+ {
+  "text": "segundo.",
+  "startMs": 21178,
+  "endMs": 21582,
+  "timestampMs": 21381,
+  "confidence": null
+ },
+ {
+  "text": "¿Y",
+  "startMs": 21802,
+  "endMs": 21928,
+  "timestampMs": 21865,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 21946,
+  "endMs": 22072,
+  "timestampMs": 22009,
+  "confidence": null
+ },
+ {
+  "text": "huevo",
+  "startMs": 22091,
+  "endMs": 22307,
+  "timestampMs": 22199,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 22326,
+  "endMs": 22452,
+  "timestampMs": 22389,
+  "confidence": null
+ },
+ {
+  "text": "gallina?",
+  "startMs": 22470,
+  "endMs": 22777,
+  "timestampMs": 22624,
+  "confidence": null
+ },
+ {
+  "text": "La",
+  "startMs": 22997,
+  "endMs": 23156,
+  "timestampMs": 23077,
+  "confidence": null
+ },
+ {
+  "text": "primera",
+  "startMs": 23174,
+  "endMs": 23551,
+  "timestampMs": 23363,
+  "confidence": null
+ },
+ {
+  "text": "gallina",
+  "startMs": 23569,
+  "endMs": 23947,
+  "timestampMs": 23758,
+  "confidence": null
+ },
+ {
+  "text": "salió",
+  "startMs": 23966,
+  "endMs": 24234,
+  "timestampMs": 24100,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 24253,
+  "endMs": 24410,
+  "timestampMs": 24331,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 24429,
+  "endMs": 24586,
+  "timestampMs": 24507,
+  "confidence": null
+ },
+ {
+  "text": "huevo",
+  "startMs": 24605,
+  "endMs": 24872,
+  "timestampMs": 24739,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 24891,
+  "endMs": 25048,
+  "timestampMs": 24969,
+  "confidence": null
+ },
+ {
+  "text": "puso",
+  "startMs": 25067,
+  "endMs": 25334,
+  "timestampMs": 25201,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 25353,
+  "endMs": 25511,
+  "timestampMs": 25432,
+  "confidence": null
+ },
+ {
+  "text": "ave",
+  "startMs": 25530,
+  "endMs": 25797,
+  "timestampMs": 25664,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 25816,
+  "endMs": 25973,
+  "timestampMs": 25894,
+  "confidence": null
+ },
+ {
+  "text": "todavía",
+  "startMs": 25992,
+  "endMs": 26369,
+  "timestampMs": 26181,
+  "confidence": null
+ },
+ {
+  "text": "no",
+  "startMs": 26388,
+  "endMs": 26545,
+  "timestampMs": 26467,
+  "confidence": null
+ },
+ {
+  "text": "era",
+  "startMs": 26564,
+  "endMs": 26831,
+  "timestampMs": 26698,
+  "confidence": null
+ },
+ {
+  "text": "gallina.",
+  "startMs": 26850,
+  "endMs": 27228,
+  "timestampMs": 27039,
+  "confidence": null
+ },
+ {
+  "text": "El",
+  "startMs": 27451,
+  "endMs": 27638,
+  "timestampMs": 27544,
+  "confidence": null
+ },
+ {
+  "text": "cambio",
+  "startMs": 27656,
+  "endMs": 27971,
+  "timestampMs": 27814,
+  "confidence": null
+ },
+ {
+  "text": "pasó",
+  "startMs": 27990,
+  "endMs": 28305,
+  "timestampMs": 28147,
+  "confidence": null
+ },
+ {
+  "text": "adentro",
+  "startMs": 28323,
+  "endMs": 28766,
+  "timestampMs": 28544,
+  "confidence": null
+ },
+ {
+  "text": "del",
+  "startMs": 28784,
+  "endMs": 28971,
+  "timestampMs": 28878,
+  "confidence": null
+ },
+ {
+  "text": "huevo.",
+  "startMs": 28990,
+  "endMs": 29305,
+  "timestampMs": 29147,
+  "confidence": null
+ },
+ {
+  "text": "O",
+  "startMs": 29536,
+  "endMs": 29751,
+  "timestampMs": 29644,
+  "confidence": null
+ },
+ {
+  "text": "sea:",
+  "startMs": 29769,
+  "endMs": 29984,
+  "timestampMs": 29877,
+  "confidence": null
+ },
+ {
+  "text": "ganó",
+  "startMs": 30194,
+  "endMs": 30518,
+  "timestampMs": 30356,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 30536,
+  "endMs": 30729,
+  "timestampMs": 30632,
+  "confidence": null
+ },
+ {
+  "text": "huevo.",
+  "startMs": 30747,
+  "endMs": 31071,
+  "timestampMs": 30909,
+  "confidence": null
+ },
+ {
+  "text": "Seguime",
+  "startMs": 31327,
+  "endMs": 31806,
+  "timestampMs": 31567,
+  "confidence": null
+ },
+ {
+  "text": "para",
+  "startMs": 31824,
+  "endMs": 32166,
+  "timestampMs": 31995,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 32184,
+  "endMs": 32386,
+  "timestampMs": 32285,
+  "confidence": null
+ },
+ {
+  "text": "preguntas",
+  "startMs": 32405,
+  "endMs": 32884,
+  "timestampMs": 32644,
+  "confidence": null
+ },
+ {
+  "text": "imposibles.",
+  "startMs": 32903,
+  "endMs": 33519,
+  "timestampMs": 33211,
+  "confidence": null
+ }
+]

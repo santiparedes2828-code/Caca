@@ -49,12 +49,13 @@ export const Barras: React.FC<{ f: number; fps: number; p: number; a: { etiqueta
 };
 
 /** Sello que cae y golpea («NI CERCA», «FALSO», «MITO»). */
-export const Estampa: React.FC<{ f: number; fps: number; at: number; texto: string; color?: string; y?: number }> = ({ f, fps, at, texto, color = C.red, y = 860 }) => {
+export const Estampa: React.FC<{ f: number; fps: number; at: number; texto: string; color?: string; y?: number; size?: number }> = ({ f, fps, at, texto, color = C.red, y = 860, size }) => {
+  const fs = size ?? Math.min(130, Math.floor(860 / (0.66 * texto.length)));
   if (f < at) return null;
   const s = Math.min(1, (f - at) / 6);
   const sp = spring({ frame: f - at, fps, config: { damping: 11, stiffness: 260 } });
   return (
-    <div style={{ position: "absolute", left: 540, top: y, transform: `translate(-50%, -50%) rotate(-10deg) scale(${2.2 - 1.2 * Math.min(1, sp)})`, opacity: s, border: `14px solid ${color}`, borderRadius: 28, padding: "10px 46px 18px", color, fontFamily: PF, fontWeight: 800, fontSize: 130, letterSpacing: "0.02em", background: "rgba(20,10,14,0.55)", boxShadow: `0 0 40px ${color}80`, whiteSpace: "nowrap" }}>
+    <div style={{ position: "absolute", left: 540, top: y, transform: `translate(-50%, -50%) rotate(-10deg) scale(${2.2 - 1.2 * Math.min(1, sp)})`, opacity: s, border: `14px solid ${color}`, borderRadius: 28, padding: "10px 46px 18px", color, fontFamily: PF, fontWeight: 800, fontSize: fs, letterSpacing: "0.02em", background: "rgba(20,10,14,0.55)", boxShadow: `0 0 40px ${color}80`, whiteSpace: "nowrap" }}>
       {texto}
     </div>
   );

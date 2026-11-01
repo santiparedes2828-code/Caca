@@ -1,0 +1,490 @@
+{
+ "words": [
+  {
+   "text": "Depende",
+   "start": 0.03,
+   "end": 0.528,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 0.548,
+   "end": 0.759,
+   "type": "word"
+  },
+  {
+   "text": "qué",
+   "start": 0.779,
+   "end": 0.989,
+   "type": "word"
+  },
+  {
+   "text": "huevo.",
+   "start": 1.009,
+   "end": 1.364,
+   "type": "word"
+  },
+  {
+   "text": "Hace",
+   "start": 1.872,
+   "end": 2.23,
+   "type": "word"
+  },
+  {
+   "text": "más",
+   "start": 2.25,
+   "end": 2.463,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 2.483,
+   "end": 2.696,
+   "type": "word"
+  },
+  {
+   "text": "trescientos",
+   "start": 2.716,
+   "end": 3.22,
+   "type": "word"
+  },
+  {
+   "text": "millones",
+   "start": 3.24,
+   "end": 3.744,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 3.764,
+   "end": 3.977,
+   "type": "word"
+  },
+  {
+   "text": "años",
+   "start": 3.997,
+   "end": 4.356,
+   "type": "word"
+  },
+  {
+   "text": "ya",
+   "start": 4.376,
+   "end": 4.589,
+   "type": "word"
+  },
+  {
+   "text": "había",
+   "start": 4.609,
+   "end": 4.967,
+   "type": "word"
+  },
+  {
+   "text": "huevos.",
+   "start": 4.987,
+   "end": 5.345,
+   "type": "word"
+  },
+  {
+   "text": "Los",
+   "start": 5.757,
+   "end": 5.977,
+   "type": "word"
+  },
+  {
+   "text": "dinosaurios",
+   "start": 5.997,
+   "end": 6.669,
+   "type": "word"
+  },
+  {
+   "text": "ponían",
+   "start": 6.689,
+   "end": 7.059,
+   "type": "word"
+  },
+  {
+   "text": "huevos.",
+   "start": 7.079,
+   "end": 7.45,
+   "type": "word"
+  },
+  {
+   "text": "Las",
+   "start": 7.848,
+   "end": 8.05,
+   "type": "word"
+  },
+  {
+   "text": "gallinas",
+   "start": 8.07,
+   "end": 8.549,
+   "type": "word"
+  },
+  {
+   "text": "domésticas",
+   "start": 8.569,
+   "end": 9.186,
+   "type": "word"
+  },
+  {
+   "text": "aparecen",
+   "start": 9.206,
+   "end": 9.824,
+   "type": "word"
+  },
+  {
+   "text": "hace",
+   "start": 9.844,
+   "end": 10.184,
+   "type": "word"
+  },
+  {
+   "text": "unos",
+   "start": 10.204,
+   "end": 10.545,
+   "type": "word"
+  },
+  {
+   "text": "tres",
+   "start": 10.565,
+   "end": 10.766,
+   "type": "word"
+  },
+  {
+   "text": "mil",
+   "start": 10.786,
+   "end": 10.988,
+   "type": "word"
+  },
+  {
+   "text": "quinientos",
+   "start": 11.008,
+   "end": 11.487,
+   "type": "word"
+  },
+  {
+   "text": "años.",
+   "start": 11.507,
+   "end": 11.848,
+   "type": "word"
+  },
+  {
+   "text": "Si",
+   "start": 12.283,
+   "end": 12.459,
+   "type": "word"
+  },
+  {
+   "text": "la",
+   "start": 12.479,
+   "end": 12.654,
+   "type": "word"
+  },
+  {
+   "text": "historia",
+   "start": 12.674,
+   "end": 13.094,
+   "type": "word"
+  },
+  {
+   "text": "del",
+   "start": 13.114,
+   "end": 13.289,
+   "type": "word"
+  },
+  {
+   "text": "huevo",
+   "start": 13.309,
+   "end": 13.606,
+   "type": "word"
+  },
+  {
+   "text": "fuera",
+   "start": 13.626,
+   "end": 13.924,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 13.944,
+   "end": 14.119,
+   "type": "word"
+  },
+  {
+   "text": "día",
+   "start": 14.139,
+   "end": 14.314,
+   "type": "word"
+  },
+  {
+   "text": "entero…",
+   "start": 14.334,
+   "end": 14.754,
+   "type": "word"
+  },
+  {
+   "text": "la",
+   "start": 15.224,
+   "end": 15.407,
+   "type": "word"
+  },
+  {
+   "text": "gallina",
+   "start": 15.427,
+   "end": 15.864,
+   "type": "word"
+  },
+  {
+   "text": "llega",
+   "start": 15.884,
+   "end": 16.194,
+   "type": "word"
+  },
+  {
+   "text": "en",
+   "start": 16.214,
+   "end": 16.397,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 16.417,
+   "end": 16.6,
+   "type": "word"
+  },
+  {
+   "text": "último",
+   "start": 16.62,
+   "end": 17.057,
+   "type": "word"
+  },
+  {
+   "text": "segundo.",
+   "start": 17.077,
+   "end": 17.514,
+   "type": "word"
+  },
+  {
+   "text": "¿Y",
+   "start": 18.032,
+   "end": 18.168,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 18.188,
+   "end": 18.324,
+   "type": "word"
+  },
+  {
+   "text": "huevo",
+   "start": 18.344,
+   "end": 18.578,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 18.598,
+   "end": 18.734,
+   "type": "word"
+  },
+  {
+   "text": "gallina?",
+   "start": 18.754,
+   "end": 19.085,
+   "type": "word"
+  },
+  {
+   "text": "La",
+   "start": 19.576,
+   "end": 19.747,
+   "type": "word"
+  },
+  {
+   "text": "primera",
+   "start": 19.767,
+   "end": 20.174,
+   "type": "word"
+  },
+  {
+   "text": "gallina",
+   "start": 20.194,
+   "end": 20.602,
+   "type": "word"
+  },
+  {
+   "text": "salió",
+   "start": 20.622,
+   "end": 20.912,
+   "type": "word"
+  },
+  {
+   "text": "de",
+   "start": 20.932,
+   "end": 21.102,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 21.122,
+   "end": 21.292,
+   "type": "word"
+  },
+  {
+   "text": "huevo",
+   "start": 21.312,
+   "end": 21.601,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 21.621,
+   "end": 21.791,
+   "type": "word"
+  },
+  {
+   "text": "puso",
+   "start": 21.811,
+   "end": 22.1,
+   "type": "word"
+  },
+  {
+   "text": "un",
+   "start": 22.12,
+   "end": 22.291,
+   "type": "word"
+  },
+  {
+   "text": "ave",
+   "start": 22.311,
+   "end": 22.6,
+   "type": "word"
+  },
+  {
+   "text": "que",
+   "start": 22.62,
+   "end": 22.79,
+   "type": "word"
+  },
+  {
+   "text": "todavía",
+   "start": 22.81,
+   "end": 23.218,
+   "type": "word"
+  },
+  {
+   "text": "no",
+   "start": 23.238,
+   "end": 23.408,
+   "type": "word"
+  },
+  {
+   "text": "era",
+   "start": 23.428,
+   "end": 23.717,
+   "type": "word"
+  },
+  {
+   "text": "gallina.",
+   "start": 23.737,
+   "end": 24.145,
+   "type": "word"
+  },
+  {
+   "text": "El",
+   "start": 24.59,
+   "end": 24.792,
+   "type": "word"
+  },
+  {
+   "text": "cambio",
+   "start": 24.812,
+   "end": 25.152,
+   "type": "word"
+  },
+  {
+   "text": "pasó",
+   "start": 25.172,
+   "end": 25.512,
+   "type": "word"
+  },
+  {
+   "text": "adentro",
+   "start": 25.532,
+   "end": 26.01,
+   "type": "word"
+  },
+  {
+   "text": "del",
+   "start": 26.03,
+   "end": 26.232,
+   "type": "word"
+  },
+  {
+   "text": "huevo.",
+   "start": 26.252,
+   "end": 26.592,
+   "type": "word"
+  },
+  {
+   "text": "O",
+   "start": 26.973,
+   "end": 27.205,
+   "type": "word"
+  },
+  {
+   "text": "sea:",
+   "start": 27.225,
+   "end": 27.457,
+   "type": "word"
+  },
+  {
+   "text": "ganó",
+   "start": 27.752,
+   "end": 28.102,
+   "type": "word"
+  },
+  {
+   "text": "el",
+   "start": 28.122,
+   "end": 28.33,
+   "type": "word"
+  },
+  {
+   "text": "huevo.",
+   "start": 28.35,
+   "end": 28.7,
+   "type": "word"
+  },
+  {
+   "text": "Seguime",
+   "start": 29.22,
+   "end": 29.737,
+   "type": "word"
+  },
+  {
+   "text": "para",
+   "start": 29.757,
+   "end": 30.126,
+   "type": "word"
+  },
+  {
+   "text": "más",
+   "start": 30.146,
+   "end": 30.364,
+   "type": "word"
+  },
+  {
+   "text": "preguntas",
+   "start": 30.384,
+   "end": 30.902,
+   "type": "word"
+  },
+  {
+   "text": "imposibles.",
+   "start": 30.922,
+   "end": 31.588,
+   "type": "word"
+  }
+ ]
+}

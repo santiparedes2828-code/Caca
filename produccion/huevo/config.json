@@ -1,0 +1,69 @@
+{
+  "slug": "huevo",
+  "toma": "a",
+  "tempo": 1.08,
+  "pausa": 0.24,
+  "reloj": {
+    "variante": 1,
+    "segundos": 2.0
+  },
+  "numeros": [
+    [
+      [
+        "trescientos",
+        "millones"
+      ],
+      "300 millones"
+    ],
+    [
+      [
+        "tres",
+        "mil",
+        "quinientos"
+      ],
+      "3.500"
+    ],
+    [
+      [
+        "dos",
+        "segundos"
+      ],
+      "2 segundos"
+    ]
+  ],
+  "musica": {
+    "bpm": 106,
+    "secciones": [
+      {
+        "desde": "inicio",
+        "modo": "misterio",
+        "escala": "menor",
+        "tonica": 57
+      },
+      {
+        "desde": "depende",
+        "modo": "groove",
+        "escala": "dorico",
+        "tonica": 57
+      },
+      {
+        "desde": "primera",
+        "modo": "tension",
+        "tonica": 57
+      },
+      {
+        "desde": "o",
+        "modo": "brillo",
+        "tonica": 60
+      },
+      {
+        "desde": "seguime",
+        "modo": "cierre",
+        "tonica": 60
+      }
+    ],
+    "golpes": [
+      "último"
+    ]
+  }
+}
