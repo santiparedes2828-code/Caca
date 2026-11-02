@@ -1,0 +1,618 @@
+[
+ {
+  "text": "Ganar",
+  "startMs": 46,
+  "endMs": 289,
+  "timestampMs": 168,
+  "confidence": null
+ },
+ {
+  "text": "la",
+  "startMs": 307,
+  "endMs": 449,
+  "timestampMs": 379,
+  "confidence": null
+ },
+ {
+  "text": "lotería",
+  "startMs": 468,
+  "endMs": 810,
+  "timestampMs": 639,
+  "confidence": null
+ },
+ {
+  "text": "es",
+  "startMs": 829,
+  "endMs": 970,
+  "timestampMs": 900,
+  "confidence": null
+ },
+ {
+  "text": "como",
+  "startMs": 989,
+  "endMs": 1231,
+  "timestampMs": 1110,
+  "confidence": null
+ },
+ {
+  "text": "adivinar",
+  "startMs": 1249,
+  "endMs": 1692,
+  "timestampMs": 1470,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 1710,
+  "endMs": 1852,
+  "timestampMs": 1781,
+  "confidence": null
+ },
+ {
+  "text": "una",
+  "startMs": 1870,
+  "endMs": 2113,
+  "timestampMs": 1992,
+  "confidence": null
+ },
+ {
+  "text": "persona…",
+  "startMs": 2131,
+  "endMs": 2474,
+  "timestampMs": 2303,
+  "confidence": null
+ },
+ {
+  "text": "entre",
+  "startMs": 2702,
+  "endMs": 3156,
+  "timestampMs": 2929,
+  "confidence": null
+ },
+ {
+  "text": "6",
+  "startMs": 3174,
+  "endMs": 3445,
+  "timestampMs": 3309,
+  "confidence": null
+ },
+ {
+  "text": "Argentinas",
+  "startMs": 3464,
+  "endMs": 4281,
+  "timestampMs": 3872,
+  "confidence": null
+ },
+ {
+  "text": "enteras.",
+  "startMs": 4299,
+  "endMs": 4913,
+  "timestampMs": 4616,
+  "confidence": null
+ },
+ {
+  "text": "En",
+  "startMs": 5163,
+  "endMs": 5321,
+  "timestampMs": 5243,
+  "confidence": null
+ },
+ {
+  "text": "el",
+  "startMs": 5340,
+  "endMs": 5498,
+  "timestampMs": 5419,
+  "confidence": null
+ },
+ {
+  "text": "Powerball",
+  "startMs": 5517,
+  "endMs": 5896,
+  "timestampMs": 5707,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 5915,
+  "endMs": 6073,
+  "timestampMs": 5994,
+  "confidence": null
+ },
+ {
+  "text": "Estados",
+  "startMs": 6092,
+  "endMs": 6470,
+  "timestampMs": 6281,
+  "confidence": null
+ },
+ {
+  "text": "Unidos",
+  "startMs": 6489,
+  "endMs": 6869,
+  "timestampMs": 6679,
+  "confidence": null
+ },
+ {
+  "text": "hay",
+  "startMs": 6887,
+  "endMs": 7045,
+  "timestampMs": 6967,
+  "confidence": null
+ },
+ {
+  "text": "que",
+  "startMs": 7064,
+  "endMs": 7222,
+  "timestampMs": 7143,
+  "confidence": null
+ },
+ {
+  "text": "acertar",
+  "startMs": 7241,
+  "endMs": 7620,
+  "timestampMs": 7431,
+  "confidence": null
+ },
+ {
+  "text": "5",
+  "startMs": 7639,
+  "endMs": 7907,
+  "timestampMs": 7773,
+  "confidence": null
+ },
+ {
+  "text": "números",
+  "startMs": 7926,
+  "endMs": 8306,
+  "timestampMs": 8116,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 8324,
+  "endMs": 8482,
+  "timestampMs": 8404,
+  "confidence": null
+ },
+ {
+  "text": "69…",
+  "startMs": 8501,
+  "endMs": 9344,
+  "timestampMs": 8691,
+  "confidence": null
+ },
+ {
+  "text": "y",
+  "startMs": 9576,
+  "endMs": 9760,
+  "timestampMs": 9668,
+  "confidence": null
+ },
+ {
+  "text": "uno",
+  "startMs": 9779,
+  "endMs": 10089,
+  "timestampMs": 9933,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 10107,
+  "endMs": 10291,
+  "timestampMs": 10199,
+  "confidence": null
+ },
+ {
+  "text": "26.",
+  "startMs": 10309,
+  "endMs": 10746,
+  "timestampMs": 10528,
+  "confidence": null
+ },
+ {
+  "text": "Eso",
+  "startMs": 10960,
+  "endMs": 11273,
+  "timestampMs": 11117,
+  "confidence": null
+ },
+ {
+  "text": "da",
+  "startMs": 11292,
+  "endMs": 11478,
+  "timestampMs": 11385,
+  "confidence": null
+ },
+ {
+  "text": "292 millones",
+  "startMs": 11496,
+  "endMs": 13267,
+  "timestampMs": 11718,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 13285,
+  "endMs": 13471,
+  "timestampMs": 13379,
+  "confidence": null
+ },
+ {
+  "text": "combinaciones.",
+  "startMs": 13490,
+  "endMs": 14187,
+  "timestampMs": 13839,
+  "confidence": null
+ },
+ {
+  "text": "Es",
+  "startMs": 14420,
+  "endMs": 14576,
+  "timestampMs": 14498,
+  "confidence": null
+ },
+ {
+  "text": "como",
+  "startMs": 14594,
+  "endMs": 14857,
+  "timestampMs": 14726,
+  "confidence": null
+ },
+ {
+  "text": "adivinar",
+  "startMs": 14876,
+  "endMs": 15357,
+  "timestampMs": 15117,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 15376,
+  "endMs": 15532,
+  "timestampMs": 15454,
+  "confidence": null
+ },
+ {
+  "text": "una",
+  "startMs": 15550,
+  "endMs": 15813,
+  "timestampMs": 15682,
+  "confidence": null
+ },
+ {
+  "text": "persona",
+  "startMs": 15832,
+  "endMs": 16205,
+  "timestampMs": 16018,
+  "confidence": null
+ },
+ {
+  "text": "al",
+  "startMs": 16223,
+  "endMs": 16378,
+  "timestampMs": 16300,
+  "confidence": null
+ },
+ {
+  "text": "azar",
+  "startMs": 16396,
+  "endMs": 16660,
+  "timestampMs": 16528,
+  "confidence": null
+ },
+ {
+  "text": "entre",
+  "startMs": 16679,
+  "endMs": 16943,
+  "timestampMs": 16810,
+  "confidence": null
+ },
+ {
+  "text": "más",
+  "startMs": 16961,
+  "endMs": 17117,
+  "timestampMs": 17039,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 17135,
+  "endMs": 17290,
+  "timestampMs": 17212,
+  "confidence": null
+ },
+ {
+  "text": "6",
+  "startMs": 17308,
+  "endMs": 17464,
+  "timestampMs": 17386,
+  "confidence": null
+ },
+ {
+  "text": "Argentinas",
+  "startMs": 17482,
+  "endMs": 17964,
+  "timestampMs": 17723,
+  "confidence": null
+ },
+ {
+  "text": "enteras.",
+  "startMs": 17982,
+  "endMs": 18355,
+  "timestampMs": 18169,
+  "confidence": null
+ },
+ {
+  "text": "Con",
+  "startMs": 18563,
+  "endMs": 18738,
+  "timestampMs": 18650,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 18757,
+  "endMs": 18931,
+  "timestampMs": 18844,
+  "confidence": null
+ },
+ {
+  "text": "boleto",
+  "startMs": 18949,
+  "endMs": 19365,
+  "timestampMs": 19157,
+  "confidence": null
+ },
+ {
+  "text": "por",
+  "startMs": 19383,
+  "endMs": 19558,
+  "timestampMs": 19470,
+  "confidence": null
+ },
+ {
+  "text": "semana,",
+  "startMs": 19577,
+  "endMs": 19993,
+  "timestampMs": 19784,
+  "confidence": null
+ },
+ {
+  "text": "tardarías",
+  "startMs": 20011,
+  "endMs": 20427,
+  "timestampMs": 20219,
+  "confidence": null
+ },
+ {
+  "text": "unos",
+  "startMs": 20445,
+  "endMs": 20740,
+  "timestampMs": 20593,
+  "confidence": null
+ },
+ {
+  "text": "5,5 millones",
+  "startMs": 20758,
+  "endMs": 21994,
+  "timestampMs": 20906,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 22013,
+  "endMs": 22188,
+  "timestampMs": 22100,
+  "confidence": null
+ },
+ {
+  "text": "años.",
+  "startMs": 22207,
+  "endMs": 22502,
+  "timestampMs": 22354,
+  "confidence": null
+ },
+ {
+  "text": "Y",
+  "startMs": 22712,
+  "endMs": 22887,
+  "timestampMs": 22799,
+  "confidence": null
+ },
+ {
+  "text": "aun",
+  "startMs": 22906,
+  "endMs": 23081,
+  "timestampMs": 22993,
+  "confidence": null
+ },
+ {
+  "text": "así,",
+  "startMs": 23099,
+  "endMs": 23394,
+  "timestampMs": 23246,
+  "confidence": null
+ },
+ {
+  "text": "alguien",
+  "startMs": 23642,
+  "endMs": 24005,
+  "timestampMs": 23823,
+  "confidence": null
+ },
+ {
+  "text": "gana:",
+  "startMs": 24023,
+  "endMs": 24385,
+  "timestampMs": 24204,
+  "confidence": null
+ },
+ {
+  "text": "en",
+  "startMs": 24602,
+  "endMs": 24772,
+  "timestampMs": 24687,
+  "confidence": null
+ },
+ {
+  "text": "2022,",
+  "startMs": 24791,
+  "endMs": 25576,
+  "timestampMs": 24876,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 25811,
+  "endMs": 25986,
+  "timestampMs": 25898,
+  "confidence": null
+ },
+ {
+  "text": "solo",
+  "startMs": 26005,
+  "endMs": 26302,
+  "timestampMs": 26153,
+  "confidence": null
+ },
+ {
+  "text": "boleto",
+  "startMs": 26320,
+  "endMs": 26738,
+  "timestampMs": 26529,
+  "confidence": null
+ },
+ {
+  "text": "ganó",
+  "startMs": 26757,
+  "endMs": 27053,
+  "timestampMs": 26905,
+  "confidence": null
+ },
+ {
+  "text": "un",
+  "startMs": 27071,
+  "endMs": 27246,
+  "timestampMs": 27158,
+  "confidence": null
+ },
+ {
+  "text": "pozo",
+  "startMs": 27265,
+  "endMs": 27562,
+  "timestampMs": 27413,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 27581,
+  "endMs": 27756,
+  "timestampMs": 27668,
+  "confidence": null
+ },
+ {
+  "text": "2.040 millones",
+  "startMs": 27774,
+  "endMs": 29016,
+  "timestampMs": 27861,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 29034,
+  "endMs": 29209,
+  "timestampMs": 29121,
+  "confidence": null
+ },
+ {
+  "text": "dólares.",
+  "startMs": 29228,
+  "endMs": 29645,
+  "timestampMs": 29436,
+  "confidence": null
+ },
+ {
+  "text": "¿Cómo?",
+  "startMs": 29860,
+  "endMs": 30219,
+  "timestampMs": 30040,
+  "confidence": null
+ },
+ {
+  "text": "Juegan",
+  "startMs": 30435,
+  "endMs": 30808,
+  "timestampMs": 30622,
+  "confidence": null
+ },
+ {
+  "text": "millones",
+  "startMs": 30827,
+  "endMs": 31352,
+  "timestampMs": 31090,
+  "confidence": null
+ },
+ {
+  "text": "de",
+  "startMs": 31370,
+  "endMs": 31594,
+  "timestampMs": 31482,
+  "confidence": null
+ },
+ {
+  "text": "personas.",
+  "startMs": 31612,
+  "endMs": 32136,
+  "timestampMs": 31874,
+  "confidence": null
+ },
+ {
+  "text": "Comentá",
+  "startMs": 32343,
+  "endMs": 32844,
+  "timestampMs": 32594,
+  "confidence": null
+ },
+ {
+  "text": "«suerte»",
+  "startMs": 32863,
+  "endMs": 33219,
+  "timestampMs": 33042,
+  "confidence": null
+ },
+ {
+  "text": "si",
+  "startMs": 33238,
+  "endMs": 33451,
+  "timestampMs": 33344,
+  "confidence": null
+ },
+ {
+  "text": "igual",
+  "startMs": 33655,
+  "endMs": 33959,
+  "timestampMs": 33807,
+  "confidence": null
+ },
+ {
+  "text": "vas",
+  "startMs": 33978,
+  "endMs": 34157,
+  "timestampMs": 34068,
+  "confidence": null
+ },
+ {
+  "text": "a",
+  "startMs": 34176,
+  "endMs": 34356,
+  "timestampMs": 34266,
+  "confidence": null
+ },
+ {
+  "text": "jugar.",
+  "startMs": 34374,
+  "endMs": 34679,
+  "timestampMs": 34527,
+  "confidence": null
+ }
+]

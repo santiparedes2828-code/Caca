@@ -227,7 +227,7 @@ export const loteria: Video = {
     }
     if (v === 2) {
       const t5 = c.w("5 millones");
-      const anos = Math.round(ln(f, 4, t5 + 4, 0, 5000000, eio));
+      const anos = Math.round(ln(f, 0, t5 + 4, 1000, 5000000, eio)); // ya corre en el cuadro 0
       return (
         <>
           <Studio f={f} tint="#221E3A" />
@@ -294,7 +294,7 @@ export const loteria: Video = {
       id: "argentinas",
       desde: (c) => c.w("es", c.i("combinaciones", ib(c))) - 2,
       dibujar: (c) => {
-        const t6 = c.w("6", ib(c));
+        const t6 = c.w("6", c.i("persona", ib(c)));
         const tArg = c.w("argentinas", ib(c));
         return (
           <>
@@ -337,7 +337,7 @@ export const loteria: Video = {
       desde: (c) => c.w("y", c.i("55", ib(c))) - 2,
       dibujar: (c) => {
         const tPozo = c.w("2040", ib(c));
-        const n = Math.round(ln(c.f, c.w("2022", ib(c)), tPozo + 6, 0, 2040000000, eio));
+        const n = Math.round(ln(c.f, c.inicio, tPozo + 6, 1000000, 2040000000, eio)); // sube desde que empieza la escena
         return (
           <>
             <Studio f={c.f} tint="#14301E" />
@@ -390,7 +390,7 @@ export const loteria: Video = {
   impactos: (c) => {
     const b = ib(c);
     const g = c.v === 1 ? c.w("292") + 4 : c.v === 2 ? c.w("5 millones") + 4 : c.w("argentinas");
-    return [g, c.w("26", b), c.w("292", b) + 4, c.w("6", b), c.w("55", b) + 4, c.w("2040", b) + 6];
+    return [g, c.w("26", b), c.w("292", b) + 4, c.w("6", c.i("persona", b)), c.w("55", b) + 4, c.w("2040", b) + 6];
   },
   pops: (c) => {
     const b = ib(c);
@@ -402,7 +402,7 @@ export const loteria: Video = {
       ...[0, 1, 2, 3, 4].map((k) => ({ at: c.w("5", b) + k * 4, src: "sfx/click.wav", vol: 0.35 })),
       { at: c.w("26", b), src: "sfx/hit.wav", vol: 0.45 },
       { at: c.w("292", b) + 4, src: SOUND.impacto, vol: 0.65 },
-      { at: c.w("6", b), src: SOUND.tiron, vol: 0.4 },
+      { at: c.w("6", c.i("persona", b)), src: SOUND.tiron, vol: 0.4 },
       { at: c.w("con", b), src: SOUND.tension, vol: 0.3 },
       { at: c.w("55", b) + 4, src: SOUND.impacto, vol: 0.6 },
       { at: c.w("2040", b) + 5, src: "sfx/hit.wav", vol: 0.6 },
