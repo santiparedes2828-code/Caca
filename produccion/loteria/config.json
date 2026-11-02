@@ -1,0 +1,116 @@
+{
+  "slug": "loteria",
+  "toma": "a",
+  "tempo": 1.08,
+  "pausa": 0.24,
+  "reloj": {
+    "variante": 0,
+    "segundos": 2.0
+  },
+  "numeros": [
+    [
+      [
+        "doscientos",
+        "noventa",
+        "y",
+        "dos",
+        "millones"
+      ],
+      "292 millones"
+    ],
+    [
+      [
+        "cinco",
+        "millones",
+        "y",
+        "medio"
+      ],
+      "5,5 millones"
+    ],
+    [
+      [
+        "cinco",
+        "millones"
+      ],
+      "5 millones"
+    ],
+    [
+      [
+        "dos",
+        "mil",
+        "cuarenta",
+        "millones"
+      ],
+      "2.040 millones"
+    ],
+    [
+      [
+        "dos",
+        "mil",
+        "veintidós"
+      ],
+      "2022"
+    ],
+    [
+      [
+        "sesenta",
+        "y",
+        "nueve"
+      ],
+      "69"
+    ],
+    [
+      [
+        "veintiséis"
+      ],
+      "26"
+    ],
+    [
+      [
+        "cinco"
+      ],
+      "5"
+    ],
+    [
+      [
+        "seis"
+      ],
+      "6"
+    ]
+  ],
+  "musica": {
+    "bpm": 108,
+    "secciones": [
+      {
+        "desde": "inicio",
+        "modo": "misterio",
+        "escala": "menor",
+        "tonica": 57
+      },
+      {
+        "desde": "hay",
+        "modo": "groove",
+        "escala": "dorico",
+        "tonica": 57
+      },
+      {
+        "desde": "con",
+        "modo": "tension",
+        "tonica": 57
+      },
+      {
+        "desde": "ganó",
+        "modo": "brillo",
+        "tonica": 60
+      },
+      {
+        "desde": "comentá",
+        "modo": "cierre",
+        "tonica": 60
+      }
+    ],
+    "golpes": [
+      "292 millones@da"
+    ]
+  }
+}
