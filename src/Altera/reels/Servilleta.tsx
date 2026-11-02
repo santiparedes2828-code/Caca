@@ -175,11 +175,16 @@ export const Pill: React.FC<{ x: number; y: number; text: string; s?: number; si
     <div style={{ padding: `${size * 0.16}px ${size * 0.5}px ${size * 0.22}px`, borderRadius: 999, background: dark ? C.ink : C.cream, color: dark ? C.white : C.ink, fontFamily: PF, fontWeight: 800, fontSize: size, letterSpacing: "-0.01em", boxShadow: `0 ${size * 0.12}px 0 rgba(0,0,0,0.45), 0 ${size * 0.3}px ${size * 0.6}px rgba(0,0,0,0.35)` }}>{text}</div>
   </div>
 );
-export const PriceCard: React.FC<{ x: number; y: number; label: string; value: string; s?: number; shake?: number; note?: string; glow?: number; rot?: number; money?: boolean }> = ({ x, y, label, value, s = 1, shake = 0, note, glow = 0, rot = 0, money = true }) => (
+// size: tamaño fijo y en una sola línea (los contadores no saltan de alto); pre: prefijo chico («US$»); unit: unidad en su propia línea («años»)
+export const PriceCard: React.FC<{ x: number; y: number; label: string; value: string; s?: number; shake?: number; note?: string; glow?: number; rot?: number; money?: boolean; size?: number; pre?: string; unit?: string }> = ({ x, y, label, value, s = 1, shake = 0, note, glow = 0, rot = 0, money = true, size, pre, unit }) => (
   <div style={{ position: "absolute", left: x, top: y, transform: `translate(-50%, -50%) scale(${s}) translateX(${shake}px) rotate(${rot}deg)`, width: 860 }}>
     <div style={{ borderRadius: 30, background: "rgba(16,13,20,0.92)", borderLeft: `8px solid ${money ? C.green : C.gold}`, boxShadow: `0 30px 60px rgba(0,0,0,0.5), 0 0 ${60 * glow}px ${money ? `rgba(74,222,128,${0.6 * glow})` : `rgba(247,185,85,${0.6 * glow})`}`, padding: "26px 0 30px", textAlign: "center", overflow: "hidden", position: "relative" }}>
       <div style={{ fontFamily: PF, fontWeight: 600, fontSize: 30, letterSpacing: "0.22em", color: "rgba(255,255,255,0.6)" }}>{label}</div>
-      <div style={{ fontFamily: PF, fontWeight: 800, fontSize: 118, letterSpacing: "-0.02em", color: money ? C.green : C.white, textShadow: money ? "0 0 30px rgba(74,222,128,0.55)" : undefined, fontVariantNumeric: "tabular-nums", lineHeight: 1.08 }}>{value}</div>
+      <div style={{ fontFamily: PF, fontWeight: 800, fontSize: size ?? 118, letterSpacing: "-0.02em", color: money ? C.green : C.white, textShadow: money ? "0 0 30px rgba(74,222,128,0.55)" : undefined, fontVariantNumeric: "tabular-nums", lineHeight: 1.08, whiteSpace: size ? "nowrap" : undefined }}>
+        {pre ? <span style={{ fontSize: "0.5em", marginRight: "0.18em", verticalAlign: "0.45em" }}>{pre}</span> : null}
+        {value}
+      </div>
+      {unit ? <div style={{ fontFamily: PF, fontWeight: 800, fontSize: Math.round((size ?? 118) * 0.6), letterSpacing: "-0.01em", color: money ? C.green : "rgba(255,255,255,0.92)", lineHeight: 1.0, marginTop: -2 }}>{unit}</div> : null}
       {note ? <div style={{ fontFamily: PF, fontWeight: 600, fontSize: 24, letterSpacing: "0.12em", color: "rgba(255,255,255,0.45)" }}>{note}</div> : null}
     </div>
   </div>

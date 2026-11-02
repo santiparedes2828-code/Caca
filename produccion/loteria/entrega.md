@@ -42,9 +42,13 @@ Comentá «suerte» si igual vas a jugar 🍀
 | Fotograma 0 raro, en movimiento y con texto | Sí: contador «1.000 años» que ya corre, reloj de arena, lluvia de boletos, «Si» escrito |
 | Pregunta que no se responde sola | Sí: «¿cómo puede ser?» → se explica después, y el giro («alguien gana») llega a los ~25 s |
 | Cada frase se ve cuando se oye | Sí: bolillas que salen en «5» y la roja en «26», contador en «292 millones», banderas en «6 Argentinas», contador de años en «5,5 millones», cheque en «2.040 millones», lluvia de boletos en «juegan millones» |
-| Movimiento | mín 5,65 · mediana 14,80, 0 congelados |
+| Movimiento | mín 5,64 · mediana 14,04, 0 congelados |
 | Audio | −14 LUFS, pico −1,9 dBTP, tramos entre −15,8 y −17,4 dB |
 | CTA único al final (rotación) | «Comentá «suerte»» (huevo cerró con «Seguime») |
+
+## Correcciones (2026-11-02)
+- Contadores estables: la cifra va siempre en una línea con tamaño fijo y «años» debajo; antes la tarjeta saltaba de una a dos líneas mientras contaba. La escena de la semana ya no arranca en «0 años» (arranca en 1.000).
+- Bolillas del bombo: se bambolean pero el número se lee siempre derecho (antes giraban y quedaban al revés, también en la portada); las rojas van de 1 a 26.
 
 ## Costos
 ElevenLabs: 1.458 créditos (1.ª versión, voz Rodrigo Zabú) + 1.458 créditos (voz rehecha con «Tony», `851ejYcv2BoNPjrkw93G`: 225 × 2 + 504 × 2) = 2.916 créditos · Higgsfield: 0.

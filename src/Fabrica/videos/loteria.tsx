@@ -15,6 +15,10 @@ import { Bokeh, C, CTAComentar, Coins, Dust, Label, Pill, PortadaTexto, PriceCar
 const SKY = "#7CC4FF";
 const LILA = "#C9A0FF";
 const ROJO = "#E5484D";
+// tamaños fijos de los contadores: una sola línea siempre, así la tarjeta no salta de alto mientras cuenta
+const TAM = 118;
+const TAM_1EN = 92;
+const TAM_US = 100;
 
 // ---------- piezas ----------
 const Bolilla: React.FC<{ x: number; y: number; r?: number; n: number; roja?: boolean; s?: number; rot?: number }> = ({ x, y, r = 44, n, roja = false, s = 1, rot = 0 }) => (
@@ -50,7 +54,7 @@ const Bombo: React.FC<{ x: number; y: number; R?: number; f: number; s?: number;
         {Array.from({ length: 30 }, (_, i) => {
           const rr = (0.25 + 0.65 * rnd(i)) * R;
           const ang = a * (0.8 + 0.6 * rnd(i + 3)) + i * 2.1;
-          return <Bolilla key={i} x={rr * Math.cos(ang)} y={rr * Math.sin(ang) * 0.9 + 30 * Math.sin(f * 0.2 + i)} r={30} n={1 + Math.floor(rnd(i + 7) * 69)} roja={i % 9 === 0} rot={f * 3 + i * 40} />;
+          return <Bolilla key={i} x={rr * Math.cos(ang)} y={rr * Math.sin(ang) * 0.9 + 30 * Math.sin(f * 0.2 + i)} r={30} n={1 + Math.floor(rnd(i + 7) * (i % 9 === 0 ? 26 : 69))} roja={i % 9 === 0} rot={28 * Math.sin(f * 0.16 + i * 1.7)} />; // se bambolean pero el número siempre se lee (la roja va de 1 a 26)
         })}
         <g transform={`rotate(${(a * 180) / Math.PI})`}>
           {Array.from({ length: 8 }, (_, i) => (
@@ -219,7 +223,7 @@ export const loteria: Video = {
         <>
           <Studio f={f} tint="#2A2238" />
           <Bombo x={540} y={1250} f={f} vel={1.6} />
-          <PriceCard x={540} y={700} label="TU CHANCE DE GANAR" value={`1 en ${n.toLocaleString("es-AR")}`} s={(1 + 0.08 * bump(f, t292 + 4)) * (1 + 0.015 * Math.sin(f * 0.4))} glow={decay(f, t292 + 4, 10) + 0.2} money={false} rot={1.2 * Math.sin(f * 0.12)} />
+          <PriceCard x={540} y={700} label="TU CHANCE DE GANAR" value={`1 en ${n.toLocaleString("es-AR")}`} size={TAM_1EN} s={(1 + 0.08 * bump(f, t292 + 4)) * (1 + 0.015 * Math.sin(f * 0.4))} glow={decay(f, t292 + 4, 10) + 0.2} money={false} rot={1.2 * Math.sin(f * 0.12)} />
           <Sparks f={f} at={t292 + 4} x={540} y={700} n={20} color={C.gold} spread={380} />
           <Label text="ILUSTRACIÓN" x={72} y={1780} />
         </>
@@ -234,7 +238,7 @@ export const loteria: Video = {
           <Stars f={f} n={40} h={1900} />
           <LluviaBoletos f={f} desde={-200} dens={0.3} />
           <Arena x={540} y={1260} s={1.3} f={f} />
-          <PriceCard x={540} y={700} label="1 BOLETO POR SEMANA" value={`${anos.toLocaleString("es-AR")} años`} s={(1 + 0.08 * bump(f, t5 + 4)) * (1 + 0.015 * Math.sin(f * 0.4))} glow={decay(f, t5 + 4, 10) + 0.2} money={false} rot={1.2 * Math.sin(f * 0.12)} />
+          <PriceCard x={540} y={700} label="1 BOLETO POR SEMANA" value={anos.toLocaleString("es-AR")} unit="años" size={TAM} s={(1 + 0.08 * bump(f, t5 + 4)) * (1 + 0.015 * Math.sin(f * 0.4))} glow={decay(f, t5 + 4, 10) + 0.2} money={false} rot={1.2 * Math.sin(f * 0.12)} />
           <Sparks f={f} at={t5 + 4} x={540} y={700} n={20} color={LILA} spread={380} />
           <Label text="ILUSTRACIÓN" x={72} y={1780} />
         </>
@@ -283,7 +287,7 @@ export const loteria: Video = {
           <>
             <Studio f={c.f} tint="#2A2238" />
             <LluviaBoletos f={c.f} desde={c.inicio} dens={ln(c.f, c.inicio, t292 + 4, 0.2, 1)} />
-            <PriceCard x={540} y={1050} label="COMBINACIONES POSIBLES" value={n.toLocaleString("es-AR")} s={(1 + 0.08 * bump(c.f, t292 + 4)) * (1 + 0.015 * Math.sin(c.f * 0.4))} glow={decay(c.f, t292 + 4, 10) + 0.2} money={false} rot={1.2 * Math.sin(c.f * 0.12)} />
+            <PriceCard x={540} y={1050} label="COMBINACIONES POSIBLES" value={n.toLocaleString("es-AR")} size={TAM} s={(1 + 0.08 * bump(c.f, t292 + 4)) * (1 + 0.015 * Math.sin(c.f * 0.4))} glow={decay(c.f, t292 + 4, 10) + 0.2} money={false} rot={1.2 * Math.sin(c.f * 0.12)} />
             {c.f >= t292 + 4 ? <Pill x={540} y={1300} text="y solo 1 gana el pozo" s={pop(c.f, t292 + 4, c.fps)} size={54} dark /> : null}
             <Sparks f={c.f} at={t292 + 4} x={540} y={1050} n={22} color={C.gold} spread={420} />
           </>
@@ -315,7 +319,7 @@ export const loteria: Video = {
       desde: (c) => c.w("con", ib(c)) - 2,
       dibujar: (c) => {
         const t55 = c.w("55", ib(c));
-        const anos = Math.round(ln(c.f, c.inicio + 4, t55 + 4, 0, 5619256, eio));
+        const anos = Math.round(ln(c.f, c.inicio, t55 + 4, 1000, 5619256, eio)); // nunca «0 años»
         return (
           <>
             <Studio f={c.f} tint="#221E3A" />
@@ -325,7 +329,7 @@ export const loteria: Video = {
               const ph = ((c.f + i * 9) % 36) / 36;
               return <div key={i} style={{ position: "absolute", left: 540 - 90 + ph * (i % 2 ? 380 : -380), top: 980 - ph * 280 + ph * ph * 460, width: 180, height: 110, borderRadius: 14, background: "#FBF3E2", opacity: 1 - ph, transform: `rotate(${ph * (i % 2 ? 140 : -140)}deg)`, boxShadow: "0 6px 0 rgba(0,0,0,0.3)", fontFamily: PF, fontWeight: 800, fontSize: 30, color: C.ink, display: "flex", alignItems: "center", justifyContent: "center" }}>SEMANA</div>;
             })}
-            <PriceCard x={540} y={720} label="1 BOLETO POR SEMANA" value={`${anos.toLocaleString("es-AR")} años`} s={(1 + 0.08 * bump(c.f, t55 + 4)) * (1 + 0.015 * Math.sin(c.f * 0.4))} glow={decay(c.f, t55 + 4, 10) + 0.2} money={false} rot={1.2 * Math.sin(c.f * 0.12)} />
+            <PriceCard x={540} y={720} label="1 BOLETO POR SEMANA" value={anos.toLocaleString("es-AR")} unit="años" size={TAM} s={(1 + 0.08 * bump(c.f, t55 + 4)) * (1 + 0.015 * Math.sin(c.f * 0.4))} glow={decay(c.f, t55 + 4, 10) + 0.2} money={false} rot={1.2 * Math.sin(c.f * 0.12)} />
             <Sparks f={c.f} at={t55 + 4} x={540} y={720} n={20} color={LILA} spread={380} />
             <Label text="EN PROMEDIO · 292.201.338 ÷ 52 SEMANAS" x={72} y={1780} />
           </>
@@ -343,7 +347,7 @@ export const loteria: Video = {
             <Studio f={c.f} tint="#14301E" />
             <Bokeh f={c.f} color="#7CFFB0" seed={8} n={10} />
             <Boleto x={540} y={1430} s={1.2} rot={-4 + 2 * Math.sin(c.f * 0.2)} glow={0.5 + 0.4 * Math.sin(c.f * 0.3)} />
-            <PriceCard x={540} y={860} label="POZO RÉCORD · 2022" value={`US$ ${n.toLocaleString("es-AR")}`} s={(1 + 0.08 * bump(c.f, tPozo + 6)) * (1 + 0.015 * Math.sin(c.f * 0.4))} glow={decay(c.f, tPozo + 6, 10) + 0.3} note={c.f >= tPozo + 6 ? "UN SOLO BOLETO · CALIFORNIA" : undefined} rot={1.2 * Math.sin(c.f * 0.12)} />
+            <PriceCard x={540} y={860} label="POZO RÉCORD · 2022" value={n.toLocaleString("es-AR")} pre="US$" size={TAM_US} s={(1 + 0.08 * bump(c.f, tPozo + 6)) * (1 + 0.015 * Math.sin(c.f * 0.4))} glow={decay(c.f, tPozo + 6, 10) + 0.3} note={c.f >= tPozo + 6 ? "UN SOLO BOLETO · CALIFORNIA" : undefined} rot={1.2 * Math.sin(c.f * 0.12)} />
             <Coins f={c.f} at={tPozo + 6} x={540} y={880} />
             <Sparks f={c.f} at={tPozo + 6} x={540} y={880} n={24} color={C.green} spread={440} />
             {c.f >= c.w("alguien", ib(c)) ? <Pill x={540} y={1180} text="y aun así… alguien gana" s={pop(c.f, c.w("alguien", ib(c)), c.fps)} size={54} dark /> : null}
