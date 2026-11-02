@@ -3,229 +3,229 @@
   {
    "text": "Ganar",
    "start": 0.03,
-   "end": 0.421,
+   "end": 0.362,
    "type": "word"
   },
   {
    "text": "el",
-   "start": 0.441,
-   "end": 0.674,
+   "start": 0.382,
+   "end": 0.579,
    "type": "word"
   },
   {
    "text": "Powerball:",
-   "start": 0.694,
-   "end": 1.243,
+   "start": 0.599,
+   "end": 1.067,
    "type": "word"
   },
   {
    "text": "una",
-   "start": 1.66,
-   "end": 2.01,
+   "start": 1.55,
+   "end": 1.867,
    "type": "word"
   },
   {
    "text": "chance",
-   "start": 2.03,
-   "end": 2.379,
+   "start": 1.887,
+   "end": 2.204,
    "type": "word"
   },
   {
    "text": "en",
-   "start": 2.399,
-   "end": 2.607,
+   "start": 2.224,
+   "end": 2.412,
    "type": "word"
   },
   {
    "text": "doscientos",
-   "start": 2.627,
-   "end": 3.118,
+   "start": 2.432,
+   "end": 2.878,
    "type": "word"
   },
   {
    "text": "noventa",
-   "start": 3.138,
-   "end": 3.629,
+   "start": 2.898,
+   "end": 3.345,
    "type": "word"
   },
   {
    "text": "y",
-   "start": 3.649,
-   "end": 3.857,
+   "start": 3.365,
+   "end": 3.552,
    "type": "word"
   },
   {
    "text": "dos",
-   "start": 3.877,
-   "end": 4.084,
+   "start": 3.572,
+   "end": 3.759,
    "type": "word"
   },
   {
    "text": "millones.",
-   "start": 4.104,
-   "end": 4.595,
+   "start": 3.779,
+   "end": 4.226,
    "type": "word"
   },
   {
    "text": "Si",
-   "start": 5.105,
-   "end": 5.261,
+   "start": 4.757,
+   "end": 4.929,
    "type": "word"
   },
   {
    "text": "jugás",
-   "start": 5.281,
-   "end": 5.548,
+   "start": 4.949,
+   "end": 5.24,
    "type": "word"
   },
   {
    "text": "un",
-   "start": 5.568,
-   "end": 5.724,
+   "start": 5.26,
+   "end": 5.432,
    "type": "word"
   },
   {
    "text": "boleto",
-   "start": 5.744,
-   "end": 6.121,
+   "start": 5.452,
+   "end": 5.864,
    "type": "word"
   },
   {
    "text": "por",
-   "start": 6.141,
-   "end": 6.297,
+   "start": 5.884,
+   "end": 6.056,
    "type": "word"
   },
   {
    "text": "semana,",
-   "start": 6.317,
-   "end": 6.694,
+   "start": 6.076,
+   "end": 6.487,
    "type": "word"
   },
   {
    "text": "ganás",
-   "start": 6.987,
-   "end": 7.346,
+   "start": 6.507,
+   "end": 6.799,
    "type": "word"
   },
   {
    "text": "la",
-   "start": 7.366,
-   "end": 7.58,
+   "start": 6.819,
+   "end": 6.991,
    "type": "word"
   },
   {
    "text": "lotería",
-   "start": 7.6,
-   "end": 8.105,
+   "start": 7.011,
+   "end": 7.422,
    "type": "word"
   },
   {
    "text": "en",
-   "start": 8.125,
-   "end": 8.339,
+   "start": 7.442,
+   "end": 7.614,
    "type": "word"
   },
   {
    "text": "cinco",
-   "start": 8.359,
-   "end": 8.718,
+   "start": 7.634,
+   "end": 7.926,
    "type": "word"
   },
   {
    "text": "millones",
-   "start": 8.738,
-   "end": 9.243,
+   "start": 7.946,
+   "end": 8.357,
    "type": "word"
   },
   {
    "text": "de",
-   "start": 9.263,
-   "end": 9.477,
+   "start": 8.377,
+   "end": 8.549,
    "type": "word"
   },
   {
    "text": "años.",
-   "start": 9.497,
-   "end": 9.856,
+   "start": 8.569,
+   "end": 8.861,
    "type": "word"
   },
   {
    "text": "Ganar",
-   "start": 10.34,
-   "end": 10.602,
+   "start": 9.456,
+   "end": 9.816,
    "type": "word"
   },
   {
    "text": "la",
-   "start": 10.622,
-   "end": 10.775,
+   "start": 9.836,
+   "end": 10.05,
    "type": "word"
   },
   {
    "text": "lotería",
-   "start": 10.795,
-   "end": 11.165,
+   "start": 10.07,
+   "end": 10.576,
    "type": "word"
   },
   {
    "text": "es",
-   "start": 11.185,
-   "end": 11.338,
+   "start": 10.596,
+   "end": 10.81,
    "type": "word"
   },
   {
    "text": "como",
-   "start": 11.358,
-   "end": 11.619,
+   "start": 10.83,
+   "end": 11.19,
    "type": "word"
   },
   {
    "text": "adivinar",
-   "start": 11.639,
-   "end": 12.117,
+   "start": 11.21,
+   "end": 11.862,
    "type": "word"
   },
   {
    "text": "a",
-   "start": 12.137,
-   "end": 12.29,
+   "start": 11.882,
+   "end": 12.096,
    "type": "word"
   },
   {
    "text": "una",
-   "start": 12.31,
-   "end": 12.572,
+   "start": 12.116,
+   "end": 12.476,
    "type": "word"
   },
   {
    "text": "persona…",
-   "start": 12.592,
-   "end": 12.962,
+   "start": 12.496,
+   "end": 13.002,
    "type": "word"
   },
   {
    "text": "entre",
-   "start": 13.452,
-   "end": 13.942,
+   "start": 13.022,
+   "end": 13.382,
    "type": "word"
   },
   {
    "text": "seis",
-   "start": 13.962,
-   "end": 14.255,
+   "start": 13.402,
+   "end": 13.616,
    "type": "word"
   },
   {
    "text": "Argentinas",
-   "start": 14.275,
-   "end": 15.157,
+   "start": 13.636,
+   "end": 14.288,
    "type": "word"
   },
   {
    "text": "enteras.",
-   "start": 15.177,
-   "end": 15.862,
+   "start": 14.308,
+   "end": 14.814,
    "type": "word"
   }
  ]

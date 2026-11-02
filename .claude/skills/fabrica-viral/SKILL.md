@@ -86,8 +86,9 @@ Estructura del **dato curioso** (25–33 s en total, 65–85 palabras en el cuer
 - Cada sustantivo importante tiene una imagen en el mismo instante (lo planificás en `guion.md`: columna «qué se ve»).
 
 ### 4 · Voz y música
-- **ElevenLabs** (ToolSearch → `mcp__ElevenLabs__creative_generate_speech`): voz Rodrigo Zabú `1p905cdbJ1e1JQxhFTGJ`,
-  modelo `eleven_v4`, flow `z1ZelNAoO6lYeCynWizl`. **2 llamadas**: los 3 ganchos (separados por línea en blanco) y el
+- **ElevenLabs** (ToolSearch → `mcp__ElevenLabs__creative_generate_speech`): voz **«Tony»** `851ejYcv2BoNPjrkw93G`
+  (la elige el usuario el 2026-11-02: «expresiva, rápida y espontánea»; en el buscador figura como «Tony Your Casual
+  Voice»; antes era Rodrigo Zabú `1p905cdbJ1e1JQxhFTGJ`), modelo `eleven_v4`, flow `z1ZelNAoO6lYeCynWizl`. **2 llamadas**: los 3 ganchos (separados por línea en blanco) y el
   cuerpo. Cada llamada da 2 tomas (≈ 250–550 créditos cada una). Esperá con `creative_get_flow_run_status`, bajá la
   toma «a» con curl a `produccion/<slug>/ganchos_a.mp3` y `cuerpo_a.mp3`. No repitas llamadas para «reintentar».
 - Alineación y armado:
