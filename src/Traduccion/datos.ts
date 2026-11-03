@@ -10,6 +10,15 @@ export const INTRO = 7 * FPS;
 export const OUTRO = 9 * FPS;
 export const PORTADA = Math.round(2.5 * FPS); // tarjeta antes de cada integrante
 
+// Música de fondo: archivo en public/, segundo de la canción donde arranca, y volúmenes
+// (alto = intro, tarjetas y outro; bajo = debajo de las voces).
+export const MUSICA = {
+  archivo: "traduccion/musica.wav",
+  empiezaEn: 0,
+  alto: 0.45,
+  bajo: 0.05,
+};
+
 // Datos de la intro y los créditos. Lo que quede vacío no se muestra.
 export const DATOS = {
   colegio: "",

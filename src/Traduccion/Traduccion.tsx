@@ -14,6 +14,7 @@ import {
   DATOS,
   FPS,
   INTRO,
+  MUSICA,
   OUTRO,
   PARTES,
   PORTADA,
@@ -466,8 +467,8 @@ const Outro: React.FC = () => {
 };
 
 // ── Música: fuerte en intro/tarjetas/outro, muy bajita debajo de las voces ──
-const MUSICA_ALTA = 0.45;
-const MUSICA_BAJA = 0.05;
+const MUSICA_ALTA = MUSICA.alto;
+const MUSICA_BAJA = MUSICA.bajo;
 
 const tramos = () => {
   const out: { desde: number; hasta: number; alta: boolean }[] = [{ desde: 0, hasta: INTRO, alta: true }];
@@ -520,7 +521,7 @@ export const Traduccion: React.FC = () => {
       <Sequence from={t} durationInFrames={OUTRO}>
         <Outro />
       </Sequence>
-      <Audio src={staticFile("traduccion/musica.wav")} loop volume={(f) => volumenMusica(f, durationInFrames)} />
+      <Audio src={staticFile(MUSICA.archivo)} trimBefore={Math.round(MUSICA.empiezaEn * FPS)} loop volume={(f) => volumenMusica(f, durationInFrames)} />
     </AbsoluteFill>
   );
 };
