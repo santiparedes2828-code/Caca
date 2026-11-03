@@ -1,0 +1,10 @@
+{
+  "_ayuda": "Cada clip cubre frases del guion de esa persona (números desde 0). Después de editar: python3 -I produccion/traduccion/armar.py",
+  "Juan": [
+    { "archivo": "traduccion/juan_1.mp4", "frases": [0, 1, 2, 3] },
+    { "archivo": "traduccion/juan_2.mp4", "frases": [4] }
+  ],
+  "Julieta": [
+    { "archivo": "traduccion/julieta_1.mp4", "frases": [0, 1] }
+  ]
+}

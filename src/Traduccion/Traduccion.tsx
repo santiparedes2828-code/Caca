@@ -19,7 +19,8 @@ import {
   PORTADA,
   framesParte,
   framesTotales,
-  subtitulosEstimados,
+  bloques,
+  subtitulosParte,
   type Parte,
 } from "./datos";
 import { EsquemaSVG, TITULOS } from "./Esquemas";
@@ -292,7 +293,7 @@ const Segmento: React.FC<{ p: Parte; i: number }> = ({ p, i }) => {
   const f = useCurrentFrame();
   const dur = framesParte(p);
   const t = f / FPS;
-  const subs = p.subtitulos ?? subtitulosEstimados(p);
+  const subs = subtitulosParte(p);
   const sub = subs.find((s) => t >= s.desde && t < s.hasta);
   // la frase vigente manda el esquema (se queda la última hasta que empieza la siguiente)
   const vigente = [...subs].reverse().find((s) => t >= s.desde) ?? subs[0];
@@ -330,24 +331,27 @@ const Segmento: React.FC<{ p: Parte; i: number }> = ({ p, i }) => {
           transform: `translateY(${(1 - entra) * 40}px)`,
         }}
       >
-        {p.archivo ? (
-          <>
-            <Video
-              src={staticFile(p.archivo)}
-              muted
-              trimBefore={Math.round((p.recorteInicio ?? 0) * FPS)}
-              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", filter: "blur(30px) brightness(0.9)", transform: "scale(1.15)" }}
-            />
-            <Video
-              src={staticFile(p.archivo)}
-              trimBefore={Math.round((p.recorteInicio ?? 0) * FPS)}
-              volume={p.volumen ?? 1}
-              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }}
-            />
-          </>
-        ) : (
-          <EspacioClip p={p} col={col} />
-        )}
+        {bloques(p).map((b, k) => (
+          <Sequence key={k} from={b.desde} durationInFrames={b.frames} layout="none">
+            {b.tipo === "clip" && b.archivo ? (
+              <AbsoluteFill>
+                <Video
+                  src={staticFile(b.archivo)}
+                  muted
+                  trimBefore={Math.round(b.recorteInicio * FPS)}
+                  style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", filter: "blur(30px) brightness(0.9)", transform: "scale(1.15)" }}
+                />
+                <Video
+                  src={staticFile(b.archivo)}
+                  trimBefore={Math.round(b.recorteInicio * FPS)}
+                  style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }}
+                />
+              </AbsoluteFill>
+            ) : (
+              <EspacioClip p={p} col={col} segundos={Math.round(b.frames / FPS)} />
+            )}
+          </Sequence>
+        ))}
       </div>
 
       {/* esquema */}
@@ -402,14 +406,14 @@ const Segmento: React.FC<{ p: Parte; i: number }> = ({ p, i }) => {
   );
 };
 
-const EspacioClip: React.FC<{ p: Parte; col: string }> = ({ p, col }) => {
+const EspacioClip: React.FC<{ p: Parte; col: string; segundos: number }> = ({ p, col, segundos }) => {
   const f = useCurrentFrame();
   return (
     <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", background: "#F4F7FB" }}>
       <div style={{ position: "absolute", inset: 24, border: `5px dashed ${col}`, borderRadius: 20, opacity: 0.7 }} />
       <div style={{ fontSize: 120, transform: `scale(${1 + 0.04 * Math.sin(f * 0.12)})` }}>🎬</div>
       <div style={{ fontFamily: FONT_T, fontWeight: 800, fontSize: 56, color: C.tinta, marginTop: 10 }}>Clip de {p.nombre}</div>
-      <div style={{ fontFamily: FONT_B, fontWeight: 500, fontSize: 30, color: C.gris, marginTop: 8 }}>espacio reservado · ~{Math.round(framesParte(p) / FPS)} s</div>
+      <div style={{ fontFamily: FONT_B, fontWeight: 500, fontSize: 30, color: C.gris, marginTop: 8 }}>falta este clip · ~{segundos} s</div>
     </AbsoluteFill>
   );
 };

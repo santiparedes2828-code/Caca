@@ -1,0 +1,130 @@
+{
+ "Juan": [
+  {
+   "archivo": "traduccion/juan_1.mp4",
+   "frases": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "recorteInicio": 0.359,
+   "segundos": 17.372,
+   "subtitulos": [
+    {
+     "texto": "A medida que llegan los aminoácidos,",
+     "desde": 0.358,
+     "hasta": 1.9349999999999998,
+     "frase": 0
+    },
+    {
+     "texto": "el ribosoma los va uniendo mediante enlaces peptídicos.",
+     "desde": 1.805,
+     "hasta": 4.098,
+     "frase": 0
+    },
+    {
+     "texto": "Esto forma una cadena llamada cadena polipeptídica.",
+     "desde": 4.672,
+     "hasta": 7.218,
+     "frase": 1
+    },
+    {
+     "texto": "El proceso continúa mientras el ribosoma avanza por",
+     "desde": 7.333,
+     "hasta": 10.393,
+     "frase": 2
+    },
+    {
+     "texto": "el ARN mensajero,",
+     "desde": 10.263,
+     "hasta": 11.297,
+     "frase": 2
+    },
+    {
+     "texto": "leyendo sus codones.",
+     "desde": 11.341,
+     "hasta": 13.05,
+     "frase": 2
+    },
+    {
+     "texto": "Cuando llega a un codón de terminación,",
+     "desde": 13.348,
+     "hasta": 14.787,
+     "frase": 3
+    },
+    {
+     "texto": "la traducción finaliza.",
+     "desde": 15.423,
+     "hasta": 16.82,
+     "frase": 3
+    }
+   ]
+  },
+  {
+   "archivo": "traduccion/juan_2.mp4",
+   "frases": [
+    4
+   ],
+   "recorteInicio": 0.0,
+   "segundos": 4.054,
+   "subtitulos": [
+    {
+     "texto": "Entonces, la cadena se libera y puede plegarse",
+     "desde": 0.178,
+     "hasta": 2.445,
+     "frase": 4
+    },
+    {
+     "texto": "hasta adquirir su forma funcional.",
+     "desde": 2.315,
+     "hasta": 3.818,
+     "frase": 4
+    }
+   ]
+  }
+ ],
+ "Julieta": [
+  {
+   "archivo": "traduccion/julieta_1.mp4",
+   "frases": [
+    0,
+    1
+   ],
+   "recorteInicio": 0.0,
+   "segundos": 10.75,
+   "subtitulos": [
+    {
+     "texto": "Antes de que ocurra la traducción,",
+     "desde": 0.195,
+     "hasta": 2.012,
+     "frase": 0
+    },
+    {
+     "texto": "primero sucede un proceso llamado transcripción.",
+     "desde": 1.882,
+     "hasta": 4.277,
+     "frase": 0
+    },
+    {
+     "texto": "Durante este proceso,",
+     "desde": 4.964,
+     "hasta": 6.174,
+     "frase": 1
+    },
+    {
+     "texto": "la información de un gen del ADN se",
+     "desde": 6.044,
+     "hasta": 7.915,
+     "frase": 1
+    },
+    {
+     "texto": "copia en una molécula llamada ARN mensajero.",
+     "desde": 7.785,
+     "hasta": 10.251000000000001,
+     "frase": 1
+    }
+   ]
+  }
+ ]
+}

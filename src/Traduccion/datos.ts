@@ -1,6 +1,9 @@
 // Video «Biología — La traducción».
-// Para sumar un clip: poné el archivo en public/traduccion/ y completá `archivo` y `segundos`.
-// Mientras `archivo` sea null, se muestra una pantalla de espacio con el guion.
+// Clips: se anotan en produccion/traduccion/clips.json (qué frases cubre cada uno) y se corre
+// `python3 -I produccion/traduccion/armar.py`, que escribe src/Traduccion/clips.json con duraciones y subtítulos.
+// Las frases que todavía no tienen clip quedan como espacio reservado.
+
+import CLIPS from "./clips.json";
 
 export const FPS = 30;
 export const INTRO = 7 * FPS;
@@ -10,19 +13,19 @@ export const PORTADA = Math.round(2.5 * FPS); // tarjeta antes de cada integrant
 // Datos de la intro y los créditos. Lo que quede vacío no se muestra.
 export const DATOS = {
   colegio: "",
-  curso: "",
-  profe: "",
+  curso: "2do CT 1",
+  profe: "Adriana Silva",
   fecha: "",
 };
 
 // Apellidos para los créditos (vacío = solo el nombre).
 export const APELLIDOS: Record<string, string> = {
-  Mateo: "",
-  Julieta: "",
-  Gabriel: "",
-  Fran: "",
-  Juan: "",
-  Santiago: "",
+  Mateo: "Vazquez",
+  Julieta: "Verde",
+  Gabriel: "Barrios",
+  Francisco: "Facio",
+  Juan: "Cerruti",
+  Santiago: "Paredes",
 };
 
 // Esquemas animados: uno por frase del guion.
@@ -40,11 +43,6 @@ export type Parte = {
   detalle: string;
   guion: string[];
   esquemas: Esquema[]; // uno por frase
-  archivo: string | null; // p. ej. "traduccion/mateo.mp4"
-  segundos: number | null; // duración real del clip (la mido yo con ffprobe)
-  recorteInicio?: number; // segundos a recortar al principio
-  volumen?: number; // volumen de la voz del clip (1 = normal)
-  subtitulos?: Subtitulo[]; // sacados del audio del clip
 };
 
 export const PARTES: Parte[] = [
@@ -60,8 +58,6 @@ export const PARTES: Parte[] = [
       "Hoy vamos a explicar cómo funciona la traducción.",
     ],
     esquemas: ["pregunta", "celula", "proteinas", "flujo", "flujo-traduccion"],
-    archivo: null,
-    segundos: null,
   },
   {
     nombre: "Julieta",
@@ -75,8 +71,6 @@ export const PARTES: Parte[] = [
       "Ahí es donde comienza la traducción, que permite utilizar esa información para fabricar una proteína.",
     ],
     esquemas: ["transcripcion-intro", "copia", "nucleo", "salida", "llega-ribosoma"],
-    archivo: null,
-    segundos: null,
   },
   {
     nombre: "Gabriel",
@@ -90,11 +84,9 @@ export const PARTES: Parte[] = [
       "De esta manera, el ribosoma va siguiendo las instrucciones del ARN mensajero.",
     ],
     esquemas: ["ribosoma", "lectura", "codones", "codon-aa", "sigue"],
-    archivo: null,
-    segundos: null,
   },
   {
-    nombre: "Fran",
+    nombre: "Francisco",
     tema: "El ARN de transferencia",
     detalle: "Anticodones que traen aminoácidos",
     guion: [
@@ -105,8 +97,6 @@ export const PARTES: Parte[] = [
       "Así, los aminoácidos van llegando en el orden indicado por la información genética.",
     ],
     esquemas: ["arnt", "transporte", "anticodon", "entrega", "orden"],
-    archivo: null,
-    segundos: null,
   },
   {
     nombre: "Juan",
@@ -120,8 +110,6 @@ export const PARTES: Parte[] = [
       "Entonces, la cadena se libera y puede plegarse hasta adquirir su forma funcional.",
     ],
     esquemas: ["enlace", "cadena", "avanza", "stop", "plegado"],
-    archivo: null,
-    segundos: null,
   },
   {
     nombre: "Santiago",
@@ -134,44 +122,78 @@ export const PARTES: Parte[] = [
       "Por eso, la traducción es fundamental para el funcionamiento de nuestras células.",
     ],
     esquemas: ["resumen", "participantes", "funciones", "fundamental"],
-    archivo: null,
-    segundos: null,
   },
 ];
 
-// Duración estimada leyendo el guion a ritmo de exposición (~2,8 palabras/seg).
+// Ritmo de lectura para estimar las frases que todavía no tienen clip (~2,8 palabras/seg).
 const PALABRAS_SEG = 2.8;
-const palabras = (t: string) => t.split(/\s+/).length;
-export const segundosEstimados = (p: Parte) =>
-  Math.ceil(palabras(p.guion.join(" ")) / PALABRAS_SEG) + 1;
 
-// Subtítulos: [inicio, fin) en segundos dentro del clip, por frase.
-// Hasta tener el clip se reparten según la cantidad de palabras; con el clip, los saco del audio.
 export type Subtitulo = { texto: string; desde: number; hasta: number; frase: number };
-export const subtitulosEstimados = (p: Parte): Subtitulo[] => {
-  const total = framesParte(p) / FPS - 1;
-  const pesos = p.guion.map(palabras);
-  const suma = pesos.reduce((a, b) => a + b, 0);
+
+// Un integrante se arma con bloques en orden: clips reales o espacios reservados.
+export type Bloque = {
+  tipo: "clip" | "espacio";
+  archivo?: string;
+  recorteInicio: number; // seg
+  frames: number;
+  desde: number; // frame de inicio dentro del segmento del integrante
+  frases: number[];
+  subtitulos: Subtitulo[]; // en segundos, relativos al bloque
+};
+
+type ClipJSON = { archivo: string; frases: number[]; recorteInicio: number; segundos: number; subtitulos: Subtitulo[] };
+const CLIPS_POR_NOMBRE = CLIPS as Record<string, ClipJSON[]>;
+
+const espacio = (p: Parte, frases: number[]): Omit<Bloque, "desde"> => {
+  const subs: Subtitulo[] = [];
   let t = 0.5;
-  const out: Subtitulo[] = [];
-  p.guion.forEach((frase, i) => {
-    const d = (pesos[i] / suma) * total;
-    // partir frases largas en trozos de ~9 palabras
-    const w = frase.split(/\s+/);
-    const trozos = Math.ceil(w.length / 9);
+  for (const i of frases) {
+    const w = p.guion[i].split(/\s+/);
+    const trozos = Math.ceil(w.length / 8);
     const tam = Math.ceil(w.length / trozos);
     for (let k = 0; k < trozos; k++) {
       const pedazo = w.slice(k * tam, (k + 1) * tam);
-      const dd = (d * pedazo.length) / w.length;
-      out.push({ texto: pedazo.join(" "), desde: t, hasta: t + dd, frase: i });
-      t += dd;
+      const d = pedazo.length / PALABRAS_SEG;
+      subs.push({ texto: pedazo.join(" "), desde: t, hasta: t + d, frase: i });
+      t += d;
     }
-  });
-  return out;
+    t += 0.3;
+  }
+  return { tipo: "espacio", recorteInicio: 0, frames: Math.round((t + 0.5) * FPS), frases, subtitulos: subs };
 };
 
-export const framesParte = (p: Parte) =>
-  Math.round((p.segundos != null ? p.segundos - (p.recorteInicio ?? 0) : segundosEstimados(p)) * FPS);
+export const bloques = (p: Parte): Bloque[] => {
+  const clips = CLIPS_POR_NOMBRE[p.nombre] ?? [];
+  const out: Omit<Bloque, "desde">[] = [];
+  let pendientes: number[] = [];
+  const cerrar = () => {
+    if (pendientes.length) out.push(espacio(p, pendientes));
+    pendientes = [];
+  };
+  for (let i = 0; i < p.guion.length; i++) {
+    const c = clips.find((x) => x.frases[0] === i);
+    if (c) {
+      cerrar();
+      out.push({ tipo: "clip", archivo: c.archivo, recorteInicio: c.recorteInicio, frames: Math.round(c.segundos * FPS), frases: c.frases, subtitulos: c.subtitulos });
+      i = c.frases[c.frases.length - 1];
+    } else {
+      pendientes.push(i);
+    }
+  }
+  cerrar();
+  let d = 0;
+  return out.map((b) => {
+    const r = { ...b, desde: d };
+    d += b.frames;
+    return r;
+  });
+};
+
+export const framesParte = (p: Parte) => bloques(p).reduce((a, b) => a + b.frames, 0);
+
+// Subtítulos de todo el segmento, en segundos desde el inicio del segmento.
+export const subtitulosParte = (p: Parte): Subtitulo[] =>
+  bloques(p).flatMap((b) => b.subtitulos.map((s) => ({ ...s, desde: s.desde + b.desde / FPS, hasta: s.hasta + b.desde / FPS })));
 
 export const framesTotales = () =>
   INTRO + PARTES.reduce((acc, p) => acc + PORTADA + framesParte(p), 0) + OUTRO;
