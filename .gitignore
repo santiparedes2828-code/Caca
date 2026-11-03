@@ -26,3 +26,6 @@ analisis*/*.png
 analisis*/*.mp3
 analisis*/broll_dl/
 hookie-kit*.zip
+
+# Fotos de los integrantes del video de biología (no se suben, como los videos)
+public/traduccion/fotos/

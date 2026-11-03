@@ -1,7 +1,7 @@
 // Video «Biología — La traducción».
 // Clips: se anotan en produccion/traduccion/clips.json (qué frases cubre cada uno) y se corre
 // `python3 -I produccion/traduccion/armar.py`, que escribe src/Traduccion/clips.json con duraciones y subtítulos.
-// Las frases que todavía no tienen clip quedan como espacio reservado.
+// Las frases sin clip se saltean (RELLENAR_FALTANTES = true las muestra como espacio reservado).
 
 import CLIPS from "./clips.json";
 
@@ -9,6 +9,26 @@ export const FPS = 30;
 export const INTRO = 7 * FPS;
 export const OUTRO = 9 * FPS;
 export const PORTADA = Math.round(2.5 * FPS); // tarjeta antes de cada integrante
+export const RELLENAR_FALTANTES = false;
+
+// Bloopers (después del «¡Gracias!»). foto = polaroids de «detrás de cámara».
+export type Blooper = { archivo: string; nombre: string; segundos: number } | { fotos: string[]; segundos: number };
+export const BLOOPERS: Blooper[] = [
+  { archivo: "traduccion/bloopers/mateo.mp4", nombre: "Mateo", segundos: 3.6 },
+  { archivo: "traduccion/bloopers/julieta_1.mp4", nombre: "Julieta", segundos: 1.2 },
+  { archivo: "traduccion/bloopers/gabriel_1.mp4", nombre: "Gabriel", segundos: 3.5 },
+  { archivo: "traduccion/bloopers/francisco_1.mp4", nombre: "Francisco", segundos: 3.1 },
+  { archivo: "traduccion/bloopers/julieta_2.mp4", nombre: "Julieta", segundos: 1.5 },
+  { archivo: "traduccion/bloopers/gabriel_2.mp4", nombre: "Gabriel", segundos: 2.45 },
+  { archivo: "traduccion/bloopers/julieta_3.mp4", nombre: "Julieta", segundos: 1.0 },
+  { archivo: "traduccion/bloopers/francisco_2.mp4", nombre: "Francisco", segundos: 3.7 },
+  { fotos: ["traduccion/fotos/sillon.jpg", "traduccion/fotos/mateo.jpg", "traduccion/fotos/francisco_cerca.jpg"], segundos: 3.6 },
+  { archivo: "traduccion/bloopers/francisco_3.mp4", nombre: "Francisco", segundos: 1.4 },
+];
+export const BLOOPERS_TITULO = Math.round(2.2 * FPS);
+export const BLOOPERS_FIN = Math.round(1.8 * FPS);
+export const framesBlooper = (b: Blooper) => Math.round(b.segundos * FPS);
+export const framesBloopers = () => BLOOPERS_TITULO + BLOOPERS.reduce((a, b) => a + framesBlooper(b), 0) + BLOOPERS_FIN;
 
 // Música de fondo: archivo en public/, segundo de la canción donde arranca, y volúmenes
 // (alto = intro, tarjetas y outro; bajo = debajo de las voces).
@@ -185,7 +205,7 @@ export const bloques = (p: Parte): Bloque[] => {
       cerrar();
       out.push({ tipo: "clip", archivo: c.archivo, recorteInicio: c.recorteInicio, frames: Math.round(c.segundos * FPS), frases: c.frases, subtitulos: c.subtitulos });
       i = c.frases[c.frases.length - 1];
-    } else {
+    } else if (RELLENAR_FALTANTES) {
       pendientes.push(i);
     }
   }
@@ -205,4 +225,4 @@ export const subtitulosParte = (p: Parte): Subtitulo[] =>
   bloques(p).flatMap((b) => b.subtitulos.map((s) => ({ ...s, desde: s.desde + b.desde / FPS, hasta: s.hasta + b.desde / FPS })));
 
 export const framesTotales = () =>
-  INTRO + PARTES.reduce((acc, p) => acc + PORTADA + framesParte(p), 0) + OUTRO;
+  INTRO + PARTES.reduce((acc, p) => acc + PORTADA + framesParte(p), 0) + OUTRO + framesBloopers();

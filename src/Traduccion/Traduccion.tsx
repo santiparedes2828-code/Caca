@@ -19,13 +19,17 @@ import {
   PARTES,
   PORTADA,
   framesParte,
+  framesBloopers,
+  BLOOPERS_TITULO,
   framesTotales,
   bloques,
   subtitulosParte,
   type Parte,
 } from "./datos";
 import { EsquemaSVG, TITULOS } from "./Esquemas";
-import { C, COLORES, FONT_B, FONT_T } from "./tema";
+import { CORTINA, Cortina, Garabatos, Sfx, TextoResaltado, pop } from "./Efectos";
+import { Bloopers } from "./Bloopers";
+import { C, COLORES, COLORES_CLARO, FONT_B, FONT_T } from "./tema";
 
 export const TRADUCCION_FRAMES = framesTotales();
 
@@ -43,6 +47,7 @@ const Hoja: React.FC = () => (
   >
     {/* margen rojo de cuaderno */}
     <div style={{ position: "absolute", left: 120, top: 0, bottom: 0, width: 3, background: "#F8A5A5" }} />
+    <Garabatos />
   </AbsoluteFill>
 );
 
@@ -183,6 +188,15 @@ const Intro: React.FC = () => {
           </div>
         )}
       </AbsoluteFill>
+      {[0, 6, 12, 18, 24].map((d) => (
+        <Sfx key={d} at={d} s="pop" v={0.22} />
+      ))}
+      <Sfx at={12} s="whoosh" v={0.5} />
+      <Sfx at={28} s="swish" v={0.35} />
+      {PARTES.map((_, i) => (
+        <Sfx key={i} at={70 + i * 6} s="pop" v={0.3} />
+      ))}
+      <Sfx at={112} s="ding" v={0.3} />
       {/* proteína decorativa */}
       <div style={{ position: "absolute", right: 120, bottom: 120, width: 360, height: 360, opacity: interpolate(f, [30, 50], [0, 1], clamp) }}>
         <svg viewBox="-180 -180 360 360" width="100%" height="100%">
@@ -230,7 +244,7 @@ const Portada: React.FC<{ p: Parte; i: number }> = ({ p, i }) => {
             fontWeight: 800,
             fontSize: 150,
             color: "#fff",
-            transform: `scale(${sp(f)}) rotate(${(1 - sp(f)) * -90}deg)`,
+            transform: `scale(${pop(f)}) rotate(${(1 - pop(f)) * -90 + Math.sin(f * 0.12) * 4}deg)`,
           }}
         >
           {i + 1}
@@ -265,6 +279,9 @@ const Portada: React.FC<{ p: Parte; i: number }> = ({ p, i }) => {
         </div>
       </AbsoluteFill>
       <Progreso actual={i} />
+      <Sfx at={2} s="pop" v={0.45} />
+      <Sfx at={8} s="swish" v={0.3} />
+      <Sfx at={22} s="ding" v={0.3} />
     </Fundido>
   );
 };
@@ -304,6 +321,19 @@ const Segmento: React.FC<{ p: Parte; i: number }> = ({ p, i }) => {
   const esquema = p.esquemas[frase];
   const col = COLORES[i];
   const entra = sp(f, 0, 18);
+  const bump = fe >= 0 && fe < 12 && frase !== subs[0].frase ? Math.sin((fe / 12) * Math.PI) * 0.035 : 0;
+  const fsub = sub ? f - Math.round(sub.desde * FPS) : 0;
+  // efectos: un swish suave en cada cambio de esquema y alguno especial según el dibujo
+  const cambios = subs.filter((s, k) => k === 0 || subs[k - 1].frase !== s.frase);
+  const ESPECIALES: Partial<Record<string, { at: number; s: "stop" | "brillo" | "ding" | "pop"; v: number }[]>> = {
+    stop: [{ at: 35, s: "stop", v: 0.3 }],
+    plegado: [{ at: 25, s: "brillo", v: 0.3 }],
+    fundamental: [{ at: 15, s: "brillo", v: 0.3 }],
+    anticodon: [{ at: 55, s: "ding", v: 0.2 }],
+    "codon-aa": [0, 1, 2, 3, 4].map((k) => ({ at: 20 + k * 14, s: "pop" as const, v: 0.15 })),
+    funciones: [0, 1, 2].map((k) => ({ at: k * 15, s: "pop" as const, v: 0.18 })),
+    participantes: [0, 1, 2].map((k) => ({ at: k * 12, s: "pop" as const, v: 0.18 })),
+  };
 
   return (
     <Fundido dur={dur}>
@@ -367,7 +397,7 @@ const Segmento: React.FC<{ p: Parte; i: number }> = ({ p, i }) => {
           background: "#fff",
           border: `6px solid ${C.tinta}`,
           boxShadow: `10px 10px 0 ${C.tinta}`,
-          transform: `translateY(${(1 - sp(f, 6, 18)) * 40}px)`,
+          transform: `translateY(${(1 - sp(f, 6, 18)) * 40}px) scale(${1 + bump}) rotate(${bump * 20}deg)`,
           overflow: "hidden",
         }}
       >
@@ -396,13 +426,26 @@ const Segmento: React.FC<{ p: Parte; i: number }> = ({ p, i }) => {
               textAlign: "center",
               maxWidth: 1550,
               boxShadow: `6px 6px 0 ${col}`,
+              transform: `scale(${0.92 + 0.08 * pop(fsub)}) translateY(${(1 - pop(fsub)) * 10}px)`,
             }}
           >
-            {sub.texto}
+            <TextoResaltado texto={sub.texto} f={fsub} color={COLORES_CLARO[i]} />
           </div>
         )}
       </div>
       <Progreso actual={i} />
+      {cambios.map((c, k) => {
+        const at = Math.round(c.desde * FPS);
+        const esp = ESPECIALES[p.esquemas[c.frase]] ?? [];
+        return (
+          <React.Fragment key={k}>
+            {k > 0 && <Sfx at={at} s="swish" v={0.2} />}
+            {esp.map((e, j) => (
+              <Sfx key={j} at={at + e.at} s={e.s} v={e.v} />
+            ))}
+          </React.Fragment>
+        );
+      })}
     </Fundido>
   );
 };
@@ -462,6 +505,10 @@ const Outro: React.FC = () => {
           {datos && <div style={{ fontFamily: FONT_B, fontWeight: 700, fontSize: 30, color: C.gris, marginTop: 36, opacity: sp(f, 60) }}>{datos}</div>}
         </div>
       </AbsoluteFill>
+      <Sfx at={2} s="tada" v={0.45} />
+      {PARTES.map((_, i) => (
+        <Sfx key={i} at={20 + i * 6} s="pop" v={0.22} />
+      ))}
     </Fundido>
   );
 };
@@ -471,7 +518,7 @@ const MUSICA_ALTA = MUSICA.alto;
 const MUSICA_BAJA = MUSICA.bajo;
 
 const tramos = () => {
-  const out: { desde: number; hasta: number; alta: boolean }[] = [{ desde: 0, hasta: INTRO, alta: true }];
+  const out: { desde: number; hasta: number; alta: boolean; nivel?: number }[] = [{ desde: 0, hasta: INTRO, alta: true }];
   let t = INTRO;
   for (const p of PARTES) {
     out.push({ desde: t, hasta: t + PORTADA, alta: true });
@@ -480,16 +527,20 @@ const tramos = () => {
     t += framesParte(p);
   }
   out.push({ desde: t, hasta: t + OUTRO, alta: true });
+  t += OUTRO;
+  out.push({ desde: t, hasta: t + BLOOPERS_TITULO, alta: true });
+  out.push({ desde: t + BLOOPERS_TITULO, hasta: t + framesBloopers(), alta: false, nivel: 0.16 });
   return out;
 };
 
 const volumenMusica = (f: number, total: number) => {
-  const tr = tramos().find((x) => f >= x.desde && f < x.hasta) ?? { alta: true, desde: 0, hasta: total };
-  let v = tr.alta ? MUSICA_ALTA : MUSICA_BAJA;
+  const tr: { desde: number; hasta: number; alta: boolean; nivel?: number } = tramos().find((x) => f >= x.desde && f < x.hasta) ?? { alta: true, desde: 0, hasta: total };
+  const nivel = (x: { alta: boolean; nivel?: number }) => x.nivel ?? (x.alta ? MUSICA_ALTA : MUSICA_BAJA);
+  let v = nivel(tr);
   // rampa de 15 frames al entrar en cada tramo
   const prev = tramos().find((x) => x.hasta === tr.desde);
   if (prev && f - tr.desde < 15) {
-    const pv = prev.alta ? MUSICA_ALTA : MUSICA_BAJA;
+    const pv = nivel(prev);
     v = pv + (v - pv) * ((f - tr.desde) / 15);
   }
   const fade = interpolate(f, [0, 10, total - 45, total - 1], [0, 1, 1, 0], clamp);
@@ -499,6 +550,16 @@ const volumenMusica = (f: number, total: number) => {
 export const Traduccion: React.FC = () => {
   const { durationInFrames } = useVideoConfig();
   let t = INTRO;
+  // cortes tapados por la cortina: fin de la intro, fin de cada integrante, fin de la outro
+  const cortes: number[] = [INTRO];
+  {
+    let c = INTRO;
+    for (const p of PARTES) {
+      c += PORTADA + framesParte(p);
+      cortes.push(c);
+    }
+    cortes.push(c + OUTRO);
+  }
   return (
     <AbsoluteFill style={{ background: C.papel }}>
       <Sequence durationInFrames={INTRO}>
@@ -521,6 +582,15 @@ export const Traduccion: React.FC = () => {
       <Sequence from={t} durationInFrames={OUTRO}>
         <Outro />
       </Sequence>
+      <Sequence from={t + OUTRO} durationInFrames={framesBloopers()}>
+        <Bloopers />
+      </Sequence>
+      {cortes.map((c) => (
+        <Sequence key={c} from={c - Math.floor(CORTINA / 2)} durationInFrames={CORTINA}>
+          <Cortina />
+          <Sfx at={0} s="whoosh" v={0.45} />
+        </Sequence>
+      ))}
       <Audio src={staticFile(MUSICA.archivo)} trimBefore={Math.round(MUSICA.empiezaEn * FPS)} loop volume={(f) => volumenMusica(f, durationInFrames)} />
     </AbsoluteFill>
   );

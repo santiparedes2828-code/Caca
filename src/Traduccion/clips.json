@@ -164,6 +164,30 @@
    ]
   }
  ],
+ "Francisco": [
+  {
+   "archivo": "traduccion/francisco_1.mp4",
+   "frases": [
+    3
+   ],
+   "recorteInicio": 0.0,
+   "segundos": 4.25,
+   "subtitulos": [
+    {
+     "texto": "Cuando encuentra el codón correspondiente,",
+     "desde": 0.0,
+     "hasta": 1.42,
+     "frase": 3
+    },
+    {
+     "texto": "entrega el aminoácido que transporta.",
+     "desde": 1.42,
+     "hasta": 4.4,
+     "frase": 3
+    }
+   ]
+  }
+ ],
  "Juan": [
   {
    "archivo": "traduccion/juan_1.mp4",

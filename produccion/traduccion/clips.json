@@ -3,7 +3,13 @@
   "Mateo": [
     {
       "archivo": "traduccion/mateo_1.mp4",
-      "frases": [0, 1, 2, 3, 4],
+      "frases": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
       "texto": [
         "¿Alguna vez se han preguntado cómo es que nuestro cuerpo fabrica las proteínas que necesita?",
         "Todo comienza en las células, donde el ADN contiene información genética.",
@@ -14,29 +20,73 @@
     }
   ],
   "Julieta": [
-    { "archivo": "traduccion/julieta_1.mp4", "frases": [0, 1] }
+    {
+      "archivo": "traduccion/julieta_1.mp4",
+      "frases": [
+        0,
+        1
+      ]
+    }
   ],
   "Gabriel": [
     {
       "archivo": "traduccion/gabriel_1.mp4",
-      "frases": [3],
+      "frases": [
+        3
+      ],
       "hasta": 5.45,
-      "texto": ["Cada codón le indica a cada aminoácido que debe incorporarse a la proteína, o dónde debe finalizar."]
+      "texto": [
+        "Cada codón le indica a cada aminoácido que debe incorporarse a la proteína, o dónde debe finalizar."
+      ]
     },
     {
       "archivo": "traduccion/gabriel_2.mp4",
-      "frases": [4],
-      "texto": ["De esta manera, el ribosoma sigue las instrucciones del ARN mensajero."]
+      "frases": [
+        4
+      ],
+      "texto": [
+        "De esta manera, el ribosoma sigue las instrucciones del ARN mensajero."
+      ]
+    }
+  ],
+  "Francisco": [
+    {
+      "archivo": "traduccion/francisco_1.mp4",
+      "frases": [
+        3
+      ],
+      "hasta": 4.25,
+      "texto": [
+        "Cuando encuentra el codón correspondiente, entrega el aminoácido que transporta."
+      ]
     }
   ],
   "Juan": [
-    { "archivo": "traduccion/juan_1.mp4", "frases": [0, 1, 2, 3] },
-    { "archivo": "traduccion/juan_2.mp4", "frases": [4] }
+    {
+      "archivo": "traduccion/juan_1.mp4",
+      "frases": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "archivo": "traduccion/juan_2.mp4",
+      "frases": [
+        4
+      ]
+    }
   ],
   "Santiago": [
     {
       "archivo": "traduccion/santiago_1.mp4",
-      "frases": [0, 1, 2, 3],
+      "frases": [
+        0,
+        1,
+        2,
+        3
+      ],
       "texto": [
         "En resumen, la traducción es un proceso en el cual la célula utiliza la información del ARN mensajero para fabricar proteínas.",
         "En este proceso se ven involucrados los ribosomas, los aminoácidos y el ARN de transferencia.",

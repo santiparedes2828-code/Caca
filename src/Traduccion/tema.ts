@@ -34,3 +34,6 @@ export const C = {
 
 // Un color por integrante (tarjetas y detalles).
 export const COLORES = [C.azul, C.rosa, C.lilaOsc, C.verde, C.naranja, C.rojo];
+
+// Versión clara de cada color (marcador de palabras clave en los subtítulos).
+export const COLORES_CLARO = ["#BFDBFE", "#FBCFE8", "#DDD6FE", "#BBF7D0", "#FED7AA", "#FECACA"];
