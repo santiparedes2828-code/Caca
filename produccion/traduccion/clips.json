@@ -1,10 +1,48 @@
 {
-  "_ayuda": "Cada clip cubre frases del guion de esa persona (números desde 0). Después de editar: python3 -I produccion/traduccion/armar.py",
+  "_ayuda": "Cada clip cubre frases del guion de esa persona (números desde 0). 'texto' = lo que dijo de verdad (una entrada por frase), para los subtítulos; si falta, se usa el guion. 'hasta' = cortar el clip en ese segundo. Después de editar: python3 -I produccion/traduccion/armar.py",
+  "Mateo": [
+    {
+      "archivo": "traduccion/mateo_1.mp4",
+      "frases": [0, 1, 2, 3, 4],
+      "texto": [
+        "¿Alguna vez se han preguntado cómo es que nuestro cuerpo fabrica las proteínas que necesita?",
+        "Todo comienza en las células, donde el ADN contiene información genética.",
+        "Esta información es fundamental para fabricar proteínas, las cuales son fundamentales para el funcionamiento de nuestro organismo.",
+        "Pero no es el ADN quien fabrica las proteínas directamente. Para esto existen dos procesos llamados transcripción y traducción.",
+        "Hoy vamos a explicar cómo funciona la traducción."
+      ]
+    }
+  ],
+  "Julieta": [
+    { "archivo": "traduccion/julieta_1.mp4", "frases": [0, 1] }
+  ],
+  "Gabriel": [
+    {
+      "archivo": "traduccion/gabriel_1.mp4",
+      "frases": [3],
+      "hasta": 5.45,
+      "texto": ["Cada codón le indica a cada aminoácido que debe incorporarse a la proteína, o dónde debe finalizar."]
+    },
+    {
+      "archivo": "traduccion/gabriel_2.mp4",
+      "frases": [4],
+      "texto": ["De esta manera, el ribosoma sigue las instrucciones del ARN mensajero."]
+    }
+  ],
   "Juan": [
     { "archivo": "traduccion/juan_1.mp4", "frases": [0, 1, 2, 3] },
     { "archivo": "traduccion/juan_2.mp4", "frases": [4] }
   ],
-  "Julieta": [
-    { "archivo": "traduccion/julieta_1.mp4", "frases": [0, 1] }
+  "Santiago": [
+    {
+      "archivo": "traduccion/santiago_1.mp4",
+      "frases": [0, 1, 2, 3],
+      "texto": [
+        "En resumen, la traducción es un proceso en el cual la célula utiliza la información del ARN mensajero para fabricar proteínas.",
+        "En este proceso se ven involucrados los ribosomas, los aminoácidos y el ARN de transferencia.",
+        "Las proteínas forman estructuras, transportan sustancias y aceleran procesos químicos.",
+        "Por eso es tan importante el proceso de traducción del ADN para fabricar proteínas."
+      ]
+    }
   ]
 }

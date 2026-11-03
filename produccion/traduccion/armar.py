@@ -32,20 +32,74 @@ def voz(p):
 
 
 def trozos(palabras, frase):
-    """Subtítulos de hasta 8 palabras, cortando preferentemente en signos de puntuación."""
-    out, cur = [], []
+    """Subtítulos de hasta 8 palabras: nunca cruzan una oración; dentro de ella cortan en comas."""
+    oraciones, cur = [], []
     for w in palabras:
         cur.append(w)
-        corte = re.search(r"[,.;:?!]$", w["text"]) and len(cur) >= 3
-        if len(cur) >= 8 or corte:
-            out.append(cur)
+        if re.search(r"[.?!]$", w["text"]):
+            oraciones.append(cur)
             cur = []
     if cur:
-        if out and len(cur) <= 2:
-            out[-1] += cur
-        else:
-            out.append(cur)
+        oraciones.append(cur)
+    out = []
+    for o in oraciones:
+        partes, cur = [], []
+        for w in o:
+            cur.append(w)
+            if len(cur) >= 8 or (re.search(r"[,;:]$", w["text"]) and len(cur) >= 3):
+                partes.append(cur)
+                cur = []
+        if cur:
+            if partes and len(cur) <= 2:
+                partes[-1] += cur
+            else:
+                partes.append(cur)
+        out += partes
     return [{"texto": " ".join(w["text"] for w in c), "desde": c[0]["start"], "hasta": c[-1]["end"] + 0.15, "frase": frase} for c in out]
+
+
+def norm(w):
+    return re.sub(r"[^a-záéíóúñü]", "", w.lower())
+
+
+def con_transcripcion(texto, trans, desde, hasta):
+    """Tiempos por palabra tomados de la transcripción (Whisper): empareja el texto corregido con lo transcripto
+    y a las palabras sin pareja les reparte el hueco entre vecinas."""
+    import difflib
+    ws = texto.split()
+    tr = [t for t in trans if t["s"] < hasta - 0.05]
+    sm = difflib.SequenceMatcher(a=[norm(w) for w in ws], b=[norm(t["w"]) for t in tr], autojunk=False)
+    t0 = [None] * len(ws)
+    t1 = [None] * len(ws)
+    for a, b, n in sm.get_matching_blocks():
+        for k in range(n):
+            t0[a + k] = tr[b + k]["s"]
+            t1[a + k] = tr[b + k]["e"]
+    # anclas en los bordes
+    if t0[0] is None:
+        t0[0] = tr[0]["s"] if tr else desde
+    if t1[-1] is None:
+        t1[-1] = min(hasta, tr[-1]["e"]) if tr else hasta
+    i = 0
+    while i < len(ws):
+        if t0[i] is not None and t1[i] is not None:
+            i += 1
+            continue
+        j = i
+        while j < len(ws) and (t0[j] is None or t1[j] is None):
+            j += 1
+        ini = t1[i - 1] if i > 0 and t1[i - 1] is not None else t0[i]
+        fin = t0[j] if j < len(ws) else t1[-1]
+        if ini is None:
+            ini = desde
+        paso = (fin - ini) / max(1, j - i)
+        for k in range(i, j):
+            if t0[k] is None:
+                t0[k] = ini + paso * (k - i)
+            if t1[k] is None:
+                t1[k] = ini + paso * (k - i + 1)
+        i = j
+    return [{"text": w, "start": round(a - desde, 3), "end": round(min(b, hasta) - desde, 3)} for w, a, b in zip(ws, t0, t1)]
 
 
 salida = {}
@@ -61,21 +115,30 @@ for nombre, clips in CFG.items():
         ruta = next((o for o in orig if os.path.exists(o)), os.path.join(RAIZ, "public", c["archivo"]))
         ini, fin, total = voz(ruta)
         desde = max(0.0, ini - 0.35)
-        hasta = min(total, fin + 0.5)
+        if "hasta" in c:
+            fin = min(fin, c["hasta"])
+        hasta = min(total, c.get("hasta", fin + 0.5))
         with tempfile.TemporaryDirectory() as tmp:
             wav, txt, js = (os.path.join(tmp, x) for x in ("a.wav", "t.txt", "w.json"))
             subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-ss", str(desde), "-to", str(hasta), "-i", ruta, "-ac", "1", wav], check=True)
             subs = []
             # alinear todo el texto del clip junto y después repartir por frase
-            texto = " ".join(frases[i] for i in c["frases"])
-            open(txt, "w", encoding="utf-8").write(texto)
-            subprocess.run(["python3", "-I", os.path.join(RAIZ, "produccion/fabrica/alinear_dp.py"), wav, txt, js], check=True)
-            words = json.load(open(js, encoding="utf-8"))["words"]
+            dichas = c.get("texto") or [frases[i] for i in c["frases"]]
+            texto = " ".join(dichas)
+            tjson = os.path.join(RAIZ, "produccion/traduccion/transcripciones", base + ".json")
+            if os.path.exists(tjson):
+                words = con_transcripcion(texto, json.load(open(tjson, encoding="utf-8")), desde, hasta)
+            else:
+                open(txt, "w", encoding="utf-8").write(texto)
+                subprocess.run(["python3", "-I", os.path.join(RAIZ, "produccion/fabrica/alinear_dp.py"), wav, txt, js], check=True)
+                words = json.load(open(js, encoding="utf-8"))["words"]
             k = 0
-            for i in c["frases"]:
-                n = len(frases[i].split())
+            for i, dicha in zip(c["frases"], dichas):
+                n = len(dicha.split())
                 subs += trozos(words[k : k + n], i)
                 k += n
+        for a, b in zip(subs, subs[1:]):
+            a["hasta"] = round(min(a["hasta"], b["desde"]), 3)
         salida[nombre].append({"archivo": c["archivo"], "frases": c["frases"], "recorteInicio": round(desde, 3), "segundos": round(hasta - desde, 3), "subtitulos": subs})
         print(f"{nombre}: {c['archivo']} · {desde:.2f}–{hasta:.2f}s · {len(subs)} subtítulos")
 
