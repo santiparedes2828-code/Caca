@@ -1,6 +1,7 @@
 import React from "react";
 import { Composition, Folder, Still } from "remotion";
 import { HelloWorld } from "./HelloWorld";
+import { TRADUCCION_FRAMES, Traduccion } from "./Traduccion/Traduccion";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
 import { Promo, promoDuration } from "./Promo/Promo";
@@ -330,6 +331,7 @@ export const RemotionRoot: React.FC = () => {
         }}
       />
 
+      <Composition id="Traduccion" component={Traduccion} durationInFrames={TRADUCCION_FRAMES} fps={30} width={1920} height={1080} />
     </>
   );
 };
