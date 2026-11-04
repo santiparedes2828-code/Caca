@@ -57,11 +57,43 @@
     {
       "archivo": "traduccion/francisco_1.mp4",
       "frases": [
+        0,
+        1
+      ],
+      "hasta": 7.75,
+      "texto": [
+        "…una proteína, también necesitamos el ARN de transferencia.",
+        "Su función es transportar los aminoácidos hasta el ribosoma."
+      ]
+    },
+    {
+      "archivo": "traduccion/francisco_2.mp4",
+      "frases": [
+        2
+      ],
+      "hasta": 5.35,
+      "texto": [
+        "…ARN de transferencia tiene un anticodón que puede unirse con un codón complementario del ARN mensajero."
+      ]
+    },
+    {
+      "archivo": "traduccion/francisco_3.mp4",
+      "frases": [
         3
       ],
-      "hasta": 4.25,
+      "hasta": 3.05,
       "texto": [
-        "Cuando encuentra el codón correspondiente, entrega el aminoácido que transporta."
+        "…codón correspondiente, entrega el aminoácido que transporta."
+      ]
+    },
+    {
+      "archivo": "traduccion/francisco_4.mp4",
+      "frases": [
+        4
+      ],
+      "hasta": 3.85,
+      "texto": [
+        "Los aminoácidos van llegando en el orden indicado por la información genética."
       ]
     }
   ],
