@@ -17,11 +17,15 @@ export const BLOOPERS: Blooper[] = [
   { archivo: "traduccion/bloopers/mateo.mp4", nombre: "Mateo", segundos: 3.6 },
   { archivo: "traduccion/bloopers/julieta_1.mp4", nombre: "Julieta", segundos: 1.2 },
   { archivo: "traduccion/bloopers/gabriel_1.mp4", nombre: "Gabriel", segundos: 3.5 },
+  { archivo: "traduccion/bloopers/santiago_1.mp4", nombre: "Santiago", segundos: 1.75 },
   { archivo: "traduccion/bloopers/francisco_1.mp4", nombre: "Francisco", segundos: 3.1 },
   { archivo: "traduccion/bloopers/julieta_2.mp4", nombre: "Julieta", segundos: 1.5 },
   { archivo: "traduccion/bloopers/gabriel_2.mp4", nombre: "Gabriel", segundos: 2.45 },
   { archivo: "traduccion/bloopers/julieta_3.mp4", nombre: "Julieta", segundos: 1.0 },
   { archivo: "traduccion/bloopers/francisco_2.mp4", nombre: "Francisco", segundos: 3.7 },
+  { archivo: "traduccion/bloopers/santiago_2.mp4", nombre: "Santiago", segundos: 3.5 },
+  { archivo: "traduccion/bloopers/santiago_3.mp4", nombre: "Santiago", segundos: 3.9 },
+  { archivo: "traduccion/bloopers/santiago_4.mp4", nombre: "Santiago", segundos: 3.5 },
   {
     fotos: [
       "traduccion/fotos/sillon.jpg",

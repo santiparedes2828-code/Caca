@@ -72,7 +72,7 @@ const Titulo: React.FC = () => {
 };
 
 // sello que aparece al final de cada toma (la última no lleva: sigue el FIN)
-const SELLOS = ["¡CORTE!", "OTRA VEZ 😂", "¡CORTE!", "TOMA 27", "¡CORTE!", "JAJAJA", "¡CORTE!", "SE RINDIÓ"];
+const SELLOS = ["¡CORTE!", "OTRA VEZ 😂", "¡CORTE!", "¿QUÉ DIJO?", "TOMA 27", "¡CORTE!", "JAJAJA", "¡CORTE!", "SE RINDIÓ", "¡CORTE!", "TOMA 99", "JAJAJA"];
 
 const Toma: React.FC<{ b: Extract<Blooper, { archivo: string }>; n: number; dur: number; sello: string }> = ({ b, n, dur, sello }) => {
   const f = useCurrentFrame();
