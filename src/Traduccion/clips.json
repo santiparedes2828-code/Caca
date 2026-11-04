@@ -73,41 +73,35 @@
   {
    "archivo": "traduccion/julieta_1.mp4",
    "frases": [
-    0,
-    1
+    3,
+    4
    ],
    "recorteInicio": 0.0,
    "segundos": 10.75,
    "subtitulos": [
     {
-     "texto": "Antes de que ocurra la traducción,",
-     "desde": 0.195,
-     "hasta": 1.882,
-     "frase": 0
+     "texto": "El ARN mensajero sale al citoplasma,",
+     "desde": 0.0,
+     "hasta": 2.58,
+     "frase": 3
     },
     {
-     "texto": "primero sucede un proceso llamado transcripción.",
-     "desde": 1.882,
-     "hasta": 4.277,
-     "frase": 0
+     "texto": "donde se encuentran los ribosomas.",
+     "desde": 2.58,
+     "hasta": 4.25,
+     "frase": 3
     },
     {
-     "texto": "Durante este proceso,",
-     "desde": 4.964,
-     "hasta": 6.044,
-     "frase": 1
+     "texto": "Ahí es donde comienza la traducción,",
+     "desde": 4.88,
+     "hasta": 6.74,
+     "frase": 4
     },
     {
-     "texto": "la información de un gen del ADN se",
-     "desde": 6.044,
-     "hasta": 7.785,
-     "frase": 1
-    },
-    {
-     "texto": "copia en una molécula llamada ARN mensajero.",
-     "desde": 7.785,
-     "hasta": 10.251000000000001,
-     "frase": 1
+     "texto": "que permite utilizar la información para fabricar una proteína.",
+     "desde": 6.74,
+     "hasta": 10.450000000000001,
+     "frase": 4
     }
    ]
   }
@@ -202,50 +196,50 @@
    "subtitulos": [
     {
      "texto": "A medida que llegan los aminoácidos,",
-     "desde": 0.358,
-     "hasta": 1.805,
+     "desde": 0.311,
+     "hasta": 2.101,
      "frase": 0
     },
     {
      "texto": "el ribosoma los va uniendo mediante enlaces peptídicos.",
-     "desde": 1.805,
-     "hasta": 4.098,
+     "desde": 2.101,
+     "hasta": 4.211,
      "frase": 0
     },
     {
-     "texto": "Esto forma una cadena llamada cadena polipeptídica.",
-     "desde": 4.672,
-     "hasta": 7.218,
+     "texto": "Esto forma la cadena llamada cadena polipeptídica.",
+     "desde": 4.521,
+     "hasta": 7.291,
      "frase": 1
     },
     {
      "texto": "El proceso continúa mientras el ribosoma avanza por",
-     "desde": 7.333,
-     "hasta": 10.263,
+     "desde": 7.521,
+     "hasta": 10.121,
      "frase": 2
     },
     {
      "texto": "el ARN mensajero,",
-     "desde": 10.263,
-     "hasta": 11.297,
+     "desde": 10.121,
+     "hasta": 11.321,
      "frase": 2
     },
     {
      "texto": "leyendo sus codones.",
-     "desde": 11.341,
-     "hasta": 13.05,
+     "desde": 11.321,
+     "hasta": 12.271,
      "frase": 2
     },
     {
-     "texto": "Cuando llega a un codón de terminación,",
-     "desde": 13.348,
-     "hasta": 14.787,
+     "texto": "Cuando llega un codón de terminación,",
+     "desde": 12.801,
+     "hasta": 14.731,
      "frase": 3
     },
     {
      "texto": "la traducción finaliza.",
-     "desde": 15.423,
-     "hasta": 16.82,
+     "desde": 15.321,
+     "hasta": 16.831,
      "frase": 3
     }
    ]
@@ -260,14 +254,14 @@
    "subtitulos": [
     {
      "texto": "Entonces, la cadena se libera y puede plegarse",
-     "desde": 0.178,
-     "hasta": 2.315,
+     "desde": 0.0,
+     "hasta": 2.18,
      "frase": 4
     },
     {
-     "texto": "hasta adquirir su forma funcional.",
-     "desde": 2.315,
-     "hasta": 3.818,
+     "texto": "hasta adquirir su tamaño funcional.",
+     "desde": 2.18,
+     "hasta": 3.81,
      "frase": 4
     }
    ]

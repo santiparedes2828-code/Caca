@@ -22,7 +22,18 @@ export const BLOOPERS: Blooper[] = [
   { archivo: "traduccion/bloopers/gabriel_2.mp4", nombre: "Gabriel", segundos: 2.45 },
   { archivo: "traduccion/bloopers/julieta_3.mp4", nombre: "Julieta", segundos: 1.0 },
   { archivo: "traduccion/bloopers/francisco_2.mp4", nombre: "Francisco", segundos: 3.7 },
-  { fotos: ["traduccion/fotos/sillon.jpg", "traduccion/fotos/mateo.jpg", "traduccion/fotos/francisco_cerca.jpg"], segundos: 3.6 },
+  {
+    fotos: [
+      "traduccion/fotos/sillon.jpg",
+      "traduccion/fotos/mateo.jpg",
+      "traduccion/fotos/francisco_cerca.jpg",
+      "traduccion/fotos/pared.jpg",
+      "traduccion/fotos/casco.jpg",
+      "traduccion/fotos/noche.jpg",
+      "traduccion/fotos/grupo.jpg", // la última cae grande en el centro
+    ],
+    segundos: 6.6,
+  },
   { archivo: "traduccion/bloopers/francisco_3.mp4", nombre: "Francisco", segundos: 1.4 },
 ];
 export const BLOOPERS_TITULO = Math.round(2.2 * FPS);

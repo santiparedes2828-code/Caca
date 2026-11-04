@@ -67,7 +67,12 @@ def con_transcripcion(texto, trans, desde, hasta):
     y a las palabras sin pareja les reparte el hueco entre vecinas."""
     import difflib
     ws = texto.split()
-    tr = [t for t in trans if t["s"] < hasta - 0.05]
+    tr = [dict(t) for t in trans if t["s"] < hasta - 0.05]
+    # palabra dudosa seguida de un silencio largo (típico al arrancar): pegarla a la siguiente
+    for a, b in zip(tr, tr[1:]):
+        if a.get("p", 1) < 0.3 and b["s"] - a["s"] > 0.6:
+            a["s"] = b["s"] - 0.25
+            a["e"] = b["s"] - 0.02
     sm = difflib.SequenceMatcher(a=[norm(w) for w in ws], b=[norm(t["w"]) for t in tr], autojunk=False)
     t0 = [None] * len(ws)
     t1 = [None] * len(ws)

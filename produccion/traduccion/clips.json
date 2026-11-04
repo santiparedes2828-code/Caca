@@ -23,8 +23,12 @@
     {
       "archivo": "traduccion/julieta_1.mp4",
       "frases": [
-        0,
-        1
+        3,
+        4
+      ],
+      "texto": [
+        "El ARN mensajero sale al citoplasma, donde se encuentran los ribosomas.",
+        "Ahí es donde comienza la traducción, que permite utilizar la información para fabricar una proteína."
       ]
     }
   ],
@@ -69,12 +73,21 @@
         1,
         2,
         3
+      ],
+      "texto": [
+        "A medida que llegan los aminoácidos, el ribosoma los va uniendo mediante enlaces peptídicos.",
+        "Esto forma la cadena llamada cadena polipeptídica.",
+        "El proceso continúa mientras el ribosoma avanza por el ARN mensajero, leyendo sus codones.",
+        "Cuando llega un codón de terminación, la traducción finaliza."
       ]
     },
     {
       "archivo": "traduccion/juan_2.mp4",
       "frases": [
         4
+      ],
+      "texto": [
+        "Entonces, la cadena se libera y puede plegarse hasta adquirir su tamaño funcional."
       ]
     }
   ],

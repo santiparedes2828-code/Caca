@@ -138,48 +138,66 @@ const Toma: React.FC<{ b: Extract<Blooper, { archivo: string }>; n: number; dur:
   );
 };
 
+// Collage: cada foto cae y se apila; la última (foto grupal) cae grande en el centro.
+// x, y = centro; w, h = tamaño de la foto (sin el marco).
+const LAYOUT = [
+  { x: 300, y: 600, r: -7, w: 300, h: 400 },
+  { x: 760, y: 370, r: 4, w: 440, h: 300 },
+  { x: 1250, y: 360, r: -3, w: 440, h: 300 },
+  { x: 1630, y: 620, r: 6, w: 300, h: 400 },
+  { x: 440, y: 860, r: 5, w: 440, h: 300 },
+  { x: 1480, y: 865, r: -5, w: 440, h: 300 },
+];
+const HERO = { x: 960, y: 640, r: -2, w: 680, h: 380 };
+
 const Fotos: React.FC<{ fotos: string[] }> = ({ fotos }) => {
   const f = useCurrentFrame();
-  const pos = [
-    { x: -560, y: 40, r: -7 },
-    { x: 0, y: -10, r: 3 },
-    { x: 560, y: 50, r: -3 },
-  ];
+  const paso = 13;
   return (
     <AbsoluteFill>
       <Fondo />
-      <div style={{ position: "absolute", top: 60, width: "100%", textAlign: "center", fontFamily: FONT_T, fontWeight: 800, fontSize: 90, color: C.tinta, transform: `scale(${pop(f)})` }}>
+      <div style={{ position: "absolute", top: 34, width: "100%", textAlign: "center", fontFamily: FONT_T, fontWeight: 800, fontSize: 84, color: C.tinta, transform: `scale(${pop(f)}) rotate(-2deg)`, zIndex: 20 }}>
         Detrás de cámara 📸
       </div>
-      <AbsoluteFill style={{ alignItems: "center", justifyContent: "center" }}>
-        {fotos.map((src, k) => {
-          const d = 8 + k * 22;
-          const p = pop(f, d);
-          const flash = interpolate(f, [d, d + 6], [0.9, 0], clamp);
-          return (
-            <div
-              key={k}
-              style={{
-                position: "absolute",
-                marginTop: 120,
-                transform: `translate(${pos[k].x}px, ${pos[k].y + (1 - p) * -900}px) rotate(${pos[k].r + (1 - p) * 25}deg)`,
-                background: "#fff",
-                padding: "20px 20px 80px",
-                border: `4px solid ${C.tinta}`,
-                boxShadow: `10px 10px 0 ${COLORES[k * 2]}`,
-              }}
-            >
-              <div style={{ width: 470, height: 520, overflow: "hidden", position: "relative" }}>
-                <Img src={staticFile(src)} style={{ width: "100%", height: "100%", objectFit: "cover", transform: `scale(${1.08 - 0.06 * Math.min(1, (f - d) / 90)})` }} />
-                <div style={{ position: "absolute", inset: 0, background: "#fff", opacity: f >= d ? flash : 0 }} />
-              </div>
+      {fotos.map((src, k) => {
+        const ultima = k === fotos.length - 1 && fotos.length > 1;
+        const L = ultima ? HERO : LAYOUT[k % LAYOUT.length];
+        const d = 8 + k * paso + (ultima ? 8 : 0);
+        const p = pop(f, d);
+        const flash = interpolate(f, [d, d + 6], [0.9, 0], clamp);
+        const pad = ultima ? 22 : 14;
+        return (
+          <div
+            key={k}
+            style={{
+              position: "absolute",
+              left: L.x - L.w / 2 - pad,
+              top: L.y - L.h / 2 - pad,
+              transform: `translateY(${(1 - p) * -1100}px) rotate(${L.r + (1 - p) * 25}deg) scale(${ultima ? 1 + 0.03 * Math.min(1, Math.max(0, f - d) / 80) : 1})`,
+              background: "#fff",
+              padding: `${pad}px ${pad}px ${ultima ? 70 : 50}px`,
+              border: `4px solid ${C.tinta}`,
+              boxShadow: `10px 10px 0 ${COLORES[k % COLORES.length]}`,
+              opacity: f >= d - 2 ? 1 : 0,
+              zIndex: k + 1,
+            }}
+          >
+            <div style={{ width: L.w, height: L.h, overflow: "hidden", position: "relative" }}>
+              <Img src={staticFile(src)} style={{ width: "100%", height: "100%", objectFit: "cover", transform: `scale(${1.08 - 0.06 * Math.min(1, Math.max(0, f - d) / 90)})` }} />
+              <div style={{ position: "absolute", inset: 0, background: "#fff", opacity: f >= d ? flash : 0 }} />
             </div>
-          );
-        })}
-      </AbsoluteFill>
+            {ultima && (
+              <div style={{ position: "absolute", bottom: 14, width: "100%", left: 0, textAlign: "center", fontFamily: FONT_T, fontWeight: 800, fontSize: 36, color: C.tinta }}>
+                el equipo 💪
+              </div>
+            )}
+          </div>
+        );
+      })}
       {fotos.map((_, k) => (
-        <Sfx key={k} at={8 + k * 22} s="obturador" v={0.55} />
+        <Sfx key={k} at={8 + k * paso + (k === fotos.length - 1 ? 8 : 0)} s="obturador" v={0.5} />
       ))}
+      <Sfx at={8 + (fotos.length - 1) * paso + 8} s="tada" v={0.3} />
     </AbsoluteFill>
   );
 };
