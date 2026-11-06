@@ -1,0 +1,23 @@
+{
+  "slug": "sacudida",
+  "toma": "a",
+  "tempo": 1.08,
+  "pausa": 0.24,
+  "reloj": { "variante": 0, "segundos": 2.0 },
+  "numeros": [
+    [["siete", "de", "cada", "diez"], "7 de cada 10"]
+  ],
+  "musica": {
+    "bpm": 96,
+    "secciones": [
+      { "desde": "inicio", "modo": "misterio", "escala": "menor", "tonica": 55 },
+      { "desde": "llama", "modo": "groove", "escala": "dorico", "tonica": 55 },
+      { "desde": "teoría", "modo": "tension", "tonica": 55 },
+      { "desde": "despierta", "modo": "pesado", "tonica": 55 },
+      { "desde": "hipótesis", "modo": "espacial", "escala": "lidio", "tonica": 55 },
+      { "desde": "pasa", "modo": "groove", "escala": "dorico", "tonica": 55 },
+      { "desde": "seguime", "modo": "cierre", "tonica": 58 }
+    ],
+    "golpes": ["despierta"]
+  }
+}
